@@ -1,0 +1,105 @@
+Connections for cell 'FIFO_E/FIFO_MEM_1_reg[0]':
+    Reference:          DFCX4
+    Library:            c18_CORELIB_TYP
+
+    Input Pins          Net
+    ----------------    ------------
+    D                   FIFO_E/n140
+    CP                  clk
+    RN                  reset
+
+    Output Pins         Net
+    ----------------    ------------
+    Q                   n3034
+    QN
+
+Connections for cell 'FIFO_E/FIFO_MEM_1_reg[1]':
+    Reference:          DFCX4
+    Library:            c18_CORELIB_TYP
+
+    Input Pins          Net
+    ----------------    ------------
+    D                   FIFO_E/n139
+    CP                  clk
+    RN                  reset
+
+    Output Pins         Net
+    ----------------    ------------
+    Q                   n3033
+    QN
+
+Connections for cell 'FIFO_E/FIFO_MEM_1_reg[2]':
+    Reference:          DFCX4
+    Library:            c18_CORELIB_TYP
+
+    Input Pins          Net
+    ----------------    ------------
+    D                   FIFO_E/n138
+    CP                  clk
+    RN                  reset
+
+    Output Pins         Net
+    ----------------    ------------
+    Q                   n3032
+    QN
+
+
+Connections for cell 'LBDR_E/Rxy_reg[0]':
+    Reference:          DFCPX4
+    Library:            c18_CORELIB_TYP
+
+    Input Pins          Net
+    ----------------    ------------
+    D                   LBDR_E/n27
+    CP                  clk
+    RN                  LBDR_E/n41
+    SN                  LBDR_E/n40
+
+    Output Pins         Net
+    ----------------    ------------
+    Q                   
+    QN                  n2877
+
+Connections for cell 'FIFO_E/FIFO_MEM_2_reg[1]':
+    Reference:          DFCX4
+    Library:            c18_CORELIB_TYP
+
+    Input Pins          Net
+    ----------------    ------------
+    D                   FIFO_E/n171
+    CP                  clk
+    RN                  reset
+
+    Output Pins         Net
+    ----------------    ------------
+    Q                   n3291
+    QN                  n1437
+
+Connections for cell 'U3806':
+    Reference:          NAND2X6
+    Library:            c18_CORELIB_TYP
+
+    Input Pins          Net
+    ----------------    ------------
+    A                   n2136
+    B                   n3033
+
+    Output Pins         Net
+    ----------------    ------------
+    Q                   n2210
+
+Connections for cell 'U3807':
+    Reference:          OA211X6
+    Library:            c18_CORELIB_TYP
+
+    Input Pins          Net
+    ----------------    ------------
+    A1                  n1374
+    A2                  n2131
+    B1                  n2168
+    C1                  n2169
+
+    Output Pins         Net
+    ----------------    ------------
+    Q                   n1839
+
