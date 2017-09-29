@@ -6,9 +6,9 @@ The output is simply a list of the names of all pins.
 
 ## Files
  - `Cells.g4` contains the grammar
- - `main.py` is the main file which runs the program
+ - `convert_to_pins.py` is the main file which runs the program
  - `test.txt` a small test example
  - `cell_connections.txt` is the last full export of all cells.
 
 ## Usage
-`python main.py path_to_file` > output.txt
+    python convert_to_pins.py path_to_file > results.txt
