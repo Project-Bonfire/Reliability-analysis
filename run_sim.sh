@@ -22,7 +22,7 @@ mkdir "../results/$curtime"
 foreach line ( "`cat ../sim_runs`" )
         set args=`echo $line:q | sed 's/,/ /g'`
         echo "Current run: $args"
-	i = $i + 1
+	@ i++
 	setenv BREAK_TIME_BEFORE "$args[1]"
 	setenv BREAK_TIME_AFTER "$args[2]"
 	setenv FAULT_VALUE "$args[3]"

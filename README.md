@@ -11,6 +11,8 @@ This should run many simulations where faults are injected into the router and i
     - `cd prepare_sim/sim_run_creator && ./sim_run_creator.py 10000 > ../../sim_runs`
   - Run the simulation:
     - `./run_sim.sh`
+  - You can run a simle simulation with a given line by calling:
+    - `run_single_sim.csh 49308 692 0 10 U3116 :A1`
 
  # Subprojects
   - `simulation` contains the actual modelsim simulation files

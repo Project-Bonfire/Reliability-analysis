@@ -8,7 +8,8 @@ from CellsParser import CellsParser
 
 class PinPrinter(CellsListener):
     def exitIoline(self, ctx):
-        print(str(ctx.parentCtx.parentCtx.children[0].children[0].children[1]) + " :" + str(ctx.children[0]))
+        #unofrtunatley, for some reason, the pins are named differently, the only valid difference I found, is that the one without backslash are starting with U
+        print(("" if str(ctx.parentCtx.parentCtx.children[0].children[0].children[1]).startswith("U") else "\\") + str(ctx.parentCtx.parentCtx.children[0].children[0].children[1]) + " :" + str(ctx.children[0]))
 
 def main(argv):
     input = FileStream(argv[1])
