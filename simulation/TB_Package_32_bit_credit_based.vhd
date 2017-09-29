@@ -97,6 +97,7 @@ package body TB_Package is
     variable destination_id: integer;
     variable id_counter, frame_starting_delay, Packet_length, frame_ending_delay : integer:= 0;
     variable credit_counter: std_logic_vector (1 downto 0);
+    variable x,y :integer ;
     begin
 
     Packet_length := integer((integer(rand*100.0)*frame_length)/100);
@@ -146,8 +147,24 @@ package body TB_Package is
           uniform(seed1, seed2, rand);
           if source = 5 then
             destination_id := integer(rand*real((network_size**2)-1)); --depending on the routing algo this generates impossible packets
-          else
-            destination_id := 5;
+          else -- create valid destinations for xy routing
+            x := source mod network_size;
+            y := source / network_size;
+            --the routers location is 5
+            if x = 0 then
+              x:= integer((rand*real(2)))+1;
+              y:= integer(rand*real(3));
+            elsif x = 2 then
+              x:= integer(rand*real(1));
+              y:= integer(rand*real(3));
+            elsif y =0 then
+              x:= 1;
+              y:= integer((rand*real(2)))+1;
+            elsif y =2 then
+              x:= 1;
+              y:= integer(rand*real(1));
+            end if;
+            destination_id := (y * network_size) + x;
           end if;
       end loop;
  

@@ -9,3 +9,4 @@ modelsim.ini
 wlft*
 DIAGNOSIS.txt
 .directory
+*.vstf
