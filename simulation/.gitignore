@@ -1,0 +1,11 @@
+transcript
+sent.txt
+received.txt
+logs/
+traces/
+work/
+*.wlf
+modelsim.ini
+wlft*
+DIAGNOSIS.txt
+.directory
