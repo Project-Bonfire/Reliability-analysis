@@ -3,4 +3,4 @@ sim_runs
 .directory
 */.idea
 results/
-*/__pzcache__/*
+*/__pycache__/*
