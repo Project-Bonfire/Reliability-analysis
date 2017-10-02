@@ -17,6 +17,8 @@ use IEEE.math_real."ceil";
 use IEEE.math_real."log2";
 
 entity tb_router is
+    --Pass the filenames to write to for the sent and received file.
+	generic (sent_file,recv_file : string);
 end tb_router; 
 
 
@@ -99,28 +101,28 @@ not_reset <= not reset;
  
 --set up traffic generators
 credit_counter_control(clk, credit_out_L_5, valid_in_L_5, credit_counter_out_5);
-gen_random_packet(4, 50, 5, 23, 8, 8, 10000 ns, clk, credit_counter_out_5, valid_in_L_5, RX_L_5);
+gen_random_packet(sent_file,4, 50, 5, 23, 8, 8, 10000 ns, clk, credit_counter_out_5, valid_in_L_5, RX_L_5);
 
 credit_counter_control(clk, credit_out_N_5, valid_in_N_5, credit_counter_out_1);
-gen_random_packet(4, 50, 1, 23, 8, 8, 10000 ns, clk, credit_counter_out_1, valid_in_N_5, RX_N_5);
+gen_random_packet(sent_file,4, 50, 1, 23, 8, 8, 10000 ns, clk, credit_counter_out_1, valid_in_N_5, RX_N_5);
 
 credit_counter_control(clk, credit_out_E_5, valid_in_E_5, credit_counter_out_6);
-gen_random_packet(4, 50, 6, 23, 8, 8, 10000 ns, clk, credit_counter_out_6, valid_in_E_5, RX_E_5);
+gen_random_packet(sent_file,4, 50, 6, 23, 8, 8, 10000 ns, clk, credit_counter_out_6, valid_in_E_5, RX_E_5);
 
 credit_counter_control(clk, credit_out_S_5, valid_in_S_5, credit_counter_out_9);
-gen_random_packet(4, 50, 9, 23, 8, 8, 10000 ns, clk, credit_counter_out_9, valid_in_S_5, RX_S_5);
+gen_random_packet(sent_file,4, 50, 9, 23, 8, 8, 10000 ns, clk, credit_counter_out_9, valid_in_S_5, RX_S_5);
 
 credit_counter_control(clk, credit_out_W_5, valid_in_W_5, credit_counter_out_4);
-gen_random_packet(4, 50, 4, 23, 8, 8, 10000 ns, clk, credit_counter_out_4, valid_in_W_5, RX_W_5);
+gen_random_packet(sent_file,4, 50, 4, 23, 8, 8, 10000 ns, clk, credit_counter_out_4, valid_in_W_5, RX_W_5);
 
 
 
 -- connecting the packet receivers
-get_packet(32, 5, 1, clk, credit_in_N_5, valid_out_N_5, TX_N_5);
-get_packet(32, 5, 6, clk, credit_in_E_5, valid_out_E_5, TX_E_5);
-get_packet(32, 5, 9, clk, credit_in_S_5, valid_out_S_5, TX_S_5);
-get_packet(32, 5, 4, clk, credit_in_W_5, valid_out_W_5, TX_W_5);
-get_packet(32, 5, 5, clk, credit_in_L_5, valid_out_L_5, TX_L_5);
+get_packet(recv_file,32, 5, 1, clk, credit_in_N_5, valid_out_N_5, TX_N_5);
+get_packet(recv_file,32, 5, 6, clk, credit_in_E_5, valid_out_E_5, TX_E_5);
+get_packet(recv_file,32, 5, 9, clk, credit_in_S_5, valid_out_S_5, TX_S_5);
+get_packet(recv_file,32, 5, 4, clk, credit_in_W_5, valid_out_W_5, TX_W_5);
+get_packet(recv_file,32, 5, 5, clk, credit_in_L_5, valid_out_L_5, TX_L_5);
 
 
 end;

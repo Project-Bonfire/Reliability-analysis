@@ -12,7 +12,7 @@ To generate the `cell_connections.txt` file:
  - Select `file->elaborate`
  - Select all cells
  - Mark all cells with `ctrl+a`
- - Right click, select report, select selection, select file to export, unmark print
+ - Right click, select report, select selection, select file to export, untick append to file, untick to report viewer
  - Then Remove everything else which was printed to the file (Warnings and messages with `*`)
 
 

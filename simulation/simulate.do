@@ -14,23 +14,30 @@ vlog "Router_32_bit_credit_based_gate_level_without_hierarchy.v"
 vcom -O5 "TB_Package_32_bit_credit_based.vhd"
 vcom -O5 "Router_credit_based_tb.vhd"
 
+global env; 
+puts $env(PROPERTYPATH) 
+puts $env(RESULTFOLDER)
+set RESULTFOLDER $env(RESULTFOLDER)
+puts $env(STARTID)
 # Start the simulation
-vsim work.tb_router
+vsim -Gsent_file=$RESULTFOLDER/sent.txt -Grecv_file=$RESULTFOLDER/received.txt work.tb_router
 
 # Draw waves
 #do wave_4x4.do
 #vcd file wave.vcd
 #vcd add -r -optcells 
-set fp [open "../sim_runs" r]
+global env; 
+puts $env(PROPERTYPATH) 
+set fp [open $env(PROPERTYPATH)  r]
 #delete old results
-file delete -force -- results
-file mkdir results
+file mkdir results 
+
 
 fconfigure $fp -buffering line
 gets $fp data
-set i 0
+set i $env(STARTID)
 while {$data != ""} {
-    incr i
+  
     file mkdir "results/$i"
     #split line
     set params [regexp -all -inline {\S+} $data]
@@ -57,14 +64,15 @@ while {$data != ""} {
     #reset simulation
     restart
     #handle results
-    file rename "sent.txt" "results/$i/sent.txt"
-    file rename "received.txt" "results/$i/received.txt"
+    file rename "$RESULTFOLDER/sent.txt" "results/$i/sent.txt"
+    file rename "$RESULTFOLDER/received.txt" "results/$i/received.txt"
     set fo [open "results/$i/params.txt" "w"] 
     puts $fo $data
     close $fo
 
     #increment line
     gets $fp data
+    incr i
 }
 #
 
