@@ -4,3 +4,4 @@ sim_runs
 */.idea
 results/
 */__pycache__/*
+*/.synopsis*

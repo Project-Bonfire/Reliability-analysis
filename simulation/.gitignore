@@ -10,3 +10,7 @@ wlft*
 DIAGNOSIS.txt
 .directory
 *.vstf
+*.log
+WORK/
+*.svf
+.synopsys*
