@@ -5,7 +5,6 @@ logs/
 traces/
 work/
 *.wlf
-modelsim.ini
 wlft*
 DIAGNOSIS.txt
 .directory

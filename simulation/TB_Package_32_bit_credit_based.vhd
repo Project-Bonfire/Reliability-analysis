@@ -369,7 +369,7 @@ procedure gen_bit_reversed_packet(network_size, frame_length, source, initial_de
             end if;
             if (port_in(DATA_WIDTH-1 downto DATA_WIDTH-3) = "100") then 
                 counter := counter+1; 
-              report "Packet received at " & time'image(now) & " From " & integer'image(source_node) & " to " & integer'image(destination_node) & " with length: "& integer'image(P_length) & " counter: "& integer'image(counter);
+              -- report "Packet received at " & time'image(now) & " From " & integer'image(source_node) & " to " & integer'image(destination_node) & " with length: "& integer'image(P_length) & " counter: "& integer'image(counter);
               assert (P_length=counter) report "wrong packet size" severity warning;
               --assert (Node_ID=destination_node) report "wrong packet destination " severity failure;
               if DIAGNOSIS = '1' then 
