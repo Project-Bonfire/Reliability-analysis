@@ -20,7 +20,7 @@ puts $env(RESULTFOLDER)
 set RESULTFOLDER $env(RESULTFOLDER)
 puts $env(STARTID)
 # Start the simulation
-vsim -Gsent_file=$RESULTFOLDER/sent.txt -Grecv_file=$RESULTFOLDER/received.txt work.tb_router
+vsim -t 1ns -Gsent_file=$RESULTFOLDER/sent.txt -Grecv_file=$RESULTFOLDER/received.txt work.tb_router
 
 # Draw waves
 #do wave_4x4.do

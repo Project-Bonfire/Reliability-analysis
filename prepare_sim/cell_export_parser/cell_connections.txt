@@ -1,6 +1,4 @@
 
-
-
 Connections for cell 'FIFO_E/FIFO_MEM_1_reg[0]':
     Reference:          DFCX4
     Library:            c18_CORELIB_TYP

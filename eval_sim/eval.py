@@ -38,7 +38,7 @@ ag = copy.deepcopy(generate_ag(logging=None))
 shmu = SystemHealthMonitoringUnit.SystemHealthMonitoringUnit()
 shmu.setup_noc_shm(ag, copy.deepcopy(turns_health_2d_network), False)
 noc_rg = copy.deepcopy(Routing.generate_noc_route_graph(ag, shmu, PackageFile.XY_TurnModel, False, False))
-dirname = "../results/2017-09-30.18:17:24/"
+dirname = "/home/thilo/git/Reliability-analysis/results/results/"
 
 
 class Result:

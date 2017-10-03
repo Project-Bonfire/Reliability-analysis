@@ -19,5 +19,7 @@ This should run many simulations where faults are injected into the router and i
   - `prepare_sim` contains everything to prepare the simulation arguments
      - `cell_export_parser` can convert a synopsis cell list export to a plain list of all pins of the router.
      - `sim_run_creator` can create a `sim_runs` file using the output of the `cell_export_parser`
+     NOTE:
+     force -freeze {sim:/tb_router/R_5/\allocator_unit/U34 /Q} 1'h0 0
 
  

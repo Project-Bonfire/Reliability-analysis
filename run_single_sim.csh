@@ -1,6 +1,6 @@
 #!/bin/tcsh -f
 
-source /cad/unsetenvs.csh
+#source /cad/unsetenvs.csh
 setenv PATH /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin
 setenv MANPATH /usr/man:/usr/share/man:/usr/local/man:/usr/local/share/man
 
@@ -16,10 +16,11 @@ source /eda/mentor/2015-16/scripts/QUESTA-SV-AFV_10.4c-5_RHELx86.csh
 
 
 cd simulation
-	setenv BREAK_TIME_BEFORE "$argv[1]"
-	setenv BREAK_TIME_AFTER "$argv[2]"
-	setenv FAULT_VALUE "$argv[3]"
-	setenv FAULT_LENGTH "$argv[4]"
-	setenv BREAK_NAME "$argv[5] $argv[6]"
-	vsim -do simulate.do
-	
+
+set propertypath=`mktemp`
+set startid=0
+set resultfolder=`mktemp -d`
+echo "$*" >> $propertypath
+
+(setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; vsim -t 1ns  -do simulate.do  )
+

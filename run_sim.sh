@@ -38,7 +38,7 @@ while ($x <= $num_processes)
     sed -n ${startline},${endline}p  < ../sim_runs >> $propertypath
     set resultfolder=`mktemp -d`
     echo $resultfolder
-    (setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; vsim -t 1ns -c -do simulate.do  >$resultfolder/out.log )&
+    (setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; vsim -t 1ns -c -do simulate.do  >../results/$curtime/$Process{x}out.log )&
     @ x += 1
 end
 echo "$num_experiments run on $num_processes processes with $per_proc experiments per process"
