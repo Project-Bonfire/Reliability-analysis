@@ -60,6 +60,7 @@ while {$data != ""} {
     # for reference: force -drive {sim/:tb_router:R_5:\FIFO_N/FIFO_MEM_2_reg[0] :D} St1 0 -cancel 1
     # force -freeze sim/:tb_router:R_5:\\$name St0 start_after ns -cancel clock_cycle_length ns
     force -freeze sim/:tb_router:R_5:$name St$val 0ns -cancel $fault_length ns
+    puts "Broke the circuit: Name: $name Time: $time_before ns Value: $val Length of fault: $fault_length ns"
     run $time_after ns
     #reset simulation
     restart

@@ -4,6 +4,9 @@ This testbench runs the simulation of a single router by adding packet generator
 It then injects a single fault into the router.
 The output of the simulation can be found in sent.txt and received.txt
 
+The parameters for injecting the faults are specified in a file which is given via an env var.
+For each line in this file, the experiment will be run once and the output will be copied to the results folder.
+
 ## Output
 The output files are:
  - `sent.txt` with the sent packets from the packet generators.
@@ -11,6 +14,7 @@ The output files are:
 
 ## Parameters
 
+The parameters for a single experiment are:
  - `BREAK_NAME` The name of the pin to break.
  - `BREAK_TIME_BEFORE` The time the simulation should run before the break is issued.
  - `BREAK_TIME_AFTER` The time the simulation shoud run after the break is issued.
@@ -19,15 +23,20 @@ The output files are:
 
  All times are in nano seconds (ns).
 
-    setenv BREAK_NAME allocator_unit/arb_N_X/state_reg[1] :QN
-    setenv BREAK_TIME_BEFORE 1000
-    setenv BREAK_TIME_AFTER 1000
-    setenv FAULT_VALUE 0
-    setenv FAULT_LENGTH 10
+The parameters for the whole simulation are given via env vars:
+    
+- `PROPERTYPATH` is the path to the file containing a line of parameters for each experiment
+- `STARTID` is the id which should be used to start counting up the number of experimentresults in the `results` folder
+- `RESULTFOLDER` is a folder which is used temporarly for results before they are copied to the experiment results folder. This may be removed in further versions, and the result will be written to the correct destination directly.
+```
+    setenv PROPERTYPATH $propertypath; 
+    setenv STARTID $startid; 
+    setenv RESULTFOLDER $resultfolder;
+```
 
 ## Running the Simulation
 
-The simulation can be run with `vsim -c -do simulate.do`.
+The simulation can be run with `vsim -t 1ns -c -do simulate.do`. `-c` runs the simulation headless.
 
 
 ## Replace router
@@ -40,6 +49,7 @@ The module should have no hirachy. Also a list of the names of all pins is neede
 To get a list of all pins one can export the full list of all cells of the design. The export must conatin the input and output ports of the cells.
 
 The `../cell_export_parser` folder contains a converter which takes the export of the Synopsys Design Compiler and compains it to the required list.
+Also see the readme there.
 
 #### Behrads description of what we did
 
