@@ -46,7 +46,7 @@ while ($x <= $num_processes)
     set resultfolder=`mktemp -d`
     echo $resultfolder
     #launch vsim instance
-    (setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; vsim -t 1ns -c -do simulate.do  >../results/$curtime/Process${x}out.log )&
+    (setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; vsim -novopt -t 1ns -c -do simulate.do  >../results/$curtime/Process${x}out.log )&
     # some processes can not launch, maybe this helps?
     sleep 5
     @ x += 1
@@ -56,4 +56,4 @@ wait
 #move the result to the results folder
 mv "results/" "../results/$curtime/"
 
-echo "$num_experiments run on $num_processes processes with $per_proc experiments per process"
+echo "Finished! $num_experiments run on $num_processes processes with $per_proc experiments per process"

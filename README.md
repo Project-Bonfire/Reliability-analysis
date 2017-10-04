@@ -29,4 +29,10 @@ The results are copied then into the resultsfolder. The foldername in the result
      NOTE:
      force -freeze {sim:/tb_router/R_5/\allocator_unit/U34 /Q} 1'h0 0
 
+# Todo
+
+ - Some processes of the simulation fail for obscure reasons, this has something to do with the work folder
+ - The string - format of the components is somehow dependend on something. Identify and detect this.
+ 
+
  

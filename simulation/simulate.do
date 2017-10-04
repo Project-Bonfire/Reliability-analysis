@@ -20,7 +20,7 @@ puts $env(RESULTFOLDER)
 set RESULTFOLDER $env(RESULTFOLDER)
 puts $env(STARTID)
 # Start the simulation
-vsim -t 1ns -Gsent_file=$RESULTFOLDER/sent.txt -Grecv_file=$RESULTFOLDER/received.txt work.tb_router
+vsim -novopt -t 1ns -Gsent_file=$RESULTFOLDER/sent.txt -Grecv_file=$RESULTFOLDER/received.txt work.tb_router
 
 # Draw waves
 #do wave_4x4.do
@@ -59,8 +59,9 @@ while {$data != ""} {
     run $time_before ns
     # for reference: force -drive {sim/:tb_router:R_5:\FIFO_N/FIFO_MEM_2_reg[0] :D} St1 0 -cancel 1
     # force -freeze sim/:tb_router:R_5:\\$name St0 start_after ns -cancel clock_cycle_length ns
+    puts "Ran for $time_before. Breaking now!"
     force -freeze sim/:tb_router:R_5:$name St$val 0ns -cancel $fault_length ns
-    puts "Broke the circuit: Name: $name Time: $time_before ns Value: $val Length of fault: $fault_length ns"
+    puts "Broke the circuit!"
     run $time_after ns
     #reset simulation
     restart
@@ -70,7 +71,7 @@ while {$data != ""} {
     set fo [open "results/$i/params.txt" "w"] 
     puts $fo $data
     close $fo
-
+    puts "finished experiment #$i"
     #increment line
     gets $fp data
     incr i

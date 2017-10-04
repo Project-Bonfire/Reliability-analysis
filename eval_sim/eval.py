@@ -38,7 +38,7 @@ ag = copy.deepcopy(generate_ag(logging=None))
 shmu = SystemHealthMonitoringUnit.SystemHealthMonitoringUnit()
 shmu.setup_noc_shm(ag, copy.deepcopy(turns_health_2d_network), False)
 noc_rg = copy.deepcopy(Routing.generate_noc_route_graph(ag, shmu, PackageFile.XY_TurnModel, False, False))
-dirname = "/home/thilo/git/Reliability-analysis/results/2017-10-03.10:57:54/results/"
+dirname = "/home/thilo/git/Reliability-analysis/results/2017-10-03.14:42:05/results/"
 
 
 class Result:
@@ -185,6 +185,7 @@ def parse_recv_line(line):
 
 
 assumed_sent = -1
+errornous = []
 results = []
 counter = 0
 for name in os.listdir(dirname):
@@ -232,6 +233,8 @@ for name in os.listdir(dirname):
     except:
         print("Unexpected error:", sys.exc_info()[0])
         res.errornous = True
+        errornous.append(res)
+        continue
     results.append(res)
 failcounter = 0
 print("failed runs:")
@@ -248,9 +251,9 @@ names, errors, uls, ulr, ls, lr, si, ri, params = itertools.izip_longest(*all_re
 
 print("------------Statistics---------------")
 print('Total Number of runs: %d' % counter)
-print ("Runs with unexpected behavior: %d Ratio: %f" % (failcounter, failcounter / counter))
+print ("Runs with unexpected behavior: %d Ratio: %f" % (failcounter, failcounter / float(counter)))
 print('IDs: %s' % ' '.join(sorted([obj.name for obj in results if not obj.is_valid()])))
-print('Total number of errors: %d' % sum(errors))
+print('Total number of simulation errors: %d' % len(errornous))
 print('Total number of runs with an unexpected amount of sent packets: %d' % sum(uls))
 print('Total number of runs with an unexpected amount of recv packets: %d' % sum(ulr))
 print('Maximum number of sent packets: %d' % max(ls))
@@ -288,5 +291,5 @@ for pattern in ['U', '\\LBDR', '\\FIFO']:
     total += tmp
     print('"%s" broke something: %d' % (pattern, tmp))
 if total < len(breakname2):
-    print('Missed %d patterns!', (len(breakname2) - counter))
+    print('Missed %d patterns!' % (len(breakname2) - total))
 print("------------Statistics---------------")
