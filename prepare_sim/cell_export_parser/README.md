@@ -13,7 +13,9 @@ To generate the `cell_connections.txt` file:
  - Select all cells
  - Mark all cells with `ctrl+a`
  - Right click, select report, select selection, select file to export, untick append to file, untick to report viewer
- - Then Remove everything else which was printed to the file (Warnings and messages with `*`)
+ - If it thows errors: remove everything else which was printed to the file (Warnings and messages with `*`)
+ - is also able to parse the verbose version of the output.
+ - Make sure the file ends with an empty line. Parsing may fail because of that.
 
 
 ## Files

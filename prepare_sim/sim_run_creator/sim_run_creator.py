@@ -15,5 +15,5 @@ for n in range(int(sys.argv[1])):
     break_time_after = sim_length - break_time_before
     fault_value = randrange(2)
     fault_length = fault_length_arg
-    break_name = lines[randrange(len(lines))]
+    break_name = ' '.join(lines[randrange(len(lines))].split(' ')[:2])
     print(" ".join([str(x) for x in [break_time_before,break_time_after,fault_value,fault_length,break_name]]))

@@ -1,105 +1,117 @@
+
+
 Connections for cell 'FIFO_E/FIFO_MEM_1_reg[0]':
     Reference:          DFCX4
     Library:            c18_CORELIB_TYP
+    Area:               76.2048
+    dont_touch:         FALSE
 
-    Input Pins          Net
-    ----------------    ------------
-    D                   FIFO_E/n140
-    CP                  clk
-    RN                  reset
+    Input Pins          Net            Net Driver Pins   Driver Pin Type
+    ----------------    ------------   ----------------  ----------------
+    D                   FIFO_E/n140    FIFO_E/U298/Q     Output Pin (AO22X6)
+    CP                  clk            clk               Input Port
+    RN                  reset          reset             Input Port
 
-    Output Pins         Net
-    ----------------    ------------
-    Q                   n3034
+    Output Pins         Net            Net Load Pins     Load Pin Type
+    ----------------    ------------   ----------------  ----------------
+    Q                   n696           FIFO_E/U298/B2    Input Pin (AO22X6)
     QN
 
 Connections for cell 'FIFO_E/FIFO_MEM_1_reg[1]':
     Reference:          DFCX4
     Library:            c18_CORELIB_TYP
+    Area:               76.2048
+    dont_touch:         FALSE
 
-    Input Pins          Net
-    ----------------    ------------
-    D                   FIFO_E/n139
-    CP                  clk
-    RN                  reset
+    Input Pins          Net            Net Driver Pins   Driver Pin Type
+    ----------------    ------------   ----------------  ----------------
+    D                   FIFO_E/n139    FIFO_E/U299/Q     Output Pin (AO22X6)
+    CP                  clk            clk               Input Port
+    RN                  reset          reset             Input Port
 
-    Output Pins         Net
-    ----------------    ------------
-    Q                   n3033
-    QN
+    Output Pins         Net            Net Load Pins     Load Pin Type
+    ----------------    ------------   ----------------  ----------------
+    Q                   n697           FIFO_E/U299/B2    Input Pin (AO22X6)
+    QN                  FIFO_E/n299    U557/A1           Input Pin (OAI211X3)
 
 Connections for cell 'FIFO_E/FIFO_MEM_1_reg[2]':
     Reference:          DFCX4
     Library:            c18_CORELIB_TYP
+    Area:               76.2048
+    dont_touch:         FALSE
 
-    Input Pins          Net
-    ----------------    ------------
-    D                   FIFO_E/n138
-    CP                  clk
-    RN                  reset
+    Input Pins          Net            Net Driver Pins   Driver Pin Type
+    ----------------    ------------   ----------------  ----------------
+    D                   FIFO_E/n138    FIFO_E/U300/Q     Output Pin (AO22X6)
+    CP                  clk            clk               Input Port
+    RN                  reset          reset             Input Port
 
-    Output Pins         Net
-    ----------------    ------------
-    Q                   n3032
-    QN
+    Output Pins         Net            Net Load Pins     Load Pin Type
+    ----------------    ------------   ----------------  ----------------
+    Q                   n698           FIFO_E/U300/B2    Input Pin (AO22X6)
+    QN                  FIFO_E/n298    U558/A1           Input Pin (OAI211X3)
 
-
-Connections for cell 'LBDR_E/Rxy_reg[0]':
-    Reference:          DFCPX4
+Connections for cell 'U669':
+    Reference:          NAND3X3
     Library:            c18_CORELIB_TYP
+    Area:               14.112
+    dont_touch:         FALSE
 
-    Input Pins          Net
-    ----------------    ------------
-    D                   LBDR_E/n27
-    CP                  clk
-    RN                  LBDR_E/n41
-    SN                  LBDR_E/n40
+    Input Pins          Net            Net Driver Pins   Driver Pin Type
+    ----------------    ------------   ----------------  ----------------
+    A                   allocator_unit/arb_X_W/n28
+                                       allocator_unit/arb_X_W/U38/Q
+                                                         Output Pin (XNOR2X6)
+    B                   n81            allocator_unit/arb_X_W/state_reg[1]/QN
+                                                         Output Pin (DFCX4)
+    C                   allocator_unit/arb_X_W/n25
+                                       allocator_unit/arb_X_W/U37/Q
+                                                         Output Pin (AND2X6)
 
-    Output Pins         Net
-    ----------------    ------------
-    Q                   
-    QN                  n2877
+    Output Pins         Net            Net Load Pins     Load Pin Type
+    ----------------    ------------   ----------------  ----------------
+    Q                   allocator_unit/arb_X_W/n17
+                                       U313/A1           Input Pin (OAI21X6)
+                                       U311/B            Input Pin (NAND2X6)
+                                       U124/B            Input Pin (AND3X6)
 
-Connections for cell 'FIFO_E/FIFO_MEM_2_reg[1]':
-    Reference:          DFCX4
+Connections for cell 'U670':
+    Reference:          NAND3X3
     Library:            c18_CORELIB_TYP
+    Area:               14.112
+    dont_touch:         FALSE
 
-    Input Pins          Net
-    ----------------    ------------
-    D                   FIFO_E/n171
-    CP                  clk
-    RN                  reset
+    Input Pins          Net            Net Driver Pins   Driver Pin Type
+    ----------------    ------------   ----------------  ----------------
+    A                   FIFO_N/n411    FIFO_N/U337/Q     Output Pin (XNOR2X6)
+    B                   FIFO_N/n412    FIFO_N/U336/Q     Output Pin (XNOR2X6)
+    C                   FIFO_N/n413    U671/Q            Output Pin (NOR2X6)
 
-    Output Pins         Net
-    ----------------    ------------
-    Q                   n3291
-    QN                  n1437
+    Output Pins         Net            Net Load Pins     Load Pin Type
+    ----------------    ------------   ----------------  ----------------
+    Q                   FIFO_N/n399    U294/B            Input Pin (NAND3X3)
+                                       U104/B1           Input Pin (OA31X4)
+                                       allocator_unit/U51/B
+                                                         Input Pin (AND2X6)
+                                       allocator_unit/U60/B
+                                                         Input Pin (AND2X6)
+                                       allocator_unit/U79/B
+                                                         Input Pin (AND2X6)
+                                       allocator_unit/U87/B
+                                                         Input Pin (AND2X6)
+                                       FIFO_N/U60/A      Input Pin (CLKINVX10)
 
-Connections for cell 'U3806':
-    Reference:          NAND2X6
+Connections for cell 'U671':
+    Reference:          NOR2X6
     Library:            c18_CORELIB_TYP
+    Area:               19.7568
+    dont_touch:         FALSE
 
-    Input Pins          Net
-    ----------------    ------------
-    A                   n2136
-    B                   n3033
+    Input Pins          Net            Net Driver Pins   Driver Pin Type
+    ----------------    ------------   ----------------  ----------------
+    A                   FIFO_N/n414    FIFO_N/U335/Q     Output Pin (XNOR2X6)
+    B                   FIFO_N/n415    FIFO_N/U334/Q     Output Pin (XNOR2X6)
 
-    Output Pins         Net
-    ----------------    ------------
-    Q                   n2210
-
-Connections for cell 'U3807':
-    Reference:          OA211X6
-    Library:            c18_CORELIB_TYP
-
-    Input Pins          Net
-    ----------------    ------------
-    A1                  n1374
-    A2                  n2131
-    B1                  n2168
-    C1                  n2169
-
-    Output Pins         Net
-    ----------------    ------------
-    Q                   n1839
-
+    Output Pins         Net            Net Load Pins     Load Pin Type
+    ----------------    ------------   ----------------  ----------------
+    Q                   FIFO_N/n413    U670/C            Input Pin (NAND3X3)
