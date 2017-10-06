@@ -1,3 +1,4 @@
+import ast
 import copy
 
 import os
@@ -38,7 +39,7 @@ ag = copy.deepcopy(generate_ag(logging=None))
 shmu = SystemHealthMonitoringUnit.SystemHealthMonitoringUnit()
 shmu.setup_noc_shm(ag, copy.deepcopy(turns_health_2d_network), False)
 noc_rg = copy.deepcopy(Routing.generate_noc_route_graph(ag, shmu, PackageFile.XY_TurnModel, False, False))
-dirname = "/home/thilo/git/Reliability-analysis/results/2017-10-03.14:42:05/results/"
+dirname = "/home/thilo/git/Reliability-analysis/results/2017-10-06.12:06:05/results/"
 
 
 class Result:
@@ -61,6 +62,17 @@ class Result:
 
     # the parameters of the simulation
     params = ""
+
+    def get_Names(self):
+        splitted = self.params.split(' ')
+        return str(splitted[4:6]) + str([ast.literal_eval(' '.join(splitted[7:]))])
+
+    def guessComponent(self):
+        splitted = self.params.split(' ')
+        if splitted[4].startswith('\\'):
+            return splitted[4]
+        else:
+            return str(ast.literal_eval(' '.join(splitted[7:]))[0][0])
 
     def is_valid(self):
         return not (
@@ -231,11 +243,12 @@ for name in os.listdir(dirname):
                 res.sents_invalid += 1
 
     except:
-        print("Unexpected error:", sys.exc_info()[0])
+        print("Unexpected error in %s:"%name, sys.exc_info()[0])
         res.errornous = True
         errornous.append(res)
         continue
     results.append(res)
+
 failcounter = 0
 print("failed runs:")
 for res in results:
@@ -264,32 +277,43 @@ print('Average number of recv packets: %f' % (sum(lr) / float(len(lr))))
 print('Minimum number of recv packets: %d' % min(lr))
 print('Average difference between number of sent and received packets: %f' % (sum(map(sub, ls, lr)) / float(len(ls))))
 avg_dif_wdif_list = filter(lambda x: x != 0, map(sub, ls, lr))
-avg_dif_wdif = sum(map(abs, avg_dif_wdif_list)) / float(len(avg_dif_wdif_list))
-print('Average difference between number of sent and received packets (only when different): %f' % avg_dif_wdif)
-print('Average absolute difference between number of sent and received packets (only when different): %f' % (
-    sum(map(abs, avg_dif_wdif_list)) / float(len(avg_dif_wdif_list))))
-print('Variance of the difference between number of sent and received packets (only when different): %f' % np.var(
-    avg_dif_wdif_list))
+if len(avg_dif_wdif_list) != 0 :
+    avg_dif_wdif = sum(map(abs, avg_dif_wdif_list)) / float(len(avg_dif_wdif_list))
+    print('Average difference between number of sent and received packets (only when different): %f' % avg_dif_wdif)
+    print('Average absolute difference between number of sent and received packets (only when different): %f' % (
+        sum(map(abs, avg_dif_wdif_list)) / float(len(avg_dif_wdif_list))))
+    print('Variance of the difference between number of sent and received packets (only when different): %f' % np.var(
+        avg_dif_wdif_list))
+else:
+    print("No differences in amount of sent and received packets!")
 
 print('Average number of wrong injected packets: %d' % (sum(si) / float(len(si))))
 print('Average number of wrong routed packets (XY Routing): %d' % (sum(ri) / float(len(ri))))
 print('Maximum number of wrong routed packets (XY Routing): %d' % max(ri))
 
-paramlist = [obj.params.split(' ') for obj in results if not obj.is_valid()]
-breaktimes, breaktimesa, faultvalues, faultlengths, breakname1, breakname2 = itertools.izip_longest(*paramlist)
-breaktimes = map(int, breaktimes)
-faultvalues = map(int, faultvalues)
-print('Average breaktime which lead to a fault: %f' % (sum(breaktimes) / float(len(breaktimes))))
-print('Maximum breaktime which lead to a fault: %f' % (max(breaktimes)))
-print('Average faultvalue: %f' % (sum(faultvalues) / float(len(faultvalues))))
-print('Which pins broke something statistic: ')
-print(Counter(breakname2))
-# Look at difflib, maybe matching blocks
-total = 0
-for pattern in ['U', '\\LBDR', '\\FIFO']:
-    tmp = len(filter(lambda s: s.startswith(pattern), breakname1))
-    total += tmp
-    print('"%s" broke something: %d' % (pattern, tmp))
-if total < len(breakname2):
-    print('Missed %d patterns!' % (len(breakname2) - total))
+paramlist = [obj.params.split(' ')[:6] + [' '.join(obj.params.split(' ')[6:])] for obj in results if not obj.is_valid()]
+if len(paramlist) == 0:
+    print ("No faults detected!")
+else:
+    breaktimes, breaktimesa, faultvalues, faultlengths, breakname1, breakname2,additionals = itertools.izip_longest(*paramlist)
+    breaktimes = map(int, breaktimes)
+    faultvalues = map(int, faultvalues)
+    print('Average breaktime which lead to a fault: %f' % (sum(breaktimes) / float(len(breaktimes))))
+    print('Maximum breaktime which lead to a fault: %f' % (max(breaktimes)))
+    print('Average faultvalue: %f' % (sum(faultvalues) / float(len(faultvalues))))
+    print('Which pins broke something statistic: ')
+    print(Counter(breakname2))
+    # Look at difflib, maybe matching blocks
+    total = 0
+    for pattern in ['U', '\\LBDR', '\\FIFO']:
+        tmp = len(filter(lambda s: s.startswith(pattern), breakname1))
+        total += tmp
+        print('"%s" broke something: %d' % (pattern, tmp))
+    if total < len(breakname2):
+        print('Missed %d patterns!' % (len(breakname2) - total))
+
+    # convert to cell name and connected pin list.
+    for obj in results :
+        if not obj.is_valid():
+            print(obj.guessComponent())
 print("------------Statistics---------------")

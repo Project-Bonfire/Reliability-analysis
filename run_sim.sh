@@ -48,7 +48,7 @@ while ($x <= $num_processes)
     cp modelsim.ini $resultfolder/modelsim.ini
     echo $resultfolder
     #launch vsim instance, create tmp folders and seperate modelsiminis for each instance, to prevent race conditions.
-    (setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; vsim -modelsimini $resultfolder/modelsim.ini -novopt -t 1ns -c -do simulate.do  >../results/$curtime/Process${x}out.log )&
+    (setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; /usr/bin/nice -n 15 vsim -modelsimini $resultfolder/modelsim.ini -novopt -t 1ns -c -do simulate.do  >../results/$curtime/Process${x}out.log )&
     # prevents race condition when copying library work to tmp folder
     sleep 4
     @ x += 1
