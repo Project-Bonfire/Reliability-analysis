@@ -21,11 +21,12 @@ setenv M_16_EDA
 source /eda/mentor/2015-16/scripts/QUESTA-SV-AFV_10.4c-5_RHELx86.csh
 
 
+set curtime=`date +%Y-%m-%d.%H:%M:%S`
 cd simulation
 rm -rf results/
 mkdir results
 set i=0
-set curtime=`date +%Y-%m-%d.%H:%M:%S`
+
 mkdir "../results/$curtime"
 set num_processes=$1
 set num_experiments=`wc -l <../sim_runs`
@@ -44,11 +45,12 @@ while ($x <= $num_processes)
     # create tmpfile which contains the experiment parameters for this instance
     sed -n ${startline},${endline}p  < ../sim_runs >> $propertypath
     set resultfolder=`mktemp -d`
+    cp modelsim.ini $resultfolder/modelsim.ini
     echo $resultfolder
-    #launch vsim instance
-    (setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; vsim -novopt -t 1ns -c -do simulate.do  >../results/$curtime/Process${x}out.log )&
-    # some processes can not launch, maybe this helps?
-    sleep 5
+    #launch vsim instance, create tmp folders and seperate modelsiminis for each instance, to prevent race conditions.
+    (setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; vsim -modelsimini $resultfolder/modelsim.ini -novopt -t 1ns -c -do simulate.do  >../results/$curtime/Process${x}out.log )&
+    # prevents race condition when copying library work to tmp folder
+    sleep 4
     @ x += 1
 end
 echo "$num_experiments run on $num_processes processes with $per_proc experiments per process"

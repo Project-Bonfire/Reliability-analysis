@@ -7,6 +7,9 @@ The output of the simulation can be found in sent.txt and received.txt
 The parameters for injecting the faults are specified in a file which is given via an env var.
 For each line in this file, the experiment will be run once and the output will be copied to the results folder.
 
+There are several race conditions when multiple instances are launched in parallel. For that, seperate folders for compilation (vlib, vmap)
+and a seperate modelsimini has to be set for each instance. (see `../run_sim.sh`)
+
 ## Output
 The output files are:
  - `sent.txt` with the sent packets from the packet generators.
@@ -16,6 +19,7 @@ The output files are:
 
 The parameters for a single experiment are:
  - `BREAK_NAME` The name of the pin to break.
+    The name has to be in the format specified by the vars in the `modelsim.ini` file. (`DatasetSeparator`,`PathSeparator`)
  - `BREAK_TIME_BEFORE` The time the simulation should run before the break is issued.
  - `BREAK_TIME_AFTER` The time the simulation shoud run after the break is issued.
  - `FAULT_VALUE` To what the value of the pin should be set.

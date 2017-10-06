@@ -1,2 +1,5 @@
  
 .idea/
+.antlr/
+__pycache__/
+gen/__pychache__

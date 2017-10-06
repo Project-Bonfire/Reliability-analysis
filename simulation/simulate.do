@@ -4,8 +4,19 @@
 #setenv FAULT_VALUE 0
 #setenv FAULT_LENGTH 10
 
+# Load Env vars
+global env; 
+set RESULTFOLDER $env(RESULTFOLDER)
+set PROPERTYPATH $env(PROPERTYPATH) 
+set STARTID $env(STARTID)
+# define library work
 
 vlib work
+#prevent race condition between instances!
+file rename work $RESULTFOLDER/work
+vmap work $RESULTFOLDER/work
+#map it to the folder of this process
+
 
 # Include files and compile them
 
@@ -13,12 +24,11 @@ vlog "/cad/dk/c/v4.11/verilog/c18a6/c18_CORELIB.v"
 vlog "Router_32_bit_credit_based_gate_level_without_hierarchy.v"	
 vcom -O5 "TB_Package_32_bit_credit_based.vhd"
 vcom -O5 "Router_credit_based_tb.vhd"
+ 
 
-global env; 
-puts $env(PROPERTYPATH) 
-puts $env(RESULTFOLDER)
-set RESULTFOLDER $env(RESULTFOLDER)
-puts $env(STARTID)
+puts $PROPERTYPATH
+puts $RESULTFOLDER
+puts $STARTID
 # Start the simulation
 vsim -novopt -t 1ns -Gsent_file=$RESULTFOLDER/sent.txt -Grecv_file=$RESULTFOLDER/received.txt work.tb_router
 
@@ -27,15 +37,15 @@ vsim -novopt -t 1ns -Gsent_file=$RESULTFOLDER/sent.txt -Grecv_file=$RESULTFOLDER
 #vcd file wave.vcd
 #vcd add -r -optcells 
 global env; 
-puts $env(PROPERTYPATH) 
-set fp [open $env(PROPERTYPATH)  r]
+puts $PROPERTYPATH
+set fp [open $PROPERTYPATH  r]
 #delete old results
 file mkdir results 
 
 
 fconfigure $fp -buffering line
 gets $fp data
-set i $env(STARTID)
+set i $STARTID
 while {$data != ""} {
   
     file mkdir "results/$i"
