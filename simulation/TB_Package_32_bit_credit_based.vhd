@@ -1,4 +1,4 @@
---Copyright (C) 2016 Siavoosh Payandeh Azad
+--Copyright (C) 2017 Siavoosh Payandeh Azad and Thilo Kogge
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -172,11 +172,11 @@ package body TB_Package is
       end loop;
  
       --------------------------------------
-      write(LINEVARIABLE, "Packet generated at " & time'image(now) & " From " & integer'image(source) & " to " & integer'image(destination_id) & " with length: " & integer'image(Packet_length) & " id: " & integer'image(id_counter));
-      writeline(VEC_FILE, LINEVARIABLE);
       wait until clk'event and clk ='0'; -- On negative edge of clk (for syncing purposes)
       port_in <= Header_gen(Packet_length, source, destination_id, id_counter); -- Generating the header flit of the packet (All packets have a header flit)!
       valid_out <= '1';
+      write(LINEVARIABLE, "type:header;time:" & time'image(now) & ";causedby:" &integer'image(source) &";from:" & integer'image(source) & ";to:" & integer'image(destination_id) & ";length:"& integer'image(Packet_length)  & ";id:"& integer'image(id_counter) &  ";flitno:0");
+      writeline(VEC_FILE, LINEVARIABLE);
       wait until clk'event and clk ='0';
 
       for I in 0 to Packet_length-3 loop  
@@ -193,6 +193,10 @@ package body TB_Package is
             -- Each packet can have no body flits or one or more than body flits.
             port_in <= Body_gen(Packet_length, integer(rand*1000.0)); 
             valid_out <= '1';
+
+            write(LINEVARIABLE, "type:body;time:" & time'image(now) & ";causedby:" & integer'image(source) &";from:" & integer'image(source) & ";to:" & integer'image(destination_id) & ";length:"& integer'image(Packet_length)  & ";id:"& integer'image(id_counter) &  ";flitno:" & integer'image(I+1));
+            writeline(VEC_FILE, LINEVARIABLE);
+
              wait until clk'event and clk ='0';
       end loop;
 
@@ -208,6 +212,8 @@ package body TB_Package is
       -- Close the packet with a tail flit (All packets have one tail flit)!
       port_in <= Tail_gen(Packet_length, integer(rand*1000.0)); 
       valid_out <= '1';
+      write(LINEVARIABLE, "type:tail;time:" & time'image(now) & ";causedby:" &integer'image(source) &";from:" & integer'image(source) & ";to:" & integer'image(destination_id) & ";length:"& integer'image(Packet_length)  & ";id:"& integer'image(id_counter) &  ";flitno:" & integer'image(Packet_length-1));
+      writeline(VEC_FILE, LINEVARIABLE);
       wait until clk'event and clk ='0';
 
       valid_out <= '0';
@@ -285,8 +291,6 @@ procedure gen_bit_reversed_packet(network_size, frame_length, source, initial_de
         wait;
       end if;
       --------------------------------------
-      write(LINEVARIABLE, "Packet generated at " & time'image(now) & " From " & integer'image(source) & " to " & integer'image(destination_id) & " with length: " & integer'image(Packet_length) & " id: " & integer'image(id_counter));
-      writeline(VEC_FILE, LINEVARIABLE);
       wait until clk'event and clk ='0';
       port_in <= Header_gen(Packet_length, source, destination_id, id_counter);
       valid_out <= '1';
@@ -357,6 +361,8 @@ procedure gen_bit_reversed_packet(network_size, frame_length, source, initial_de
                 destination_node := to_integer(unsigned(port_in(16 downto 13)));
                 source_node := to_integer(unsigned(port_in(12 downto 9)));
                 packet_id := to_integer(unsigned(port_in(8 downto 1)));
+                write(LINEVARIABLE, "type:header;time:" & time'image(now) & ";causedby:" &integer'image(Node_ID) &";from:" & integer'image(source_node) & ";to:" & integer'image(destination_node) & ";length:"& integer'image(P_length)  & ";id:"& integer'image(packet_id)&  ";flitno:0");
+                writeline(VEC_FILE, LINEVARIABLE);
             end if;  
             if  (port_in(DATA_WIDTH-1 downto DATA_WIDTH-3) = "010")   then
                --report "flit type: " &integer'image(to_integer(unsigned(port_in(DATA_WIDTH-1 downto DATA_WIDTH-3)))) ;
@@ -366,6 +372,8 @@ procedure gen_bit_reversed_packet(network_size, frame_length, source, initial_de
                   DIAGNOSIS := '1';
                   DIAGNOSIS_vector(11 downto 0) := port_in(12 downto 1);
                end if; 
+               write(LINEVARIABLE, "type:body;time:" & time'image(now) & ";causedby:" &integer'image(Node_ID) &";from:" & integer'image(source_node) & ";to:" & integer'image(destination_node) & ";length:"& integer'image(P_length)  & ";id:"& integer'image(packet_id)&  ";flitno:" & integer'image(counter));
+                writeline(VEC_FILE, LINEVARIABLE);
             end if;
             if (port_in(DATA_WIDTH-1 downto DATA_WIDTH-3) = "100") then 
                 counter := counter+1; 
@@ -376,10 +384,9 @@ procedure gen_bit_reversed_packet(network_size, frame_length, source, initial_de
                 DIAGNOSIS_vector(12) := port_in(28);
                 write(LINEVARIABLE, "Packet received at " & time'image(now) & " InRouter: " &integer'image(Node_ID) &" From: " & integer'image(source_node) & " to: " & integer'image(destination_node) & " length: "& integer'image(P_length) & " actual length: "& integer'image(counter)  & " id: "& integer'image(packet_id));
                 writeline(DIAGNOSIS_FILE, LINEVARIABLE);
-              else
-                write(LINEVARIABLE, "Packet received at " & time'image(now) & " InRouter: " &integer'image(Node_ID) &" From: " & integer'image(source_node) & " to: " & integer'image(destination_node) & " length: "& integer'image(P_length) & " actual length: "& integer'image(counter)  & " id: "& integer'image(packet_id));
-                writeline(VEC_FILE, LINEVARIABLE);
               end if;
+                write(LINEVARIABLE, "type:tail;time:" & time'image(now) & ";causedby:" &integer'image(Node_ID) &";from:" & integer'image(source_node) & ";to:" & integer'image(destination_node) & ";length:"& integer'image(P_length)  & ";id:"& integer'image(packet_id) &  ";flitno:" & integer'image(counter));
+                writeline(VEC_FILE, LINEVARIABLE);
                counter := 0;
             end if;
          end if;

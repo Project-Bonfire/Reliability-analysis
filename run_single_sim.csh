@@ -17,10 +17,16 @@ source /eda/mentor/2015-16/scripts/QUESTA-SV-AFV_10.4c-5_RHELx86.csh
 
 cd simulation
 
+rm -rf results/
+
 set propertypath=`mktemp`
 set startid=0
 set resultfolder=`mktemp -d`
+cp modelsim.ini $resultfolder/modelsim.ini
 echo "$*" >> $propertypath
 
-(setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; vsim -t 1ns  -do simulate.do  )
+(setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; vsim -c -modelsimini $resultfolder/modelsim.ini -novopt -t 1ns  -do simulate.do  )
 
+mv "results/" "$resultfolder/res"
+echo "Find the results here:"
+echo "cd $resultfolder/res"
