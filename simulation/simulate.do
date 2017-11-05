@@ -47,8 +47,9 @@ fconfigure $fp -buffering line
 gets $fp data
 set i $STARTID
 while {$data != ""} {
-  
+    
     file mkdir "results/$i"
+    puts "starting experiment #$i"
     #split line
     set params [regexp -all -inline {\S+} $data]
     #prepare next line
