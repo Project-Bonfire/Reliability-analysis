@@ -39,7 +39,7 @@ ag = copy.deepcopy(generate_ag(logging=None))
 shmu = SystemHealthMonitoringUnit.SystemHealthMonitoringUnit()
 shmu.setup_noc_shm(ag, copy.deepcopy(turns_health_2d_network), False)
 noc_rg = copy.deepcopy(Routing.generate_noc_route_graph(ag, shmu, PackageFile.XY_TurnModel, False, False))
-filename = "/home/thi/strudel/git/Reliability-analysis/results/2017-11-10.17:09:52/all.results"
+filename = "/home/thi/strudel/git/Reliability-analysis/results/2017-11-10.17:20:30/all.results"
 print("evaluating %s" % filename)
 
 
@@ -245,11 +245,12 @@ with open(filename, 'r') as f:
             else:
                 buffer.append(line)
 
-    experiment = experiment_to_buffer(f)
     for experiment in experiment_to_buffer(f):
         counter = counter+1
+        if counter % 100 == 0:
+            print("Evaluated %d experiments!"%counter)
         res = Result()
-        res.name = experiment["name"]
+        res.name = experiment["name"].strip()
         try:
             recv = [parse_recv_line(line_to_dict(line)) for line in experiment["recv"]
                     if
