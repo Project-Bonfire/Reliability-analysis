@@ -9,7 +9,7 @@ global env;
 set RESULTFOLDER $env(RESULTFOLDER)
 set PROPERTYPATH $env(PROPERTYPATH) 
 set STARTID $env(STARTID)
-#set RESULTFILE $env(RESULTFILE)
+set RESULTFILE $env(RESULTFILE)
 # define library work
 
 vlib work
@@ -33,12 +33,11 @@ puts $STARTID
 # Start the simulation
 vsim -novopt -t 1ns -Gsent_file=$RESULTFOLDER/sent.txt -Grecv_file=$RESULTFOLDER/received.txt work.tb_router
 
-#set concatdresultfile [open /tmp/full_temp.txt w]
+set concatdresultfile [open $RESULTFILE "w"]
+fconfigure $concatdresultfile -translation binary
 
-# Draw wavesh
-#do wave_4x4.do
-#vcd file wave.vcd
-#vcd add -r -optcells 
+
+
 global env; 
 puts $PROPERTYPATH
 set fp [open $PROPERTYPATH  r]
@@ -88,17 +87,29 @@ while {$data != ""} {
     #reset simulation
     restart
     #handle results
+    puts $concatdresultfile "-----"
+    puts $concatdresultfile "$i"
+    puts $concatdresultfile $data
+    puts $concatdresultfile "!sent:"
+    set sentfile [open "$RESULTFOLDER/sent.txt"]
+    fconfigure $sentfile -translation binary
+    fcopy $sentfile $concatdresultfile
+    close $sentfile
+    puts $concatdresultfile "!recv:"
+    set recvfile [open "$RESULTFOLDER/received.txt"]
+    fconfigure $recvfile -translation binary
+    fcopy $recvfile $concatdresultfile
+    close $recvfile
+
     
-    file rename "$RESULTFOLDER/sent.txt" "results/$i/sent.txt"
-    file rename "$RESULTFOLDER/received.txt" "results/$i/received.txt"
-    set fo [open "results/$i/params.txt" "w"] 
-    puts $fo $data
-    close $fo
+    file delete "$RESULTFOLDER/sent.txt"
+    file delete "$RESULTFOLDER/received.txt"
     puts "finished experiment #$i"
     #increment line
     gets $fp data
     incr i
 }
+close $concatdresultfile
 #
 
 #vcd flush
