@@ -100,6 +100,7 @@ while {$data != ""} {
     fconfigure $recvfile -translation binary
     fcopy $recvfile $concatdresultfile
     close $recvfile
+    puts $concatdresultfile "#####"
 
     
     file delete "$RESULTFOLDER/sent.txt"

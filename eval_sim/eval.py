@@ -39,8 +39,9 @@ ag = copy.deepcopy(generate_ag(logging=None))
 shmu = SystemHealthMonitoringUnit.SystemHealthMonitoringUnit()
 shmu.setup_noc_shm(ag, copy.deepcopy(turns_health_2d_network), False)
 noc_rg = copy.deepcopy(Routing.generate_noc_route_graph(ag, shmu, PackageFile.XY_TurnModel, False, False))
-dirname = "/home/thi/git/results/2017-11-10.15:05:47/results/"
-print("evaluating %s"%dirname)
+filename = "/home/thi/strudel/git/Reliability-analysis/results/2017-11-10.17:09:52/all.results"
+print("evaluating %s" % filename)
+
 
 class Result:
     def __init__(self):
@@ -90,7 +91,8 @@ class Result:
 class FlitEvent:
     def __init__(self):
         pass
-    flit =None
+
+    flit = None
     # According to router 5
     on_in_port = False
     on_out_port = False
@@ -197,76 +199,115 @@ def dict_to_flit(data):
 
 
 def line_to_dict(line, splitchar=';', kvchar=':'):
-    return {e[0]:e[1] for e in [x.split(kvchar) for x in line.strip().split(splitchar)]}
+    return {e[0]: e[1] for e in [x.split(kvchar) for x in line.strip().split(splitchar)]}
 
 
 assumed_sent = -1
 errornous = []
 results = []
 counter = 0
-for name in os.listdir(dirname):
-    counter += 1
-    if counter % 100 == 0:
-        print("Processed: %d"%counter)
+with open(filename, 'r') as f:
+    def experiment_to_buffer(f):
+        """
+        Creates an experiment object from the file
+        :param f: file to read from
+        :return: a dict containing the experiment.
+        return {
+            "name" : name, #the experiment id
+            "params" : params, # the param string
+            "sent" : sent, # list containing the sent lines
+            "recv" : recv # list containing the recv lines
+        }
 
-    res = Result()
-    res.name = name
-    try:
-        recv = [parse_recv_line(line_to_dict(line)) for line in open(dirname + name + "/received.txt", "r").readlines() if
-                line.strip()]
-        sent = [parse_sent_line(line_to_dict(line)) for line in open(dirname + name + "/sent.txt", "r").readlines() if line.strip()]
-        res.params = open(dirname + name + "/params.txt", "r").readlines()[0].strip()
-        res.len_recv = len(recv)
-        res.len_sent = len(sent)
-        if assumed_sent == -1:
-            assumed_sent = len(sent)
-        res.unexpected_len_sent = len(sent) != assumed_sent
-        # If the first one is faulty, we run into problems here.
-        # But that might not happen anyways
-        if False and len(sent) != assumed_sent:
-            print("WARNING: The sent file of '%s' has an unexpected length of %d, expected %d." % (
-                name, len(sent), assumed_sent))
-        res.unexpected_len_recv = len(recv) != len(sent)
-        fromtocounter = {}
-        for p in sent:
-            flitkey = str(p.from_node) +'to' + str(p.to_node)
-            if flitkey in fromtocounter:
-                fromtocounter[flitkey] += 1
+        OR None if there is no other experiment
+        """
+        i = 0
+        buffer = []
+        for line in f:
+            if "#####\n" == line:
+                i = i +1
+                if len(buffer) == 0:
+                    print("reached end of file after %d experiments." %i)
+                    return
+                name = buffer[0]
+                params = buffer[1]
+                ind = buffer.index("!recv:\n")
+                sent = buffer[3:ind]
+                recv = buffer[ind + 1:]
+                yield {
+                    "name": name,
+                    "params": params,
+                    "sent": sent,
+                    "recv": recv
+                }
+            elif "-----\n" == line:
+                buffer = []
             else:
-                fromtocounter[flitkey] = 1
-            reulst = False
-            if p.from_node is not 5:
-                result = is_destination_reachable_via_port(noc_rg, p.from_node, p.was_going_out_via(), p.to_node, False)
-            else:
-                result = is_destination_reachable_from_source(noc_rg, 5, p.to_node)
-            if not result:
-                print(
-                    "WARNING: Generated Packet was not valid according to routing algorithm. Packet was sent from %d %s to %d via router 5. %s" % (
-                        p.from_node, p.was_going_out_via(), p.to_node, str(p)))
-                res.sents_invalid += 1
-        for p in recv:
-            flitkey = str(p.from_node) +'to' + str(p.to_node)
-            if flitkey in fromtocounter:
-                fromtocounter[flitkey] -= 1
-            else:
-                fromtocounter[flitkey] = -1
+                buffer.append(line)
 
-            result = is_destination_reachable_via_port(noc_rg, 5, p.going_out_via(), p.to_node, False)
-            if not result:
-                print(
-                    "WARNING: Received Packet was not valid according to routing algorithm. Packet was sent from %d to %d via router 5. But it was received at: %d (dir:%s) %s" % (
-                        p.from_node,  p.to_node, p.currentrouter,p.going_out_via(),str(p)))
-                res.sents_invalid += 1
-        for k,v in fromtocounter.iteritems():
-            if v != 0:
-                res.flitfault = True
+    experiment = experiment_to_buffer(f)
+    for experiment in experiment_to_buffer(f):
+        counter = counter+1
+        res = Result()
+        res.name = experiment["name"]
+        try:
+            recv = [parse_recv_line(line_to_dict(line)) for line in experiment["recv"]
+                    if
+                    line.strip()]
+            sent = [parse_sent_line(line_to_dict(line)) for line in experiment["sent"] if
+                    line.strip()]
+            res.params = experiment["params"].strip()
+            res.len_recv = len(recv)
+            res.len_sent = len(sent)
+            if assumed_sent == -1:
+                assumed_sent = len(sent)
+            res.unexpected_len_sent = len(sent) != assumed_sent
+            # If the first one is faulty, we run into problems here.
+            # But that might not happen anyways
+            if False and len(sent) != assumed_sent:
+                print("WARNING: The sent file of '%s' has an unexpected length of %d, expected %d." % (
+                    res.name, len(sent), assumed_sent))
+            res.unexpected_len_recv = len(recv) != len(sent)
+            fromtocounter = {}
+            for p in sent:
+                flitkey = str(p.from_node) + 'to' + str(p.to_node)
+                if flitkey in fromtocounter:
+                    fromtocounter[flitkey] += 1
+                else:
+                    fromtocounter[flitkey] = 1
+                reulst = False
+                if p.from_node is not 5:
+                    result = is_destination_reachable_via_port(noc_rg, p.from_node, p.was_going_out_via(), p.to_node, False)
+                else:
+                    result = is_destination_reachable_from_source(noc_rg, 5, p.to_node)
+                if not result:
+                    print(
+                        "WARNING: Generated Packet was not valid according to routing algorithm. Packet was sent from %d %s to %d via router 5. %s" % (
+                            p.from_node, p.was_going_out_via(), p.to_node, str(p)))
+                    res.sents_invalid += 1
+            for p in recv:
+                flitkey = str(p.from_node) + 'to' + str(p.to_node)
+                if flitkey in fromtocounter:
+                    fromtocounter[flitkey] -= 1
+                else:
+                    fromtocounter[flitkey] = -1
 
-    except:
-        print("Unexpected error in %s: "%name, sys.exc_info()[0],sys.exc_info()[1])
-        res.errornous = True
-        errornous.append(res)
-        continue
-    results.append(res)
+                result = is_destination_reachable_via_port(noc_rg, 5, p.going_out_via(), p.to_node, False)
+                if not result:
+                    print(
+                        "WARNING: Received Packet was not valid according to routing algorithm. Packet was sent from %d to %d via router 5. But it was received at: %d (dir:%s) %s" % (
+                            p.from_node, p.to_node, p.currentrouter, p.going_out_via(), str(p)))
+                    res.sents_invalid += 1
+            for k, v in fromtocounter.iteritems():
+                if v != 0:
+                    res.flitfault = True
+
+        except:
+            print("Unexpected error in %s: " % res.name, sys.exc_info()[0], sys.exc_info()[1])
+            res.errornous = True
+            errornous.append(res)
+            continue
+        results.append(res)
 
 failcounter = 0
 print("failed runs:")
@@ -278,8 +319,8 @@ for res in results:
 all_result = (
     attrgetter('name', 'errornous', 'unexpected_len_sent', 'unexpected_len_recv', 'len_sent', 'len_recv',
                'sents_invalid',
-               'recv_invalid', 'params','flitfault')(obj) for obj in results)
-names, errors, uls, ulr, ls, lr, si, ri, params,ff = itertools.izip_longest(*all_result)
+               'recv_invalid', 'params', 'flitfault')(obj) for obj in results)
+names, errors, uls, ulr, ls, lr, si, ri, params, ff = itertools.izip_longest(*all_result)
 
 print("------------Statistics---------------")
 print('Total Number of runs: %d' % counter)
@@ -288,7 +329,7 @@ print('IDs: %s' % ' '.join(sorted([obj.name for obj in results if not obj.is_val
 print('Total number of simulation errors: %d' % len(errornous))
 print('Total number of runs with an unexpected amount of sent packets: %d' % sum(uls))
 print('Total number of runs with an unexpected amount of recv packets: %d' % sum(ulr))
-print('Runs where the number of sent flits and the number of received flits differs between 2 nodes: %d'% sum(ff))
+print('Runs where the number of sent flits and the number of received flits differs between 2 nodes: %d' % sum(ff))
 print('Maximum number of sent packets: %d' % max(ls))
 print('Average number of sent packets: %f' % (sum(ls) / float(len(ls))))
 print('Minimum number of sent packets: %d' % min(ls))
@@ -297,7 +338,7 @@ print('Average number of recv packets: %f' % (sum(lr) / float(len(lr))))
 print('Minimum number of recv packets: %d' % min(lr))
 print('Average difference between number of sent and received packets: %f' % (sum(map(sub, ls, lr)) / float(len(ls))))
 avg_dif_wdif_list = filter(lambda x: x != 0, map(sub, ls, lr))
-if len(avg_dif_wdif_list) != 0 :
+if len(avg_dif_wdif_list) != 0:
     avg_dif_wdif = sum(map(abs, avg_dif_wdif_list)) / float(len(avg_dif_wdif_list))
     print('Average difference between number of sent and received packets (only when different): %f' % avg_dif_wdif)
     print('Average absolute difference between number of sent and received packets (only when different): %f' % (
@@ -315,7 +356,8 @@ paramlist = [obj.params.split(' ')[:6] + [' '.join(obj.params.split(' ')[6:])] f
 if len(paramlist) == 0:
     print ("No faults detected!")
 else:
-    breaktimes, breaktimesa, faultvalues, faultlengths, breakname1, breakname2,additionals = itertools.izip_longest(*paramlist)
+    breaktimes, breaktimesa, faultvalues, faultlengths, breakname1, breakname2, additionals = itertools.izip_longest(
+        *paramlist)
     breaktimes = map(int, breaktimes)
     faultvalues = map(int, faultvalues)
     print('Average breaktime which lead to a fault: %f' % (sum(breaktimes) / float(len(breaktimes))))
@@ -333,7 +375,7 @@ else:
         print('Missed %d patterns!' % (len(breakname2) - total))
 
     # convert to cell name and connected pin list.
-    for obj in results :
+    for obj in results:
         if not obj.is_valid():
             print(obj.guessComponent(), obj.params)
 print("------------Statistics---------------")
