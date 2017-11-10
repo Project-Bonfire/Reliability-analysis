@@ -1,10 +1,24 @@
 #!/bin/tcsh -f
-
-if ( "$1" == "" ) then      # parentheses not strictly needed in this simple case
+if ( "$1" == "" ) then 
+     # parentheses not strictly needed in this simple case
     echo "Usage $0 <num_processes>"
-    echo "ERROR! Please supply the number of Processes to be spawned!"
-    exit 
+    echo "Automatically determining how many processes should be launched!"
+    # dont know when its . when , at the last part . so cutting both
+    @ curavg = `uptime | cut -d : -f 4 | cut -d ' ' -f 2 |tr -s ' '| cut -d . -f 1| cut -d , -f 1`
+    @ curavg += 1
+    set limit = 20
+    set num_processes = `echo "$limit-$curavg"|bc`
+    echo "Current load average is taken as: $curavg."
+    echo "Estimating limit for the average of $limit."
+    echo "Predicted that the limit will be satisfied with $num_processes processes!"
+    echo ""
+else
+    set num_processes = $1
 endif
+
+echo "Processes to spawn: $num_processes!"
+echo ""
+
 
 #source /cad/unsetenvs.csh
 setenv PATH /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin
@@ -28,7 +42,6 @@ mkdir results
 set i=0
 
 mkdir "../results/$curtime"
-set num_processes=$1
 set num_experiments=`wc -l <../sim_runs`
 set per_proc=`python -c "from math import ceil;print ('%d'%ceil($num_experiments/float($num_processes)))"`
 echo $per_proc
@@ -48,14 +61,18 @@ while ($x <= $num_processes)
     cp modelsim.ini $resultfolder/modelsim.ini
     echo $resultfolder
     #launch vsim instance, create tmp folders and seperate modelsiminis for each instance, to prevent race conditions.
+    #setenv RESULTFILE../results/$curtime/results/Process${x}.results;
     (setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; /usr/bin/nice -n 15 vsim -modelsimini $resultfolder/modelsim.ini -novopt -t 1ns -c -do simulate.do  >../results/$curtime/Process${x}out.log )&
     # prevents race condition when copying library work to tmp folder
-    sleep 4
+    sleep 1
     @ x += 1
 end
-echo "$num_experiments run on $num_processes processes with $per_proc experiments per process"
+echo "$num_experiments runs on $num_processes processes with $per_proc experiments per process"
 wait
 #move the result to the results folder
 mv "results/" "../results/$curtime/"
+echo "started: $curtime finished: " >> "../results/$curtime/stats.txt"
+echo `date +%Y-%m-%d.%H:%M:%S` >> "../results/$curtime/stats.txt"
+echo `uptime | cut -d : -f 4` >> "../results/$curtime/stats.txt"
 
 echo "Finished! $num_experiments run on $num_processes processes with $per_proc experiments per process"

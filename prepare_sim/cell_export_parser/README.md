@@ -26,3 +26,15 @@ To generate the `cell_connections.txt` file:
 
 ## Usage
     python convert_to_pins.py path_to_file > results.txt
+
+## Reference Data
+`{}` marks strings, so all lines can be wrapped in these.
+
+
+    add wave -position insertpoint {sim/:tb_router:R_5:\FIFO_N/FIFO_seq/FIFO_MEM_1_reg[6] :*}
+    add wave -position insertpoint {sim/:tb_router:R_5:\CONTROL_PART/LBDR_L/U50 :*}
+    add wave -position insertpoint sim/:tb_router:R_5:U2994:*
+    force -freeze {sim/:tb_router:R_5:\FIFO_N/FIFO_seq/FIFO_MEM_1_reg[6] :CP} St0 0
+    force -freeze {sim/:tb_router:R_5:\CONTROL_PART/LBDR_L/U50 :A} St1 0
+    force -freeze sim/:tb_router:R_5:U2994:A1 StX 0
+    force -freeze sim/:tb_router:R_5:U2994:A2 St1 0

@@ -27,7 +27,7 @@ architecture behavior of tb_router is
 --define the router
 
 -- Declaring network component
-component router_credit_based_DATA_WIDTH32_current_address5_Cx_rst15_NoC_size4 is
+component router_credit_based is
     port (
     reset, clk: in std_logic;
 
@@ -44,7 +44,7 @@ component router_credit_based_DATA_WIDTH32_current_address5_Cx_rst15_NoC_size4 i
 
     TX_N, TX_E, TX_W, TX_S, TX_L: out std_logic_vector (31 downto 0)
     ); 
-end component router_credit_based_DATA_WIDTH32_current_address5_Cx_rst15_NoC_size4; 
+end component; 
 
 -- generating bulk signals...
 
@@ -85,15 +85,15 @@ reset <= '1' after 1 ns;
 
 -- instantiating the router
 
-R_5: router_credit_based_DATA_WIDTH32_current_address5_Cx_rst15_NoC_size4
-PORT MAP (reset, clk, 
-    Rxy_reconf, Reconfig,
-	RX_N_5, RX_E_5, RX_W_5, RX_S_5, RX_L_5,
-	credit_in_N_5, credit_in_E_5, credit_in_W_5, credit_in_S_5, credit_in_L_5,
-	valid_in_N_5, valid_in_E_5, valid_in_W_5, valid_in_S_5, valid_in_L_5,
-	valid_out_N_5, valid_out_E_5, valid_out_W_5, valid_out_S_5, valid_out_L_5,
-	credit_out_N_5, credit_out_E_5, credit_out_W_5, credit_out_S_5, credit_out_L_5,
-	TX_N_5, TX_E_5, TX_W_5, TX_S_5, TX_L_5); 
+R_5: router_credit_based
+PORT MAP (  reset, clk, 
+            Rxy_reconf, Reconfig,
+        	RX_N_5, RX_E_5, RX_W_5, RX_S_5, RX_L_5,
+        	credit_in_N_5, credit_in_E_5, credit_in_W_5, credit_in_S_5, credit_in_L_5,
+        	valid_in_N_5, valid_in_E_5, valid_in_W_5, valid_in_S_5, valid_in_L_5,
+        	valid_out_N_5, valid_out_E_5, valid_out_W_5, valid_out_S_5, valid_out_L_5,
+        	credit_out_N_5, credit_out_E_5, credit_out_W_5, credit_out_S_5, credit_out_L_5,
+        	TX_N_5, TX_E_5, TX_W_5, TX_S_5, TX_L_5); 
 
 not_reset <= not reset; 
 

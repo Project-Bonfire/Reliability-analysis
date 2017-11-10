@@ -6,7 +6,7 @@ import os
 import re
 
 import sys
-from collections import Counter
+from collections import Counter, namedtuple
 from operator import attrgetter, sub
 
 import itertools
@@ -39,8 +39,8 @@ ag = copy.deepcopy(generate_ag(logging=None))
 shmu = SystemHealthMonitoringUnit.SystemHealthMonitoringUnit()
 shmu.setup_noc_shm(ag, copy.deepcopy(turns_health_2d_network), False)
 noc_rg = copy.deepcopy(Routing.generate_noc_route_graph(ag, shmu, PackageFile.XY_TurnModel, False, False))
-dirname = "/home/thilo/git/Reliability-analysis/results/2017-10-06.12:06:05/results/"
-
+dirname = "/home/thi/git/results/2017-11-10.15:05:47/results/"
+print("evaluating %s"%dirname)
 
 class Result:
     def __init__(self):
@@ -55,6 +55,9 @@ class Result:
     # number of actual packets
     len_sent = -1
     len_recv = -1
+
+    # When the number of flits send from one node to another differs from the number of flits received there
+    flitfault = False
 
     # due to misrouting or misinjecting
     sents_invalid = 0
@@ -84,10 +87,10 @@ class Result:
                 self.len_recv, self.sents_invalid, self.recv_invalid, self.params)
 
 
-class PacketEvent:
+class FlitEvent:
     def __init__(self):
         pass
-
+    flit =None
     # According to router 5
     on_in_port = False
     on_out_port = False
@@ -96,13 +99,13 @@ class PacketEvent:
     from_node = -1
     to_node = -1
     length = -1
-    in_router = -1
+    currentrouter = -1
     actual_length = -1
     id = -1
 
     def __str__(self):
         return "[Time=%d,From=%d,To=%d,Length=%d,Event_Location=%d,Actual_Length=%d,ID=%d]" % (
-            self.time, self.from_node, self.to_node, self.length, self.in_router, self.actual_length, self.id)
+            self.time, self.from_node, self.to_node, self.length, self.currentrouter, self.actual_length, self.id)
 
     def switch_dir(self, dir):
         return {"S": "N",
@@ -131,7 +134,7 @@ class PacketEvent:
         """
         if not self.on_out_port:
             raise AssertionError("this is not an outgoing packet event!")
-        return self.pos_is_in_dir(self.in_router)
+        return self.pos_is_in_dir(self.currentrouter)
 
     def pos_is_in_dir(self, router_id):
         # type: (int) -> str
@@ -154,46 +157,47 @@ class PacketEvent:
             return "N"
 
 
-def parse_sent_line(line):
-    # type: (str) -> PacketEvent
+def parse_sent_line(data):
+    # type: (dict) -> FlitEvent
     """
-    Parser for a line of the sent file.
-    Lines look like : "Packet generated at 900000 ps From 4 to 6 with length: 8 id: 2"
-    :param line: the line to parse
-    :return: a Packet event
+    Parser for a dict of a line of the sent file.
+
+    :param data: the data to parse
+    :return: a Flit event
     """
-    m = re.findall(ur"([\d]+)", line)
-    pe = PacketEvent()
-    pe.time = int(m[0])
-    pe.from_node = int(m[1])
-    pe.to_node = int(m[2])
-    pe.length = int(m[3])
-    pe.id = int(m[4])
-    pe.in_router = pe.from_node
-    pe.actual_length = pe.length
+    pe = dict_to_flit(data)
     pe.on_in_port = True
     return pe
 
 
-def parse_recv_line(line):
-    # type: (str) -> PacketEvent
+def parse_recv_line(data):
+    # type: (dict) -> FlitEvent
     """
-    Parser for a line of the received file.
-    Lines look like : "Packet received at 845000 ps InRouter: 1 From: 9 to: 1 length: 8 actual length: 8 id: 1
-    :param line: the line to parse
-    :return: a Packet event
+    Parser for a dict of a line of the received file.
+    :param data: the data to parse
+    :return: a Flit event
     """
-    m = re.findall(ur"([\d]+)", line)
-    pe = PacketEvent()
-    pe.time = int(m[0])
-    pe.in_router = int(m[1])
-    pe.from_node = int(m[2])
-    pe.to_node = int(m[3])
-    pe.length = int(m[4])
-    pe.actual_length = int(m[5])
-    pe.id = int(m[6])
+
+    pe = dict_to_flit(data)
     pe.on_out_port = True
     return pe
+
+
+def dict_to_flit(data):
+    pe = FlitEvent()
+    pe.time = int(data['time'].split(' ')[0])
+    pe.currentrouter = int(data['currentrouter'])
+    pe.from_node = int(data['from_node'])
+    pe.to_node = int(data['to_node'])
+    pe.length = int(data['length'])
+    pe.id = int(data['id'])
+    pe.flitno = int(data['flitno'])
+    pe.type = data['type']
+    return pe
+
+
+def line_to_dict(line, splitchar=';', kvchar=':'):
+    return {e[0]:e[1] for e in [x.split(kvchar) for x in line.strip().split(splitchar)]}
 
 
 assumed_sent = -1
@@ -208,9 +212,9 @@ for name in os.listdir(dirname):
     res = Result()
     res.name = name
     try:
-        recv = [parse_recv_line(line) for line in open(dirname + name + "/received.txt", "r").readlines() if
+        recv = [parse_recv_line(line_to_dict(line)) for line in open(dirname + name + "/received.txt", "r").readlines() if
                 line.strip()]
-        sent = [parse_sent_line(line) for line in open(dirname + name + "/sent.txt", "r").readlines() if line.strip()]
+        sent = [parse_sent_line(line_to_dict(line)) for line in open(dirname + name + "/sent.txt", "r").readlines() if line.strip()]
         res.params = open(dirname + name + "/params.txt", "r").readlines()[0].strip()
         res.len_recv = len(recv)
         res.len_sent = len(sent)
@@ -223,7 +227,13 @@ for name in os.listdir(dirname):
             print("WARNING: The sent file of '%s' has an unexpected length of %d, expected %d." % (
                 name, len(sent), assumed_sent))
         res.unexpected_len_recv = len(recv) != len(sent)
+        fromtocounter = {}
         for p in sent:
+            flitkey = str(p.from_node) +'to' + str(p.to_node)
+            if flitkey in fromtocounter:
+                fromtocounter[flitkey] += 1
+            else:
+                fromtocounter[flitkey] = 1
             reulst = False
             if p.from_node is not 5:
                 result = is_destination_reachable_via_port(noc_rg, p.from_node, p.was_going_out_via(), p.to_node, False)
@@ -235,15 +245,24 @@ for name in os.listdir(dirname):
                         p.from_node, p.was_going_out_via(), p.to_node, str(p)))
                 res.sents_invalid += 1
         for p in recv:
+            flitkey = str(p.from_node) +'to' + str(p.to_node)
+            if flitkey in fromtocounter:
+                fromtocounter[flitkey] -= 1
+            else:
+                fromtocounter[flitkey] = -1
+
             result = is_destination_reachable_via_port(noc_rg, 5, p.going_out_via(), p.to_node, False)
             if not result:
                 print(
-                    "WARNING: Generated Packet was not valid according to routing algorithm. Packet was sent from %d %s to %d via router 5. %s" % (
-                        p.from_node, p.was_going_out_via(), p.to_node, str(p)))
+                    "WARNING: Received Packet was not valid according to routing algorithm. Packet was sent from %d to %d via router 5. But it was received at: %d (dir:%s) %s" % (
+                        p.from_node,  p.to_node, p.currentrouter,p.going_out_via(),str(p)))
                 res.sents_invalid += 1
+        for k,v in fromtocounter.iteritems():
+            if v != 0:
+                res.flitfault = True
 
     except:
-        print("Unexpected error in %s:"%name, sys.exc_info()[0])
+        print("Unexpected error in %s: "%name, sys.exc_info()[0],sys.exc_info()[1])
         res.errornous = True
         errornous.append(res)
         continue
@@ -259,8 +278,8 @@ for res in results:
 all_result = (
     attrgetter('name', 'errornous', 'unexpected_len_sent', 'unexpected_len_recv', 'len_sent', 'len_recv',
                'sents_invalid',
-               'recv_invalid', 'params')(obj) for obj in results)
-names, errors, uls, ulr, ls, lr, si, ri, params = itertools.izip_longest(*all_result)
+               'recv_invalid', 'params','flitfault')(obj) for obj in results)
+names, errors, uls, ulr, ls, lr, si, ri, params,ff = itertools.izip_longest(*all_result)
 
 print("------------Statistics---------------")
 print('Total Number of runs: %d' % counter)
@@ -269,6 +288,7 @@ print('IDs: %s' % ' '.join(sorted([obj.name for obj in results if not obj.is_val
 print('Total number of simulation errors: %d' % len(errornous))
 print('Total number of runs with an unexpected amount of sent packets: %d' % sum(uls))
 print('Total number of runs with an unexpected amount of recv packets: %d' % sum(ulr))
+print('Runs where the number of sent flits and the number of received flits differs between 2 nodes: %d'% sum(ff))
 print('Maximum number of sent packets: %d' % max(ls))
 print('Average number of sent packets: %f' % (sum(ls) / float(len(ls))))
 print('Minimum number of sent packets: %d' % min(ls))
@@ -303,9 +323,9 @@ else:
     print('Average faultvalue: %f' % (sum(faultvalues) / float(len(faultvalues))))
     print('Which pins broke something statistic: ')
     print(Counter(breakname2))
-    # Look at difflib, maybe matching blocks
+    # Look at difflib, maybe matching blocks, maybe consider buckets
     total = 0
-    for pattern in ['U', '\\LBDR', '\\FIFO']:
+    for pattern in ['U', '\\CONTROL', '\\FIFO']:
         tmp = len(filter(lambda s: s.startswith(pattern), breakname1))
         total += tmp
         print('"%s" broke something: %d' % (pattern, tmp))
@@ -315,5 +335,5 @@ else:
     # convert to cell name and connected pin list.
     for obj in results :
         if not obj.is_valid():
-            print(obj.guessComponent())
+            print(obj.guessComponent(), obj.params)
 print("------------Statistics---------------")

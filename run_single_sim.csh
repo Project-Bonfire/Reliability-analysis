@@ -25,7 +25,7 @@ set resultfolder=`mktemp -d`
 cp modelsim.ini $resultfolder/modelsim.ini
 echo "$*" >> $propertypath
 
-(setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; vsim -c -modelsimini $resultfolder/modelsim.ini -novopt -t 1ns  -do simulate.do  )
+(setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; vsim  -modelsimini $resultfolder/modelsim.ini -novopt -t 1ns  -do simulate.do  )
 
 mv "results/" "$resultfolder/res"
 echo "Find the results here:"

@@ -9,6 +9,7 @@ global env;
 set RESULTFOLDER $env(RESULTFOLDER)
 set PROPERTYPATH $env(PROPERTYPATH) 
 set STARTID $env(STARTID)
+#set RESULTFILE $env(RESULTFILE)
 # define library work
 
 vlib work
@@ -21,7 +22,7 @@ vmap work $RESULTFOLDER/work
 # Include files and compile them
 
 vlog "/cad/dk/c/v4.11/verilog/c18a6/c18_CORELIB.v"	
-vlog "Router_32_bit_credit_based_gate_level_without_hierarchy.v"	
+vlog "gate_level_netlist.v"	
 vcom -O5 "TB_Package_32_bit_credit_based.vhd"
 vcom -O5 "Router_credit_based_tb.vhd"
  
@@ -32,7 +33,9 @@ puts $STARTID
 # Start the simulation
 vsim -novopt -t 1ns -Gsent_file=$RESULTFOLDER/sent.txt -Grecv_file=$RESULTFOLDER/received.txt work.tb_router
 
-# Draw waves
+#set concatdresultfile [open /tmp/full_temp.txt w]
+
+# Draw wavesh
 #do wave_4x4.do
 #vcd file wave.vcd
 #vcd add -r -optcells 
@@ -56,7 +59,12 @@ while {$data != ""} {
     
     #set params
     set name [lindex $params 4]
-    append name " "
+    set tmpfirst [string first "U" $name]
+
+    # If it starts with U
+    if {$tmpfirst != 0} {
+        append name " "
+    }
     append name [lindex $params 5] 
     set time_before  [lindex $params 0] 
     set time_after [lindex $params 1] 
@@ -64,19 +72,23 @@ while {$data != ""} {
     set fault_length [lindex $params 3] 
     #add wave -position insertpoint {sim/:tb_router:R_5:\\$name}
 
-    puts "Breaking the circuit: Name: $name Time: $time_before ns Value: $val Length of fault: $fault_length ns"
+    puts "Breaking the circuit: Name: '$name' Time: $time_before ns Value: $val Length of fault: $fault_length ns"
 
     # Run the simulation
     run $time_before ns
+    puts "test!"
+    force -freeze "sim/:tb_router:R_5:U3552:A1" St0 0ns -cancel 0 ns
+    puts "tested!"
     # for reference: force -drive {sim/:tb_router:R_5:\FIFO_N/FIFO_MEM_2_reg[0] :D} St1 0 -cancel 1
     # force -freeze sim/:tb_router:R_5:\\$name St0 start_after ns -cancel clock_cycle_length ns
     puts "Ran for $time_before. Breaking now!"
-    force -freeze sim/:tb_router:R_5:$name St$val 0ns -cancel $fault_length ns
+    force -freeze "sim/:tb_router:R_5:$name" St$val 0ns -cancel $fault_length ns
     puts "Broke the circuit!"
     run $time_after ns
     #reset simulation
     restart
     #handle results
+    
     file rename "$RESULTFOLDER/sent.txt" "results/$i/sent.txt"
     file rename "$RESULTFOLDER/received.txt" "results/$i/received.txt"
     set fo [open "results/$i/params.txt" "w"] 
