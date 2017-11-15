@@ -71,14 +71,16 @@ echo "$num_experiments runs on $num_processes processes with $per_proc experimen
 wait
 
 cd "../results/$curtime"
-
-#concat all results to one single file
-cat results/* > all.results
-rm -rf "results"
-
-#write stats.txt file
 echo "started: $curtime finished: " >> "stats.txt"
 echo `date +%Y-%m-%d.%H:%M:%S` >> "stats.txt"
 echo `uptime | cut -d : -f 4` >> "stats.txt"
+#concat all results to one single file
+cat results/* > all.results
+rm -rf "results"
+gzip all.results
+
+#write stats.txt file
+
 
 echo "Finished! $num_experiments run on $num_processes processes with $per_proc experiments per process"
+pwd

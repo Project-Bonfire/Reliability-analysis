@@ -41,16 +41,13 @@ fconfigure $concatdresultfile -translation binary
 global env; 
 puts $PROPERTYPATH
 set fp [open $PROPERTYPATH  r]
-#delete old results
-file mkdir results 
 
 
 fconfigure $fp -buffering line
 gets $fp data
 set i $STARTID
 while {$data != ""} {
-    
-    file mkdir "results/$i"
+
     puts "starting experiment #$i"
     #split line
     set params [regexp -all -inline {\S+} $data]
@@ -75,9 +72,6 @@ while {$data != ""} {
 
     # Run the simulation
     run $time_before ns
-    puts "test!"
-    force -freeze "sim/:tb_router:R_5:U3552:A1" St0 0ns -cancel 0 ns
-    puts "tested!"
     # for reference: force -drive {sim/:tb_router:R_5:\FIFO_N/FIFO_MEM_2_reg[0] :D} St1 0 -cancel 1
     # force -freeze sim/:tb_router:R_5:\\$name St0 start_after ns -cancel clock_cycle_length ns
     puts "Ran for $time_before. Breaking now!"

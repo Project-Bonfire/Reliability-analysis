@@ -269,8 +269,12 @@ with open(filename, 'r') as f:
                 print("WARNING: The sent file of '%s' has an unexpected length of %d, expected %d." % (
                     res.name, len(sent), assumed_sent))
             res.unexpected_len_recv = len(recv) != len(sent)
+
+            # A dictionary which counts the number of sent for a flitkey and compares them to the number of received.
             fromtocounter = {}
+            # check all sent lines
             for p in sent:
+                # create a key for the flit. Example 3to5
                 flitkey = str(p.from_node) + 'to' + str(p.to_node)
                 if flitkey in fromtocounter:
                     fromtocounter[flitkey] += 1
@@ -286,6 +290,7 @@ with open(filename, 'r') as f:
                         "WARNING: Generated Packet was not valid according to routing algorithm. Packet was sent from %d %s to %d via router 5. %s" % (
                             p.from_node, p.was_going_out_via(), p.to_node, str(p)))
                     res.sents_invalid += 1
+            #check all recv lines
             for p in recv:
                 flitkey = str(p.from_node) + 'to' + str(p.to_node)
                 if flitkey in fromtocounter:
