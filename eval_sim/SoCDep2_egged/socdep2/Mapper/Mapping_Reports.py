@@ -178,7 +178,7 @@ def draw_mapping(tg, ag, shm, mapping_file_name):
     fig.savefig("GraphDrawings/"+mapping_file_name+".png", bbox_inches='tight')
     plt.clf()
     plt.close(fig)
-    print ("\033[35m* VIZ::\033[0mMAPPING DRAWING CREATED AT: GraphDrawings/"+mapping_file_name+".png")
+    print(("\033[35m* VIZ::\033[0mMAPPING DRAWING CREATED AT: GraphDrawings/"+mapping_file_name+".png"))
     return None
 
 
@@ -206,7 +206,7 @@ def viz_mapping_opt(cost_file_name, iteration=None):
                 min_cost = float(line)
             min_cost_list.append(min_cost)
             line = mapping_cost_file.readline()
-        solution_num = range(0, len(cost))
+        solution_num = list(range(0, len(cost)))
         mapping_cost_file.close()
 
         ax1.set_ylabel('Mapping Cost')
@@ -221,7 +221,7 @@ def viz_mapping_opt(cost_file_name, iteration=None):
                 ax1.plot((x1, x2), (y1, y2), 'g')
 
     except IOError:
-        print ('CAN NOT OPEN', cost_file_name+'.txt')
+        print(('CAN NOT OPEN', cost_file_name+'.txt'))
 
     if Config.Mapping_Function == 'SimulatedAnnealing':
         try:
@@ -242,12 +242,12 @@ def viz_mapping_opt(cost_file_name, iteration=None):
             print ('CAN NOT OPEN SATemp.txt')
     if iteration is None:
         plt.savefig("GraphDrawings/Mapping_Opt_Process.png", dpi=300)
-        print ("\033[35m* VIZ::\033[0mMAPPING OPTIMIZATION PROCESS " +
-               "GRAPH CREATED AT: GraphDrawings/Mapping_Opt_Process.png")
+        print(("\033[35m* VIZ::\033[0mMAPPING OPTIMIZATION PROCESS " +
+               "GRAPH CREATED AT: GraphDrawings/Mapping_Opt_Process.png"))
     else:
         plt.savefig("GraphDrawings/Mapping_Opt_Process_"+str(iteration)+".png", dpi=300)
-        print ("\033[35m* VIZ::\033[0mMAPPING OPTIMIZATION PROCESS " +
-               "GRAPH CREATED AT: GraphDrawings/Mapping_Opt_Process"+str(iteration)+".png")
+        print(("\033[35m* VIZ::\033[0mMAPPING OPTIMIZATION PROCESS " +
+               "GRAPH CREATED AT: GraphDrawings/Mapping_Opt_Process"+str(iteration)+".png"))
     plt.clf()
     plt.close(fig)
 
@@ -273,7 +273,7 @@ def viz_cost_slope():
         cost_slope_file.close()
         # print (len(temp), len(solution_num))
 
-        ax1.plot(range(0, len(cost_slope)), cost_slope)
+        ax1.plot(list(range(0, len(cost_slope))), cost_slope)
         ax1.set_ylabel('Cost Slope')
         plt.savefig("GraphDrawings/Mapping_Cost_Slope.png")
         plt.clf()
@@ -305,7 +305,7 @@ def viz_huang_race():
             line = huang_race_file.readline()
         huang_race_file.close()
 
-        ax1.plot(range(0, len(counter1)), counter1, 'b', range(0, len(counter2)), counter2, 'g')
+        ax1.plot(list(range(0, len(counter1))), counter1, 'b', list(range(0, len(counter2))), counter2, 'g')
         ax1.set_ylabel('Huang counters')
         plt.savefig("GraphDrawings/Mapping_HuangCounters.png", dpi=300)
         plt.clf()

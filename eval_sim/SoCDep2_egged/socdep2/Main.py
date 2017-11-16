@@ -1,7 +1,7 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
 import sys
 import os
-from Utilities import misc
+from .Utilities import misc
 
 if '--help' in sys.argv[1:] or '-help' in sys.argv[1:]:
     pass
@@ -10,13 +10,13 @@ else:
 
 import time
 import logging
-from ConfigAndPackages import Config, PackageFile, Check_Config
-from Utilities import Logger, Benchmark_Alg_Downloader, misc
-import SystemInitialization
-from GUI_Util import GUI
+from .ConfigAndPackages import Config, PackageFile, Check_Config
+from .Utilities import Logger, Benchmark_Alg_Downloader, misc
+from . import SystemInitialization
+from .GUI_Util import GUI
 from pympler import tracker
-from Simulator import Simulator
-from RoutingAlgorithms.turn_model_evaluation import list_all_turn_models, turn_model_viz, turn_mode_classifier
+from .Simulator import Simulator
+from .RoutingAlgorithms.turn_model_evaluation import list_all_turn_models, turn_model_viz, turn_mode_classifier
 from multiprocessing import Pool
 
 
@@ -68,7 +68,7 @@ elif '-ETMD' in sys.argv[1:]:     # Enumerate turn model based on deadlock
         elif routing_type == "NM":
             Config.RotingType = 'NonMinimalPath'
         else:
-            print "ARGUMENT ERROR:: Routing type should be either M or NM..."
+            print("ARGUMENT ERROR:: Routing type should be either M or NM...")
         number_of_multi_threads = int(sys.argv[sys.argv.index('-ETMD') + 3])
         p = Pool(number_of_multi_threads)
         if sys.argv[sys.argv.index('-ETMD') + 1] == '3D':
@@ -80,7 +80,7 @@ elif '-ETMD' in sys.argv[1:]:     # Enumerate turn model based on deadlock
             p.map(list_all_turn_models.enumerate_all_2d_turn_models_based_on_df, args)
             p.terminate()
         else:
-            print "ARGUMENT ERROR:: Dimension should be specified as 2D or 3D..."
+            print("ARGUMENT ERROR:: Dimension should be specified as 2D or 3D...")
     sys.exit()
 elif '-TMFT' in sys.argv[1:]:     # check All turn model's fault tolerance
     misc.generate_file_directories()
@@ -92,13 +92,13 @@ elif '-TMFT' in sys.argv[1:]:     # check All turn model's fault tolerance
     elif routing_type == "NM":
         Config.RotingType = 'NonMinimalPath'
     else:
-        print "ARGUMENT ERROR:: Routing type should be either M or NM..."
+        print("ARGUMENT ERROR:: Routing type should be either M or NM...")
 
     number_of_multi_threads = int(sys.argv[sys.argv.index('-TMFT') + 3])
     if "2D" in sys.argv[1:] or "3D" in sys.argv[1:]:
         pass
     else:
-        print "MISSING ARGUMENT:: A dimension value is required for this command"
+        print("MISSING ARGUMENT:: A dimension value is required for this command")
         sys.exit()
     dimension = sys.argv[sys.argv.index('-TMFT') + 1]
     if "-V" in sys.argv[1:]:
@@ -112,7 +112,7 @@ elif '-VIZTM' in sys.argv[1:]:     # visualizes the turn models in 2D or 3D
     if "2D" in sys.argv[1:] or "3D" in sys.argv[1:]:
         pass
     else:
-        print "MISSING ARGUMENT:: A dimension value is required for this command"
+        print("MISSING ARGUMENT:: A dimension value is required for this command")
         sys.exit()
     dimension = sys.argv[sys.argv.index('-VIZTM') + 1]
     routing_type = sys.argv[sys.argv.index('-VIZTM') + 2]
@@ -129,7 +129,7 @@ elif '-CONF' in sys.argv[1:]:
         misc.update_config(path_to_config_file)
 elif '-BENCHMARK' in sys.argv[1:]:
     benchmark = sys.argv[sys.argv.index('-BENCHMARK') + 1]
-    print benchmark
+    print(benchmark)
     if Benchmark_Alg_Downloader.download_benchmark_algorithms(str(benchmark)):
         pass
     else:
@@ -157,8 +157,8 @@ tg, ag, shmu, noc_rg, CriticalRG, NonCriticalRG, pmcg = SystemInitialization.ini
 # just to have a sense of how much time we are spending in each section
 print ("===========================================")
 system_starting_time = time.time()
-print ("\033[92mTIME::\033[0m SYSTEM STARTS AT:"+str(round(system_starting_time-program_start_time)) +
-       " SECONDS AFTER PROGRAM START...")
+print(("\033[92mTIME::\033[0m SYSTEM STARTS AT:"+str(round(system_starting_time-program_start_time)) +
+       " SECONDS AFTER PROGRAM START..."))
 
 if Config.enable_simulator:
     Simulator.run_simulator(Config.ProgramRunTime, tg, ag, shmu, noc_rg, CriticalRG, NonCriticalRG, logging)

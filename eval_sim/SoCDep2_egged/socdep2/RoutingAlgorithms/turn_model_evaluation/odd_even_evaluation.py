@@ -50,14 +50,14 @@ def evaluate_actual_odd_even_turn_model():
                     Routing.update_noc_route_graph(noc_rg, from_port, to_port, 'ADD')
         draw_rg(noc_rg)
         connectivity_metric = reachability_metric(ag, noc_rg, False)
-        print "connectivity_metric:", connectivity_metric
+        print("connectivity_metric:", connectivity_metric)
         if check_deadlock_freeness(noc_rg):
-            print "Deadlock free!"
+            print("Deadlock free!")
 
         doa = degree_of_adaptiveness(ag, noc_rg, False)/float(number_of_pairs)
         doa_ex = extended_degree_of_adaptiveness(ag, noc_rg, False)/float(number_of_pairs)
-        print "doa:", doa
-        print "doa_ex", doa_ex
+        print("doa:", doa)
+        print("doa_ex", doa_ex)
 
         sys.stdout.flush()
 
@@ -74,8 +74,8 @@ def enumerate_all_odd_even_turn_models():
     number_of_pairs = len(ag.nodes())*(len(ag.nodes())-1)
 
     turn_model_list = []
-    for length in range(0, len(turns_health_2d_network.keys())+1):
-        for item in list(itertools.combinations(turns_health_2d_network.keys(), length)):
+    for length in range(0, len(list(turns_health_2d_network.keys()))+1):
+        for item in list(itertools.combinations(list(turns_health_2d_network.keys()), length)):
             if len(item) > 0:
                 turn_model_list.append(list(item))
 
@@ -133,8 +133,8 @@ def evaluate_doa_for_all_odd_even_turn_model_list():
     number_of_pairs = len(ag.nodes())*(len(ag.nodes())-1)
 
     turn_model_list = []
-    for length in range(0, len(turns_health_2d_network.keys())+1):
-        for item in list(itertools.combinations(turns_health_2d_network.keys(), length)):
+    for length in range(0, len(list(turns_health_2d_network.keys()))+1):
+        for item in list(itertools.combinations(list(turns_health_2d_network.keys()), length)):
             if len(item) > 0:
                 turn_model_list.append(list(item))
 
@@ -172,12 +172,12 @@ def evaluate_doa_for_all_odd_even_turn_model_list():
         doa = degree_of_adaptiveness(ag, noc_rg, False)/float(number_of_pairs)
         doa_ex = extended_degree_of_adaptiveness(ag, noc_rg, False)/float(number_of_pairs)
 
-        if round(doa, 2) not in classes_of_doa.keys():
+        if round(doa, 2) not in list(classes_of_doa.keys()):
             classes_of_doa[round(doa, 2)] = [tm_counter]
         else:
             classes_of_doa[round(doa, 2)].append(tm_counter)
 
-        if round(doa_ex, 2) not in classes_of_doax.keys():
+        if round(doa_ex, 2) not in list(classes_of_doax.keys()):
             classes_of_doax[round(doa_ex, 2)] = [tm_counter]
         else:
             classes_of_doax[round(doa_ex, 2)].append(tm_counter)
@@ -193,16 +193,16 @@ def evaluate_doa_for_all_odd_even_turn_model_list():
         tm_counter += 1
         sys.stdout.write("\rchecked TM: %i " % tm_counter)
         sys.stdout.flush()
-    print
-    print "----------------------------------------"
-    print "classes of DOA:", sorted(classes_of_doa.keys())
+    print()
+    print("----------------------------------------")
+    print("classes of DOA:", sorted(classes_of_doa.keys()))
     for item in sorted(classes_of_doa.keys()):
-        print item,  sorted(classes_of_doa[item])
+        print(item,  sorted(classes_of_doa[item]))
         # print
-    print "------------------------------"
-    print "classes of DOA_ex:", sorted(classes_of_doax.keys())
+    print("------------------------------")
+    print("classes of DOA_ex:", sorted(classes_of_doax.keys()))
     for item in sorted(classes_of_doax.keys()):
-        print item,  sorted(classes_of_doax[item])
+        print(item,  sorted(classes_of_doax[item]))
 
     all_odd_evens_file.close()
     return None
@@ -383,15 +383,15 @@ def test():
 
                                     sum_of_sim_ratio += 1
         if  Config.RotingType == 'MinimalPath':
-            print "Turn Model ", '%5s' %turn_model_index, "\tdoa:", "{:3.3f}".format(doa), "\tsimilarity ratio:", "{:3.3f}".format(sum_of_sim_ratio), "\t\tfault tolerance metric:","{:3.5f}".format(float(doa)/sum_of_sim_ratio)
+            print("Turn Model ", '%5s' %turn_model_index, "\tdoa:", "{:3.3f}".format(doa), "\tsimilarity ratio:", "{:3.3f}".format(sum_of_sim_ratio), "\t\tfault tolerance metric:","{:3.5f}".format(float(doa)/sum_of_sim_ratio))
             doa_ratio = float("{:3.5f}".format(float(doa)/sum_of_sim_ratio, 5))
         else:
-            print "Turn Model ", '%5s' %turn_model_index, "\tdoa:", "{:3.3f}".format(doa_ex), "\tsimilarity ratio:", "{:3.3f}".format(sum_of_sim_ratio), "\t\tfault tolerance metric:","{:3.5f}".format(float(doa_ex)/sum_of_sim_ratio)
+            print("Turn Model ", '%5s' %turn_model_index, "\tdoa:", "{:3.3f}".format(doa_ex), "\tsimilarity ratio:", "{:3.3f}".format(sum_of_sim_ratio), "\t\tfault tolerance metric:","{:3.5f}".format(float(doa_ex)/sum_of_sim_ratio))
             doa_ratio = float("{:3.5f}".format(float(doa_ex)/sum_of_sim_ratio, 5))
 
         if doa_ratio not in classes_of_doa_ratio:
             classes_of_doa_ratio.append(doa_ratio)
-        if doa_ratio in turn_model_class_dict.keys():
+        if doa_ratio in list(turn_model_class_dict.keys()):
             turn_model_class_dict[doa_ratio].append(turn_model_index)
         else:
             turn_model_class_dict[doa_ratio]=[turn_model_index]
@@ -400,8 +400,8 @@ def test():
 
         #print "--------------------------------------------"
         del noc_rg
-    print "max doa_ratio", max_ratio
-    print "classes of doa_ratio", classes_of_doa_ratio
+    print("max doa_ratio", max_ratio)
+    print("classes of doa_ratio", classes_of_doa_ratio)
     for item in sorted(turn_model_class_dict.keys()):
-        print item, turn_model_class_dict[item]
+        print(item, turn_model_class_dict[item])
     return None

@@ -74,7 +74,7 @@ def draw_vl_opt():
                 max_cost = float(line)
             max_cost_list.append(max_cost)
             line = vl_cost_file.readline()
-        solution_num = range(0, len(cost))
+        solution_num = list(range(0, len(cost)))
         vl_cost_file.close()
         # print len(solution_num), len(cost)
         ax1.set_ylabel('vl placement Cost')

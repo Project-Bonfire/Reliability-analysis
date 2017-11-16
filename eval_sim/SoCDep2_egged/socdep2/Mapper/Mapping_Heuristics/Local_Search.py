@@ -15,7 +15,7 @@ def mapping_opt_local_search(tg, ctg, ag, noc_rg, critical_rg, noncritical_rg, s
     if report:
         print ("===========================================")
         print ("STARTING MAPPING OPTIMIZATION...USING LOCAL SEARCH...")
-        print ("NUMBER OF ITERATIONS: "+str(iteration_num))
+        print(("NUMBER OF ITERATIONS: "+str(iteration_num)))
 
     if type(cost_data_file_name) is str:
         mapping_cost_file = open('Generated_Files/Internal/'+cost_data_file_name+'.txt', 'a')
@@ -86,8 +86,8 @@ def mapping_opt_local_search(tg, ctg, ag, noc_rg, critical_rg, noncritical_rg, s
         if current_cost <= best_cost:
             if current_cost < best_cost:
                 if report:
-                    print ("\033[32m* NOTE::\033[0mBETTER SOLUTION FOUND WITH COST: "+str(current_cost) +
-                           "\t ITERATION:"+str(iteration))
+                    print(("\033[32m* NOTE::\033[0mBETTER SOLUTION FOUND WITH COST: "+str(current_cost) +
+                           "\t ITERATION:"+str(iteration)))
                 logging.info("NOTE:: MOVED TO SOLUTION WITH COST: "+str(current_cost)+"ITERATION: "+str(iteration))
             else:
                 logging.info("NOTE:: MOVED TO SOLUTION WITH COST: "+str(current_cost)+"ITERATION: "+str(iteration))
@@ -108,9 +108,9 @@ def mapping_opt_local_search(tg, ctg, ag, noc_rg, critical_rg, noncritical_rg, s
     mapping_cost_file.close()
     if report:
         print ("-------------------------------------")
-        print ("STARTING COST: "+str(starting_cost)+"\tFINAL COST: "+str(best_cost) +
-               "\tAFTER "+str(iteration_num)+" ITERATIONS")
-        print ("IMPROVEMENT:"+str("{0:.2f}".format(100*(starting_cost-best_cost)/starting_cost))+" %")
+        print(("STARTING COST: "+str(starting_cost)+"\tFINAL COST: "+str(best_cost) +
+               "\tAFTER "+str(iteration_num)+" ITERATIONS"))
+        print(("IMPROVEMENT:"+str("{0:.2f}".format(100*(starting_cost-best_cost)/starting_cost))+" %"))
     return best_tg, best_ctg, best_ag
 
 
@@ -126,7 +126,7 @@ def mapping_opt_iterative_local_search(tg, ctg, ag, noc_rg, critical_rg, noncrit
     best_cost = Mapping_Functions.mapping_cost_function(tg, ag, shm, False)
     starting_cost = best_cost
     if report:
-        print ("INITIAL COST:"+str(starting_cost))
+        print(("INITIAL COST:"+str(starting_cost)))
     mapping_cost_file = open('Generated_Files/Internal/LocalSearchMappingCost.txt', 'w')
     mapping_cost_file.close()
     mapping_process_file = open('Generated_Files/Internal/MappingProcess.txt', 'w')
@@ -147,8 +147,8 @@ def mapping_opt_iterative_local_search(tg, ctg, ag, noc_rg, critical_rg, noncrit
             if current_cost <= best_cost:
                 if current_cost < best_cost:
                     if report:
-                        print ("\033[32m* NOTE::\033[0mBETTER SOLUTION FOUND WITH COST: "+str(current_cost) +
-                               "\t ITERATION: "+str(Iteration))
+                        print(("\033[32m* NOTE::\033[0mBETTER SOLUTION FOUND WITH COST: "+str(current_cost) +
+                               "\t ITERATION: "+str(Iteration)))
                     logging.info("NOTE:: MOVED TO SOLUTION WITH COST: "+str(current_cost)+"ITERATION: "+str(Iteration))
                 else:
                     logging.info("NOTE:: MOVED TO SOLUTION WITH COST: "+str(current_cost)+"ITERATION: "+str(Iteration))
@@ -177,17 +177,17 @@ def mapping_opt_iterative_local_search(tg, ctg, ag, noc_rg, critical_rg, noncrit
             Scheduler.schedule_all(tg, ag, shm, False, logging)
         else:
             if report:
-                print ("\033[33mWARNING::\033[0m CAN NOT FIND ANOTHER FEASIBLE SOLUTION... ",
-                       "ABORTING ITERATIVE LOCAL SEARCH...")
+                print(("\033[33mWARNING::\033[0m CAN NOT FIND ANOTHER FEASIBLE SOLUTION... ",
+                       "ABORTING ITERATIVE LOCAL SEARCH..."))
             logging.info("CAN NOT FIND ANOTHER FEASIBLE SOLUTION... ABORTING ITERATIVE LOCAL SEARCH...")
             if report:
                 print ("-------------------------------------")
-                print ("STARTING COST: "+str(starting_cost)+"\tFINAL COST: "+str(best_cost))
-                print ("IMPROVEMENT:"+str("{0:.2f}".format(100*(starting_cost-best_cost)/starting_cost))+" %")
+                print(("STARTING COST: "+str(starting_cost)+"\tFINAL COST: "+str(best_cost)))
+                print(("IMPROVEMENT:"+str("{0:.2f}".format(100*(starting_cost-best_cost)/starting_cost))+" %"))
             return best_tg, best_ctg, best_ag
 
     if report:
         print ("-------------------------------------")
-        print ("STARTING COST:"+str(starting_cost)+"\tFINAL COST:"+str(best_cost))
-        print ("IMPROVEMENT:"+str("{0:.2f}".format(100*(starting_cost-best_cost)/starting_cost))+" %")
+        print(("STARTING COST:"+str(starting_cost)+"\tFINAL COST:"+str(best_cost)))
+        print(("IMPROVEMENT:"+str("{0:.2f}".format(100*(starting_cost-best_cost)/starting_cost))+" %"))
     return best_tg, best_ctg, best_ag

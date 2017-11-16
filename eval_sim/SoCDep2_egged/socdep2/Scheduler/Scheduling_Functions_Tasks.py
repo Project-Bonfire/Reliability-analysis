@@ -1,6 +1,6 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
 
-import Scheduling_Functions_Nodes
+from . import Scheduling_Functions_Nodes
 from math import ceil
 from socdep2.ConfigAndPackages import Config
 

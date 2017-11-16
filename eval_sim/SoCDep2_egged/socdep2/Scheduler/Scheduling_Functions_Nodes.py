@@ -1,7 +1,7 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
 
 from math import ceil
-import Scheduling_Functions_Tasks
+from . import Scheduling_Functions_Tasks
 
 
 def add_tg_task_to_node(tg, ag, task_id, node, start_time, end_time, logging=None):
@@ -69,7 +69,7 @@ def find_first_empty_slot_for_task_on_node(tg, ag, shm, node, task_id, predecess
 
     start_time_list = []
     end_time_list = []
-    for chosen_task in ag.node[node]['PE'].scheduling.keys():
+    for chosen_task in list(ag.node[node]['PE'].scheduling.keys()):
         start_time_list.append(ag.node[node]['PE'].scheduling[chosen_task][0])
         end_time_list.append(ag.node[node]['PE'].scheduling[chosen_task][1])
     start_time_list.sort()

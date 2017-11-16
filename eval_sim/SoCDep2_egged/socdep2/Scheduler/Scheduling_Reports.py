@@ -1,9 +1,9 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
 
 import matplotlib.pyplot as plt
-from Scheduling_Functions_Routers import find_last_allocated_time_on_router
-from Scheduling_Functions_Nodes import find_last_allocated_time_on_node
-from Scheduling_Functions_Links import find_last_allocated_time_on_link
+from .Scheduling_Functions_Routers import find_last_allocated_time_on_router
+from .Scheduling_Functions_Nodes import find_last_allocated_time_on_node
+from .Scheduling_Functions_Links import find_last_allocated_time_on_link
 from socdep2.ConfigAndPackages import Config
 import random
 
@@ -29,16 +29,16 @@ def report_mapped_tasks(ag, logging):
 
 
 def report_scheduling_memory_usage(ag):
-    print "==========================================="
-    print "        SCHEDULING MEMORY REPORT"
-    print "==========================================="
+    print("===========================================")
+    print("        SCHEDULING MEMORY REPORT")
+    print("===========================================")
     counter = 0
     for node in ag.nodes():
         counter += len(ag.node[node]['PE'].scheduling)
         counter += len(ag.node[node]['Router'].scheduling)
     for link in ag.edges():
         counter += len(ag.edge[link[0]][link[1]]['Scheduling'])
-    print "SCHEDULE MEMORY USE:", counter
+    print("SCHEDULE MEMORY USE:", counter)
 
 
 ##########################################################################
@@ -295,15 +295,15 @@ def add_routers_to_drawing(tg, ag, num_of_plots, fig, node_counter, link_counter
                                     else:
                                         down_dict[added_rect[1]] = added_rect[2]
 
-                            for time_instant in sorted(up_dict.keys()+down_dict.keys()):
-                                if time_instant in up_dict.keys():
+                            for time_instant in sorted(list(up_dict.keys())+list(down_dict.keys())):
+                                if time_instant in list(up_dict.keys()):
                                     pe_t.append(time_instant)
                                     pe_p.append(0.1 * prob)
                                     prob = up_dict[time_instant] + prob
                                     pe_t.append(time_instant)
                                     pe_p.append(0.1 * prob)
 
-                                if time_instant in down_dict.keys():
+                                if time_instant in list(down_dict.keys()):
                                     pe_t.append(time_instant)
                                     pe_p.append(0.1 * prob)
                                     prob = prob - down_dict[time_instant]
@@ -441,15 +441,15 @@ def add_links_to_drawing(tg, ag, num_of_plots, fig, node_counter, link_counter, 
                                     else:
                                         down_dict[added_rect[1]] = added_rect[2]
 
-                            for time_instant in sorted(up_dict.keys()+down_dict.keys()):
-                                if time_instant in up_dict.keys():
+                            for time_instant in sorted(list(up_dict.keys())+list(down_dict.keys())):
+                                if time_instant in list(up_dict.keys()):
                                     pe_t.append(time_instant)
                                     pe_p.append(0.1 * prob)
                                     prob = up_dict[time_instant] + prob
                                     pe_t.append(time_instant)
                                     pe_p.append(0.1 * prob)
 
-                                if time_instant in down_dict.keys():
+                                if time_instant in list(down_dict.keys()):
                                     pe_t.append(time_instant)
                                     pe_p.append(0.1 * prob)
                                     prob = prob - down_dict[time_instant]

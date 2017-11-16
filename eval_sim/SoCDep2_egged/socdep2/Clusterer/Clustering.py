@@ -5,10 +5,10 @@ import copy
 from ConfigAndPackages import Config
 import networkx
 # from Clustering_Functions import remove_task_from_ctg
-from Clustering_Functions import add_task_to_ctg, clear_clustering, \
+from .Clustering_Functions import add_task_to_ctg, clear_clustering, \
     ctg_cost_function, remove_empty_clusters, ctg_opt_move
-from Clustering_Test import double_check_ctg
-from Clustering_Reports import report_ctg
+from .Clustering_Test import double_check_ctg
+from .Clustering_Reports import report_ctg
 
 
 def generate_ctg(num_of_clusters):
@@ -20,7 +20,7 @@ def generate_ctg(num_of_clusters):
     """
     print ("===========================================")
     print ("PREPARING FOR CLUSTERING THE TASK GRAPH...")
-    print ("   NUMBER OF CLUSTERS: "+str(num_of_clusters))
+    print(("   NUMBER OF CLUSTERS: "+str(num_of_clusters)))
     ctg = networkx.DiGraph()
     for i in range(0, num_of_clusters):
         ctg.add_node(i, TaskList=[], Node=None, Utilization=0, Criticality='L')
@@ -31,7 +31,7 @@ def generate_ctg(num_of_clusters):
 def gen_transparent_clusters(tg):
     print ("===========================================")
     print ("PREPARING FOR CLUSTERING THE TASK GRAPH...")
-    print ("   NUMBER OF CLUSTERS: "+str(len(tg.nodes())))
+    print(("   NUMBER OF CLUSTERS: "+str(len(tg.nodes()))))
     ctg = networkx.DiGraph()
     for i in range(0, len(tg.nodes())):
         ctg.add_node(i, TaskList=[], Node=None, Utilization=0,
@@ -54,10 +54,10 @@ def initial_clustering(tg, ctg):
     print ("STARTING INITIAL CLUSTERING...")
 
     if Config.clustering.random_seed is not None:
-        print "RANDOM SEED: ", Config.clustering.random_seed
+        print("RANDOM SEED: ", Config.clustering.random_seed)
         random.seed(Config.clustering.random_seed)
     else:
-        print "RANDOM SEED SET TO NONE!"
+        print("RANDOM SEED SET TO NONE!")
         random.seed(None)
 
     for task in tg.nodes():
@@ -92,7 +92,7 @@ def ctg_opt_local_search(tg, ctg, num_of_iter, logging):
     clustering_cost_file.write(str(cost)+"\n")
     best_solution = copy.deepcopy(ctg)
     best_tg = copy.deepcopy(tg)
-    print ("\tINITIAL COST: "+str(cost))
+    print(("\tINITIAL COST: "+str(cost)))
     # choose a random task from TG
     for i in range(0, num_of_iter):
 
@@ -105,8 +105,8 @@ def ctg_opt_local_search(tg, ctg, num_of_iter, logging):
         clustering_cost_file.write(str(new_cost)+"\n")
         if new_cost <= cost:
             if new_cost < cost:
-                print ("\033[32m* NOTE::\033[0mBETTER SOLUTION FOUND WITH COST:\t" +
-                       str(new_cost)+"\t\tIteration #:"+str(i))
+                print(("\033[32m* NOTE::\033[0mBETTER SOLUTION FOUND WITH COST:\t" +
+                       str(new_cost)+"\t\tIteration #:"+str(i)))
             best_solution = copy.deepcopy(ctg)
             best_tg = copy.deepcopy(tg)
             cost = new_cost
@@ -117,6 +117,6 @@ def ctg_opt_local_search(tg, ctg, num_of_iter, logging):
     remove_empty_clusters(best_solution)
     # double_check_ctg(best_tg, best_solution)
     print ("-------------------------------------")
-    print ("STARTING COST:"+str(starting_cost)+"\tFINAL COST: "+str(cost)+"\tAFTER "+str(num_of_iter)+" ITERATIONS")
-    print ("IMPROVEMENT:"+str("{0:.2f}".format(100*(starting_cost-cost)/starting_cost))+" %")
+    print(("STARTING COST:"+str(starting_cost)+"\tFINAL COST: "+str(cost)+"\tAFTER "+str(num_of_iter)+" ITERATIONS"))
+    print(("IMPROVEMENT:"+str("{0:.2f}".format(100*(starting_cost-cost)/starting_cost))+" %"))
     return best_solution, best_tg

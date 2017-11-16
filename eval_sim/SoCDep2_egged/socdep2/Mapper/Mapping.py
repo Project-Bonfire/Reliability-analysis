@@ -3,10 +3,10 @@
 import copy
 import time
 from socdep2.ConfigAndPackages import Config
-import Mapping_Functions
-import Mapping_Reports
+from . import Mapping_Functions
+from . import Mapping_Reports
 from socdep2.Clusterer import Clustering, Clustering_Reports, Clustering_Functions
-from Mapping_Heuristics import SimpleGreedy, Local_Search, SimulatedAnnealing, NMap
+from .Mapping_Heuristics import SimpleGreedy, Local_Search, SimulatedAnnealing, NMap
 from socdep2.Scheduler import Scheduler, Scheduling_Reports, Scheduling_Functions
 
 
@@ -79,8 +79,8 @@ def mapping(tg, ag, noc_rg, critical_rg, non_critical_rg, shm, logging, iteratio
                     Clustering_Functions.remove_empty_clusters(ctg)
                     Clustering_Reports.report_ctg(ctg, "CTG_PostCleaning.png")
 
-                print ("\033[92mTIME::\033[0m CLUSTERING AND OPTIMIZATION TOOK: "
-                       + str(round(time.time()-clustering_start_time))+" SECONDS")
+                print(("\033[92mTIME::\033[0m CLUSTERING AND OPTIMIZATION TOOK: "
+                       + str(round(time.time()-clustering_start_time))+" SECONDS"))
             else:
                 print ("Initial Clustering Failed....")
                 raise ValueError("INITIAL CLUSTERING FAILED...")
@@ -150,8 +150,8 @@ def mapping(tg, ag, noc_rg, critical_rg, non_critical_rg, shm, logging, iteratio
                 ag = copy.deepcopy(best_ag)
                 del best_tg, best_ctg, best_ag
             # print (Mapping_Functions.mapping_into_string(TG))
-            print ("\033[92mTIME::\033[0m MAPPING AND OPTIMIZATION TOOK: "
-                   + str(round(time.time()-mapping_start_time))+" SECONDS")
+            print(("\033[92mTIME::\033[0m MAPPING AND OPTIMIZATION TOOK: "
+                   + str(round(time.time()-mapping_start_time))+" SECONDS"))
 
             Mapping_Reports.report_mapping(ag, logging)
             Scheduling_Functions.clear_scheduling(ag)

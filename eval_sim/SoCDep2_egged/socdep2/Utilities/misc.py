@@ -1,7 +1,7 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
 from socdep2.ConfigAndPackages import Config, PackageFile
 import os
-import ConfigParser
+import configparser
 import ast
 
 
@@ -30,8 +30,8 @@ def draw_logo():
     print ("DEPENDABILITY MECHANISMS ON DIFFERENT ARCHITECTURES....")
     print ("Copyright (C) 2015-2016 as collective work done by Siavoosh Payandeh Azad, Rene Pihlak and Behrad Niazmand")
     print ("================================================================================")
-    print ("DEBUG DETAILS: "+str(Config.DebugDetails))
-    print ("DEBUG INFO: "+str(Config.DebugInfo))
+    print(("DEBUG DETAILS: "+str(Config.DebugDetails)))
+    print(("DEBUG INFO: "+str(Config.DebugInfo)))
     print ("===========================================")
     return None
 
@@ -105,7 +105,7 @@ def check_for_dependencies():
             __import__(module)
         except ImportError:
             raise ImportError("MODULE "+str(module)+" DOES NOT EXIST...")
-    print "\033[33m* INFO::\033[0m ALL REQUIRED MODULES AVAILABLE..."
+    print("\033[33m* INFO::\033[0m ALL REQUIRED MODULES AVAILABLE...")
     return True
 
 
@@ -116,7 +116,7 @@ def update_config(config_file_path):
     except IOError:
         print ('CAN NOT OPEN config_file')
 
-    config = ConfigParser.ConfigParser(allow_no_value=True)
+    config = configparser.ConfigParser(allow_no_value=True)
     config.read(config_file_path)
     # ------------------------------------------------
     #               Program_Config
@@ -318,7 +318,7 @@ def update_config(config_file_path):
 
 def generate_configfile():
     cfg_file = open('Generated_Files/ConfigFile.txt', 'w')
-    cnfgpars = ConfigParser.ConfigParser(allow_no_value=True)
+    cnfgpars = configparser.ConfigParser(allow_no_value=True)
     # ------------------------------------------------
     #               Program_Config
     # ------------------------------------------------
@@ -534,43 +534,43 @@ def generate_configfile():
 
 def print_help_man():
     print("Usage:    python Main.py [option] [argument 1]... [argument n]")
-    print ""
+    print("")
     print("Options and arguments:")
     print("\t-GUI\t\t:Graphical User Interface for Configuration")
-    print ""
+    print("")
 
     print("\t-BENCHMARK [Benchmark Name] \t: Runs Benchmark Algorithms:")
     print("\t\t * idct: Inverse Discrete Cosine Transform")
     print("\t\t * fdct: Forward Discrete Cosine Transform")
     print("\t\t * mi: Matrix Inverse")
-    print ""
+    print("")
 
-    print "\t-ETM  [Dimension] : Enumerates turn models regardless of their characteristics."
-    print "\t\t Dimension: 2D or 3D"
-    print "\t\t *The result will be stored in Generated_Files/Turn_Model_Lists folder."
-    print ""
+    print("\t-ETM  [Dimension] : Enumerates turn models regardless of their characteristics.")
+    print("\t\t Dimension: 2D or 3D")
+    print("\t\t *The result will be stored in Generated_Files/Turn_Model_Lists folder.")
+    print("")
 
-    print "\t-ETMD [Dimension] [Routing Type] [number of threads]: Enumerates turn models based on " \
-          "deadlock-free-ness and reports the \n\t\treachability metric (number of connected pairs), doa and doa-ex"
-    print "\t\t Dimension: 2D or 3D"
-    print "\t\t Routing Type: \"M\" for minimal and \"NM\" for non-minimal"
-    print "\t\t number of threads: number of threads in integer"
-    print "\t\t *The result will be stored in Generated_Files/Turn_Model_Lists folder."
-    print ""
+    print("\t-ETMD [Dimension] [Routing Type] [number of threads]: Enumerates turn models based on " \
+          "deadlock-free-ness and reports the \n\t\treachability metric (number of connected pairs), doa and doa-ex")
+    print("\t\t Dimension: 2D or 3D")
+    print("\t\t Routing Type: \"M\" for minimal and \"NM\" for non-minimal")
+    print("\t\t number of threads: number of threads in integer")
+    print("\t\t *The result will be stored in Generated_Files/Turn_Model_Lists folder.")
+    print("")
 
-    print("\t-TMFT  [Dimension] [Routing Type] [number of threads] [-V] : Checks the fault tolerance" +
+    print(("\t-TMFT  [Dimension] [Routing Type] [number of threads] [-V] : Checks the fault tolerance" +
           " of implemented routing algorithms \n\t\tand calculates the average reachability metric (number of" +
-          "reachable pairs) for different number of faults in the network.")
+          "reachable pairs) for different number of faults in the network."))
     print("\t\t Dimension: 2D or 3D")
     print("\t\t Routing Type: \"M\" for minimal and \"NM\" for non-minimal")
     print("\t\t number of threads: number of threads in integer")
     print("\t\t -V: Enables visualization of every step of routing algorithm checks ")
-    print ""
+    print("")
 
     print("\t-VIZTM [Dimension] [Routing Type]: visualizes the turn models in the given dimension")
     print("\t\t Dimension: 2D or 3D")
     print("\t\t Routing Type: \"M\" for minimal and \"NM\" for non-minimal")
-    print ""
+    print("")
 
     print ("\t-TMC: 3D 18-turn, turn model classification")
     print("")

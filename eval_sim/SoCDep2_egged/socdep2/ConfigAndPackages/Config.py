@@ -1,5 +1,5 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
-import PackageFile
+from . import PackageFile
 import copy
 ################################################
 #          Program  Config
@@ -143,17 +143,17 @@ def setup_turns_health():
         if not SetRoutingFromFile:
             for Turn in PackageFile.FULL_TurnModel_2D:
                 if Turn not in UsedTurnModel:
-                    if Turn in turns_health.keys():
+                    if Turn in list(turns_health.keys()):
                         turns_health[Turn] = False
                 else:
-                    if Turn in turns_health.keys():
+                    if Turn in list(turns_health.keys()):
                         turns_health[Turn] = True
     elif '3D' in ag.topology:
         turns_health = copy.deepcopy(PackageFile.TurnsHealth_3DNetwork)
         if not SetRoutingFromFile:
             for Turn in PackageFile.FULL_TurnModel_3D:
                 if Turn not in UsedTurnModel:
-                    if Turn in turns_health.keys():
+                    if Turn in list(turns_health.keys()):
                         turns_health[Turn] = False
     return turns_health
 

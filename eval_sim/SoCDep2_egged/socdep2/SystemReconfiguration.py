@@ -1,12 +1,12 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
-from Mapper.Mapping_Functions import clear_mapping_for_reconfiguration, read_mapping_from_file, write_mapping_to_file, mapping_into_string
-from Mapper.Mapping_Reports import draw_mapping_distribution, draw_mapping
-from Mapper.Mapping import mapping
-from Scheduler.Scheduling_Functions import clear_scheduling
-from Scheduler.Scheduler import schedule_all
-from Scheduler.Scheduling_Reports import generate_gantt_charts
-from SystemHealthMonitoring import SHMU_Reports
-from ConfigAndPackages import Config
+from .Mapper.Mapping_Functions import clear_mapping_for_reconfiguration, read_mapping_from_file, write_mapping_to_file, mapping_into_string
+from .Mapper.Mapping_Reports import draw_mapping_distribution, draw_mapping
+from .Mapper.Mapping import mapping
+from .Scheduler.Scheduling_Functions import clear_scheduling
+from .Scheduler.Scheduler import schedule_all
+from .Scheduler.Scheduling_Reports import generate_gantt_charts
+from .SystemHealthMonitoring import SHMU_Reports
+from .ConfigAndPackages import Config
 import copy
 
 

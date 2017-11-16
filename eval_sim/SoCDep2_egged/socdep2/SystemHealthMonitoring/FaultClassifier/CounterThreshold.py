@@ -40,7 +40,7 @@ class CounterThreshold:
         if type(location) is dict:
             # location is a router: {node_1: [turn]}
             # print location, str(location.keys()[0])+str(location[location.keys()[0]])
-            location = "R"+str(location.keys()[0])
+            location = "R"+str(list(location.keys())[0])
         elif type(location) is tuple:
             # location is a link: (node1, node 2)
             # print location, location[0], location[1]
@@ -50,7 +50,7 @@ class CounterThreshold:
             # print location
             location = str(location)
         else:
-            print location, type(location)
+            print(location, type(location))
             raise ValueError("location type is wrong!")
 
         if not self.check_counter_start(location, "Health"):
@@ -59,7 +59,7 @@ class CounterThreshold:
             pass
 
         # increase the health counter
-        if location in self.health_counters.keys():
+        if location in list(self.health_counters.keys()):
             self.health_counters[location] += 1
         else:
             self.health_counters[location] = 1
@@ -84,7 +84,7 @@ class CounterThreshold:
             # location is a router: {node_1: [turn]}
             # print location, str(location.keys()[0])+str(location[location.keys()[0]])
             if Config.enable_router_counters:
-                location = "R"+str(location.keys()[0])
+                location = "R"+str(list(location.keys())[0])
             else:
                 return None
         elif type(location) is tuple:
@@ -102,7 +102,7 @@ class CounterThreshold:
             else:
                 return None
         else:
-            print location, type(location)
+            print(location, type(location))
             raise ValueError("location type is wrong!")
 
         if not self.check_counter_start(location, "Intermittent"):
@@ -113,7 +113,7 @@ class CounterThreshold:
 
         self.number_of_faults += 1
         # Increase the intermittent counter for the specified location
-        if location in self.intermittent_counters.keys():
+        if location in list(self.intermittent_counters.keys()):
             self.intermittent_counters[location] += 1
         self.update_report_dict(ag)
         logging.info("Increasing intermittent counter at location: "+location+" Counter: " +
@@ -137,7 +137,7 @@ class CounterThreshold:
             # location is a router: {node_1: [turn]}
             # print location, str(location.keys()[0])+str(location[location.keys()[0]])
             if Config.enable_router_counters:
-                location = "R"+str(location.keys()[0])
+                location = "R"+str(list(location.keys())[0])
             else:
                 return None
         elif type(location) is tuple:
@@ -155,7 +155,7 @@ class CounterThreshold:
             else:
                 return None
         else:
-            print location, type(location)
+            print(location, type(location))
             raise ValueError("location type is wrong!")
 
         if not self.check_counter_start(location, "Fault"):
@@ -165,7 +165,7 @@ class CounterThreshold:
             self.generate_counters(location)
         self.number_of_faults += 1
         # increase the fault Counter
-        if location in self.fault_counters.keys():
+        if location in list(self.fault_counters.keys()):
             self.fault_counters[location] += 1
         self.update_report_dict(ag)
         logging.info("Increasing counter at location: "+location+" Counter: "+str(self.fault_counters[location]))
@@ -291,7 +291,7 @@ class CounterThreshold:
                 if location in self.dead_components:
                     # do not increase the counter if component is dead
                     return False
-                if location in self.fault_counters.keys() or location in self.intermittent_counters.keys():
+                if location in list(self.fault_counters.keys()) or location in list(self.intermittent_counters.keys()):
                     return True
                 else:
                     # do not start the health counter if there is no fault or intermittent counter
@@ -310,8 +310,8 @@ class CounterThreshold:
                     return True
         elif Config.state_config == "3" or Config.state_config == "5":
             if counter_name == "Health":
-                if location in self.fault_counters.keys() or \
-                   location in self.intermittent_counters.keys() or \
+                if location in list(self.fault_counters.keys()) or \
+                   location in list(self.intermittent_counters.keys()) or \
                    location in self.dead_components:
                     return True
                 else:
@@ -336,11 +336,11 @@ class CounterThreshold:
         :param location: location of the counters to be reset
         :return: None
         """
-        if location in self.fault_counters.keys():
+        if location in list(self.fault_counters.keys()):
             del self.fault_counters[location]
-        if location in self.intermittent_counters.keys():
+        if location in list(self.intermittent_counters.keys()):
             del self.intermittent_counters[location]
-        if location in self.health_counters.keys():
+        if location in list(self.health_counters.keys()):
             del self.health_counters[location]
         if location in self.comp_of_interest:
             self.comp_of_interest.remove(location)
@@ -370,12 +370,12 @@ class CounterThreshold:
         # that im calling this function from 2 different places. one is inside this class and the other
         # is from the simulator (every clock cycle). Now, every time we increase/reset a counter in the system
         # we add one extra time stamp... Im thinking about how i can remove this!
-        if location not in self.counters_f_report.keys():
+        if location not in list(self.counters_f_report.keys()):
             self.counters_f_report[location] = []
             self.counters_h_report[location] = []
             self.counters_i_report[location] = []
             self.viz_counter_list[location] = []
-        if location in self.fault_counters.keys():
+        if location in list(self.fault_counters.keys()):
 
             if self.fault_counters[location] > self.counters_f_report[location][-1]:
                 self.add_location_to_viz_counters(location, 'F')
@@ -438,27 +438,27 @@ class CounterThreshold:
         return len(self.health_counters) + len(self.fault_counters) + len(self.intermittent_counters)
 
     def report(self, number_of_nodes, number_of_links):
-        print "==========================================="
-        print "        COUNTER-THRESHOLD REPORT"
-        print "==========================================="
-        print "DEAD Components:", self.dead_components
-        print "Intermittent Components:", self.intermittent_components
+        print("===========================================")
+        print("        COUNTER-THRESHOLD REPORT")
+        print("===========================================")
+        print("DEAD Components:", self.dead_components)
+        print("Intermittent Components:", self.intermittent_components)
         # number of links + number of routers + number of PEs
         number_of_components = number_of_links + 2 * number_of_nodes
         bits_required_for_address = ceil(log(number_of_components, 2))
 
-        print "MAX NUMBER OF COUNTERS:", self.memory_counter
-        print "\t| NUMBER OF BITS FOR ADDRESS FOR EACH COUNTER:", bits_required_for_address
+        print("MAX NUMBER OF COUNTERS:", self.memory_counter)
+        print("\t| NUMBER OF BITS FOR ADDRESS FOR EACH COUNTER:", bits_required_for_address)
         max_counter_bits = max(ceil(log(Config.fault_counter_threshold)), ceil(log(Config.health_counter_threshold)),
                                ceil(log(Config.intermittent_counter_threshold)))
-        print "\t| MAX NUMBER OF BITS FOR EACH COUNTER:", max_counter_bits
+        print("\t| MAX NUMBER OF BITS FOR EACH COUNTER:", max_counter_bits)
         counter_total_bits = max_counter_bits + bits_required_for_address
-        print "\t| TOTAL BITS PER COUNTER:", counter_total_bits
+        print("\t| TOTAL BITS PER COUNTER:", counter_total_bits)
 
-        print "\t| MAX LEN OF COMP OF INTEREST:", self.max_comp_of_interest
+        print("\t| MAX LEN OF COMP OF INTEREST:", self.max_comp_of_interest)
 
-        print "MAX MEM USAGE:", self.memory_counter * counter_total_bits, " BITS"
-        print "AVERAGE COUNTER PER Node: ", float(self.memory_counter)/number_of_nodes
-        print "AVERAGE BITS PER Node: ", float(self.memory_counter * counter_total_bits)/number_of_nodes
-        print "NUMBER OF FAULTS:", self.number_of_faults
+        print("MAX MEM USAGE:", self.memory_counter * counter_total_bits, " BITS")
+        print("AVERAGE COUNTER PER Node: ", float(self.memory_counter)/number_of_nodes)
+        print("AVERAGE BITS PER Node: ", float(self.memory_counter * counter_total_bits)/number_of_nodes)
+        print("NUMBER OF FAULTS:", self.number_of_faults)
         return None

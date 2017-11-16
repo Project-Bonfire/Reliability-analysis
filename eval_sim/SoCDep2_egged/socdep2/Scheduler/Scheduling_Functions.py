@@ -31,7 +31,7 @@ def clear_scheduling(ag):
 
 def check_if_all_deadlines_are_met(tg, ag):
     for node in ag:
-        for task in ag.node[node]['PE'].scheduling.keys():
+        for task in list(ag.node[node]['PE'].scheduling.keys()):
             if tg.node[task]['task'].criticality == 'H':
                 scheduling_time =  ag.node[node]['PE'].scheduling[task]
                 # print task, scheduling_time

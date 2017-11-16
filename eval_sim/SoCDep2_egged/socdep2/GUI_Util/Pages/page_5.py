@@ -1,7 +1,7 @@
 # Copyright (C) Siavoosh Payandeh Azad
-from page_class import Page
-import Tkinter as tk
-import ttk
+from .page_class import Page
+import tkinter as tk
+import tkinter.ttk
 
 
 class Page5(Page):      # visualization
@@ -54,7 +54,7 @@ class Page5(Page):      # visualization
         mapping_draw_enable.grid(column=self.viz_starting_col, row=self.viz_starting_row+4, sticky='W')
         pmcg_draw_enable.grid(column=self.viz_starting_col+1, row=self.viz_starting_row+3, sticky='W')
         ttg_draw_enable.grid(column=self.viz_starting_col+1, row=self.viz_starting_row+4, sticky='W')
-        ttk.Separator(self, orient='vertical').grid(column=self.viz_starting_col+3,
+        tkinter.ttk.Separator(self, orient='vertical').grid(column=self.viz_starting_col+3,
                                                     row=self.viz_starting_row+1, rowspan=4, sticky="ns")
 
         # ---------------------------------------------

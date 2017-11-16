@@ -17,13 +17,13 @@ def report_noc_shm(shmu):
     print ("      REPORTING SYSTEM HEALTH MAP")
     print ("===========================================")
     for node in shmu.SHM.nodes():
-        print ("\tNODE:", node)
-        print ("\t\tNODE HEALTH:", shmu.SHM.node[node]['NodeHealth'])
-        print ("\t\tNODE SPEED:", shmu.SHM.node[node]['NodeSpeed'])
-        print ("\t\tTURNS:", shmu.SHM.node[node]['TurnsHealth'])
+        print(("\tNODE:", node))
+        print(("\t\tNODE HEALTH:", shmu.SHM.node[node]['NodeHealth']))
+        print(("\t\tNODE SPEED:", shmu.SHM.node[node]['NodeSpeed']))
+        print(("\t\tTURNS:", shmu.SHM.node[node]['TurnsHealth']))
         print ("\t==============")
     for edge in shmu.SHM.edges():
-        print ("\tLINK:", edge, "\t", shmu.SHM.edge[edge[0]][edge[1]]['LinkHealth'])
+        print(("\tLINK:", edge, "\t", shmu.SHM.edge[edge[0]][edge[1]]['LinkHealth']))
     return None
 
 
@@ -36,8 +36,8 @@ def report_the_event(fault_location, fault_type):
     if type(fault_location) is tuple:
             string_to_print += 'Link ' + str(fault_location)
     elif type(fault_location) is dict:
-            turn = fault_location[fault_location.keys()[0]]
-            node = fault_location.keys()[0]
+            turn = fault_location[list(fault_location.keys())[0]]
+            node = list(fault_location.keys())[0]
             string_to_print += 'Turn ' + str(turn) + ' of Node ' + str(node)
     else:
             string_to_print += 'Node ' + str(fault_location)
@@ -55,7 +55,7 @@ def report_mpm(shmu):
     print ("      REPORTING MOST PROBABLE MAPPING ")
     print ("===========================================")
     for item in shmu.MPM:
-        print ("KEY:", item, "\t\tMAPPING:", shmu.MPM[item])
+        print(("KEY:", item, "\t\tMAPPING:", shmu.MPM[item]))
     return None
 
 
@@ -106,8 +106,8 @@ def draw_temp_distribution(shm):
     fig_util.savefig("GraphDrawings/Temp_Distribute.png", dpi=100)
     fig_util.clf()
     plt.close(fig_util)
-    print("\033[35m* VIZ::\033[0mMAPPING UTILIZATION DISTRIBUTION DRAWING " +
-          "CREATED AT: GraphDrawings/Temp_Distribute.png")
+    print(("\033[35m* VIZ::\033[0mMAPPING UTILIZATION DISTRIBUTION DRAWING " +
+          "CREATED AT: GraphDrawings/Temp_Distribute.png"))
     return None
 
 

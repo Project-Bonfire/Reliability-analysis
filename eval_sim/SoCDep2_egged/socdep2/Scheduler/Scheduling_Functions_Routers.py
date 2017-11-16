@@ -19,7 +19,7 @@ def find_last_allocated_time_on_router(ag, node, logging=None):
         logging.info("\t\tFINDING LAST ALLOCATED TIME ON Router "+str(node))
     last_allocated_time = 0
     if len(ag.node[node]['Router'].mapped_tasks) > 0:
-        for Task in ag.node[node]['Router'].mapped_tasks.keys():
+        for Task in list(ag.node[node]['Router'].mapped_tasks.keys()):
             if Task in ag.node[node]['Router'].scheduling:
                 for ScheduleAndBatch in ag.node[node]['Router'].scheduling[Task]:
                     start_time = ScheduleAndBatch[0]
@@ -44,7 +44,7 @@ def find_last_allocated_time_on_router_for_task(ag, node, edge, prob, logging=No
                      str(edge)+" WITH PROB: "+str(prob))
     last_allocated_time = 0
     if len(ag.node[node]['Router'].mapped_tasks) > 0:
-        for task in ag.node[node]['Router'].mapped_tasks.keys():
+        for task in list(ag.node[node]['Router'].mapped_tasks.keys()):
             if task in ag.node[node]['Router'].scheduling:
                 for ScheduleAndBatch in ag.node[node]['Router'].scheduling[task]:
                     start_time = ScheduleAndBatch[0]

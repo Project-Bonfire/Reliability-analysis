@@ -1,7 +1,7 @@
 # Copyright (C) Siavoosh Payandeh Azad
-from page_class import Page
-import Tkinter as tk
-import ttk
+from .page_class import Page
+import tkinter as tk
+import tkinter.ttk
 
 
 class Page4(Page):      # testing
@@ -74,9 +74,9 @@ class Page4(Page):      # testing
         self.num_of_rects_label.grid(column=self.dependability_starting_col, row=self.dependability_starting_row+3)
         self.num_of_rects.grid(column=self.dependability_starting_col+1, row=self.dependability_starting_row+3)
 
-        ttk.Separator(self, orient='vertical').grid(column=self.dependability_starting_col+3,
+        tkinter.ttk.Separator(self, orient='vertical').grid(column=self.dependability_starting_col+3,
                                                     row=self.dependability_starting_row+1, rowspan=6, sticky="ns")
-        ttk.Separator(self, orient='horizontal').grid(column=self.dependability_starting_col,
+        tkinter.ttk.Separator(self, orient='horizontal').grid(column=self.dependability_starting_col,
                                                       row=self.dependability_starting_row+4, columnspan=2, sticky="ew")
         # ---------------------------------------------
         #               Fault Injection

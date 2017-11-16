@@ -47,7 +47,7 @@ def generate_fault_time_dict_from_file():
 
 def update_fault_time_dict(current_time, fault_time_dictionary):
     temp_dict = {}
-    for fault_time in fault_time_dictionary.keys():
+    for fault_time in list(fault_time_dictionary.keys()):
         if fault_time < current_time:
             pass
         else:
@@ -62,11 +62,11 @@ def draw_faults_locations(fault_time_dict):
     location_time_dictionary = {}
     for item in fault_time_dict:
         fault_location = fault_time_dict[item][0]
-        if fault_location in location_time_dictionary.keys():
+        if fault_location in list(location_time_dictionary.keys()):
             location_time_dictionary[fault_location].append(int(item))
         else:
             location_time_dictionary[fault_location] = [int(item)]
-    for location in location_time_dictionary.keys():
+    for location in list(location_time_dictionary.keys()):
         time_list = location_time_dictionary[location]
         # print location, time_list
         values = []

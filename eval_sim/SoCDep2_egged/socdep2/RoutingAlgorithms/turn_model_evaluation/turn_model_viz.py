@@ -144,7 +144,7 @@ def viz_all_turn_models(dimension, routing_type):
         if routing_type in ["M", "NM"]:
             viz_2d_turn_model(all_2d_turn_model_package.all_2d_turn_models)
         else:
-            print "ARGUMENT ERROR:: Routing type should be either M or NM..."
+            print("ARGUMENT ERROR:: Routing type should be either M or NM...")
 
     if dimension == '3D':
         if routing_type == "NM":
@@ -176,7 +176,7 @@ def viz_turn_model_evaluation(cost_file_name):
     """
     print ("===========================================")
     print ("GENERATING TURN MODEL EVALUATION VISUALIZATIONS...")
-    print 'READING Generated_Files/Internal/'+cost_file_name+'.txt'
+    print('READING Generated_Files/Internal/'+cost_file_name+'.txt')
     fig, ax1 = plt.subplots()
     try:
         viz_file = open('Generated_Files/Internal/'+cost_file_name+'.txt', 'r')
@@ -186,7 +186,7 @@ def viz_turn_model_evaluation(cost_file_name):
         while line != "":
             con_metric.append(float(line))
             line = viz_file.readline()
-        solution_num = range(0, len(con_metric))
+        solution_num = list(range(0, len(con_metric)))
         viz_file.close()
 
         ax1.set_ylabel('Connectivity Metric')
@@ -194,11 +194,11 @@ def viz_turn_model_evaluation(cost_file_name):
         ax1.plot(solution_num, con_metric, '#5095FD')
 
     except IOError:
-        print ('CAN NOT OPEN', cost_file_name+'.txt')
+        print(('CAN NOT OPEN', cost_file_name+'.txt'))
 
     plt.savefig("GraphDrawings/"+str(cost_file_name)+".png", dpi=300)
-    print ("\033[35m* VIZ::\033[0m Turn Model Evaluation " +
-           "GRAPH CREATED AT: GraphDrawings/"+str(cost_file_name)+".png")
+    print(("\033[35m* VIZ::\033[0m Turn Model Evaluation " +
+           "GRAPH CREATED AT: GraphDrawings/"+str(cost_file_name)+".png"))
     plt.clf()
     plt.close(fig)
     return None
@@ -227,7 +227,7 @@ def viz_all_turn_models_against_each_other():
             value = line.split()
             value_list.append(float(value[1]))
             line = viz_file.readline()
-        index_list = range(0, len(value_list))
+        index_list = list(range(0, len(value_list)))
         viz_file.close()
         value_list = sorted(value_list)
         random.seed(counter)
@@ -241,7 +241,7 @@ def viz_all_turn_models_against_each_other():
 
     handles, labels = ax1.get_legend_handles_labels()
     hl = sorted(zip(handles, labels), key=operator.itemgetter(1))
-    handles2, labels2 = zip(*hl)
+    handles2, labels2 = list(zip(*hl))
 
     lgd = ax1.legend(handles2, labels2, loc='center left',  bbox_to_anchor=(1, 0.5), ncol=3)
     ax1.grid('on')
@@ -252,8 +252,8 @@ def viz_all_turn_models_against_each_other():
                 bbox_inches='tight', dpi=300)
     plt.clf()
     plt.close(fig)
-    print ("\033[35m* VIZ::\033[0m Turn Model Evaluation " +
-           "GRAPH CREATED AT: GraphDrawings/Turn_Models_Fault_Tolerance_Eval.png")
+    print(("\033[35m* VIZ::\033[0m Turn Model Evaluation " +
+           "GRAPH CREATED AT: GraphDrawings/Turn_Models_Fault_Tolerance_Eval.png"))
     return None
 
 
@@ -423,7 +423,7 @@ def viz_3d_turn_model(file_name, size_x, size_y, rows, columns):
             count = 1
             del fig
             del ax1
-            print ("GENERATING TURN MODEL VISUALIZATIONS... Page:"+str(page_counter))
+            print(("GENERATING TURN MODEL VISUALIZATIONS... Page:"+str(page_counter)))
             fig = plt.figure(figsize=(size_x, size_y))
         line = data_file.readline()
     if page_counter == 0:

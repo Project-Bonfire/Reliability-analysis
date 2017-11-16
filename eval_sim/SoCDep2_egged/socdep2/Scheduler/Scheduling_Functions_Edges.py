@@ -1,7 +1,7 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
 
-import Scheduling_Functions_Links
-import Scheduling_Functions_Routers
+from . import Scheduling_Functions_Links
+from . import Scheduling_Functions_Routers
 from socdep2.ConfigAndPackages import Config
 
 
@@ -19,7 +19,7 @@ def find_edge_asap_scheduling_link(tg, ag, edge, link, batch, prob, report, logg
     :return: Start Time and Stop Time
     """
     if report:
-        print "Finding Edge", edge, " ASAP Scheduling on Link:", link
+        print("Finding Edge", edge, " ASAP Scheduling on Link:", link)
     start_time = max(Scheduling_Functions_Links.find_last_allocated_time_on_link_for_task(ag, link, edge,
                                                                                           prob, logging),
                      find_edge_predecessors_finish_time(tg, ag, edge, batch))
@@ -29,7 +29,7 @@ def find_edge_asap_scheduling_link(tg, ag, edge, link, batch, prob, report, logg
     else:
         end_time = start_time+edge_execution_on_link
     if report:
-        print "Start time:", start_time, "End Time:", end_time
+        print("Start time:", start_time, "End Time:", end_time)
     return start_time, end_time
 
 
@@ -47,7 +47,7 @@ def find_edge_asap_scheduling_router(tg, ag, edge, node, batch, prob, report, lo
     :return: Start Time and End time
     """
     if report:
-        print "Finding Edge", edge, " ASAP Scheduling on router:", node
+        print("Finding Edge", edge, " ASAP Scheduling on router:", node)
     start_time = max(Scheduling_Functions_Routers.find_last_allocated_time_on_router_for_task(ag, node, edge,
                                                                                               prob, logging),
                      find_edge_predecessors_finish_time(tg, ag, edge, batch))
@@ -57,7 +57,7 @@ def find_edge_asap_scheduling_router(tg, ag, edge, node, batch, prob, report, lo
     else:
         end_time = start_time+edge_execution_on_link
     if report:
-        print "Start time:", start_time, "End Time:", end_time
+        print("Start time:", start_time, "End Time:", end_time)
     return start_time, end_time
 
 
@@ -76,14 +76,14 @@ def find_test_edge_asap_scheduling(tg, ag, edge, link, batch, prob, report, logg
     :return: Start Time and End Time
     """
     if report:
-        print "Finding Test Edge", edge, " ASAP Scheduling"
+        print("Finding Test Edge", edge, " ASAP Scheduling")
     start_time = max(Scheduling_Functions_Links.find_last_allocated_time_on_link_for_task(ag, link, edge,
                                                                                           prob, logging),
                      find_edge_predecessors_finish_time(tg, ag, edge, batch))
     edge_execution_on_link = tg.edge[edge[0]][edge[1]]['ComWeight']
     end_time = start_time+edge_execution_on_link
     if report:
-        print "Start time:", start_time, "End Time:", end_time
+        print("Start time:", start_time, "End Time:", end_time)
     return start_time, end_time
 
 

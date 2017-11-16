@@ -1,0 +1,5 @@
+Generated_Files/
+GraphDrawings/
+*.pyc
+*.bak
+**/__pycache__/

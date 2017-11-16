@@ -19,14 +19,14 @@ def opt_ag_vertical_link_sa(ag, shmu, cost_file_name, logging):
     :return: None
     """
     logging.info("STARTING SA FOR VLP OPT")
-    print "==========================================="
-    print "VL PLACEMENT OPTIMIZATION USING SIMULATED ANNEALING..."
-    print "STARTING TEMPERATURE:", Config.vl_opt.sa_initial_temp
-    print "ANNEALING SCHEDULE: ", Config.vl_opt.sa_annealing_schedule
-    print "TERMINATION CRITERIA: ", Config.vl_opt.termination_criteria
+    print("===========================================")
+    print("VL PLACEMENT OPTIMIZATION USING SIMULATED ANNEALING...")
+    print("STARTING TEMPERATURE:", Config.vl_opt.sa_initial_temp)
+    print("ANNEALING SCHEDULE: ", Config.vl_opt.sa_annealing_schedule)
+    print("TERMINATION CRITERIA: ", Config.vl_opt.termination_criteria)
     if Config.vl_opt.termination_criteria == 'IterationNum':
-        print "NUMBER OF ITERATIONS: ", Config.vl_opt.sa_iteration
-    print "================"
+        print("NUMBER OF ITERATIONS: ", Config.vl_opt.sa_iteration)
+    print("================")
     if type(cost_file_name) is str:
         ag_cost_file = open('Generated_Files/Internal/'+cost_file_name+'.txt', 'a')
     else:
@@ -40,8 +40,8 @@ def opt_ag_vertical_link_sa(ag, shmu, cost_file_name, logging):
                                                                    Config.DebugInfo, Config.DebugDetails))
     cost = vl_cost_function(ag, routing_graph)
     print ("STARTING AG VL PLACEMENT OPTIMIZATION")
-    print ("NUMBER OF AVAILABLE V-LINKS: "+str(Config.vl_opt.vl_num))
-    print ("INITIAL REACHABILITY METRIC: "+str(cost))
+    print(("NUMBER OF AVAILABLE V-LINKS: "+str(Config.vl_opt.vl_num)))
+    print(("INITIAL REACHABILITY METRIC: "+str(cost)))
     starting_cost = cost
     current_cost = cost
     best_cost = cost
@@ -77,8 +77,8 @@ def opt_ag_vertical_link_sa(ag, shmu, cost_file_name, logging):
             if new_cost > best_cost:
                 best_cost = new_cost
                 best_vertical_link_list = new_vertical_link_list[:]
-                print ("\033[32m* NOTE::\033[0mFOUND BETTER SOLUTION WITH COST:" +
-                       str(cost) + "\t ITERATION: "+str(i))
+                print(("\033[32m* NOTE::\033[0mFOUND BETTER SOLUTION WITH COST:" +
+                       str(cost) + "\t ITERATION: "+str(i)))
         else:
             # move back to initial solution
             return_to_solution(ag, shmu, vertical_link_list)
@@ -98,8 +98,8 @@ def opt_ag_vertical_link_sa(ag, shmu, cost_file_name, logging):
     temperature_file.close()
     return_to_solution(ag, shmu, best_vertical_link_list)
     print ("-------------------------------------")
-    print ("STARTING COST:"+str(starting_cost)+"\tFINAL COST:"+str(best_cost))
-    print ("IMPROVEMENT:"+str("{0:.2f}".format(100*(best_cost-starting_cost)/starting_cost))+" %")
+    print(("STARTING COST:"+str(starting_cost)+"\tFINAL COST:"+str(best_cost)))
+    print(("IMPROVEMENT:"+str("{0:.2f}".format(100*(best_cost-starting_cost)/starting_cost))+" %"))
     logging.info("SA FOR VL PLACEMENT FINISHED...")
     return None
 
@@ -131,18 +131,18 @@ def next_temp(initial_temp, iteration, max_iteration, current_temp):
     """
     if Config.vl_opt.sa_annealing_schedule == 'Linear':
         temp = (float(max_iteration-iteration)/max_iteration)*initial_temp
-        print ("\033[36m* COOLING::\033[0m CURRENT TEMP: "+str(temp))
+        print(("\033[36m* COOLING::\033[0m CURRENT TEMP: "+str(temp)))
     #   ----------------------------------------------------------------
     elif Config.vl_opt.sa_annealing_schedule == 'Exponential':
         temp = current_temp * Config.vl_opt.sa_alpha
-        print ("\033[36m* COOLING::\033[0m CURRENT TEMP: "+str(temp))
+        print(("\033[36m* COOLING::\033[0m CURRENT TEMP: "+str(temp)))
     #   ----------------------------------------------------------------
     elif Config.vl_opt.sa_annealing_schedule == 'Logarithmic':
         # this is based on "A comparison of simulated annealing cooling strategies"
         # by Yaghout Nourani and Bjarne Andresen
         # iteration should be > 1 so I added 1
         temp = Config.vl_opt.sa_log_cooling_constant * (1.0/log10(1+(iteration+1)))
-        print ("\033[36m* COOLING::\033[0m CURRENT TEMP: "+str(temp))
+        print(("\033[36m* COOLING::\033[0m CURRENT TEMP: "+str(temp)))
     else:
         raise ValueError('Invalid Cooling Method for SA...')
     return temp

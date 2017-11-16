@@ -1,7 +1,7 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
 from socdep2.ConfigAndPackages import Config
 import random
-import SHMU_Reports
+from . import SHMU_Reports
 from socdep2.RoutingAlgorithms import Routing
 
 
@@ -47,9 +47,9 @@ def random_fault_generation(shm):
 
     elif chosen_fault == 'Turn':
         chosen_node = random.choice(shm.nodes())
-        chosen_turn = random.choice(shm.node[chosen_node]['TurnsHealth'].keys())
+        chosen_turn = random.choice(list(shm.node[chosen_node]['TurnsHealth'].keys()))
         while chosen_turn not in Config.UsedTurnModel:
-            chosen_turn = random.choice(shm.node[chosen_node]['TurnsHealth'].keys())
+            chosen_turn = random.choice(list(shm.node[chosen_node]['TurnsHealth'].keys()))
         return {chosen_node: chosen_turn}, fault_type
     elif chosen_fault == 'Node':
         chosen_node = random.choice(shm.nodes())
@@ -88,7 +88,7 @@ def apply_fault_event(ag, shmu, noc_rg, fault_location, fault_type):
                 shmu.break_link(fault_location, True)
                 Routing.update_noc_route_graph(noc_rg, from_port, to_port, 'REMOVE')
         elif type(fault_location) is dict:   # its a Turn fault
-            current_node = fault_location.keys()[0]
+            current_node = list(fault_location.keys())[0]
             current_turn = fault_location[current_node]
             if fault_type == 'T':    # Transient Fault
                 if shmu.SHM.node[current_node]['TurnsHealth'][current_turn]:   # check if the turn is actually working

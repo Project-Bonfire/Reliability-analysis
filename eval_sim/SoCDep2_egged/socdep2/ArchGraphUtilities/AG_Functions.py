@@ -38,8 +38,8 @@ def generate_manual_ag(proc_element_list, ag_edge_list, ag_edge_port_list):
     for i in range(0, len(ag_edge_list)):
         edge = ag_edge_list[i]
         ag.add_edge(edge[0], edge[1], Port=ag_edge_port_list[i], MappedTasks={}, Scheduling={})
-    print("\tNODES: "+str(ag.nodes(data=False)))
-    print("\tEDGES: "+str(ag.edges(data=False)))
+    print(("\tNODES: "+str(ag.nodes(data=False))))
+    print(("\tEDGES: "+str(ag.edges(data=False))))
     print("ARCHITECTURE GRAPH (AG) IS READY...")
     return ag
 
@@ -58,10 +58,10 @@ def generate_generic_topology_ag(topology, logging=None, report=True):
     if report:
         print ("===========================================")
         print ("PREPARING AN ARCHITECTURE GRAPH (AG)...")
-        print ("TOPOLOGY: "+topology)
-        print ("X SIZE:"+str(size_x))
-        print ("Y SIZE:"+str(size_y))
-        print ("Z SIZE:"+str(size_z))
+        print(("TOPOLOGY: "+topology))
+        print(("X SIZE:"+str(size_x)))
+        print(("Y SIZE:"+str(size_y)))
+        print(("Z SIZE:"+str(size_z)))
     ag = networkx.DiGraph()
 
     if topology not in supported_topologies:
@@ -346,9 +346,9 @@ def setup_network_partitioning(ag):
         if link[0] in Config.GateToNonCritical and link[1] in non_critical_nodes:
             Config.VirtualBrokenLinksForCritical.append(link)
 
-    print ("ListOfBrokenLinks:", Config.ListOfBrokenLinks)
-    print ("VirtualBrokenLinksForNonCritical:", Config.VirtualBrokenLinksForNonCritical)
-    print ("VirtualBrokenLinksForCritical:", Config.VirtualBrokenLinksForCritical)
+    print(("ListOfBrokenLinks:", Config.ListOfBrokenLinks))
+    print(("VirtualBrokenLinksForNonCritical:", Config.VirtualBrokenLinksForNonCritical))
+    print(("VirtualBrokenLinksForCritical:", Config.VirtualBrokenLinksForCritical))
     return None
 
 

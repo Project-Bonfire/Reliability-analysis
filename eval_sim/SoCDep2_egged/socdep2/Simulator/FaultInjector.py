@@ -26,7 +26,7 @@ def fault_event(env, ag, shmu, noc_rg, schedule_length, fault_time_dict, counter
     """
     fault = False
     while True:
-        for fault_time in fault_time_dict.keys():
+        for fault_time in list(fault_time_dict.keys()):
             # print env.now, fault_time
             if float("{0:.1f}".format(env.now)) == fault_time:
                 fault_location, fault_type = fault_time_dict[fault_time]
@@ -64,9 +64,9 @@ def fault_event(env, ag, shmu, noc_rg, schedule_length, fault_time_dict, counter
                             counter_threshold.increase_intermittent_counter(ag, fault_location, logging)
 
             elif type(fault_location) is dict:
-                for scheduling_item in ag.node[fault_location.keys()[0]]['Router'].scheduling:
-                    start_time = ag.node[fault_location.keys()[0]]['Router'].scheduling[scheduling_item][0][0]
-                    end_time = ag.node[fault_location.keys()[0]]['Router'].scheduling[scheduling_item][0][1]
+                for scheduling_item in ag.node[list(fault_location.keys())[0]]['Router'].scheduling:
+                    start_time = ag.node[list(fault_location.keys())[0]]['Router'].scheduling[scheduling_item][0][0]
+                    end_time = ag.node[list(fault_location.keys())[0]]['Router'].scheduling[scheduling_item][0][1]
                     if start_time < env.now % schedule_length < end_time:
                         SHMU_Functions.apply_fault_event(ag, shmu, noc_rg, fault_location, fault_type)
                         if random.random() > Config.error_correction_rate:

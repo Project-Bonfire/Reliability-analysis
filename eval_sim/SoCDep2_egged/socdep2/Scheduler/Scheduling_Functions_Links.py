@@ -17,7 +17,7 @@ def find_last_allocated_time_on_link(ag, link, logging=None):
         logging.info("\t\tFINDING LAST ALLOCATED TIME ON LINK "+str(link))
     last_allocated_time = 0
     if len(ag.edge[link[0]][link[1]]['MappedTasks']) > 0:
-        for Task in ag.edge[link[0]][link[1]]['MappedTasks'].keys():
+        for Task in list(ag.edge[link[0]][link[1]]['MappedTasks'].keys()):
             if Task in ag.edge[link[0]][link[1]]['Scheduling']:
                 for ScheduleAndBatch in ag.edge[link[0]][link[1]]['Scheduling'][Task]:
                     start_time = ScheduleAndBatch[0]
@@ -43,7 +43,7 @@ def find_last_allocated_time_on_link_for_task(ag, link, edge, prob, logging=None
                      " WITH PROB: "+str(prob))
     last_allocated_time = 0
     if len(ag.edge[link[0]][link[1]]['MappedTasks']) > 0:
-        for Task in ag.edge[link[0]][link[1]]['MappedTasks'].keys():
+        for Task in list(ag.edge[link[0]][link[1]]['MappedTasks'].keys()):
             if Task in ag.edge[link[0]][link[1]]['Scheduling']:
                 for ScheduleAndBatch in ag.edge[link[0]][link[1]]['Scheduling'][Task]:
                     start_time = ScheduleAndBatch[0]

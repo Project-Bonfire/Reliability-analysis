@@ -1,7 +1,7 @@
 # Copyright (C) 2015 Rene Pihlak
 
-import CounterThreshold
-import MLTrainingSet as mlp
+from . import CounterThreshold
+from . import MLTrainingSet as mlp
 from ConfigAndPackages import Config
 import collections
 from sklearn import svm
@@ -69,17 +69,17 @@ class MachineLearning():
         for i in self.training_val:
             my_tr_dict[str(i)] = 0
 
-        for i in my_tr_dict.keys():
+        for i in list(my_tr_dict.keys()):
             my_tr_dict[i] = self.training_val.count(int(i))
 
-        my_tr_max = my_tr_dict.keys()[0]
+        my_tr_max = list(my_tr_dict.keys())[0]
 
-        for i in my_tr_dict.keys():
+        for i in list(my_tr_dict.keys()):
             if my_tr_max is not i:
                 if my_tr_dict[i] > my_tr_dict[my_tr_max]:
                     my_tr_max = i
 
-        for i in my_tr_dict.keys():
+        for i in list(my_tr_dict.keys()):
             if i is my_tr_max:
                 continue
             else:
@@ -123,17 +123,17 @@ class MachineLearning():
         for i in self.training_val_inter:
             my_tr_dict_inter[str(i)] = 0
 
-        for i in my_tr_dict_inter.keys():
+        for i in list(my_tr_dict_inter.keys()):
             my_tr_dict_inter[i] = self.training_val_inter.count(int(i))
 
-        my_tr_max_inter = my_tr_dict_inter.keys()[0]
+        my_tr_max_inter = list(my_tr_dict_inter.keys())[0]
 
-        for i in my_tr_dict_inter.keys():
+        for i in list(my_tr_dict_inter.keys()):
             if my_tr_max_inter is not i:
                 if my_tr_dict_inter[i] > my_tr_dict_inter[my_tr_max_inter]:
                     my_tr_max_inter = i
 
-        for i in my_tr_dict_inter.keys():
+        for i in list(my_tr_dict_inter.keys()):
             if i is my_tr_max_inter:
                 continue
             else:
@@ -188,7 +188,7 @@ class MachineLearning():
         
         if type(location) is dict:
             # print location, str(location.keys()[0])+str(location[location.keys()[0]])
-            location = "R"+str(location.keys()[0])
+            location = "R"+str(list(location.keys())[0])
         elif type(location) is tuple:
             # print location, location[0], location[1]
             location = "L"+str(location[0])+str(location[1])
@@ -196,15 +196,15 @@ class MachineLearning():
             # print location
             location = str(location)
         else:
-            print location, type(location)
+            print(location, type(location))
             raise ValueError("VEG: location type is wrong!")
 
         if location in self.dead_components:
             return None
         # if location not in self.fault_counters.keys():
         #    return None
-        for cur_buf in this_bufs.keys():
-            if location in this_global_bufs[cur_buf].keys():
+        for cur_buf in list(this_bufs.keys()):
+            if location in list(this_global_bufs[cur_buf].keys()):
                 this_global_bufs[cur_buf][location].append(0)
                 logging.info("VEG: Increasing health in " + cur_buf + "counter at location: "+location)
                 logging.info("VEG: "+location+": Buffer: "+str(this_global_bufs[cur_buf][location]))
@@ -224,7 +224,7 @@ class MachineLearning():
                     logging.info("VEG: Deleted health counter at location: "+location)
                     logging.info("VEG: " + cur_buf + " buffer: ML("+location+") -> perfect")
                 else:
-                    for i in self.ml_methods.keys():
+                    for i in list(self.ml_methods.keys()):
                         ml_value = self.ml_methods[i].predict(this_bufs[cur_buf])
                         logging.info("VEG: fault buffer: ML("+str(i)+") "+location+" -> "+str(ml_value))
             else:
@@ -300,7 +300,7 @@ class MachineLearning():
             # location is a router: {node_1: [turn]}
             # print location, str(location.keys()[0])+str(location[location.keys()[0]])
             if Config.enable_router_counters:
-                location = "R"+str(location.keys()[0])
+                location = "R"+str(list(location.keys())[0])
             else:
                 return None
         elif type(location) is tuple:
@@ -318,7 +318,7 @@ class MachineLearning():
             else:
                 return None
         else:
-            print location, type(location)
+            print(location, type(location))
             raise ValueError("location type is wrong!")
         if location in self.dead_components:
             return None
@@ -326,7 +326,7 @@ class MachineLearning():
         if location in self.dead_components:
             return None
         
-        if location in self.machine_learning_buffer.keys():
+        if location in list(self.machine_learning_buffer.keys()):
             self.machine_learning_buffer[location].append(1)    # += 1
             # if self.machine_learning_buffer[location].count(1) == self.fault_threshold:
             #     logging.info("VEG: ML: Declaring component: "+location+" dead!")
@@ -345,7 +345,7 @@ class MachineLearning():
         # this_collection = list(self.machine_learning_buffer[location])[:-1]
 #         logging.info("VEG: ML TODO: "+str(this_collection))
         # #######
-        for i in self.ml_methods.keys():
+        for i in list(self.ml_methods.keys()):
             ml_value = self.ml_methods[i].predict(this_collection)
             logging.info("VEG: ML("+str(i)+") "+location+" -> "+str(ml_value))  # +" : "+str(self.training_dict[str(ml_value)]))
             if ml_value == self.fault_threshold:
@@ -378,7 +378,7 @@ class MachineLearning():
             # location is a router: {node_1: [turn]}
             # print location, str(location.keys()[0])+str(location[location.keys()[0]])
             if Config.enable_router_counters:
-                location = "R"+str(location.keys()[0])
+                location = "R"+str(list(location.keys())[0])
             else:
                 return None
         elif type(location) is tuple:
@@ -396,7 +396,7 @@ class MachineLearning():
             else:
                 return None
         else:
-            print location, type(location)
+            print(location, type(location))
             raise ValueError("location type is wrong!")
         
         if location in self.intermittent_components:
@@ -405,7 +405,7 @@ class MachineLearning():
         if location in self.intermittent_components:
             return None
         
-        if location in self.machine_learning_buffer_inter.keys():
+        if location in list(self.machine_learning_buffer_inter.keys()):
             self.machine_learning_buffer_inter[location].append(1)  # += 1
             # if self.machine_learning_buffer[location].count(1) == self.fault_threshold:
             #     logging.info("VEG: ML: Declaring component: "+location+" dead!")
@@ -425,7 +425,7 @@ class MachineLearning():
         # this_collection.append(list(self.machine_learning_buffer_inter[location])[:-1])
         # this_collection = list(self.machine_learning_buffer[location])[:-1]
 #         logging.info("VEG: ML TODO: "+str(this_collection))
-        for i in self.ml_methods_inter.keys():
+        for i in list(self.ml_methods_inter.keys()):
             ml_value = self.ml_methods_inter[i].predict(this_collection)
             logging.info("VEG: ML("+str(i)+") "+location+" -> "+str(ml_value))  # +" : "+str(self.training_dict[str(ml_value)]))
             if ml_value == self.intermittent_threshold:
@@ -457,11 +457,11 @@ class MachineLearning():
         this_global_bufs['fault'] = self.machine_learning_buffer
         this_global_bufs['intermittent'] = self.machine_learning_buffer_inter
         
-        for buf in this_global_bufs.keys():
+        for buf in list(this_global_bufs.keys()):
             if mem == buf:
                 memlen = len(this_global_bufs[buf])
                 if memlen is not 0:
-                    for curKey in this_global_bufs[buf].keys():
+                    for curKey in list(this_global_bufs[buf].keys()):
                         memsize = this_global_bufs[buf][curKey].maxlen
                         break
                 break
@@ -484,7 +484,7 @@ class MachineLearning():
             return -1   # error
     
     def check_max_memory(self, mem):
-        if mem in self.memory_max.keys():
+        if mem in list(self.memory_max.keys()):
             if self.memory_max[mem] < self.return_allocated_memory(mem):
                 self.memory_max[mem] = self.return_allocated_memory(mem)
         else:
@@ -495,18 +495,18 @@ class MachineLearning():
     #    return len(self.health_counters) + len(self.fault_counters)
 
     def report(self, number_of_nodes, number_of_links):
-        print "VEG: ==========================================="
-        print "VEG:         MACHINE LEARNING REPORT"
-        print "VEG: ==========================================="
-        print "VEG: TODO"
-        print "VEG: DEAD Components:", self.dead_components
-        print "VEG: INTERMITTENT Components:", self.intermittent_components
-        for mem in self.memory_max.keys():
+        print("VEG: ===========================================")
+        print("VEG:         MACHINE LEARNING REPORT")
+        print("VEG: ===========================================")
+        print("VEG: TODO")
+        print("VEG: DEAD Components:", self.dead_components)
+        print("VEG: INTERMITTENT Components:", self.intermittent_components)
+        for mem in list(self.memory_max.keys()):
             if self.memory_max[mem] is not -1:
-                print "VEG: MAX memory (in bits) use of", mem, "::", self.memory_max[mem]
+                print("VEG: MAX memory (in bits) use of", mem, "::", self.memory_max[mem])
         for mem in {'intermediate', 'fault'}:
             if self.return_allocated_memory(mem) is not -1:
-                print "VEG: END memory (in bits) use of", mem, "::", self.return_allocated_memory(mem)
+                print("VEG: END memory (in bits) use of", mem, "::", self.return_allocated_memory(mem))
         # print "MAX MEMORY USAGE:", self.memory_counter
         # print "AVERAGE COUNTER PER Node: ", float(self.memory_counter)/number_of_nodes
         return None

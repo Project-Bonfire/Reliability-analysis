@@ -1,8 +1,8 @@
 # Copyright (C) Siavoosh Payandeh Azad
-from page_class import Page
-import Tkinter as tk
-import tkFileDialog
-import ttk
+from .page_class import Page
+import tkinter as tk
+import tkinter.filedialog
+import tkinter.ttk
 
 
 class Page2(Page):  # architecture graph
@@ -68,10 +68,10 @@ class Page2(Page):  # architecture graph
         z_size_label.grid(column=self.topology_starting_col, row=4)
         self.network_size_z.grid(column=self.topology_starting_col+1, row=self.topology_starting_row+4, sticky='w')
         self.network_size_z.config(state='disabled')
-        ttk.Separator(self, orient='horizontal').grid(column=self.topology_starting_col,
+        tkinter.ttk.Separator(self, orient='horizontal').grid(column=self.topology_starting_col,
                                                       row=self.topology_starting_row+6, columnspan=2, sticky="ew")
 
-        ttk.Separator(self, orient='vertical').grid(column=self.topology_starting_col+2,
+        tkinter.ttk.Separator(self, orient='vertical').grid(column=self.topology_starting_col+2,
                                                     row=self.topology_starting_row+1, rowspan=12, sticky="ns")
         # ----------------------------------------
         #           Vertical Link Placement
@@ -270,7 +270,7 @@ class Page2(Page):  # architecture graph
             self.routing_browse_button.grid_forget()
 
     def _get_routing_file(self):
-        path = tkFileDialog.askopenfilename()
+        path = tkinter.filedialog.askopenfilename()
         if path:
             self.routing_browse.delete(0, 'end')
             self.routing_browse.insert(1, path)

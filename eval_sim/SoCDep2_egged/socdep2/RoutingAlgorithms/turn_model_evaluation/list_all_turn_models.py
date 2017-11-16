@@ -229,7 +229,7 @@ def check_fault_tolerance_of_routing_algs(dimension, number_of_multi_threads, vi
         args = list(range(0, 108, 4))
         turn_model_list = PackageFile.routing_alg_list_3d
     else:
-        print "Please choose a valid dimension!"
+        print("Please choose a valid dimension!")
         return False
     for turn_model in turn_model_list:
         if dimension == '2D':

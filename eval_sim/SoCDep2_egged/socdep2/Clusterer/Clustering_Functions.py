@@ -2,7 +2,7 @@
 
 
 import statistics
-import Clustering_Reports
+from . import Clustering_Reports
 from ConfigAndPackages import Config
 import random
 
@@ -27,8 +27,8 @@ def remove_task_from_ctg(tg, ctg, task):
                     # print ("\t\tREMOVING TG EDGE:", edge, "WITH WEIGHT", weight_to_remove, "FROM CLUSTER:", \
                     #    source_cluster, "--->", destination_cluster)
                     if (source_cluster, destination_cluster) not in ctg.edges():
-                        print ("\t\033[31mERROR\033[0m:: EDGE ", source_cluster, "--->",
-                               destination_cluster, "DOESNT EXIST")
+                        print(("\t\033[31mERROR\033[0m:: EDGE ", source_cluster, "--->",
+                               destination_cluster, "DOESNT EXIST"))
                         Clustering_Reports.report_ctg(ctg, "CTG_Error.png")
                         raise ValueError("remove_task_from_ctg::EDGE DOESNT EXIST")
                     else:
@@ -78,14 +78,14 @@ def add_task_to_ctg(tg, ctg, task, cluster):
                 if source_cluster != destination_cluster:
                     if (source_cluster, destination_cluster) in ctg.edges():
                         if Config.clustering.detailed_report:
-                            print ("\t\tEDGE", source_cluster, "--->", destination_cluster,
-                                   "ALREADY EXISTS... ADDING", weight_to_add, "TO WEIGHT...")
+                            print(("\t\tEDGE", source_cluster, "--->", destination_cluster,
+                                   "ALREADY EXISTS... ADDING", weight_to_add, "TO WEIGHT..."))
                         ctg.edge[source_cluster][destination_cluster]['Weight'] += weight_to_add
                     else:
                         if Config.clustering.detailed_report:
-                            print ("\t\tEDGE", source_cluster, destination_cluster,
+                            print(("\t\tEDGE", source_cluster, destination_cluster,
                                    "DOES NOT EXISTS... ADDING EDGE WITH WEIGHT:",
-                                   tg.edge[edge[0]][edge[1]]['ComWeight'])
+                                   tg.edge[edge[0]][edge[1]]['ComWeight']))
                         ctg.add_edge(source_cluster, destination_cluster, Weight=weight_to_add)
     return True
 

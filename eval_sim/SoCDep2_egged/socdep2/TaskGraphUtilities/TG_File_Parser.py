@@ -1,7 +1,7 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
 
 import networkx
-import TG_Functions
+from . import TG_Functions
 
 
 def generate_tg_from_xml():

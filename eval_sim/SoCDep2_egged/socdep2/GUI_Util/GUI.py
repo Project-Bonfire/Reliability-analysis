@@ -1,11 +1,11 @@
 # Copyright (C) Siavoosh Payandeh Azad
 
-from Pages import page_1, page_2, page_3, page_4, page_5
-import Tkinter as tk
+from .Pages import page_1, page_2, page_3, page_4, page_5
+import tkinter as tk
 #from PIL import ImageTk, Image
-import tkMessageBox
+import tkinter.messagebox
 from ConfigAndPackages import Config, PackageFile
-import ttk
+import tkinter.ttk
 
 
 class MainView(tk.Tk):
@@ -58,9 +58,9 @@ class MainView(tk.Tk):
         self.b3 = tk.Button(tab_frame, text="Mapping", command=lambda: self.button_command(3))
         self.b4 = tk.Button(tab_frame, text="Dependability & Testing", command=lambda: self.button_command(4))
         self.b5 = tk.Button(tab_frame, text="Visualizations", command=lambda: self.button_command(5))
-        self.h_line_1 = ttk.Separator(tab_frame, orient='horizontal')
+        self.h_line_1 = tkinter.ttk.Separator(tab_frame, orient='horizontal')
         self.h_line_1.pack(side="top", fill='both', expand=True)
-        self.h_line_2 = ttk.Separator(tab_frame, orient='horizontal')
+        self.h_line_2 = tkinter.ttk.Separator(tab_frame, orient='horizontal')
         self.h_line_2.pack(side="bottom", fill='both', expand=True)
 
         self.b1.pack(side="left")
@@ -69,7 +69,7 @@ class MainView(tk.Tk):
         self.b4.pack(side="left")
         self.b5.pack(side="left")
 
-        self.h_line_3 = ttk.Separator(action_frame, orient='horizontal')
+        self.h_line_3 = tkinter.ttk.Separator(action_frame, orient='horizontal')
         self.error_message = tk.Label(action_frame, text="", font=("-weight bold", 10), fg="red")
         apply_button = tk.Button(action_frame, text="Apply", command=self._apply_button)
         cancel_button = tk.Button(action_frame, text="Cancel", command=self._cancel_button)
@@ -255,7 +255,7 @@ class MainView(tk.Tk):
 
     @staticmethod
     def _on_enter(self):
-        tkMessageBox.showinfo("License Message", "The logo picture is a derivative of \"Sea Ghost\" by Joey Gannon, " +
+        tkinter.messagebox.showinfo("License Message", "The logo picture is a derivative of \"Sea Ghost\" by Joey Gannon, " +
                               "used under CC BY-SA. The original version can be found here: " +
                               "https://www.flickr.com/photos/brunkfordbraun/679827214 " +
                               "This work is under same license as the original."

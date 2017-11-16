@@ -3,7 +3,7 @@
 import networkx
 import random
 from ConfigAndPackages import Config
-import TG_File_Parser
+from . import TG_File_Parser
 
 
 class Task():     # Task class

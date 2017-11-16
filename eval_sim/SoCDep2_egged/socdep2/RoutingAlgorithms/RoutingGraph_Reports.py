@@ -15,7 +15,7 @@ def report_turn_model(turn_model):
     :param turn_model: set of allowed turns in a 2D network
     :return: None
     """
-    print "\tUSING TURN MODEL: ", turn_model
+    print("\tUSING TURN MODEL: ", turn_model)
     return None
 
 

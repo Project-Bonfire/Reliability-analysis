@@ -3,17 +3,17 @@
 import copy
 import time
 
-from ArchGraphUtilities import Arch_Graph_Reports, AG_Functions
-from ArchGraphUtilities.vl_optimization import vl_opt, vl_opt_functions
-from ConfigAndPackages import Config
-from Mapper import Mapping, Mapping_Reports, Mapping_Animation
-from Mapper import Mapping_Functions
-from RoutingAlgorithms import Routing, Calculate_Reachability, ReachabilityReports, \
+from .ArchGraphUtilities import Arch_Graph_Reports, AG_Functions
+from .ArchGraphUtilities.vl_optimization import vl_opt, vl_opt_functions
+from .ConfigAndPackages import Config
+from .Mapper import Mapping, Mapping_Reports, Mapping_Animation
+from .Mapper import Mapping_Functions
+from .RoutingAlgorithms import Routing, Calculate_Reachability, ReachabilityReports, \
     RoutingGraph_Reports, Routing_Functions
-from Scheduler import Scheduling_Reports, TrafficTableGenerator, Scheduler
-from SystemHealthMonitoring import SystemHealthMonitoringUnit, SHMU_Reports, \
+from .Scheduler import Scheduling_Reports, TrafficTableGenerator, Scheduler
+from .SystemHealthMonitoring import SystemHealthMonitoringUnit, SHMU_Reports, \
     SHMU_Functions, TestSchedulingUnit
-from TaskGraphUtilities import Task_Graph_Reports, TG_Functions, TG_Test
+from .TaskGraphUtilities import Task_Graph_Reports, TG_Functions, TG_Test
 
 
 def initialize_system(logging):
@@ -64,8 +64,8 @@ def initialize_system(logging):
         noc_rg = copy.deepcopy(Routing.generate_noc_route_graph(ag, shmu, Config.UsedTurnModel,
                                                                 Config.DebugInfo, Config.DebugDetails))
     Routing_Functions.check_deadlock_freeness(noc_rg)
-    print ("\033[92mTIME::\033[0m ROUTING GRAPH GENERATION TOOK: " +
-           str(round(time.time()-routing_graph_start_time))+" SECONDS")
+    print(("\033[92mTIME::\033[0m ROUTING GRAPH GENERATION TOOK: " +
+           str(round(time.time()-routing_graph_start_time))+" SECONDS"))
     # this is for double checking...
     if Config.FindOptimumAG:
         Calculate_Reachability.reachability_metric(ag, noc_rg, True)
@@ -114,8 +114,8 @@ def initialize_system(logging):
         else:
             pmcg = TestSchedulingUnit.gen_sequentially_diagnosable_pmcg(ag, shmu.SHM)
         test_tg = TestSchedulingUnit.generate_test_tg_from_pmcg(pmcg)
-        print ("\033[92mTIME::\033[0m PMCG AND TTG GENERATION TOOK: " +
-               str(round(time.time()-pmcg_start_time)) + " SECONDS")
+        print(("\033[92mTIME::\033[0m PMCG AND TTG GENERATION TOOK: " +
+               str(round(time.time()-pmcg_start_time)) + " SECONDS"))
         if Config.viz.pmcg:
             TestSchedulingUnit.draw_pmcg(pmcg)
         if Config.viz.ttg:

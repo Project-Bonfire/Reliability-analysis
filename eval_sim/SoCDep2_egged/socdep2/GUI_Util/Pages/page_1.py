@@ -1,8 +1,8 @@
 # Copyright (C) Siavoosh Payandeh Azad
-from page_class import Page
-import Tkinter as tk
-import ttk
-import tkFileDialog
+from .page_class import Page
+import tkinter as tk
+import tkinter.ttk
+import tkinter.filedialog
 
 
 class Page1(Page):
@@ -82,7 +82,7 @@ class Page1(Page):
         self.release_range.grid(column=self.tg_starting_col+1, row=self.tg_starting_row+7, sticky='w')
         self.release_range.insert(0, '5')
 
-        ttk.Separator(self, orient='vertical').grid(column=self.tg_starting_col+3,
+        tkinter.ttk.Separator(self, orient='vertical').grid(column=self.tg_starting_col+3,
                                                     row=self.tg_starting_row, rowspan=12, sticky="ns")
         # ---------------------------------------------
         #                   Clustering
@@ -109,7 +109,7 @@ class Page1(Page):
         self.clustering_opt_enable.grid(column=self.cl_opt_start_col, row=self.cl_opt_start_row+1)
 
     def _get_tg_file(self):
-        path = tkFileDialog.askopenfilename()
+        path = tkinter.filedialog.askopenfilename()
         if path:
             self.tg_browse.delete(0, 'end')
             self.tg_browse.insert(1, path)

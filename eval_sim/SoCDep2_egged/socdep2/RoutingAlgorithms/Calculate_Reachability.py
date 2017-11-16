@@ -6,7 +6,7 @@
 from networkx import has_path, shortest_path_length, all_simple_paths
 from copy import deepcopy
 from socdep2.ConfigAndPackages import Config
-from Routing import generate_noc_route_graph
+from .Routing import generate_noc_route_graph
 from socdep2.ArchGraphUtilities.AG_Functions import manhattan_distance, return_node_number, return_node_location
 
 
@@ -53,7 +53,7 @@ def is_destination_reachable_via_port(noc_rg, source_node, port, destination_nod
         return True
     else:
         if report:
-            print ("\t\tNO PATH FOUND FROM: ", source, "TO:", destination)
+            print(("\t\tNO PATH FOUND FROM: ", source, "TO:", destination))
         return False
 
 
@@ -318,5 +318,5 @@ def reachability_metric(ag, noc_rg, report):
                     reachability_counter += 1
     r_metric = float(reachability_counter)
     if report:
-        print ("REACH-ABILITY METRIC: "+str(r_metric))
+        print(("REACH-ABILITY METRIC: "+str(r_metric)))
     return r_metric

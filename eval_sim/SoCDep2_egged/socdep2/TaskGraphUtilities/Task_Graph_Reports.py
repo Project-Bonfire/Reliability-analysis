@@ -3,7 +3,7 @@
 import networkx
 import matplotlib.pyplot as plt
 from ConfigAndPackages import Config
-import TG_Functions
+from . import TG_Functions
 
 
 def report_task_graph(tg, logging):
@@ -29,8 +29,8 @@ def report_task_graph(tg, logging):
     number_of_flits = 0
     for Edge in tg.edges():
         number_of_flits += tg.edge[Edge[0]][Edge[1]]['ComWeight']
-    print "# OF FLITS:", number_of_flits
-    print "# OF PACKETS:", len(tg.edges())
+    print("# OF FLITS:", number_of_flits)
+    print("# OF PACKETS:", len(tg.edges()))
     return None
 
 

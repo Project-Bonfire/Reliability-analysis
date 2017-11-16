@@ -29,9 +29,9 @@ def opt_ag_vertical_link_local_search(ag, shmu, cost_file_name, logging):
     cost = vl_cost_function(ag, routing_graph)
     print ("=====================================")
     print ("STARTING AG VERTICAL LINK PLACEMENT OPTIMIZATION")
-    print ("NUMBER OF LINKS: "+str(Config.vl_opt.vl_num))
-    print ("NUMBER OF ITERATIONS: "+str(Config.vl_opt.ls_iteration))
-    print ("INITIAL REACHABILITY METRIC: "+str(cost))
+    print(("NUMBER OF LINKS: "+str(Config.vl_opt.vl_num)))
+    print(("NUMBER OF ITERATIONS: "+str(Config.vl_opt.ls_iteration)))
+    print(("INITIAL REACHABILITY METRIC: "+str(cost)))
     starting_cost = cost
     best_cost = cost
 
@@ -53,7 +53,7 @@ def opt_ag_vertical_link_local_search(ag, shmu, cost_file_name, logging):
             vertical_link_list = copy.deepcopy(new_vertical_link_list)
             if cost > best_cost:
                 best_cost = cost
-                print ("\033[32m* NOTE::\033[0mFOUND BETTER SOLUTION WITH COST:" + str(cost) + "\t ITERATION: "+str(i))
+                print(("\033[32m* NOTE::\033[0mFOUND BETTER SOLUTION WITH COST:" + str(cost) + "\t ITERATION: "+str(i)))
             else:
                 # print ("\033[33m* NOTE::\033[0mMOVED TO SOLUTION WITH COST:" + str(Cost) + "\t ITERATION: "+str(i))
                 pass
@@ -62,8 +62,8 @@ def opt_ag_vertical_link_local_search(ag, shmu, cost_file_name, logging):
             vertical_link_list = copy.deepcopy(vertical_link_list)
     ag_cost_file.close()
     print ("-------------------------------------")
-    print ("STARTING COST:"+str(starting_cost)+"\tFINAL COST:"+str(best_cost))
-    print ("IMPROVEMENT:"+str("{0:.2f}".format(100*(best_cost-starting_cost)/starting_cost))+" %")
+    print(("STARTING COST:"+str(starting_cost)+"\tFINAL COST:"+str(best_cost)))
+    print(("IMPROVEMENT:"+str("{0:.2f}".format(100*(best_cost-starting_cost)/starting_cost))+" %"))
     logging.info("LS FOR VL PLACEMENT FINISHED...")
     return None
 
@@ -96,9 +96,9 @@ def opt_ag_vertical_link_iterative_local_search(ag, shmu, cost_file_name, loggin
         if j == 0:
             print ("=====================================")
             print ("STARTING AG VERTICAL LINK PLACEMENT OPTIMIZATION")
-            print ("NUMBER OF LINKS: "+str(Config.vl_opt.vl_num))
-            print ("NUMBER OF ITERATIONS: "+str(Config.vl_opt.ils_iteration*Config.vl_opt.ls_iteration))
-            print ("INITIAL REACHABILITY METRIC: "+str(cost))
+            print(("NUMBER OF LINKS: "+str(Config.vl_opt.vl_num)))
+            print(("NUMBER OF ITERATIONS: "+str(Config.vl_opt.ils_iteration*Config.vl_opt.ls_iteration)))
+            print(("INITIAL REACHABILITY METRIC: "+str(cost)))
             starting_cost = cost
             best_cost = cost
             best_vertical_link_list = vertical_link_list_init[:]
@@ -107,12 +107,12 @@ def opt_ag_vertical_link_iterative_local_search(ag, shmu, cost_file_name, loggin
             Arch_Graph_Reports.draw_ag(ag_temp, "AG_VLOpt_init")
             del ag_temp
         else:
-            print("\033[33m* NOTE::\033[0m STARITNG NEW ROUND: "+str(j+1)+"\t STARTING COST:"+str(cost))
+            print(("\033[33m* NOTE::\033[0m STARITNG NEW ROUND: "+str(j+1)+"\t STARTING COST:"+str(cost)))
             if cost > best_cost:
                 best_vertical_link_list = vertical_link_list_init[:]
                 best_cost = cost
-                print("\033[32m* NOTE::\033[0mFOUND BETTER SOLUTION WITH COST:" +
-                      str(cost) + "\t ITERATION: "+str(j*Config.vl_opt.ls_iteration))
+                print(("\033[32m* NOTE::\033[0mFOUND BETTER SOLUTION WITH COST:" +
+                      str(cost) + "\t ITERATION: "+str(j*Config.vl_opt.ls_iteration)))
         vertical_link_list = vertical_link_list_init[:]
         for i in range(0, Config.vl_opt.ls_iteration):
             new_vertical_link_list = copy.deepcopy(move_to_new_vertical_link_configuration(ag, shmu,
@@ -125,21 +125,21 @@ def opt_ag_vertical_link_iterative_local_search(ag, shmu, cost_file_name, loggin
                 vertical_link_list = new_vertical_link_list[:]
                 if cost > current_best_cost:
                     current_best_cost = cost
-                    print ("\t \tMOVED TO SOLUTION WITH COST:" + str(cost)
-                           + "\t ITERATION: "+str(j*Config.vl_opt.ls_iteration+i))
+                    print(("\t \tMOVED TO SOLUTION WITH COST:" + str(cost)
+                           + "\t ITERATION: "+str(j*Config.vl_opt.ls_iteration+i)))
             else:
                 return_to_solution(ag, shmu, vertical_link_list)
 
             if cost > best_cost:
                 best_vertical_link_list = vertical_link_list[:]
                 best_cost = cost
-                print ("\033[32m* NOTE::\033[0mFOUND BETTER SOLUTION WITH COST:" +
-                       str(cost) + "\t ITERATION: "+str(j*Config.vl_opt.ls_iteration+i))
+                print(("\033[32m* NOTE::\033[0mFOUND BETTER SOLUTION WITH COST:" +
+                       str(cost) + "\t ITERATION: "+str(j*Config.vl_opt.ls_iteration+i)))
 
     return_to_solution(ag, shmu, best_vertical_link_list)
     ag_cost_file.close()
     print("-------------------------------------")
-    print("STARTING COST:"+str(starting_cost)+"\tFINAL COST:"+str(best_cost))
-    print("IMPROVEMENT:"+str("{0:.2f}".format(100*(best_cost-starting_cost)/starting_cost))+" %")
+    print(("STARTING COST:"+str(starting_cost)+"\tFINAL COST:"+str(best_cost)))
+    print(("IMPROVEMENT:"+str("{0:.2f}".format(100*(best_cost-starting_cost)/starting_cost))+" %"))
     logging.info("ILS FOR VL PLACEMENT FINISHED...")
     return None

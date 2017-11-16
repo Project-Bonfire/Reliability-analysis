@@ -1,13 +1,13 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
 
 from socdep2.TaskGraphUtilities import TG_Functions
-from Scheduling_Functions import find_schedule_make_span
-from Scheduling_Functions_Tasks import find_task_asap_scheduling, find_test_task_asap_scheduling
-from Scheduling_Functions_Edges import find_edge_asap_scheduling_link, find_edge_asap_scheduling_router
-from Scheduling_Functions_Edges import find_test_edge_asap_scheduling
-from Scheduling_Functions_Links import add_tg_edge_to_link
-from Scheduling_Functions_Nodes import add_tg_task_to_node
-from Scheduling_Functions_Routers import add_tg_edge_to_router
+from .Scheduling_Functions import find_schedule_make_span
+from .Scheduling_Functions_Tasks import find_task_asap_scheduling, find_test_task_asap_scheduling
+from .Scheduling_Functions_Edges import find_edge_asap_scheduling_link, find_edge_asap_scheduling_router
+from .Scheduling_Functions_Edges import find_test_edge_asap_scheduling
+from .Scheduling_Functions_Links import add_tg_edge_to_link
+from .Scheduling_Functions_Nodes import add_tg_task_to_node
+from .Scheduling_Functions_Routers import add_tg_edge_to_router
 
 
 def schedule_all(tg, ag, shm, report, logging):
