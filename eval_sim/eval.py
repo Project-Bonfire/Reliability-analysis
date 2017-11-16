@@ -1,8 +1,6 @@
 import ast
 import copy
 
-import os
-
 import re
 
 import sys
@@ -10,19 +8,18 @@ from collections import Counter, namedtuple
 from operator import attrgetter, sub
 
 import itertools
-
+import gzip
 import numpy as np
 
-from ArchGraphUtilities.AG_Functions import *
+from socdep2.ArchGraphUtilities.AG_Functions import *
 
-from RoutingAlgorithms import Routing
-from ConfigAndPackages import Config, PackageFile
-from RoutingAlgorithms.Calculate_Reachability import is_destination_reachable_via_port, \
+from socdep2.RoutingAlgorithms import Routing
+from socdep2.ConfigAndPackages import Config, PackageFile
+from socdep2.RoutingAlgorithms.Calculate_Reachability import is_destination_reachable_via_port, \
     is_destination_reachable_from_source
-from RoutingAlgorithms.RoutingGraph_Reports import draw_rg
-from SystemHealthMonitoring import SystemHealthMonitoringUnit
+from socdep2.SystemHealthMonitoring import SystemHealthMonitoringUnit
 
-from Utilities import misc
+from socdep2.Utilities import misc
 
 misc.generate_file_directories()
 turns_health_2d_network = {"N2W": True, "N2E": True, "S2W": True, "S2E": True,
@@ -39,7 +36,7 @@ ag = copy.deepcopy(generate_ag(logging=None))
 shmu = SystemHealthMonitoringUnit.SystemHealthMonitoringUnit()
 shmu.setup_noc_shm(ag, copy.deepcopy(turns_health_2d_network), False)
 noc_rg = copy.deepcopy(Routing.generate_noc_route_graph(ag, shmu, PackageFile.XY_TurnModel, False, False))
-filename = "/home/thi/strudel/git/Reliability-analysis/results/2017-11-10.17:20:30/all.results"
+filename = "/home/thi/all.results.gz"
 print("evaluating %s" % filename)
 
 
@@ -206,7 +203,7 @@ assumed_sent = -1
 errornous = []
 results = []
 counter = 0
-with open(filename, 'r') as f:
+with gzip.open(filename, 'r') as f:
     def experiment_to_buffer(f):
         """
         Creates an experiment object from the file
@@ -269,12 +266,8 @@ with open(filename, 'r') as f:
                 print("WARNING: The sent file of '%s' has an unexpected length of %d, expected %d." % (
                     res.name, len(sent), assumed_sent))
             res.unexpected_len_recv = len(recv) != len(sent)
-
-            # A dictionary which counts the number of sent for a flitkey and compares them to the number of received.
             fromtocounter = {}
-            # check all sent lines
             for p in sent:
-                # create a key for the flit. Example 3to5
                 flitkey = str(p.from_node) + 'to' + str(p.to_node)
                 if flitkey in fromtocounter:
                     fromtocounter[flitkey] += 1
@@ -290,7 +283,6 @@ with open(filename, 'r') as f:
                         "WARNING: Generated Packet was not valid according to routing algorithm. Packet was sent from %d %s to %d via router 5. %s" % (
                             p.from_node, p.was_going_out_via(), p.to_node, str(p)))
                     res.sents_invalid += 1
-            #check all recv lines
             for p in recv:
                 flitkey = str(p.from_node) + 'to' + str(p.to_node)
                 if flitkey in fromtocounter:
@@ -317,10 +309,12 @@ with open(filename, 'r') as f:
 
 failcounter = 0
 print("failed runs:")
+faillist = []
 for res in results:
     if not res.is_valid():
         print(res)
         failcounter += 1
+        faillist.append(res)
 
 all_result = (
     attrgetter('name', 'errornous', 'unexpected_len_sent', 'unexpected_len_recv', 'len_sent', 'len_recv',
@@ -373,15 +367,14 @@ else:
     print(Counter(breakname2))
     # Look at difflib, maybe matching blocks, maybe consider buckets
     total = 0
-    for pattern in ['U', '\\CONTROL', '\\FIFO']:
-        tmp = len(filter(lambda s: s.startswith(pattern), breakname1))
+    for pattern in [r'^U',r'^valid_', r'^[\\]*CONTROL_PART/allocator_unit', r'^[\\]*CONTROL_PART/LBDR',r'^[\\]*FIFO_[NESLW]/FIFO_comb',r'^[\\]*FIFO_[NESLW]/FIFO_seq', r'^[\\]*XBAR']:
+        tmp = len(filter(lambda s: re.match(pattern,s.guessComponent()) is not None, faillist))
         total += tmp
         print('"%s" broke something: %d' % (pattern, tmp))
     if total < len(breakname2):
         print('Missed %d patterns!' % (len(breakname2) - total))
 
     # convert to cell name and connected pin list.
-    for obj in results:
-        if not obj.is_valid():
+    for obj in faillist:
             print(obj.guessComponent(), obj.params)
 print("------------Statistics---------------")
