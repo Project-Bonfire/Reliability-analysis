@@ -29,17 +29,25 @@ def init():
 
 
 class Result:
+    """
+
+    """
     def __init__(self):
         pass
 
     name = ""
     # If the run failed somehow, means there are now files present
+    # These are errors of the simulation program
     errornous = False
+
     # flags
+    # if the number of packets which where sent to router 5 is unexpected
     unexpected_len_sent = False
+    # if the number of packets which where sent from router 5 is unexpected
     unexpected_len_recv = False
     # number of actual packets
     len_sent = -1
+
     len_recv = -1
 
     # When the number of flits send from one node to another differs from the number of flits received there
@@ -65,7 +73,7 @@ class Result:
 
     def is_valid(self):
         return not (
-            self.unexpected_len_recv or self.unexpected_len_sent or self.sents_invalid > 0 or self.recv_invalid > 0 or self.errornous)
+            self.unexpected_len_recv or self.unexpected_len_sent or self.sents_invalid > 0 or self.recv_invalid > 0 or self.errornous or self.flitfault)
 
     def __str__(self):
         return "[Name %s, Error: %r, unexpected_len_sent %r, unexpected_len_recv %r, len_sent %d, len_recv %d, sents_invalid %d, recv_invalid %d, Params: %s]" % \
@@ -192,7 +200,8 @@ def evaluate_file(noc_rg, filename):
     errornous = []
     results = []
     counter = 0
-    with gzip.open(filename, 'r') as f:
+    opener = gzip.open if filename.endswith(".gz") else open
+    with opener(filename, 'r') as f:
         def experiment_to_buffer(f):
             """
             Creates an experiment object from the file
@@ -202,7 +211,9 @@ def evaluate_file(noc_rg, filename):
                 "name" : name, #the experiment id
                 "params" : params, # the param string
                 "sent" : sent, # list containing the sent lines
+                        These are the lines which where sent to router 5
                 "recv" : recv # list containing the recv lines
+                        These are the lines which where sent by router 5
             }
 
             OR None if there is no other experiment
@@ -210,7 +221,7 @@ def evaluate_file(noc_rg, filename):
             i = 0
             buffer = []
             for line in f:
-                if "#####\n" == line:
+                if line.startswith("#####"):
                     i = i + 1
                     if len(buffer) == 0:
                         print("reached end of file after %d experiments." % i)
@@ -262,7 +273,7 @@ def evaluate_file(noc_rg, filename):
                         fromtocounter[flitkey] += 1
                     else:
                         fromtocounter[flitkey] = 1
-                    reulst = False
+                    result = False
                     if p.from_node is not 5:
                         result = is_destination_reachable_via_port(noc_rg, p.from_node, p.was_going_out_via(),
                                                                    p.to_node, False)
@@ -286,7 +297,7 @@ def evaluate_file(noc_rg, filename):
                             "WARNING: Received Packet was not valid according to routing algorithm. Packet was sent from %d to %d via router 5. But it was received at: %d (dir:%s) %s" % (
                                 p.from_node, p.to_node, p.currentrouter, p.going_out_via(), str(p)))
                         res.sents_invalid += 1
-                for k, v in fromtocounter.iteritems():
+                for k, v in fromtocounter.items():
                     if v != 0:
                         res.flitfault = True
 

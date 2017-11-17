@@ -1,4 +1,5 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
+import math
 import networkx
 from socdep2.ConfigAndPackages import Config
 import random
@@ -242,8 +243,8 @@ def return_node_location(node_number):
     :return: Cartesian location of the node in the form of (x,y,z)
     """
     node_x = node_number % Config.ag.x_size
-    node_y = (node_number / Config.ag.x_size) % Config.ag.y_size
-    node_z = node_number / (Config.ag.y_size * Config.ag.x_size)
+    node_y = math.floor(node_number / Config.ag.x_size) % Config.ag.y_size
+    node_z = math.floor(node_number / (Config.ag.y_size * Config.ag.x_size))
     return node_x, node_y, node_z
 
 

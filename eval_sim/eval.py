@@ -9,11 +9,10 @@ from evaluation_tools.Evaluator import evaluate_file, count_fails, init
 
 noc_rg = init()
 
-filename = "/home/thi/all.results.gz"
+filename = "/home/thi/noerror.results.gz"
 print("evaluating %s" % filename)
 
-
-errornous,results = evaluate_file(noc_rg,filename)
+errornous, results = evaluate_file(noc_rg, filename)
 faillist = count_fails(results)
 
 all_result = (
@@ -24,7 +23,7 @@ names, errors, uls, ulr, ls, lr, si, ri, params, ff = itertools.izip_longest(*al
 
 print("------------Statistics---------------")
 print('Total Number of runs: %d' % len(results))
-print ("Runs with unexpected behavior: %d Ratio: %f" % (len(faillist), len(faillist) / float(len(results))))
+print("Runs with unexpected behavior: %d Ratio: %f" % (len(faillist), len(faillist) / float(len(results))))
 print('IDs: %s' % ' '.join(sorted([obj.name for obj in results if not obj.is_valid()])))
 print('Total number of simulation errors: %d' % len(errornous))
 print('Total number of runs with an unexpected amount of sent packets: %d' % sum(uls))
@@ -54,7 +53,7 @@ print('Maximum number of wrong routed packets (XY Routing): %d' % max(ri))
 
 paramlist = [obj.params.split(' ')[:6] + [' '.join(obj.params.split(' ')[6:])] for obj in results if not obj.is_valid()]
 if len(paramlist) == 0:
-    print ("No faults detected!")
+    print("No faults detected!")
 else:
     breaktimes, breaktimesa, faultvalues, faultlengths, breakname1, breakname2, additionals = itertools.izip_longest(
         *paramlist)
@@ -67,8 +66,9 @@ else:
     print(Counter(breakname2))
     # Look at difflib, maybe matching blocks, maybe consider buckets
     total = 0
-    for pattern in [r'^U',r'^valid_', r'^[\\]*CONTROL_PART/allocator_unit', r'^[\\]*CONTROL_PART/LBDR',r'^[\\]*FIFO_[NESLW]/FIFO_comb',r'^[\\]*FIFO_[NESLW]/FIFO_seq', r'^[\\]*XBAR']:
-        tmp = len(filter(lambda s: re.match(pattern,s.guessComponent()) is not None, faillist))
+    for pattern in [r'^U', r'^valid_', r'^[\\]*CONTROL_PART/allocator_unit', r'^[\\]*CONTROL_PART/LBDR',
+                    r'^[\\]*FIFO_[NESLW]/FIFO_comb', r'^[\\]*FIFO_[NESLW]/FIFO_seq', r'^[\\]*XBAR']:
+        tmp = len(filter(lambda s: re.match(pattern, s.guessComponent()) is not None, faillist))
         total += tmp
         print('"%s" broke something: %d' % (pattern, tmp))
     if total < len(breakname2):
@@ -76,5 +76,5 @@ else:
 
     # convert to cell name and connected pin list.
     for obj in faillist:
-            print(obj.guessComponent(), obj.params)
+        print(obj.guessComponent(), obj.params)
 print("------------Statistics---------------")

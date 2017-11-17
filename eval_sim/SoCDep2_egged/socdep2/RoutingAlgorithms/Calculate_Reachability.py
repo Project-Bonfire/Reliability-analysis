@@ -74,7 +74,7 @@ def is_destination_reachable_from_source(noc_rg, source_node, destination_node):
     destination = str(destination_node)+str('L')+str('O')
     if has_path(noc_rg, source, destination):
         if Config.RotingType == 'MinimalPath':
-            path_length = shortest_path_length(noc_rg, source, destination)
+            path_length = shortest_path_length(noc_rg, source, destination) - 1 # TODO: guessed fix by Thilo
             minimal_hop_count = manhattan_distance(source_node, destination_node)
             if (path_length/2) == minimal_hop_count:
                 return True

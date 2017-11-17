@@ -2,4 +2,4 @@ Generated_Files/
 GraphDrawings/
 *.pyc
 *.bak
-**/__pycache__/
+.idea/
