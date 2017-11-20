@@ -51,7 +51,7 @@ class Result:
     len_recv = -1
 
     # When the number of flits send from one node to another differs from the number of flits received there
-    flitfault = False
+    connection_counter_invalid = False
 
     # due to misrouting or misinjecting
     sents_invalid = 0
@@ -73,7 +73,7 @@ class Result:
 
     def is_valid(self):
         return not (
-            self.unexpected_len_recv or self.unexpected_len_sent or self.sents_invalid > 0 or self.recv_invalid > 0 or self.errornous or self.flitfault)
+            self.unexpected_len_recv or self.unexpected_len_sent or self.sents_invalid > 0 or self.recv_invalid > 0 or self.errornous or self.connection_counter_invalid)
 
     def __str__(self):
         return "[Name %s, Error: %r, unexpected_len_sent %r, unexpected_len_recv %r, len_sent %d, len_recv %d, sents_invalid %d, recv_invalid %d, Params: %s]" % \
@@ -296,10 +296,10 @@ def evaluate_file(noc_rg, filename):
                         print(
                             "WARNING: Received Packet was not valid according to routing algorithm. Packet was sent from %d to %d via router 5. But it was received at: %d (dir:%s) %s" % (
                                 p.from_node, p.to_node, p.currentrouter, p.going_out_via(), str(p)))
-                        res.sents_invalid += 1
+                        res.recv_invalid += 1
                 for k, v in fromtocounter.items():
                     if v != 0:
-                        res.flitfault = True
+                        res.connection_counter_invalid = True
 
             except:
                 print("Unexpected error in %s: " % res.name, sys.exc_info()[0], sys.exc_info()[1])
