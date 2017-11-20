@@ -101,19 +101,19 @@ not_reset <= not reset;
  
 --set up traffic generators
 credit_counter_control(clk, credit_out_L_5, valid_in_L_5, credit_counter_out_5);
-gen_random_packet(sent_file,4, 50, 5, 23, 8, 8, 10000 ns, clk, credit_counter_out_5, valid_in_L_5, RX_L_5);
+gen_random_packet(sent_file,4, 50, 5, 23, 1, 8, 10000 ns, clk, credit_counter_out_5, valid_in_L_5, RX_L_5);
 
 credit_counter_control(clk, credit_out_N_5, valid_in_N_5, credit_counter_out_1);
-gen_random_packet(sent_file,4, 50, 1, 23, 8, 8, 10000 ns, clk, credit_counter_out_1, valid_in_N_5, RX_N_5);
+gen_random_packet(sent_file,4, 50, 1, 23, 1, 8, 10000 ns, clk, credit_counter_out_1, valid_in_N_5, RX_N_5);
 
 credit_counter_control(clk, credit_out_E_5, valid_in_E_5, credit_counter_out_6);
-gen_random_packet(sent_file,4, 50, 6, 23, 8, 8, 10000 ns, clk, credit_counter_out_6, valid_in_E_5, RX_E_5);
+gen_random_packet(sent_file,4, 50, 6, 23, 1, 8, 10000 ns, clk, credit_counter_out_6, valid_in_E_5, RX_E_5);
 
 credit_counter_control(clk, credit_out_S_5, valid_in_S_5, credit_counter_out_9);
-gen_random_packet(sent_file,4, 50, 9, 23, 8, 8, 10000 ns, clk, credit_counter_out_9, valid_in_S_5, RX_S_5);
+gen_random_packet(sent_file,4, 50, 9, 23, 1, 8, 10000 ns, clk, credit_counter_out_9, valid_in_S_5, RX_S_5);
 
 credit_counter_control(clk, credit_out_W_5, valid_in_W_5, credit_counter_out_4);
-gen_random_packet(sent_file,4, 50, 4, 23, 8, 8, 10000 ns, clk, credit_counter_out_4, valid_in_W_5, RX_W_5);
+gen_random_packet(sent_file,4, 50, 4, 23, 1, 8, 10000 ns, clk, credit_counter_out_4, valid_in_W_5, RX_W_5);
 
 
 
