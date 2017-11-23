@@ -24,18 +24,20 @@ end tb_router;
 
 architecture behavior of tb_router is
 
---define the router
-
 -- Declaring network component
 component router_credit_based is
+  --generic (
+  --      DATA_WIDTH: integer := 32; 
+  --      current_address : integer := 5;
+  --      Rxy_rst : integer := 60;
+  --      Cx_rst : integer := 15;
+  --      NoC_size: integer := 4
+  --  );
+
     port (
     reset, clk: in std_logic;
 
-    Rxy_reconf: in  std_logic_vector(7 downto 0);
-    Reconfig : in std_logic;
-
     RX_N, RX_E, RX_W, RX_S, RX_L : in std_logic_vector (31 downto 0); 
-
     credit_in_N, credit_in_E, credit_in_W, credit_in_S, credit_in_L: in std_logic;
     valid_in_N, valid_in_E, valid_in_W, valid_in_S, valid_in_L : in std_logic;
 
@@ -62,10 +64,6 @@ end component;
 	signal credit_counter_out_6:  std_logic_vector (1 downto 0);
 	signal credit_counter_out_9:  std_logic_vector (1 downto 0);
 
-	-- NI testing signals
-	--------------
-	signal Rxy_reconf: std_logic_vector (7 downto 0) := "00111100";
-	signal Reconfig: std_logic := '0';
 	--------------
 	constant clk_period : time := 10 ns;
 	signal reset, not_reset, clk: std_logic :='0';
@@ -87,7 +85,6 @@ reset <= '1' after 1 ns;
 
 R_5: router_credit_based
 PORT MAP (  reset, clk, 
-            Rxy_reconf, Reconfig,
         	RX_N_5, RX_E_5, RX_W_5, RX_S_5, RX_L_5,
         	credit_in_N_5, credit_in_E_5, credit_in_W_5, credit_in_S_5, credit_in_L_5,
         	valid_in_N_5, valid_in_E_5, valid_in_W_5, valid_in_S_5, valid_in_L_5,
@@ -123,6 +120,5 @@ get_packet(recv_file,32, 5, 6, clk, credit_in_E_5, valid_out_E_5, TX_E_5);
 get_packet(recv_file,32, 5, 9, clk, credit_in_S_5, valid_out_S_5, TX_S_5);
 get_packet(recv_file,32, 5, 4, clk, credit_in_W_5, valid_out_W_5, TX_W_5);
 get_packet(recv_file,32, 5, 5, clk, credit_in_L_5, valid_out_L_5, TX_L_5);
-
 
 end;

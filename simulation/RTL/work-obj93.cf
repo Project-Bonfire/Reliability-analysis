@@ -1,4 +1,0 @@
-v 4
-file / "/var/folders/tm/fh684lf54z38tw2pwqmw7txw0000gn/T/SublimeLinter3-bniazmand/Router_32_bit_credit_based.vhd" "d517b407d8a2584d3db92fd9739af76446c19988" "20171018180337.440":
-  entity router_credit_based at 3( 45) + 0 on 11;
-  architecture behavior of router_credit_based at 31( 934) + 0 on 12;

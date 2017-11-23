@@ -2,10 +2,12 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use work.router_pack.all;
 
 entity router_credit_based_control_part is
     generic (
              cur_addr_rst: integer := 5;
+             Rxy_rst: integer := 8;             
              Cx_rst: integer := 15;
              NoC_size: integer := 4
             );
@@ -13,8 +15,6 @@ entity router_credit_based_control_part is
        port (
              reset, clk: in std_logic;
 
-             Rxy_reconf: in  std_logic_vector(7 downto 0);
-             Reconfig : in std_logic;
              empty_N, empty_E, empty_W, empty_S, empty_L: in std_logic;
              dst_addr_N, dst_addr_E, dst_addr_W, dst_addr_S, dst_addr_L: in std_logic_vector(NoC_size-1 downto 0);
              flit_type_N, flit_type_E, flit_type_W, flit_type_S, flit_type_L: in std_logic_vector(2 downto 0);
@@ -31,51 +31,6 @@ entity router_credit_based_control_part is
 end entity router_credit_based_control_part; 
 
 architecture behavior of router_credit_based_control_part is
-
-    COMPONENT LBDR is
-    generic (
-        cur_addr_rst: integer := 0;
-        Cx_rst: integer := 8;
-        NoC_size: integer := 4
-    );
-    port (  reset: in  std_logic;
-            clk: in  std_logic;
-            
-            Rxy_reconf: in  std_logic_vector(7 downto 0);
-            Reconfig : in std_logic;
-
-            empty: in  std_logic;
-            flit_type: in std_logic_vector(2 downto 0);
-            dst_addr: in std_logic_vector(NoC_size-1 downto 0);
-            grant_N, grant_E, grant_W, grant_S, grant_L: in std_logic;
-            Req_N, Req_E, Req_W, Req_S, Req_L:out std_logic
-            );
-    end COMPONENT;
-
-  COMPONENT allocator is 
-     
-    port (  reset: in  std_logic;
-            clk: in  std_logic;
-            -- flow control
-            credit_in_N, credit_in_E, credit_in_W, credit_in_S, credit_in_L: in std_logic;
-
-            req_N_N, req_N_E, req_N_W, req_N_S, req_N_L: in std_logic;
-            req_E_N, req_E_E, req_E_W, req_E_S, req_E_L: in std_logic;
-            req_W_N, req_W_E, req_W_W, req_W_S, req_W_L: in std_logic;
-            req_S_N, req_S_E, req_S_W, req_S_S, req_S_L: in std_logic;
-            req_L_N, req_L_E, req_L_W, req_L_S, req_L_L: in std_logic;
-            empty_N, empty_E, empty_W, empty_S, empty_L: in std_logic;
-            -- grant_X_Y means the grant for X output port towards Y input port
-            -- this means for any X in [N, E, W, S, L] then set grant_X_Y is one hot!
-            valid_N, valid_E, valid_W, valid_S, valid_L : out std_logic;
-
-            grant_N_N, grant_N_E, grant_N_W, grant_N_S, grant_N_L: out std_logic;
-            grant_E_N, grant_E_E, grant_E_W, grant_E_S, grant_E_L: out std_logic;
-            grant_W_N, grant_W_E, grant_W_W, grant_W_S, grant_W_L: out std_logic;
-            grant_S_N, grant_S_E, grant_S_W, grant_S_S, grant_S_L: out std_logic;
-            grant_L_N, grant_L_E, grant_L_W, grant_L_S, grant_L_L: out std_logic
-            );
-end COMPONENT;
 
  	signal Req_NN, Req_EN, Req_WN, Req_SN, Req_LN: std_logic;
  	signal Req_NE, Req_EE, Req_WE, Req_SE, Req_LE: std_logic;
@@ -109,32 +64,32 @@ FIFO_W_read_en_S <= Grant_SW;   FIFO_W_read_en_L <= Grant_LW;
 FIFO_L_read_en_S <= Grant_SL;   FIFO_S_read_en_L <= Grant_LS; 
 
 -- all the LBDRs
-LBDR_N: LBDR generic map (cur_addr_rst => cur_addr_rst, Cx_rst => Cx_rst, NoC_size => NoC_size)
-       PORT MAP (reset => reset, clk => clk, empty => empty_N, Rxy_reconf => Rxy_reconf, Reconfig => Reconfig,
+LBDR_N: LBDR generic map (cur_addr_rst => cur_addr_rst, Rxy_rst => Rxy_rst, Cx_rst => Cx_rst, NoC_size => NoC_size)
+       PORT MAP (reset => reset, clk => clk, empty => empty_N,
              flit_type => flit_type_N, dst_addr=> dst_addr_N ,
              grant_N => '0', grant_E =>Grant_EN, grant_W => Grant_WN, grant_S=>Grant_SN, grant_L =>Grant_LN,
              Req_N=> open, Req_E=>Req_NE, Req_W=>Req_NW, Req_S=>Req_NS, Req_L=>Req_NL);
 
-LBDR_E: LBDR generic map (cur_addr_rst => cur_addr_rst, Cx_rst => Cx_rst, NoC_size => NoC_size)
-   PORT MAP (reset =>  reset, clk => clk, empty => empty_E, Rxy_reconf => Rxy_reconf, Reconfig => Reconfig,
+LBDR_E: LBDR generic map (cur_addr_rst => cur_addr_rst, Rxy_rst => Rxy_rst, Cx_rst => Cx_rst, NoC_size => NoC_size)
+   PORT MAP (reset =>  reset, clk => clk, empty => empty_E,
              flit_type => flit_type_E, dst_addr=> dst_addr_E ,
              grant_N => Grant_NE, grant_E =>'0', grant_W => Grant_WE, grant_S=>Grant_SE, grant_L =>Grant_LE,
              Req_N=> Req_EN, Req_E=> open, Req_W=>Req_EW, Req_S=>Req_ES, Req_L=>Req_EL);
 
-LBDR_W: LBDR generic map (cur_addr_rst => cur_addr_rst, Cx_rst => Cx_rst, NoC_size => NoC_size)
-   PORT MAP (reset =>  reset, clk => clk, empty => empty_W,  Rxy_reconf => Rxy_reconf, Reconfig => Reconfig,
+LBDR_W: LBDR generic map (cur_addr_rst => cur_addr_rst, Rxy_rst => Rxy_rst, Cx_rst => Cx_rst, NoC_size => NoC_size)
+   PORT MAP (reset =>  reset, clk => clk, empty => empty_W,
              flit_type => flit_type_W, dst_addr=> dst_addr_W ,
              grant_N => Grant_NW, grant_E =>Grant_EW, grant_W =>'0' ,grant_S=>Grant_SW, grant_L =>Grant_LW,
              Req_N=> Req_WN, Req_E=>Req_WE, Req_W=> open, Req_S=>Req_WS, Req_L=>Req_WL);
 
-LBDR_S: LBDR generic map (cur_addr_rst => cur_addr_rst, Cx_rst => Cx_rst, NoC_size => NoC_size)
-   PORT MAP (reset =>  reset, clk => clk, empty => empty_S, Rxy_reconf => Rxy_reconf, Reconfig => Reconfig,
+LBDR_S: LBDR generic map (cur_addr_rst => cur_addr_rst, Rxy_rst => Rxy_rst, Cx_rst => Cx_rst, NoC_size => NoC_size)
+   PORT MAP (reset =>  reset, clk => clk, empty => empty_S,
              flit_type => flit_type_S, dst_addr=> dst_addr_S ,
              grant_N => Grant_NS, grant_E =>Grant_ES, grant_W =>Grant_WS ,grant_S=>'0', grant_L =>Grant_LS,
              Req_N=> Req_SN, Req_E=>Req_SE, Req_W=>Req_SW, Req_S=> open, Req_L=>Req_SL);
 
-LBDR_L: LBDR generic map (cur_addr_rst => cur_addr_rst, Cx_rst => Cx_rst, NoC_size => NoC_size)
-   PORT MAP (reset =>  reset, clk => clk, empty => empty_L, Rxy_reconf => Rxy_reconf, Reconfig => Reconfig,
+LBDR_L: LBDR generic map (cur_addr_rst => cur_addr_rst, Rxy_rst => Rxy_rst, Cx_rst => Cx_rst, NoC_size => NoC_size)
+   PORT MAP (reset =>  reset, clk => clk, empty => empty_L,
              flit_type => flit_type_L, dst_addr=> dst_addr_L ,
              grant_N => Grant_NL, grant_E =>Grant_EL, grant_W => Grant_WL,grant_S=>Grant_SL, grant_L =>'0',
              Req_N=> Req_LN, Req_E=>Req_LE, Req_W=>Req_LW, Req_S=>Req_LS, Req_L=> open);
