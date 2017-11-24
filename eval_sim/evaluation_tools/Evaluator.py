@@ -221,6 +221,7 @@ def evaluate_file(noc_rg, filename):
             i = 0
             buffer = []
             for line in f:
+                line=line.decode("utf-8")
                 if line.startswith("#####"):
                     i = i + 1
                     if len(buffer) == 0:

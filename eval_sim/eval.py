@@ -9,7 +9,7 @@ from evaluation_tools.Evaluator import evaluate_file, count_fails, init
 
 noc_rg = init()
 
-filename = "/home/thi/noerror.results.gz"
+filename = "/home/thi/all.results.gz"
 print("evaluating %s" % filename)
 
 errornous, results = evaluate_file(noc_rg, filename)
@@ -18,8 +18,8 @@ faillist = count_fails(results)
 all_result = (
     attrgetter('name', 'errornous', 'unexpected_len_sent', 'unexpected_len_recv', 'len_sent', 'len_recv',
                'sents_invalid',
-               'recv_invalid', 'params', 'flitfault')(obj) for obj in results)
-names, errors, uls, ulr, ls, lr, si, ri, params, ff = itertools.izip_longest(*all_result)
+               'recv_invalid', 'params', 'connection_counter_invalid')(obj) for obj in results)
+names, errors, uls, ulr, ls, lr, si, ri, params, ff = itertools.zip_longest(*all_result)
 
 print("------------Statistics---------------")
 print('Total Number of runs: %d' % len(results))
@@ -36,7 +36,7 @@ print('Maximum number of recv packets: %d' % max(lr))
 print('Average number of recv packets: %f' % (sum(lr) / float(len(lr))))
 print('Minimum number of recv packets: %d' % min(lr))
 print('Average difference between number of sent and received packets: %f' % (sum(map(sub, ls, lr)) / float(len(ls))))
-avg_dif_wdif_list = filter(lambda x: x != 0, map(sub, ls, lr))
+avg_dif_wdif_list = list(filter(lambda x: x != 0, map(sub, ls, lr)))
 if len(avg_dif_wdif_list) != 0:
     avg_dif_wdif = sum(map(abs, avg_dif_wdif_list)) / float(len(avg_dif_wdif_list))
     print('Average difference between number of sent and received packets (only when different): %f' % avg_dif_wdif)
@@ -55,10 +55,10 @@ paramlist = [obj.params.split(' ')[:6] + [' '.join(obj.params.split(' ')[6:])] f
 if len(paramlist) == 0:
     print("No faults detected!")
 else:
-    breaktimes, breaktimesa, faultvalues, faultlengths, breakname1, breakname2, additionals = itertools.izip_longest(
+    breaktimes, breaktimesa, faultvalues, faultlengths, breakname1, breakname2, additionals = itertools.zip_longest(
         *paramlist)
-    breaktimes = map(int, breaktimes)
-    faultvalues = map(int, faultvalues)
+    breaktimes = list(map(int, breaktimes))
+    faultvalues = list(map(int, faultvalues))
     print('Average breaktime which lead to a fault: %f' % (sum(breaktimes) / float(len(breaktimes))))
     print('Maximum breaktime which lead to a fault: %f' % (max(breaktimes)))
     print('Average faultvalue: %f' % (sum(faultvalues) / float(len(faultvalues))))
@@ -68,7 +68,7 @@ else:
     total = 0
     for pattern in [r'^U', r'^valid_', r'^[\\]*CONTROL_PART/allocator_unit', r'^[\\]*CONTROL_PART/LBDR',
                     r'^[\\]*FIFO_[NESLW]/FIFO_comb', r'^[\\]*FIFO_[NESLW]/FIFO_seq', r'^[\\]*XBAR']:
-        tmp = len(filter(lambda s: re.match(pattern, s.guessComponent()) is not None, faillist))
+        tmp = len(list(filter(lambda s: re.match(pattern, s.guessComponent()) is not None, faillist)))
         total += tmp
         print('"%s" broke something: %d' % (pattern, tmp))
     if total < len(breakname2):
