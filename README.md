@@ -2,7 +2,8 @@
 
 This should run many experiments where faults are injected into the router and it is checked if the router failed.
 
- - `run_sim.sh <number_of_processes>` runs the simulation as many times as the sim_runs file contains lines
+ - `run_sim.sh <scenariofile> <number_of_processes>` runs the simulation as many times as the sim_runs file contains lines. 
+    The scenariofile specifies the used scenarios. You can find some in `scenarios/`
  - `sim_runs` contains the paramters which should be used for each simulation
  - `setup_sim.sh` compiles the exported cell file to a list of breakable pins. See `prepare_sim/cell_export_parser/README.md` for further information.
  - `prepare_sim.sh <number of experiments>` prepares the sim_runs file. It contains `<number of experiments>`lines then. 
@@ -17,9 +18,9 @@ The results are copied then into the resultsfolder. The foldername in the result
   - Generate parameters for the simulation runs (10_000 runs here)
     - `./prepare_sim.sh 10000`
   - Run the simulation:
-    - `./run_sim.sh <num_processes>` or `./run_sim.sh`. (It guesses `num_processes` then.)
+    - `./run_sim.sh <scenariofile> <num_processes>` or `./run_sim.sh <scenariofile>`. (It guesses `num_processes` then.)
   - You can run a simle simulation with a given line by calling (example line):
-    - `./run_single_sim.csh 49308 692 0 10 U3116 :A1`
+    - `./run_single_sim.csh <scenariofile> 49308 692 0 10 U3116 :A1`
 
  # Subprojects
 See the README's of the subprojects to get further information.

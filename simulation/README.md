@@ -38,6 +38,21 @@ The parameters for the whole simulation are given via env vars:
     setenv RESULTFOLDER $resultfolder;
 ```
 
+### Scenariofile
+The scenariofile contains the scenario for the simulation. The scenario is the script for the packet generators, when to create which packets.
+It has the following format:
+
+```
+Commentline. Completly ignored
+time sourceid destid packetlength
+time sourceid destid packetlength
+500 ns 1 5 8
+...
+```
+Notice that the statements are exectued sequentially  so order is important.
+time is in ns. Mind the Space! The packet is scheduled for the next clock cycle then.
+Sending packets is delayed when there is not enough credit.
+
 ## Running the Simulation
 
 The simulation can be run with `vsim -t 1ns -c -do simulate.do`. `-c` runs the simulation headless.
@@ -54,6 +69,8 @@ To get a list of all pins one can export the full list of all cells of the desig
 
 The `../cell_export_parser` folder contains a converter which takes the export of the Synopsys Design Compiler and compains it to the required list.
 Also see the readme there.
+
+
 
 #### Behrads description of what we did
 

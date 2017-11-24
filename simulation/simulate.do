@@ -10,6 +10,7 @@ set RESULTFOLDER $env(RESULTFOLDER)
 set PROPERTYPATH $env(PROPERTYPATH) 
 set STARTID $env(STARTID)
 set RESULTFILE $env(RESULTFILE)
+set SCENARIOFILE $env(SCENARIOFILE)
 # define library work
 
 vlib work
@@ -31,7 +32,7 @@ puts $PROPERTYPATH
 puts $RESULTFOLDER
 puts $STARTID
 # Start the simulation
-vsim -novopt -t 1ns -Gsent_file=$RESULTFOLDER/sent.txt -Grecv_file=$RESULTFOLDER/received.txt work.tb_router
+vsim -novopt -t 1ns -Gsent_file=$RESULTFOLDER/sent.txt -Grecv_file=$RESULTFOLDER/received.txt -Gscenario_file=$SCENARIOFILE work.tb_router
 
 set concatdresultfile [open $RESULTFILE "w"]
 fconfigure $concatdresultfile -translation binary
@@ -47,7 +48,6 @@ fconfigure $fp -buffering line
 gets $fp data
 set i $STARTID
 while {$data != ""} {
-
     puts "starting experiment #$i"
     #split line
     set params [regexp -all -inline {\S+} $data]

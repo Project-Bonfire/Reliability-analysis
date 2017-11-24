@@ -1,0 +1,6 @@
+sample file.
+time sourceid destid packetlength
+500 ns 1 5 8
+1000 ns 4 5 8
+1500 ns 6 5 8
+2000 ns 9 5 8

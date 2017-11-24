@@ -14,19 +14,23 @@ setenv M_16_EDA
 
 source /eda/mentor/2015-16/scripts/QUESTA-SV-AFV_10.4c-5_RHELx86.csh
 
+set scnfile = "../$1"
+shift # take first parameter and shift it away then.
 
 cd simulation
 
 rm -rf results/
+rm -rf ../results/single
 
 set propertypath=`mktemp`
 set startid=0
 set resultfolder=`mktemp -d`
 cp modelsim.ini $resultfolder/modelsim.ini
 echo "$*" >> $propertypath
+mkdir ../results/single
+(setenv SCENARIOFILE $scnfile;setenv RESULTFILE ../results/single/Process1.results;setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; vsim  -modelsimini $resultfolder/modelsim.ini -novopt -t 1ns -c -do simulate.do  )
 
-(setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; vsim  -modelsimini $resultfolder/modelsim.ini -novopt -t 1ns  -do simulate.do  )
-
-mv "results/" "$resultfolder/res"
 echo "Find the results here:"
-echo "cd $resultfolder/res"
+echo "cd ../results/single"
+echo "Tmp Folder was here:"
+echo "cd $resultfolder"
