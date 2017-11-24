@@ -250,7 +250,6 @@ package body TB_Package is
             end if;
             if (port_in(DATA_WIDTH-1 downto DATA_WIDTH-3) = "100") then 
                 counter := counter+1; 
-              assert (P_length=counter) report "wrong packet size" severity warning;
                 write(LINEVARIABLE, "type:tail;time:" & time'image(now) & ";currentrouter:" &integer'image(Node_ID) &";from_node:" & integer'image(source_node) & ";to_node:" & integer'image(destination_node) & ";length:"& integer'image(P_length)  & ";id:"& integer'image(packet_id) &  ";flitno:" & integer'image(counter));
                 writeline(VEC_FILE, LINEVARIABLE);
                counter := 0;
