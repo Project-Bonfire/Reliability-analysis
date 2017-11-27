@@ -109,6 +109,7 @@ package body TB_Package is
     variable x,y :integer ;
     variable v_ILINE : line; --the input line from the scn file
     variable v_SPACE     : character;
+    variable body_data : std_logic_vector (27 downto 0);
     file scenario : text;--the opened scenario file
     begin
     file_open(scenario, scenariofile,  read_mode);
@@ -177,13 +178,20 @@ package body TB_Package is
              wait until clk'event and clk ='0';
             end if;
 
+            body_data := std_logic_vector(to_unsigned(source,4)) &
+               std_logic_vector(to_unsigned(destination_id,4)) &
+               std_logic_vector(to_unsigned( Packet_length,5)) & 
+               std_logic_vector(to_unsigned(id_counter,10)) & std_logic_vector(to_unsigned(0,5));
+
             -- Each packet can have no body flits or one or more than body flits.
             if I = 0 then
               port_in <= Body_1_gen(Packet_length, id_counter);
               write(LINEVARIABLE, "type:body1;time:" & time'image(now) & ";currentrouter:" & integer'image(source) &";from_node:" & integer'image(source) & ";to_node:" & integer'image(destination_id) & ";length:"& integer'image(Packet_length)  & ";id:"& integer'image(id_counter) &  ";flitno:" & integer'image(I+1));
               writeline(VEC_FILE, LINEVARIABLE);   
             else
-              port_in <= Body_gen(633);
+              
+
+              port_in <= Body_gen(to_integer(unsigned(body_data(27 downto 0))));
               write(LINEVARIABLE, "type:body;time:" & time'image(now) & ";currentrouter:" & integer'image(source) &";from_node:" & integer'image(source) & ";to_node:" & integer'image(destination_id) & ";length:"& integer'image(Packet_length)  & ";id:"& integer'image(id_counter) &  ";flitno:" & integer'image(I+1));
               writeline(VEC_FILE, LINEVARIABLE);
             end if;
@@ -200,7 +208,7 @@ package body TB_Package is
       end if;
 
       -- Close the packet with a tail flit (All packets have one tail flit)!
-      port_in <= Tail_gen(Packet_length, 799); 
+      port_in <= Tail_gen(Packet_length, to_integer(unsigned(body_data(27 downto 0)))); 
       valid_out <= '1';
       write(LINEVARIABLE, "type:tail;time:" & time'image(now) & ";currentrouter:" &integer'image(source) &";from_node:" & integer'image(source) & ";to_node:" & integer'image(destination_id) & ";length:"& integer'image(Packet_length)  & ";id:"& integer'image(id_counter) &  ";flitno:" & integer'image(Packet_length-1));
       writeline(VEC_FILE, LINEVARIABLE);
@@ -219,7 +227,9 @@ package body TB_Package is
                        signal credit_out: out std_logic; signal valid_in: in std_logic; signal port_in: in std_logic_vector) is
   -- initial_delay: waits for this number of clock cycles before sending the packet!
     variable source_node, destination_node, P_length, packet_id, counter: integer;
+    variable parity_failed : boolean;
     variable LINEVARIABLE : line; 
+    variable body_src,body_dest,body_packet_length, body_packetid, body_checksum:integer;
      file VEC_FILE : text is out filename;
      begin
      credit_out <= '1';
@@ -229,28 +239,62 @@ package body TB_Package is
          wait until clk'event and clk ='1';
         
          if valid_in = '1' then
+             parity_failed := XOR_REDUCE(port_in(DATA_WIDTH-1 downto 1)) /= port_in(0);
               if (port_in(DATA_WIDTH-1 downto DATA_WIDTH-3) = "001") then
                 counter := 1; 
                 source_node := to_integer(unsigned(port_in(28 downto 15)));
                 destination_node := to_integer(unsigned(port_in(14 downto 1)));
-                write(LINEVARIABLE, "type:header;time:" & time'image(now) & ";currentrouter:" &integer'image(Node_ID) &";from_node:" & integer'image(source_node) & ";to_node:" & integer'image(destination_node) & ";length:-1;id:-1;flitno:0");
+                write(LINEVARIABLE, "type:header;time:" & time'image(now) & ";currentrouter:" &integer'image(Node_ID) &";from_node:" & integer'image(source_node) & ";to_node:" & integer'image(destination_node) & ";length:-1;id:-1;flitno:0;parity_failed:"&boolean'image(parity_failed));
                 writeline(VEC_FILE, LINEVARIABLE);
             end if;  
+            body_src := to_integer(unsigned(port_in(28 downto 25)));
+            body_dest := to_integer(unsigned(port_in(24 downto 21)));
+            body_packet_length := to_integer(unsigned(port_in(20 downto 16)));
+            body_packetid := to_integer(unsigned(port_in(15 downto 6)));
+            body_checksum := to_integer(unsigned(port_in(5 downto 1)));
             if  (port_in(DATA_WIDTH-1 downto DATA_WIDTH-3) = "010") then
                if counter = 1 then
                   P_length := to_integer(unsigned(port_in(28 downto 15)));
-                  packet_id := to_integer(unsigned(port_in(15 downto 1)));
-                  write(LINEVARIABLE, "type:body_1;time:" & time'image(now) & ";currentrouter:" &integer'image(Node_ID) &";from_node:" & integer'image(source_node) & ";to_node:" & integer'image(destination_node) & ";length:"& integer'image(P_length)  & ";id:"& integer'image(packet_id)&  ";flitno:" & integer'image(counter));
+                  packet_id := to_integer(unsigned(port_in(14 downto 1)));
+                  write(LINEVARIABLE, "type:body_1;time:" & time'image(now) &
+                   ";currentrouter:" &integer'image(Node_ID) &";from_node:" &
+                    integer'image(source_node) & ";to_node:" & integer'image(destination_node) &
+                     ";length:"& integer'image(P_length)  & ";id:"& integer'image(packet_id)&
+                       ";flitno:" & integer'image(counter)&";parity_failed:"&boolean'image(parity_failed)
+                       );
                   writeline(VEC_FILE, LINEVARIABLE);               
                else
-                  write(LINEVARIABLE, "type:body;time:" & time'image(now) & ";currentrouter:" &integer'image(Node_ID) &";from_node:" & integer'image(source_node) & ";to_node:" & integer'image(destination_node) & ";length:"& integer'image(P_length)  & ";id:"& integer'image(packet_id)&  ";flitno:" & integer'image(counter));
+                  write(LINEVARIABLE, "type:body;time:" & time'image(now) &
+                   ";currentrouter:" &integer'image(Node_ID) &
+                   ";from_node:" & integer'image(source_node) &
+                    ";to_node:" & integer'image(destination_node) &
+                     ";length:"& integer'image(P_length)  & ";id:"&
+                      integer'image(packet_id)&  ";flitno:" &
+                       integer'image(counter)&";parity_failed:"&boolean'image(parity_failed)&
+                       ";body_src:"& integer'image(body_src)& 
+                       ";body_dest:"& integer'image(body_dest)& 
+                       ";body_packet_length:"& integer'image(body_packet_length)& 
+                       ";body_packetid:"& integer'image(body_packetid)& 
+                       ";body_checksum:"& integer'image(body_checksum));
                   writeline(VEC_FILE, LINEVARIABLE);               
                end if;
                counter := counter+1; 
             end if;
             if (port_in(DATA_WIDTH-1 downto DATA_WIDTH-3) = "100") then 
                 counter := counter+1; 
-                write(LINEVARIABLE, "type:tail;time:" & time'image(now) & ";currentrouter:" &integer'image(Node_ID) &";from_node:" & integer'image(source_node) & ";to_node:" & integer'image(destination_node) & ";length:"& integer'image(P_length)  & ";id:"& integer'image(packet_id) &  ";flitno:" & integer'image(counter));
+                write(LINEVARIABLE, "type:tail;time:" & time'image(now) &
+                 ";currentrouter:" &integer'image(Node_ID) &
+                 ";from_node:" & integer'image(source_node) & 
+                 ";to_node:" & integer'image(destination_node) &
+                  ";length:"& integer'image(P_length)  &
+                   ";id:"& integer'image(packet_id) &
+                     ";flitno:" & integer'image(counter)&
+                     ";parity_failed:"&boolean'image(parity_failed) &
+                       ";body_src:"& integer'image(body_src)& 
+                       ";body_dest:"& integer'image(body_dest)& 
+                       ";body_packet_length:"& integer'image(body_packet_length)& 
+                       ";body_packetid:"& integer'image(body_packetid)& 
+                       ";body_checksum:"& integer'image(body_checksum));
                 writeline(VEC_FILE, LINEVARIABLE);
                counter := 0;
             end if;

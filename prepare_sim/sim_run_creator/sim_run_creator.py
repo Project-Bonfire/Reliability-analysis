@@ -7,7 +7,7 @@ from random import randrange
 
 lines = [line.strip() for line in open('../cell_export_parser/results.txt')]
 
-sim_length = int(sys.argv[2]) if len(sys.argv) > 2 else 90000
+sim_length = int(sys.argv[2]) if len(sys.argv) > 2 else 9000
 offset = 1000
 fault_length_arg = int(sys.argv[3]) if len(sys.argv) > 3 else 10
 
