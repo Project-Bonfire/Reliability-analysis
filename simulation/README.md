@@ -11,9 +11,20 @@ There are several race conditions when multiple instances are launched in parall
 and a seperate modelsimini has to be set for each instance. (see `../run_sim.sh`)
 
 ## Output
-The output files are:
- - `sent.txt` with the sent packets from the packet generators.
- - `recieved.txt` with the recieved packets from the packet fetchers.
+The output is written to a file given as `RESULTFILE`.
+An experiment is written down as:
+```
+-----
+<experimentid>
+<experimentparams>
+!sent:
+<one line for each packet sent into the router>
+!recv:
+<one line for each packet received from the router>
+#####
+```
+The `sent` and `recv` lines are key value pairs which are seperated by a `;`.
+
 
 ## Parameters
 
@@ -32,6 +43,8 @@ The parameters for the whole simulation are given via env vars:
 - `PROPERTYPATH` is the path to the file containing a line of parameters for each experiment
 - `STARTID` is the id which should be used to start counting up the number of experimentresults in the `results` folder
 - `RESULTFOLDER` is a folder which is used temporarly for results before they are copied to the experiment results folder. This may be removed in further versions, and the result will be written to the correct destination directly.
+- `RESULTFILE` is the file where the results of the experiments are written to. See section `output`.
+- `SCENARIOFILE` the scenariofile contains the scenario for these experiments.
 ```
     setenv PROPERTYPATH $propertypath; 
     setenv STARTID $startid; 
