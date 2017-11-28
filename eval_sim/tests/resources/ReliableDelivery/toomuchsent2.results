@@ -1021,4 +1021,12 @@ type:body;time:9665 ns;currentrouter:6;from_node:4;to_node:11;length:8;id:19;fli
 type:body;time:9675 ns;currentrouter:6;from_node:4;to_node:11;length:8;id:19;flitno:5;parity_failed:false;body_src:4;body_dest:11;body_packet_length:8;body_packetid:19;body_checksum:0
 type:body;time:9685 ns;currentrouter:6;from_node:4;to_node:11;length:8;id:19;flitno:6;parity_failed:false;body_src:4;body_dest:11;body_packet_length:8;body_packetid:19;body_checksum:0
 type:tail;time:9695 ns;currentrouter:6;from_node:4;to_node:11;length:8;id:19;flitno:8;parity_failed:false;body_src:4;body_dest:11;body_packet_length:8;body_packetid:19;body_checksum:0
+type:header;time:9625 ns;currentrouter:6;from_node:4;to_node:11;length:-1;id:-1;flitno:0;parity_failed:false
+type:body1;time:9635 ns;currentrouter:6;from_node:4;to_node:11;length:8;id:19;flitno:1;parity_failed:false
+type:body;time:9645 ns;currentrouter:6;from_node:4;to_node:11;length:8;id:19;flitno:2;parity_failed:false;body_src:4;body_dest:11;body_packet_length:8;body_packetid:19;body_checksum:0
+type:body;time:9655 ns;currentrouter:6;from_node:4;to_node:11;length:8;id:19;flitno:3;parity_failed:false;body_src:4;body_dest:11;body_packet_length:8;body_packetid:19;body_checksum:0
+type:body;time:9665 ns;currentrouter:6;from_node:4;to_node:11;length:8;id:19;flitno:4;parity_failed:false;body_src:4;body_dest:11;body_packet_length:8;body_packetid:19;body_checksum:0
+type:body;time:9675 ns;currentrouter:6;from_node:4;to_node:11;length:8;id:19;flitno:5;parity_failed:false;body_src:4;body_dest:11;body_packet_length:8;body_packetid:19;body_checksum:0
+type:body;time:9685 ns;currentrouter:6;from_node:4;to_node:11;length:8;id:19;flitno:6;parity_failed:false;body_src:4;body_dest:11;body_packet_length:8;body_packetid:19;body_checksum:0
+type:tail;time:9695 ns;currentrouter:6;from_node:4;to_node:11;length:8;id:19;flitno:8;parity_failed:false;body_src:4;body_dest:11;body_packet_length:8;body_packetid:19;body_checksum:0
 #####
