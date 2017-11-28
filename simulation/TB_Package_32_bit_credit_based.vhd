@@ -133,7 +133,7 @@ package body TB_Package is
         read(v_ILINE, starting_time);  --starting time for the next package      
         read(v_ILINE, v_SPACE);           -- read in the space character
         read(v_ILINE, linetmp);
-        if source /= linetmp then --if the line is not for us, skip
+        if source /= linetmp then --if the line is not for us, skip         
           next;
         end if;
         read(v_ILINE, v_SPACE);           -- read in the space character
@@ -141,6 +141,7 @@ package body TB_Package is
         read(v_ILINE, v_SPACE);           -- read in the space character
         read(v_ILINE, Packet_length);
       else
+        port_in <= "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU" ;
         wait; --i am finished
       end if;  
       
