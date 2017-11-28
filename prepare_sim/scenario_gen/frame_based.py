@@ -8,7 +8,7 @@ sources = [1,4,6,9,5]
 destinations = range(16)
 time_offset = 50
 time_limit = 10000
-packet_lengths = range(2,9)
+packet_lengths = range(3,9)
 
 def xyrouting(source,subject,networksize):
     x_source = source % networksize

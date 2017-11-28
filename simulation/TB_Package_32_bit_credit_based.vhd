@@ -256,7 +256,7 @@ package body TB_Package is
                if counter = 1 then
                   P_length := to_integer(unsigned(port_in(28 downto 15)));
                   packet_id := to_integer(unsigned(port_in(14 downto 1)));
-                  write(LINEVARIABLE, "type:body_1;time:" & time'image(now) &
+                  write(LINEVARIABLE, "type:body1;time:" & time'image(now) &
                    ";currentrouter:" &integer'image(Node_ID) &";from_node:" &
                     integer'image(source_node) & ";to_node:" & integer'image(destination_node) &
                      ";length:"& integer'image(P_length)  & ";id:"& integer'image(packet_id)&
