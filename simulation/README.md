@@ -30,7 +30,7 @@ The `sent` and `recv` lines are key value pairs which are seperated by a `;`.
 
 The parameters for a single experiment are:
  - `BREAK_NAME` The name of the pin to break.
-    The name has to be in the format specified by the vars in the `modelsim.ini` file. (`DatasetSeparator`,`PathSeparator`)
+    The name has to be in the format specified by the vars in the `modelsim.ini` file. (`DatasetSeparator`,`PathSeparator`). If you want to do a dryrun, specify `nofault :nofault`
  - `BREAK_TIME_BEFORE` The time the simulation should run before the break is issued.
  - `BREAK_TIME_AFTER` The time the simulation shoud run after the break is issued.
  - `FAULT_VALUE` To what the value of the pin should be set.
