@@ -1,4 +1,4 @@
-from evaluation_tools.Evaluator import evaluate_file, init
+from evaluation_tools.Evaluator import evaluate_file, init,Result
 
 import unittest
 
@@ -12,8 +12,10 @@ class MyTest(unittest.TestCase):
         self.assertFalse(results[0].errornous or results[0].connection_counter_invalid or results[0].unexpected_len_sent or results[0].unexpected_len_recv)
         self.assertEqual(results[0].recv_invalid,0)
         self.assertEqual(results[0].sents_invalid, 0)
-        self.assertEqual(results[0].len_recv, 744)
-        self.assertEqual(results[0].len_sent, 744)
+        self.assertEqual(results[0].misrouted_recv, 0)
+        self.assertEqual(results[0].misrouted_sent, 0)
+        self.assertEqual(results[0].len_recv, 509)
+        self.assertEqual(results[0].len_sent, 509)
         self.assertTrue(results[0].is_valid())
 
     def testError(self):
@@ -39,8 +41,8 @@ class MyTest(unittest.TestCase):
         self.assertFalse(results[0].connection_counter_invalid or results[0].unexpected_len_sent or results[0].unexpected_len_recv)
         self.assertEqual(results[0].recv_invalid,1)
         self.assertEqual(results[0].sents_invalid, 0)
-        self.assertEqual(results[0].len_recv, 744)
-        self.assertEqual(results[0].len_sent, 744)
+        self.assertEqual(results[0].len_recv, 509)
+        self.assertEqual(results[0].len_sent, 509)
         self.assertFalse(results[0].is_valid())
 
     def testMisrouted2(self):
@@ -81,7 +83,7 @@ class MyTest(unittest.TestCase):
 
     def testTooMuchSent(self):
         '''
-        packets sent multiple times
+        bodz flits sent multiple times
         :return:
         '''
         noc_rg = init()
@@ -91,12 +93,32 @@ class MyTest(unittest.TestCase):
         self.assertEqual(len(results), 1)
         self.assertFalse(results[0].errornous)
         self.assertTrue(results[0].connection_counter_invalid )
-        self.assertFalse(results[0].unexpected_len_recv)
+        self.assertTrue(results[0].unexpected_len_recv)
         self.assertFalse(results[0].unexpected_len_sent)
-        self.assertEqual(results[0].recv_invalid,1)
+        self.assertEqual(results[0].recv_invalid,0)
         self.assertEqual(results[0].sents_invalid, 0)
-        self.assertEqual(results[0].len_recv, 745)
-        self.assertEqual(results[0].len_sent, 745)
+        self.assertEqual(results[0].len_recv, 510)
+        self.assertEqual(results[0].len_sent, 509)
+        self.assertFalse(results[0].is_valid())
+
+    def testTooMuchSent2(self):
+        '''
+        packet sent multiple times
+        :return:
+        '''
+        noc_rg = init()
+        filename = "resources/ReliableDelivery/toomuchsent2.results"
+        errornous, results = evaluate_file(noc_rg, filename)
+        self.assertEqual(len(errornous), 0)
+        self.assertEqual(len(results), 1)
+        self.assertFalse(results[0].errornous)
+        self.assertTrue(results[0].connection_counter_invalid )
+        self.assertTrue(results[0].unexpected_len_recv)
+        self.assertFalse(results[0].unexpected_len_sent)
+        self.assertEqual(results[0].recv_invalid,0)
+        self.assertEqual(results[0].sents_invalid, 0)
+        self.assertEqual(results[0].len_recv, 517)
+        self.assertEqual(results[0].len_sent, 509)
         self.assertFalse(results[0].is_valid())
 
     def testFlitsMissing(self):
@@ -116,7 +138,7 @@ class MyTest(unittest.TestCase):
         self.assertEqual(results[0].recv_invalid,0)
         self.assertEqual(results[0].sents_invalid, 0)
         self.assertEqual(results[0].len_recv, 739)
-        self.assertEqual(results[0].len_sent, 744)
+        self.assertEqual(results[0].len_sent, 509)
         self.assertFalse(results[0].is_valid())
 
     def testDestinationChanged(self):
@@ -135,8 +157,8 @@ class MyTest(unittest.TestCase):
         self.assertFalse(results[0].unexpected_len_sent)
         self.assertEqual(results[0].recv_invalid,0)
         self.assertEqual(results[0].sents_invalid, 0)
-        self.assertEqual(results[0].len_recv, 744)
-        self.assertEqual(results[0].len_sent, 744)
+        self.assertEqual(results[0].len_recv, 509)
+        self.assertEqual(results[0].len_sent, 509)
         self.assertFalse(results[0].is_valid())
 
     def testDestinationChanged2(self):
@@ -155,8 +177,8 @@ class MyTest(unittest.TestCase):
         self.assertFalse(results[0].unexpected_len_sent)
         self.assertEqual(results[0].recv_invalid,16)
         self.assertEqual(results[0].sents_invalid, 0)
-        self.assertEqual(results[0].len_recv, 744)
-        self.assertEqual(results[0].len_sent, 744)
+        self.assertEqual(results[0].len_recv, 509)
+        self.assertEqual(results[0].len_sent, 509)
         self.assertFalse(results[0].is_valid())
 
     def testDestinationChanged3(self):
@@ -175,8 +197,8 @@ class MyTest(unittest.TestCase):
         self.assertFalse(results[0].unexpected_len_sent)
         self.assertEqual(results[0].recv_invalid,0)
         self.assertEqual(results[0].sents_invalid, 0)
-        self.assertEqual(results[0].len_recv, 744)
-        self.assertEqual(results[0].len_sent, 744)
+        self.assertEqual(results[0].len_recv, 509)
+        self.assertEqual(results[0].len_sent, 509)
         self.assertFalse(results[0].is_valid())
 
     def testPacketIntegrity1(self):
@@ -210,13 +232,13 @@ class MyTest(unittest.TestCase):
         self.assertEqual(len(errornous), 0)
         self.assertEqual(len(results), 1)
         self.assertFalse(results[0].errornous)
-        self.assertTrue(results[0].connection_counter_invalid)
+        self.assertFalse(results[0].connection_counter_invalid)
         self.assertFalse(results[0].unexpected_len_recv)
         self.assertFalse(results[0].unexpected_len_sent)
-        self.assertEqual(results[0].recv_invalid,0)
+        self.assertEqual(results[0].recv_invalid,2)
         self.assertEqual(results[0].sents_invalid, 0)
-        self.assertEqual(results[0].len_recv, 744)
-        self.assertEqual(results[0].len_sent, 744)
+        self.assertEqual(results[0].len_recv, 509)
+        self.assertEqual(results[0].len_sent, 509)
         self.assertFalse(results[0].is_valid())
 
     def testChangedFlitType(self):

@@ -10,6 +10,7 @@ from evaluation_tools.Evaluator import evaluate_file, count_fails, init
 
 noc_rg = init()
 
+
 filename = sys.argv[1]#"/home/thi/all.results.gz"
 print("evaluating %s" % filename)
 
@@ -19,9 +20,10 @@ faillist = count_fails(results)
 all_result = (
     attrgetter('name', 'errornous', 'unexpected_len_sent', 'unexpected_len_recv', 'len_sent', 'len_recv',
                'sents_invalid',
-               'recv_invalid', 'params', 'connection_counter_invalid')(obj) for obj in results)
-names, errors, uls, ulr, ls, lr, si, ri, params, ff = itertools.zip_longest(*all_result)
-print("errors: %s"%[e.name for e in errornous])
+
+               'recv_invalid', 'params', 'connection_counter_invalid','misrouted_recv','misrouted_sent')(obj) for obj in results)
+names, errors, uls, ulr, ls, lr, si, ri, params, ff ,mr,ms= itertools.zip_longest(*all_result)
+
 print("------------Statistics---------------")
 print('Total Number of runs: %d' % len(results))
 print("Runs with unexpected behavior: %d Ratio: %f" % (len(faillist), len(faillist) / float(len(results))))
@@ -48,10 +50,12 @@ if len(avg_dif_wdif_list) != 0:
 else:
     print("No differences in amount of sent and received packets!")
 
-print('Average number of wrong injected flits: %d' % (sum(si) / float(len(si))))
-print('Average number of wrong routed flits (XY Routing): %d' % (sum(ri) / float(len(ri))))
-print('Maximum number of wrong routed flits (XY Routing): %d' % max(ri))
+print('Average number of wrong injected flits: %d' % (sum(ms) / float(len(ms))))
+print('Average number of wrong routed flits (XY Routing): %d' % (sum(mr) / float(len(mr))))
+print('Maximum number of wrong routed flits (XY Routing): %d' % max(mr))
 
+print('Average number of flits which failed the verification on the sent side: %d'% (sum(si) / float(len(si))))
+print('Average number of flits which failed the verification on the recv side: %d'% (sum(ri) / float(len(ri))))
 paramlist = [obj.params.split(' ')[:6] + [' '.join(obj.params.split(' ')[6:])] for obj in results if not obj.is_valid()]
 if len(paramlist) == 0:
     print("No faults detected!")
