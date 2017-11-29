@@ -2,6 +2,7 @@ import ast
 import copy
 import gzip
 import sys
+from enum import Enum, auto
 
 from socdep2.ArchGraphUtilities.AG_Functions import *
 from socdep2.ConfigAndPackages import Config, PackageFile
@@ -32,6 +33,7 @@ class Result:
     """
 
     """
+
     def __init__(self):
         pass
 
@@ -53,9 +55,15 @@ class Result:
     # When the number of flits send from one node to another differs from the number of flits received there
     connection_counter_invalid = False
 
-    # due to misrouting or misinjecting
+    # missing or errornous flits
     sents_invalid = 0
     recv_invalid = 0
+
+    #due misrouting
+    misrouted_recv = 0
+    misrouted_sent = 0
+
+
 
     # the parameters of the simulation
     params = ""
@@ -73,7 +81,7 @@ class Result:
 
     def is_valid(self):
         return not (
-            self.unexpected_len_recv or self.unexpected_len_sent or self.sents_invalid > 0 or self.recv_invalid > 0 or self.errornous or self.connection_counter_invalid)
+            self.unexpected_len_recv or self.unexpected_len_sent or self.sents_invalid > 0 or self.recv_invalid > 0 or self.misrouted_sent > 0 or self.misrouted_recv > 0 or self.errornous or self.connection_counter_invalid)
 
     def __str__(self):
         return "[Name %s, Error: %r, unexpected_len_sent %r, unexpected_len_recv %r, len_sent %d, len_recv %d, sents_invalid %d, recv_invalid %d, Params: %s]" % \
@@ -85,10 +93,18 @@ class FlitEvent:
     def __init__(self):
         pass
 
+    class Type(Enum):
+        HEAD = auto()
+        BODY = auto()
+        BODY1 = auto()
+        TAIL = auto()
+
     flit = None
     # According to router 5
     on_in_port = False
     on_out_port = False
+    # 0,1,2,3 for head body_1 body tail
+    type = -1
 
     time = 0
     from_node = -1
@@ -152,6 +168,18 @@ class FlitEvent:
             return "N"
 
 
+class RecvFlit(FlitEvent):
+    """
+    A flit received from the router
+    """
+    parity_valid = True
+    body_src= -1,
+    body_dest= -1,
+    body_packet_length= -1,
+    body_id= -1,
+    body_checksum=-1
+
+
 def parse_sent_line(data):
     # type: (dict) -> FlitEvent
     """
@@ -160,7 +188,7 @@ def parse_sent_line(data):
     :param data: the data to parse
     :return: a Flit event
     """
-    pe = dict_to_flit(data)
+    pe = dict_to_flit(data, FlitEvent)
     pe.on_in_port = True
     return pe
 
@@ -172,14 +200,21 @@ def parse_recv_line(data):
     :param data: the data to parse
     :return: a Flit event
     """
-
-    pe = dict_to_flit(data)
+    pe = dict_to_flit(data, RecvFlit)
     pe.on_out_port = True
+    # Caution: inverted here!
+    pe.parity_valid = True if data["parity_failed"] == "false" else False
+    if pe.type == FlitEvent.Type.TAIL or pe.type == FlitEvent.Type.BODY:
+        pe.body_src = int(data['body_src'])
+        pe.body_dest = int(data['body_dest'])
+        pe.body_packet_length = int(data['body_packet_length'])
+        pe.body_id = int(data['body_packetid'])
+        pe.body_checksum = int(data['body_checksum'])
     return pe
 
 
-def dict_to_flit(data):
-    pe = FlitEvent()
+def dict_to_flit(data, type):
+    pe = type()
     pe.time = int(data['time'].split(' ')[0])
     pe.currentrouter = int(data['currentrouter'])
     pe.from_node = int(data['from_node'])
@@ -187,7 +222,7 @@ def dict_to_flit(data):
     pe.length = int(data['length'])
     pe.id = int(data['id'])
     pe.flitno = int(data['flitno'])
-    pe.type = data['type']
+    pe.type = [FlitEvent.Type.HEAD,FlitEvent.Type.BODY1,FlitEvent.Type.BODY,FlitEvent.Type.TAIL][["header", "body1", "body", "tail"].index(data['type'])]
     return pe
 
 
@@ -221,7 +256,7 @@ def evaluate_file(noc_rg, filename):
             i = 0
             buffer = []
             for line in f:
-                line=line.decode("utf-8")
+                line = line if isinstance(line,str) else line.decode("utf-8")
                 if line.startswith("#####"):
                     i = i + 1
                     if len(buffer) == 0:
@@ -247,7 +282,7 @@ def evaluate_file(noc_rg, filename):
             counter = counter + 1
             if counter % 100 == 0:
                 print("Evaluated %d experiments!" % counter)
-            res = Result()
+            res:Result = Result()
             res.name = experiment["name"].strip()
             try:
                 recv = [parse_recv_line(line_to_dict(line)) for line in experiment["recv"]
@@ -268,7 +303,13 @@ def evaluate_file(noc_rg, filename):
                         res.name, len(sent), assumed_sent))
                 res.unexpected_len_recv = len(recv) != len(sent)
                 fromtocounter = {}
+                # A statemachine for the nodes. checks that the order is always (HeadBody+Tail)*
+                node_states = {i: FlitEvent.Type.TAIL for i in [1, 4, 5, 6, 9]}
                 for p in sent:
+                    def tmpfunc(nodestates, p):
+                        res.sents_invalid += 1
+                    node_states = evaluate_flit_fsm(node_states, p, res,tmpfunc)
+
                     flitkey = str(p.from_node) + 'to' + str(p.to_node)
                     if flitkey in fromtocounter:
                         fromtocounter[flitkey] += 1
@@ -284,24 +325,41 @@ def evaluate_file(noc_rg, filename):
                         print(
                             "WARNING: Generated Packet was not valid according to routing algorithm. Packet was sent from %d %s to %d via router 5. %s" % (
                                 p.from_node, p.was_going_out_via(), p.to_node, str(p)))
-                        res.sents_invalid += 1
+                        res.misrouted_sent += 1
+                for k,v in node_states.items():
+                    if v !=FlitEvent.Type.TAIL:
+                        res.sents_invalid +=1
+                # A statemachine for the nodes. checks that the order is always (HeadBody+Tail)*
+                node_states = {i: FlitEvent.Type.TAIL for i in [1, 4, 5, 6, 9]}
+
                 for p in recv:
+                    def tmpfunc(nodestates, p):
+                        res.recv_invalid += 1
+                    node_states = evaluate_flit_fsm(node_states, p, res,tmpfunc)
                     flitkey = str(p.from_node) + 'to' + str(p.to_node)
                     if flitkey in fromtocounter:
                         fromtocounter[flitkey] -= 1
                     else:
                         fromtocounter[flitkey] = -1
 
+                    # check if reflected data in the body matches the packet header
+                    if p.type in [FlitEvent.Type.BODY,FlitEvent.Type.TAIL]:
+                        if p.id != p.body_id or p.from_node != p.body_src or p.to_node != p.body_dest\
+                                or p.length != p.body_packet_length or not p.parity_valid:
+                            res.recv_invalid += 1
+
                     result = is_destination_reachable_via_port(noc_rg, 5, p.going_out_via(), p.to_node, False)
                     if not result:
                         print(
                             "WARNING: Received Packet was not valid according to routing algorithm. Packet was sent from %d to %d via router 5. But it was received at: %d (dir:%s) %s" % (
                                 p.from_node, p.to_node, p.currentrouter, p.going_out_via(), str(p)))
-                        res.recv_invalid += 1
+                        res.misrouted_recv += 1
                 for k, v in fromtocounter.items():
                     if v != 0:
                         res.connection_counter_invalid = True
-
+                for k,v in node_states.items():
+                    if v !=FlitEvent.Type.TAIL:
+                        res.recv_invalid +=1
             except:
                 print("Unexpected error in %s: " % res.name, sys.exc_info()[0], sys.exc_info()[1])
                 res.errornous = True
@@ -309,6 +367,25 @@ def evaluate_file(noc_rg, filename):
                 continue
             results.append(res)
     return errornous, results
+
+
+def evaluate_flit_fsm(node_states, p, res,callback):
+    # statemachine for flittype
+    new_state = p.type
+    if node_states[p.currentrouter] == FlitEvent.Type.HEAD:
+        if new_state != FlitEvent.Type.BODY1:
+            callback(node_states, p)
+    if node_states[p.currentrouter] == FlitEvent.Type.BODY1:
+        if new_state == FlitEvent.Type.HEAD or new_state == FlitEvent.Type.BODY1:
+            callback(node_states, p)
+    if node_states[p.currentrouter] == FlitEvent.Type.BODY:
+        if new_state == FlitEvent.Type.HEAD or new_state == FlitEvent.Type.BODY1:
+            callback(node_states, p)
+    if node_states[p.currentrouter] == FlitEvent.Type.TAIL:
+        if new_state != FlitEvent.Type.HEAD:
+            callback(node_states, p)
+    node_states[p.currentrouter] = new_state
+    return node_states
 
 
 def count_fails(results):
