@@ -31,7 +31,7 @@ args = parser.parse_args()
 timeframe = args.timeframe
 sources = [1,4,6,9,5]
 destinations = range(16)
-time_offset = 50
+time_offset = 300
 time_limit = 10000
 packet_lengths = args.packetlength
 
@@ -54,7 +54,7 @@ def xyrouting(source,subject,networksize):
         return list(set(range(networksize**2)) - {subject})
 
 lines=[]
-for framestart in range(time_offset,time_limit,timeframe):
+for framestart in range(time_offset,time_limit-time_offset,timeframe):
     for source in sources:
         length = choice(packet_lengths)
         dest = choice(xyrouting(source,5,4))

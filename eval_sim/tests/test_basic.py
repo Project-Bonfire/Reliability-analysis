@@ -5,7 +5,7 @@ import unittest
 class MyTest(unittest.TestCase):
     def testNoError(self):
         noc_rg = init()
-        filename = "resources/noerror.results"
+        filename = "tests/resources/noerror.results"
         errornous, results = evaluate_file(noc_rg, filename)
         self.assertEqual(len(errornous), 0)
         self.assertEqual(len(results), 1)
@@ -18,13 +18,22 @@ class MyTest(unittest.TestCase):
         self.assertEqual(results[0].len_sent, 509)
         self.assertTrue(results[0].is_valid())
 
+    def testError(self):
+        noc_rg = init()
+        filename = "tests/resources/dest_bit_flipped.results"
+        errornous, results = evaluate_file(noc_rg, filename)
+        self.assertEqual(len(errornous), 0)
+        self.assertEqual(len(results), 1)
+
+        self.assertFalse(results[0].is_valid())
+
     def testMisrouted(self):
         '''
         A flit routed to a wrong output
         :return:
         '''
         noc_rg = init()
-        filename = "resources/CorrectDelivery/misrouted.results"
+        filename = "tests/resources/CorrectDelivery/misrouted.results"
         errornous, results = evaluate_file(noc_rg, filename)
         self.assertEqual(len(errornous), 0)
         self.assertEqual(len(results), 1)
@@ -43,7 +52,7 @@ class MyTest(unittest.TestCase):
         :return:
         '''
         noc_rg = init()
-        filename = "resources/CorrectDelivery/misrouted2.results"
+        filename = "tests/resources/CorrectDelivery/misrouted2.results"
         errornous, results = evaluate_file(noc_rg, filename)
         self.assertEqual(len(errornous), 0)
         self.assertEqual(len(results), 1)
@@ -61,7 +70,7 @@ class MyTest(unittest.TestCase):
         :return:
         '''
         noc_rg = init()
-        filename = "resources/CorrectDelivery/misrouted3.results"
+        filename = "tests/resources/CorrectDelivery/misrouted3.results"
         errornous, results = evaluate_file(noc_rg, filename)
         self.assertEqual(len(errornous), 0)
         self.assertEqual(len(results), 1)
@@ -78,7 +87,7 @@ class MyTest(unittest.TestCase):
         :return:
         '''
         noc_rg = init()
-        filename = "resources/ReliableDelivery/toomuchsent.results"
+        filename = "tests/resources/ReliableDelivery/toomuchsent.results"
         errornous, results = evaluate_file(noc_rg, filename)
         self.assertEqual(len(errornous), 0)
         self.assertEqual(len(results), 1)
@@ -118,7 +127,7 @@ class MyTest(unittest.TestCase):
         :return:
         '''
         noc_rg = init()
-        filename = "resources/ReliableDelivery/flitsmissing.results"
+        filename = "tests/resources/ReliableDelivery/flitsmissing.results"
         errornous, results = evaluate_file(noc_rg, filename)
         self.assertEqual(len(errornous), 0)
         self.assertEqual(len(results), 1)
@@ -138,7 +147,7 @@ class MyTest(unittest.TestCase):
         :return:
         '''
         noc_rg = init()
-        filename = "resources/FlitIntegrity/destinationchanged.results"
+        filename = "tests/resources/FlitIntegrity/destinationchanged.results"
         errornous, results = evaluate_file(noc_rg, filename)
         self.assertEqual(len(errornous), 0)
         self.assertEqual(len(results), 1)
@@ -158,7 +167,7 @@ class MyTest(unittest.TestCase):
         :return:
         '''
         noc_rg = init()
-        filename = "resources/CorrectDelivery/destinationchanged2.results"
+        filename = "tests/resources/CorrectDelivery/destinationchanged2.results"
         errornous, results = evaluate_file(noc_rg, filename)
         self.assertEqual(len(errornous), 0)
         self.assertEqual(len(results), 1)
@@ -178,7 +187,7 @@ class MyTest(unittest.TestCase):
         :return:
         '''
         noc_rg = init()
-        filename = "resources/FlitIntegrity/destinationchanged3.results"
+        filename = "tests/resources/FlitIntegrity/destinationchanged3.results"
         errornous, results = evaluate_file(noc_rg, filename)
         self.assertEqual(len(errornous), 0)
         self.assertEqual(len(results), 1)
@@ -198,7 +207,7 @@ class MyTest(unittest.TestCase):
         :return:
         '''
         noc_rg = init()
-        filename = "resources/PacketIntegrity/packetlength.results"
+        filename = "tests/resources/PacketIntegrity/packetlength.results"
         errornous, results = evaluate_file(noc_rg, filename)
         self.assertEqual(len(errornous), 0)
         self.assertEqual(len(results), 1)
@@ -218,7 +227,7 @@ class MyTest(unittest.TestCase):
         :return:
         '''
         noc_rg = init()
-        filename = "resources/replaced_flit.results"
+        filename = "tests/resources/replaced_flit.results"
         errornous, results = evaluate_file(noc_rg, filename)
         self.assertEqual(len(errornous), 0)
         self.assertEqual(len(results), 1)
@@ -238,7 +247,7 @@ class MyTest(unittest.TestCase):
         :return:
         '''
         noc_rg = init()
-        filename = "resources/changedflittype.results"
+        filename = "tests/resources/changedflittype.results"
         errornous, results = evaluate_file(noc_rg, filename)
         self.assertFalse(results[0].is_valid())
         self.assertEqual(len(errornous), 0)
