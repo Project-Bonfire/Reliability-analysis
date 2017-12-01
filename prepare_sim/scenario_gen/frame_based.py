@@ -3,12 +3,37 @@ from random import randrange, choice
 
 import itertools
 
-timeframe = 50
+import argparse
+
+def parseRange(minimum):
+    def parseRange(string):
+        args = string.split(",")
+        if len(list(filter(lambda s:not s.isdigit(),args))) > 0:
+            raise argparse.ArgumentTypeError("Numbers of the range must be digits. And at least %d"%minimum)
+        args = [int(x) for x in args]
+        if len(args) == 1:
+            return range(minimum,args[0])
+        if len(args) == 2:
+            return range(args[0],args[1])
+        if len(args)==3:
+            return range(args[0], args[1],args(2))
+        raise argparse.ArgumentTypeError("Must have between 1 and 3 parameters, seperated by `,`, all digits.")
+    return parseRange
+
+
+
+parser = argparse.ArgumentParser(description='Generates a scenariofile')
+parser.add_argument('--timeframe', nargs='?', type=int,help='Sets the timeframe. The packetgenerators send one packet in each timeframe.')
+parser.add_argument('--packetlength',type=parseRange(3), nargs='?', help='The packetlengths in the format `min,max`. Example 3,7. Minimal 3. ')
+
+args = parser.parse_args()
+
+timeframe = args.timeframe
 sources = [1,4,6,9,5]
 destinations = range(16)
 time_offset = 50
 time_limit = 10000
-packet_lengths = range(3,9)
+packet_lengths = args.packetlength
 
 def xyrouting(source,subject,networksize):
     x_source = source % networksize
