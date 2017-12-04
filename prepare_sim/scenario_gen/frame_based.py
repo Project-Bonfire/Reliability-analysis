@@ -4,6 +4,7 @@ from random import randrange, choice
 import itertools
 
 import argparse
+import sys
 
 def parseRange(minimum):
     def parseRange(string):
@@ -23,8 +24,8 @@ def parseRange(minimum):
 
 
 parser = argparse.ArgumentParser(description='Generates a scenariofile')
-parser.add_argument('--timeframe', nargs='?', type=int,help='Sets the timeframe. The packetgenerators send one packet in each timeframe.')
-parser.add_argument('--packetlength',type=parseRange(3), nargs='?', help='The packetlengths in the format `min,max`. Example 3,7. Minimal 3. ')
+parser.add_argument('--timeframe', type=int,help='Sets the timeframe. The packetgenerators send one packet in each timeframe.')
+parser.add_argument('--packetlength',type=parseRange(3), help='The packetlengths in the format `min,max`. Example 3,7. Minimal 3. ')
 
 args = parser.parse_args()
 
@@ -35,6 +36,7 @@ time_offset = 300
 time_limit = 10000
 packet_lengths = args.packetlength
 
+print("time:%d length:%s"%(timeframe, str(packet_lengths)),file=sys.stderr)
 def xyrouting(source,subject,networksize):
     x_source = source % networksize
     y_source = floor(source / networksize)

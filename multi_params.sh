@@ -1,14 +1,17 @@
-#!/bin/tcsh -f
-set scenario=mktemp
-for $args  ("3,3 50","3,3 100", "3,3 200", "3,3 400",
-            "5,5 50", "5,5 100", "5,5 200", "5,5 500",
-            "10,10 100", "10,10 200", "10,10 400", 
-            "20,20 200","20,20 400","20,20 800")
-    set packetlengths=echo "$args" | cut -d' ' -f1
-    set framelength=echo "$args" | cut -d' ' -f2
-    echo "packetlength: $packetlength framelength: $framelength"
-    python3 prepare_sim/scenario_gen/frame_based.py --packetlengths $packetlengths --timeframe $framelength > $scenario
-    ./prepare_sim.sh 10000
-    ./run_sim.sh $scenario && truncate -s 0 $scenario
+#!/bin/sh -e
 
-end
+curavg=`uptime | cut -d : -f 4 | cut -d ' ' -f 2 |tr -s ' '| cut -d . -f 1| cut -d , -f 1`
+curavg+=1
+limit=20
+num_processes=`echo "$limit-$curavg"|bc`
+
+scenario=mktemp
+for args in  "3,4 50" "3,4 100" "3,4 200" "3,4 400" "5,6 50" "5,6 100" "5,6 200" "5,6 500" "10,11 100" "10,11 200" "10,11 400" "20,21 200" "20,21 400" "20,21 800"  ; do
+    packetlength=`cut -d' ' -f1 <<< "$args"`
+    framelength=`cut -d' ' -f2 <<< "$args"`
+    echo "$args: packetlength: $packetlength framelength: $framelength "
+    echo -n > $scenario
+    python3 prepare_sim/scenario_gen/frame_based.py --packetlength $packetlength --timeframe $framelength >$scenario
+    ./run_sim.sh $scenario 13;
+
+done
