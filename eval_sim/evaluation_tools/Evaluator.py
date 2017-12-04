@@ -22,7 +22,7 @@ def init():
     Config.ag.y_size = 4
     Config.ag.z_size = 1
     Config.RoutingType = 'MinimalPath'
-    ag = copy.deepcopy(generate_ag(logging=None))
+    ag = copy.deepcopy(generate_ag(logging=None,report=False))
     shmu = SystemHealthMonitoringUnit.SystemHealthMonitoringUnit()
     shmu.setup_noc_shm(ag, copy.deepcopy(turns_health_2d_network), False)
     noc_rg = copy.deepcopy(Routing.generate_noc_route_graph(ag, shmu, PackageFile.XY_TurnModel, False, False))
@@ -230,7 +230,7 @@ def line_to_dict(line, splitchar=';', kvchar=':'):
     return {e[0]: e[1] for e in [x.split(kvchar) for x in line.strip().split(splitchar)]}
 
 
-def evaluate_file(noc_rg, filename):
+def evaluate_file(noc_rg, filename,print_verbose=False):
     assumed_sent = -1
     errornous = []
     results = []
@@ -260,7 +260,8 @@ def evaluate_file(noc_rg, filename):
                 if line.startswith("#####"):
                     i = i + 1
                     if len(buffer) == 0:
-                        print("reached end of file after %d experiments." % i)
+                        if print_verbose:
+                            print("reached end of file after %d experiments." % i)
                         return
                     name = buffer[0]
                     params = buffer[1]
@@ -280,7 +281,7 @@ def evaluate_file(noc_rg, filename):
 
         for experiment in experiment_to_buffer(f):
             counter = counter + 1
-            if counter % 100 == 0:
+            if counter % 100 == 0 and print_verbose:
                 print("Evaluated %d experiments!" % counter)
             res:Result = Result()
             res.name = experiment["name"].strip()
@@ -295,13 +296,13 @@ def evaluate_file(noc_rg, filename):
                 res.len_sent = len(sent)
                 if assumed_sent == -1:
                     assumed_sent = len(sent)
-                res.unexpected_len_sent = len(sent) != assumed_sent
+                #res.unexpected_len_sent = len(sent) != assumed_sent
                 # If the first one is faulty, we run into problems here.
                 # But that might not happen anyways
-                if False and len(sent) != assumed_sent:
-                    print("WARNING: The sent file of '%s' has an unexpected length of %d, expected %d." % (
-                        res.name, len(sent), assumed_sent))
-                res.unexpected_len_recv = len(recv) != len(sent)
+                #if False and len(sent) != assumed_sent:
+                    #print("WARNING: The sent file of '%s' has an unexpected length of %d, expected %d." % (
+                    #    res.name, len(sent), assumed_sent))
+                #res.unexpected_len_recv = len(recv) != len(sent)
                 fromtocounter = {}
                 # A statemachine for the nodes. checks that the order is always (HeadBody+Tail)*
                 node_states = {i: FlitEvent.Type.TAIL for i in [1, 4, 5, 6, 9]}
@@ -321,10 +322,11 @@ def evaluate_file(noc_rg, filename):
                                                                    p.to_node, False)
                     else:
                         result = is_destination_reachable_from_source(noc_rg, 5, p.to_node)
-                    if not result:
-                        print(
-                            "WARNING: Generated Packet was not valid according to routing algorithm. Packet was sent from %d %s to %d via router 5. %s" % (
-                                p.from_node, p.was_going_out_via(), p.to_node, str(p)))
+                    if not result :
+                        if print_verbose:
+                            print(
+                                "WARNING: Generated Packet was not valid according to routing algorithm. Packet was sent from %d %s to %d via router 5. %s" % (
+                                    p.from_node, p.was_going_out_via(), p.to_node, str(p)))
                         res.misrouted_sent += 1
                 for k,v in node_states.items():
                     if v !=FlitEvent.Type.TAIL:
@@ -347,12 +349,14 @@ def evaluate_file(noc_rg, filename):
                         if p.id != p.body_id or p.from_node != p.body_src or p.to_node != p.body_dest\
                                 or p.length != p.body_packet_length or not p.parity_valid:
                             res.recv_invalid += 1
-
+                    if p.to_node > 15: #will not be valid anyways
+                        res.misrouted_recv += 1
+                        continue
                     result = is_destination_reachable_via_port(noc_rg, 5, p.going_out_via(), p.to_node, False)
                     if not result:
-                        print(
-                            "WARNING: Received Packet was not valid according to routing algorithm. Packet was sent from %d to %d via router 5. But it was received at: %d (dir:%s) %s" % (
-                                p.from_node, p.to_node, p.currentrouter, p.going_out_via(), str(p)))
+                        #print(
+                         #   "WARNING: Received Packet was not valid according to routing algorithm. Packet was sent from %d to %d via router 5. But it was received at: %d (dir:%s) %s" % (
+                          #      p.from_node, p.to_node, p.currentrouter, p.going_out_via(), str(p)))
                         res.misrouted_recv += 1
                 for k, v in fromtocounter.items():
                     if v != 0:
@@ -361,7 +365,8 @@ def evaluate_file(noc_rg, filename):
                     if v !=FlitEvent.Type.TAIL:
                         res.recv_invalid +=1
             except:
-                print("Unexpected error in %s: " % res.name, sys.exc_info()[0], sys.exc_info()[1])
+                if print_verbose:
+                    print("Unexpected error in %s: " % res.name, sys.exc_info()[0], sys.exc_info()[1])
                 res.errornous = True
                 errornous.append(res)
                 continue
@@ -392,7 +397,7 @@ def count_fails(results):
     faillist = []
     for res in results:
         if not res.is_valid():
-            print(res)
+            #print(res)
 
             faillist.append(res)
     return faillist
