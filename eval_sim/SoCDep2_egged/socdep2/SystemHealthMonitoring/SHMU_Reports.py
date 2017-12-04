@@ -1,8 +1,7 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
 
 
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
+
 from socdep2.ConfigAndPackages import Config
 from socdep2.ArchGraphUtilities import AG_Functions
 
@@ -65,6 +64,8 @@ def draw_temp_distribution(shm):
     :param shm: System Health Map
     :return:
     """
+    import matplotlib.pyplot as plt
+    import matplotlib.patches as patches
     print ("===========================================")
     print ("GENERATING TEMPERATURE DISTRIBUTIONS VISUALIZATION...")
     fig_util = plt.figure(figsize=(4*Config.ag.x_size, 4*Config.ag.y_size))
@@ -117,6 +118,8 @@ def draw_shm(shm, iteration=None):
     :param shm: System Health Map
     :return:
     """
+    import matplotlib.pyplot as plt
+    import matplotlib.patches as patches
     print ("===========================================")
     print ("GENERATING SYSTEM HEALTH MAP DRAWING...")
 

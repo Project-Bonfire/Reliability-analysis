@@ -2,10 +2,10 @@
 
 from re import search
 from socdep2.ArchGraphUtilities.AG_Functions import return_node_location
-import matplotlib.pyplot as plt
+
 from networkx import draw
 from socdep2.ConfigAndPackages import Config
-import matplotlib.patches as patches
+
 
 
 def report_turn_model(turn_model):
@@ -25,6 +25,8 @@ def draw_rg(rg):
     :param rg: routing graph
     :return: None
     """
+    import matplotlib.patches as patches
+    import matplotlib.pyplot as plt
     print ("===========================================")
     print ("GENERATING ROUTING GRAPH VISUALIZATION...")
     line_width = 2

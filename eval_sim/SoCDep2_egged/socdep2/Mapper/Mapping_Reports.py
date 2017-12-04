@@ -1,6 +1,5 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
+
 from socdep2.ConfigAndPackages import Config
 from socdep2.ArchGraphUtilities import AG_Functions
 import random
@@ -32,6 +31,8 @@ def draw_mapping_distribution(ag, shmu):
     :param shmu: System health Monitoring Unit
     :return: None
     """
+    import matplotlib.pyplot as plt
+    import matplotlib.patches as patches
     print ("===========================================")
     print ("GENERATING MAPPING DISTRIBUTIONS VISUALIZATION...")
     fig_num = plt.figure(figsize=(4*Config.ag.x_size, 4*Config.ag.y_size))
@@ -95,6 +96,8 @@ def draw_mapping(tg, ag, shm, mapping_file_name):
     :param mapping_file_name: string containing name of the file in which the mapping would be generated
     :return: None
     """
+    import matplotlib.pyplot as plt
+    import matplotlib.patches as patches
     print ("===========================================")
     print ("GENERATING MAPPING VISUALIZATION...")
     fig = plt.figure(figsize=(4*Config.ag.x_size, 4*Config.ag.y_size))
@@ -188,6 +191,8 @@ def viz_mapping_opt(cost_file_name, iteration=None):
     :param cost_file_name: Name of the Cost File (Holds values of cost function for different mapping steps)
     :return: None
     """
+    import matplotlib.pyplot as plt
+    import matplotlib.patches as patches
     print ("===========================================")
     print ("GENERATING MAPPING OPTIMIZATION VISUALIZATIONS...")
 
@@ -259,6 +264,8 @@ def viz_cost_slope():
     Visualises the mapping Cost slope for Simulated Annealing. This is like derivative of the cost graph.
     :return: None
     """
+    import matplotlib.pyplot as plt
+    import matplotlib.patches as patches
     print ("===========================================")
     print ("GENERATING MAPPING OPTIMIZATION COST SLOPE VISUALIZATION...")
 
@@ -290,6 +297,8 @@ def viz_huang_race():
     Visualizes The progress of Huang's cooling scheduling counters progress
     :return:    None
     """
+    import matplotlib.pyplot as plt
+    import matplotlib.patches as patches
     print ("===========================================")
     print ("GENERATING HUANG COUNTERS STATES VISUALIZATION...")
     fig, ax1 = plt.subplots()
