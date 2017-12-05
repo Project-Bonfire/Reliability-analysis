@@ -230,7 +230,14 @@ def line_to_dict(line, splitchar=';', kvchar=':'):
     return {e[0]: e[1] for e in [x.split(kvchar) for x in line.strip().split(splitchar)]}
 
 
-def evaluate_file(noc_rg, filename,print_verbose=False):
+def evaluate_file(noc_rg, filename,print_verbose=False,ralgo_check_sent_flits=False):
+    """
+    Evaluates an simulation result file
+    :param noc_rg: the graph model of the routing algorithm.
+    :param filename: the path of the file to evaluate
+    :print_verbose: if additional information should be printed
+    :ralgo_check_sent_flits: If the sent flits should be checked by the routing algorithm
+    """
     assumed_sent = -1
     errornous = []
     results = []
@@ -316,18 +323,19 @@ def evaluate_file(noc_rg, filename,print_verbose=False):
                         fromtocounter[flitkey] += 1
                     else:
                         fromtocounter[flitkey] = 1
-                    result = False
-                    if p.from_node is not 5:
-                        result = is_destination_reachable_via_port(noc_rg, p.from_node, p.was_going_out_via(),
-                                                                   p.to_node, False)
-                    else:
-                        result = is_destination_reachable_from_source(noc_rg, 5, p.to_node)
-                    if not result :
-                        if print_verbose:
-                            print(
-                                "WARNING: Generated Packet was not valid according to routing algorithm. Packet was sent from %d %s to %d via router 5. %s" % (
-                                    p.from_node, p.was_going_out_via(), p.to_node, str(p)))
-                        res.misrouted_sent += 1
+                    if ralgo_check_sent_flits:
+                        result = False
+                        if p.from_node is not 5:
+                            result = is_destination_reachable_via_port(noc_rg, p.from_node, p.was_going_out_via(),
+                                                                    p.to_node, False)
+                        else:
+                            result = is_destination_reachable_from_source(noc_rg, 5, p.to_node)
+                        if not result :
+                            if print_verbose:
+                                print(
+                                    "WARNING: Generated Packet was not valid according to routing algorithm. Packet was sent from %d %s to %d via router 5. %s" % (
+                                        p.from_node, p.was_going_out_via(), p.to_node, str(p)))
+                            res.misrouted_sent += 1
                 for k,v in node_states.items():
                     if v !=FlitEvent.Type.TAIL:
                         res.sents_invalid +=1

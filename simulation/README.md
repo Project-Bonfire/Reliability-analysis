@@ -2,17 +2,16 @@
 
 This testbench runs the simulation of a single router by adding packet generators and consumers to each of its ports.
 It then injects a single fault into the router.
-The output of the simulation can be found in sent.txt and received.txt
 
 The parameters for injecting the faults are specified in a file which is given via an env var.
-For each line in this file, the experiment will be run once and the output will be copied to the results folder.
+For each line in this file, the experiment will be run once and the output is written to the resultfile.
 
 There are several race conditions when multiple instances are launched in parallel. For that, seperate folders for compilation (vlib, vmap)
 and a seperate modelsimini has to be set for each instance. (see `../run_sim.sh`)
 
 ## Output
 The output is written to a file given as `RESULTFILE`.
-An experiment is written down as:
+What happened during an experiment is written down as:
 ```
 -----
 <experimentid>
@@ -28,7 +27,7 @@ The `sent` and `recv` lines are key value pairs which are seperated by a `;`.
 
 ## Parameters
 
-The parameters for a single experiment are:
+The parameters for a single experiment (one line of the `PROPERTYPATH` file) are:
  - `BREAK_NAME` The name of the pin to break.
     The name has to be in the format specified by the vars in the `modelsim.ini` file. (`DatasetSeparator`,`PathSeparator`). If you want to do a dryrun, specify `nofault :nofault`
  - `BREAK_TIME_BEFORE` The time the simulation should run before the break is issued.
@@ -49,6 +48,8 @@ The parameters for the whole simulation are given via env vars:
     setenv PROPERTYPATH $propertypath; 
     setenv STARTID $startid; 
     setenv RESULTFOLDER $resultfolder;
+    setenv RESULTFILE $resultfile;
+    setenv SCENARIOFILE $scenariofile;
 ```
 
 ### Scenariofile
@@ -57,7 +58,6 @@ It has the following format:
 
 ```
 Commentline. Completly ignored
-time sourceid destid packetlength
 time sourceid destid packetlength
 500 ns 1 5 8
 ...
