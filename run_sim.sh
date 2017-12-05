@@ -38,7 +38,7 @@ setenv M_16_EDA
 
 source /eda/mentor/2015-16/scripts/QUESTA-SV-AFV_10.4c-5_RHELx86.csh
 
-set scnfile=$1
+set scnfile=`readlink -f $1`
 set curtime=`date +%Y-%m-%d.%H:%M:%S`
 cd simulation
 rm -rf results/
@@ -66,7 +66,7 @@ while ($x <= $num_processes)
     cp modelsim.ini $resultfolder/modelsim.ini
     echo $resultfolder
     #launch vsim instance, create tmp folders and seperate modelsiminis for each instance, to prevent race conditions.
-    (setenv SCENARIOFILE ../$scnfile;setenv RESULTFILE ../results/$curtime/results/Process${x}.results;setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; /usr/bin/nice -n 15 vsim -modelsimini $resultfolder/modelsim.ini -novopt -t 1ns -c -do simulate.do  >../results/$curtime/Process${x}out.log )&
+    (setenv SCENARIOFILE $scnfile;setenv RESULTFILE ../results/$curtime/results/Process${x}.results;setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; /usr/bin/nice -n 15 vsim -modelsimini $resultfolder/modelsim.ini -novopt -t 1ns -c -do simulate.do  >../results/$curtime/Process${x}out.log )&
     # prevents race condition when copying library work to tmp folder
     sleep 1
     @ x += 1
@@ -78,7 +78,7 @@ cd "../results/$curtime"
 echo "started: $curtime finished: " >> "stats.txt"
 echo `date +%Y-%m-%d.%H:%M:%S` >> "stats.txt"
 echo `uptime | cut -d : -f 4` >> "stats.txt"
-cp "../../$1" scenario.scn
+cp "$scnfile" scenario.scn
 #concat all results to one single file
 cat results/* > all.results
 rm -rf "results"
