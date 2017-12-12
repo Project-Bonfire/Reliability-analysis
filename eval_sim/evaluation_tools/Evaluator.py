@@ -1,6 +1,7 @@
 import ast
 import copy
 import gzip
+import re
 import sys
 from enum import Enum, auto
 
@@ -12,6 +13,8 @@ from socdep2.RoutingAlgorithms.Calculate_Reachability import is_destination_reac
 from socdep2.SystemHealthMonitoring import SystemHealthMonitoringUnit
 from socdep2.Utilities import misc
 
+from typing import List, Dict
+
 
 def init():
     misc.generate_file_directories()
@@ -22,11 +25,18 @@ def init():
     Config.ag.y_size = 4
     Config.ag.z_size = 1
     Config.RoutingType = 'MinimalPath'
-    ag = copy.deepcopy(generate_ag(logging=None,report=False))
+    ag = copy.deepcopy(generate_ag(logging=None, report=False))
     shmu = SystemHealthMonitoringUnit.SystemHealthMonitoringUnit()
     shmu.setup_noc_shm(ag, copy.deepcopy(turns_health_2d_network), False)
     noc_rg = copy.deepcopy(Routing.generate_noc_route_graph(ag, shmu, PackageFile.XY_TurnModel, False, False))
     return noc_rg
+
+
+class Module(Enum):
+    lbdr = auto()
+    fifo = auto()
+    xbar = auto()
+    arbiter = auto()
 
 
 class Result:
@@ -59,14 +69,38 @@ class Result:
     sents_invalid = 0
     recv_invalid = 0
 
-    #due misrouting
+    # due misrouting
     misrouted_recv = 0
     misrouted_sent = 0
 
-
-
     # the parameters of the simulation
     params = ""
+
+    # if the modules vcd's differed from the expected.
+    vcd_of_module_equal: Dict[str, bool] = None
+
+    def getFaultModuleFromParam(self):
+        """
+        returns the faultmodule based on the param string.
+        :return:
+        """
+
+        typemap = {
+            r'^valid_': Module.fifo,
+            r'^[\\]*CONTROL_PART/allocator_unit': Module.arbiter,
+            r'^[\\]*CONTROL_PART/LBDR': Module.lbdr,
+            r'^[\\]*FIFO_[NESLW]/FIFO_comb': Module.fifo,
+            r'^[\\]*FIFO_[NESLW]/FIFO_seq': Module.fifo,
+            r'^[\\]*XBAR': Module.xbar
+        }
+        comp = self.guessComponent()
+        for k, v in typemap:
+            if re.match(k, comp):
+                return v
+        return None
+
+
+        # r'^U',
 
     def get_Names(self):
         splitted = self.params.split(' ')
@@ -173,11 +207,11 @@ class RecvFlit(FlitEvent):
     A flit received from the router
     """
     parity_valid = True
-    body_src= -1,
-    body_dest= -1,
-    body_packet_length= -1,
-    body_id= -1,
-    body_checksum=-1
+    body_src = -1,
+    body_dest = -1,
+    body_packet_length = -1,
+    body_id = -1,
+    body_checksum = -1
 
 
 def parse_sent_line(data):
@@ -222,7 +256,8 @@ def dict_to_flit(data, type):
     pe.length = int(data['length'])
     pe.id = int(data['id'])
     pe.flitno = int(data['flitno'])
-    pe.type = [FlitEvent.Type.HEAD,FlitEvent.Type.BODY1,FlitEvent.Type.BODY,FlitEvent.Type.TAIL][["header", "body1", "body", "tail"].index(data['type'])]
+    pe.type = [FlitEvent.Type.HEAD, FlitEvent.Type.BODY1, FlitEvent.Type.BODY, FlitEvent.Type.TAIL][
+        ["header", "body1", "body", "tail"].index(data['type'])]
     return pe
 
 
@@ -230,12 +265,14 @@ def line_to_dict(line, splitchar=';', kvchar=':'):
     return {e[0]: e[1] for e in [x.split(kvchar) for x in line.strip().split(splitchar)]}
 
 
-def evaluate_file(noc_rg, filename,print_verbose=False,ralgo_check_sent_flits=False):
+def evaluate_file(noc_rg, filename, print_verbose=False, ralgo_check_sent_flits=False,
+                  module_reference: Dict[str, str] = None) -> (List[Result], List[Result]):
     """
     Evaluates an simulation result file
     :param noc_rg: the graph model of the routing algorithm.
     :param filename: the path of the file to evaluate
-    :print_verbose: if additional information should be printed
+    :param module_reference: a dict containing the hashes for each module vcd file.
+    :param print_verbose: if additional information should be printed
     :ralgo_check_sent_flits: If the sent flits should be checked by the routing algorithm
     """
     assumed_sent = -1
@@ -263,7 +300,7 @@ def evaluate_file(noc_rg, filename,print_verbose=False,ralgo_check_sent_flits=Fa
             i = 0
             buffer = []
             for line in f:
-                line = line if isinstance(line,str) else line.decode("utf-8")
+                line = line if isinstance(line, str) else line.decode("utf-8")
                 if line.startswith("#####"):
                     i = i + 1
                     if len(buffer) == 0:
@@ -272,14 +309,18 @@ def evaluate_file(noc_rg, filename,print_verbose=False,ralgo_check_sent_flits=Fa
                         return
                     name = buffer[0]
                     params = buffer[1]
-                    ind = buffer.index("!recv:\n")
-                    sent = buffer[3:ind]
-                    recv = buffer[ind + 1:]
+                    indmodules = buffer.index("!modules:\n")
+                    indsent = buffer.index("!sent:\n")
+                    indrecv = buffer.index("!recv:\n")
+                    modules = buffer[indmodules + 1:indsent]
+                    sent = buffer[indsent + 1:indrecv]
+                    recv = buffer[indrecv + 1:]
                     yield {
                         "name": name,
                         "params": params,
                         "sent": sent,
-                        "recv": recv
+                        "recv": recv,
+                        "modules": modules
                     }
                 elif "-----\n" == line:
                     buffer = []
@@ -290,7 +331,7 @@ def evaluate_file(noc_rg, filename,print_verbose=False,ralgo_check_sent_flits=Fa
             counter = counter + 1
             if counter % 100 == 0 and print_verbose:
                 print("Evaluated %d experiments!" % counter)
-            res:Result = Result()
+            res: Result = Result()
             res.name = experiment["name"].strip()
             try:
                 recv = [parse_recv_line(line_to_dict(line)) for line in experiment["recv"]
@@ -298,25 +339,44 @@ def evaluate_file(noc_rg, filename,print_verbose=False,ralgo_check_sent_flits=Fa
                         line.strip()]
                 sent = [parse_sent_line(line_to_dict(line)) for line in experiment["sent"] if
                         line.strip()]
+                modules = dict(item.split(":") for item in experiment["modules"])
+
+                def checkmodulehashes(modules: Dict[str, str], module_reference: Dict[str, str], result: Result):
+                    """
+                    compares the expected module hashes to the actual.
+                    :param modules:
+                    :param module_references:
+                    :param result:
+                    :return:
+                    """
+                    if module_reference == None:
+                        return
+                    result.vcd_of_module_equal = {}
+                    for k, v in module_reference.items():
+                        result.vcd_of_module_equal[k] = modules[k].strip() == v
+
+                checkmodulehashes(modules, module_reference, res)
+
                 res.params = experiment["params"].strip()
                 res.len_recv = len(recv)
                 res.len_sent = len(sent)
                 if assumed_sent == -1:
                     assumed_sent = len(sent)
-                #res.unexpected_len_sent = len(sent) != assumed_sent
-                # If the first one is faulty, we run into problems here.
-                # But that might not happen anyways
-                #if False and len(sent) != assumed_sent:
-                    #print("WARNING: The sent file of '%s' has an unexpected length of %d, expected %d." % (
+                    # res.unexpected_len_sent = len(sent) != assumed_sent
+                    # If the first one is faulty, we run into problems here.
+                    # But that might not happen anyways
+                    # if False and len(sent) != assumed_sent:
+                    # print("WARNING: The sent file of '%s' has an unexpected length of %d, expected %d." % (
                     #    res.name, len(sent), assumed_sent))
-                #res.unexpected_len_recv = len(recv) != len(sent)
+                # res.unexpected_len_recv = len(recv) != len(sent)
                 fromtocounter = {}
                 # A statemachine for the nodes. checks that the order is always (HeadBody+Tail)*
                 node_states = {i: FlitEvent.Type.TAIL for i in [1, 4, 5, 6, 9]}
                 for p in sent:
                     def tmpfunc(nodestates, p):
                         res.sents_invalid += 1
-                    node_states = evaluate_flit_fsm(node_states, p, res,tmpfunc)
+
+                    node_states = evaluate_flit_fsm(node_states, p, res, tmpfunc)
 
                     flitkey = str(p.from_node) + 'to' + str(p.to_node)
                     if flitkey in fromtocounter:
@@ -327,25 +387,26 @@ def evaluate_file(noc_rg, filename,print_verbose=False,ralgo_check_sent_flits=Fa
                         result = False
                         if p.from_node is not 5:
                             result = is_destination_reachable_via_port(noc_rg, p.from_node, p.was_going_out_via(),
-                                                                    p.to_node, False)
+                                                                       p.to_node, False)
                         else:
                             result = is_destination_reachable_from_source(noc_rg, 5, p.to_node)
-                        if not result :
+                        if not result:
                             if print_verbose:
                                 print(
                                     "WARNING: Generated Packet was not valid according to routing algorithm. Packet was sent from %d %s to %d via router 5. %s" % (
                                         p.from_node, p.was_going_out_via(), p.to_node, str(p)))
                             res.misrouted_sent += 1
-                for k,v in node_states.items():
-                    if v !=FlitEvent.Type.TAIL:
-                        res.sents_invalid +=1
+                for k, v in node_states.items():
+                    if v != FlitEvent.Type.TAIL:
+                        res.sents_invalid += 1
                 # A statemachine for the nodes. checks that the order is always (HeadBody+Tail)*
                 node_states = {i: FlitEvent.Type.TAIL for i in [1, 4, 5, 6, 9]}
 
                 for p in recv:
                     def tmpfunc(nodestates, p):
                         res.recv_invalid += 1
-                    node_states = evaluate_flit_fsm(node_states, p, res,tmpfunc)
+
+                    node_states = evaluate_flit_fsm(node_states, p, res, tmpfunc)
                     flitkey = str(p.from_node) + 'to' + str(p.to_node)
                     if flitkey in fromtocounter:
                         fromtocounter[flitkey] -= 1
@@ -353,25 +414,25 @@ def evaluate_file(noc_rg, filename,print_verbose=False,ralgo_check_sent_flits=Fa
                         fromtocounter[flitkey] = -1
 
                     # check if reflected data in the body matches the packet header
-                    if p.type in [FlitEvent.Type.BODY,FlitEvent.Type.TAIL]:
-                        if p.id != p.body_id or p.from_node != p.body_src or p.to_node != p.body_dest\
+                    if p.type in [FlitEvent.Type.BODY, FlitEvent.Type.TAIL]:
+                        if p.id != p.body_id or p.from_node != p.body_src or p.to_node != p.body_dest \
                                 or p.length != p.body_packet_length or not p.parity_valid:
                             res.recv_invalid += 1
-                    if p.to_node > 15: #will not be valid anyways
+                    if p.to_node > 15:  # will not be valid anyways
                         res.misrouted_recv += 1
                         continue
                     result = is_destination_reachable_via_port(noc_rg, 5, p.going_out_via(), p.to_node, False)
                     if not result:
-                        #print(
-                         #   "WARNING: Received Packet was not valid according to routing algorithm. Packet was sent from %d to %d via router 5. But it was received at: %d (dir:%s) %s" % (
-                          #      p.from_node, p.to_node, p.currentrouter, p.going_out_via(), str(p)))
+                        # print(
+                        #   "WARNING: Received Packet was not valid according to routing algorithm. Packet was sent from %d to %d via router 5. But it was received at: %d (dir:%s) %s" % (
+                        #      p.from_node, p.to_node, p.currentrouter, p.going_out_via(), str(p)))
                         res.misrouted_recv += 1
                 for k, v in fromtocounter.items():
                     if v != 0:
                         res.connection_counter_invalid = True
-                for k,v in node_states.items():
-                    if v !=FlitEvent.Type.TAIL:
-                        res.recv_invalid +=1
+                for k, v in node_states.items():
+                    if v != FlitEvent.Type.TAIL:
+                        res.recv_invalid += 1
             except:
                 if print_verbose:
                     print("Unexpected error in %s: " % res.name, sys.exc_info()[0], sys.exc_info()[1])
@@ -382,7 +443,7 @@ def evaluate_file(noc_rg, filename,print_verbose=False,ralgo_check_sent_flits=Fa
     return errornous, results
 
 
-def evaluate_flit_fsm(node_states, p, res,callback):
+def evaluate_flit_fsm(node_states, p, res, callback):
     # statemachine for flittype
     new_state = p.type
     if node_states[p.currentrouter] == FlitEvent.Type.HEAD:
@@ -405,7 +466,7 @@ def count_fails(results):
     faillist = []
     for res in results:
         if not res.is_valid():
-            #print(res)
+            # print(res)
 
             faillist.append(res)
     return faillist
