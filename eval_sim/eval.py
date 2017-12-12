@@ -3,11 +3,12 @@ import itertools
 import re
 from collections import Counter
 from operator import attrgetter, sub
+from typing import List
 
 import numpy as np
 import sys
 
-from evaluation_tools.Evaluator import evaluate_file, count_fails, init
+from evaluation_tools.Evaluator import evaluate_file, count_fails, init, Result, Module
 
 noc_rg = init()
 
@@ -15,7 +16,7 @@ parser = argparse.ArgumentParser(description='Evaluation the result of a Reliabi
 parser.add_argument('infile', type=str, help='The inputfile to read, either a `.results` file or a `results.gz`.')
 parser.add_argument('--verbose',action='store_true',
                     help='Prints progress and additional information.')
-parser.add_argument('--output-type',nargs='?', choices=['default','single_line','key-value-pairs'],
+parser.add_argument('--output-type',nargs='?', choices=['default','single-line','key-value-pairs'],
                     default='default',help='The way the output should be printed.')
 
 args = parser.parse_args()
@@ -26,8 +27,22 @@ verbose = args.verbose
 if verbose:
     print("evaluating %s" % filename)
 
-errornous, results = evaluate_file(noc_rg, filename,print_verbose=verbose)
+
+results:List[Result] = None
+errornous, results = evaluate_file(noc_rg, filename,print_verbose=verbose,module_reference={'xbar': '178e187dbfd6824f350aa98339998107a31d2382', 'arbiter': 'e3b29b11b901b66434f2edb033a43ae101b92853', 'lbdr': '06d449e2fc9a95df0719ef26a802a5c7947ff6bc', 'fifo': '9c4b2ee0622fb8cfb8d4b24c554da1c21688cfa5'})
 faillist = count_fails(results)
+numresults = float(len(results))
+
+
+# how often the output of each module was changed because of a fault.
+module_changed_counts = {n.name : sum(1 for r in results if not r.vcd_of_module_equal[n.name]) for n in Module}
+# how often a fault was injected into a module
+param_module_counts = {n.name : sum(1 for r in results if r.getFaultModuleFromParam() == n) for n in Module}
+# how often the output of the params module was changed
+param_module_changed_counts = {n.name : sum(1 for r in results if r.getFaultModuleFromParam() == n and not r.vcd_of_module_equal[n.name]) for n in Module}
+param_module_changed_and_invalid_counts = {n.name : sum(1 for r in results if r.getFaultModuleFromParam() == n and not r.vcd_of_module_equal[n.name] and not r.is_valid()) for n in Module}
+param_module_changed_ratios = {n.name : param_module_changed_counts[n.name]/float(param_module_counts[n.name]) for n in Module}
+param_module_changed_and_invalid_ratios = {n.name : param_module_changed_and_invalid_counts[n.name]/float(param_module_changed_counts[n.name]) for n in Module}
 
 all_result = (
     attrgetter('name', 'errornous', 'unexpected_len_sent', 'unexpected_len_recv', 'len_sent', 'len_recv',
@@ -36,19 +51,26 @@ all_result = (
                'recv_invalid', 'params', 'connection_counter_invalid','misrouted_recv','misrouted_sent')(obj) for obj in results)
 names, errors, uls, ulr, ls, lr, si, ri, params, ff ,mr,ms= itertools.zip_longest(*all_result)
 
+
 acc_result = {
     'num_runs' : len(results),
     'num_violations' : len(faillist),
-    'percentage_violations' : len(faillist) / float(len(results)),
+    'ratio_violations' : len(faillist) / numresults,
     'sim_errors' : len(errornous),
-
+    'module_changed_counts':module_changed_counts,
+    'param_module_counts':param_module_counts,
+    'param_module_changed_counts':param_module_changed_counts,
+    'param_module_changed_ratios':param_module_changed_ratios,
+    'param_module_changed_and_invalid_counts':param_module_changed_and_invalid_counts,
+    'param_module_changed_and_invalid_ratios':param_module_changed_and_invalid_ratios
 }
-if args.output_type == 'single_line':
+
+if args.output_type == 'single-line':
     print(' '.join(str(x) for x in [acc_result['num_runs'],
                    acc_result['num_violations'],
                    acc_result['percentage_violations'],
                    acc_result['sim_errors']]))
-if args.output_type == 'key_value_pairs':
+if args.output_type == 'key-value-pairs':
     for k,v in acc_result.items():
         print('%s : %s'%(str(k),str(v)))
 

@@ -94,7 +94,7 @@ class Result:
             r'^[\\]*XBAR': Module.xbar
         }
         comp = self.guessComponent()
-        for k, v in typemap:
+        for k, v in typemap.items():
             if re.match(k, comp):
                 return v
         return None
