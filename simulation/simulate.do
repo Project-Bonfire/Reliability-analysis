@@ -69,6 +69,15 @@ while {$data != ""} {
     #add wave -position insertpoint {sim/:tb_router:R_5:\\$name}
 
     puts "Breaking the circuit: Name: '$name' Time: $time_before ns Value: $val Length of fault: $fault_length ns"
+    vcd files $RESULTFOLDER/fifo.vcd $RESULTFOLDER/lbdr.vcd $RESULTFOLDER/arbiter.vcd $RESULTFOLDER/xbar.vcd
+    # the grant signals for the arbiter
+    vcd add -file $RESULTFOLDER/arbiter.vcd sim/:tb_router:R_5:*CONTROL_PART?allocator_unit?grant_?_?_sig*
+    # all tx ports for the xbar
+    vcd add -file $RESULTFOLDER/xbar.vcd "sim/:tb_router:R_5:TX_*"
+    # all Req signals for the lbdr
+    vcd add -file $RESULTFOLDER/lbdr.vcd sim/:tb_router:R_5:*CONTROL_PART?Req??*
+    # credit counters, pointer and data for the fifos
+    vcd add  -file $RESULTFOLDER/fifo.vcd sim/:tb_router:R_5:?FIFO_??credit_out_FF_in*   "sim/:tb_router:R_5:?FIFO_??write_pointer*" "sim/:tb_router:R_5:?FIFO_??read_pointer*"  sim/:tb_router:R_5:*FIFO_D_out_*
 
     # Run the simulation
     run $time_before ns
@@ -88,6 +97,11 @@ while {$data != ""} {
     puts $concatdresultfile "-----"
     puts $concatdresultfile "$i"
     puts $concatdresultfile $data
+    puts $concatdresultfile "!modules:"
+    puts $concatdresultfile "xbar: [exec sha1sum $RESULTFOLDER/xbar.vcd | cut -d " " -f1] "
+    puts $concatdresultfile "arbiter: [exec sha1sum $RESULTFOLDER/arbiter.vcd | cut -d " " -f1] "
+    puts $concatdresultfile "lbdr: [exec sha1sum $RESULTFOLDER/lbdr.vcd | cut -d " " -f1]" 
+    puts $concatdresultfile "fifo: [exec sha1sum $RESULTFOLDER/fifo.vcd | cut -d " " -f1] "
     puts $concatdresultfile "!sent:"
     set sentfile [open "$RESULTFOLDER/sent.txt"]
     fconfigure $sentfile -translation binary
@@ -103,6 +117,10 @@ while {$data != ""} {
     
     file delete "$RESULTFOLDER/sent.txt"
     file delete "$RESULTFOLDER/received.txt"
+    file delete "$RESULTFOLDER/xbar.vcd"
+    file delete "$RESULTFOLDER/arbiter.vcd"
+    file delete "$RESULTFOLDER/lbdr.vcd"
+    file delete "$RESULTFOLDER/fifo.vcd"
     puts "finished experiment #$i"
     #increment line
     gets $fp data
