@@ -340,6 +340,11 @@ def evaluate_file(noc_rg, filename, print_verbose=False, ralgo_check_sent_flits=
                 sent = [parse_sent_line(line_to_dict(line)) for line in experiment["sent"] if
                         line.strip()]
                 modules = dict(item.split(":") for item in experiment["modules"])
+                # auto detecting module reference, if first run is nofault
+                if counter == 1 and module_reference == None and "nofault" in experiment["params"]:
+                    module_reference = {}
+                    for k, v in modules.items():
+                        module_reference[k.strip()] = v.strip()
 
                 def checkmodulehashes(modules: Dict[str, str], module_reference: Dict[str, str], result: Result):
                     """

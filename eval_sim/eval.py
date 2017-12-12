@@ -29,7 +29,7 @@ if verbose:
 
 
 results:List[Result] = None
-errornous, results = evaluate_file(noc_rg, filename,print_verbose=verbose,module_reference={'xbar': '178e187dbfd6824f350aa98339998107a31d2382', 'arbiter': 'e3b29b11b901b66434f2edb033a43ae101b92853', 'lbdr': '06d449e2fc9a95df0719ef26a802a5c7947ff6bc', 'fifo': '9c4b2ee0622fb8cfb8d4b24c554da1c21688cfa5'})
+errornous, results = evaluate_file(noc_rg, filename,print_verbose=verbose)
 faillist = count_fails(results)
 numresults = float(len(results))
 
