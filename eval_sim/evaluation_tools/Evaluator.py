@@ -5,6 +5,7 @@ import re
 import sys
 from enum import Enum, auto
 
+import io
 from socdep2.ArchGraphUtilities.AG_Functions import *
 from socdep2.ConfigAndPackages import Config, PackageFile
 from socdep2.RoutingAlgorithms import Routing
@@ -287,7 +288,9 @@ def evaluate_file(noc_rg, filename:str, print_verbose:bool=False, ralgo_check_se
     errornous = []
     results = []
     counter = 0
-    opener = gzip.open if filename.endswith(".gz") else open
+    def gzip_opener(*args,**kwargs):
+        return io.BufferedReader(gzip.open(*args))
+    opener = gzip_opener if filename.endswith(".gz") else open
     with opener(filename, 'r') as f:
         def experiment_to_buffer(f):
             """
