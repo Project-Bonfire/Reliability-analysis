@@ -54,9 +54,9 @@ class Result:
 
     # flags
     # if the number of packets which where sent to router 5 is unexpected
-    unexpected_len_sent = False
+    unexpected_len_sent:bool = False
     # if the number of packets which where sent from router 5 is unexpected
-    unexpected_len_recv = False
+    unexpected_len_recv:bool = False
     # number of actual packets
     len_sent = -1
 
@@ -94,6 +94,8 @@ class Result:
             r'^[\\]*XBAR': Module.xbar
         }
         comp = self.guessComponent()
+        if comp == 'nofault':
+            return None
         for k, v in typemap.items():
             if re.match(k, comp):
                 return v
@@ -108,10 +110,16 @@ class Result:
 
     def guessComponent(self):
         splitted = self.params.split(' ')
+        if splitted[4] == 'nofault':
+            return 'nofault'
         if splitted[4].startswith('\\'):
             return splitted[4]
         else:
-            return str(ast.literal_eval(' '.join(splitted[7:]))[0][0])
+            try:
+                return str(ast.literal_eval(' '.join(splitted[7:]))[0][0])
+            except ValueError as ve:
+                print("Failed to guess component! %s"%self.params, file=sys.stderr)
+                return "nofault"
 
     def is_valid(self):
         return not (
@@ -265,8 +273,8 @@ def line_to_dict(line, splitchar=';', kvchar=':'):
     return {e[0]: e[1] for e in [x.split(kvchar) for x in line.strip().split(splitchar)]}
 
 
-def evaluate_file(noc_rg, filename, print_verbose=False, ralgo_check_sent_flits=False,
-                  module_reference: Dict[str, str] = None) -> (List[Result], List[Result]):
+def evaluate_file(noc_rg, filename:str, print_verbose:bool=False, ralgo_check_sent_flits:bool=False,
+                  module_reference: Dict[str, str] = None,expected_len_sent: int = -1, expected_len_recv: int  = -1) -> (List[Result], List[Result]):
     """
     Evaluates an simulation result file
     :param noc_rg: the graph model of the routing algorithm.
@@ -346,6 +354,12 @@ def evaluate_file(noc_rg, filename, print_verbose=False, ralgo_check_sent_flits=
                     for k, v in modules.items():
                         module_reference[k.strip()] = v.strip()
 
+                if expected_len_recv == -1 or expected_len_sent == -1:
+                    expected_len_sent = len(recv)
+                    expected_len_recv = len(recv)
+
+
+
                 def checkmodulehashes(modules: Dict[str, str], module_reference: Dict[str, str], result: Result):
                     """
                     compares the expected module hashes to the actual.
@@ -365,6 +379,9 @@ def evaluate_file(noc_rg, filename, print_verbose=False, ralgo_check_sent_flits=
                 res.params = experiment["params"].strip()
                 res.len_recv = len(recv)
                 res.len_sent = len(sent)
+                if expected_len_recv != -1 or expected_len_sent != -1:
+                    res.unexpected_len_recv = res.len_recv != expected_len_recv
+                    res.unexpected_len_recv = res.len_recv != expected_len_recv
                 if assumed_sent == -1:
                     assumed_sent = len(sent)
                     # res.unexpected_len_sent = len(sent) != assumed_sent

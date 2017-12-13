@@ -1,6 +1,6 @@
 -----
 0
-6736 4264 1 10 nofault :nofault nofault
+6736 4264 1 10 \FIFO_W/FIFO_comb/U208 :A2 FIFO_W/FIFO_comb/n384 [('FIFO_W/FIFO_comb/U209/Q', 'Output Pin(INVXL)')]
 !modules:
 xbar:b825ea8fa845a73e9dcb22beefb5acec75103e95
 arbiter:134771791c89f5bbd306e5156023e1e19409b73f
