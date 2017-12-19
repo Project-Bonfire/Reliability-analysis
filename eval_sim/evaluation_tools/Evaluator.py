@@ -351,8 +351,13 @@ def evaluate_file(noc_rg, filename:str, print_verbose:bool=False, ralgo_check_se
                 sent = [parse_sent_line(line_to_dict(line)) for line in experiment["sent"] if
                         line.strip()]
                 modules = dict(item.split(":") for item in experiment["modules"])
+                if print_verbose and counter == 1:
+                    print(experiment)
+                    print("first module params: " + experiment["params"])
                 # auto detecting module reference, if first run is nofault
                 if counter == 1 and module_reference == None and "nofault" in experiment["params"]:
+                    if print_verbose:
+                        print("Setting reference module")
                     module_reference = {}
                     for k, v in modules.items():
                         module_reference[k.strip()] = v.strip()
@@ -363,7 +368,7 @@ def evaluate_file(noc_rg, filename:str, print_verbose:bool=False, ralgo_check_se
 
 
 
-                def checkmodulehashes(modules: Dict[str, str], module_reference: Dict[str, str], result: Result):
+                def checkmodulehashes(modules: Dict[str, str], module_reference: Dict[str, str], result: Result,verbose=False):
                     """
                     compares the expected module hashes to the actual.
                     :param modules:
@@ -371,13 +376,13 @@ def evaluate_file(noc_rg, filename:str, print_verbose:bool=False, ralgo_check_se
                     :param result:
                     :return:
                     """
+                    result.vcd_of_module_equal = {}
                     if module_reference == None:
                         return
-                    result.vcd_of_module_equal = {}
                     for k, v in module_reference.items():
                         result.vcd_of_module_equal[k] = modules[k].strip() == v
 
-                checkmodulehashes(modules, module_reference, res)
+                checkmodulehashes(modules, module_reference, res,verbose=print_verbose)
 
                 res.params = experiment["params"].strip()
                 res.len_recv = len(recv)
@@ -459,10 +464,12 @@ def evaluate_file(noc_rg, filename:str, print_verbose:bool=False, ralgo_check_se
                     if v != FlitEvent.Type.TAIL:
                         res.recv_invalid += 1
             except:
-                if print_verbose:
-                    print("Unexpected error in %s: " % res.name, sys.exc_info()[0], sys.exc_info()[1])
                 res.errornous = True
                 errornous.append(res)
+                if print_verbose:
+                    print("Unexpected error in %s: " % res.name, sys.exc_info()[0], sys.exc_info()[1])
+                    print(res)
+
                 continue
             results.append(res)
     return errornous, results

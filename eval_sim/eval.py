@@ -32,10 +32,12 @@ results:List[Result] = None
 errornous, results = evaluate_file(noc_rg, filename,print_verbose=verbose)
 faillist = count_fails(results)
 numresults = float(len(results))
-
+if verbose:
+    res:List[Result] = [r for r in results if not r.vcd_of_module_equal]
+    print("%d without module data" % len([r for r in res if r.errornous]))
 
 # how often the output of each module was changed because of a fault.
-module_changed_counts = {n.name : sum(1 for r in results if not r.vcd_of_module_equal[n.name]) for n in Module}
+module_changed_counts = {n.name : sum(1 for r in results if r.vcd_of_module_equal and not r.vcd_of_module_equal[n.name]) for n in Module}
 # how often a fault was injected into a module
 param_module_counts = {n.name : sum(1 for r in results if r.getFaultModuleFromParam() == n) for n in Module}
 # how often the output of the params module was changed
@@ -43,6 +45,7 @@ param_module_changed_counts = {n.name : sum(1 for r in results if r.getFaultModu
 param_module_changed_and_invalid_counts = {n.name : sum(1 for r in results if r.getFaultModuleFromParam() == n and not r.vcd_of_module_equal[n.name] and not r.is_valid()) for n in Module}
 param_module_changed_ratios = {n.name : param_module_changed_counts[n.name]/float(param_module_counts[n.name]) for n in Module}
 param_module_changed_and_invalid_ratios = {n.name : param_module_changed_and_invalid_counts[n.name]/float(param_module_changed_counts[n.name]) for n in Module}
+module_output_changed_when_system_failed_counts = {n.name : sum(1 for r in results if r.vcd_of_module_equal and not r.is_valid() and not r.vcd_of_module_equal[n.name]) for n in Module}
 
 all_result = (
     attrgetter('name', 'errornous', 'unexpected_len_sent', 'unexpected_len_recv', 'len_sent', 'len_recv',
@@ -62,7 +65,8 @@ acc_result = {
     'param_module_changed_counts':param_module_changed_counts,
     'param_module_changed_ratios':param_module_changed_ratios,
     'param_module_changed_and_invalid_counts':param_module_changed_and_invalid_counts,
-    'param_module_changed_and_invalid_ratios':param_module_changed_and_invalid_ratios
+    'param_module_changed_and_invalid_ratios':param_module_changed_and_invalid_ratios,
+    'module_output_changed_when_system_failed_counts':module_output_changed_when_system_failed_counts
 }
 
 if args.output_type == 'single-line':
