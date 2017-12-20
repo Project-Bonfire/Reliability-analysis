@@ -50,6 +50,7 @@ mkdir "../results/$curtime/results"
 set num_experiments=`wc -l <../sim_runs`
 set per_proc=`python -c "from math import ceil;print ('%d'%ceil($num_experiments/float($num_processes)))"`
 echo "$per_proc tasks per process."
+set cleanupdirs=""
 @ x = 1
 #Launch number of requested processes
 while ($x <= $num_processes)
@@ -63,6 +64,7 @@ while ($x <= $num_processes)
     # create tmpfile which contains the experiment parameters for this instance
     sed -n ${startline},${endline}p  < ../sim_runs >> $propertypath
     set resultfolder=`mktemp -d`
+    set cleanupdirs="$cleanupdirs $propertypath $resultfolder"
     cp modelsim.ini $resultfolder/modelsim.ini
     echo $resultfolder
     #launch vsim instance, create tmp folders and seperate modelsiminis for each instance, to prevent race conditions.
@@ -85,7 +87,7 @@ cp "$scnfile" scenario.scn
 cat results/* > all.results
 rm -rf "results"
 gzip all.results
-
+rm -rf $cleanupdirs
 #write stats.txt file
 
 
