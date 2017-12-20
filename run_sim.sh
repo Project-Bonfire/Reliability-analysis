@@ -50,6 +50,7 @@ mkdir "../results/$curtime/results"
 set num_experiments=`wc -l <../sim_runs`
 set per_proc=`python -c "from math import ceil;print ('%d'%ceil($num_experiments/float($num_processes)))"`
 echo "$per_proc tasks per process."
+set cleanupdirs=""
 @ x = 1
 #Launch number of requested processes
 while ($x <= $num_processes)
@@ -63,18 +64,21 @@ while ($x <= $num_processes)
     # create tmpfile which contains the experiment parameters for this instance
     sed -n ${startline},${endline}p  < ../sim_runs >> $propertypath
     set resultfolder=`mktemp -d`
+    set cleanupdirs="$cleanupdirs $propertypath $resultfolder"
     cp modelsim.ini $resultfolder/modelsim.ini
     echo $resultfolder
     #launch vsim instance, create tmp folders and seperate modelsiminis for each instance, to prevent race conditions.
     (setenv SCENARIOFILE $scnfile;setenv RESULTFILE ../results/$curtime/results/Process${x}.results;setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; /usr/bin/nice -n 15 vsim -modelsimini $resultfolder/modelsim.ini -novopt -t 1ns -c -do simulate.do  >../results/$curtime/Process${x}out.log )&
     # prevents race condition when copying library work to tmp folder
-    sleep 1
+    sleep 2
     @ x += 1
 end
 echo "$num_experiments runs on $num_processes processes with $per_proc experiments per process"
 wait
 
 cd "../results/$curtime"
+echo "num_experiments: $num_experiments" >> "stats.txt"
+echo "num_processes: $num_processes" >> "stats.txt"
 echo "started: $curtime finished: " >> "stats.txt"
 echo `date +%Y-%m-%d.%H:%M:%S` >> "stats.txt"
 echo `uptime | cut -d : -f 4` >> "stats.txt"
@@ -83,7 +87,7 @@ cp "$scnfile" scenario.scn
 cat results/* > all.results
 rm -rf "results"
 gzip all.results
-
+rm -rf $cleanupdirs
 #write stats.txt file
 
 

@@ -11,12 +11,22 @@ set PROPERTYPATH $env(PROPERTYPATH)
 set STARTID $env(STARTID)
 set RESULTFILE $env(RESULTFILE)
 set SCENARIOFILE $env(SCENARIOFILE)
+
+puts $PROPERTYPATH
+puts $RESULTFOLDER/work
+puts $STARTID
+
+
 # define library work
 
+
 vlib work
-#prevent race condition between instances!
 file rename work $RESULTFOLDER/work
+puts "work folder exists: [file exists $RESULTFOLDER/work]"
 vmap work $RESULTFOLDER/work
+#prevent race condition between instances!
+
+
 #map it to the folder of this process
 
 
@@ -28,9 +38,7 @@ vcom -O5 "TB_Package_32_bit_credit_based.vhd"
 vcom -O5 "Router_credit_based_tb.vhd"
  
 
-puts $PROPERTYPATH
-puts $RESULTFOLDER
-puts $STARTID
+
 # Start the simulation
 vsim -novopt -t 1ns -Gsent_file=$RESULTFOLDER/sent.txt -Grecv_file=$RESULTFOLDER/received.txt -Gscenario_file=$SCENARIOFILE work.tb_router
 
@@ -98,10 +106,11 @@ while {$data != ""} {
     puts $concatdresultfile "$i"
     puts $concatdresultfile $data
     puts $concatdresultfile "!modules:"
-    puts $concatdresultfile "xbar: [exec sha1sum $RESULTFOLDER/xbar.vcd | cut -d " " -f1] "
-    puts $concatdresultfile "arbiter: [exec sha1sum $RESULTFOLDER/arbiter.vcd | cut -d " " -f1] "
-    puts $concatdresultfile "lbdr: [exec sha1sum $RESULTFOLDER/lbdr.vcd | cut -d " " -f1]" 
-    puts $concatdresultfile "fifo: [exec sha1sum $RESULTFOLDER/fifo.vcd | cut -d " " -f1] "
+    # exclude date of the file, only keep the hash.
+    puts $concatdresultfile "xbar:[exec tail --lines=+3 $RESULTFOLDER/xbar.vcd | sha1sum | cut -d " " -f1]"
+    puts $concatdresultfile "arbiter:[exec tail --lines=+3  $RESULTFOLDER/arbiter.vcd | sha1sum | cut -d " " -f1]"
+    puts $concatdresultfile "lbdr:[exec tail --lines=+3  $RESULTFOLDER/lbdr.vcd | sha1sum | cut -d " " -f1]" 
+    puts $concatdresultfile "fifo:[exec tail --lines=+3  $RESULTFOLDER/fifo.vcd | sha1sum | cut -d " " -f1]"
     puts $concatdresultfile "!sent:"
     set sentfile [open "$RESULTFOLDER/sent.txt"]
     fconfigure $sentfile -translation binary

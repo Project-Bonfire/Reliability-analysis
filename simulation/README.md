@@ -16,6 +16,10 @@ What happened during an experiment is written down as:
 -----
 <experimentid>
 <experimentparams>
+!modules:
+<one line for each module of the router in the format:
+[arbiter|xbar|fifo|lbdr]:<hash of the vcd file of that modules outputs>
+>
 !sent:
 <one line for each packet sent into the router>
 !recv:
@@ -23,6 +27,7 @@ What happened during an experiment is written down as:
 #####
 ```
 The `sent` and `recv` lines are key value pairs which are seperated by a `;`.
+The modules are the hashes of the module files of the outputs.
 
 
 ## Parameters
