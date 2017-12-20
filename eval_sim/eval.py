@@ -40,11 +40,15 @@ if verbose:
 module_changed_counts = {n.name : sum(1 for r in results if r.vcd_of_module_equal and not r.vcd_of_module_equal[n.name]) for n in Module}
 # how often a fault was injected into a module
 param_module_counts = {n.name : sum(1 for r in results if r.getFaultModuleFromParam() == n) for n in Module}
+for r in results:
+    if 'lbdr' not in r.vcd_of_module_equal:
+        print(r)
+
 # how often the output of the params module was changed
 param_module_changed_counts = {n.name : sum(1 for r in results if r.getFaultModuleFromParam() == n and not r.vcd_of_module_equal[n.name]) for n in Module}
 param_module_changed_and_invalid_counts = {n.name : sum(1 for r in results if r.getFaultModuleFromParam() == n and not r.vcd_of_module_equal[n.name] and not r.is_valid()) for n in Module}
 param_module_changed_ratios = {n.name : param_module_changed_counts[n.name]/float(param_module_counts[n.name]) for n in Module}
-param_module_changed_and_invalid_ratios = {n.name : param_module_changed_and_invalid_counts[n.name]/float(param_module_changed_counts[n.name]) for n in Module}
+param_module_changed_and_invalid_ratios = {n.name : param_module_changed_and_invalid_counts[n.name]/(float(param_module_changed_counts[n.name]) if float(param_module_changed_counts[n.name]) > 0 else -1) for n in Module}
 module_output_changed_when_system_failed_counts = {n.name : sum(1 for r in results if r.vcd_of_module_equal and not r.is_valid() and not r.vcd_of_module_equal[n.name]) for n in Module}
 
 all_result = (

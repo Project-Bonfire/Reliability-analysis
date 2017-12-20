@@ -351,6 +351,11 @@ def evaluate_file(noc_rg, filename:str, print_verbose:bool=False, ralgo_check_se
                 sent = [parse_sent_line(line_to_dict(line)) for line in experiment["sent"] if
                         line.strip()]
                 modules = dict(item.split(":") for item in experiment["modules"])
+                if print_verbose and (len(modules) != 4 or 'lbdr' not in modules):
+                    print("Strange module count found")
+                    print(experiment["name"])
+                    print(experiment["params"])
+                    print(experiment["modules"])
                 if print_verbose and counter == 1:
                     print(experiment)
                     print("first module params: " + experiment["params"])
