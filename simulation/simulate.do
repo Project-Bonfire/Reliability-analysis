@@ -79,7 +79,7 @@ while {$data != ""} {
     puts "Breaking the circuit: Name: '$name' Time: $time_before ns Value: $val Length of fault: $fault_length ns"
     vcd files $RESULTFOLDER/fifo.vcd $RESULTFOLDER/lbdr.vcd $RESULTFOLDER/arbiter.vcd $RESULTFOLDER/xbar.vcd
     # the grant signals for the arbiter
-    vcd add -file $RESULTFOLDER/arbiter.vcd sim/:tb_router:R_5:*CONTROL_PART?allocator_unit?grant_?_?_sig*
+    vcd add -file $RESULTFOLDER/arbiter.vcd sim/:tb_router:R_5:*CONTROL_PART?allocator_unit?grant_?_?_sig* "sim/:tb_router:R_5:valid_out*"
     # all tx ports for the xbar
     vcd add -file $RESULTFOLDER/xbar.vcd "sim/:tb_router:R_5:TX_*"
     # all Req signals for the lbdr
@@ -123,13 +123,14 @@ while {$data != ""} {
     close $recvfile
     puts $concatdresultfile "#####"
 
-    
+
     file delete "$RESULTFOLDER/sent.txt"
     file delete "$RESULTFOLDER/received.txt"
     file delete "$RESULTFOLDER/xbar.vcd"
     file delete "$RESULTFOLDER/arbiter.vcd"
     file delete "$RESULTFOLDER/lbdr.vcd"
     file delete "$RESULTFOLDER/fifo.vcd"
+    
     puts "finished experiment #$i"
     #increment line
     gets $fp data
