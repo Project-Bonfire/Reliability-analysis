@@ -2,7 +2,14 @@
 
 This projects defines an antlr grammar and a listener to output all pins of all cells of a ams_syn?? export of all cells.
 
-The output is simply a list of the names of all pins.
+## Output
+Each pin has its own line in the output.
+each line consists of 3 columns:
+    1. cellname
+    2. pinname
+    3. module where this pin belongs to: one of `lbdr,fifo,arbiter,xbar`
+
+Pay attention to the stderr output for further information on module guessing.
 
 ## Generating `cell_connections.txt`
 
