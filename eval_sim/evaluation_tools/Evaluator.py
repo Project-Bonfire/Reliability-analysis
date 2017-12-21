@@ -39,6 +39,8 @@ class Module(Enum):
     xbar = auto()
     arbiter = auto()
 
+str2module={'lbdr' : Module.lbdr,'fifo':Module.fifo,'xbar':Module.xbar,'arbiter':Module.arbiter,'none':None,'nofault':None}
+
 
 class Result:
     """
@@ -85,7 +87,11 @@ class Result:
         returns the faultmodule based on the param string.
         :return:
         """
+        #new format:
+        if self.params.split(' ')[6][0] == '!':
+            return str2module[self.params.split(' ')[6][1:]]
 
+        #implementation for the old format down here
         typemap = {
             r'^valid_': Module.fifo,
             r'^[\\]*CONTROL_PART/allocator_unit': Module.arbiter,
@@ -357,7 +363,6 @@ def evaluate_file(noc_rg, filename:str, print_verbose:bool=False, ralgo_check_se
                     print(experiment["params"])
                     print(experiment["modules"])
                 if print_verbose and counter == 1:
-                    print(experiment)
                     print("first module params: " + experiment["params"])
                 # auto detecting module reference, if first run is nofault
                 if counter == 1 and module_reference == None and "nofault" in experiment["params"]:
