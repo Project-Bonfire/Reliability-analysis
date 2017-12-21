@@ -77,7 +77,7 @@ while {$data != ""} {
     #add wave -position insertpoint {sim/:tb_router:R_5:\\$name}
 
     puts "Breaking the circuit: Name: '$name' Time: $time_before ns Value: $val Length of fault: $fault_length ns"
-    vcd files $RESULTFOLDER/fifo.vcd $RESULTFOLDER/lbdr.vcd $RESULTFOLDER/arbiter.vcd $RESULTFOLDER/xbar.vcd
+    vcd files $RESULTFOLDER/fifo.vcd $RESULTFOLDER/fifoc.vcd $RESULTFOLDER/fifod.vcd $RESULTFOLDER/lbdr.vcd $RESULTFOLDER/arbiter.vcd $RESULTFOLDER/xbar.vcd
     # the grant signals for the arbiter
     vcd add -file $RESULTFOLDER/arbiter.vcd sim/:tb_router:R_5:*CONTROL_PART?allocator_unit?grant_?_?_sig* "sim/:tb_router:R_5:valid_out*"
     # all tx ports for the xbar
@@ -86,7 +86,10 @@ while {$data != ""} {
     vcd add -file $RESULTFOLDER/lbdr.vcd sim/:tb_router:R_5:*CONTROL_PART?Req??*
     # credit counters, pointer and data for the fifos
     vcd add  -file $RESULTFOLDER/fifo.vcd sim/:tb_router:R_5:?FIFO_??credit_out_FF_in*   "sim/:tb_router:R_5:?FIFO_??write_pointer*" "sim/:tb_router:R_5:?FIFO_??read_pointer*"  sim/:tb_router:R_5:*FIFO_D_out_*
-
+    # controllpath fifo
+    vcd add  -file $RESULTFOLDER/fifoc.vcd sim/:tb_router:R_5:?FIFO_??credit_out_FF_in*   "sim/:tb_router:R_5:?FIFO_??write_pointer*" "sim/:tb_router:R_5:?FIFO_??read_pointer*"  
+    # datapath fifo
+    vcd add  -file $RESULTFOLDER/fifod.vcd  sim/:tb_router:R_5:*FIFO_D_out_*
     # Run the simulation
     run $time_before ns
     # for reference: force -drive {sim/:tb_router:R_5:\FIFO_N/FIFO_MEM_2_reg[0] :D} St1 0 -cancel 1
@@ -111,6 +114,8 @@ while {$data != ""} {
     puts $concatdresultfile "arbiter:[exec tail --lines=+3  $RESULTFOLDER/arbiter.vcd | sha1sum | cut -d " " -f1]"
     puts $concatdresultfile "lbdr:[exec tail --lines=+3  $RESULTFOLDER/lbdr.vcd | sha1sum | cut -d " " -f1]" 
     puts $concatdresultfile "fifo:[exec tail --lines=+3  $RESULTFOLDER/fifo.vcd | sha1sum | cut -d " " -f1]"
+    puts $concatdresultfile "fifoc:[exec tail --lines=+3  $RESULTFOLDER/fifoc.vcd | sha1sum | cut -d " " -f1]"
+    puts $concatdresultfile "fifod:[exec tail --lines=+3  $RESULTFOLDER/fifod.vcd | sha1sum | cut -d " " -f1]"
     puts $concatdresultfile "!sent:"
     set sentfile [open "$RESULTFOLDER/sent.txt"]
     fconfigure $sentfile -translation binary
@@ -130,6 +135,8 @@ while {$data != ""} {
     file delete "$RESULTFOLDER/arbiter.vcd"
     file delete "$RESULTFOLDER/lbdr.vcd"
     file delete "$RESULTFOLDER/fifo.vcd"
+    file delete "$RESULTFOLDER/fifoc.vcd"
+    file delete "$RESULTFOLDER/fifod.vcd"
     
     puts "finished experiment #$i"
     #increment line
