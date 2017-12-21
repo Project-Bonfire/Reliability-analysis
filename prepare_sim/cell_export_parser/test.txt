@@ -1,4 +1,32 @@
+Connections for cell 'U152':
+    Reference:          INVXL
+    Library:            c18_CORELIB_TYP
+    Area:               5.6448
+    dont_touch:         FALSE
 
+    Input Pins          Net            Net Driver Pins   Driver Pin Type
+    ----------------    ------------   ----------------  ----------------
+    A                   Xbar_sel_N[1]  CONTROL_PART/allocator_unit/U10/Q
+                                                         Output Pin (NOR2XL)
+
+    Output Pins         Net            Net Load Pins     Load Pin Type
+    ----------------    ------------   ----------------  ----------------
+    Q                   n8             U164/B            Input Pin (NAND2X6)
+
+Connections for cell 'U177':
+    Reference:          NAND2X6
+    Library:            c18_CORELIB_TYP
+    Area:               19.7568
+    dont_touch:         FALSE
+
+    Input Pins          Net            Net Driver Pins   Driver Pin Type
+    ----------------    ------------   ----------------  ----------------
+    A                   n13            U175/Q            Output Pin (NOR2X8)
+    B                   n14            U176/Q            Output Pin (NAND2X6)
+
+    Output Pins         Net            Net Load Pins     Load Pin Type
+    ----------------    ------------   ----------------  ----------------
+    Q                   n15            U178/A            Input Pin (CLKINVX4)
 
 Connections for cell 'FIFO_E/FIFO_MEM_1_reg[0]':
     Reference:          DFCX4
