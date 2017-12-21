@@ -5573,9 +5573,9 @@ U175 :Q !arbiter
 U176 :A !arbiter
 U176 :B !arbiter
 U176 :Q !arbiter
-U177 :A !fifo
-U177 :B !fifo
-U177 :Q !fifo
+U177 :A !none
+U177 :B !none
+U177 :Q !none
 U178 :A !arbiter
 U178 :Q !arbiter
 U179 :A !arbiter

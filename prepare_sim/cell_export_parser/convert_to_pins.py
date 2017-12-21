@@ -95,7 +95,7 @@ class PinPrinter(CellsListener):
                     l.module=modules[0]
         else:# as fallback, we assign the cell to the fifo, when we cannot guess to which module it belongs.
             for l in lines:
-                l.module='fifo'
+                l.module='none'
                 self.module_fallback_counter += 1
 
         # unfortunatley, for some reason, the pins are named differently, the only valid difference I found, is that the one without backslash are starting with U
