@@ -39,7 +39,7 @@ class Module(Enum):
     xbar = auto()
     arbiter = auto()
 
-str2module={'lbdr' : Module.lbdr,'fifo':Module.fifo,'xbar':Module.xbar,'arbiter':Module.arbiter,'none':None}
+str2module={'lbdr' : Module.lbdr,'fifo':Module.fifo,'xbar':Module.xbar,'arbiter':Module.arbiter,'none':None,'nofault':None}
 
 
 class Result:
