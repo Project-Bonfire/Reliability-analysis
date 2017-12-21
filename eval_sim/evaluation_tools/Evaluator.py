@@ -88,8 +88,14 @@ class Result:
         :return:
         """
         #new format:
-        if self.params.split(' ')[6][0] == '!':
-            return str2module[self.params.split(' ')[6][1:]]
+        if len(self.params.split(' '))>=7 :
+            if self.params.split(' ')[6][0] == '!':
+                return str2module[self.params.split(' ')[6][1:]]
+        else:
+            if self.params.split(' ')[4] == 'nofault':
+                return None
+            else:
+                print("parseerror at: "+self.params,file=sys.stderr)
 
         #implementation for the old format down here
         typemap = {
