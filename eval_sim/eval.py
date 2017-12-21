@@ -1,4 +1,5 @@
 import argparse
+import gzip
 import itertools
 import re
 from collections import Counter
@@ -6,7 +7,7 @@ from operator import attrgetter, sub
 from typing import List
 
 import numpy as np
-import sys
+import pickle
 
 from evaluation_tools.Evaluator import evaluate_file, count_fails, init, Result, Module
 
@@ -18,6 +19,10 @@ parser.add_argument('--verbose',action='store_true',
                     help='Prints progress and additional information.')
 parser.add_argument('--output-type',nargs='?', choices=['default','single-line','key-value-pairs'],
                     default='default',help='The way the output should be printed.')
+parser.add_argument('--write-results',nargs='?',type=argparse.FileType('wb'),default=None,
+                    help="Stores the intermediate result objects to the given gzip file.")
+parser.add_argument('--read-results',nargs='?',type=argparse.FileType('rb'),default=None,
+                    help="Loads intermediate result objects from the given gzip file instead of evaluating `infile`.")
 
 args = parser.parse_args()
 
@@ -29,7 +34,13 @@ if verbose:
 
 
 results:List[Result] = None
-errornous, results = evaluate_file(noc_rg, filename,print_verbose=verbose)
+errornous, results = [],[]
+if args.read_results:
+    results = pickle.load(gzip.open(args.read_results,'rb'))
+else:
+    errornous, results = evaluate_file(noc_rg, filename,print_verbose=verbose)
+if args.write_results:
+    pickle.dump(results, gzip.open(args.write_results,'wb'))
 faillist = count_fails(results)
 numresults = float(len(results))
 if verbose:
@@ -44,12 +55,21 @@ for r in results:
     if 'lbdr' not in r.vcd_of_module_equal:
         print(r)
 
-# how often the output of the params module was changed
-param_module_changed_counts = {n.name : sum(1 for r in results if r.getFaultModuleFromParam() == n and not r.vcd_of_module_equal[n.name]) for n in Module}
-param_module_changed_and_invalid_counts = {n.name : sum(1 for r in results if r.getFaultModuleFromParam() == n and not r.vcd_of_module_equal[n.name] and not r.is_valid()) for n in Module}
-param_module_changed_ratios = {n.name : param_module_changed_counts[n.name]/float(param_module_counts[n.name]) for n in Module}
-param_module_changed_and_invalid_ratios = {n.name : param_module_changed_and_invalid_counts[n.name]/(float(param_module_changed_counts[n.name]) if float(param_module_changed_counts[n.name]) > 0 else -1) for n in Module}
-module_output_changed_when_system_failed_counts = {n.name : sum(1 for r in results if r.vcd_of_module_equal and not r.is_valid() and not r.vcd_of_module_equal[n.name]) for n in Module}
+
+param_module_changed_counts = 'invalid'
+param_module_changed_and_invalid_counts= 'invalid'
+param_module_changed_and_invalid_ratios= 'invalid'
+param_module_changed_ratios= 'invalid'
+module_output_changed_when_system_failed_counts= 'invalid'
+#do this only when there is actually module data!
+if len(results[0].vcd_of_module_equal) >= 4:
+    # how often the output of the params module was changed
+    param_module_changed_counts = {n.name : sum(1 for r in results if r.getFaultModuleFromParam() == n and not r.vcd_of_module_equal[n.name]) for n in Module}
+    param_module_changed_and_invalid_counts = {n.name : sum(1 for r in results if r.getFaultModuleFromParam() == n and not r.vcd_of_module_equal[n.name] and not r.is_valid()) for n in Module}
+    param_module_changed_ratios = {n.name : param_module_changed_counts[n.name]/float(param_module_counts[n.name]) for n in Module}
+    param_module_changed_and_invalid_ratios = {n.name : param_module_changed_and_invalid_counts[n.name]/(float(param_module_changed_counts[n.name]) if float(param_module_changed_counts[n.name]) > 0 else -1) for n in Module}
+    module_output_changed_when_system_failed_counts = {n.name : sum(1 for r in results if r.vcd_of_module_equal and not r.is_valid() and not r.vcd_of_module_equal[n.name]) for n in Module}
+
 
 all_result = (
     attrgetter('name', 'errornous', 'unexpected_len_sent', 'unexpected_len_recv', 'len_sent', 'len_recv',

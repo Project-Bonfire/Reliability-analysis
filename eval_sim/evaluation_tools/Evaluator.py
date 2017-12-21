@@ -363,7 +363,6 @@ def evaluate_file(noc_rg, filename:str, print_verbose:bool=False, ralgo_check_se
                     print(experiment["params"])
                     print(experiment["modules"])
                 if print_verbose and counter == 1:
-                    print(experiment)
                     print("first module params: " + experiment["params"])
                 # auto detecting module reference, if first run is nofault
                 if counter == 1 and module_reference == None and "nofault" in experiment["params"]:
