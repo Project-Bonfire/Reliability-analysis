@@ -51,10 +51,6 @@ if verbose:
 module_changed_counts = {n.name : sum(1 for r in results if r.vcd_of_module_equal and not r.vcd_of_module_equal[n.name]) for n in Module}
 # how often a fault was injected into a module
 param_module_counts = {n.name : sum(1 for r in results if r.getFaultModuleFromParam() == n) for n in Module}
-for r in results:
-    if 'lbdr' not in r.vcd_of_module_equal:
-        print(r)
-
 
 param_module_changed_counts = 'invalid'
 param_module_changed_and_invalid_counts= 'invalid'

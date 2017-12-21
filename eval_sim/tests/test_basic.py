@@ -33,6 +33,37 @@ class MyTest(unittest.TestCase):
         self.assertTrue(res.vcd_of_module_equal['fifo'])
         self.assertEqual(res.guessComponent(),'nofault')
 
+    def testFifoHashesSeperated(self):
+        noc_rg = init()
+        filename = "tests/resources/fifo_hashes_seperated.results"
+        module_dict = {
+            'xbar': '178e187dbfd6824f350aa98339998107a31d2382',
+            'arbiter': '6845bd7aa42376d81ea1839cd1476f006f9412ca',
+            'lbdr': '06d449e2fc9a95df0719ef26a802a5c7947ff6bc',
+            'fifo': '9c4b2ee0622fb8cfb8d4b24c554da1c21688cfa5',
+            'fifoc':'0b1c5bae9152c6dfbfec730e12bdf2641e8684ee',
+            'fifod':'fc7f0c5dc1980d2abd8e4a68d19096af0aacf71f'
+        }
+        errornous, results = evaluate_file(noc_rg, filename, module_reference=module_dict,print_verbose=True)
+        self.assertEqual(len(errornous), 0)
+        self.assertEqual(len(results), 1)
+        res:Result = results[0]
+        self.assertFalse(
+            results[0].errornous or results[0].connection_counter_invalid or results[0].unexpected_len_sent or results[
+                0].unexpected_len_recv)
+        self.assertEqual(results[0].recv_invalid, 0)
+        self.assertEqual(results[0].sents_invalid, 0)
+        self.assertEqual(results[0].misrouted_recv, 0)
+        self.assertEqual(results[0].misrouted_sent, 0)
+        self.assertEqual(results[0].len_recv, 509)
+        self.assertEqual(results[0].len_sent, 509)
+        self.assertTrue(results[0].is_valid())
+        self.assertTrue(res.vcd_of_module_equal['xbar'])
+        self.assertTrue(res.vcd_of_module_equal['arbiter'])
+        self.assertTrue(res.vcd_of_module_equal['lbdr'])
+        self.assertTrue(res.vcd_of_module_equal['fifo'])
+        self.assertEqual(res.guessComponent(),'nofault')
+
     def testOnlyHashError(self):
         noc_rg = init()
         filename = "tests/resources/noerror.results"
