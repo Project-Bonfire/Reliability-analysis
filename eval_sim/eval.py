@@ -1,4 +1,5 @@
 import argparse
+import ast
 import gzip
 import itertools
 import re
@@ -23,6 +24,8 @@ parser.add_argument('--write-results',nargs='?',type=argparse.FileType('wb'),def
                     help="Stores the intermediate result objects to the given gzip file.")
 parser.add_argument('--read-results',nargs='?',type=argparse.FileType('rb'),default=None,
                     help="Loads intermediate result objects from the given gzip file instead of evaluating `infile`.")
+parser.add_argument('--routerinfo',type=argparse.FileType('r'),default=None,
+                    help="The file with the routers description..")
 
 args = parser.parse_args()
 
@@ -32,6 +35,11 @@ verbose = args.verbose
 if verbose:
     print("evaluating %s" % filename)
 
+refdata={}
+if args.routerinfo:
+    for line in args.routerinfo.readlines():
+        l,r = line.split('=',1)
+        refdata[l]=ast.literal_eval(r)
 
 results:List[Result] = None
 errornous, results = [],[]
@@ -75,18 +83,29 @@ all_result = (
 names, errors, uls, ulr, ls, lr, si, ri, params, ff ,mr,ms= itertools.zip_longest(*all_result)
 
 
+m_all = {m.name: list(filter(lambda r: r.getFaultModuleFromParam() == m,results)) for m in Module}
+m_invalid={m.name: list(filter(lambda r: not r.is_valid(),m_all[m.name]))for m in Module}
+ratio_violations_per_module={m.name:len(m_invalid[m.name])/(len(m_all[m.name])+1) for m in Module}
+module_size_ratio={m.name: refdata['locspermodule'][m.name]/refdata['locspermodule']['all'] for m in Module}
+corrected_ratio=sum([ratio_violations_per_module[m.name] * module_size_ratio[m.name] for m in Module])
 acc_result = {
     'num_runs' : len(results),
     'num_violations' : len(faillist),
     'ratio_violations' : len(faillist) / numresults,
+    'corrected_ratio': corrected_ratio,
+    'module_sizes_relative_to_router':module_size_ratio,
     'sim_errors' : len(errornous),
+    'experiments_per_module':{k:len(v) for k,v in m_all.items()},
+    'violations_per_module':{k:len(v) for k,v in m_invalid.items()},
+    'ratio_violations_per_module':ratio_violations_per_module,
     'module_changed_counts':module_changed_counts,
     'param_module_counts':param_module_counts,
     'param_module_changed_counts':param_module_changed_counts,
     'param_module_changed_ratios':param_module_changed_ratios,
     'param_module_changed_and_invalid_counts':param_module_changed_and_invalid_counts,
     'param_module_changed_and_invalid_ratios':param_module_changed_and_invalid_ratios,
-    'module_output_changed_when_system_failed_counts':module_output_changed_when_system_failed_counts
+    'module_output_changed_when_system_failed_counts':module_output_changed_when_system_failed_counts,
+    'ref_locs_per_module':refdata['locspermodule']
 }
 
 if args.output_type == 'single-line':
