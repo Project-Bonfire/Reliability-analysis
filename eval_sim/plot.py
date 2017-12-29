@@ -36,7 +36,7 @@ def createdataset_simple(buffers:List[List[str]],attribute):
 
 
 
-def plot(dataset,reference,title="", logscale = False, packetlengths:List[int] = [3, 5, 10, 20]):
+def plot(dataset,reference,xlabel,ylabel,title="", logscale = False, packetlengths:List[int] = [3, 5, 10, 20], ylim=None):
     """
     plots the given dataset in 4 subplots, one for each module
     :param dataset: the dataset to show in the format [(packetlength,framrate, valuetoshow)]
@@ -68,6 +68,10 @@ def plot(dataset,reference,title="", logscale = False, packetlengths:List[int] =
             ax[i].set_yscale("log", nonposy='clip')
             ax[i].get_yaxis().set_major_formatter(
                 plt.ticker.FuncFormatter(lambda x, p: "%.4f"%float(x)))
+        ax[i].set_xlabel(xlabel)
+        ax[i].set_ylabel(ylabel)
+        if ylim:
+            ax[i].set_ylim(*ylim)
     f.legend(handles,labels)
     f.suptitle(title)
     plt2.tight_layout()
@@ -80,15 +84,14 @@ def enrich_values(values):
     :param values:
     :return: the values with addidional properties
     """
-    values["param_module_changed_and_invalid_total_ratios"] = str(dict([(k,v / float(values["num_runs"])) for k,v in ast.literal_eval(values["param_module_changed_and_invalid_counts"]).items()]))
-    values["param_module_changed_total_ratios"] = str(dict([(k, v / float(values["num_runs"])) for k, v in
-                                                                        ast.literal_eval(values[
-                                                                                             "param_module_changed_counts"]).items()]))
+    mod = ast.literal_eval(values["module_output_changed_when_system_failed_counts"])
+    tmp = { k: v / int(values["num_violations"]) for k,v in mod.items()}
+    values["module_output_changed_when_system_failed_ratio"] =str(tmp)
     return values
 
 # Download dataset and prepare it
 def getdataset ():
-    file='http://ati.ttu.ee/~thilo/evals.log'
+    file='http://ati.ttu.ee/~thilo/evalsnew.log'
     r = requests.get(file, stream=True)
     buffers=[]
     buffer=[]
@@ -119,8 +122,9 @@ buffers = getdataset()
 packetlengths = sorted(list(set([int(v['packetlength'].split(',')[0]) for v in buffers])))
 
 reference = createdataset_simple(buffers,'ratio_violations')
+referencecorrected = createdataset_simple(buffers,'corrected_ratio')
 
 # module caused system failure probability
-plot(createdataset_modules(buffers,'param_module_changed_and_invalid_total_ratios'),reference,title="",logscale=True,packetlengths=packetlengths)
+plot(createdataset_modules(buffers,'module_output_changed_when_system_failed_ratio'),None,'cyclelength (ns)','ratio',title="",logscale=False,packetlengths=packetlengths,ylim=(0,1))
 # absolute module failure probability vs system failure probability
-plot(createdataset_modules(buffers,'param_module_changed_total_ratios'),reference,title="",packetlengths=packetlengths)
+plot(createdataset_modules(buffers,'param_module_changed_total_ratios'),None,'cyclelength (ns)','ratio',title="",packetlengths=packetlengths)
