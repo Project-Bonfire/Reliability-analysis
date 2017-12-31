@@ -44,6 +44,11 @@ class Module(Enum):
 str2module={'lbdr' : Module.lbdr,'fifo':Module.fifo,'fifod':Module.fifod,'fifoc':Module.fifoc,'xbar':Module.xbar,'arbiter':Module.arbiter,'none':None,'nofault':None}
 
 
+class Faulttype(Enum):
+    MISROUTED=auto()
+    FAILEDDELIVERY=auto()
+    INVALIDFLITS=auto()
+
 class Result:
     """
 
@@ -77,6 +82,18 @@ class Result:
     # due misrouting
     misrouted_recv = 0
     misrouted_sent = 0
+
+    def has_routing_errors(self):
+        return self.misrouted_recv + self.misrouted_sent != 0
+
+    def has_invalid_flitcounts(self):
+        return self.connection_counter_invalid
+
+    def has_invalid_flits(self):
+        return self.sents_invalid + self.recv_invalid != 0
+
+    def hasError(self,faulttype:Faulttype):
+        return {Faulttype.FAILEDDELIVERY:self.has_invalid_flitcounts(),Faulttype.MISROUTED:self.has_routing_errors(),Faulttype.INVALIDFLITS:self.has_invalid_flits()}
 
     # the parameters of the simulation
     params = ""
