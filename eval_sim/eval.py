@@ -104,7 +104,7 @@ if len(results[0].vcd_of_module_equal) >= 4:
     experiments_per_module = {k: len(v) for k, v in m_all.items()}
     violations_per_module = {k: len(v) for k, v in m_invalid.items()}
     uncorrect_module_ratios = {k: (v / float(num_runs)) for k, v in experiments_per_module.items()}
-    correction_multipliers = {k: module_size_ratio[k] / v+1 for k, v in uncorrect_module_ratios.items()}
+    correction_multipliers = {k: module_size_ratio[k] / (v+1) for k, v in uncorrect_module_ratios.items()}
     param_module_changed_and_invalid_total_ratios = dict(
         [(k, v * correction_multipliers[k]/ float(num_runs)) for k, v in param_module_changed_and_invalid_counts.items()])
     param_module_changed_total_ratios = dict([(k, v * correction_multipliers[k]/ float(num_runs)) for k, v in param_module_changed_counts.items()])
