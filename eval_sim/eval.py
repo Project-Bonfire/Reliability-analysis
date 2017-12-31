@@ -175,7 +175,7 @@ acc_result = {
     'faulttype_caused_by_module_when_invalid':faulttype_caused_by_module_when_invalid,
     'faulttype_caused_by_module_when_module_output_changed_and_invalid':faulttype_caused_by_module_when_module_output_changed_and_invalid,
     'faulttype_and_module_output_changed':faulttype_and_module_output_changed,
-    'faulttype_counts_corrected':faulttype_counts,
+    'faulttype_counts_corrected':faulttype_counts_corrected,
     'faulttype_ratios':faulttype_ratios
 }
 
