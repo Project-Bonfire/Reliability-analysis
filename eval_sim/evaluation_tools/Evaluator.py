@@ -93,7 +93,9 @@ class Result:
         return self.sents_invalid + self.recv_invalid != 0
 
     def hasError(self,faulttype:Faulttype):
-        return {Faulttype.FAILEDDELIVERY:self.has_invalid_flitcounts(),Faulttype.MISROUTED:self.has_routing_errors(),Faulttype.INVALIDFLITS:self.has_invalid_flits()}
+        return {Faulttype.FAILEDDELIVERY:self.has_invalid_flitcounts(),
+                Faulttype.MISROUTED:self.has_routing_errors(),
+                Faulttype.INVALIDFLITS:self.has_invalid_flits()}[faulttype]
 
     # the parameters of the simulation
     params = ""
