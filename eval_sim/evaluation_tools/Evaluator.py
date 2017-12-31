@@ -38,8 +38,10 @@ class Module(Enum):
     fifo = auto()
     xbar = auto()
     arbiter = auto()
+    fifod = auto()
+    fifoc = auto()
 
-str2module={'lbdr' : Module.lbdr,'fifo':Module.fifo,'xbar':Module.xbar,'arbiter':Module.arbiter,'none':None,'nofault':None}
+str2module={'lbdr' : Module.lbdr,'fifo':Module.fifo,'fifod':Module.fifod,'fifoc':Module.fifoc,'xbar':Module.xbar,'arbiter':Module.arbiter,'none':None,'nofault':None}
 
 
 class Result:
@@ -102,8 +104,8 @@ class Result:
             r'^valid_': Module.fifo,
             r'^[\\]*CONTROL_PART/allocator_unit': Module.arbiter,
             r'^[\\]*CONTROL_PART/LBDR': Module.lbdr,
-            r'^[\\]*FIFO_[NESLW]/FIFO_comb': Module.fifo,
-            r'^[\\]*FIFO_[NESLW]/FIFO_seq': Module.fifo,
+            r'^[\\]*FIFO_[NESLW]/FIFO_comb': Module.fifoc,
+            r'^[\\]*FIFO_[NESLW]/FIFO_seq': Module.fifod,
             r'^[\\]*XBAR': Module.xbar
         }
         comp = self.guessComponent()
