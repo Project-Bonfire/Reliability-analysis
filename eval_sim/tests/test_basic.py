@@ -11,7 +11,9 @@ class MyTest(unittest.TestCase):
             'xbar': 'b825ea8fa845a73e9dcb22beefb5acec75103e95',
             'arbiter': '134771791c89f5bbd306e5156023e1e19409b73f',
             'lbdr': '8ca292256f6e056fe592ee5fcfa84b9e39e5c8bb',
-            'fifo': '1209a2e8847e82d48828b5e5fe336d19de9d2816'
+            'fifo': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifod': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifoc': '1209a2e8847e82d48828b5e5fe336d19de9d2816'
         }
         errornous, results = evaluate_file(noc_rg, filename, module_reference=module_dict,print_verbose=True)
         self.assertEqual(len(errornous), 0)
@@ -31,6 +33,8 @@ class MyTest(unittest.TestCase):
         self.assertTrue(res.vcd_of_module_equal['arbiter'])
         self.assertTrue(res.vcd_of_module_equal['lbdr'])
         self.assertTrue(res.vcd_of_module_equal['fifo'])
+        self.assertTrue(res.vcd_of_module_equal['fifod'])
+        self.assertTrue(res.vcd_of_module_equal['fifoc'])
         self.assertEqual(res.guessComponent(),'nofault')
 
     def testFifoHashesSeperated(self):

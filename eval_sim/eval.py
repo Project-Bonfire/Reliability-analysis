@@ -81,7 +81,7 @@ module_size_ratio = {m.name: refdata['locspermodule'][m.name] / refdata['locsper
 corrected_ratio = sum([ratio_violations_per_module[m.name] * module_size_ratio[m.name] for m in Module])
 # do this only when there is actually module data!
 if len(results[0].vcd_of_module_equal) >= 4:
-    correction_multipliers = {k: module_size_ratio[k] / v for k, v in uncorrect_module_ratios.items()}
+
     num_runs = len(results)
     # how often the output of the params module was changed
     param_module_changed_counts = {
@@ -101,13 +101,13 @@ if len(results[0].vcd_of_module_equal) >= 4:
         n.name: sum(
             1 for r in results if r.vcd_of_module_equal and not r.is_valid() and not r.vcd_of_module_equal[n.name])
         for n in Module}
-
-    param_module_changed_and_invalid_total_ratios = dict(
-        [(k, v * correction_multipliers[k]/ float(num_runs)) for k, v in param_module_changed_and_invalid_counts.items()])
-    param_module_changed_total_ratios = dict([(k, v * correction_multipliers[k]/ float(num_runs)) for k, v in param_module_changed_counts.items()])
     experiments_per_module = {k: len(v) for k, v in m_all.items()}
     violations_per_module = {k: len(v) for k, v in m_invalid.items()}
     uncorrect_module_ratios = {k: (v / float(num_runs)) for k, v in experiments_per_module.items()}
+    correction_multipliers = {k: module_size_ratio[k] / v for k, v in uncorrect_module_ratios.items()}
+    param_module_changed_and_invalid_total_ratios = dict(
+        [(k, v * correction_multipliers[k]/ float(num_runs)) for k, v in param_module_changed_and_invalid_counts.items()])
+    param_module_changed_total_ratios = dict([(k, v * correction_multipliers[k]/ float(num_runs)) for k, v in param_module_changed_counts.items()])
 
     module_output_changed_when_system_failed_ratio = dict(
         [(k, v * correction_multipliers[k] / float(num_runs)) for k, v in
