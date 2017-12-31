@@ -124,21 +124,21 @@ if len(results[0].vcd_of_module_equal) >= 4:
         [(k, v * correction_multipliers[k] / float(num_runs)) for k, v in
          module_output_changed_when_system_failed_counts.items()])
 
-    faulttype_caused_by_module = {f:
-    {m:sum(1 for r in results if r.hasError(f) and r.getFaultModuleFromParam() == m) for m in Module} for f in Faulttype}
+    faulttype_caused_by_module = {f.name:
+    {m.name:sum(1 for r in results if r.hasError(f) and r.getFaultModuleFromParam() == m) for m in Module} for f in Faulttype}
     faulttype_caused_by_module_when_invalid = {
-    f:{m:sum(1 for r in results if r.hasError(f) and r.getFaultModuleFromParam() == m and not r.is_valid()) for m in Module}
+    f.name:{m.name:sum(1 for r in results if r.hasError(f) and r.getFaultModuleFromParam() == m and not r.is_valid()) for m in Module}
     for f in Faulttype}
     faulttype_caused_by_module_when_module_output_changed_and_invalid = {
-        f:{m:sum(1 for r in results if r.hasError(f) and r.vcd_of_module_equal[m.name] and not r.is_valid()) for m in
+        f.name:{m.name:sum(1 for r in results if r.hasError(f) and r.vcd_of_module_equal[m.name] and not r.is_valid()) for m in
          Module} for
         f in Faulttype}
     faulttype_and_module_output_changed = {
-        f:{m:sum(1 for r in results if r.hasError(f) and r.vcd_of_module_equal[m.name]) for m in Module}
+        f.name:{m.name:sum(1 for r in results if r.hasError(f) and r.vcd_of_module_equal[m.name]) for m in Module}
         for
         f in Faulttype}
-    faulttype_counts=[sum(1 for i in invalids if i.hasError(f))for f in Faulttype]
-    faulttype_ratios = [sum(1 for i in invalids if i.hasError(f))/len(invalids) for f in Faulttype]
+    faulttype_counts={f.name:sum(1 for i in invalids if i.hasError(f))for f in Faulttype}
+    faulttype_ratios = {f.name:sum(1 for i in invalids if i.hasError(f))/len(invalids) for f in Faulttype}
 
 all_result = (
     attrgetter('name', 'errornous', 'unexpected_len_sent', 'unexpected_len_recv', 'len_sent', 'len_recv',
