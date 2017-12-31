@@ -92,7 +92,7 @@ if len(results[0].vcd_of_module_equal) >= 4:
                                                            r.getFaultModuleFromParam() == n and not
                                                            r.vcd_of_module_equal[n.name] and not r.is_valid()) for n in
                                                Module}
-    param_module_changed_ratios = {n.name: param_module_changed_counts[n.name] / float(param_module_counts[n.name]) for
+    param_module_changed_ratios = {n.name: param_module_changed_counts[n.name] / float(param_module_counts[n.name]+1) for
                                    n in Module}
     param_module_changed_and_invalid_ratios = {n.name: param_module_changed_and_invalid_counts[n.name] / (
         float(param_module_changed_counts[n.name]) if float(param_module_changed_counts[n.name]) > 0 else -1) for n in
