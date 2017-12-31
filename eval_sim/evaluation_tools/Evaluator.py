@@ -84,14 +84,21 @@ class Result:
     # if the modules vcd's differed from the expected.
     vcd_of_module_equal: Dict[str, bool] = None
 
-    def getFaultModuleFromParam(self):
+    def getFaultModuleFromParam(self,fifodcrecovery=True):
         """
         returns the faultmodule based on the param string.
+        fifodcrecovery: set to True if fifod and fifoc are grouped together to fifo in the params to split this up by regex search.
         :return:
         """
         #new format:
         if len(self.params.split(' '))>=7 :
             if self.params.split(' ')[6][0] == '!':
+                if fifodcrecovery and self.params.split(' ')[6] == '!fifo':
+                    if 'FIFO_seq' in self.params.split(' ')[4]:
+                        return Module.fifod
+                    if 'FIFO_comb' in self.params.split(' ')[4]:
+                        return Module.fifoc
+                    return Module.fifo
                 return str2module[self.params.split(' ')[6][1:]]
         else:
             if self.params.split(' ')[4] == 'nofault':

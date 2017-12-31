@@ -15,11 +15,11 @@ parser = argparse.ArgumentParser(description='Evaluation the result of a Reliabi
 parser.add_argument('imagefolder', type=str, help='The folder where the plots should be saved`.')
 args = parser.parse_args()
 
-packetlengths = [3, 5, 10, 20]
+packetlengths = [3, 5, 10, 20,30]
 
 
 def createdataset_modules(buffers: List[List[str]], attribute):
-    res = {'lbdr': [], 'fifo': [], 'xbar': [], 'arbiter': []}
+    res = {'lbdr': [], 'fifo': [], 'xbar': [], 'arbiter': [], 'fifod': [],'fifoc':[]}
     for values in buffers:
         pl = int(values['packetlength'].split(',')[0])
         fl = int(values['framelength'])
@@ -52,9 +52,9 @@ def plotmodules(dataset, reference, xlabel, ylabel, title="", logscale=False, pa
     if not dataset:
         raise AttributeError("No dataset given!")
     res = dataset
-    f, ax = plt2.subplots(2, 2)
+    f, ax = plt2.subplots(3,2,figsize=(8, 10))
     ax = ax.flatten()
-    type = ['lbdr', 'fifo', 'xbar', 'arbiter']
+    type = ['lbdr', 'fifo', 'xbar', 'arbiter','fifod','fifoc']
     handles, labels = None, None
 
     def preparelist(list, pl):
@@ -215,7 +215,7 @@ plotsimple([(x, y, z) for x, y, z in referencecorrected], fitted,
 plt2.savefig(path + 'corrected_system_failure_probability.png')
 with open(path + 'corrected_system_failure_probability.txt', 'w') as the_file:
     the_file.write(
-        'Dashed line is the lstsq regression with the result: %.4f+%.4f*pl+%.4f*cl+%.4f*log(cl)+%.4f*log(pl)\n' % result)
+        'Dashed line is the lstsq regression with the result: %.4f+%.4f*pl+%.4f*cl+%.4f*log(cl)+%.4f*log(pl)\n' % tuple(result))
 
 # when the system failed, how high is the probability, that also the module output changed
 plotmodules(createdataset_modules(buffers, 'module_output_changed_when_system_failed_ratio'), None, 'cyclelength (ns)',
