@@ -82,39 +82,27 @@ faulttype_ratios = 'invalid'
 module_output_changed_when_system_failed_ratio = 'invalid'
 invalids = [r for r in results if not r.is_valid()]
 m_all = {m.name: list(filter(lambda r: r.getFaultModuleFromParam() == m, results)) for m in Module}
+# accumulate the fifo with fifod and fifoc
+m_all_fixed_fifo = {m.name: list(filter(lambda r: r.getFaultModuleFromParam().name.startswith(m.name), results)) for m in Module}
 m_invalid = {m.name: list(filter(lambda r: not r.is_valid(), m_all[m.name])) for m in Module}
+
+m_invalid_fixed_fifo = {m.name: list(filter(lambda r: not r.is_valid(), m_all_fixed_fifo[m.name])) for m in Module}
 ratio_violations_per_module = {m.name: len(m_invalid[m.name]) / (len(m_all[m.name]) + 1) for m in Module}
 module_size_ratio = {m.name: refdata['locspermodule'][m.name] / refdata['locspermodule']['all'] for m in Module}
 corrected_ratio = sum([ratio_violations_per_module[m.name] * module_size_ratio[m.name] for m in Module])
-
-
-def correctfifo(data):
-    data['fifo'] = data['fifo'] + data['fifod'] + \
-                   data['fifoc']
-    return data
-
-
-def correctfifo_fault(data):
-    for k, v in data.items():
-        data[k]['fifo'] = data[k]['fifo'] + data[k]['fifod'] + \
-                          data[k]['fifoc']
-    return data
-
 
 # do this only when there is actually module data!
 if len(results[0].vcd_of_module_equal) >= 4:
     num_runs = len(results)
     # how often the output of the params module was changed
     param_module_changed_counts = {
-        n.name: sum(1 for r in results if r.getFaultModuleFromParam() == n and not r.vcd_of_module_equal[n.name]) for n
+        n.name: sum(1 for r in m_all_fixed_fifo[n] if  not r.vcd_of_module_equal[n.name]) for n
         in
         Module}
-    param_module_changed_counts = correctfifo(param_module_changed_counts)
-    param_module_changed_and_invalid_counts = {n.name: sum(1 for r in results if
-                                                           r.getFaultModuleFromParam() == n and not
-                                                           r.vcd_of_module_equal[n.name] and not r.is_valid()) for n in
+    param_module_changed_and_invalid_counts = {n.name: sum(1 for r in m_invalid_fixed_fifo[n] if
+                                                            not
+                                                           r.vcd_of_module_equal[n.name] ) for n in
                                                Module}
-    param_module_changed_and_invalid_counts = correctfifo(param_module_changed_and_invalid_counts)
     param_module_changed_ratios = {n.name: param_module_changed_counts[n.name] / float(param_module_counts[n.name] + 1)
                                    for
                                    n in Module}
@@ -123,13 +111,10 @@ if len(results[0].vcd_of_module_equal) >= 4:
                                                Module}
     module_output_changed_when_system_failed_counts = {
         n.name: sum(
-            1 for r in results if r.vcd_of_module_equal and not r.is_valid() and not r.vcd_of_module_equal[n.name])
+            1 for r in invalids if r.vcd_of_module_equal and not r.vcd_of_module_equal[n.name])
         for n in Module}
-    module_output_changed_when_system_failed_counts = correctfifo(module_output_changed_when_system_failed_counts)
-    experiments_per_module = {k: len(v) for k, v in m_all.items()}
-    experiments_per_module = correctfifo(experiments_per_module)
-    violations_per_module = {k: len(v) for k, v in m_invalid.items()}
-    violations_per_module = correctfifo(violations_per_module)
+    experiments_per_module = {k: len(v) for k, v in m_all_fixed_fifo.items()}
+    violations_per_module = {k: len(v) for k, v in m_invalid_fixed_fifo.items()}
 
     uncorrect_module_ratios = {k: (v / float(num_runs)) for k, v in experiments_per_module.items()}
     correction_multipliers = {k: module_size_ratio[k] / (v + 1) for k, v in uncorrect_module_ratios.items()}
@@ -145,30 +130,24 @@ if len(results[0].vcd_of_module_equal) >= 4:
 
     faulttype_caused_by_module = {f.name:
                                       {m.name: sum(
-                                          1 for r in results if r.hasError(f) and r.getFaultModuleFromParam() == m) for
+                                          1 for r in m_all_fixed_fifo[m] if r.hasError(f)) for
                                        m in Module} for f in Faulttype}
-    faulttype_caused_by_module = correctfifo_fault(faulttype_caused_by_module)
     faulttype_caused_by_module_when_invalid = {
         f.name: {
-        m.name: sum(1 for r in results if r.hasError(f) and r.getFaultModuleFromParam() == m and not r.is_valid()) for m
+        m.name: sum(1 for r in m_invalid_fixed_fifo[m] if r.hasError(f)) for m
         in Module}
         for f in Faulttype}
-    faulttype_caused_by_module_when_invalid = correctfifo_fault(faulttype_caused_by_module_when_invalid)
     faulttype_caused_by_module_when_module_output_changed_and_invalid = {
         f.name: {m.name: sum(
-            1 for r in m_invalid[m.name] if r.hasError(f) and not r.vcd_of_module_equal[m.name] and not r.is_valid()) for m
+            1 for r in m_invalid_fixed_fifo[m.name] if r.hasError(f) and not r.vcd_of_module_equal[m.name]) for m
                  in
                  Module} for
         f in Faulttype}
-    faulttype_caused_by_module_when_module_output_changed_and_invalid = correctfifo_fault(
-        faulttype_caused_by_module_when_module_output_changed_and_invalid)
     faulttype_and_module_output_changed = {
         f.name: {m.name: sum(1 for r in invalids if r.hasError(f) and not r.vcd_of_module_equal[m.name]) for m in
                  Module}
         for
         f in Faulttype}
-    faulttype_and_module_output_changed = correctfifo_fault(
-        faulttype_and_module_output_changed)
     faulttype_counts_corrected = {
     f.name: sum(sum(1 for i in m_invalid[m.name] if i.hasError(f)) * correction_multipliers[m.name] for m in Module) for
     f in Faulttype}
