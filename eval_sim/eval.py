@@ -172,8 +172,6 @@ if len(results[0].vcd_of_module_equal) >= 4:
     faulttype_counts_corrected = {
     f.name: sum(sum(1 for i in m_invalid[m.name] if i.hasError(f)) * correction_multipliers[m.name] for m in Module) for
     f in Faulttype}
-    faulttype_counts_corrected = correctfifo_fault(
-        faulttype_counts_corrected)
     faulttype_ratios = {f.name: sum(1 for i in invalids if i.hasError(f)) / len(invalids) for f in Faulttype}
 
 all_result = (
