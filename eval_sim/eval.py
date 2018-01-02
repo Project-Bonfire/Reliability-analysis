@@ -96,10 +96,10 @@ if len(results[0].vcd_of_module_equal) >= 4:
     num_runs = len(results)
     # how often the output of the params module was changed
     param_module_changed_counts = {
-        n.name: sum(1 for r in m_all_fixed_fifo[n] if  not r.vcd_of_module_equal[n.name]) for n
+        n.name: sum(1 for r in m_all_fixed_fifo[n.name] if  not r.vcd_of_module_equal[n.name]) for n
         in
         Module}
-    param_module_changed_and_invalid_counts = {n.name: sum(1 for r in m_invalid_fixed_fifo[n] if
+    param_module_changed_and_invalid_counts = {n.name: sum(1 for r in m_invalid_fixed_fifo[n.name] if
                                                             not
                                                            r.vcd_of_module_equal[n.name] ) for n in
                                                Module}
@@ -130,11 +130,11 @@ if len(results[0].vcd_of_module_equal) >= 4:
 
     faulttype_caused_by_module = {f.name:
                                       {m.name: sum(
-                                          1 for r in m_all_fixed_fifo[m] if r.hasError(f)) for
+                                          1 for r in m_all_fixed_fifo[m.name] if r.hasError(f)) for
                                        m in Module} for f in Faulttype}
     faulttype_caused_by_module_when_invalid = {
         f.name: {
-        m.name: sum(1 for r in m_invalid_fixed_fifo[m] if r.hasError(f)) for m
+        m.name: sum(1 for r in m_invalid_fixed_fifo[m.name] if r.hasError(f)) for m
         in Module}
         for f in Faulttype}
     faulttype_caused_by_module_when_module_output_changed_and_invalid = {
