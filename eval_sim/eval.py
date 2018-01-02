@@ -132,6 +132,7 @@ if len(results[0].vcd_of_module_equal) >= 4:
                                       {m.name: sum(
                                           1 for r in m_all_fixed_fifo[m.name] if r.hasError(f)) for
                                        m in Module} for f in Faulttype}
+
     faulttype_caused_by_module_when_invalid = {
         f.name: {
         m.name: sum(1 for r in m_invalid_fixed_fifo[m.name] if r.hasError(f)) for m
@@ -156,6 +157,9 @@ if len(results[0].vcd_of_module_equal) >= 4:
     for
         f in Faulttype}
     faulttype_ratios = {f.name: sum(1 for i in invalids if i.hasError(f)) / len(invalids) for f in Faulttype}
+    faulttype_caused_by_module_ratio_corrected = {f.name:
+        {m.name: faulttype_caused_by_module[f][m]*correction_multipliers[m]/faulttype_counts_corrected[f] for
+            m in Module} for f in Faulttype}
 
 all_result = (
     attrgetter('name', 'errornous', 'unexpected_len_sent', 'unexpected_len_recv', 'len_sent', 'len_recv',
@@ -189,6 +193,7 @@ acc_result = {
     'correction_multipliers': correction_multipliers,
     'module_output_changed_when_system_failed_ratio': module_output_changed_when_system_failed_ratio,
     'faulttype_caused_by_module': faulttype_caused_by_module,
+    'faulttype_caused_by_module_ratio_corrected':faulttype_caused_by_module_ratio_corrected,
     'faulttype_caused_by_module_when_invalid': faulttype_caused_by_module_when_invalid,
     'faulttype_caused_by_module_when_module_output_changed_and_invalid': faulttype_caused_by_module_when_module_output_changed_and_invalid,
     'faulttype_and_module_output_changed': faulttype_and_module_output_changed,
