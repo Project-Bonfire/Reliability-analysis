@@ -130,11 +130,11 @@ if len(results[0].vcd_of_module_equal) >= 4:
     f.name:{m.name:sum(1 for r in results if r.hasError(f) and r.getFaultModuleFromParam() == m and not r.is_valid()) for m in Module}
     for f in Faulttype}
     faulttype_caused_by_module_when_module_output_changed_and_invalid = {
-        f.name:{m.name:sum(1 for r in m_invalid[m] if r.hasError(f) and r.vcd_of_module_equal[m.name] and not r.is_valid()) for m in
+        f.name:{m.name:sum(1 for r in m_invalid[m.name] if r.hasError(f) and r.vcd_of_module_equal[m.name] and not r.is_valid()) for m in
          Module} for
         f in Faulttype}
     faulttype_and_module_output_changed = {
-        f.name:{m.name:sum(1 for r in m_invalid[m] if r.hasError(f) and r.vcd_of_module_equal[m.name]) for m in Module}
+        f.name:{m.name:sum(1 for r in m_invalid[m.name] if r.hasError(f) and r.vcd_of_module_equal[m.name]) for m in Module}
         for
         f in Faulttype}
     faulttype_counts_corrected={f.name:sum(sum(1 for i in m_invalid[m.name] if i.hasError(f))*correction_multipliers[m.name]  for m in Module)for f in Faulttype}
