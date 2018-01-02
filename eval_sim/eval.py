@@ -83,7 +83,7 @@ module_output_changed_when_system_failed_ratio = 'invalid'
 invalids = [r for r in results if not r.is_valid()]
 m_all = {m.name: list(filter(lambda r: r.getFaultModuleFromParam() == m, results)) for m in Module}
 # accumulate the fifo with fifod and fifoc
-m_all_fixed_fifo = {m.name: list(filter(lambda r: r.getFaultModuleFromParam().name.startswith(m.name), results)) for m in Module}
+m_all_fixed_fifo = {m.name: list(filter(lambda r: r.getFaultModuleFromParam().name.startswith(m.name) if r.getFaultModuleFromParam() else False, results)) for m in Module}
 m_invalid = {m.name: list(filter(lambda r: not r.is_valid(), m_all[m.name])) for m in Module}
 
 m_invalid_fixed_fifo = {m.name: list(filter(lambda r: not r.is_valid(), m_all_fixed_fifo[m.name])) for m in Module}
