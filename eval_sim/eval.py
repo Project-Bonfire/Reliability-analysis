@@ -156,14 +156,14 @@ if len(results[0].vcd_of_module_equal) >= 4:
     faulttype_caused_by_module_when_invalid = correctfifo_fault(faulttype_caused_by_module_when_invalid)
     faulttype_caused_by_module_when_module_output_changed_and_invalid = {
         f.name: {m.name: sum(
-            1 for r in m_invalid[m.name] if r.hasError(f) and r.vcd_of_module_equal[m.name] and not r.is_valid()) for m
+            1 for r in m_invalid[m.name] if r.hasError(f) and not r.vcd_of_module_equal[m.name] and not r.is_valid()) for m
                  in
                  Module} for
         f in Faulttype}
     faulttype_caused_by_module_when_module_output_changed_and_invalid = correctfifo_fault(
         faulttype_caused_by_module_when_module_output_changed_and_invalid)
     faulttype_and_module_output_changed = {
-        f.name: {m.name: sum(1 for r in m_invalid[m.name] if r.hasError(f) and r.vcd_of_module_equal[m.name]) for m in
+        f.name: {m.name: sum(1 for r in invalids if r.hasError(f) and not r.vcd_of_module_equal[m.name]) for m in
                  Module}
         for
         f in Faulttype}
