@@ -172,6 +172,10 @@ if len(results[0].vcd_of_module_equal) >= 4:
     faulttype_counts_corrected = {
     f.name: sum(sum(1 for i in m_invalid[m.name] if i.hasError(f)) * correction_multipliers[m.name] for m in Module) for
     f in Faulttype}
+    faulttype_counts = {
+        f.name: sum(1 for i in invalids if i.hasError(f))
+    for
+        f in Faulttype}
     faulttype_ratios = {f.name: sum(1 for i in invalids if i.hasError(f)) / len(invalids) for f in Faulttype}
 
 all_result = (
@@ -210,6 +214,7 @@ acc_result = {
     'faulttype_caused_by_module_when_module_output_changed_and_invalid': faulttype_caused_by_module_when_module_output_changed_and_invalid,
     'faulttype_and_module_output_changed': faulttype_and_module_output_changed,
     'faulttype_counts_corrected': faulttype_counts_corrected,
+    'faulttype_counts': faulttype_counts,
     'faulttype_ratios': faulttype_ratios
 }
 
