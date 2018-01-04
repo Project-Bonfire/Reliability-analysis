@@ -208,7 +208,8 @@ acc_result = {
     'faulttype_and_module_output_changed': faulttype_and_module_output_changed,
     'faulttype_counts_corrected': faulttype_counts_corrected,
     'faulttype_counts': faulttype_counts,
-    'faulttype_ratios': faulttype_ratios
+    'faulttype_ratios': faulttype_ratios,
+    'faulttype_correlation':faulttype_correlation
 }
 
 if args.output_type == 'single-line':
