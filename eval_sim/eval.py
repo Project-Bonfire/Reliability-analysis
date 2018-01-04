@@ -79,6 +79,8 @@ faulttype_and_module_output_changed = 'invalid'
 faulttype_counts_corrected = 'invalid'
 faulttype_ratios = 'invalid'
 
+tldmodules=[Module.fifo,Module.arbiter,Module.xbar,Module.lbdr]
+
 module_output_changed_when_system_failed_ratio = 'invalid'
 invalids = [r for r in results if not r.is_valid()]
 m_all = {m.name: list(filter(lambda r: r.getFaultModuleFromParam() == m, results)) for m in Module}
@@ -88,8 +90,9 @@ m_invalid = {m.name: list(filter(lambda r: not r.is_valid(), m_all[m.name])) for
 
 m_invalid_fixed_fifo = {m.name: list(filter(lambda r: not r.is_valid(), m_all_fixed_fifo[m.name])) for m in Module}
 ratio_violations_per_module = {m.name: len(m_invalid[m.name]) / (len(m_all[m.name]) + 1) for m in Module}
+violations_per_module = {m.name: len(m_invalid[m.name]) for m in Module}
 module_size_ratio = {m.name: refdata['locspermodule'][m.name] / refdata['locspermodule']['all'] for m in Module}
-corrected_ratio = sum([ratio_violations_per_module[m.name] * module_size_ratio[m.name] for m in Module])
+corrected_ratio = sum([violations_per_module[m.name] * module_size_ratio[m.name] for m in tldmodules])
 
 # do this only when there is actually module data!
 if len(results[0].vcd_of_module_equal) >= 4:
@@ -149,7 +152,7 @@ if len(results[0].vcd_of_module_equal) >= 4:
                  Module}
         for
         f in Faulttype}
-    tldmodules=[Module.fifo,Module.arbiter,Module.xbar,Module.lbdr]
+
     faulttype_counts_corrected = {
     f.name: sum(sum(1 for i in m_invalid[m.name] if i.hasError(f)) * correction_multipliers[m.name] for m in tldmodules) for
     f in Faulttype}
