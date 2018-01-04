@@ -164,7 +164,7 @@ if len(results[0].vcd_of_module_equal) >= 4:
     for
         f in Faulttype}
     faulttype_ratios = {f.name: sum(1 for i in invalids if i.hasError(f)) / len(invalids) for f in Faulttype}
-    faulttype_correlation = {f2.name: {f1.name: sum(1 for i in invalids if i.hasError(f1) and i.hasError(f2)) / len(invalids) for f1 in Faulttype}for f2 in Faulttype}
+    faulttype_correlation = {f2.name: {f1.name: sum(1 for i in invalids if i.hasError(f1) and i.hasError(f2)) / faulttype_counts[f1.name] for f1 in Faulttype}for f2 in Faulttype}
     faulttype_caused_by_module_ratio_corrected = {f.name:
         {m.name: (faulttype_caused_by_module[f.name][m.name]*correction_multipliers[m.name])/faulttype_counts_corrected[f.name] for
             m in Module} for f in Faulttype}
