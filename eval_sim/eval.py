@@ -87,16 +87,22 @@ m_all = {m.name: list(filter(lambda r: r.getFaultModuleFromParam() == m, results
 # accumulate the fifo with fifod and fifoc
 m_all_fixed_fifo = {m.name: list(filter(lambda r: r.getFaultModuleFromParam().name.startswith(m.name) if r.getFaultModuleFromParam() else False, results)) for m in Module}
 m_invalid = {m.name: list(filter(lambda r: not r.is_valid(), m_all[m.name])) for m in Module}
-
+num_runs = len(results)
 m_invalid_fixed_fifo = {m.name: list(filter(lambda r: not r.is_valid(), m_all_fixed_fifo[m.name])) for m in Module}
 ratio_violations_per_module = {m.name: len(m_invalid[m.name]) / (len(m_all[m.name]) + 1) for m in Module}
 violations_per_module = {m.name: len(m_invalid[m.name]) for m in Module}
 module_size_ratio = {m.name: refdata['locspermodule'][m.name] / refdata['locspermodule']['all'] for m in Module}
-corrected_ratio = sum([violations_per_module[m.name] * module_size_ratio[m.name] for m in tldmodules])
 
+
+experiments_per_module = {k: len(v) for k, v in m_all_fixed_fifo.items()}
+violations_per_module = {k: len(v) for k, v in m_invalid_fixed_fifo.items()}
+
+uncorrect_module_ratios = {k: (v / float(num_runs)) for k, v in experiments_per_module.items()}
+correction_multipliers = {k: module_size_ratio[k] / (v + 1) for k, v in uncorrect_module_ratios.items()}
+corrected_ratio = sum([violations_per_module[m.name] * correction_multipliers[m.name] for m in tldmodules])/num_runs
 # do this only when there is actually module data!
 if len(results[0].vcd_of_module_equal) >= 4:
-    num_runs = len(results)
+
     # how often the output of the params module was changed
     param_module_changed_counts = {
         n.name: sum(1 for r in m_all_fixed_fifo[n.name] if  not r.vcd_of_module_equal[n.name]) for n
@@ -116,11 +122,7 @@ if len(results[0].vcd_of_module_equal) >= 4:
         n.name: sum(
             1 for r in invalids if r.vcd_of_module_equal and not r.vcd_of_module_equal[n.name])
         for n in Module}
-    experiments_per_module = {k: len(v) for k, v in m_all_fixed_fifo.items()}
-    violations_per_module = {k: len(v) for k, v in m_invalid_fixed_fifo.items()}
 
-    uncorrect_module_ratios = {k: (v / float(num_runs)) for k, v in experiments_per_module.items()}
-    correction_multipliers = {k: module_size_ratio[k] / (v + 1) for k, v in uncorrect_module_ratios.items()}
     param_module_changed_and_invalid_total_ratios = dict(
         [(k, v * correction_multipliers[k] / float(num_runs)) for k, v in
          param_module_changed_and_invalid_counts.items()])
