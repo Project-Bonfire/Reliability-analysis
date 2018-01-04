@@ -98,7 +98,7 @@ experiments_per_module = {k: len(v) for k, v in m_all_fixed_fifo.items()}
 violations_per_module = {k: len(v) for k, v in m_invalid_fixed_fifo.items()}
 
 uncorrect_module_ratios = {k: (v / float(num_runs)) for k, v in experiments_per_module.items()}
-correction_multipliers = {k: module_size_ratio[k] &0.25 for k, v in uncorrect_module_ratios.items()}
+correction_multipliers = {k: module_size_ratio[k] /0.25 for k, v in uncorrect_module_ratios.items()}
 corrected_ratio = sum([violations_per_module[m.name] * correction_multipliers[m.name] for m in tldmodules])/num_runs
 # do this only when there is actually module data!
 if len(results[0].vcd_of_module_equal) >= 4:
