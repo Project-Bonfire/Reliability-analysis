@@ -149,8 +149,9 @@ if len(results[0].vcd_of_module_equal) >= 4:
                  Module}
         for
         f in Faulttype}
+    tldmodules=[Module.fifo,Module.arbiter,Module.xbar,Module.lbdr]
     faulttype_counts_corrected = {
-    f.name: sum(sum(1 for i in m_invalid[m.name] if i.hasError(f)) * correction_multipliers[m.name] for m in Module) for
+    f.name: sum(sum(1 for i in m_invalid[m.name] if i.hasError(f)) * correction_multipliers[m.name] for m in tldmodules) for
     f in Faulttype}
     faulttype_counts = {
         f.name: sum(1 for i in invalids if i.hasError(f))
