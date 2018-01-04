@@ -2,6 +2,7 @@ import argparse
 import ast
 from typing import List
 
+import math
 import numpy
 import requests
 import numpy as np
@@ -15,16 +16,50 @@ parser = argparse.ArgumentParser(description='Evaluation the result of a Reliabi
 parser.add_argument('imagefolder', type=str, help='The folder where the plots should be saved`.')
 args = parser.parse_args()
 
-packetlengths = [3, 5, 10, 20,30]
+packetlengths = [3, 5, 10, 20, 30]
 
 
-def createdataset_modules(buffers: List[List[str]], attribute):
-    res = {'lbdr': [], 'fifo': [], 'xbar': [], 'arbiter': [], 'fifod': [],'fifoc':[]}
+def createdataset_modules(buffers: List[List[str]], attribute, flattensecondlayer=False, relativeto=None,
+                          layerselforrel=lambda arr: arr[0]):
+    """
+
+    :param buffers:
+    :param attribute:
+    :param flattensecondlayer: if there is a second layer of dicts, that shoule be flattened.
+    Example: {'MISROUTED': {'lbdr': 54, 'fifo': 0, 'xbar': 87, 'arbiter': 9, 'fifod': 1, 'fifoc': 47}}
+    This will be transformed to 'MISROUTED lbdr' 'MISROUTED xbar' ...
+    :param relativeto: if the values of the dataset should be divided by something, None if not
+    It must be a dict, that contains one value to divide by for each module or a string, which references a  dict in the dataset
+    if flattensecondlayer is set, the second layer is assumed as keys for the relativeto dict
+    :param layerselforrel: a function which selects the correct key for the relativeto function. the input is a list with the keys from the layers
+    :return:
+    """
+    res = {}
     for values in buffers:
         pl = int(values['packetlength'].split(',')[0])
         fl = int(values['framelength'])
-        for m in ['lbdr', 'fifo', 'xbar', 'arbiter']:
-            prob = ast.literal_eval(values[attribute])[m]
+        val = ast.literal_eval(values[attribute])
+        rel = relativeto
+        # if it is a str, get it from the data
+        if type(relativeto) is str:
+            rel = ast.literal_eval(values[relativeto])
+
+        if flattensecondlayer:
+            tmp = val
+            val = {}
+            for k1, v1 in tmp.items():
+                for k2, v2 in v1.items():
+                    if rel:
+                        val[k1 + " " + k2] = v2 / rel[layerselforrel([k1, k2])]
+                    else:
+                        val[k1 + " " + k2] = v2
+        if not flattensecondlayer and rel:
+            for k1, v1 in val.items():
+                val[k1] = v1 / rel[k1]
+        for m in val.keys():
+            prob = val[m]
+            if m not in res:
+                res[m] = []
             res[m].append((pl, fl, prob))
     return res
 
@@ -52,9 +87,12 @@ def plotmodules(dataset, reference, xlabel, ylabel, title="", logscale=False, pa
     if not dataset:
         raise AttributeError("No dataset given!")
     res = dataset
-    f, ax = plt2.subplots(3,2,figsize=(8, 10))
+    type = list(res.keys())
+    height = math.ceil(len(type) / 2)
+    width = min(len(type), 2)
+    f, ax = plt2.subplots(height, width, figsize=(width * 4, height * 3 + 1))
     ax = ax.flatten()
-    type = ['lbdr', 'fifo', 'xbar', 'arbiter','fifod','fifoc']
+
     handles, labels = None, None
 
     def preparelist(list, pl):
@@ -193,7 +231,6 @@ path = args.imagefolder + '/'
 
 
 def fitcurve_simple(referencecorrected):
-
     x, y, z = np.asarray(referencecorrected).T
     # We're solving Ax = B
     A = np.column_stack([np.ones(len(x)), x, y, np.log(x), np.log(y)])
@@ -205,28 +242,36 @@ def fitcurve_simple(referencecorrected):
         (x, y, np.exp(result[0] + (result[1] * x) + (result[2] * y) + result[3] * np.log(x) + result[4] * np.log(y)))
         for x, y in
         itertools.product(xax, yax))
-    return result,fitted
+    return result, fitted
 
 
-result,fitted = fitcurve_simple(referencecorrected)
+explanation = '<ul><li>INVALIDFLITS: a flittype violated the fsm (HEAD BODY+ TAIL)* for a port</li>' \
+              '<li>MISROUTED: a flit was routed into an invalid direction</li>' \
+              '<li>FAILEDDELIVERY: the amount of flits on a connection between two routers was unexpected.</li></ul>'
+
+
+result, fitted = fitcurve_simple(referencecorrected)
 
 plotsimple([(x, y, z) for x, y, z in referencecorrected], fitted,
-           'cyclelength (ns)', 'ratio', title="", packetlengths=packetlengths, ylim=None)
+           'injection cycle length (ns)', 'ratio', title="", packetlengths=packetlengths, ylim=None)
 plt2.savefig(path + 'corrected_system_failure_probability.png')
 with open(path + 'corrected_system_failure_probability.txt', 'w') as the_file:
     the_file.write(
-        'Dashed line is the lstsq regression with the result: %.4f+%.4f*pl+%.4f*cl+%.4f*log(cl)+%.4f*log(pl)\n' % tuple(result))
+        'Dashed line is the lstsq regression with the result: %.4f+%.4f*pl+%.4f*cl+%.4f*log(cl)+%.4f*log(pl)\n' % tuple(
+            result))
 
 # when the system failed, how high is the probability, that also the module output changed
-plotmodules(createdataset_modules(buffers, 'module_output_changed_when_system_failed_ratio'), None, 'cyclelength (ns)',
+plotmodules(createdataset_modules(buffers, 'module_output_changed_when_system_failed_ratio'), None,
+            'injection cycle length (ns)',
             'ratio', title="", logscale=False, packetlengths=packetlengths, ylim=(0, 1))
 plt2.savefig(path + 'module_output_changed_when_system_failed_ratio.png')
 with open(path + 'module_output_changed_when_system_failed_ratio.txt', 'w') as the_file:
     the_file.write(
-        'module_output_changed_when_system_failed_ratio: the probability that the module output changes when the system fails.')
+        'module_output_changed_when_system_failed_ratio: the probability that the module output is changed when the system fails.')
 
 # fault in module caused system failure probability
-plotmodules(createdataset_modules(buffers, 'param_module_changed_and_invalid_ratios'), None, 'cyclelength (ns)',
+plotmodules(createdataset_modules(buffers, 'param_module_changed_and_invalid_ratios'), None,
+            'injection cycle length (ns)',
             'ratio',
             title="", packetlengths=packetlengths, ylim=(0, 0.6))
 plt2.savefig(path + 'param_module_changed_and_invalid_ratios.png')
@@ -235,11 +280,27 @@ with open(path + 'param_module_changed_and_invalid_ratios.txt', 'w') as the_file
         'param_module_changed_and_invalid_ratios: the probability that a fault introduced into the module causes a '
         'changed output of the module and system failure.')
 
-# like 1 but relative to the total number of runs.
-plotmodules(createdataset_modules(buffers, 'module_output_changed_when_system_failed_ratio_total'), referencecorrected,
-            'cyclelength (ns)', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 0.2))
-plt2.savefig(path + 'module_output_changed_when_system_failed_ratio_total.png')
-with open(path + 'module_output_changed_when_system_failed_ratio_total.txt', 'w') as the_file:
+plotmodules(createdataset_modules(buffers, 'faulttype_caused_by_module_ratio_corrected', flattensecondlayer=True), None,
+            'injection cycle length (ns)', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1.5))
+plt2.savefig(path + 'faulttype_caused_by_module_ratio_corrected.png')
+with open(path + 'faulttype_caused_by_module_ratio_corrected.txt', 'w') as the_file:
     the_file.write(
-        'module_output_changed_when_system_failed_ratio_total: the probability that a fault introduced into the module'
-        ' causes a changed output of the module and system failure relative to the total number of runs.')
+        'faulttype_caused_by_module_ratio_corrected: the probability that a certain faulttype was caused by a fault injection into a certain module.'
+        '<br>Ignore for now that fifo values are too high.' + explanation)
+
+plotmodules(createdataset_modules(buffers, 'faulttype_ratios'), None,
+            'injection cycle length (ns)', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1))
+plt2.savefig(path + 'faulttype_ratios.png')
+with open(path + 'faulttype_ratios.txt', 'w') as the_file:
+    the_file.write(
+        'faulttype_ratios: the probability that a certain fault occurs. 100% are all faults. ' + explanation
+    )
+
+dat = createdataset_modules(buffers, 'faulttype_and_module_output_changed', flattensecondlayer=True,
+                            relativeto='faulttype_counts', layerselforrel=lambda arr: arr[0])
+plotmodules(dat, None,
+            'injection cycle length (ns)', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1))
+plt2.savefig(path + 'faulttype_and_module_output_changed.png')
+with open(path + 'faulttype_and_module_output_changed.txt', 'w') as the_file:
+    the_file.write(
+        'faulttype_and_module_output_changed: the probability that when a certain fault occurs the modules output changed too.' + explanation)
