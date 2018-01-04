@@ -59,8 +59,7 @@ if verbose:
 module_changed_counts = {n.name: sum(1 for r in results if r.vcd_of_module_equal and not r.vcd_of_module_equal[n.name])
                          for n in Module}
 # how often a fault was injected into a module
-param_module_counts = {n.name: sum(1 for r in results if r.getFaultModuleFromParam() == n) for n in Module}
-
+param_module_counts = {n.name: sum(1 for r in results if r.getFaultModuleFromParam().name.startswith(n.name)) for n in Module}
 param_module_changed_counts = 'invalid'
 param_module_changed_and_invalid_counts = 'invalid'
 param_module_changed_and_invalid_ratios = 'invalid'
@@ -112,7 +111,7 @@ if len(results[0].vcd_of_module_equal) >= 4:
                                                             not
                                                            r.vcd_of_module_equal[n.name] ) for n in
                                                Module}
-    param_module_changed_ratios = {n.name: param_module_changed_counts[n.name] / float(param_module_counts[n.name] + 1)
+    param_module_changed_ratios = {n.name: param_module_changed_counts[n.name] / float(param_module_counts[n.name])
                                    for
                                    n in Module}
     param_module_changed_and_invalid_ratios = {n.name: param_module_changed_and_invalid_counts[n.name] / (
