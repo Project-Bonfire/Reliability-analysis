@@ -97,7 +97,7 @@ experiments_per_module = {k: len(v) for k, v in m_all_fixed_fifo.items()}
 violations_per_module = {k: len(v) for k, v in m_invalid_fixed_fifo.items()}
 
 uncorrect_module_ratios = {k: (v / float(num_runs)) for k, v in experiments_per_module.items()}
-correction_multipliers = {k: module_size_ratio[k] /0.25 for k, v in uncorrect_module_ratios.items()}
+correction_multipliers = {k: module_size_ratio[k] /v for k, v in uncorrect_module_ratios.items()}
 corrected_ratio = sum([violations_per_module[m.name] * correction_multipliers[m.name] for m in tldmodules])/num_runs
 # do this only when there is actually module data!
 if len(results[0].vcd_of_module_equal) >= 4:
@@ -163,7 +163,8 @@ if len(results[0].vcd_of_module_equal) >= 4:
         f.name: sum(1 for i in invalids if i.hasError(f))
     for
         f in Faulttype}
-    faulttype_ratios = {f.name: sum(1 for i in invalids if i.hasError(f)) / len(invalids) for f in Faulttype}
+    faulttype_ratios_given_invalid = {f.name: sum(1 for i in invalids if i.hasError(f)) / len(invalids) for f in Faulttype}
+    faulttype_ratios_total = {f.name: sum(1 for i in invalids if i.hasError(f)) / num_runs for f in Faulttype}
     faulttype_correlation = {f2.name: {f1.name: sum(1 for i in invalids if i.hasError(f1) and i.hasError(f2)) / faulttype_counts[f1.name] for f1 in Faulttype}for f2 in Faulttype}
     faulttype_caused_by_module_ratio_corrected = {f.name:
         {m.name: (faulttype_caused_by_module[f.name][m.name]*correction_multipliers[m.name])/faulttype_counts_corrected[f.name] for
@@ -208,7 +209,8 @@ acc_result = {
     'faulttype_and_module_output_changed': faulttype_and_module_output_changed,
     'faulttype_counts_corrected': faulttype_counts_corrected,
     'faulttype_counts': faulttype_counts,
-    'faulttype_ratios': faulttype_ratios,
+    'faulttype_ratios_given_invalid': faulttype_ratios_given_invalid,
+    'faulttype_ratios_total': faulttype_ratios_total,
     'faulttype_correlation':faulttype_correlation
 }
 
