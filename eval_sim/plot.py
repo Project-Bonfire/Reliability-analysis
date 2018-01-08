@@ -207,7 +207,7 @@ def getdataset():
         else:
             if len(buffer) > 0:
                 values = {line.split(':', 1)[0].strip(): line.split(':', 1)[1].strip() for line in buffer}
-                if values["ratio_violations"] == "1.0":
+                if "ratio_violations" not in values or values["ratio_violations"] == "1.0":
                     invalids.append((int(values["packetlength"]), int(values["framelength"]), 1.0))
                     buffer = []
                     continue
@@ -262,7 +262,7 @@ plotsimple([(x, y, z) for x, y, z in referencecorrected], fitted,
 plt2.savefig(path + 'corrected_system_failure_probability.png')
 with open(path + 'corrected_system_failure_probability.txt', 'w') as the_file:
     the_file.write('P(system failed)<br>\n'
-    '100% are all the experiments.<br>\n'
+    '100%% are all the experiments.<br>\n'
     'The ratio are all the experiments that failed from that.<br>\n'
         'Dashed line is the lstsq regression with the result: %.4f+%.4f*pl+%.4f*cl+%.4f*log(cl)+%.4f*log(pl)\n' % tuple(
             result))
@@ -312,23 +312,23 @@ with open(path + 'faulttype_caused_by_module_ratio_corrected.txt', 'w') as the_f
          + explanation)
 
 plotmodules(createdataset_modules(buffers, 'faulttype_ratios_total'), None,
-            'injection cycle length (ns)', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1))
-plt2.savefig(path + 'faulttype_ratios.png')
-with open(path + 'faulttype_ratios.txt', 'w') as the_file:
+            'injection cycle length (ns)', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 0.2))
+plt2.savefig(path + 'faulttype_ratios_total.png')
+with open(path + 'faulttype_ratios_total.txt', 'w') as the_file:
     the_file.write('P(failureclass present)<br>\n'
     '100% are all the experiments .<br>\n'
     'The ratio are all the experiments where the specific failure class is present.<br>\n'
-        'faulttype_ratios: the probability that a certain fault occurs. 100% are all faults. ' + explanation
+        'faulttype_ratios_total: the probability that a certain fault occurs. 100% are all faults. ' + explanation
     )
 
 plotmodules(createdataset_modules(buffers, 'faulttype_ratios_given_invalid'), None,
             'injection cycle length (ns)', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1))
-plt2.savefig(path + 'faulttype_ratios.png')
-with open(path + 'faulttype_ratios.txt', 'w') as the_file:
+plt2.savefig(path + 'faulttype_ratios_given_invalid.png')
+with open(path + 'faulttype_ratios_given_invalid.txt', 'w') as the_file:
     the_file.write('P(failureclass present)<br>\n'
     '100% are all the experiments where the system violated an invariant.<br>\n'
     'The ratio are all the experiments where the specific failure class is present.<br>\n'
-        'faulttype_ratios: the probability that a certain fault occurs. 100% are all faults. ' + explanation
+        'faulttype_ratios_given_invalid: the probability that a certain fault occurs. 100% are all faults. ' + explanation
     )
 
 dat = createdataset_modules(buffers, 'faulttype_and_module_output_changed', flattensecondlayer=True,
@@ -349,3 +349,14 @@ with open(path + 'faulttype_correlation.txt', 'w') as the_file:
     '100% are all the experiments where the system satisfied (violated) failuretype 2.<br>\n'
     'The ratio are all where the system satisfied (violated) failuretype 1 .<br>\n'
         'faulttype_correlation: the probability that 2 failure types happened in the same run.' + explanation)
+#
+
+dat = createdataset_modules(buffers, 'ratio_violations_per_module')
+plotmodules(dat, referencecorrected,
+            'injection cycle length (ns)', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 0.3))
+plt2.savefig(path + 'ratio_violations_per_module.png')
+with open(path + 'ratio_violations_per_module.txt', 'w') as the_file:
+    the_file.write('P(system failure | fault injected into module)<br>\n'
+    '100% are all the experiments where the fault was injected into the module.<br>\n'
+    'The ratio are all where the system failed .<br>\n'
+        'ratio_violations_per_module: the probability that a fault injection into a module causes system failure.')
