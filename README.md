@@ -22,6 +22,9 @@ The results are copied then into the resultsfolder. The foldername in the result
     - `./run_sim.sh <scenariofile> <num_processes>` or `./run_sim.sh <scenariofile>`. (It guesses `num_processes` then.)
   - You can run a simle simulation with a given line by calling (example line):
     - `./run_single_sim.csh <scenariofile> 49308 692 0 10 U3116 :A1`
+  - Evaluate multiple results in parallel with:
+    - `cat filenames |  xargs -n 1 -P 10 ./eval.sh`
+`
 
  # Subprojects
 See the README's of the subprojects to get further information.
