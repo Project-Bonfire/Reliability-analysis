@@ -7,7 +7,7 @@ from random import randrange
 import random
 
 import argparse
-
+import sys
 import scipy
 
 parser = argparse.ArgumentParser(description='Creates a fault paramter set for the simulation. Outputs one line for each parameter set.\nSimulation length is earliest-fault-time+latest-fault-time+cooldown-time.')
@@ -51,11 +51,14 @@ chosenparams = []
 
 if args.module_representative_numbers:
     modulelines = {}
-    for k in ['fifo','lbdr','arbiter','xbar']:
+    for k in ['fifo','rtable','arbiter','xbar','fifoc','fifod']:
         modulelines[k] = [l for l in lines if l.split(' ')[2].strip()[1:] == k]
     lens = {k: len(v) for k, v in modulelines.items()}
-    for k in ['fifo', 'lbdr', 'arbiter', 'xbar']:
+    for k in ['fifo', 'rtable', 'arbiter', 'xbar','fifoc','fifod']:
         population = (sim_length-offset) / 10 * lens[k]
+        if population == 0:
+            print("population of %s is 0. Skipping!"%k,file=sys.stderr)
+            continue
         dev = 0.5
         z = 1.96
         allowed_margin = 0.02

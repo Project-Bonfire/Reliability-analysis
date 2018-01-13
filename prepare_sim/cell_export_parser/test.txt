@@ -1,3 +1,23 @@
+Connections for cell 'CONTROL_PART/ROUTING_TABLE_E/U246':
+    Reference:          AND2X2
+    Library:            c18_CORELIB_TYP
+    Area:               14.112
+    dont_touch:         TRUE
+
+    Input Pins          Net            Net Driver Pins   Driver Pin Type
+    ----------------    ------------   ----------------  ----------------
+    A                   CONTROL_PART/ROUTING_TABLE_E/n129
+                                       CONTROL_PART/ROUTING_TABLE_E/U272/Q
+                                                         Output Pin (CLKINVX4)
+    B                   *Logic1*       U3/Q              Output Pin (LOGIC1)
+
+    Output Pins         Net            Net Load Pins     Load Pin Type
+    ----------------    ------------   ----------------  ----------------
+    Q                   CONTROL_PART/ROUTING_TABLE_E/n232
+                                       CONTROL_PART/ROUTING_TABLE_E/U245/A
+                                                         Input Pin (INVXL)
+
+
 Connections for cell 'U152':
     Reference:          INVXL
     Library:            c18_CORELIB_TYP
