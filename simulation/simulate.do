@@ -83,7 +83,7 @@ while {$data != ""} {
     # all tx ports for the xbar
     vcd add -file $RESULTFOLDER/xbar.vcd "sim/:tb_router:R_5:TX_*"
     # all Req signals for the lbdr
-    vcd add -file $RESULTFOLDER/lbdr.vcd sim/:tb_router:R_5:*CONTROL_PART?Req??*
+    vcd add -file $RESULTFOLDER/lbdr.vcd sim/:tb_router:R_5:*CONTROL_PART?Req??* sim/:tb_router:R_5:*CONTROL_PART?ROUTING_TABLE*
     # credit counters, pointer and data for the fifos
     vcd add  -file $RESULTFOLDER/fifo.vcd sim/:tb_router:R_5:?FIFO_??credit_out_FF_in*   "sim/:tb_router:R_5:?FIFO_??write_pointer*" "sim/:tb_router:R_5:?FIFO_??read_pointer*"  sim/:tb_router:R_5:*FIFO_D_out_*
     # controllpath fifo

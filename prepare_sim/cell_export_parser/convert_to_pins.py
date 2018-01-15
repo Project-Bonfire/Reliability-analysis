@@ -39,9 +39,10 @@ def guessModule(cellname,netname,pinlist,ctx):
         r'^allocator_unit': 'arbiter',
         r'^CONTROL_PART/LBDR': 'lbdr',
         r'^CONTROL_PART/Req':'lbdr',
-        r'^FIFO_[NESLW]/FIFO_comb': 'fifo',
-        r'^FIFO_[NESLW]/FIFO_seq': 'fifo',
-        r'^FIFO_[NESLWD]':'fifo',#fallback fifo
+        r'^CONTROL_PART/ROUTING_TABLE': 'lbdr',
+        r'^FIFO_[NESLW]/FIFO_comb': 'fifoc',
+        r'^FIFO_[NESLW]/FIFO_seq': 'fifod',
+        r'^FIFO_[NESLWD]':'fifod',#fallback fifo
         r'^XBAR': 'xbar',
         r'^Xbar': 'xbar'
     }

@@ -44,7 +44,7 @@ cd simulation
 rm -rf results/
 mkdir results
 set i=0
-
+set routerinfo=`readlink -f routerinfo.rti`
 mkdir "../results/$curtime"
 mkdir "../results/$curtime/results"
 set num_experiments=`wc -l <../sim_runs`
@@ -83,6 +83,7 @@ echo "started: $curtime finished: " >> "stats.txt"
 echo `date +%Y-%m-%d.%H:%M:%S` >> "stats.txt"
 echo `uptime | cut -d : -f 4` >> "stats.txt"
 cp "$scnfile" scenario.scn
+cp "$routerinfo" routerinfo.rti
 #concat all results to one single file
 cat results/* > all.results
 rm -rf "results"

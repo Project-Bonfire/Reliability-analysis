@@ -28,7 +28,7 @@ Dashes : [-]+ [ ]+ [-]+ ([ ]+ [-]+[ ]+ [-]+)?;
 
 Num : [0-9.]+;
 AlphaNum : [a-zA-Z0-9]+;
-Identifier : ([a-zA-Z0-9]|'_'|'['|']'|'/')+;
+Identifier : ([a-zA-Z0-9]|'_'|'['|']'|'/'|'*')+;
 COMMENT: '****************************************' NEWLINE  ~[*]+ '****************************************'  NEWLINE -> skip;
 INFORMATIONLINE: 'Information:' ~('\n')+ -> skip;
 WS : [ \t\r]+ -> skip ; 
