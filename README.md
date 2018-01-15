@@ -6,7 +6,8 @@ This should run many experiments where faults are injected into the router and i
     The scenariofile specifies the used scenarios. You can find some in `scenarios/`
  - `sim_runs` contains the paramters which should be used for each simulation
  - `setup_sim.sh` compiles the exported cell file to a list of breakable pins. See `prepare_sim/cell_export_parser/README.md` for further information.
- - `prepare_sim.sh <number of experiments>` prepares the sim_runs file. It contains `<number of experiments>`lines then. 
+ - `count_modules.sh` counts the number of fault locations for each module. Be careful, when modules prefix each other.
+ - `prepare_sim.sh` prepares the sim_runs file. It satisfies error margins. 
  - `results` contains all results of simulations. Each run creates a folder with the current date and time. In the Folder, there are the log files of the simulation and the results from the experiments in `all.results.gz`. This is a compressed text file which contains all the experiments.
  - `eval_sim` contains the evaluator for the output of the experiments.
  - `multi_params.sh <outputfile>` runs multiple simulation runs with different scenarios. It evaluates these scenarios and writes the framelength, the packetsize and the fault probability to the output file. 

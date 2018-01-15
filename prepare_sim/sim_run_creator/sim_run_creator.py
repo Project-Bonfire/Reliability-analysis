@@ -51,10 +51,10 @@ chosenparams = []
 
 if args.module_representative_numbers:
     modulelines = {}
-    for k in ['fifo','rtable','arbiter','xbar','fifoc','fifod']:
-        modulelines[k] = [l for l in lines if l.split(' ')[2].strip()[1:] == k]
+    for k in ['fifo','lbdr','arbiter','xbar']:
+        modulelines[k] = [l for l in lines if l.split(' ')[2].strip()[1:].startswith(k)]
     lens = {k: len(v) for k, v in modulelines.items()}
-    for k in ['fifo', 'rtable', 'arbiter', 'xbar','fifoc','fifod']:
+    for k in ['fifo', 'lbdr', 'arbiter', 'xbar']:
         population = (sim_length-offset) / 10 * lens[k]
         if population == 0:
             print("population of %s is 0. Skipping!"%k,file=sys.stderr)

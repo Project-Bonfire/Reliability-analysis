@@ -99,6 +99,11 @@ violations_per_module = {k: len(v) for k, v in m_invalid_fixed_fifo.items()}
 uncorrect_module_ratios = {k: (v / float(num_runs)) for k, v in experiments_per_module.items()}
 correction_multipliers = {k: module_size_ratio[k] /v for k, v in uncorrect_module_ratios.items()}
 corrected_ratio = sum([violations_per_module[m.name] * correction_multipliers[m.name] for m in tldmodules])/num_runs
+
+param_module_failed_corrected_counts  = {n.name: sum(1 for r in m_invalid_fixed_fifo[n.name])* correction_multipliers[n.name] for n in Module} 
+        
+param_module_failed_corrected_ratio  = {k: v/num_runs for k,v in param_module_failed_corrected_counts.items()}
+
 # do this only when there is actually module data!
 if len(results[0].vcd_of_module_equal) >= 4:
 
@@ -190,6 +195,8 @@ acc_result = {
     'ratio_violations_per_module': ratio_violations_per_module,
     'module_changed_counts': module_changed_counts,
     'param_module_counts': param_module_counts,
+    'param_module_failed_corrected_counts':param_module_failed_corrected_counts,
+    'param_module_failed_corrected_ratio':param_module_failed_corrected_ratio,
     'param_module_changed_counts': param_module_changed_counts,
     'param_module_changed_ratios': param_module_changed_ratios,
     'param_module_changed_and_invalid_counts': param_module_changed_and_invalid_counts,

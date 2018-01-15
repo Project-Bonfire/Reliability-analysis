@@ -9,6 +9,24 @@ For each line in this file, the experiment will be run once and the output is wr
 There are several race conditions when multiple instances are launched in parallel. For that, seperate folders for compilation (vlib, vmap)
 and a seperate modelsimini has to be set for each instance. (see `../run_sim.sh`)
 
+# routerinfo
+For the current router a `routerinfo.rti` file has to be supplied.
+The file contains key value pairs with basic information about the router.
+In the example below, you can see the `routerinfo.rti` file for the tablebased router.
+
+```
+modules=['fifo','lbdr','xbar','arbiter','none']
+nrfaultlocs=4930
+locspermodule={'all':4930,'fifo':3573,'fifoc':2361,'fifod':1212,'lbdr':1048,'xbar':288,'arbiter':21,'none':0}
+ralgo_name="XYRouting"
+info="table based routing"
+```
+ - `modules` is a list of all the module names of the router
+ - `nrfaultlocs` is the number of fault injection locations of the router
+ - `locspermodule` is a dictionary, which specifies for each module how many fault injection locations it has
+ - `ralgo_name` is the name of the used routing algorithm
+ - `info` is an info string which describes the router
+
 ## Output
 The output is written to a file given as `RESULTFILE`.
 What happened during an experiment is written down as:

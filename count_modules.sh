@@ -5,6 +5,6 @@ cat prepare_sim/cell_export_parser/results.txt | grep '!lbdr' | wc -l | xargs ec
 cat prepare_sim/cell_export_parser/results.txt | grep '!arbiter' | wc -l | xargs echo "arbiter "
 cat prepare_sim/cell_export_parser/results.txt | grep '!xbar' | wc -l | xargs echo "xbar "
 cat prepare_sim/cell_export_parser/results.txt | grep '!fifoc' | wc -l | xargs echo "fifoc "
-cat prepare_sim/cell_export_parser/results.txt | grep '!fifoc' | wc -l | xargs echo "fifoc "
+cat prepare_sim/cell_export_parser/results.txt | grep '!fifod' | wc -l | xargs echo "fifod "
 cat prepare_sim/cell_export_parser/results.txt | grep '!none' | wc -l | xargs echo "none "
 cat prepare_sim/cell_export_parser/results.txt | wc -l | xargs echo "total "

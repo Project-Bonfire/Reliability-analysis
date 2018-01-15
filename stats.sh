@@ -11,6 +11,6 @@ for fn in results/*/stats.txt; do
     if (( $diff >40000 ));  then
         continue
     fi
-    echo $diff
-     #echo `date -d@$diff -u +%H:%M:%S`
+    echo $(( $diff/60 )) #in minutes
+    #echo `date -d@$diff -u +%H:%M:%S`
 done
