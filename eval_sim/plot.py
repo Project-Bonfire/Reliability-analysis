@@ -194,7 +194,7 @@ def enrich_values(values):
 # Download dataset and prepare it
 def getdataset():
     invalids = []
-    file = 'http://ati.ttu.ee/~thilo/evalsnew.log'
+    file = 'http://ati.ttu.ee/~thilo/evalstablerouting.log'
     r = requests.get(file, stream=True)
     buffers = []
     buffer = []
@@ -232,7 +232,7 @@ packetlengths = sorted(list(set([int(v['packetlength'].split(',')[0]) for v in b
 
 reference = createdataset_simple(buffers, 'ratio_violations')
 referencecorrected = createdataset_simple(buffers, 'corrected_ratio')
-path = args.imagefolder + '/'
+path = args.imagefolder + '/tablerouting/'
 
 
 def fitcurve_simple(referencecorrected):
@@ -266,6 +266,17 @@ with open(path + 'corrected_system_failure_probability.txt', 'w') as the_file:
     'The ratio are all the experiments that failed from that.<br>\n'
         'Dashed line is the lstsq regression with the result: %.4f+%.4f*pl+%.4f*cl+%.4f*log(cl)+%.4f*log(pl)\n' % tuple(
             result))
+
+
+dat = createdataset_modules(buffers, 'param_module_failed_corrected_ratio')
+plotmodules(dat, referencecorrected,
+            'injection cycle length (ns)', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1))
+plt2.savefig(path + 'param_module_failed_corrected_ratio.png')
+with open(path + 'param_module_failed_corrected_ratio.txt', 'w') as the_file:
+    the_file.write('P(faultinejected into module and system failed)<br>\n'
+    '100% are all the experiments.<br>\n'
+    'The ratio are all where the system failed and the fault was injected into the module .<br>\n'
+        '')
 
 # when the system failed, how high is the probability, that also the module output changed
 plotmodules(createdataset_modules(buffers, 'module_output_changed_when_system_failed_ratio'), None,
@@ -360,3 +371,4 @@ with open(path + 'ratio_violations_per_module.txt', 'w') as the_file:
     '100% are all the experiments where the fault was injected into the module.<br>\n'
     'The ratio are all where the system failed .<br>\n'
         'ratio_violations_per_module: the probability that a fault injection into a module causes system failure.')
+
