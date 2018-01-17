@@ -74,8 +74,11 @@ class Line:
 
 class PinPrinter(CellsListener):
     module_fallback_counter = 0
+    multi_module_counter = 0
+    num_cells = 0
 
     def exitCell(self, ctx:CellsParser.CellContext):
+        self.num_cells += 1
         cellname = ctx.children[0].children[0].children[1].symbol.text
         iolines = ctx.children[1].children[7:] + ctx.children[2].children[7:]
         modules = []
@@ -87,7 +90,8 @@ class PinPrinter(CellsListener):
             if module != None:
                 modules.append(module)
             lines.append(Line(cellname,pinname,netname,pinlist,module))
-
+        if len(set(modules)) > 1:
+            self.multi_module_counter += 1
         #sanitize modules in lines now.
         #prefer the module found directly in the line, but if the line had no module, use one from the general cell.
         if modules:
@@ -130,8 +134,8 @@ class PinPrinter(CellsListener):
         return pinname,netname,pinlist
 
 
-def main(argv):
-    input = FileStream(argv[1])
+def main(filename):
+    input = FileStream(filename)
     lexer = CellsLexer(input)
     stream = CommonTokenStream(lexer)
     parser = CellsParser(stream)
@@ -140,8 +144,9 @@ def main(argv):
     walker = ParseTreeWalker()
     walker.walk(printer, tree)
     print("Had to choose 'fifo' as fallback module on %d lines, because I could not guess to which module the line belongs."%printer.module_fallback_counter,file=sys.stderr)
+    print("Had %d cells where I assigned the pins to multiple different modules. (%d total=%f%%)"%(printer.multi_module_counter,printer.num_cells,printer.multi_module_counter/printer.num_cells),file=sys.stderr)
 
 
 
 if __name__ == '__main__':
-    main(sys.argv)
+    main(sys.argv[1])
