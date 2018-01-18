@@ -1,0 +1,5 @@
+modules=['allocator', 'fifod', 'fifoc', 'xbar', 'lbdr', 'none']
+nrfaultlocs=3567
+locspermodule={'lbdr': 442, 'allocator': 1873, 'xbar': 2793, 'none': 6, 'fifoc': 576, 'fifod': 9170}
+ralgo_name="XYRouting"
+info="LBDR 4 flit fifo allocator"

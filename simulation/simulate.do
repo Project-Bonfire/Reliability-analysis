@@ -11,7 +11,9 @@ set PROPERTYPATH $env(PROPERTYPATH)
 set STARTID $env(STARTID)
 set RESULTFILE $env(RESULTFILE)
 set SCENARIOFILE $env(SCENARIOFILE)
+set ROUTERFOLDER $env(ROUTERFOLDER)
 
+puts $ROUTERFOLDER
 puts $PROPERTYPATH
 puts $RESULTFOLDER/work
 puts $STARTID
@@ -33,7 +35,7 @@ vmap work $RESULTFOLDER/work
 # Include files and compile them
 
 vlog "/cad/dk/c/v4.11/verilog/c18a6/c18_CORELIB.v"	
-vlog "gate_level_netlist.v"	
+vlog "$ROUTERFOLDER/gate_level_netlist.v"	
 vcom -O5 "TB_Package_32_bit_credit_based.vhd"
 vcom -O5 "Router_credit_based_tb.vhd"
  
@@ -110,12 +112,10 @@ while {$data != ""} {
     puts $concatdresultfile $data
     puts $concatdresultfile "!modules:"
     # exclude date of the file, only keep the hash.
-    puts $concatdresultfile "xbar:[exec tail --lines=+3 $RESULTFOLDER/xbar.vcd | sha1sum | cut -d " " -f1]"
-    puts $concatdresultfile "arbiter:[exec tail --lines=+3  $RESULTFOLDER/arbiter.vcd | sha1sum | cut -d " " -f1]"
-    puts $concatdresultfile "lbdr:[exec tail --lines=+3  $RESULTFOLDER/lbdr.vcd | sha1sum | cut -d " " -f1]" 
-    puts $concatdresultfile "fifo:[exec tail --lines=+3  $RESULTFOLDER/fifo.vcd | sha1sum | cut -d " " -f1]"
-    puts $concatdresultfile "fifoc:[exec tail --lines=+3  $RESULTFOLDER/fifoc.vcd | sha1sum | cut -d " " -f1]"
-    puts $concatdresultfile "fifod:[exec tail --lines=+3  $RESULTFOLDER/fifod.vcd | sha1sum | cut -d " " -f1]"
+    foreach file [glob -nocomplain "$RESULTFOLDER/*.vcd"] {
+        set filename [file tail [file rootname $file]]
+        puts $concatdresultfile "$filename:[exec tail --lines=+3 $file | sha1sum | cut -d " " -f1]"
+    }
     puts $concatdresultfile "!sent:"
     set sentfile [open "$RESULTFOLDER/sent.txt"]
     fconfigure $sentfile -translation binary
@@ -131,12 +131,7 @@ while {$data != ""} {
 
     file delete "$RESULTFOLDER/sent.txt"
     file delete "$RESULTFOLDER/received.txt"
-    file delete "$RESULTFOLDER/xbar.vcd"
-    file delete "$RESULTFOLDER/arbiter.vcd"
-    file delete "$RESULTFOLDER/lbdr.vcd"
-    file delete "$RESULTFOLDER/fifo.vcd"
-    file delete "$RESULTFOLDER/fifoc.vcd"
-    file delete "$RESULTFOLDER/fifod.vcd"
+    file delete {*}[glob -nocomplain "$RESULTFOLDER/*.vcd"]
     
     puts "finished experiment #$i"
     #increment line
