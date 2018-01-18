@@ -11,6 +11,7 @@ import sys
 import scipy
 
 parser = argparse.ArgumentParser(description='Creates a fault paramter set for the simulation. Outputs one line for each parameter set.\nSimulation length is earliest-fault-time+latest-fault-time+cooldown-time.')
+parser.add_argument('faultlocs', type=argparse.FileType('r'), help='The file with all possible fault locs.')
 parser.add_argument('numexperiments', type=int, help='The number of parameter sets to be generated')
 #parser.add_argument('--verbose',action='store_true',
 #                    help='Prints progress and additional information.')
@@ -34,10 +35,12 @@ args = parser.parse_args()
 
 
 
-lines = [line.strip() for line in open('../cell_export_parser/results.txt')]
+lines = [line.strip() for line in args.faultlocs]
 module=args.use_module_only
 if module != 'all':
     lines = [l for l in lines if l.split(' ')[2].strip()[1:] == module]
+
+print("Choosing from %d lines"%len(lines),file=sys.stderr)
 
 sim_length = args.latest_fault_time
 offset = args.earliest_fault_time
@@ -51,10 +54,12 @@ chosenparams = []
 
 if args.module_representative_numbers:
     modulelines = {}
-    for k in ['fifo','lbdr','arbiter','xbar']:
-        modulelines[k] = [l for l in lines if l.split(' ')[2].strip()[1:].startswith(k)]
+    for l in lines:
+        modulelines.setdefault(l.split(' ')[2].strip()[1:],[]).append(l)
+    del modulelines['none']
+    print("creating paramsets from locs per module %s"%str({k:len(modulelines[k])for k in modulelines.keys()}),file=sys.stderr)
     lens = {k: len(v) for k, v in modulelines.items()}
-    for k in ['fifo', 'lbdr', 'arbiter', 'xbar']:
+    for k in modulelines.keys():
         population = (sim_length-offset) / 10 * lens[k]
         if population == 0:
             print("population of %s is 0. Skipping!"%k,file=sys.stderr)
@@ -62,9 +67,12 @@ if args.module_representative_numbers:
         dev = 0.5
         z = 1.96
         allowed_margin = 0.02
-        ss = z**2 *dev*(1-dev)/allowed_margin**2 #calculate samplesize
-        ss = ss/(1+(ss-1)/population) # modify based on population
+        ss_pre = z**2 *dev*(1-dev)/allowed_margin**2 #calculate samplesize
+        ss_pre =ss_pre/(1+(ss_pre-1)/population)
+        ss = ss_pre # modify based on population
+        print("For %s I chose the samplesize %d. (pop=%d)"%(k,ss,population),file=sys.stderr)
         chosenparams += random.choices(modulelines[k],k=int(ss))
+    
 else:
     chosenparams = random.choices(lines,k=args.numexperiments)
 
