@@ -1,21 +1,26 @@
 #!/bin/tcsh -f
-if ( "$1" == "" ) then 
-    echo "Usage $0 <scenariofile> <routername> <sim_runs> <num_processes>"
-    exit
-endif
 set scnfile=`readlink -f $1`
-shift
-if ( "$1" == "" ) then 
+if ( ! -f "$scnfile" ) then
+echo " scnfile: $scnfile "
     echo "Usage $0 <scenariofile> <routername> <sim_runs> <num_processes>"
     exit
 endif
+
+shift
 set routerfile="routers/$1"
-shift
-if ( "$1" == "" ) then 
+if ( ! -d "simulation/$routerfile" ) then
+echo " scnfile: $scnfile routername: $routerfile "
     echo "Usage $0 <scenariofile> <routername> <sim_runs> <num_processes>"
     exit
 endif
-set simruns="routers/$1"
+shift
+set simruns="$1"
+if ( ! -f "$simruns" ) then
+echo " scnfile: $scnfile routername: $routerfile simrunfile: $simruns"
+    echo "Usage $0 <scenariofile> <routername> <sim_runs> <num_processes>"
+    exit
+endif
+
 shift
 if ( "$1" == "" ) then 
      # parentheses not strictly needed in this simple case
@@ -34,7 +39,7 @@ else
     set num_processes = $1
 endif
 
-echo "Processes to spawn: $num_processes!"
+echo "Processes to spawn: $num_processes! scnfile: $scnfile routername: $routerfile simrunfile: $simruns"
 echo ""
 
 
