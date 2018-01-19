@@ -10,7 +10,7 @@ from typing import List
 import numpy as np
 import pickle
 
-from evaluation_tools.Evaluator import evaluate_file, count_fails, init, Result, Module, Faulttype
+from evaluation_tools.Evaluator import evaluate_file, count_fails, init, Result, Faulttype
 
 noc_rg = init()
 
