@@ -33,16 +33,6 @@ def init():
     return noc_rg
 
 
-class Module(Enum):
-    lbdr = auto()
-    fifo = auto()
-    xbar = auto()
-    arbiter = auto()
-    fifod = auto()
-    fifoc = auto()
-
-str2module={'lbdr' : Module.lbdr,'fifo':Module.fifo,'fifod':Module.fifod,'fifoc':Module.fifoc,'xbar':Module.xbar,'arbiter':Module.arbiter,'none':None,'nofault':None}
-
 
 class Faulttype(Enum):
     MISROUTED=auto()
@@ -107,40 +97,16 @@ class Result:
         """
         returns the faultmodule based on the param string.
         fifodcrecovery: set to True if fifod and fifoc are grouped together to fifo in the params to split this up by regex search.
-        :return:
+        :return: the module string
         """
         #new format:
         if len(self.params.split(' '))>=7 :
             if self.params.split(' ')[6][0] == '!':
-                if fifodcrecovery and self.params.split(' ')[6] == '!fifo':
-                    if 'FIFO_seq' in self.params.split(' ')[4]:
-                        return Module.fifod
-                    if 'FIFO_comb' in self.params.split(' ')[4]:
-                        return Module.fifoc
-                    return Module.fifo
-                return str2module[self.params.split(' ')[6][1:]]
-        else:
-            if self.params.split(' ')[4] == 'nofault':
-                return None
-            else:
-                print("parseerror at: "+self.params,file=sys.stderr)
+                return self.params.split(' ')[6][1:]
 
-        #implementation for the old format down here
-        typemap = {
-            r'^valid_': Module.fifo,
-            r'^[\\]*CONTROL_PART/allocator_unit': Module.arbiter,
-            r'^[\\]*CONTROL_PART/LBDR': Module.lbdr,
-            r'^[\\]*FIFO_[NESLW]/FIFO_comb': Module.fifoc,
-            r'^[\\]*FIFO_[NESLW]/FIFO_seq': Module.fifod,
-            r'^[\\]*XBAR': Module.xbar
-        }
-        comp = self.guessComponent()
-        if comp == 'nofault':
-            return None
-        for k, v in typemap.items():
-            if re.match(k, comp):
-                return v
+        print("parseerror at: " + self.params, file=sys.stderr)
         return None
+
 
 
         # r'^U',

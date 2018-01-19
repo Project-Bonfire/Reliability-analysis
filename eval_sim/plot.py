@@ -194,7 +194,7 @@ def enrich_values(values):
 # Download dataset and prepare it
 def getdataset():
     invalids = []
-    file = 'http://ati.ttu.ee/~thilo/evalstablerouting.log'
+    file = 'http://ati.ttu.ee/~thilo/evalstablerouter.log'
     r = requests.get(file, stream=True)
     buffers = []
     buffer = []
