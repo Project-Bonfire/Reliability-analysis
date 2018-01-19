@@ -43,6 +43,7 @@ if args.routerinfo:
         l, r = line.split('=', 1)
         refdata[l] = ast.literal_eval(r)
 modules:List[str]=refdata["modules"]
+refdata['nrfaultlocs'] = sum(refdata['locspermodule'].values())
 modules.remove('none')
 tldmodules=modules
 
@@ -102,6 +103,7 @@ num_runs = len(results)
 m_invalid_fixed_fifo = {m: list(filter(lambda r: not r.is_valid(), m_all_fixed_fifo[m])) for m in modules}
 ratio_violations_per_module = {m: len(m_invalid[m]) / (len(m_all[m]) + 1) for m in modules}
 violations_per_module = {m: len(m_invalid[m]) for m in modules}
+
 module_size_ratio = {m: refdata['locspermodule'][m] / refdata['nrfaultlocs'] for m in modules}
 
 

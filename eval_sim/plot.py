@@ -194,7 +194,7 @@ def enrich_values(values):
 # Download dataset and prepare it
 def getdataset():
     invalids = []
-    file = 'http://ati.ttu.ee/~thilo/evalstablerouter.log'
+    file = 'http://ati.ttu.ee/~thilo/evalslbdr_4flit_alloc.log'
     r = requests.get(file, stream=True)
     buffers = []
     buffer = []
@@ -232,7 +232,7 @@ packetlengths = sorted(list(set([int(v['packetlength'].split(',')[0]) for v in b
 
 reference = createdataset_simple(buffers, 'ratio_violations')
 referencecorrected = createdataset_simple(buffers, 'corrected_ratio')
-path = args.imagefolder + '/tablerouting/'
+path = args.imagefolder + '/lbdr_4flit_alloc/'
 
 
 def fitcurve_simple(referencecorrected):
