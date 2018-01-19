@@ -155,7 +155,7 @@ def main(filename,mapping:Dict[Pattern[str],str],outfile):
     walker = ParseTreeWalker()
     walker.walk(printer, tree)
     print("modules=%s"%str(list(set(printer.locspermodule.keys()))))
-    print("nrfaultlocs=%d" % printer.num_cells)
+    print("nrfaultlocs=%d" % sum(printer.locspermodule.values()))
     print("locspermodule=%s" % str(printer.locspermodule))
     print("Had to choose 'none' as fallback module on %d lines, because I could not guess to which module the line belongs."%printer.module_fallback_counter)
     print("Had %d cells where I assigned the pins to multiple different modules. (%d total=%f%%)"%(printer.multi_module_counter,printer.num_cells,printer.multi_module_counter/printer.num_cells))
