@@ -7,6 +7,8 @@ from collections import Counter
 from operator import attrgetter, sub
 from typing import List
 
+import sys
+
 import numpy as np
 import pickle
 
@@ -40,7 +42,9 @@ if args.routerinfo:
     for line in args.routerinfo.readlines():
         l, r = line.split('=', 1)
         refdata[l] = ast.literal_eval(r)
-modules:List[str]=refdata.modules
+modules:List[str]=refdata["modules"]
+modules.remove('none')
+tldmodules=modules
 
 results: List[Result] = None
 errornous, results = [], []
@@ -56,11 +60,18 @@ if verbose:
     res: List[Result] = [r for r in results if not r.vcd_of_module_equal]
     print("%d without module data" % len([r for r in res if r.errornous]))
 
+for m in modules:
+    if m not in results[0].vcd_of_module_equal:
+        print("vcd_of_module is strange: %s (modules=%s)"%(str(results[0].vcd_of_module_equal.keys()),str(modules)),file=sys.stderr)
+        if m == "allocator":
+            print("Fixing: vcd_of_module_equal, switching all arbiters to the allocator",file=sys.stderr)
+            for r in results:
+                r.vcd_of_module_equal["allocator"] = r.vcd_of_module_equal["arbiter"]
 # how often the output of each module was changed because of a fault.
 module_changed_counts = {n: sum(1 for r in results if r.vcd_of_module_equal and not r.vcd_of_module_equal[n])
                          for n in modules}
 # how often a fault was injected into a module
-param_module_counts = {n: sum(1 for r in results if r.getFaultModuleFromParam() and r.getFaultModuleFromParam().name.startswith(n)) for n in modules}
+param_module_counts = {n: sum(1 for r in results if r.getFaultModuleFromParam() and r.getFaultModuleFromParam().startswith(n)) for n in modules}
 param_module_changed_counts = 'invalid'
 param_module_changed_and_invalid_counts = 'invalid'
 param_module_changed_and_invalid_ratios = 'invalid'
@@ -79,27 +90,34 @@ faulttype_and_module_output_changed = 'invalid'
 faulttype_counts_corrected = 'invalid'
 faulttype_ratios = 'invalid'
 
-tldmodules=[Module.fifo,Module.arbiter,Module.xbar,Module.lbdr]
+
 
 module_output_changed_when_system_failed_ratio = 'invalid'
 invalids = [r for r in results if not r.is_valid()]
 m_all = {m: list(filter(lambda r: r.getFaultModuleFromParam() == m, results)) for m in modules}
 # accumulate the fifo with fifod and fifoc
-m_all_fixed_fifo = {m: list(filter(lambda r: r.getFaultModuleFromParam().name.startswith(m) if r.getFaultModuleFromParam() else False, results)) for m in modules}
+m_all_fixed_fifo = {m: list(filter(lambda r: r.getFaultModuleFromParam().startswith(m) if r.getFaultModuleFromParam() else False, results)) for m in modules}
 m_invalid = {m: list(filter(lambda r: not r.is_valid(), m_all[m])) for m in modules}
 num_runs = len(results)
 m_invalid_fixed_fifo = {m: list(filter(lambda r: not r.is_valid(), m_all_fixed_fifo[m])) for m in modules}
 ratio_violations_per_module = {m: len(m_invalid[m]) / (len(m_all[m]) + 1) for m in modules}
 violations_per_module = {m: len(m_invalid[m]) for m in modules}
-module_size_ratio = {m: refdata['locspermodule'][m] / refdata['locspermodule']['all'] for m in modules}
+module_size_ratio = {m: refdata['locspermodule'][m] / refdata['nrfaultlocs'] for m in modules}
 
 
 experiments_per_module = {k: len(v) for k, v in m_all_fixed_fifo.items()}
+for k, v in experiments_per_module.items():
+    if v == 0:
+        print("Error: experiments_per_module[%s] is 0"%k,file=sys.stderr)
+        exit()
 violations_per_module = {k: len(v) for k, v in m_invalid_fixed_fifo.items()}
 
 uncorrect_module_ratios = {k: (v / float(num_runs)) for k, v in experiments_per_module.items()}
+for k, v in uncorrect_module_ratios.items():
+    if v == 0:
+        print("Error: uncorrect_module_ratios[%s] is 0"%k,file=sys.stderr)
 correction_multipliers = {k: module_size_ratio[k] /v for k, v in uncorrect_module_ratios.items()}
-corrected_ratio = sum([violations_per_module[m.name] * correction_multipliers[m.name] for m in tldmodules])/num_runs
+corrected_ratio = sum([violations_per_module[m] * correction_multipliers[m] for m in tldmodules])/num_runs
 
 param_module_failed_corrected_counts  = {n: sum(1 for r in m_invalid_fixed_fifo[n])* correction_multipliers[n] for n in modules}
         
@@ -110,19 +128,19 @@ if len(results[0].vcd_of_module_equal) >= 4:
 
     # how often the output of the params module was changed
     param_module_changed_counts = {
-        n.name: sum(1 for r in m_all_fixed_fifo[n.name] if  not r.vcd_of_module_equal[n.name]) for n
+        n: sum(1 for r in m_all_fixed_fifo[n] if  not r.vcd_of_module_equal[n]) for n
         in
-        Module}
-    param_module_changed_and_invalid_counts = {n.name: sum(1 for r in m_invalid_fixed_fifo[n.name] if
+        modules}
+    param_module_changed_and_invalid_counts = {n: sum(1 for r in m_invalid_fixed_fifo[n] if
                                                             not
-                                                           r.vcd_of_module_equal[n.name] ) for n in
-                                               Module}
+                                                           r.vcd_of_module_equal[n] ) for n in
+                                               modules}
     param_module_changed_ratios = {n: param_module_changed_counts[n] / float(param_module_counts[n])
                                    for
                                    n in modules}
-    param_module_changed_and_invalid_ratios = {n.name: param_module_changed_and_invalid_counts[n.name] / (
-        float(param_module_changed_counts[n.name]) if float(param_module_changed_counts[n.name]) > 0 else -1) for n in
-                                               Module}
+    param_module_changed_and_invalid_ratios = {n: param_module_changed_and_invalid_counts[n] / (
+        float(param_module_changed_counts[n]) if float(param_module_changed_counts[n]) > 0 else -1) for n in
+                                               modules}
     module_output_changed_when_system_failed_counts = {
         n: sum(
             1 for r in invalids if r.vcd_of_module_equal and not r.vcd_of_module_equal[n])
@@ -152,18 +170,18 @@ if len(results[0].vcd_of_module_equal) >= 4:
         in modules}
         for f in Faulttype}
     faulttype_caused_by_module_when_module_output_changed_and_invalid = {
-        f.name: {m.name: sum(
-            1 for r in m_invalid_fixed_fifo[m.name] if r.hasError(f) and not r.vcd_of_module_equal[m.name]) for m
+        f.name: {m: sum(
+            1 for r in m_invalid_fixed_fifo[m] if r.hasError(f) and not r.vcd_of_module_equal[m]) for m
                  in
-                 Module} for
+                 modules} for
         f in Faulttype}
     faulttype_and_module_output_changed = {
-        f.name: {m.name: sum(1 for r in invalids if r.hasError(f) and not r.vcd_of_module_equal[m.name]) for m in
-                 Module}
+        f.name: {m: sum(1 for r in invalids if r.hasError(f) and not r.vcd_of_module_equal[m]) for m in
+                 modules}
         for
         f in Faulttype}
     faulttype_counts_corrected = {
-    f.name: sum(faulttype_caused_by_module[f.name][m.name] * correction_multipliers[m.name] for m in tldmodules) for
+    f.name: sum(faulttype_caused_by_module[f.name][m] * correction_multipliers[m] for m in tldmodules) for
     f in Faulttype}
     faulttype_counts = {
         f.name: sum(1 for i in invalids if i.hasError(f))
