@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////
 // Created by: Synopsys DC Expert(TM) in wire load mode
 // Version   : K-2015.06-SP4
-// Date      : Thu Jan 18 17:16:48 2018
+// Date      : Fri Jan 19 17:03:55 2018
 /////////////////////////////////////////////////////////////
 
 
@@ -2442,24 +2442,34 @@ module router_credit_based ( reset,
          \CONTROL_PART/n9 , \CONTROL_PART/n8 , \CONTROL_PART/n7 ,
          \CONTROL_PART/allocator_unit/credit_counter_N_out[0] ,
          \CONTROL_PART/allocator_unit/credit_counter_N_out[1] ,
+         \CONTROL_PART/allocator_unit/credit_counter_N_out[2] ,
          \CONTROL_PART/allocator_unit/credit_counter_E_out[0] ,
          \CONTROL_PART/allocator_unit/credit_counter_E_out[1] ,
+         \CONTROL_PART/allocator_unit/credit_counter_E_out[2] ,
          \CONTROL_PART/allocator_unit/credit_counter_W_out[0] ,
          \CONTROL_PART/allocator_unit/credit_counter_W_out[1] ,
+         \CONTROL_PART/allocator_unit/credit_counter_W_out[2] ,
          \CONTROL_PART/allocator_unit/credit_counter_S_out[0] ,
          \CONTROL_PART/allocator_unit/credit_counter_S_out[1] ,
+         \CONTROL_PART/allocator_unit/credit_counter_S_out[2] ,
          \CONTROL_PART/allocator_unit/credit_counter_L_out[0] ,
          \CONTROL_PART/allocator_unit/credit_counter_L_out[1] ,
+         \CONTROL_PART/allocator_unit/credit_counter_L_out[2] ,
          \CONTROL_PART/allocator_unit/credit_counter_N_in[0] ,
          \CONTROL_PART/allocator_unit/credit_counter_N_in[1] ,
+         \CONTROL_PART/allocator_unit/credit_counter_N_in[2] ,
          \CONTROL_PART/allocator_unit/credit_counter_E_in[0] ,
          \CONTROL_PART/allocator_unit/credit_counter_E_in[1] ,
+         \CONTROL_PART/allocator_unit/credit_counter_E_in[2] ,
          \CONTROL_PART/allocator_unit/credit_counter_W_in[0] ,
          \CONTROL_PART/allocator_unit/credit_counter_W_in[1] ,
+         \CONTROL_PART/allocator_unit/credit_counter_W_in[2] ,
          \CONTROL_PART/allocator_unit/credit_counter_S_in[0] ,
          \CONTROL_PART/allocator_unit/credit_counter_S_in[1] ,
+         \CONTROL_PART/allocator_unit/credit_counter_S_in[2] ,
          \CONTROL_PART/allocator_unit/credit_counter_L_in[0] ,
          \CONTROL_PART/allocator_unit/credit_counter_L_in[1] ,
+         \CONTROL_PART/allocator_unit/credit_counter_L_in[2] ,
          \CONTROL_PART/allocator_unit/grant_N_E_sig ,
          \CONTROL_PART/allocator_unit/grant_N_W_sig ,
          \CONTROL_PART/allocator_unit/grant_N_S_sig ,
@@ -2480,21 +2490,20 @@ module router_credit_based ( reset,
          \CONTROL_PART/allocator_unit/grant_L_E_sig ,
          \CONTROL_PART/allocator_unit/grant_L_W_sig ,
          \CONTROL_PART/allocator_unit/grant_L_S_sig ,
-         \CONTROL_PART/allocator_unit/n83 , \CONTROL_PART/allocator_unit/n84 ,
-         \CONTROL_PART/allocator_unit/n85 , \CONTROL_PART/allocator_unit/n86 ,
-         \CONTROL_PART/allocator_unit/n87 , \CONTROL_PART/allocator_unit/n88 ,
-         \CONTROL_PART/allocator_unit/n90 , \CONTROL_PART/allocator_unit/n91 ,
-         \CONTROL_PART/allocator_unit/n93 , \CONTROL_PART/allocator_unit/n94 ,
-         \CONTROL_PART/allocator_unit/n95 , \CONTROL_PART/allocator_unit/n96 ,
-         \CONTROL_PART/allocator_unit/n97 , \CONTROL_PART/allocator_unit/n98 ,
+         \CONTROL_PART/allocator_unit/n51 , \CONTROL_PART/allocator_unit/n52 ,
+         \CONTROL_PART/allocator_unit/n53 , \CONTROL_PART/allocator_unit/n54 ,
+         \CONTROL_PART/allocator_unit/n55 , \CONTROL_PART/allocator_unit/n56 ,
+         \CONTROL_PART/allocator_unit/n57 , \CONTROL_PART/allocator_unit/n58 ,
+         \CONTROL_PART/allocator_unit/n59 , \CONTROL_PART/allocator_unit/n60 ,
+         \CONTROL_PART/allocator_unit/n61 , \CONTROL_PART/allocator_unit/n62 ,
+         \CONTROL_PART/allocator_unit/n63 , \CONTROL_PART/allocator_unit/n64 ,
+         \CONTROL_PART/allocator_unit/n65 , \CONTROL_PART/allocator_unit/n98 ,
          \CONTROL_PART/allocator_unit/n99 , \CONTROL_PART/allocator_unit/n100 ,
          \CONTROL_PART/allocator_unit/n101 ,
          \CONTROL_PART/allocator_unit/n102 ,
          \CONTROL_PART/allocator_unit/n103 ,
-         \CONTROL_PART/allocator_unit/n104 ,
          \CONTROL_PART/allocator_unit/n105 ,
          \CONTROL_PART/allocator_unit/n106 ,
-         \CONTROL_PART/allocator_unit/n107 ,
          \CONTROL_PART/allocator_unit/n108 ,
          \CONTROL_PART/allocator_unit/n109 ,
          \CONTROL_PART/allocator_unit/n110 ,
@@ -2509,16 +2518,51 @@ module router_credit_based ( reset,
          \CONTROL_PART/allocator_unit/n119 ,
          \CONTROL_PART/allocator_unit/n120 ,
          \CONTROL_PART/allocator_unit/n121 ,
-         \CONTROL_PART/allocator_unit/n122 , \CONTROL_PART/allocator_unit/n2 ,
-         \CONTROL_PART/allocator_unit/n4 , \CONTROL_PART/allocator_unit/n5 ,
-         \CONTROL_PART/allocator_unit/n7 , \CONTROL_PART/allocator_unit/n9 ,
-         \CONTROL_PART/allocator_unit/n14 , \CONTROL_PART/allocator_unit/n15 ,
-         \CONTROL_PART/allocator_unit/n17 , \CONTROL_PART/allocator_unit/n19 ,
-         \CONTROL_PART/allocator_unit/n20 , \CONTROL_PART/allocator_unit/n21 ,
-         \CONTROL_PART/allocator_unit/n22 , \CONTROL_PART/allocator_unit/n25 ,
-         \CONTROL_PART/allocator_unit/n26 , \CONTROL_PART/allocator_unit/n28 ,
-         \CONTROL_PART/allocator_unit/n29 , \CONTROL_PART/allocator_unit/n30 ,
-         \CONTROL_PART/allocator_unit/n31 , \CONTROL_PART/allocator_unit/n32 ,
+         \CONTROL_PART/allocator_unit/n122 ,
+         \CONTROL_PART/allocator_unit/n123 ,
+         \CONTROL_PART/allocator_unit/n124 ,
+         \CONTROL_PART/allocator_unit/n125 ,
+         \CONTROL_PART/allocator_unit/n126 ,
+         \CONTROL_PART/allocator_unit/n127 ,
+         \CONTROL_PART/allocator_unit/n128 ,
+         \CONTROL_PART/allocator_unit/n129 ,
+         \CONTROL_PART/allocator_unit/n130 ,
+         \CONTROL_PART/allocator_unit/n131 ,
+         \CONTROL_PART/allocator_unit/n132 ,
+         \CONTROL_PART/allocator_unit/n133 ,
+         \CONTROL_PART/allocator_unit/n134 ,
+         \CONTROL_PART/allocator_unit/n135 ,
+         \CONTROL_PART/allocator_unit/n136 ,
+         \CONTROL_PART/allocator_unit/n137 ,
+         \CONTROL_PART/allocator_unit/n138 ,
+         \CONTROL_PART/allocator_unit/n139 ,
+         \CONTROL_PART/allocator_unit/n140 ,
+         \CONTROL_PART/allocator_unit/n141 ,
+         \CONTROL_PART/allocator_unit/n142 ,
+         \CONTROL_PART/allocator_unit/n143 ,
+         \CONTROL_PART/allocator_unit/n144 ,
+         \CONTROL_PART/allocator_unit/n145 ,
+         \CONTROL_PART/allocator_unit/n146 ,
+         \CONTROL_PART/allocator_unit/n147 ,
+         \CONTROL_PART/allocator_unit/n148 ,
+         \CONTROL_PART/allocator_unit/n149 ,
+         \CONTROL_PART/allocator_unit/n150 ,
+         \CONTROL_PART/allocator_unit/n151 ,
+         \CONTROL_PART/allocator_unit/n152 ,
+         \CONTROL_PART/allocator_unit/n153 ,
+         \CONTROL_PART/allocator_unit/n154 ,
+         \CONTROL_PART/allocator_unit/n155 ,
+         \CONTROL_PART/allocator_unit/n156 ,
+         \CONTROL_PART/allocator_unit/n157 , \CONTROL_PART/allocator_unit/n2 ,
+         \CONTROL_PART/allocator_unit/n3 , \CONTROL_PART/allocator_unit/n5 ,
+         \CONTROL_PART/allocator_unit/n6 , \CONTROL_PART/allocator_unit/n8 ,
+         \CONTROL_PART/allocator_unit/n9 , \CONTROL_PART/allocator_unit/n11 ,
+         \CONTROL_PART/allocator_unit/n14 , \CONTROL_PART/allocator_unit/n17 ,
+         \CONTROL_PART/allocator_unit/n18 , \CONTROL_PART/allocator_unit/n20 ,
+         \CONTROL_PART/allocator_unit/n21 , \CONTROL_PART/allocator_unit/n23 ,
+         \CONTROL_PART/allocator_unit/n24 , \CONTROL_PART/allocator_unit/n25 ,
+         \CONTROL_PART/allocator_unit/n26 , \CONTROL_PART/allocator_unit/n27 ,
+         \CONTROL_PART/allocator_unit/n30 , \CONTROL_PART/allocator_unit/n31 ,
          \CONTROL_PART/allocator_unit/arb_X_N/n12 ,
          \CONTROL_PART/allocator_unit/arb_X_N/n11 ,
          \CONTROL_PART/allocator_unit/arb_X_N/n10 ,
@@ -7032,81 +7076,81 @@ module router_credit_based ( reset,
         .B(\FIFO_N/FIFO_CONTROL_PART/n45 ), .C(\FIFO_N/FIFO_CONTROL_PART/n46 ), 
         .D(\FIFO_N/FIFO_CONTROL_PART/n47 ), .Q(\FIFO_N/FIFO_CONTROL_PART/n43 )
          );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U10  ( .A1(\FIFO_N/FIFO_DATA_PATH/n609 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n2 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n3 ), 
-        .B2(\FIFO_N/FIFO_CONTROL_PART/n19 ), .Q(
-        \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[0] ) );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U11  ( .A1(\FIFO_N/FIFO_DATA_PATH/n608 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n2 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n3 ), 
-        .B2(\FIFO_N/FIFO_DATA_PATH/n609 ), .Q(
-        \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[7] ) );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U12  ( .A1(\FIFO_N/FIFO_DATA_PATH/n607 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n2 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n3 ), 
-        .B2(\FIFO_N/FIFO_DATA_PATH/n608 ), .Q(
-        \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[6] ) );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U13  ( .A1(\FIFO_N/FIFO_DATA_PATH/n606 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n2 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n3 ), 
-        .B2(\FIFO_N/FIFO_DATA_PATH/n607 ), .Q(
-        \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[5] ) );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U14  ( .A1(\FIFO_N/FIFO_DATA_PATH/n184 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n2 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n3 ), 
-        .B2(\FIFO_N/FIFO_DATA_PATH/n606 ), .Q(
-        \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[4] ) );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U15  ( .A1(\FIFO_N/FIFO_DATA_PATH/n183 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n2 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n3 ), 
-        .B2(\FIFO_N/FIFO_DATA_PATH/n184 ), .Q(
-        \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[3] ) );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U16  ( .A1(\FIFO_N/FIFO_DATA_PATH/n182 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n2 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n3 ), 
-        .B2(\FIFO_N/FIFO_DATA_PATH/n183 ), .Q(
-        \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[2] ) );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U17  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n19 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n2 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n3 ), 
-        .B2(\FIFO_N/FIFO_DATA_PATH/n182 ), .Q(
-        \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[1] ) );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U18  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n20 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B1(\FIFO_N/write_en ), .B2(
-        \FIFO_N/FIFO_CONTROL_PART/n27 ), .Q(
-        \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[0] ) );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U19  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n21 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B1(\FIFO_N/write_en ), .B2(
-        \FIFO_N/FIFO_CONTROL_PART/n20 ), .Q(
-        \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[7] ) );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U20  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n22 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B1(\FIFO_N/write_en ), .B2(
-        \FIFO_N/FIFO_CONTROL_PART/n21 ), .Q(
-        \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[6] ) );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U21  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n23 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B1(\FIFO_N/write_en ), .B2(
-        \FIFO_N/FIFO_CONTROL_PART/n22 ), .Q(
-        \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[5] ) );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U22  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n24 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B1(\FIFO_N/write_en ), .B2(
-        \FIFO_N/FIFO_CONTROL_PART/n23 ), .Q(
-        \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[4] ) );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U23  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n25 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B1(\FIFO_N/write_en ), .B2(
-        \FIFO_N/FIFO_CONTROL_PART/n24 ), .Q(
-        \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[3] ) );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U24  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n26 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B1(\FIFO_N/write_en ), .B2(
-        \FIFO_N/FIFO_CONTROL_PART/n25 ), .Q(
-        \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[2] ) );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U25  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n27 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B1(\FIFO_N/write_en ), .B2(
-        \FIFO_N/FIFO_CONTROL_PART/n26 ), .Q(
-        \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[1] ) );
-  NAND2XL \FIFO_N/FIFO_CONTROL_PART/U26  ( .A(\FIFO_N/FIFO_CONTROL_PART/n32 ), 
+  NAND2XL \FIFO_N/FIFO_CONTROL_PART/U10  ( .A(\FIFO_N/FIFO_CONTROL_PART/n32 ), 
         .B(\FIFO_N/FIFO_CONTROL_PART/n33 ), .Q(\FIFO_N/FIFO_CONTROL_PART/n31 )
          );
-  NOR4X3 \FIFO_N/FIFO_CONTROL_PART/U27  ( .A(\FIFO_N/FIFO_CONTROL_PART/n34 ), 
+  NOR4X3 \FIFO_N/FIFO_CONTROL_PART/U11  ( .A(\FIFO_N/FIFO_CONTROL_PART/n34 ), 
         .B(\FIFO_N/FIFO_CONTROL_PART/n35 ), .C(\FIFO_N/FIFO_CONTROL_PART/n36 ), 
         .D(\FIFO_N/FIFO_CONTROL_PART/n37 ), .Q(\FIFO_N/FIFO_CONTROL_PART/n33 )
          );
-  NOR4X3 \FIFO_N/FIFO_CONTROL_PART/U28  ( .A(\FIFO_N/FIFO_CONTROL_PART/n38 ), 
+  NOR4X3 \FIFO_N/FIFO_CONTROL_PART/U12  ( .A(\FIFO_N/FIFO_CONTROL_PART/n38 ), 
         .B(\FIFO_N/FIFO_CONTROL_PART/n39 ), .C(\FIFO_N/FIFO_CONTROL_PART/n40 ), 
         .D(\FIFO_N/FIFO_CONTROL_PART/n41 ), .Q(\FIFO_N/FIFO_CONTROL_PART/n32 )
          );
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U13  ( .A1(\FIFO_N/FIFO_DATA_PATH/n609 ), 
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n2 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n3 ), 
+        .B2(\FIFO_N/FIFO_CONTROL_PART/n19 ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[0] ) );
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U14  ( .A1(\FIFO_N/FIFO_DATA_PATH/n608 ), 
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n2 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n3 ), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n609 ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[7] ) );
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U15  ( .A1(\FIFO_N/FIFO_DATA_PATH/n607 ), 
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n2 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n3 ), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n608 ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[6] ) );
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U16  ( .A1(\FIFO_N/FIFO_DATA_PATH/n606 ), 
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n2 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n3 ), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n607 ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[5] ) );
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U17  ( .A1(\FIFO_N/FIFO_DATA_PATH/n184 ), 
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n2 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n3 ), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n606 ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[4] ) );
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U18  ( .A1(\FIFO_N/FIFO_DATA_PATH/n183 ), 
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n2 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n3 ), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n184 ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[3] ) );
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U19  ( .A1(\FIFO_N/FIFO_DATA_PATH/n182 ), 
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n2 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n3 ), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n183 ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[2] ) );
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U20  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n19 ), 
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n2 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n3 ), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n182 ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[1] ) );
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U21  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n20 ), 
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B1(\FIFO_N/write_en ), .B2(
+        \FIFO_N/FIFO_CONTROL_PART/n27 ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[0] ) );
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U22  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n21 ), 
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B1(\FIFO_N/write_en ), .B2(
+        \FIFO_N/FIFO_CONTROL_PART/n20 ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[7] ) );
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U23  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n22 ), 
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B1(\FIFO_N/write_en ), .B2(
+        \FIFO_N/FIFO_CONTROL_PART/n21 ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[6] ) );
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U24  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n23 ), 
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B1(\FIFO_N/write_en ), .B2(
+        \FIFO_N/FIFO_CONTROL_PART/n22 ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[5] ) );
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U25  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n24 ), 
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B1(\FIFO_N/write_en ), .B2(
+        \FIFO_N/FIFO_CONTROL_PART/n23 ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[4] ) );
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U26  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n25 ), 
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B1(\FIFO_N/write_en ), .B2(
+        \FIFO_N/FIFO_CONTROL_PART/n24 ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[3] ) );
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U27  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n26 ), 
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B1(\FIFO_N/write_en ), .B2(
+        \FIFO_N/FIFO_CONTROL_PART/n25 ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[2] ) );
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U28  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n27 ), 
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B1(\FIFO_N/write_en ), .B2(
+        \FIFO_N/FIFO_CONTROL_PART/n26 ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[1] ) );
   CLKBUFX2 \FIFO_N/FIFO_CONTROL_PART/U29  ( .A(\FIFO_N/FIFO_CONTROL_PART/n29 ), 
         .Q(\FIFO_N/FIFO_CONTROL_PART/n2 ) );
   OAI31X2 \FIFO_N/FIFO_CONTROL_PART/U46  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n30 ), 
@@ -17973,7 +18017,7 @@ module router_credit_based ( reset,
         .B(\CONTROL_PART/Req_SL ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_L/n52 ) );
   NOR2X8 \CONTROL_PART/U31  ( .A(Xbar_sel_S[4]), .B(Xbar_sel_S[2]), .Q(
-        \CONTROL_PART/allocator_unit/n104 ) );
+        \CONTROL_PART/allocator_unit/n127 ) );
   NAND2X6 \CONTROL_PART/U30  ( .A(\CONTROL_PART/n7 ), .B(\CONTROL_PART/n8 ), 
         .Q(\CONTROL_PART/allocator_unit/arb_X_W/state_in[1] ) );
   NAND2X6 \CONTROL_PART/U29  ( .A(\CONTROL_PART/allocator_unit/arb_X_W/N41 ), 
@@ -17982,13 +18026,13 @@ module router_credit_based ( reset,
   NAND2X6 \CONTROL_PART/U28  ( .A(\CONTROL_PART/Req_EW ), .B(
         \CONTROL_PART/allocator_unit/arb_X_W/n47 ), .Q(\CONTROL_PART/n7 ) );
   NOR2X8 \CONTROL_PART/U27  ( .A(Xbar_sel_W[4]), .B(Xbar_sel_W[1]), .Q(
-        \CONTROL_PART/allocator_unit/n98 ) );
+        \CONTROL_PART/allocator_unit/n117 ) );
   OAI21X8 \CONTROL_PART/U26  ( .A1(\CONTROL_PART/Req_EL ), .A2(
         \CONTROL_PART/allocator_unit/arb_X_L/n8 ), .B1(
         \CONTROL_PART/allocator_unit/arb_X_L/n12 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_L/n39 ) );
-  NAND2X6 \CONTROL_PART/U25  ( .A(\CONTROL_PART/allocator_unit/n90 ), .B(
-        \CONTROL_PART/allocator_unit/n116 ), .Q(valid_out_L) );
+  NAND2X6 \CONTROL_PART/U25  ( .A(\CONTROL_PART/allocator_unit/n105 ), .B(
+        \CONTROL_PART/allocator_unit/n147 ), .Q(valid_out_L) );
   NOR2X8 \CONTROL_PART/U24  ( .A(\CONTROL_PART/allocator_unit/arb_X_S/n51 ), 
         .B(\CONTROL_PART/allocator_unit/arb_X_S/n50 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_S/n44 ) );
@@ -18008,8 +18052,8 @@ module router_credit_based ( reset,
   NOR2X8 \CONTROL_PART/U19  ( .A(\CONTROL_PART/allocator_unit/arb_X_E/n8 ), 
         .B(\CONTROL_PART/Req_NE ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_E/N41 ) );
-  NAND2X6 \CONTROL_PART/U18  ( .A(\CONTROL_PART/allocator_unit/n91 ), .B(
-        \CONTROL_PART/allocator_unit/n122 ), .Q(valid_out_E) );
+  NAND2X6 \CONTROL_PART/U18  ( .A(\CONTROL_PART/allocator_unit/n106 ), .B(
+        \CONTROL_PART/allocator_unit/n157 ), .Q(valid_out_E) );
   OAI21X8 \CONTROL_PART/U17  ( .A1(\CONTROL_PART/Req_EN ), .A2(
         \CONTROL_PART/allocator_unit/arb_X_N/n1 ), .B1(
         \CONTROL_PART/allocator_unit/arb_X_N/n6 ), .Q(
@@ -18022,330 +18066,505 @@ module router_credit_based ( reset,
         .B(\CONTROL_PART/allocator_unit/arb_X_N/n21 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_N/n16 ) );
   NOR2XL \CONTROL_PART/U14  ( .A(Xbar_sel_N[2]), .B(Xbar_sel_N[1]), .Q(
-        \CONTROL_PART/allocator_unit/n110 ) );
+        \CONTROL_PART/allocator_unit/n137 ) );
   INVXL \CONTROL_PART/U12  ( .A(Xbar_sel_N[2]), .Q(\CONTROL_PART/n4 ) );
-  XNOR2X2 \CONTROL_PART/allocator_unit/U5  ( .A(
+  XOR2X1 \CONTROL_PART/allocator_unit/U125  ( .A(
         \CONTROL_PART/allocator_unit/credit_counter_W_out[0] ), .B(
-        \CONTROL_PART/allocator_unit/n96 ), .Q(
+        \CONTROL_PART/allocator_unit/n115 ), .Q(
         \CONTROL_PART/allocator_unit/credit_counter_W_in[0] ) );
-  XNOR2X2 \CONTROL_PART/allocator_unit/U19  ( .A(
+  XOR2X1 \CONTROL_PART/allocator_unit/U126  ( .A(
         \CONTROL_PART/allocator_unit/credit_counter_S_out[0] ), .B(
-        \CONTROL_PART/allocator_unit/n102 ), .Q(
+        \CONTROL_PART/allocator_unit/n125 ), .Q(
         \CONTROL_PART/allocator_unit/credit_counter_S_in[0] ) );
-  XNOR2X2 \CONTROL_PART/allocator_unit/U33  ( .A(
+  XOR2X1 \CONTROL_PART/allocator_unit/U127  ( .A(
         \CONTROL_PART/allocator_unit/credit_counter_N_out[0] ), .B(
-        \CONTROL_PART/allocator_unit/n108 ), .Q(
+        \CONTROL_PART/allocator_unit/n135 ), .Q(
         \CONTROL_PART/allocator_unit/credit_counter_N_in[0] ) );
-  XNOR2X2 \CONTROL_PART/allocator_unit/U47  ( .A(
+  XOR2X1 \CONTROL_PART/allocator_unit/U128  ( .A(
         \CONTROL_PART/allocator_unit/credit_counter_L_out[0] ), .B(
-        \CONTROL_PART/allocator_unit/n114 ), .Q(
+        \CONTROL_PART/allocator_unit/n145 ), .Q(
         \CONTROL_PART/allocator_unit/credit_counter_L_in[0] ) );
-  XNOR2X2 \CONTROL_PART/allocator_unit/U61  ( .A(
+  XOR2X1 \CONTROL_PART/allocator_unit/U129  ( .A(
         \CONTROL_PART/allocator_unit/credit_counter_E_out[0] ), .B(
-        \CONTROL_PART/allocator_unit/n120 ), .Q(
+        \CONTROL_PART/allocator_unit/n155 ), .Q(
         \CONTROL_PART/allocator_unit/credit_counter_E_in[0] ) );
   DFPX3 \CONTROL_PART/allocator_unit/credit_counter_L_out_reg[0]  ( .D(
         \CONTROL_PART/allocator_unit/credit_counter_L_in[0] ), .CP(clk), .SN(
-        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_L_out[0] ) );
+        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_L_out[0] ), 
+        .QN(\CONTROL_PART/allocator_unit/n53 ) );
   DFPX3 \CONTROL_PART/allocator_unit/credit_counter_L_out_reg[1]  ( .D(
         \CONTROL_PART/allocator_unit/credit_counter_L_in[1] ), .CP(clk), .SN(
-        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_L_out[1] ) );
+        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_L_out[1] ), 
+        .QN(\CONTROL_PART/allocator_unit/n52 ) );
+  DFPX3 \CONTROL_PART/allocator_unit/credit_counter_L_out_reg[2]  ( .D(
+        \CONTROL_PART/allocator_unit/credit_counter_L_in[2] ), .CP(clk), .SN(
+        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_L_out[2] ), 
+        .QN(\CONTROL_PART/allocator_unit/n51 ) );
   DFPX3 \CONTROL_PART/allocator_unit/credit_counter_N_out_reg[0]  ( .D(
         \CONTROL_PART/allocator_unit/credit_counter_N_in[0] ), .CP(clk), .SN(
-        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_N_out[0] ) );
+        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_N_out[0] ), 
+        .QN(\CONTROL_PART/allocator_unit/n56 ) );
   DFPX3 \CONTROL_PART/allocator_unit/credit_counter_N_out_reg[1]  ( .D(
         \CONTROL_PART/allocator_unit/credit_counter_N_in[1] ), .CP(clk), .SN(
-        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_N_out[1] ) );
+        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_N_out[1] ), 
+        .QN(\CONTROL_PART/allocator_unit/n55 ) );
+  DFPX3 \CONTROL_PART/allocator_unit/credit_counter_N_out_reg[2]  ( .D(
+        \CONTROL_PART/allocator_unit/credit_counter_N_in[2] ), .CP(clk), .SN(
+        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_N_out[2] ), 
+        .QN(\CONTROL_PART/allocator_unit/n54 ) );
   DFPX3 \CONTROL_PART/allocator_unit/credit_counter_E_out_reg[0]  ( .D(
         \CONTROL_PART/allocator_unit/credit_counter_E_in[0] ), .CP(clk), .SN(
-        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_E_out[0] ) );
+        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_E_out[0] ), 
+        .QN(\CONTROL_PART/allocator_unit/n59 ) );
   DFPX3 \CONTROL_PART/allocator_unit/credit_counter_E_out_reg[1]  ( .D(
         \CONTROL_PART/allocator_unit/credit_counter_E_in[1] ), .CP(clk), .SN(
-        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_E_out[1] ) );
+        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_E_out[1] ), 
+        .QN(\CONTROL_PART/allocator_unit/n58 ) );
+  DFPX3 \CONTROL_PART/allocator_unit/credit_counter_E_out_reg[2]  ( .D(
+        \CONTROL_PART/allocator_unit/credit_counter_E_in[2] ), .CP(clk), .SN(
+        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_E_out[2] ), 
+        .QN(\CONTROL_PART/allocator_unit/n57 ) );
   DFPX3 \CONTROL_PART/allocator_unit/credit_counter_W_out_reg[0]  ( .D(
         \CONTROL_PART/allocator_unit/credit_counter_W_in[0] ), .CP(clk), .SN(
-        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_W_out[0] ) );
+        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_W_out[0] ), 
+        .QN(\CONTROL_PART/allocator_unit/n62 ) );
   DFPX3 \CONTROL_PART/allocator_unit/credit_counter_W_out_reg[1]  ( .D(
         \CONTROL_PART/allocator_unit/credit_counter_W_in[1] ), .CP(clk), .SN(
-        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_W_out[1] ) );
+        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_W_out[1] ), 
+        .QN(\CONTROL_PART/allocator_unit/n61 ) );
+  DFPX3 \CONTROL_PART/allocator_unit/credit_counter_W_out_reg[2]  ( .D(
+        \CONTROL_PART/allocator_unit/credit_counter_W_in[2] ), .CP(clk), .SN(
+        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_W_out[2] ), 
+        .QN(\CONTROL_PART/allocator_unit/n60 ) );
   DFPX3 \CONTROL_PART/allocator_unit/credit_counter_S_out_reg[0]  ( .D(
         \CONTROL_PART/allocator_unit/credit_counter_S_in[0] ), .CP(clk), .SN(
-        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_S_out[0] ) );
+        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_S_out[0] ), 
+        .QN(\CONTROL_PART/allocator_unit/n65 ) );
   DFPX3 \CONTROL_PART/allocator_unit/credit_counter_S_out_reg[1]  ( .D(
         \CONTROL_PART/allocator_unit/credit_counter_S_in[1] ), .CP(clk), .SN(
-        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_S_out[1] ) );
+        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_S_out[1] ), 
+        .QN(\CONTROL_PART/allocator_unit/n64 ) );
+  DFPX3 \CONTROL_PART/allocator_unit/credit_counter_S_out_reg[2]  ( .D(
+        \CONTROL_PART/allocator_unit/credit_counter_S_in[2] ), .CP(clk), .SN(
+        reset), .Q(\CONTROL_PART/allocator_unit/credit_counter_S_out[2] ), 
+        .QN(\CONTROL_PART/allocator_unit/n63 ) );
   INVXL \CONTROL_PART/allocator_unit/U3  ( .A(
-        \CONTROL_PART/allocator_unit/n87 ), .Q(Xbar_sel_N[0]) );
+        \CONTROL_PART/allocator_unit/n102 ), .Q(Xbar_sel_N[0]) );
   INVXL \CONTROL_PART/allocator_unit/U4  ( .A(
-        \CONTROL_PART/allocator_unit/n88 ), .Q(Xbar_sel_N[3]) );
+        \CONTROL_PART/allocator_unit/n103 ), .Q(Xbar_sel_N[3]) );
+  NOR2XL \CONTROL_PART/allocator_unit/U5  ( .A(
+        \CONTROL_PART/allocator_unit/n27 ), .B(empty_S), .Q(Xbar_sel_N[1]) );
   NOR2XL \CONTROL_PART/allocator_unit/U6  ( .A(
-        \CONTROL_PART/allocator_unit/n22 ), .B(empty_S), .Q(Xbar_sel_N[1]) );
+        \CONTROL_PART/allocator_unit/n3 ), .B(empty_S), .Q(Xbar_sel_E[1]) );
   NOR2XL \CONTROL_PART/allocator_unit/U7  ( .A(
-        \CONTROL_PART/allocator_unit/n2 ), .B(empty_S), .Q(Xbar_sel_E[1]) );
+        \CONTROL_PART/allocator_unit/n9 ), .B(empty_S), .Q(Xbar_sel_W[1]) );
   NOR2XL \CONTROL_PART/allocator_unit/U8  ( .A(
-        \CONTROL_PART/allocator_unit/n7 ), .B(empty_S), .Q(Xbar_sel_W[1]) );
+        \CONTROL_PART/allocator_unit/n21 ), .B(empty_S), .Q(Xbar_sel_L[1]) );
   NOR2XL \CONTROL_PART/allocator_unit/U9  ( .A(
-        \CONTROL_PART/allocator_unit/n17 ), .B(empty_S), .Q(Xbar_sel_L[1]) );
+        \CONTROL_PART/allocator_unit/n26 ), .B(empty_W), .Q(Xbar_sel_N[2]) );
   NOR2XL \CONTROL_PART/allocator_unit/U10  ( .A(
-        \CONTROL_PART/allocator_unit/n21 ), .B(empty_W), .Q(Xbar_sel_N[2]) );
+        \CONTROL_PART/allocator_unit/n6 ), .B(empty_W), .Q(Xbar_sel_E[2]) );
   NOR2XL \CONTROL_PART/allocator_unit/U11  ( .A(
-        \CONTROL_PART/allocator_unit/n5 ), .B(empty_W), .Q(Xbar_sel_E[2]) );
+        \CONTROL_PART/allocator_unit/n18 ), .B(empty_W), .Q(Xbar_sel_S[2]) );
   NOR2XL \CONTROL_PART/allocator_unit/U12  ( .A(
-        \CONTROL_PART/allocator_unit/n15 ), .B(empty_W), .Q(Xbar_sel_S[2]) );
+        \CONTROL_PART/allocator_unit/n24 ), .B(empty_W), .Q(Xbar_sel_L[2]) );
   NOR2XL \CONTROL_PART/allocator_unit/U13  ( .A(
-        \CONTROL_PART/allocator_unit/n20 ), .B(empty_W), .Q(Xbar_sel_L[2]) );
+        \CONTROL_PART/allocator_unit/n5 ), .B(empty_N), .Q(Xbar_sel_E[4]) );
   NOR2XL \CONTROL_PART/allocator_unit/U14  ( .A(
-        \CONTROL_PART/allocator_unit/n4 ), .B(empty_N), .Q(Xbar_sel_E[4]) );
+        \CONTROL_PART/allocator_unit/n17 ), .B(empty_N), .Q(Xbar_sel_S[4]) );
   NOR2XL \CONTROL_PART/allocator_unit/U15  ( .A(
-        \CONTROL_PART/allocator_unit/n14 ), .B(empty_N), .Q(Xbar_sel_S[4]) );
-  NOR2XL \CONTROL_PART/allocator_unit/U16  ( .A(
-        \CONTROL_PART/allocator_unit/n9 ), .B(empty_N), .Q(Xbar_sel_W[4]) );
+        \CONTROL_PART/allocator_unit/n11 ), .B(empty_N), .Q(Xbar_sel_W[4]) );
+  INVXL \CONTROL_PART/allocator_unit/U16  ( .A(
+        \CONTROL_PART/allocator_unit/n106 ), .Q(Xbar_sel_E[0]) );
   INVXL \CONTROL_PART/allocator_unit/U17  ( .A(
-        \CONTROL_PART/allocator_unit/n91 ), .Q(Xbar_sel_E[0]) );
+        \CONTROL_PART/allocator_unit/n100 ), .Q(Xbar_sel_S[0]) );
   INVXL \CONTROL_PART/allocator_unit/U18  ( .A(
-        \CONTROL_PART/allocator_unit/n85 ), .Q(Xbar_sel_S[0]) );
+        \CONTROL_PART/allocator_unit/n98 ), .Q(Xbar_sel_W[0]) );
+  INVXL \CONTROL_PART/allocator_unit/U19  ( .A(
+        \CONTROL_PART/allocator_unit/n105 ), .Q(Xbar_sel_L[3]) );
   INVXL \CONTROL_PART/allocator_unit/U20  ( .A(
-        \CONTROL_PART/allocator_unit/n83 ), .Q(Xbar_sel_W[0]) );
+        \CONTROL_PART/allocator_unit/n101 ), .Q(Xbar_sel_S[3]) );
   INVXL \CONTROL_PART/allocator_unit/U21  ( .A(
-        \CONTROL_PART/allocator_unit/n90 ), .Q(Xbar_sel_L[3]) );
-  INVXL \CONTROL_PART/allocator_unit/U22  ( .A(
-        \CONTROL_PART/allocator_unit/n86 ), .Q(Xbar_sel_S[3]) );
-  INVXL \CONTROL_PART/allocator_unit/U23  ( .A(
-        \CONTROL_PART/allocator_unit/n84 ), .Q(Xbar_sel_W[3]) );
-  INVXL \CONTROL_PART/allocator_unit/U24  ( .A(empty_L), .Q(
-        \CONTROL_PART/allocator_unit/n26 ) );
-  INVXL \CONTROL_PART/allocator_unit/U25  ( .A(empty_E), .Q(
-        \CONTROL_PART/allocator_unit/n25 ) );
-  NOR3X3 \CONTROL_PART/allocator_unit/U27  ( .A(Xbar_sel_E[4]), .B(
-        Xbar_sel_E[2]), .C(Xbar_sel_E[1]), .Q(
-        \CONTROL_PART/allocator_unit/n122 ) );
-  NAND3X3 \CONTROL_PART/allocator_unit/U30  ( .A(
-        \CONTROL_PART/allocator_unit/n88 ), .B(
-        \CONTROL_PART/allocator_unit/n87 ), .C(
-        \CONTROL_PART/allocator_unit/n110 ), .Q(valid_out_N) );
-  NAND3X3 \CONTROL_PART/allocator_unit/U35  ( .A(
-        \CONTROL_PART/allocator_unit/n84 ), .B(
-        \CONTROL_PART/allocator_unit/n83 ), .C(
-        \CONTROL_PART/allocator_unit/n98 ), .Q(valid_out_W) );
-  NAND3X3 \CONTROL_PART/allocator_unit/U39  ( .A(
-        \CONTROL_PART/allocator_unit/n86 ), .B(
-        \CONTROL_PART/allocator_unit/n85 ), .C(
-        \CONTROL_PART/allocator_unit/n104 ), .Q(valid_out_S) );
-  INVXL \CONTROL_PART/allocator_unit/U45  ( .A(
-        \CONTROL_PART/allocator_unit/grant_E_S_sig ), .Q(
-        \CONTROL_PART/allocator_unit/n2 ) );
-  INVXL \CONTROL_PART/allocator_unit/U46  ( .A(
-        \CONTROL_PART/allocator_unit/grant_E_W_sig ), .Q(
-        \CONTROL_PART/allocator_unit/n5 ) );
-  INVXL \CONTROL_PART/allocator_unit/U48  ( .A(
-        \CONTROL_PART/allocator_unit/grant_L_S_sig ), .Q(
-        \CONTROL_PART/allocator_unit/n17 ) );
-  INVXL \CONTROL_PART/allocator_unit/U49  ( .A(
-        \CONTROL_PART/allocator_unit/grant_L_W_sig ), .Q(
-        \CONTROL_PART/allocator_unit/n20 ) );
-  INVXL \CONTROL_PART/allocator_unit/U50  ( .A(
-        \CONTROL_PART/allocator_unit/grant_N_S_sig ), .Q(
-        \CONTROL_PART/allocator_unit/n22 ) );
-  INVXL \CONTROL_PART/allocator_unit/U51  ( .A(
-        \CONTROL_PART/allocator_unit/grant_N_W_sig ), .Q(
-        \CONTROL_PART/allocator_unit/n21 ) );
-  INVXL \CONTROL_PART/allocator_unit/U52  ( .A(
-        \CONTROL_PART/allocator_unit/grant_S_W_sig ), .Q(
-        \CONTROL_PART/allocator_unit/n15 ) );
-  INVXL \CONTROL_PART/allocator_unit/U53  ( .A(
-        \CONTROL_PART/allocator_unit/grant_W_S_sig ), .Q(
-        \CONTROL_PART/allocator_unit/n7 ) );
-  NAND2XL \CONTROL_PART/allocator_unit/U54  ( .A(
-        \CONTROL_PART/allocator_unit/grant_N_L_sig ), .B(
-        \CONTROL_PART/allocator_unit/n26 ), .Q(
-        \CONTROL_PART/allocator_unit/n87 ) );
-  NAND2XL \CONTROL_PART/allocator_unit/U55  ( .A(
-        \CONTROL_PART/allocator_unit/grant_W_L_sig ), .B(
-        \CONTROL_PART/allocator_unit/n26 ), .Q(
-        \CONTROL_PART/allocator_unit/n83 ) );
-  NAND2XL \CONTROL_PART/allocator_unit/U56  ( .A(
-        \CONTROL_PART/allocator_unit/grant_S_L_sig ), .B(
-        \CONTROL_PART/allocator_unit/n26 ), .Q(
-        \CONTROL_PART/allocator_unit/n85 ) );
-  NAND2XL \CONTROL_PART/allocator_unit/U57  ( .A(
-        \CONTROL_PART/allocator_unit/grant_E_L_sig ), .B(
-        \CONTROL_PART/allocator_unit/n26 ), .Q(
-        \CONTROL_PART/allocator_unit/n91 ) );
-  NAND2XL \CONTROL_PART/allocator_unit/U58  ( .A(
-        \CONTROL_PART/allocator_unit/grant_N_E_sig ), .B(
-        \CONTROL_PART/allocator_unit/n25 ), .Q(
-        \CONTROL_PART/allocator_unit/n88 ) );
-  NAND2XL \CONTROL_PART/allocator_unit/U59  ( .A(
-        \CONTROL_PART/allocator_unit/grant_W_E_sig ), .B(
-        \CONTROL_PART/allocator_unit/n25 ), .Q(
-        \CONTROL_PART/allocator_unit/n84 ) );
-  NAND2XL \CONTROL_PART/allocator_unit/U60  ( .A(
-        \CONTROL_PART/allocator_unit/grant_S_E_sig ), .B(
-        \CONTROL_PART/allocator_unit/n25 ), .Q(
-        \CONTROL_PART/allocator_unit/n86 ) );
-  NAND2XL \CONTROL_PART/allocator_unit/U62  ( .A(
-        \CONTROL_PART/allocator_unit/grant_L_E_sig ), .B(
-        \CONTROL_PART/allocator_unit/n25 ), .Q(
-        \CONTROL_PART/allocator_unit/n90 ) );
-  INVXL \CONTROL_PART/allocator_unit/U63  ( .A(
-        \CONTROL_PART/allocator_unit/grant_E_N_sig ), .Q(
-        \CONTROL_PART/allocator_unit/n4 ) );
-  NOR2XL \CONTROL_PART/allocator_unit/U64  ( .A(
-        \CONTROL_PART/allocator_unit/n19 ), .B(empty_N), .Q(Xbar_sel_L[4]) );
-  INVXL \CONTROL_PART/allocator_unit/U65  ( .A(
-        \CONTROL_PART/allocator_unit/grant_L_N_sig ), .Q(
-        \CONTROL_PART/allocator_unit/n19 ) );
-  INVXL \CONTROL_PART/allocator_unit/U66  ( .A(
-        \CONTROL_PART/allocator_unit/grant_S_N_sig ), .Q(
-        \CONTROL_PART/allocator_unit/n14 ) );
-  INVXL \CONTROL_PART/allocator_unit/U67  ( .A(
-        \CONTROL_PART/allocator_unit/grant_W_N_sig ), .Q(
-        \CONTROL_PART/allocator_unit/n9 ) );
-  OAI21X3 \CONTROL_PART/allocator_unit/U70  ( .A1(
-        \CONTROL_PART/allocator_unit/n103 ), .A2(
-        \CONTROL_PART/allocator_unit/n99 ), .B1(
-        \CONTROL_PART/allocator_unit/n100 ), .Q(
-        \CONTROL_PART/allocator_unit/n102 ) );
-  OA21X2 \CONTROL_PART/allocator_unit/U71  ( .A1(
-        \CONTROL_PART/allocator_unit/credit_counter_S_out[1] ), .A2(
-        \CONTROL_PART/allocator_unit/credit_counter_S_out[0] ), .B1(
-        valid_out_S), .Q(\CONTROL_PART/allocator_unit/n103 ) );
-  OAI21X3 \CONTROL_PART/allocator_unit/U72  ( .A1(
-        \CONTROL_PART/allocator_unit/n97 ), .A2(
-        \CONTROL_PART/allocator_unit/n93 ), .B1(
-        \CONTROL_PART/allocator_unit/n94 ), .Q(
-        \CONTROL_PART/allocator_unit/n96 ) );
-  OA21X2 \CONTROL_PART/allocator_unit/U73  ( .A1(
-        \CONTROL_PART/allocator_unit/credit_counter_W_out[1] ), .A2(
-        \CONTROL_PART/allocator_unit/credit_counter_W_out[0] ), .B1(
-        valid_out_W), .Q(\CONTROL_PART/allocator_unit/n97 ) );
-  OAI21X3 \CONTROL_PART/allocator_unit/U74  ( .A1(
-        \CONTROL_PART/allocator_unit/n121 ), .A2(
-        \CONTROL_PART/allocator_unit/n117 ), .B1(
-        \CONTROL_PART/allocator_unit/n118 ), .Q(
-        \CONTROL_PART/allocator_unit/n120 ) );
-  OA21X2 \CONTROL_PART/allocator_unit/U75  ( .A1(
-        \CONTROL_PART/allocator_unit/credit_counter_E_out[1] ), .A2(
-        \CONTROL_PART/allocator_unit/credit_counter_E_out[0] ), .B1(
-        valid_out_E), .Q(\CONTROL_PART/allocator_unit/n121 ) );
-  OAI21X3 \CONTROL_PART/allocator_unit/U76  ( .A1(
-        \CONTROL_PART/allocator_unit/n109 ), .A2(
-        \CONTROL_PART/allocator_unit/n105 ), .B1(
-        \CONTROL_PART/allocator_unit/n106 ), .Q(
-        \CONTROL_PART/allocator_unit/n108 ) );
-  OA21X2 \CONTROL_PART/allocator_unit/U77  ( .A1(
-        \CONTROL_PART/allocator_unit/credit_counter_N_out[1] ), .A2(
-        \CONTROL_PART/allocator_unit/credit_counter_N_out[0] ), .B1(
-        valid_out_N), .Q(\CONTROL_PART/allocator_unit/n109 ) );
-  OAI21X3 \CONTROL_PART/allocator_unit/U78  ( .A1(
-        \CONTROL_PART/allocator_unit/n115 ), .A2(
-        \CONTROL_PART/allocator_unit/n111 ), .B1(
-        \CONTROL_PART/allocator_unit/n112 ), .Q(
-        \CONTROL_PART/allocator_unit/n114 ) );
-  OA21X2 \CONTROL_PART/allocator_unit/U79  ( .A1(
-        \CONTROL_PART/allocator_unit/credit_counter_L_out[1] ), .A2(
-        \CONTROL_PART/allocator_unit/credit_counter_L_out[0] ), .B1(
-        valid_out_L), .Q(\CONTROL_PART/allocator_unit/n115 ) );
-  AO31X3 \CONTROL_PART/allocator_unit/U80  ( .A1(
-        \CONTROL_PART/allocator_unit/n99 ), .A2(
-        \CONTROL_PART/allocator_unit/n100 ), .A3(
-        \CONTROL_PART/allocator_unit/credit_counter_S_out[0] ), .B1(
-        \CONTROL_PART/allocator_unit/n101 ), .Q(
-        \CONTROL_PART/allocator_unit/credit_counter_S_in[1] ) );
-  OA31X3 \CONTROL_PART/allocator_unit/U81  ( .A1(
-        \CONTROL_PART/allocator_unit/n102 ), .A2(
-        \CONTROL_PART/allocator_unit/credit_counter_S_out[0] ), .A3(
-        \CONTROL_PART/allocator_unit/n99 ), .B1(
-        \CONTROL_PART/allocator_unit/credit_counter_S_out[1] ), .Q(
-        \CONTROL_PART/allocator_unit/n101 ) );
-  AO31X3 \CONTROL_PART/allocator_unit/U82  ( .A1(
-        \CONTROL_PART/allocator_unit/n93 ), .A2(
-        \CONTROL_PART/allocator_unit/n94 ), .A3(
-        \CONTROL_PART/allocator_unit/credit_counter_W_out[0] ), .B1(
-        \CONTROL_PART/allocator_unit/n95 ), .Q(
-        \CONTROL_PART/allocator_unit/credit_counter_W_in[1] ) );
-  OA31X3 \CONTROL_PART/allocator_unit/U83  ( .A1(
-        \CONTROL_PART/allocator_unit/n96 ), .A2(
-        \CONTROL_PART/allocator_unit/credit_counter_W_out[0] ), .A3(
-        \CONTROL_PART/allocator_unit/n93 ), .B1(
-        \CONTROL_PART/allocator_unit/credit_counter_W_out[1] ), .Q(
-        \CONTROL_PART/allocator_unit/n95 ) );
-  AO31X3 \CONTROL_PART/allocator_unit/U84  ( .A1(
-        \CONTROL_PART/allocator_unit/n117 ), .A2(
-        \CONTROL_PART/allocator_unit/n118 ), .A3(
-        \CONTROL_PART/allocator_unit/credit_counter_E_out[0] ), .B1(
-        \CONTROL_PART/allocator_unit/n119 ), .Q(
-        \CONTROL_PART/allocator_unit/credit_counter_E_in[1] ) );
-  OA31X3 \CONTROL_PART/allocator_unit/U85  ( .A1(
-        \CONTROL_PART/allocator_unit/n120 ), .A2(
-        \CONTROL_PART/allocator_unit/credit_counter_E_out[0] ), .A3(
-        \CONTROL_PART/allocator_unit/n117 ), .B1(
-        \CONTROL_PART/allocator_unit/credit_counter_E_out[1] ), .Q(
-        \CONTROL_PART/allocator_unit/n119 ) );
-  AO31X3 \CONTROL_PART/allocator_unit/U86  ( .A1(
-        \CONTROL_PART/allocator_unit/n105 ), .A2(
-        \CONTROL_PART/allocator_unit/n106 ), .A3(
-        \CONTROL_PART/allocator_unit/credit_counter_N_out[0] ), .B1(
-        \CONTROL_PART/allocator_unit/n107 ), .Q(
-        \CONTROL_PART/allocator_unit/credit_counter_N_in[1] ) );
-  OA31X3 \CONTROL_PART/allocator_unit/U87  ( .A1(
-        \CONTROL_PART/allocator_unit/n108 ), .A2(
-        \CONTROL_PART/allocator_unit/credit_counter_N_out[0] ), .A3(
-        \CONTROL_PART/allocator_unit/n105 ), .B1(
-        \CONTROL_PART/allocator_unit/credit_counter_N_out[1] ), .Q(
-        \CONTROL_PART/allocator_unit/n107 ) );
-  AO31X3 \CONTROL_PART/allocator_unit/U88  ( .A1(
-        \CONTROL_PART/allocator_unit/n111 ), .A2(
-        \CONTROL_PART/allocator_unit/n112 ), .A3(
-        \CONTROL_PART/allocator_unit/credit_counter_L_out[0] ), .B1(
-        \CONTROL_PART/allocator_unit/n113 ), .Q(
-        \CONTROL_PART/allocator_unit/credit_counter_L_in[1] ) );
-  OA31X3 \CONTROL_PART/allocator_unit/U89  ( .A1(
-        \CONTROL_PART/allocator_unit/n114 ), .A2(
-        \CONTROL_PART/allocator_unit/credit_counter_L_out[0] ), .A3(
-        \CONTROL_PART/allocator_unit/n111 ), .B1(
-        \CONTROL_PART/allocator_unit/credit_counter_L_out[1] ), .Q(
-        \CONTROL_PART/allocator_unit/n113 ) );
-  AOI21X3 \CONTROL_PART/allocator_unit/U90  ( .A1(
-        \CONTROL_PART/allocator_unit/credit_counter_S_out[0] ), .A2(
-        \CONTROL_PART/allocator_unit/credit_counter_S_out[1] ), .B1(
-        \CONTROL_PART/allocator_unit/n31 ), .Q(
-        \CONTROL_PART/allocator_unit/n99 ) );
-  INVXL \CONTROL_PART/allocator_unit/U91  ( .A(credit_in_S), .Q(
+        \CONTROL_PART/allocator_unit/n99 ), .Q(Xbar_sel_W[3]) );
+  INVXL \CONTROL_PART/allocator_unit/U22  ( .A(empty_L), .Q(
         \CONTROL_PART/allocator_unit/n31 ) );
-  AOI21X3 \CONTROL_PART/allocator_unit/U92  ( .A1(
-        \CONTROL_PART/allocator_unit/credit_counter_W_out[0] ), .A2(
-        \CONTROL_PART/allocator_unit/credit_counter_W_out[1] ), .B1(
-        \CONTROL_PART/allocator_unit/n30 ), .Q(
-        \CONTROL_PART/allocator_unit/n93 ) );
-  INVXL \CONTROL_PART/allocator_unit/U93  ( .A(credit_in_W), .Q(
+  INVXL \CONTROL_PART/allocator_unit/U23  ( .A(empty_E), .Q(
         \CONTROL_PART/allocator_unit/n30 ) );
-  AOI21X3 \CONTROL_PART/allocator_unit/U94  ( .A1(
-        \CONTROL_PART/allocator_unit/credit_counter_E_out[0] ), .A2(
-        \CONTROL_PART/allocator_unit/credit_counter_E_out[1] ), .B1(
-        \CONTROL_PART/allocator_unit/n29 ), .Q(
-        \CONTROL_PART/allocator_unit/n117 ) );
-  INVXL \CONTROL_PART/allocator_unit/U95  ( .A(credit_in_E), .Q(
-        \CONTROL_PART/allocator_unit/n29 ) );
-  AOI21X3 \CONTROL_PART/allocator_unit/U96  ( .A1(
-        \CONTROL_PART/allocator_unit/credit_counter_N_out[0] ), .A2(
-        \CONTROL_PART/allocator_unit/credit_counter_N_out[1] ), .B1(
-        \CONTROL_PART/allocator_unit/n28 ), .Q(
+  NOR3X3 \CONTROL_PART/allocator_unit/U25  ( .A(Xbar_sel_E[4]), .B(
+        Xbar_sel_E[2]), .C(Xbar_sel_E[1]), .Q(
+        \CONTROL_PART/allocator_unit/n157 ) );
+  NAND3X3 \CONTROL_PART/allocator_unit/U28  ( .A(
+        \CONTROL_PART/allocator_unit/n103 ), .B(
+        \CONTROL_PART/allocator_unit/n102 ), .C(
+        \CONTROL_PART/allocator_unit/n137 ), .Q(valid_out_N) );
+  NAND3X3 \CONTROL_PART/allocator_unit/U32  ( .A(
+        \CONTROL_PART/allocator_unit/n99 ), .B(
+        \CONTROL_PART/allocator_unit/n98 ), .C(
+        \CONTROL_PART/allocator_unit/n117 ), .Q(valid_out_W) );
+  NAND3X3 \CONTROL_PART/allocator_unit/U36  ( .A(
+        \CONTROL_PART/allocator_unit/n101 ), .B(
+        \CONTROL_PART/allocator_unit/n100 ), .C(
+        \CONTROL_PART/allocator_unit/n127 ), .Q(valid_out_S) );
+  INVXL \CONTROL_PART/allocator_unit/U42  ( .A(
+        \CONTROL_PART/allocator_unit/grant_E_S_sig ), .Q(
+        \CONTROL_PART/allocator_unit/n3 ) );
+  INVXL \CONTROL_PART/allocator_unit/U43  ( .A(
+        \CONTROL_PART/allocator_unit/grant_E_W_sig ), .Q(
+        \CONTROL_PART/allocator_unit/n6 ) );
+  INVXL \CONTROL_PART/allocator_unit/U44  ( .A(
+        \CONTROL_PART/allocator_unit/grant_L_S_sig ), .Q(
+        \CONTROL_PART/allocator_unit/n21 ) );
+  INVXL \CONTROL_PART/allocator_unit/U45  ( .A(
+        \CONTROL_PART/allocator_unit/grant_L_W_sig ), .Q(
+        \CONTROL_PART/allocator_unit/n24 ) );
+  INVXL \CONTROL_PART/allocator_unit/U46  ( .A(
+        \CONTROL_PART/allocator_unit/grant_N_S_sig ), .Q(
+        \CONTROL_PART/allocator_unit/n27 ) );
+  INVXL \CONTROL_PART/allocator_unit/U47  ( .A(
+        \CONTROL_PART/allocator_unit/grant_N_W_sig ), .Q(
+        \CONTROL_PART/allocator_unit/n26 ) );
+  INVXL \CONTROL_PART/allocator_unit/U48  ( .A(
+        \CONTROL_PART/allocator_unit/grant_S_W_sig ), .Q(
+        \CONTROL_PART/allocator_unit/n18 ) );
+  INVXL \CONTROL_PART/allocator_unit/U49  ( .A(
+        \CONTROL_PART/allocator_unit/grant_W_S_sig ), .Q(
+        \CONTROL_PART/allocator_unit/n9 ) );
+  INVXL \CONTROL_PART/allocator_unit/U50  ( .A(
+        \CONTROL_PART/allocator_unit/grant_E_N_sig ), .Q(
+        \CONTROL_PART/allocator_unit/n5 ) );
+  NOR2XL \CONTROL_PART/allocator_unit/U51  ( .A(
+        \CONTROL_PART/allocator_unit/n23 ), .B(empty_N), .Q(Xbar_sel_L[4]) );
+  INVXL \CONTROL_PART/allocator_unit/U52  ( .A(
+        \CONTROL_PART/allocator_unit/grant_L_N_sig ), .Q(
+        \CONTROL_PART/allocator_unit/n23 ) );
+  INVXL \CONTROL_PART/allocator_unit/U53  ( .A(
+        \CONTROL_PART/allocator_unit/grant_S_N_sig ), .Q(
+        \CONTROL_PART/allocator_unit/n17 ) );
+  INVXL \CONTROL_PART/allocator_unit/U54  ( .A(
+        \CONTROL_PART/allocator_unit/grant_W_N_sig ), .Q(
+        \CONTROL_PART/allocator_unit/n11 ) );
+  AOI21X3 \CONTROL_PART/allocator_unit/U55  ( .A1(
+        \CONTROL_PART/allocator_unit/n126 ), .A2(
+        \CONTROL_PART/allocator_unit/n119 ), .B1(
+        \CONTROL_PART/allocator_unit/n14 ), .Q(
+        \CONTROL_PART/allocator_unit/n125 ) );
+  AOI21X3 \CONTROL_PART/allocator_unit/U56  ( .A1(
+        \CONTROL_PART/allocator_unit/n116 ), .A2(
+        \CONTROL_PART/allocator_unit/n109 ), .B1(
+        \CONTROL_PART/allocator_unit/n8 ), .Q(
+        \CONTROL_PART/allocator_unit/n115 ) );
+  AOI21X3 \CONTROL_PART/allocator_unit/U57  ( .A1(
+        \CONTROL_PART/allocator_unit/n156 ), .A2(
+        \CONTROL_PART/allocator_unit/n149 ), .B1(
+        \CONTROL_PART/allocator_unit/n2 ), .Q(
+        \CONTROL_PART/allocator_unit/n155 ) );
+  AOI21X3 \CONTROL_PART/allocator_unit/U58  ( .A1(
+        \CONTROL_PART/allocator_unit/n136 ), .A2(
+        \CONTROL_PART/allocator_unit/n129 ), .B1(
+        \CONTROL_PART/allocator_unit/n25 ), .Q(
+        \CONTROL_PART/allocator_unit/n135 ) );
+  AOI21X3 \CONTROL_PART/allocator_unit/U59  ( .A1(
+        \CONTROL_PART/allocator_unit/n146 ), .A2(
+        \CONTROL_PART/allocator_unit/n139 ), .B1(
+        \CONTROL_PART/allocator_unit/n20 ), .Q(
+        \CONTROL_PART/allocator_unit/n145 ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U60  ( .A(
+        \CONTROL_PART/allocator_unit/grant_N_L_sig ), .B(
+        \CONTROL_PART/allocator_unit/n31 ), .Q(
+        \CONTROL_PART/allocator_unit/n102 ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U61  ( .A(
+        \CONTROL_PART/allocator_unit/grant_W_L_sig ), .B(
+        \CONTROL_PART/allocator_unit/n31 ), .Q(
+        \CONTROL_PART/allocator_unit/n98 ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U62  ( .A(
+        \CONTROL_PART/allocator_unit/grant_S_L_sig ), .B(
+        \CONTROL_PART/allocator_unit/n31 ), .Q(
+        \CONTROL_PART/allocator_unit/n100 ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U63  ( .A(
+        \CONTROL_PART/allocator_unit/grant_E_L_sig ), .B(
+        \CONTROL_PART/allocator_unit/n31 ), .Q(
+        \CONTROL_PART/allocator_unit/n106 ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U64  ( .A(
+        \CONTROL_PART/allocator_unit/grant_N_E_sig ), .B(
+        \CONTROL_PART/allocator_unit/n30 ), .Q(
+        \CONTROL_PART/allocator_unit/n103 ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U65  ( .A(
+        \CONTROL_PART/allocator_unit/grant_W_E_sig ), .B(
+        \CONTROL_PART/allocator_unit/n30 ), .Q(
+        \CONTROL_PART/allocator_unit/n99 ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U66  ( .A(
+        \CONTROL_PART/allocator_unit/grant_S_E_sig ), .B(
+        \CONTROL_PART/allocator_unit/n30 ), .Q(
+        \CONTROL_PART/allocator_unit/n101 ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U67  ( .A(
+        \CONTROL_PART/allocator_unit/grant_L_E_sig ), .B(
+        \CONTROL_PART/allocator_unit/n30 ), .Q(
         \CONTROL_PART/allocator_unit/n105 ) );
-  INVXL \CONTROL_PART/allocator_unit/U97  ( .A(credit_in_N), .Q(
-        \CONTROL_PART/allocator_unit/n28 ) );
-  AOI21X3 \CONTROL_PART/allocator_unit/U98  ( .A1(
+  INVXL \CONTROL_PART/allocator_unit/U68  ( .A(
+        \CONTROL_PART/allocator_unit/n152 ), .Q(
+        \CONTROL_PART/allocator_unit/n2 ) );
+  INVXL \CONTROL_PART/allocator_unit/U69  ( .A(
+        \CONTROL_PART/allocator_unit/n142 ), .Q(
+        \CONTROL_PART/allocator_unit/n20 ) );
+  INVXL \CONTROL_PART/allocator_unit/U70  ( .A(
+        \CONTROL_PART/allocator_unit/n132 ), .Q(
+        \CONTROL_PART/allocator_unit/n25 ) );
+  INVXL \CONTROL_PART/allocator_unit/U71  ( .A(
+        \CONTROL_PART/allocator_unit/n112 ), .Q(
+        \CONTROL_PART/allocator_unit/n8 ) );
+  INVXL \CONTROL_PART/allocator_unit/U72  ( .A(
+        \CONTROL_PART/allocator_unit/n122 ), .Q(
+        \CONTROL_PART/allocator_unit/n14 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U75  ( .A1(
+        \CONTROL_PART/allocator_unit/credit_counter_S_out[0] ), .A2(
+        \CONTROL_PART/allocator_unit/credit_counter_S_out[2] ), .A3(
+        \CONTROL_PART/allocator_unit/credit_counter_S_out[1] ), .B1(
+        valid_out_S), .Q(\CONTROL_PART/allocator_unit/n126 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U76  ( .A1(
+        \CONTROL_PART/allocator_unit/credit_counter_W_out[0] ), .A2(
+        \CONTROL_PART/allocator_unit/credit_counter_W_out[2] ), .A3(
+        \CONTROL_PART/allocator_unit/credit_counter_W_out[1] ), .B1(
+        valid_out_W), .Q(\CONTROL_PART/allocator_unit/n116 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U77  ( .A1(
+        \CONTROL_PART/allocator_unit/credit_counter_E_out[0] ), .A2(
+        \CONTROL_PART/allocator_unit/credit_counter_E_out[2] ), .A3(
+        \CONTROL_PART/allocator_unit/credit_counter_E_out[1] ), .B1(
+        valid_out_E), .Q(\CONTROL_PART/allocator_unit/n156 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U78  ( .A1(
+        \CONTROL_PART/allocator_unit/credit_counter_N_out[0] ), .A2(
+        \CONTROL_PART/allocator_unit/credit_counter_N_out[2] ), .A3(
+        \CONTROL_PART/allocator_unit/credit_counter_N_out[1] ), .B1(
+        valid_out_N), .Q(\CONTROL_PART/allocator_unit/n136 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U79  ( .A1(
         \CONTROL_PART/allocator_unit/credit_counter_L_out[0] ), .A2(
+        \CONTROL_PART/allocator_unit/credit_counter_L_out[2] ), .A3(
         \CONTROL_PART/allocator_unit/credit_counter_L_out[1] ), .B1(
-        \CONTROL_PART/allocator_unit/n32 ), .Q(
+        valid_out_L), .Q(\CONTROL_PART/allocator_unit/n146 ) );
+  OAI32X3 \CONTROL_PART/allocator_unit/U80  ( .A1(
+        \CONTROL_PART/allocator_unit/n113 ), .A2(
+        \CONTROL_PART/allocator_unit/credit_counter_W_out[1] ), .A3(
+        \CONTROL_PART/allocator_unit/n8 ), .B1(
+        \CONTROL_PART/allocator_unit/n114 ), .B2(
+        \CONTROL_PART/allocator_unit/n61 ), .Q(
+        \CONTROL_PART/allocator_unit/credit_counter_W_in[1] ) );
+  AOI21X3 \CONTROL_PART/allocator_unit/U81  ( .A1(
+        \CONTROL_PART/allocator_unit/credit_counter_W_out[0] ), .A2(
+        \CONTROL_PART/allocator_unit/n109 ), .B1(
+        \CONTROL_PART/allocator_unit/n111 ), .Q(
+        \CONTROL_PART/allocator_unit/n114 ) );
+  OA22X3 \CONTROL_PART/allocator_unit/U82  ( .A1(
+        \CONTROL_PART/allocator_unit/n109 ), .A2(
+        \CONTROL_PART/allocator_unit/n62 ), .B1(
+        \CONTROL_PART/allocator_unit/n116 ), .B2(
+        \CONTROL_PART/allocator_unit/credit_counter_W_out[0] ), .Q(
+        \CONTROL_PART/allocator_unit/n113 ) );
+  OAI32X3 \CONTROL_PART/allocator_unit/U83  ( .A1(
+        \CONTROL_PART/allocator_unit/n153 ), .A2(
+        \CONTROL_PART/allocator_unit/credit_counter_E_out[1] ), .A3(
+        \CONTROL_PART/allocator_unit/n2 ), .B1(
+        \CONTROL_PART/allocator_unit/n154 ), .B2(
+        \CONTROL_PART/allocator_unit/n58 ), .Q(
+        \CONTROL_PART/allocator_unit/credit_counter_E_in[1] ) );
+  AOI21X3 \CONTROL_PART/allocator_unit/U84  ( .A1(
+        \CONTROL_PART/allocator_unit/credit_counter_E_out[0] ), .A2(
+        \CONTROL_PART/allocator_unit/n149 ), .B1(
+        \CONTROL_PART/allocator_unit/n151 ), .Q(
+        \CONTROL_PART/allocator_unit/n154 ) );
+  OA22X3 \CONTROL_PART/allocator_unit/U85  ( .A1(
+        \CONTROL_PART/allocator_unit/n149 ), .A2(
+        \CONTROL_PART/allocator_unit/n59 ), .B1(
+        \CONTROL_PART/allocator_unit/n156 ), .B2(
+        \CONTROL_PART/allocator_unit/credit_counter_E_out[0] ), .Q(
+        \CONTROL_PART/allocator_unit/n153 ) );
+  OAI32X3 \CONTROL_PART/allocator_unit/U86  ( .A1(
+        \CONTROL_PART/allocator_unit/n133 ), .A2(
+        \CONTROL_PART/allocator_unit/credit_counter_N_out[1] ), .A3(
+        \CONTROL_PART/allocator_unit/n25 ), .B1(
+        \CONTROL_PART/allocator_unit/n134 ), .B2(
+        \CONTROL_PART/allocator_unit/n55 ), .Q(
+        \CONTROL_PART/allocator_unit/credit_counter_N_in[1] ) );
+  AOI21X3 \CONTROL_PART/allocator_unit/U87  ( .A1(
+        \CONTROL_PART/allocator_unit/credit_counter_N_out[0] ), .A2(
+        \CONTROL_PART/allocator_unit/n129 ), .B1(
+        \CONTROL_PART/allocator_unit/n131 ), .Q(
+        \CONTROL_PART/allocator_unit/n134 ) );
+  OA22X3 \CONTROL_PART/allocator_unit/U88  ( .A1(
+        \CONTROL_PART/allocator_unit/n129 ), .A2(
+        \CONTROL_PART/allocator_unit/n56 ), .B1(
+        \CONTROL_PART/allocator_unit/n136 ), .B2(
+        \CONTROL_PART/allocator_unit/credit_counter_N_out[0] ), .Q(
+        \CONTROL_PART/allocator_unit/n133 ) );
+  OAI21X3 \CONTROL_PART/allocator_unit/U89  ( .A1(
+        \CONTROL_PART/allocator_unit/credit_counter_S_out[0] ), .A2(
+        \CONTROL_PART/allocator_unit/n119 ), .B1(
+        \CONTROL_PART/allocator_unit/n125 ), .Q(
+        \CONTROL_PART/allocator_unit/n121 ) );
+  OAI21X3 \CONTROL_PART/allocator_unit/U90  ( .A1(
+        \CONTROL_PART/allocator_unit/credit_counter_W_out[0] ), .A2(
+        \CONTROL_PART/allocator_unit/n109 ), .B1(
+        \CONTROL_PART/allocator_unit/n115 ), .Q(
         \CONTROL_PART/allocator_unit/n111 ) );
-  INVXL \CONTROL_PART/allocator_unit/U99  ( .A(credit_in_L), .Q(
-        \CONTROL_PART/allocator_unit/n32 ) );
-  NAND2XL \CONTROL_PART/allocator_unit/U100  ( .A(credit_in_S), .B(valid_out_S), .Q(\CONTROL_PART/allocator_unit/n100 ) );
-  NAND2XL \CONTROL_PART/allocator_unit/U101  ( .A(credit_in_W), .B(valid_out_W), .Q(\CONTROL_PART/allocator_unit/n94 ) );
-  NAND2XL \CONTROL_PART/allocator_unit/U102  ( .A(credit_in_N), .B(valid_out_N), .Q(\CONTROL_PART/allocator_unit/n106 ) );
-  NAND2XL \CONTROL_PART/allocator_unit/U103  ( .A(credit_in_L), .B(valid_out_L), .Q(\CONTROL_PART/allocator_unit/n112 ) );
-  NAND2XL \CONTROL_PART/allocator_unit/U104  ( .A(credit_in_E), .B(valid_out_E), .Q(\CONTROL_PART/allocator_unit/n118 ) );
+  OAI21X3 \CONTROL_PART/allocator_unit/U91  ( .A1(
+        \CONTROL_PART/allocator_unit/credit_counter_E_out[0] ), .A2(
+        \CONTROL_PART/allocator_unit/n149 ), .B1(
+        \CONTROL_PART/allocator_unit/n155 ), .Q(
+        \CONTROL_PART/allocator_unit/n151 ) );
+  OAI21X3 \CONTROL_PART/allocator_unit/U92  ( .A1(
+        \CONTROL_PART/allocator_unit/credit_counter_N_out[0] ), .A2(
+        \CONTROL_PART/allocator_unit/n129 ), .B1(
+        \CONTROL_PART/allocator_unit/n135 ), .Q(
+        \CONTROL_PART/allocator_unit/n131 ) );
+  OAI21X3 \CONTROL_PART/allocator_unit/U93  ( .A1(
+        \CONTROL_PART/allocator_unit/credit_counter_L_out[0] ), .A2(
+        \CONTROL_PART/allocator_unit/n139 ), .B1(
+        \CONTROL_PART/allocator_unit/n145 ), .Q(
+        \CONTROL_PART/allocator_unit/n141 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U94  ( .A1(
+        \CONTROL_PART/allocator_unit/n118 ), .A2(
+        \CONTROL_PART/allocator_unit/n64 ), .A3(
+        \CONTROL_PART/allocator_unit/n119 ), .B1(
+        \CONTROL_PART/allocator_unit/n120 ), .Q(
+        \CONTROL_PART/allocator_unit/credit_counter_S_in[2] ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U95  ( .A(
+        \CONTROL_PART/allocator_unit/credit_counter_S_out[0] ), .B(
+        \CONTROL_PART/allocator_unit/n122 ), .Q(
+        \CONTROL_PART/allocator_unit/n118 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U96  ( .A1(
+        \CONTROL_PART/allocator_unit/n121 ), .A2(
+        \CONTROL_PART/allocator_unit/credit_counter_S_out[1] ), .A3(
+        \CONTROL_PART/allocator_unit/credit_counter_S_out[0] ), .B1(
+        \CONTROL_PART/allocator_unit/credit_counter_S_out[2] ), .Q(
+        \CONTROL_PART/allocator_unit/n120 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U97  ( .A1(
+        \CONTROL_PART/allocator_unit/n108 ), .A2(
+        \CONTROL_PART/allocator_unit/n61 ), .A3(
+        \CONTROL_PART/allocator_unit/n109 ), .B1(
+        \CONTROL_PART/allocator_unit/n110 ), .Q(
+        \CONTROL_PART/allocator_unit/credit_counter_W_in[2] ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U98  ( .A(
+        \CONTROL_PART/allocator_unit/credit_counter_W_out[0] ), .B(
+        \CONTROL_PART/allocator_unit/n112 ), .Q(
+        \CONTROL_PART/allocator_unit/n108 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U99  ( .A1(
+        \CONTROL_PART/allocator_unit/n111 ), .A2(
+        \CONTROL_PART/allocator_unit/credit_counter_W_out[1] ), .A3(
+        \CONTROL_PART/allocator_unit/credit_counter_W_out[0] ), .B1(
+        \CONTROL_PART/allocator_unit/credit_counter_W_out[2] ), .Q(
+        \CONTROL_PART/allocator_unit/n110 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U100  ( .A1(
+        \CONTROL_PART/allocator_unit/n148 ), .A2(
+        \CONTROL_PART/allocator_unit/n58 ), .A3(
+        \CONTROL_PART/allocator_unit/n149 ), .B1(
+        \CONTROL_PART/allocator_unit/n150 ), .Q(
+        \CONTROL_PART/allocator_unit/credit_counter_E_in[2] ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U101  ( .A(
+        \CONTROL_PART/allocator_unit/credit_counter_E_out[0] ), .B(
+        \CONTROL_PART/allocator_unit/n152 ), .Q(
+        \CONTROL_PART/allocator_unit/n148 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U102  ( .A1(
+        \CONTROL_PART/allocator_unit/n151 ), .A2(
+        \CONTROL_PART/allocator_unit/credit_counter_E_out[1] ), .A3(
+        \CONTROL_PART/allocator_unit/credit_counter_E_out[0] ), .B1(
+        \CONTROL_PART/allocator_unit/credit_counter_E_out[2] ), .Q(
+        \CONTROL_PART/allocator_unit/n150 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U103  ( .A1(
+        \CONTROL_PART/allocator_unit/n128 ), .A2(
+        \CONTROL_PART/allocator_unit/n55 ), .A3(
+        \CONTROL_PART/allocator_unit/n129 ), .B1(
+        \CONTROL_PART/allocator_unit/n130 ), .Q(
+        \CONTROL_PART/allocator_unit/credit_counter_N_in[2] ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U104  ( .A(
+        \CONTROL_PART/allocator_unit/credit_counter_N_out[0] ), .B(
+        \CONTROL_PART/allocator_unit/n132 ), .Q(
+        \CONTROL_PART/allocator_unit/n128 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U105  ( .A1(
+        \CONTROL_PART/allocator_unit/n131 ), .A2(
+        \CONTROL_PART/allocator_unit/credit_counter_N_out[1] ), .A3(
+        \CONTROL_PART/allocator_unit/credit_counter_N_out[0] ), .B1(
+        \CONTROL_PART/allocator_unit/credit_counter_N_out[2] ), .Q(
+        \CONTROL_PART/allocator_unit/n130 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U106  ( .A1(
+        \CONTROL_PART/allocator_unit/n138 ), .A2(
+        \CONTROL_PART/allocator_unit/n52 ), .A3(
+        \CONTROL_PART/allocator_unit/n139 ), .B1(
+        \CONTROL_PART/allocator_unit/n140 ), .Q(
+        \CONTROL_PART/allocator_unit/credit_counter_L_in[2] ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U107  ( .A(
+        \CONTROL_PART/allocator_unit/credit_counter_L_out[0] ), .B(
+        \CONTROL_PART/allocator_unit/n142 ), .Q(
+        \CONTROL_PART/allocator_unit/n138 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U108  ( .A1(
+        \CONTROL_PART/allocator_unit/n141 ), .A2(
+        \CONTROL_PART/allocator_unit/credit_counter_L_out[1] ), .A3(
+        \CONTROL_PART/allocator_unit/credit_counter_L_out[0] ), .B1(
+        \CONTROL_PART/allocator_unit/credit_counter_L_out[2] ), .Q(
+        \CONTROL_PART/allocator_unit/n140 ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U109  ( .A(credit_in_S), .B(valid_out_S), .Q(\CONTROL_PART/allocator_unit/n122 ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U110  ( .A(credit_in_W), .B(valid_out_W), .Q(\CONTROL_PART/allocator_unit/n112 ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U111  ( .A(credit_in_N), .B(valid_out_N), .Q(\CONTROL_PART/allocator_unit/n132 ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U112  ( .A(credit_in_L), .B(valid_out_L), .Q(\CONTROL_PART/allocator_unit/n142 ) );
+  NAND2XL \CONTROL_PART/allocator_unit/U113  ( .A(credit_in_E), .B(valid_out_E), .Q(\CONTROL_PART/allocator_unit/n152 ) );
+  OAI32X3 \CONTROL_PART/allocator_unit/U114  ( .A1(
+        \CONTROL_PART/allocator_unit/n123 ), .A2(
+        \CONTROL_PART/allocator_unit/credit_counter_S_out[1] ), .A3(
+        \CONTROL_PART/allocator_unit/n14 ), .B1(
+        \CONTROL_PART/allocator_unit/n124 ), .B2(
+        \CONTROL_PART/allocator_unit/n64 ), .Q(
+        \CONTROL_PART/allocator_unit/credit_counter_S_in[1] ) );
+  AOI21X3 \CONTROL_PART/allocator_unit/U115  ( .A1(
+        \CONTROL_PART/allocator_unit/credit_counter_S_out[0] ), .A2(
+        \CONTROL_PART/allocator_unit/n119 ), .B1(
+        \CONTROL_PART/allocator_unit/n121 ), .Q(
+        \CONTROL_PART/allocator_unit/n124 ) );
+  OA22X3 \CONTROL_PART/allocator_unit/U116  ( .A1(
+        \CONTROL_PART/allocator_unit/n119 ), .A2(
+        \CONTROL_PART/allocator_unit/n65 ), .B1(
+        \CONTROL_PART/allocator_unit/n126 ), .B2(
+        \CONTROL_PART/allocator_unit/credit_counter_S_out[0] ), .Q(
+        \CONTROL_PART/allocator_unit/n123 ) );
+  OAI32X3 \CONTROL_PART/allocator_unit/U117  ( .A1(
+        \CONTROL_PART/allocator_unit/n143 ), .A2(
+        \CONTROL_PART/allocator_unit/credit_counter_L_out[1] ), .A3(
+        \CONTROL_PART/allocator_unit/n20 ), .B1(
+        \CONTROL_PART/allocator_unit/n144 ), .B2(
+        \CONTROL_PART/allocator_unit/n52 ), .Q(
+        \CONTROL_PART/allocator_unit/credit_counter_L_in[1] ) );
+  AOI21X3 \CONTROL_PART/allocator_unit/U118  ( .A1(
+        \CONTROL_PART/allocator_unit/credit_counter_L_out[0] ), .A2(
+        \CONTROL_PART/allocator_unit/n139 ), .B1(
+        \CONTROL_PART/allocator_unit/n141 ), .Q(
+        \CONTROL_PART/allocator_unit/n144 ) );
+  OA22X3 \CONTROL_PART/allocator_unit/U119  ( .A1(
+        \CONTROL_PART/allocator_unit/n139 ), .A2(
+        \CONTROL_PART/allocator_unit/n53 ), .B1(
+        \CONTROL_PART/allocator_unit/n146 ), .B2(
+        \CONTROL_PART/allocator_unit/credit_counter_L_out[0] ), .Q(
+        \CONTROL_PART/allocator_unit/n143 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U120  ( .A1(
+        \CONTROL_PART/allocator_unit/n63 ), .A2(
+        \CONTROL_PART/allocator_unit/n65 ), .A3(
+        \CONTROL_PART/allocator_unit/n64 ), .B1(credit_in_S), .Q(
+        \CONTROL_PART/allocator_unit/n119 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U121  ( .A1(
+        \CONTROL_PART/allocator_unit/n60 ), .A2(
+        \CONTROL_PART/allocator_unit/n62 ), .A3(
+        \CONTROL_PART/allocator_unit/n61 ), .B1(credit_in_W), .Q(
+        \CONTROL_PART/allocator_unit/n109 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U122  ( .A1(
+        \CONTROL_PART/allocator_unit/n57 ), .A2(
+        \CONTROL_PART/allocator_unit/n59 ), .A3(
+        \CONTROL_PART/allocator_unit/n58 ), .B1(credit_in_E), .Q(
+        \CONTROL_PART/allocator_unit/n149 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U123  ( .A1(
+        \CONTROL_PART/allocator_unit/n54 ), .A2(
+        \CONTROL_PART/allocator_unit/n56 ), .A3(
+        \CONTROL_PART/allocator_unit/n55 ), .B1(credit_in_N), .Q(
+        \CONTROL_PART/allocator_unit/n129 ) );
+  OAI31X2 \CONTROL_PART/allocator_unit/U124  ( .A1(
+        \CONTROL_PART/allocator_unit/n51 ), .A2(
+        \CONTROL_PART/allocator_unit/n53 ), .A3(
+        \CONTROL_PART/allocator_unit/n52 ), .B1(credit_in_L), .Q(
+        \CONTROL_PART/allocator_unit/n139 ) );
   NOR2XL \CONTROL_PART/allocator_unit/arb_X_N/U43  ( .A(\CONTROL_PART/Req_SN ), 
         .B(\CONTROL_PART/Req_LN ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_N/n15 ) );
@@ -18427,56 +18646,57 @@ module router_credit_based ( reset,
         \CONTROL_PART/allocator_unit/arb_X_N/n4 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_N/state[0] ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_N/n14 ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_N/U15  ( .A(
+  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_N/U16  ( .A(
+        \CONTROL_PART/allocator_unit/credit_counter_N_out[2] ), .B(
+        \CONTROL_PART/allocator_unit/credit_counter_N_out[1] ), .C(
+        \CONTROL_PART/allocator_unit/credit_counter_N_out[0] ), .Q(
+        \CONTROL_PART/allocator_unit/arb_X_N/n33 ) );
+  INVXL \CONTROL_PART/allocator_unit/arb_X_N/U14  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_N/n15 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_N/n5 ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_N/U14  ( .A(
+  INVXL \CONTROL_PART/allocator_unit/arb_X_N/U13  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_N/n34 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_N/n10 ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_N/U13  ( .A(
+  INVXL \CONTROL_PART/allocator_unit/arb_X_N/U12  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_N/n20 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_N/n8 ) );
-  OAI22X3 \CONTROL_PART/allocator_unit/arb_X_N/U12  ( .A1(
+  OAI22X3 \CONTROL_PART/allocator_unit/arb_X_N/U11  ( .A1(
         \CONTROL_PART/allocator_unit/arb_X_N/n27 ), .A2(
         \CONTROL_PART/allocator_unit/arb_X_N/n8 ), .B1(
         \CONTROL_PART/allocator_unit/arb_X_N/n26 ), .B2(
         \CONTROL_PART/allocator_unit/arb_X_N/n27 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_N/n29 ) );
-  AOI21X3 \CONTROL_PART/allocator_unit/arb_X_N/U11  ( .A1(
+  AOI21X3 \CONTROL_PART/allocator_unit/arb_X_N/U10  ( .A1(
         \CONTROL_PART/allocator_unit/arb_X_N/n3 ), .A2(
         \CONTROL_PART/allocator_unit/arb_X_N/n18 ), .B1(
         \CONTROL_PART/allocator_unit/arb_X_N/n19 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_N/n25 ) );
-  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_N/U10  ( .A(
+  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_N/U9  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_N/n8 ), .B(
         \CONTROL_PART/allocator_unit/arb_X_N/n33 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_N/n12 ), .Q(
         \CONTROL_PART/allocator_unit/grant_N_E_sig ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_N/U9  ( .A(
+  INVXL \CONTROL_PART/allocator_unit/arb_X_N/U8  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_N/n19 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_N/n11 ) );
-  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_N/U8  ( .A(
+  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_N/U7  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_N/n6 ), .B(
         \CONTROL_PART/allocator_unit/arb_X_N/n33 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_N/n11 ), .Q(
         \CONTROL_PART/allocator_unit/grant_N_L_sig ) );
-  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_N/U7  ( .A(
+  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_N/U6  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_N/n1 ), .B(
         \CONTROL_PART/allocator_unit/arb_X_N/n33 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_N/n14 ), .Q(
         \CONTROL_PART/allocator_unit/grant_N_W_sig ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_N/U6  ( .A(
+  INVXL \CONTROL_PART/allocator_unit/arb_X_N/U5  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_N/n18 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_N/n9 ) );
-  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_N/U5  ( .A(
+  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_N/U4  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_N/n3 ), .B(
         \CONTROL_PART/allocator_unit/arb_X_N/n33 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_N/n9 ), .Q(
         \CONTROL_PART/allocator_unit/grant_N_S_sig ) );
-  NOR2XL \CONTROL_PART/allocator_unit/arb_X_N/U3  ( .A(
-        \CONTROL_PART/allocator_unit/credit_counter_N_out[0] ), .B(
-        \CONTROL_PART/allocator_unit/credit_counter_N_out[1] ), .Q(
-        \CONTROL_PART/allocator_unit/arb_X_N/n33 ) );
   DFCX1 \CONTROL_PART/allocator_unit/arb_X_N/state_reg[0]  ( .D(
         \CONTROL_PART/allocator_unit/arb_X_N/state_in[0] ), .CP(clk), .RN(
         reset), .Q(\CONTROL_PART/allocator_unit/arb_X_N/state[0] ) );
@@ -18568,31 +18788,31 @@ module router_credit_based ( reset,
         \CONTROL_PART/allocator_unit/arb_X_E/n57 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_E/state[0] ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_E/n55 ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_E/U15  ( .A(
+  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_E/U16  ( .A(
+        \CONTROL_PART/allocator_unit/credit_counter_E_out[2] ), .B(
+        \CONTROL_PART/allocator_unit/credit_counter_E_out[1] ), .C(
+        \CONTROL_PART/allocator_unit/credit_counter_E_out[0] ), .Q(
+        \CONTROL_PART/allocator_unit/arb_X_E/n36 ) );
+  INVXL \CONTROL_PART/allocator_unit/arb_X_E/U14  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_E/n54 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_E/n10 ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_E/U14  ( .A(
+  INVXL \CONTROL_PART/allocator_unit/arb_X_E/U13  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_E/n49 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_E/n1 ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_E/U13  ( .A(
+  INVXL \CONTROL_PART/allocator_unit/arb_X_E/U12  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_E/n35 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_E/n5 ) );
-  OAI22X3 \CONTROL_PART/allocator_unit/arb_X_E/U12  ( .A1(
+  OAI22X3 \CONTROL_PART/allocator_unit/arb_X_E/U11  ( .A1(
         \CONTROL_PART/allocator_unit/arb_X_E/n42 ), .A2(
         \CONTROL_PART/allocator_unit/arb_X_E/n1 ), .B1(
         \CONTROL_PART/allocator_unit/arb_X_E/n43 ), .B2(
         \CONTROL_PART/allocator_unit/arb_X_E/n38 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_E/n40 ) );
-  AOI21X3 \CONTROL_PART/allocator_unit/arb_X_E/U11  ( .A1(
+  AOI21X3 \CONTROL_PART/allocator_unit/arb_X_E/U10  ( .A1(
         \CONTROL_PART/allocator_unit/arb_X_E/n9 ), .A2(
         \CONTROL_PART/allocator_unit/arb_X_E/n51 ), .B1(
         \CONTROL_PART/allocator_unit/arb_X_E/n50 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_E/n44 ) );
-  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_E/U10  ( .A(
-        \CONTROL_PART/allocator_unit/arb_X_E/n37 ), .B(
-        \CONTROL_PART/allocator_unit/arb_X_E/n36 ), .C(
-        \CONTROL_PART/allocator_unit/arb_X_E/n12 ), .Q(
-        \CONTROL_PART/allocator_unit/grant_E_N_sig ) );
   INVXL \CONTROL_PART/allocator_unit/arb_X_E/U9  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_E/n50 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_E/n6 ) );
@@ -18602,22 +18822,23 @@ module router_credit_based ( reset,
         \CONTROL_PART/allocator_unit/arb_X_E/n6 ), .Q(
         \CONTROL_PART/allocator_unit/grant_E_L_sig ) );
   NOR3X3 \CONTROL_PART/allocator_unit/arb_X_E/U7  ( .A(
+        \CONTROL_PART/allocator_unit/arb_X_E/n37 ), .B(
+        \CONTROL_PART/allocator_unit/arb_X_E/n36 ), .C(
+        \CONTROL_PART/allocator_unit/arb_X_E/n12 ), .Q(
+        \CONTROL_PART/allocator_unit/grant_E_N_sig ) );
+  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_E/U6  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_E/n8 ), .B(
         \CONTROL_PART/allocator_unit/arb_X_E/n36 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_E/n55 ), .Q(
         \CONTROL_PART/allocator_unit/grant_E_W_sig ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_E/U6  ( .A(
+  INVXL \CONTROL_PART/allocator_unit/arb_X_E/U5  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_E/n51 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_E/n2 ) );
-  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_E/U5  ( .A(
+  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_E/U4  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_E/n9 ), .B(
         \CONTROL_PART/allocator_unit/arb_X_E/n36 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_E/n2 ), .Q(
         \CONTROL_PART/allocator_unit/grant_E_S_sig ) );
-  NOR2XL \CONTROL_PART/allocator_unit/arb_X_E/U3  ( .A(
-        \CONTROL_PART/allocator_unit/credit_counter_E_out[0] ), .B(
-        \CONTROL_PART/allocator_unit/credit_counter_E_out[1] ), .Q(
-        \CONTROL_PART/allocator_unit/arb_X_E/n36 ) );
   DFCX1 \CONTROL_PART/allocator_unit/arb_X_E/state_reg[0]  ( .D(
         \CONTROL_PART/allocator_unit/arb_X_E/state_in[0] ), .CP(clk), .RN(
         reset), .Q(\CONTROL_PART/allocator_unit/arb_X_E/state[0] ) );
@@ -18705,31 +18926,31 @@ module router_credit_based ( reset,
         \CONTROL_PART/allocator_unit/arb_X_W/n57 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_W/state[0] ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_W/n55 ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_W/U16  ( .A(
+  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_W/U17  ( .A(
+        \CONTROL_PART/allocator_unit/credit_counter_W_out[2] ), .B(
+        \CONTROL_PART/allocator_unit/credit_counter_W_out[1] ), .C(
+        \CONTROL_PART/allocator_unit/credit_counter_W_out[0] ), .Q(
+        \CONTROL_PART/allocator_unit/arb_X_W/n36 ) );
+  INVXL \CONTROL_PART/allocator_unit/arb_X_W/U15  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_W/n54 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_W/n9 ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_W/U15  ( .A(
+  INVXL \CONTROL_PART/allocator_unit/arb_X_W/U14  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_W/n35 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_W/n5 ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_W/U14  ( .A(
+  INVXL \CONTROL_PART/allocator_unit/arb_X_W/U13  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_W/n49 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_W/n1 ) );
-  OAI22X3 \CONTROL_PART/allocator_unit/arb_X_W/U13  ( .A1(
+  OAI22X3 \CONTROL_PART/allocator_unit/arb_X_W/U12  ( .A1(
         \CONTROL_PART/allocator_unit/arb_X_W/n42 ), .A2(
         \CONTROL_PART/allocator_unit/arb_X_W/n1 ), .B1(
         \CONTROL_PART/allocator_unit/arb_X_W/n43 ), .B2(
         \CONTROL_PART/allocator_unit/arb_X_W/n38 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_W/n40 ) );
-  AOI21X3 \CONTROL_PART/allocator_unit/arb_X_W/U12  ( .A1(
+  AOI21X3 \CONTROL_PART/allocator_unit/arb_X_W/U11  ( .A1(
         \CONTROL_PART/allocator_unit/arb_X_W/n8 ), .A2(
         \CONTROL_PART/allocator_unit/arb_X_W/n51 ), .B1(
         \CONTROL_PART/allocator_unit/arb_X_W/n50 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_W/n44 ) );
-  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_W/U11  ( .A(
-        \CONTROL_PART/allocator_unit/arb_X_W/n37 ), .B(
-        \CONTROL_PART/allocator_unit/arb_X_W/n36 ), .C(
-        \CONTROL_PART/allocator_unit/arb_X_W/n12 ), .Q(
-        \CONTROL_PART/allocator_unit/grant_W_N_sig ) );
   NOR3X3 \CONTROL_PART/allocator_unit/arb_X_W/U10  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_W/n1 ), .B(
         \CONTROL_PART/allocator_unit/arb_X_W/n36 ), .C(
@@ -18743,18 +18964,19 @@ module router_credit_based ( reset,
         \CONTROL_PART/allocator_unit/arb_X_W/n36 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_W/n6 ), .Q(
         \CONTROL_PART/allocator_unit/grant_W_L_sig ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_W/U7  ( .A(
+  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_W/U7  ( .A(
+        \CONTROL_PART/allocator_unit/arb_X_W/n37 ), .B(
+        \CONTROL_PART/allocator_unit/arb_X_W/n36 ), .C(
+        \CONTROL_PART/allocator_unit/arb_X_W/n12 ), .Q(
+        \CONTROL_PART/allocator_unit/grant_W_N_sig ) );
+  INVXL \CONTROL_PART/allocator_unit/arb_X_W/U6  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_W/n51 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_W/n2 ) );
-  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_W/U6  ( .A(
+  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_W/U5  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_W/n8 ), .B(
         \CONTROL_PART/allocator_unit/arb_X_W/n36 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_W/n2 ), .Q(
         \CONTROL_PART/allocator_unit/grant_W_S_sig ) );
-  NOR2XL \CONTROL_PART/allocator_unit/arb_X_W/U3  ( .A(
-        \CONTROL_PART/allocator_unit/credit_counter_W_out[0] ), .B(
-        \CONTROL_PART/allocator_unit/credit_counter_W_out[1] ), .Q(
-        \CONTROL_PART/allocator_unit/arb_X_W/n36 ) );
   DFCX1 \CONTROL_PART/allocator_unit/arb_X_W/state_reg[0]  ( .D(
         \CONTROL_PART/allocator_unit/arb_X_W/state_in[0] ), .CP(clk), .RN(
         reset), .Q(\CONTROL_PART/allocator_unit/arb_X_W/state[0] ) );
@@ -18867,26 +19089,26 @@ module router_credit_based ( reset,
         \CONTROL_PART/allocator_unit/arb_X_S/n57 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_S/state[0] ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_S/n55 ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_S/U14  ( .A(
+  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_S/U16  ( .A(
+        \CONTROL_PART/allocator_unit/credit_counter_S_out[2] ), .B(
+        \CONTROL_PART/allocator_unit/credit_counter_S_out[1] ), .C(
+        \CONTROL_PART/allocator_unit/credit_counter_S_out[0] ), .Q(
+        \CONTROL_PART/allocator_unit/arb_X_S/n36 ) );
+  INVXL \CONTROL_PART/allocator_unit/arb_X_S/U13  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_S/n54 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_S/n10 ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_S/U13  ( .A(
+  INVXL \CONTROL_PART/allocator_unit/arb_X_S/U12  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_S/n35 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_S/n5 ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_S/U12  ( .A(
+  INVXL \CONTROL_PART/allocator_unit/arb_X_S/U11  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_S/n49 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_S/n1 ) );
-  OAI22X3 \CONTROL_PART/allocator_unit/arb_X_S/U11  ( .A1(
+  OAI22X3 \CONTROL_PART/allocator_unit/arb_X_S/U10  ( .A1(
         \CONTROL_PART/allocator_unit/arb_X_S/n42 ), .A2(
         \CONTROL_PART/allocator_unit/arb_X_S/n1 ), .B1(
         \CONTROL_PART/allocator_unit/arb_X_S/n43 ), .B2(
         \CONTROL_PART/allocator_unit/arb_X_S/n38 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_S/n40 ) );
-  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_S/U9  ( .A(
-        \CONTROL_PART/allocator_unit/arb_X_S/n37 ), .B(
-        \CONTROL_PART/allocator_unit/arb_X_S/n36 ), .C(
-        \CONTROL_PART/allocator_unit/arb_X_S/n12 ), .Q(
-        \CONTROL_PART/allocator_unit/grant_S_N_sig ) );
   NOR3X3 \CONTROL_PART/allocator_unit/arb_X_S/U8  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_S/n1 ), .B(
         \CONTROL_PART/allocator_unit/arb_X_S/n36 ), .C(
@@ -18901,14 +19123,15 @@ module router_credit_based ( reset,
         \CONTROL_PART/allocator_unit/arb_X_S/n6 ), .Q(
         \CONTROL_PART/allocator_unit/grant_S_L_sig ) );
   NOR3X3 \CONTROL_PART/allocator_unit/arb_X_S/U5  ( .A(
+        \CONTROL_PART/allocator_unit/arb_X_S/n37 ), .B(
+        \CONTROL_PART/allocator_unit/arb_X_S/n36 ), .C(
+        \CONTROL_PART/allocator_unit/arb_X_S/n12 ), .Q(
+        \CONTROL_PART/allocator_unit/grant_S_N_sig ) );
+  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_S/U4  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_S/n8 ), .B(
         \CONTROL_PART/allocator_unit/arb_X_S/n36 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_S/n55 ), .Q(
         \CONTROL_PART/allocator_unit/grant_S_W_sig ) );
-  NOR2XL \CONTROL_PART/allocator_unit/arb_X_S/U3  ( .A(
-        \CONTROL_PART/allocator_unit/credit_counter_S_out[0] ), .B(
-        \CONTROL_PART/allocator_unit/credit_counter_S_out[1] ), .Q(
-        \CONTROL_PART/allocator_unit/arb_X_S/n36 ) );
   DFCX1 \CONTROL_PART/allocator_unit/arb_X_S/state_reg[0]  ( .D(
         \CONTROL_PART/allocator_unit/arb_X_S/state_in[0] ), .CP(clk), .RN(
         reset), .Q(\CONTROL_PART/allocator_unit/arb_X_S/state[0] ) );
@@ -19005,50 +19228,51 @@ module router_credit_based ( reset,
         \CONTROL_PART/allocator_unit/arb_X_L/n57 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_L/state[0] ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_L/n55 ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_L/U13  ( .A(
+  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_L/U16  ( .A(
+        \CONTROL_PART/allocator_unit/credit_counter_L_out[2] ), .B(
+        \CONTROL_PART/allocator_unit/credit_counter_L_out[1] ), .C(
+        \CONTROL_PART/allocator_unit/credit_counter_L_out[0] ), .Q(
+        \CONTROL_PART/allocator_unit/arb_X_L/n36 ) );
+  INVXL \CONTROL_PART/allocator_unit/arb_X_L/U12  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_L/n35 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_L/n5 ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_L/U12  ( .A(
+  INVXL \CONTROL_PART/allocator_unit/arb_X_L/U11  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_L/n49 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_L/n1 ) );
-  OAI22X3 \CONTROL_PART/allocator_unit/arb_X_L/U11  ( .A1(
+  OAI22X3 \CONTROL_PART/allocator_unit/arb_X_L/U10  ( .A1(
         \CONTROL_PART/allocator_unit/arb_X_L/n42 ), .A2(
         \CONTROL_PART/allocator_unit/arb_X_L/n1 ), .B1(
         \CONTROL_PART/allocator_unit/arb_X_L/n43 ), .B2(
         \CONTROL_PART/allocator_unit/arb_X_L/n8 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_L/n40 ) );
-  AOI21X3 \CONTROL_PART/allocator_unit/arb_X_L/U10  ( .A1(
+  AOI21X3 \CONTROL_PART/allocator_unit/arb_X_L/U9  ( .A1(
         \CONTROL_PART/allocator_unit/arb_X_L/n9 ), .A2(
         \CONTROL_PART/allocator_unit/arb_X_L/n51 ), .B1(
         \CONTROL_PART/allocator_unit/arb_X_L/n50 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_L/n44 ) );
-  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_L/U9  ( .A(
-        \CONTROL_PART/allocator_unit/arb_X_L/n37 ), .B(
-        \CONTROL_PART/allocator_unit/arb_X_L/n36 ), .C(
-        \CONTROL_PART/allocator_unit/arb_X_L/n12 ), .Q(
-        \CONTROL_PART/allocator_unit/grant_L_N_sig ) );
   NOR3X3 \CONTROL_PART/allocator_unit/arb_X_L/U8  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_L/n1 ), .B(
         \CONTROL_PART/allocator_unit/arb_X_L/n36 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_L/n11 ), .Q(
         \CONTROL_PART/allocator_unit/grant_L_E_sig ) );
   NOR3X3 \CONTROL_PART/allocator_unit/arb_X_L/U7  ( .A(
+        \CONTROL_PART/allocator_unit/arb_X_L/n37 ), .B(
+        \CONTROL_PART/allocator_unit/arb_X_L/n36 ), .C(
+        \CONTROL_PART/allocator_unit/arb_X_L/n12 ), .Q(
+        \CONTROL_PART/allocator_unit/grant_L_N_sig ) );
+  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_L/U6  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_L/n8 ), .B(
         \CONTROL_PART/allocator_unit/arb_X_L/n36 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_L/n55 ), .Q(
         \CONTROL_PART/allocator_unit/grant_L_W_sig ) );
-  INVXL \CONTROL_PART/allocator_unit/arb_X_L/U6  ( .A(
+  INVXL \CONTROL_PART/allocator_unit/arb_X_L/U5  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_L/n51 ), .Q(
         \CONTROL_PART/allocator_unit/arb_X_L/n2 ) );
-  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_L/U5  ( .A(
+  NOR3X3 \CONTROL_PART/allocator_unit/arb_X_L/U4  ( .A(
         \CONTROL_PART/allocator_unit/arb_X_L/n9 ), .B(
         \CONTROL_PART/allocator_unit/arb_X_L/n36 ), .C(
         \CONTROL_PART/allocator_unit/arb_X_L/n2 ), .Q(
         \CONTROL_PART/allocator_unit/grant_L_S_sig ) );
-  NOR2XL \CONTROL_PART/allocator_unit/arb_X_L/U3  ( .A(
-        \CONTROL_PART/allocator_unit/credit_counter_L_out[0] ), .B(
-        \CONTROL_PART/allocator_unit/credit_counter_L_out[1] ), .Q(
-        \CONTROL_PART/allocator_unit/arb_X_L/n36 ) );
   DFCX1 \CONTROL_PART/allocator_unit/arb_X_L/state_reg[0]  ( .D(
         \CONTROL_PART/allocator_unit/arb_X_L/state_in[0] ), .CP(clk), .RN(
         reset), .Q(\CONTROL_PART/allocator_unit/arb_X_L/state[0] ) );
@@ -25433,235 +25657,238 @@ module router_credit_based ( reset,
         \CONTROL_PART/ROUTING_TABLE_S/Req_E_in ), .CP(clk), .RN(reset), .Q(
         \CONTROL_PART/Req_SE ), .QN(\CONTROL_PART/allocator_unit/arb_X_E/n9 )
          );
+  NOR4X2 \XBAR_N/U8  ( .A(\XBAR_N/n125 ), .B(Xbar_sel_N[0]), .C(Xbar_sel_N[1]), 
+        .D(Xbar_sel_N[2]), .Q(\XBAR_N/n43 ) );
   CLKBUFX2 \XBAR_N/U157  ( .A(\XBAR_N/n41 ), .Q(\XBAR_N/n12 ) );
   CLKBUFX2 \XBAR_N/U156  ( .A(\XBAR_N/n41 ), .Q(\XBAR_N/n10 ) );
   CLKBUFX2 \XBAR_N/U155  ( .A(\XBAR_N/n41 ), .Q(\XBAR_N/n11 ) );
-  AOI22X3 \XBAR_N/U153  ( .A1(FIFO_D_out_L[28]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[28]), .B2(\XBAR_N/n42 ), .Q(\XBAR_N/n66 ) );
-  AOI22X3 \XBAR_N/U152  ( .A1(FIFO_D_out_E[28]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[28]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n65 ) );
-  INVXL \XBAR_N/U151  ( .A(FIFO_D_out_S[28]), .Q(\XBAR_N/n22 ) );
-  OAI211X3 \XBAR_N/U150  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n22 ), .B1(
-        \XBAR_N/n65 ), .C1(\XBAR_N/n66 ), .Q(TX_N[28]) );
-  AOI22X3 \XBAR_N/U149  ( .A1(FIFO_D_out_L[27]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[27]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n68 ) );
-  AOI22X3 \XBAR_N/U148  ( .A1(FIFO_D_out_E[27]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[27]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n67 ) );
-  INVXL \XBAR_N/U147  ( .A(FIFO_D_out_S[27]), .Q(\XBAR_N/n23 ) );
-  OAI211X3 \XBAR_N/U146  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n23 ), .B1(
-        \XBAR_N/n67 ), .C1(\XBAR_N/n68 ), .Q(TX_N[27]) );
-  AOI22X3 \XBAR_N/U145  ( .A1(FIFO_D_out_L[26]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[26]), .B2(\XBAR_N/n9 ), .Q(\XBAR_N/n70 ) );
-  AOI22X3 \XBAR_N/U144  ( .A1(FIFO_D_out_E[26]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[26]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n69 ) );
-  INVXL \XBAR_N/U143  ( .A(FIFO_D_out_S[26]), .Q(\XBAR_N/n24 ) );
-  OAI211X3 \XBAR_N/U142  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n24 ), .B1(
-        \XBAR_N/n69 ), .C1(\XBAR_N/n70 ), .Q(TX_N[26]) );
-  AOI22X3 \XBAR_N/U141  ( .A1(FIFO_D_out_L[12]), .A2(\XBAR_N/n12 ), .B1(
+  INVXL \XBAR_N/U153  ( .A(\XBAR_N/n111 ), .Q(\XBAR_N/n17 ) );
+  NAND2XL \XBAR_N/U152  ( .A(\XBAR_N/n17 ), .B(\XBAR_N/n110 ), .Q(
+        \XBAR_N/n107 ) );
+  AOI22X3 \XBAR_N/U150  ( .A1(FIFO_D_out_L[12]), .A2(\XBAR_N/n12 ), .B1(
         FIFO_D_out_N[12]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n100 ) );
-  AOI22X3 \XBAR_N/U140  ( .A1(FIFO_D_out_E[12]), .A2(\XBAR_N/n6 ), .B1(
+  AOI22X3 \XBAR_N/U149  ( .A1(FIFO_D_out_E[12]), .A2(\XBAR_N/n6 ), .B1(
         FIFO_D_out_W[12]), .B2(\XBAR_N/n3 ), .Q(\XBAR_N/n99 ) );
-  INVXL \XBAR_N/U139  ( .A(FIFO_D_out_S[12]), .Q(\XBAR_N/n112 ) );
-  OAI211X3 \XBAR_N/U138  ( .A1(\XBAR_N/n15 ), .A2(\XBAR_N/n112 ), .B1(
+  INVXL \XBAR_N/U148  ( .A(FIFO_D_out_S[12]), .Q(\XBAR_N/n112 ) );
+  OAI211X3 \XBAR_N/U147  ( .A1(\XBAR_N/n15 ), .A2(\XBAR_N/n112 ), .B1(
         \XBAR_N/n99 ), .C1(\XBAR_N/n100 ), .Q(TX_N[12]) );
-  AOI22X3 \XBAR_N/U137  ( .A1(FIFO_D_out_L[11]), .A2(\XBAR_N/n12 ), .B1(
+  AOI22X3 \XBAR_N/U146  ( .A1(FIFO_D_out_L[11]), .A2(\XBAR_N/n12 ), .B1(
         FIFO_D_out_N[11]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n102 ) );
-  AOI22X3 \XBAR_N/U136  ( .A1(FIFO_D_out_E[11]), .A2(\XBAR_N/n6 ), .B1(
+  AOI22X3 \XBAR_N/U145  ( .A1(FIFO_D_out_E[11]), .A2(\XBAR_N/n6 ), .B1(
         FIFO_D_out_W[11]), .B2(\XBAR_N/n3 ), .Q(\XBAR_N/n101 ) );
-  INVXL \XBAR_N/U135  ( .A(FIFO_D_out_S[11]), .Q(\XBAR_N/n113 ) );
-  OAI211X3 \XBAR_N/U134  ( .A1(\XBAR_N/n15 ), .A2(\XBAR_N/n113 ), .B1(
+  INVXL \XBAR_N/U144  ( .A(FIFO_D_out_S[11]), .Q(\XBAR_N/n113 ) );
+  OAI211X3 \XBAR_N/U143  ( .A1(\XBAR_N/n15 ), .A2(\XBAR_N/n113 ), .B1(
         \XBAR_N/n101 ), .C1(\XBAR_N/n102 ), .Q(TX_N[11]) );
-  AOI22X3 \XBAR_N/U133  ( .A1(FIFO_D_out_L[10]), .A2(\XBAR_N/n12 ), .B1(
+  AOI22X3 \XBAR_N/U142  ( .A1(FIFO_D_out_L[10]), .A2(\XBAR_N/n12 ), .B1(
         FIFO_D_out_N[10]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n104 ) );
-  AOI22X3 \XBAR_N/U132  ( .A1(FIFO_D_out_E[10]), .A2(\XBAR_N/n6 ), .B1(
+  AOI22X3 \XBAR_N/U141  ( .A1(FIFO_D_out_E[10]), .A2(\XBAR_N/n6 ), .B1(
         FIFO_D_out_W[10]), .B2(\XBAR_N/n3 ), .Q(\XBAR_N/n103 ) );
-  INVXL \XBAR_N/U131  ( .A(FIFO_D_out_S[10]), .Q(\XBAR_N/n114 ) );
-  OAI211X3 \XBAR_N/U130  ( .A1(\XBAR_N/n15 ), .A2(\XBAR_N/n114 ), .B1(
+  INVXL \XBAR_N/U140  ( .A(FIFO_D_out_S[10]), .Q(\XBAR_N/n114 ) );
+  OAI211X3 \XBAR_N/U139  ( .A1(\XBAR_N/n15 ), .A2(\XBAR_N/n114 ), .B1(
         \XBAR_N/n103 ), .C1(\XBAR_N/n104 ), .Q(TX_N[10]) );
-  AOI22X3 \XBAR_N/U129  ( .A1(FIFO_D_out_L[9]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[9]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n40 ) );
-  AOI22X3 \XBAR_N/U128  ( .A1(FIFO_D_out_E[9]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[9]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n39 ) );
-  INVXL \XBAR_N/U127  ( .A(FIFO_D_out_S[9]), .Q(\XBAR_N/n115 ) );
-  OAI211X3 \XBAR_N/U126  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n115 ), .B1(
-        \XBAR_N/n39 ), .C1(\XBAR_N/n40 ), .Q(TX_N[9]) );
-  AOI22X3 \XBAR_N/U125  ( .A1(FIFO_D_out_L[8]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[8]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n46 ) );
-  AOI22X3 \XBAR_N/U124  ( .A1(FIFO_D_out_E[8]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[8]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n45 ) );
-  INVXL \XBAR_N/U123  ( .A(FIFO_D_out_S[8]), .Q(\XBAR_N/n116 ) );
-  OAI211X3 \XBAR_N/U122  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n116 ), .B1(
-        \XBAR_N/n45 ), .C1(\XBAR_N/n46 ), .Q(TX_N[8]) );
-  AOI22X3 \XBAR_N/U121  ( .A1(FIFO_D_out_L[7]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[7]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n48 ) );
-  AOI22X3 \XBAR_N/U120  ( .A1(FIFO_D_out_E[7]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[7]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n47 ) );
-  INVXL \XBAR_N/U119  ( .A(FIFO_D_out_S[7]), .Q(\XBAR_N/n117 ) );
-  OAI211X3 \XBAR_N/U118  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n117 ), .B1(
-        \XBAR_N/n47 ), .C1(\XBAR_N/n48 ), .Q(TX_N[7]) );
-  AOI22X3 \XBAR_N/U117  ( .A1(FIFO_D_out_L[6]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[6]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n50 ) );
-  AOI22X3 \XBAR_N/U116  ( .A1(FIFO_D_out_E[6]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[6]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n49 ) );
-  INVXL \XBAR_N/U115  ( .A(FIFO_D_out_S[6]), .Q(\XBAR_N/n118 ) );
-  OAI211X3 \XBAR_N/U114  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n118 ), .B1(
-        \XBAR_N/n49 ), .C1(\XBAR_N/n50 ), .Q(TX_N[6]) );
-  AOI22X3 \XBAR_N/U113  ( .A1(FIFO_D_out_L[5]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[5]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n52 ) );
-  AOI22X3 \XBAR_N/U112  ( .A1(FIFO_D_out_E[5]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[5]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n51 ) );
-  INVXL \XBAR_N/U111  ( .A(FIFO_D_out_S[5]), .Q(\XBAR_N/n119 ) );
-  OAI211X3 \XBAR_N/U110  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n119 ), .B1(
-        \XBAR_N/n51 ), .C1(\XBAR_N/n52 ), .Q(TX_N[5]) );
-  AOI22X3 \XBAR_N/U109  ( .A1(FIFO_D_out_L[0]), .A2(\XBAR_N/n12 ), .B1(
+  AOI22X3 \XBAR_N/U138  ( .A1(FIFO_D_out_L[0]), .A2(\XBAR_N/n12 ), .B1(
         FIFO_D_out_N[0]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n106 ) );
-  AOI22X3 \XBAR_N/U108  ( .A1(FIFO_D_out_E[0]), .A2(\XBAR_N/n6 ), .B1(
+  AOI22X3 \XBAR_N/U137  ( .A1(FIFO_D_out_E[0]), .A2(\XBAR_N/n6 ), .B1(
         FIFO_D_out_W[0]), .B2(\XBAR_N/n3 ), .Q(\XBAR_N/n105 ) );
-  INVXL \XBAR_N/U107  ( .A(FIFO_D_out_S[0]), .Q(\XBAR_N/n124 ) );
-  OAI211X3 \XBAR_N/U106  ( .A1(\XBAR_N/n15 ), .A2(\XBAR_N/n124 ), .B1(
+  INVXL \XBAR_N/U136  ( .A(FIFO_D_out_S[0]), .Q(\XBAR_N/n124 ) );
+  OAI211X3 \XBAR_N/U135  ( .A1(\XBAR_N/n15 ), .A2(\XBAR_N/n124 ), .B1(
         \XBAR_N/n105 ), .C1(\XBAR_N/n106 ), .Q(TX_N[0]) );
-  AOI22X3 \XBAR_N/U105  ( .A1(FIFO_D_out_L[29]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[29]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n64 ) );
-  AOI22X3 \XBAR_N/U104  ( .A1(FIFO_D_out_E[29]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[29]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n63 ) );
-  INVXL \XBAR_N/U103  ( .A(FIFO_D_out_S[29]), .Q(\XBAR_N/n21 ) );
-  OAI211X3 \XBAR_N/U102  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n21 ), .B1(
-        \XBAR_N/n63 ), .C1(\XBAR_N/n64 ), .Q(TX_N[29]) );
-  AOI22X3 \XBAR_N/U101  ( .A1(FIFO_D_out_L[30]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[30]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n60 ) );
-  AOI22X3 \XBAR_N/U100  ( .A1(FIFO_D_out_E[30]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[30]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n59 ) );
-  INVXL \XBAR_N/U99  ( .A(FIFO_D_out_S[30]), .Q(\XBAR_N/n20 ) );
-  OAI211X3 \XBAR_N/U98  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n20 ), .B1(
-        \XBAR_N/n59 ), .C1(\XBAR_N/n60 ), .Q(TX_N[30]) );
-  AOI22X3 \XBAR_N/U97  ( .A1(FIFO_D_out_L[31]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[31]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n58 ) );
-  AOI22X3 \XBAR_N/U96  ( .A1(FIFO_D_out_E[31]), .A2(\XBAR_N/n4 ), .B1(
+  AOI22X3 \XBAR_N/U134  ( .A1(FIFO_D_out_L[31]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[31]), .B2(\XBAR_N/n42 ), .Q(\XBAR_N/n58 ) );
+  AOI22X3 \XBAR_N/U133  ( .A1(FIFO_D_out_E[31]), .A2(\XBAR_N/n4 ), .B1(
         FIFO_D_out_W[31]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n57 ) );
-  INVXL \XBAR_N/U95  ( .A(FIFO_D_out_S[31]), .Q(\XBAR_N/n19 ) );
-  OAI211X3 \XBAR_N/U94  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n19 ), .B1(
+  INVXL \XBAR_N/U132  ( .A(FIFO_D_out_S[31]), .Q(\XBAR_N/n19 ) );
+  OAI211X3 \XBAR_N/U131  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n19 ), .B1(
         \XBAR_N/n57 ), .C1(\XBAR_N/n58 ), .Q(TX_N[31]) );
-  AOI22X3 \XBAR_N/U93  ( .A1(FIFO_D_out_L[3]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[3]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n56 ) );
-  AOI22X3 \XBAR_N/U92  ( .A1(FIFO_D_out_E[3]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[3]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n55 ) );
-  INVXL \XBAR_N/U91  ( .A(FIFO_D_out_S[3]), .Q(\XBAR_N/n121 ) );
-  OAI211X3 \XBAR_N/U90  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n121 ), .B1(
-        \XBAR_N/n55 ), .C1(\XBAR_N/n56 ), .Q(TX_N[3]) );
-  AOI22X3 \XBAR_N/U89  ( .A1(FIFO_D_out_L[4]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[4]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n54 ) );
-  AOI22X3 \XBAR_N/U88  ( .A1(FIFO_D_out_E[4]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[4]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n53 ) );
-  INVXL \XBAR_N/U87  ( .A(FIFO_D_out_S[4]), .Q(\XBAR_N/n120 ) );
-  OAI211X3 \XBAR_N/U86  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n120 ), .B1(
-        \XBAR_N/n53 ), .C1(\XBAR_N/n54 ), .Q(TX_N[4]) );
-  AOI22X3 \XBAR_N/U85  ( .A1(FIFO_D_out_L[2]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[2]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n62 ) );
-  AOI22X3 \XBAR_N/U84  ( .A1(FIFO_D_out_E[2]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[2]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n61 ) );
-  INVXL \XBAR_N/U83  ( .A(FIFO_D_out_S[2]), .Q(\XBAR_N/n122 ) );
-  OAI211X3 \XBAR_N/U82  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n122 ), .B1(
-        \XBAR_N/n61 ), .C1(\XBAR_N/n62 ), .Q(TX_N[2]) );
-  AOI22X3 \XBAR_N/U81  ( .A1(FIFO_D_out_L[25]), .A2(\XBAR_N/n11 ), .B1(
+  AOI22X3 \XBAR_N/U130  ( .A1(FIFO_D_out_L[30]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[30]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n60 ) );
+  AOI22X3 \XBAR_N/U129  ( .A1(FIFO_D_out_E[30]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[30]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n59 ) );
+  INVXL \XBAR_N/U128  ( .A(FIFO_D_out_S[30]), .Q(\XBAR_N/n20 ) );
+  OAI211X3 \XBAR_N/U127  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n20 ), .B1(
+        \XBAR_N/n59 ), .C1(\XBAR_N/n60 ), .Q(TX_N[30]) );
+  AOI22X3 \XBAR_N/U126  ( .A1(FIFO_D_out_L[29]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[29]), .B2(\XBAR_N/n9 ), .Q(\XBAR_N/n64 ) );
+  AOI22X3 \XBAR_N/U125  ( .A1(FIFO_D_out_E[29]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[29]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n63 ) );
+  INVXL \XBAR_N/U124  ( .A(FIFO_D_out_S[29]), .Q(\XBAR_N/n21 ) );
+  OAI211X3 \XBAR_N/U123  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n21 ), .B1(
+        \XBAR_N/n63 ), .C1(\XBAR_N/n64 ), .Q(TX_N[29]) );
+  AOI22X3 \XBAR_N/U122  ( .A1(FIFO_D_out_L[28]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[28]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n66 ) );
+  AOI22X3 \XBAR_N/U121  ( .A1(FIFO_D_out_E[28]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[28]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n65 ) );
+  INVXL \XBAR_N/U120  ( .A(FIFO_D_out_S[28]), .Q(\XBAR_N/n22 ) );
+  OAI211X3 \XBAR_N/U119  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n22 ), .B1(
+        \XBAR_N/n65 ), .C1(\XBAR_N/n66 ), .Q(TX_N[28]) );
+  AOI22X3 \XBAR_N/U118  ( .A1(FIFO_D_out_L[27]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[27]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n68 ) );
+  AOI22X3 \XBAR_N/U117  ( .A1(FIFO_D_out_E[27]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[27]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n67 ) );
+  INVXL \XBAR_N/U116  ( .A(FIFO_D_out_S[27]), .Q(\XBAR_N/n23 ) );
+  OAI211X3 \XBAR_N/U115  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n23 ), .B1(
+        \XBAR_N/n67 ), .C1(\XBAR_N/n68 ), .Q(TX_N[27]) );
+  AOI22X3 \XBAR_N/U114  ( .A1(FIFO_D_out_L[26]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[26]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n70 ) );
+  AOI22X3 \XBAR_N/U113  ( .A1(FIFO_D_out_E[26]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[26]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n69 ) );
+  INVXL \XBAR_N/U112  ( .A(FIFO_D_out_S[26]), .Q(\XBAR_N/n24 ) );
+  OAI211X3 \XBAR_N/U111  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n24 ), .B1(
+        \XBAR_N/n69 ), .C1(\XBAR_N/n70 ), .Q(TX_N[26]) );
+  AOI22X3 \XBAR_N/U110  ( .A1(FIFO_D_out_L[25]), .A2(\XBAR_N/n11 ), .B1(
         FIFO_D_out_N[25]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n72 ) );
-  AOI22X3 \XBAR_N/U80  ( .A1(FIFO_D_out_E[25]), .A2(\XBAR_N/n5 ), .B1(
+  AOI22X3 \XBAR_N/U109  ( .A1(FIFO_D_out_E[25]), .A2(\XBAR_N/n5 ), .B1(
         FIFO_D_out_W[25]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n71 ) );
-  INVXL \XBAR_N/U79  ( .A(FIFO_D_out_S[25]), .Q(\XBAR_N/n25 ) );
-  OAI211X3 \XBAR_N/U78  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n25 ), .B1(
+  INVXL \XBAR_N/U108  ( .A(FIFO_D_out_S[25]), .Q(\XBAR_N/n25 ) );
+  OAI211X3 \XBAR_N/U107  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n25 ), .B1(
         \XBAR_N/n71 ), .C1(\XBAR_N/n72 ), .Q(TX_N[25]) );
-  AOI22X3 \XBAR_N/U77  ( .A1(FIFO_D_out_L[24]), .A2(\XBAR_N/n11 ), .B1(
+  AOI22X3 \XBAR_N/U106  ( .A1(FIFO_D_out_L[24]), .A2(\XBAR_N/n11 ), .B1(
         FIFO_D_out_N[24]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n74 ) );
-  AOI22X3 \XBAR_N/U76  ( .A1(FIFO_D_out_E[24]), .A2(\XBAR_N/n5 ), .B1(
+  AOI22X3 \XBAR_N/U105  ( .A1(FIFO_D_out_E[24]), .A2(\XBAR_N/n5 ), .B1(
         FIFO_D_out_W[24]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n73 ) );
-  INVXL \XBAR_N/U75  ( .A(FIFO_D_out_S[24]), .Q(\XBAR_N/n26 ) );
-  OAI211X3 \XBAR_N/U74  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n26 ), .B1(
+  INVXL \XBAR_N/U104  ( .A(FIFO_D_out_S[24]), .Q(\XBAR_N/n26 ) );
+  OAI211X3 \XBAR_N/U103  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n26 ), .B1(
         \XBAR_N/n73 ), .C1(\XBAR_N/n74 ), .Q(TX_N[24]) );
-  AOI22X3 \XBAR_N/U73  ( .A1(FIFO_D_out_L[23]), .A2(\XBAR_N/n11 ), .B1(
+  AOI22X3 \XBAR_N/U102  ( .A1(FIFO_D_out_L[23]), .A2(\XBAR_N/n11 ), .B1(
         FIFO_D_out_N[23]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n76 ) );
-  AOI22X3 \XBAR_N/U72  ( .A1(FIFO_D_out_E[23]), .A2(\XBAR_N/n5 ), .B1(
+  AOI22X3 \XBAR_N/U101  ( .A1(FIFO_D_out_E[23]), .A2(\XBAR_N/n5 ), .B1(
         FIFO_D_out_W[23]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n75 ) );
-  INVXL \XBAR_N/U71  ( .A(FIFO_D_out_S[23]), .Q(\XBAR_N/n27 ) );
-  OAI211X3 \XBAR_N/U70  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n27 ), .B1(
+  INVXL \XBAR_N/U100  ( .A(FIFO_D_out_S[23]), .Q(\XBAR_N/n27 ) );
+  OAI211X3 \XBAR_N/U99  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n27 ), .B1(
         \XBAR_N/n75 ), .C1(\XBAR_N/n76 ), .Q(TX_N[23]) );
-  AOI22X3 \XBAR_N/U69  ( .A1(FIFO_D_out_L[22]), .A2(\XBAR_N/n11 ), .B1(
+  AOI22X3 \XBAR_N/U98  ( .A1(FIFO_D_out_L[22]), .A2(\XBAR_N/n11 ), .B1(
         FIFO_D_out_N[22]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n78 ) );
-  AOI22X3 \XBAR_N/U68  ( .A1(FIFO_D_out_E[22]), .A2(\XBAR_N/n5 ), .B1(
+  AOI22X3 \XBAR_N/U97  ( .A1(FIFO_D_out_E[22]), .A2(\XBAR_N/n5 ), .B1(
         FIFO_D_out_W[22]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n77 ) );
-  INVXL \XBAR_N/U67  ( .A(FIFO_D_out_S[22]), .Q(\XBAR_N/n28 ) );
-  OAI211X3 \XBAR_N/U66  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n28 ), .B1(
+  INVXL \XBAR_N/U96  ( .A(FIFO_D_out_S[22]), .Q(\XBAR_N/n28 ) );
+  OAI211X3 \XBAR_N/U95  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n28 ), .B1(
         \XBAR_N/n77 ), .C1(\XBAR_N/n78 ), .Q(TX_N[22]) );
-  AOI22X3 \XBAR_N/U65  ( .A1(FIFO_D_out_L[21]), .A2(\XBAR_N/n11 ), .B1(
+  AOI22X3 \XBAR_N/U94  ( .A1(FIFO_D_out_L[21]), .A2(\XBAR_N/n11 ), .B1(
         FIFO_D_out_N[21]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n80 ) );
-  AOI22X3 \XBAR_N/U64  ( .A1(FIFO_D_out_E[21]), .A2(\XBAR_N/n5 ), .B1(
+  AOI22X3 \XBAR_N/U93  ( .A1(FIFO_D_out_E[21]), .A2(\XBAR_N/n5 ), .B1(
         FIFO_D_out_W[21]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n79 ) );
-  INVXL \XBAR_N/U63  ( .A(FIFO_D_out_S[21]), .Q(\XBAR_N/n29 ) );
-  OAI211X3 \XBAR_N/U62  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n29 ), .B1(
+  INVXL \XBAR_N/U92  ( .A(FIFO_D_out_S[21]), .Q(\XBAR_N/n29 ) );
+  OAI211X3 \XBAR_N/U91  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n29 ), .B1(
         \XBAR_N/n79 ), .C1(\XBAR_N/n80 ), .Q(TX_N[21]) );
-  AOI22X3 \XBAR_N/U61  ( .A1(FIFO_D_out_L[20]), .A2(\XBAR_N/n11 ), .B1(
+  AOI22X3 \XBAR_N/U90  ( .A1(FIFO_D_out_L[20]), .A2(\XBAR_N/n11 ), .B1(
         FIFO_D_out_N[20]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n82 ) );
-  AOI22X3 \XBAR_N/U60  ( .A1(FIFO_D_out_E[20]), .A2(\XBAR_N/n5 ), .B1(
+  AOI22X3 \XBAR_N/U89  ( .A1(FIFO_D_out_E[20]), .A2(\XBAR_N/n5 ), .B1(
         FIFO_D_out_W[20]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n81 ) );
-  INVXL \XBAR_N/U59  ( .A(FIFO_D_out_S[20]), .Q(\XBAR_N/n30 ) );
-  OAI211X3 \XBAR_N/U58  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n30 ), .B1(
+  INVXL \XBAR_N/U88  ( .A(FIFO_D_out_S[20]), .Q(\XBAR_N/n30 ) );
+  OAI211X3 \XBAR_N/U87  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n30 ), .B1(
         \XBAR_N/n81 ), .C1(\XBAR_N/n82 ), .Q(TX_N[20]) );
-  AOI22X3 \XBAR_N/U57  ( .A1(FIFO_D_out_L[19]), .A2(\XBAR_N/n11 ), .B1(
+  AOI22X3 \XBAR_N/U86  ( .A1(FIFO_D_out_L[19]), .A2(\XBAR_N/n11 ), .B1(
         FIFO_D_out_N[19]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n86 ) );
-  AOI22X3 \XBAR_N/U56  ( .A1(FIFO_D_out_E[19]), .A2(\XBAR_N/n5 ), .B1(
+  AOI22X3 \XBAR_N/U85  ( .A1(FIFO_D_out_E[19]), .A2(\XBAR_N/n5 ), .B1(
         FIFO_D_out_W[19]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n85 ) );
-  INVXL \XBAR_N/U55  ( .A(FIFO_D_out_S[19]), .Q(\XBAR_N/n31 ) );
-  OAI211X3 \XBAR_N/U54  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n31 ), .B1(
+  INVXL \XBAR_N/U84  ( .A(FIFO_D_out_S[19]), .Q(\XBAR_N/n31 ) );
+  OAI211X3 \XBAR_N/U83  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n31 ), .B1(
         \XBAR_N/n85 ), .C1(\XBAR_N/n86 ), .Q(TX_N[19]) );
-  AOI22X3 \XBAR_N/U53  ( .A1(FIFO_D_out_L[18]), .A2(\XBAR_N/n11 ), .B1(
+  AOI22X3 \XBAR_N/U82  ( .A1(FIFO_D_out_L[18]), .A2(\XBAR_N/n11 ), .B1(
         FIFO_D_out_N[18]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n88 ) );
-  AOI22X3 \XBAR_N/U52  ( .A1(FIFO_D_out_E[18]), .A2(\XBAR_N/n5 ), .B1(
+  AOI22X3 \XBAR_N/U81  ( .A1(FIFO_D_out_E[18]), .A2(\XBAR_N/n5 ), .B1(
         FIFO_D_out_W[18]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n87 ) );
-  INVXL \XBAR_N/U51  ( .A(FIFO_D_out_S[18]), .Q(\XBAR_N/n32 ) );
-  OAI211X3 \XBAR_N/U50  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n32 ), .B1(
+  INVXL \XBAR_N/U80  ( .A(FIFO_D_out_S[18]), .Q(\XBAR_N/n32 ) );
+  OAI211X3 \XBAR_N/U79  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n32 ), .B1(
         \XBAR_N/n87 ), .C1(\XBAR_N/n88 ), .Q(TX_N[18]) );
-  AOI22X3 \XBAR_N/U49  ( .A1(FIFO_D_out_L[17]), .A2(\XBAR_N/n11 ), .B1(
+  AOI22X3 \XBAR_N/U78  ( .A1(FIFO_D_out_L[17]), .A2(\XBAR_N/n11 ), .B1(
         FIFO_D_out_N[17]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n90 ) );
-  AOI22X3 \XBAR_N/U48  ( .A1(FIFO_D_out_E[17]), .A2(\XBAR_N/n5 ), .B1(
+  AOI22X3 \XBAR_N/U77  ( .A1(FIFO_D_out_E[17]), .A2(\XBAR_N/n5 ), .B1(
         FIFO_D_out_W[17]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n89 ) );
-  INVXL \XBAR_N/U47  ( .A(FIFO_D_out_S[17]), .Q(\XBAR_N/n33 ) );
-  OAI211X3 \XBAR_N/U46  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n33 ), .B1(
+  INVXL \XBAR_N/U76  ( .A(FIFO_D_out_S[17]), .Q(\XBAR_N/n33 ) );
+  OAI211X3 \XBAR_N/U75  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n33 ), .B1(
         \XBAR_N/n89 ), .C1(\XBAR_N/n90 ), .Q(TX_N[17]) );
-  AOI22X3 \XBAR_N/U45  ( .A1(FIFO_D_out_L[16]), .A2(\XBAR_N/n11 ), .B1(
+  AOI22X3 \XBAR_N/U74  ( .A1(FIFO_D_out_L[16]), .A2(\XBAR_N/n11 ), .B1(
         FIFO_D_out_N[16]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n92 ) );
-  AOI22X3 \XBAR_N/U44  ( .A1(FIFO_D_out_E[16]), .A2(\XBAR_N/n5 ), .B1(
+  AOI22X3 \XBAR_N/U73  ( .A1(FIFO_D_out_E[16]), .A2(\XBAR_N/n5 ), .B1(
         FIFO_D_out_W[16]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n91 ) );
-  INVXL \XBAR_N/U43  ( .A(FIFO_D_out_S[16]), .Q(\XBAR_N/n34 ) );
-  OAI211X3 \XBAR_N/U42  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n34 ), .B1(
+  INVXL \XBAR_N/U72  ( .A(FIFO_D_out_S[16]), .Q(\XBAR_N/n34 ) );
+  OAI211X3 \XBAR_N/U71  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n34 ), .B1(
         \XBAR_N/n91 ), .C1(\XBAR_N/n92 ), .Q(TX_N[16]) );
-  AOI22X3 \XBAR_N/U41  ( .A1(FIFO_D_out_L[15]), .A2(\XBAR_N/n11 ), .B1(
+  AOI22X3 \XBAR_N/U70  ( .A1(FIFO_D_out_L[15]), .A2(\XBAR_N/n11 ), .B1(
         FIFO_D_out_N[15]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n94 ) );
-  AOI22X3 \XBAR_N/U40  ( .A1(FIFO_D_out_E[15]), .A2(\XBAR_N/n5 ), .B1(
+  AOI22X3 \XBAR_N/U69  ( .A1(FIFO_D_out_E[15]), .A2(\XBAR_N/n5 ), .B1(
         FIFO_D_out_W[15]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n93 ) );
-  INVXL \XBAR_N/U39  ( .A(FIFO_D_out_S[15]), .Q(\XBAR_N/n35 ) );
-  OAI211X3 \XBAR_N/U38  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n35 ), .B1(
+  INVXL \XBAR_N/U68  ( .A(FIFO_D_out_S[15]), .Q(\XBAR_N/n35 ) );
+  OAI211X3 \XBAR_N/U67  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n35 ), .B1(
         \XBAR_N/n93 ), .C1(\XBAR_N/n94 ), .Q(TX_N[15]) );
-  AOI22X3 \XBAR_N/U37  ( .A1(FIFO_D_out_L[14]), .A2(\XBAR_N/n11 ), .B1(
+  AOI22X3 \XBAR_N/U66  ( .A1(FIFO_D_out_L[14]), .A2(\XBAR_N/n11 ), .B1(
         FIFO_D_out_N[14]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n96 ) );
-  AOI22X3 \XBAR_N/U36  ( .A1(FIFO_D_out_E[14]), .A2(\XBAR_N/n5 ), .B1(
+  AOI22X3 \XBAR_N/U65  ( .A1(FIFO_D_out_E[14]), .A2(\XBAR_N/n5 ), .B1(
         FIFO_D_out_W[14]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n95 ) );
-  INVXL \XBAR_N/U35  ( .A(FIFO_D_out_S[14]), .Q(\XBAR_N/n36 ) );
-  OAI211X3 \XBAR_N/U34  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n36 ), .B1(
+  INVXL \XBAR_N/U64  ( .A(FIFO_D_out_S[14]), .Q(\XBAR_N/n36 ) );
+  OAI211X3 \XBAR_N/U63  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n36 ), .B1(
         \XBAR_N/n95 ), .C1(\XBAR_N/n96 ), .Q(TX_N[14]) );
-  AOI22X3 \XBAR_N/U33  ( .A1(FIFO_D_out_L[13]), .A2(\XBAR_N/n11 ), .B1(
+  AOI22X3 \XBAR_N/U62  ( .A1(FIFO_D_out_L[13]), .A2(\XBAR_N/n11 ), .B1(
         FIFO_D_out_N[13]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n98 ) );
-  AOI22X3 \XBAR_N/U32  ( .A1(FIFO_D_out_E[13]), .A2(\XBAR_N/n5 ), .B1(
+  AOI22X3 \XBAR_N/U61  ( .A1(FIFO_D_out_E[13]), .A2(\XBAR_N/n5 ), .B1(
         FIFO_D_out_W[13]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n97 ) );
-  INVXL \XBAR_N/U31  ( .A(FIFO_D_out_S[13]), .Q(\XBAR_N/n37 ) );
-  OAI211X3 \XBAR_N/U30  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n37 ), .B1(
+  INVXL \XBAR_N/U60  ( .A(FIFO_D_out_S[13]), .Q(\XBAR_N/n37 ) );
+  OAI211X3 \XBAR_N/U59  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n37 ), .B1(
         \XBAR_N/n97 ), .C1(\XBAR_N/n98 ), .Q(TX_N[13]) );
-  AOI22X3 \XBAR_N/U29  ( .A1(FIFO_D_out_L[1]), .A2(\XBAR_N/n11 ), .B1(
+  AOI22X3 \XBAR_N/U58  ( .A1(FIFO_D_out_L[9]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[9]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n40 ) );
+  AOI22X3 \XBAR_N/U57  ( .A1(FIFO_D_out_E[9]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[9]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n39 ) );
+  INVXL \XBAR_N/U56  ( .A(FIFO_D_out_S[9]), .Q(\XBAR_N/n115 ) );
+  OAI211X3 \XBAR_N/U55  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n115 ), .B1(
+        \XBAR_N/n39 ), .C1(\XBAR_N/n40 ), .Q(TX_N[9]) );
+  AOI22X3 \XBAR_N/U54  ( .A1(FIFO_D_out_L[8]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[8]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n46 ) );
+  AOI22X3 \XBAR_N/U53  ( .A1(FIFO_D_out_E[8]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[8]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n45 ) );
+  INVXL \XBAR_N/U52  ( .A(FIFO_D_out_S[8]), .Q(\XBAR_N/n116 ) );
+  OAI211X3 \XBAR_N/U51  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n116 ), .B1(
+        \XBAR_N/n45 ), .C1(\XBAR_N/n46 ), .Q(TX_N[8]) );
+  AOI22X3 \XBAR_N/U50  ( .A1(FIFO_D_out_L[7]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[7]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n48 ) );
+  AOI22X3 \XBAR_N/U49  ( .A1(FIFO_D_out_E[7]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[7]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n47 ) );
+  INVXL \XBAR_N/U48  ( .A(FIFO_D_out_S[7]), .Q(\XBAR_N/n117 ) );
+  OAI211X3 \XBAR_N/U47  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n117 ), .B1(
+        \XBAR_N/n47 ), .C1(\XBAR_N/n48 ), .Q(TX_N[7]) );
+  AOI22X3 \XBAR_N/U46  ( .A1(FIFO_D_out_L[6]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[6]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n50 ) );
+  AOI22X3 \XBAR_N/U45  ( .A1(FIFO_D_out_E[6]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[6]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n49 ) );
+  INVXL \XBAR_N/U44  ( .A(FIFO_D_out_S[6]), .Q(\XBAR_N/n118 ) );
+  OAI211X3 \XBAR_N/U43  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n118 ), .B1(
+        \XBAR_N/n49 ), .C1(\XBAR_N/n50 ), .Q(TX_N[6]) );
+  AOI22X3 \XBAR_N/U42  ( .A1(FIFO_D_out_L[5]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[5]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n52 ) );
+  AOI22X3 \XBAR_N/U41  ( .A1(FIFO_D_out_E[5]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[5]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n51 ) );
+  INVXL \XBAR_N/U40  ( .A(FIFO_D_out_S[5]), .Q(\XBAR_N/n119 ) );
+  OAI211X3 \XBAR_N/U39  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n119 ), .B1(
+        \XBAR_N/n51 ), .C1(\XBAR_N/n52 ), .Q(TX_N[5]) );
+  AOI22X3 \XBAR_N/U38  ( .A1(FIFO_D_out_L[4]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[4]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n54 ) );
+  AOI22X3 \XBAR_N/U37  ( .A1(FIFO_D_out_E[4]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[4]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n53 ) );
+  INVXL \XBAR_N/U36  ( .A(FIFO_D_out_S[4]), .Q(\XBAR_N/n120 ) );
+  OAI211X3 \XBAR_N/U35  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n120 ), .B1(
+        \XBAR_N/n53 ), .C1(\XBAR_N/n54 ), .Q(TX_N[4]) );
+  AOI22X3 \XBAR_N/U34  ( .A1(FIFO_D_out_L[3]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[3]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n56 ) );
+  AOI22X3 \XBAR_N/U33  ( .A1(FIFO_D_out_E[3]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[3]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n55 ) );
+  INVXL \XBAR_N/U32  ( .A(FIFO_D_out_S[3]), .Q(\XBAR_N/n121 ) );
+  OAI211X3 \XBAR_N/U31  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n121 ), .B1(
+        \XBAR_N/n55 ), .C1(\XBAR_N/n56 ), .Q(TX_N[3]) );
+  AOI22X3 \XBAR_N/U30  ( .A1(FIFO_D_out_L[2]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[2]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n62 ) );
+  AOI22X3 \XBAR_N/U29  ( .A1(FIFO_D_out_E[2]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[2]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n61 ) );
+  INVXL \XBAR_N/U28  ( .A(FIFO_D_out_S[2]), .Q(\XBAR_N/n122 ) );
+  OAI211X3 \XBAR_N/U27  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n122 ), .B1(
+        \XBAR_N/n61 ), .C1(\XBAR_N/n62 ), .Q(TX_N[2]) );
+  AOI22X3 \XBAR_N/U26  ( .A1(FIFO_D_out_L[1]), .A2(\XBAR_N/n11 ), .B1(
         FIFO_D_out_N[1]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n84 ) );
-  AOI22X3 \XBAR_N/U28  ( .A1(FIFO_D_out_E[1]), .A2(\XBAR_N/n5 ), .B1(
+  AOI22X3 \XBAR_N/U25  ( .A1(FIFO_D_out_E[1]), .A2(\XBAR_N/n5 ), .B1(
         FIFO_D_out_W[1]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n83 ) );
-  INVXL \XBAR_N/U27  ( .A(FIFO_D_out_S[1]), .Q(\XBAR_N/n123 ) );
-  OAI211X3 \XBAR_N/U26  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n123 ), .B1(
+  INVXL \XBAR_N/U24  ( .A(FIFO_D_out_S[1]), .Q(\XBAR_N/n123 ) );
+  OAI211X3 \XBAR_N/U23  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n123 ), .B1(
         \XBAR_N/n83 ), .C1(\XBAR_N/n84 ), .Q(TX_N[1]) );
-  INVXL \XBAR_N/U24  ( .A(\XBAR_N/n111 ), .Q(\XBAR_N/n17 ) );
-  NAND2XL \XBAR_N/U23  ( .A(\XBAR_N/n17 ), .B(\XBAR_N/n110 ), .Q(\XBAR_N/n107 ) );
   CLKBUFX2 \XBAR_N/U21  ( .A(\XBAR_N/n38 ), .Q(\XBAR_N/n15 ) );
   CLKBUFX2 \XBAR_N/U20  ( .A(\XBAR_N/n43 ), .Q(\XBAR_N/n6 ) );
   CLKBUFX2 \XBAR_N/U19  ( .A(\XBAR_N/n44 ), .Q(\XBAR_N/n3 ) );
@@ -25676,8 +25903,6 @@ module router_credit_based ( reset,
   INVXL \XBAR_N/U10  ( .A(Xbar_sel_N[2]), .Q(\XBAR_N/n16 ) );
   NOR4X3 \XBAR_N/U9  ( .A(\XBAR_N/n16 ), .B(Xbar_sel_N[0]), .C(Xbar_sel_N[1]), 
         .D(Xbar_sel_N[3]), .Q(\XBAR_N/n44 ) );
-  NOR4X3 \XBAR_N/U8  ( .A(\XBAR_N/n125 ), .B(Xbar_sel_N[0]), .C(Xbar_sel_N[1]), 
-        .D(Xbar_sel_N[2]), .Q(\XBAR_N/n43 ) );
   NOR4X3 \XBAR_N/U7  ( .A(\XBAR_N/n18 ), .B(Xbar_sel_N[0]), .C(Xbar_sel_N[2]), 
         .D(Xbar_sel_N[3]), .Q(\XBAR_N/n111 ) );
   CLKBUFX2 \XBAR_N/U6  ( .A(\XBAR_N/n9 ), .Q(\XBAR_N/n8 ) );
@@ -25869,166 +26094,166 @@ module router_credit_based ( reset,
   NOR2XL \XBAR_E/U1  ( .A(\XBAR_E/n128 ), .B(Xbar_sel_E[4]), .Q(\XBAR_E/n197 )
          );
   AND2X3 \XBAR_W/U154  ( .A(\XBAR_W/n129 ), .B(\XBAR_W/n19 ), .Q(\XBAR_W/n195 ) );
-  AOI22X3 \XBAR_W/U153  ( .A1(FIFO_D_out_L[25]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[25]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n166 ) );
-  INVXL \XBAR_W/U151  ( .A(FIFO_D_out_S[25]), .Q(\XBAR_W/n26 ) );
-  OAI211X3 \XBAR_W/U150  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n26 ), .B1(
-        \XBAR_W/n167 ), .C1(\XBAR_W/n166 ), .Q(TX_W[25]) );
-  AOI22X3 \XBAR_W/U149  ( .A1(FIFO_D_out_L[24]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[24]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n164 ) );
-  INVXL \XBAR_W/U147  ( .A(FIFO_D_out_S[24]), .Q(\XBAR_W/n27 ) );
-  OAI211X3 \XBAR_W/U146  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n27 ), .B1(
-        \XBAR_W/n165 ), .C1(\XBAR_W/n164 ), .Q(TX_W[24]) );
-  AOI22X3 \XBAR_W/U145  ( .A1(FIFO_D_out_L[23]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[23]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n162 ) );
-  INVXL \XBAR_W/U143  ( .A(FIFO_D_out_S[23]), .Q(\XBAR_W/n28 ) );
-  OAI211X3 \XBAR_W/U142  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n28 ), .B1(
-        \XBAR_W/n163 ), .C1(\XBAR_W/n162 ), .Q(TX_W[23]) );
-  AOI22X3 \XBAR_W/U141  ( .A1(FIFO_D_out_L[22]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[22]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n160 ) );
-  INVXL \XBAR_W/U139  ( .A(FIFO_D_out_S[22]), .Q(\XBAR_W/n29 ) );
-  OAI211X3 \XBAR_W/U138  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n29 ), .B1(
-        \XBAR_W/n161 ), .C1(\XBAR_W/n160 ), .Q(TX_W[22]) );
-  AOI22X3 \XBAR_W/U137  ( .A1(FIFO_D_out_L[21]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[21]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n158 ) );
-  INVXL \XBAR_W/U135  ( .A(FIFO_D_out_S[21]), .Q(\XBAR_W/n30 ) );
-  OAI211X3 \XBAR_W/U134  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n30 ), .B1(
-        \XBAR_W/n159 ), .C1(\XBAR_W/n158 ), .Q(TX_W[21]) );
-  AOI22X3 \XBAR_W/U133  ( .A1(FIFO_D_out_L[20]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[20]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n156 ) );
-  INVXL \XBAR_W/U131  ( .A(FIFO_D_out_S[20]), .Q(\XBAR_W/n31 ) );
-  OAI211X3 \XBAR_W/U130  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n31 ), .B1(
-        \XBAR_W/n157 ), .C1(\XBAR_W/n156 ), .Q(TX_W[20]) );
-  AOI22X3 \XBAR_W/U129  ( .A1(FIFO_D_out_L[19]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[19]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n152 ) );
-  INVXL \XBAR_W/U127  ( .A(FIFO_D_out_S[19]), .Q(\XBAR_W/n32 ) );
-  OAI211X3 \XBAR_W/U126  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n32 ), .B1(
-        \XBAR_W/n153 ), .C1(\XBAR_W/n152 ), .Q(TX_W[19]) );
-  AOI22X3 \XBAR_W/U125  ( .A1(FIFO_D_out_L[18]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[18]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n150 ) );
-  INVXL \XBAR_W/U123  ( .A(FIFO_D_out_S[18]), .Q(\XBAR_W/n33 ) );
-  OAI211X3 \XBAR_W/U122  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n33 ), .B1(
-        \XBAR_W/n151 ), .C1(\XBAR_W/n150 ), .Q(TX_W[18]) );
-  AOI22X3 \XBAR_W/U121  ( .A1(FIFO_D_out_L[17]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[17]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n148 ) );
-  INVXL \XBAR_W/U119  ( .A(FIFO_D_out_S[17]), .Q(\XBAR_W/n34 ) );
-  OAI211X3 \XBAR_W/U118  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n34 ), .B1(
-        \XBAR_W/n149 ), .C1(\XBAR_W/n148 ), .Q(TX_W[17]) );
-  AOI22X3 \XBAR_W/U117  ( .A1(FIFO_D_out_L[16]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[16]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n146 ) );
-  INVXL \XBAR_W/U115  ( .A(FIFO_D_out_S[16]), .Q(\XBAR_W/n35 ) );
-  OAI211X3 \XBAR_W/U114  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n35 ), .B1(
-        \XBAR_W/n147 ), .C1(\XBAR_W/n146 ), .Q(TX_W[16]) );
-  AOI22X3 \XBAR_W/U113  ( .A1(FIFO_D_out_L[15]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[15]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n144 ) );
-  INVXL \XBAR_W/U111  ( .A(FIFO_D_out_S[15]), .Q(\XBAR_W/n36 ) );
-  OAI211X3 \XBAR_W/U110  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n36 ), .B1(
-        \XBAR_W/n145 ), .C1(\XBAR_W/n144 ), .Q(TX_W[15]) );
-  AOI22X3 \XBAR_W/U109  ( .A1(FIFO_D_out_L[14]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[14]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n142 ) );
-  INVXL \XBAR_W/U107  ( .A(FIFO_D_out_S[14]), .Q(\XBAR_W/n37 ) );
-  OAI211X3 \XBAR_W/U106  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n37 ), .B1(
-        \XBAR_W/n143 ), .C1(\XBAR_W/n142 ), .Q(TX_W[14]) );
-  AOI22X3 \XBAR_W/U105  ( .A1(FIFO_D_out_L[13]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[13]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n140 ) );
-  INVXL \XBAR_W/U103  ( .A(FIFO_D_out_S[13]), .Q(\XBAR_W/n112 ) );
-  OAI211X3 \XBAR_W/U102  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n112 ), .B1(
-        \XBAR_W/n141 ), .C1(\XBAR_W/n140 ), .Q(TX_W[13]) );
-  AOI22X3 \XBAR_W/U101  ( .A1(FIFO_D_out_L[12]), .A2(\XBAR_W/n12 ), .B1(
+  AOI22X3 \XBAR_W/U153  ( .A1(FIFO_D_out_L[12]), .A2(\XBAR_W/n12 ), .B1(
         FIFO_D_out_N[12]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n138 ) );
-  INVXL \XBAR_W/U99  ( .A(FIFO_D_out_S[12]), .Q(\XBAR_W/n113 ) );
-  OAI211X3 \XBAR_W/U98  ( .A1(\XBAR_W/n15 ), .A2(\XBAR_W/n113 ), .B1(
+  INVXL \XBAR_W/U151  ( .A(FIFO_D_out_S[12]), .Q(\XBAR_W/n113 ) );
+  OAI211X3 \XBAR_W/U150  ( .A1(\XBAR_W/n15 ), .A2(\XBAR_W/n113 ), .B1(
         \XBAR_W/n139 ), .C1(\XBAR_W/n138 ), .Q(TX_W[12]) );
-  AOI22X3 \XBAR_W/U97  ( .A1(FIFO_D_out_L[11]), .A2(\XBAR_W/n12 ), .B1(
+  AOI22X3 \XBAR_W/U149  ( .A1(FIFO_D_out_L[11]), .A2(\XBAR_W/n12 ), .B1(
         FIFO_D_out_N[11]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n136 ) );
-  INVXL \XBAR_W/U95  ( .A(FIFO_D_out_S[11]), .Q(\XBAR_W/n114 ) );
-  OAI211X3 \XBAR_W/U94  ( .A1(\XBAR_W/n15 ), .A2(\XBAR_W/n114 ), .B1(
+  INVXL \XBAR_W/U147  ( .A(FIFO_D_out_S[11]), .Q(\XBAR_W/n114 ) );
+  OAI211X3 \XBAR_W/U146  ( .A1(\XBAR_W/n15 ), .A2(\XBAR_W/n114 ), .B1(
         \XBAR_W/n137 ), .C1(\XBAR_W/n136 ), .Q(TX_W[11]) );
-  AOI22X3 \XBAR_W/U93  ( .A1(FIFO_D_out_L[10]), .A2(\XBAR_W/n12 ), .B1(
+  AOI22X3 \XBAR_W/U145  ( .A1(FIFO_D_out_L[10]), .A2(\XBAR_W/n12 ), .B1(
         FIFO_D_out_N[10]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n134 ) );
-  INVXL \XBAR_W/U91  ( .A(FIFO_D_out_S[10]), .Q(\XBAR_W/n115 ) );
-  OAI211X3 \XBAR_W/U90  ( .A1(\XBAR_W/n15 ), .A2(\XBAR_W/n115 ), .B1(
+  INVXL \XBAR_W/U143  ( .A(FIFO_D_out_S[10]), .Q(\XBAR_W/n115 ) );
+  OAI211X3 \XBAR_W/U142  ( .A1(\XBAR_W/n15 ), .A2(\XBAR_W/n115 ), .B1(
         \XBAR_W/n135 ), .C1(\XBAR_W/n134 ), .Q(TX_W[10]) );
-  AOI22X3 \XBAR_W/U89  ( .A1(FIFO_D_out_L[0]), .A2(\XBAR_W/n12 ), .B1(
+  AOI22X3 \XBAR_W/U141  ( .A1(FIFO_D_out_L[0]), .A2(\XBAR_W/n12 ), .B1(
         FIFO_D_out_N[0]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n132 ) );
-  INVXL \XBAR_W/U87  ( .A(FIFO_D_out_S[0]), .Q(\XBAR_W/n125 ) );
-  OAI211X3 \XBAR_W/U86  ( .A1(\XBAR_W/n15 ), .A2(\XBAR_W/n125 ), .B1(
+  INVXL \XBAR_W/U139  ( .A(FIFO_D_out_S[0]), .Q(\XBAR_W/n125 ) );
+  OAI211X3 \XBAR_W/U138  ( .A1(\XBAR_W/n15 ), .A2(\XBAR_W/n125 ), .B1(
         \XBAR_W/n133 ), .C1(\XBAR_W/n132 ), .Q(TX_W[0]) );
-  AOI22X3 \XBAR_W/U85  ( .A1(FIFO_D_out_L[1]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[1]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n154 ) );
-  INVXL \XBAR_W/U83  ( .A(FIFO_D_out_S[1]), .Q(\XBAR_W/n124 ) );
-  OAI211X3 \XBAR_W/U82  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n124 ), .B1(
-        \XBAR_W/n155 ), .C1(\XBAR_W/n154 ), .Q(TX_W[1]) );
-  AOI22X3 \XBAR_W/U80  ( .A1(FIFO_D_out_L[31]), .A2(\XBAR_W/n10 ), .B1(
+  AOI22X3 \XBAR_W/U136  ( .A1(FIFO_D_out_L[31]), .A2(\XBAR_W/n10 ), .B1(
         FIFO_D_out_N[31]), .B2(\XBAR_W/n196 ), .Q(\XBAR_W/n180 ) );
-  INVXL \XBAR_W/U78  ( .A(FIFO_D_out_S[31]), .Q(\XBAR_W/n20 ) );
-  OAI211X3 \XBAR_W/U77  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n20 ), .B1(
+  INVXL \XBAR_W/U134  ( .A(FIFO_D_out_S[31]), .Q(\XBAR_W/n20 ) );
+  OAI211X3 \XBAR_W/U133  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n20 ), .B1(
         \XBAR_W/n181 ), .C1(\XBAR_W/n180 ), .Q(TX_W[31]) );
-  AOI22X3 \XBAR_W/U76  ( .A1(FIFO_D_out_L[30]), .A2(\XBAR_W/n10 ), .B1(
+  AOI22X3 \XBAR_W/U132  ( .A1(FIFO_D_out_L[30]), .A2(\XBAR_W/n10 ), .B1(
         FIFO_D_out_N[30]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n178 ) );
-  INVXL \XBAR_W/U74  ( .A(FIFO_D_out_S[30]), .Q(\XBAR_W/n21 ) );
-  OAI211X3 \XBAR_W/U73  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n21 ), .B1(
+  INVXL \XBAR_W/U130  ( .A(FIFO_D_out_S[30]), .Q(\XBAR_W/n21 ) );
+  OAI211X3 \XBAR_W/U129  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n21 ), .B1(
         \XBAR_W/n179 ), .C1(\XBAR_W/n178 ), .Q(TX_W[30]) );
-  AOI22X3 \XBAR_W/U72  ( .A1(FIFO_D_out_L[29]), .A2(\XBAR_W/n10 ), .B1(
+  AOI22X3 \XBAR_W/U128  ( .A1(FIFO_D_out_L[29]), .A2(\XBAR_W/n10 ), .B1(
         FIFO_D_out_N[29]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n174 ) );
-  INVXL \XBAR_W/U70  ( .A(FIFO_D_out_S[29]), .Q(\XBAR_W/n22 ) );
-  OAI211X3 \XBAR_W/U69  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n22 ), .B1(
+  INVXL \XBAR_W/U126  ( .A(FIFO_D_out_S[29]), .Q(\XBAR_W/n22 ) );
+  OAI211X3 \XBAR_W/U125  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n22 ), .B1(
         \XBAR_W/n175 ), .C1(\XBAR_W/n174 ), .Q(TX_W[29]) );
-  AOI22X3 \XBAR_W/U68  ( .A1(FIFO_D_out_L[28]), .A2(\XBAR_W/n10 ), .B1(
+  AOI22X3 \XBAR_W/U124  ( .A1(FIFO_D_out_L[28]), .A2(\XBAR_W/n10 ), .B1(
         FIFO_D_out_N[28]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n172 ) );
-  INVXL \XBAR_W/U66  ( .A(FIFO_D_out_S[28]), .Q(\XBAR_W/n23 ) );
-  OAI211X3 \XBAR_W/U65  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n23 ), .B1(
+  INVXL \XBAR_W/U122  ( .A(FIFO_D_out_S[28]), .Q(\XBAR_W/n23 ) );
+  OAI211X3 \XBAR_W/U121  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n23 ), .B1(
         \XBAR_W/n173 ), .C1(\XBAR_W/n172 ), .Q(TX_W[28]) );
-  AOI22X3 \XBAR_W/U64  ( .A1(FIFO_D_out_L[27]), .A2(\XBAR_W/n10 ), .B1(
+  AOI22X3 \XBAR_W/U120  ( .A1(FIFO_D_out_L[27]), .A2(\XBAR_W/n10 ), .B1(
         FIFO_D_out_N[27]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n170 ) );
-  INVXL \XBAR_W/U62  ( .A(FIFO_D_out_S[27]), .Q(\XBAR_W/n24 ) );
-  OAI211X3 \XBAR_W/U61  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n24 ), .B1(
+  INVXL \XBAR_W/U118  ( .A(FIFO_D_out_S[27]), .Q(\XBAR_W/n24 ) );
+  OAI211X3 \XBAR_W/U117  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n24 ), .B1(
         \XBAR_W/n171 ), .C1(\XBAR_W/n170 ), .Q(TX_W[27]) );
-  AOI22X3 \XBAR_W/U60  ( .A1(FIFO_D_out_L[26]), .A2(\XBAR_W/n10 ), .B1(
+  AOI22X3 \XBAR_W/U116  ( .A1(FIFO_D_out_L[26]), .A2(\XBAR_W/n10 ), .B1(
         FIFO_D_out_N[26]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n168 ) );
-  INVXL \XBAR_W/U58  ( .A(FIFO_D_out_S[26]), .Q(\XBAR_W/n25 ) );
-  OAI211X3 \XBAR_W/U57  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n25 ), .B1(
+  INVXL \XBAR_W/U114  ( .A(FIFO_D_out_S[26]), .Q(\XBAR_W/n25 ) );
+  OAI211X3 \XBAR_W/U113  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n25 ), .B1(
         \XBAR_W/n169 ), .C1(\XBAR_W/n168 ), .Q(TX_W[26]) );
-  AOI22X3 \XBAR_W/U56  ( .A1(FIFO_D_out_L[9]), .A2(\XBAR_W/n10 ), .B1(
+  AOI22X3 \XBAR_W/U112  ( .A1(FIFO_D_out_L[25]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[25]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n166 ) );
+  INVXL \XBAR_W/U110  ( .A(FIFO_D_out_S[25]), .Q(\XBAR_W/n26 ) );
+  OAI211X3 \XBAR_W/U109  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n26 ), .B1(
+        \XBAR_W/n167 ), .C1(\XBAR_W/n166 ), .Q(TX_W[25]) );
+  AOI22X3 \XBAR_W/U108  ( .A1(FIFO_D_out_L[24]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[24]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n164 ) );
+  INVXL \XBAR_W/U106  ( .A(FIFO_D_out_S[24]), .Q(\XBAR_W/n27 ) );
+  OAI211X3 \XBAR_W/U105  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n27 ), .B1(
+        \XBAR_W/n165 ), .C1(\XBAR_W/n164 ), .Q(TX_W[24]) );
+  AOI22X3 \XBAR_W/U104  ( .A1(FIFO_D_out_L[23]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[23]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n162 ) );
+  INVXL \XBAR_W/U102  ( .A(FIFO_D_out_S[23]), .Q(\XBAR_W/n28 ) );
+  OAI211X3 \XBAR_W/U101  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n28 ), .B1(
+        \XBAR_W/n163 ), .C1(\XBAR_W/n162 ), .Q(TX_W[23]) );
+  AOI22X3 \XBAR_W/U100  ( .A1(FIFO_D_out_L[22]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[22]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n160 ) );
+  INVXL \XBAR_W/U98  ( .A(FIFO_D_out_S[22]), .Q(\XBAR_W/n29 ) );
+  OAI211X3 \XBAR_W/U97  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n29 ), .B1(
+        \XBAR_W/n161 ), .C1(\XBAR_W/n160 ), .Q(TX_W[22]) );
+  AOI22X3 \XBAR_W/U96  ( .A1(FIFO_D_out_L[21]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[21]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n158 ) );
+  INVXL \XBAR_W/U94  ( .A(FIFO_D_out_S[21]), .Q(\XBAR_W/n30 ) );
+  OAI211X3 \XBAR_W/U93  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n30 ), .B1(
+        \XBAR_W/n159 ), .C1(\XBAR_W/n158 ), .Q(TX_W[21]) );
+  AOI22X3 \XBAR_W/U92  ( .A1(FIFO_D_out_L[20]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[20]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n156 ) );
+  INVXL \XBAR_W/U90  ( .A(FIFO_D_out_S[20]), .Q(\XBAR_W/n31 ) );
+  OAI211X3 \XBAR_W/U89  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n31 ), .B1(
+        \XBAR_W/n157 ), .C1(\XBAR_W/n156 ), .Q(TX_W[20]) );
+  AOI22X3 \XBAR_W/U88  ( .A1(FIFO_D_out_L[19]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[19]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n152 ) );
+  INVXL \XBAR_W/U86  ( .A(FIFO_D_out_S[19]), .Q(\XBAR_W/n32 ) );
+  OAI211X3 \XBAR_W/U85  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n32 ), .B1(
+        \XBAR_W/n153 ), .C1(\XBAR_W/n152 ), .Q(TX_W[19]) );
+  AOI22X3 \XBAR_W/U84  ( .A1(FIFO_D_out_L[18]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[18]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n150 ) );
+  INVXL \XBAR_W/U82  ( .A(FIFO_D_out_S[18]), .Q(\XBAR_W/n33 ) );
+  OAI211X3 \XBAR_W/U81  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n33 ), .B1(
+        \XBAR_W/n151 ), .C1(\XBAR_W/n150 ), .Q(TX_W[18]) );
+  AOI22X3 \XBAR_W/U80  ( .A1(FIFO_D_out_L[17]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[17]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n148 ) );
+  INVXL \XBAR_W/U78  ( .A(FIFO_D_out_S[17]), .Q(\XBAR_W/n34 ) );
+  OAI211X3 \XBAR_W/U77  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n34 ), .B1(
+        \XBAR_W/n149 ), .C1(\XBAR_W/n148 ), .Q(TX_W[17]) );
+  AOI22X3 \XBAR_W/U76  ( .A1(FIFO_D_out_L[16]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[16]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n146 ) );
+  INVXL \XBAR_W/U74  ( .A(FIFO_D_out_S[16]), .Q(\XBAR_W/n35 ) );
+  OAI211X3 \XBAR_W/U73  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n35 ), .B1(
+        \XBAR_W/n147 ), .C1(\XBAR_W/n146 ), .Q(TX_W[16]) );
+  AOI22X3 \XBAR_W/U72  ( .A1(FIFO_D_out_L[15]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[15]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n144 ) );
+  INVXL \XBAR_W/U70  ( .A(FIFO_D_out_S[15]), .Q(\XBAR_W/n36 ) );
+  OAI211X3 \XBAR_W/U69  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n36 ), .B1(
+        \XBAR_W/n145 ), .C1(\XBAR_W/n144 ), .Q(TX_W[15]) );
+  AOI22X3 \XBAR_W/U68  ( .A1(FIFO_D_out_L[14]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[14]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n142 ) );
+  INVXL \XBAR_W/U66  ( .A(FIFO_D_out_S[14]), .Q(\XBAR_W/n37 ) );
+  OAI211X3 \XBAR_W/U65  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n37 ), .B1(
+        \XBAR_W/n143 ), .C1(\XBAR_W/n142 ), .Q(TX_W[14]) );
+  AOI22X3 \XBAR_W/U64  ( .A1(FIFO_D_out_L[13]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[13]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n140 ) );
+  INVXL \XBAR_W/U62  ( .A(FIFO_D_out_S[13]), .Q(\XBAR_W/n112 ) );
+  OAI211X3 \XBAR_W/U61  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n112 ), .B1(
+        \XBAR_W/n141 ), .C1(\XBAR_W/n140 ), .Q(TX_W[13]) );
+  AOI22X3 \XBAR_W/U60  ( .A1(FIFO_D_out_L[9]), .A2(\XBAR_W/n10 ), .B1(
         FIFO_D_out_N[9]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n198 ) );
-  INVXL \XBAR_W/U54  ( .A(FIFO_D_out_S[9]), .Q(\XBAR_W/n116 ) );
-  OAI211X3 \XBAR_W/U53  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n116 ), .B1(
+  INVXL \XBAR_W/U58  ( .A(FIFO_D_out_S[9]), .Q(\XBAR_W/n116 ) );
+  OAI211X3 \XBAR_W/U57  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n116 ), .B1(
         \XBAR_W/n199 ), .C1(\XBAR_W/n198 ), .Q(TX_W[9]) );
-  AOI22X3 \XBAR_W/U52  ( .A1(FIFO_D_out_L[8]), .A2(\XBAR_W/n10 ), .B1(
+  AOI22X3 \XBAR_W/U56  ( .A1(FIFO_D_out_L[8]), .A2(\XBAR_W/n10 ), .B1(
         FIFO_D_out_N[8]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n192 ) );
-  INVXL \XBAR_W/U50  ( .A(FIFO_D_out_S[8]), .Q(\XBAR_W/n117 ) );
-  OAI211X3 \XBAR_W/U49  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n117 ), .B1(
+  INVXL \XBAR_W/U54  ( .A(FIFO_D_out_S[8]), .Q(\XBAR_W/n117 ) );
+  OAI211X3 \XBAR_W/U53  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n117 ), .B1(
         \XBAR_W/n193 ), .C1(\XBAR_W/n192 ), .Q(TX_W[8]) );
-  AOI22X3 \XBAR_W/U48  ( .A1(FIFO_D_out_L[7]), .A2(\XBAR_W/n10 ), .B1(
+  AOI22X3 \XBAR_W/U52  ( .A1(FIFO_D_out_L[7]), .A2(\XBAR_W/n10 ), .B1(
         FIFO_D_out_N[7]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n190 ) );
-  INVXL \XBAR_W/U46  ( .A(FIFO_D_out_S[7]), .Q(\XBAR_W/n118 ) );
-  OAI211X3 \XBAR_W/U45  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n118 ), .B1(
+  INVXL \XBAR_W/U50  ( .A(FIFO_D_out_S[7]), .Q(\XBAR_W/n118 ) );
+  OAI211X3 \XBAR_W/U49  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n118 ), .B1(
         \XBAR_W/n191 ), .C1(\XBAR_W/n190 ), .Q(TX_W[7]) );
-  AOI22X3 \XBAR_W/U44  ( .A1(FIFO_D_out_L[6]), .A2(\XBAR_W/n10 ), .B1(
+  AOI22X3 \XBAR_W/U48  ( .A1(FIFO_D_out_L[6]), .A2(\XBAR_W/n10 ), .B1(
         FIFO_D_out_N[6]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n188 ) );
-  INVXL \XBAR_W/U42  ( .A(FIFO_D_out_S[6]), .Q(\XBAR_W/n119 ) );
-  OAI211X3 \XBAR_W/U41  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n119 ), .B1(
+  INVXL \XBAR_W/U46  ( .A(FIFO_D_out_S[6]), .Q(\XBAR_W/n119 ) );
+  OAI211X3 \XBAR_W/U45  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n119 ), .B1(
         \XBAR_W/n189 ), .C1(\XBAR_W/n188 ), .Q(TX_W[6]) );
-  AOI22X3 \XBAR_W/U40  ( .A1(FIFO_D_out_L[5]), .A2(\XBAR_W/n10 ), .B1(
+  AOI22X3 \XBAR_W/U44  ( .A1(FIFO_D_out_L[5]), .A2(\XBAR_W/n10 ), .B1(
         FIFO_D_out_N[5]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n186 ) );
-  INVXL \XBAR_W/U38  ( .A(FIFO_D_out_S[5]), .Q(\XBAR_W/n120 ) );
-  OAI211X3 \XBAR_W/U37  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n120 ), .B1(
+  INVXL \XBAR_W/U42  ( .A(FIFO_D_out_S[5]), .Q(\XBAR_W/n120 ) );
+  OAI211X3 \XBAR_W/U41  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n120 ), .B1(
         \XBAR_W/n187 ), .C1(\XBAR_W/n186 ), .Q(TX_W[5]) );
-  AOI22X3 \XBAR_W/U36  ( .A1(FIFO_D_out_L[4]), .A2(\XBAR_W/n10 ), .B1(
+  AOI22X3 \XBAR_W/U40  ( .A1(FIFO_D_out_L[4]), .A2(\XBAR_W/n10 ), .B1(
         FIFO_D_out_N[4]), .B2(\XBAR_W/n9 ), .Q(\XBAR_W/n184 ) );
-  INVXL \XBAR_W/U34  ( .A(FIFO_D_out_S[4]), .Q(\XBAR_W/n121 ) );
-  OAI211X3 \XBAR_W/U33  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n121 ), .B1(
+  INVXL \XBAR_W/U38  ( .A(FIFO_D_out_S[4]), .Q(\XBAR_W/n121 ) );
+  OAI211X3 \XBAR_W/U37  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n121 ), .B1(
         \XBAR_W/n185 ), .C1(\XBAR_W/n184 ), .Q(TX_W[4]) );
-  AOI22X3 \XBAR_W/U32  ( .A1(FIFO_D_out_L[3]), .A2(\XBAR_W/n10 ), .B1(
+  AOI22X3 \XBAR_W/U36  ( .A1(FIFO_D_out_L[3]), .A2(\XBAR_W/n10 ), .B1(
         FIFO_D_out_N[3]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n182 ) );
-  INVXL \XBAR_W/U30  ( .A(FIFO_D_out_S[3]), .Q(\XBAR_W/n122 ) );
-  OAI211X3 \XBAR_W/U29  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n122 ), .B1(
+  INVXL \XBAR_W/U34  ( .A(FIFO_D_out_S[3]), .Q(\XBAR_W/n122 ) );
+  OAI211X3 \XBAR_W/U33  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n122 ), .B1(
         \XBAR_W/n183 ), .C1(\XBAR_W/n182 ), .Q(TX_W[3]) );
-  AOI22X3 \XBAR_W/U28  ( .A1(FIFO_D_out_L[2]), .A2(\XBAR_W/n10 ), .B1(
+  AOI22X3 \XBAR_W/U32  ( .A1(FIFO_D_out_L[2]), .A2(\XBAR_W/n10 ), .B1(
         FIFO_D_out_N[2]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n176 ) );
-  INVXL \XBAR_W/U26  ( .A(FIFO_D_out_S[2]), .Q(\XBAR_W/n123 ) );
-  OAI211X3 \XBAR_W/U25  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n123 ), .B1(
+  INVXL \XBAR_W/U30  ( .A(FIFO_D_out_S[2]), .Q(\XBAR_W/n123 ) );
+  OAI211X3 \XBAR_W/U29  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n123 ), .B1(
         \XBAR_W/n177 ), .C1(\XBAR_W/n176 ), .Q(TX_W[2]) );
+  AOI22X3 \XBAR_W/U28  ( .A1(FIFO_D_out_L[1]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[1]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n154 ) );
+  INVXL \XBAR_W/U26  ( .A(FIFO_D_out_S[1]), .Q(\XBAR_W/n124 ) );
+  OAI211X3 \XBAR_W/U25  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n124 ), .B1(
+        \XBAR_W/n155 ), .C1(\XBAR_W/n154 ), .Q(TX_W[1]) );
   INVXL \XBAR_W/U24  ( .A(\XBAR_W/n127 ), .Q(\XBAR_W/n17 ) );
   NAND2XL \XBAR_W/U23  ( .A(\XBAR_W/n17 ), .B(\XBAR_W/n128 ), .Q(\XBAR_W/n131 ) );
   CLKBUFX2 \XBAR_W/U20  ( .A(\XBAR_W/n200 ), .Q(\XBAR_W/n15 ) );
@@ -26417,12 +26642,12 @@ module router_credit_based ( reset,
   OAI31X1 U30 ( .A1(\CONTROL_PART/ROUTING_TABLE_S/n444 ), .A2(Xbar_sel_L[1]), 
         .A3(Xbar_sel_E[1]), .B1(FIFO_D_out_S[31]), .Q(
         \CONTROL_PART/ROUTING_TABLE_S/n446 ) );
-  NOR3X1 U31 ( .A(Xbar_sel_L[4]), .B(Xbar_sel_L[2]), .C(Xbar_sel_L[1]), .Q(
-        \CONTROL_PART/allocator_unit/n116 ) );
-  NOR3X1 U32 ( .A(Xbar_sel_L[3]), .B(\XBAR_L/n20 ), .C(Xbar_sel_L[1]), .Q(
+  NOR3X1 U31 ( .A(Xbar_sel_L[3]), .B(\XBAR_L/n20 ), .C(Xbar_sel_L[1]), .Q(
         \XBAR_L/n130 ) );
-  NOR3X2 U33 ( .A(Xbar_sel_L[2]), .B(\XBAR_L/n16 ), .C(Xbar_sel_L[1]), .Q(
+  NOR3X1 U32 ( .A(Xbar_sel_L[2]), .B(\XBAR_L/n16 ), .C(Xbar_sel_L[1]), .Q(
         \XBAR_L/n129 ) );
+  NOR3X2 U33 ( .A(Xbar_sel_L[4]), .B(Xbar_sel_L[2]), .C(Xbar_sel_L[1]), .Q(
+        \CONTROL_PART/allocator_unit/n147 ) );
   CLKINVX4 U34 ( .A(\XBAR_L/n17 ), .Q(\XBAR_L/n131 ) );
   NAND2X6 U35 ( .A(\XBAR_S/n167 ), .B(\XBAR_S/n166 ), .Q(TX_S[25]) );
   NAND2X6 U36 ( .A(\XBAR_S/n165 ), .B(\XBAR_S/n164 ), .Q(TX_S[24]) );

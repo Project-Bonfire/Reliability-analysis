@@ -12,7 +12,7 @@ import itertools
 
 # This file lets us create plots of the most current module data
 
-parser = argparse.ArgumentParser(description='Evaluation the result of a Reliability-analysis simulation.')
+parser = argparse.ArgumentParser(description='Evaluate the result of a Reliability-analysis simulation.')
 parser.add_argument('imagefolder', type=str, help='The folder where the plots should be saved`.')
 args = parser.parse_args()
 
@@ -194,7 +194,7 @@ def enrich_values(values):
 # Download dataset and prepare it
 def getdataset():
     invalids = []
-    file = 'http://ati.ttu.ee/~thilo/evalslbdr_4flit_alloc.log'
+    file = 'http://ati.ttu.ee/~thilo/evalslbdr_4flit_allocator.log'
     r = requests.get(file, stream=True)
     buffers = []
     buffer = []

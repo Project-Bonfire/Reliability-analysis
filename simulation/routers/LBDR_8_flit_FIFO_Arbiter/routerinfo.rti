@@ -1,0 +1,6 @@
+modules=['xbar', 'lbdr', 'fifoc', 'arbiter', 'fifod']
+nrfaultlocs=23381
+locspermodule={'lbdr': 440, 'arbiter': 1132, 'xbar': 2793, 'fifoc': 1096, 'fifod': 17920}
+
+ralgo_name="XYRouting"
+info="LBDR 8 flit fifo arbiter"

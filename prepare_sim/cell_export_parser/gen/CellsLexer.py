@@ -1,4 +1,4 @@
-# Generated from /home/thi/git/Reliability-analysis/prepare_sim/cell_export_parser/Cells.g4 by ANTLR 4.7
+# Generated from /home/thi/strudel/git/Reliability-analysis/prepare_sim/cell_export_parser/Cells.g4 by ANTLR 4.7
 from antlr4 import *
 from io import StringIO
 from typing.io import TextIO
