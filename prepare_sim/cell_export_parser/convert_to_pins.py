@@ -21,9 +21,9 @@ def guessModule(cellname,netname,pinlist,ctx,router_module_mapping):
     def guessComponent():
 
         try:
-            if not netname.startswith('U') and not netname.startswith('n') and not netname == "reset":
-                return netname
-
+            for k, v in router_module_mapping.items():
+                if re.match(k, netname):
+                    return netname
             res = [p[0] for p in pinlist if not p[0].startswith('U') and not netname.startswith('n') and not netname == "reset"]
             if res:
                 return res[0]
@@ -85,7 +85,8 @@ class PinPrinter(CellsListener):
     def exitCell(self, ctx:CellsParser.CellContext):
         self.num_cells += 1
         cellname = ctx.children[0].children[0].children[1].symbol.text
-        iolines = ctx.children[1].children[7:] + ctx.children[2].children[7:]
+        iolines=[]
+        iolines = ctx.children[1].children[7:] + (ctx.children[2].children[7:] if len (ctx.children) > 2 else [])
         modules = []
         lines : List[Line]=[]
         #create one Line object for each ioline

@@ -9,6 +9,7 @@ import numpy as np
 import matplotlib as plt
 import matplotlib.pyplot as plt2
 import itertools
+import os
 
 # This file lets us create plots of the most current module data
 
@@ -87,7 +88,7 @@ def plotmodules(dataset, reference, xlabel, ylabel, title="", logscale=False, pa
     if not dataset:
         raise AttributeError("No dataset given!")
     res = dataset
-    type = list(res.keys())
+    type = sorted(list(res.keys()))
     height = math.ceil(len(type) / 6) if not shapehint else shapehint[0]
     width = min(len(type), 6) if not shapehint else shapehint[1]
     f, ax = plt2.subplots(height, width, figsize=(width * 3, height * 2 + 1))
@@ -160,7 +161,8 @@ def create_singleplot(ax, packetlengths, xlabel,
         x, y = data(pl)
         # y = np.log([float(z) for z in y])
         # x = np.log([float(z) for z in x])
-        line = ax.plot(x, y, "o" if len(x) == 1 else "-", label=pl)
+        line = ax.plot(x, y, "x" if len(x) == 1 else "-", label=pl)
+        line = ax.plot(x, y, "x",color=line[0].get_color())
         # plot refline
         if reference:
             refx, refy = reference(pl)
@@ -190,11 +192,11 @@ def enrich_values(values):
     values["module_output_changed_when_system_failed_ratio_total"] = str(tmp)
     return values
 
-
+currentname ="lbdr_8flit_arbiter"
 # Download dataset and prepare it
 def getdataset():
     invalids = []
-    file = 'http://ati.ttu.ee/~thilo/evalslbdr_4flit_alloc.log'
+    file = 'http://ati.ttu.ee/~thilo/evals'+currentname+'.log'
     r = requests.get(file, stream=True)
     buffers = []
     buffer = []
@@ -232,8 +234,9 @@ packetlengths = sorted(list(set([int(v['packetlength'].split(',')[0]) for v in b
 
 reference = createdataset_simple(buffers, 'ratio_violations')
 referencecorrected = createdataset_simple(buffers, 'corrected_ratio')
-path = args.imagefolder + '/lbdr_4flit_alloc/'
-
+path = args.imagefolder + '/'+currentname+'/'
+if not os.path.exists(path):
+    os.makedirs(path)
 
 def fitcurve_simple(referencecorrected):
     x, y, z = np.asarray(referencecorrected).T
@@ -364,7 +367,7 @@ with open(path + 'faulttype_correlation.txt', 'w') as the_file:
 
 dat = createdataset_modules(buffers, 'ratio_violations_per_module')
 plotmodules(dat, referencecorrected,
-            'injection cycle length (ns)', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 0.3))
+            'injection cycle length (ns)', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 0.35))
 plt2.savefig(path + 'ratio_violations_per_module.png')
 with open(path + 'ratio_violations_per_module.txt', 'w') as the_file:
     the_file.write('P(system failure | fault injected into module)<br>\n'

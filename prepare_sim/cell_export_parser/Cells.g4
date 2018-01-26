@@ -1,7 +1,7 @@
 
 grammar Cells;
 r  : NEWLINE* cell+  NEWLINE* ('1' NEWLINE)? EOF;
-cell : NEWLINE* header NEWLINE* inputs NEWLINE* outputs; 
+cell : NEWLINE* header NEWLINE* inputs? NEWLINE* outputs;
 header : nameline NEWLINE ref  NEWLINE lib NEWLINE (area NEWLINE)? (touch NEWLINE)?;
 nameline : 'Connections for cell \'' (Identifier|AlphaNum) '\':';
 ref : 'Reference:' AlphaNum ;

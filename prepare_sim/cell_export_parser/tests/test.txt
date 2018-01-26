@@ -180,3 +180,157 @@ Connections for cell 'U671':
     Output Pins         Net            Net Load Pins     Load Pin Type
     ----------------    ------------   ----------------  ----------------
     Q                   FIFO_N/n413    U670/C            Input Pin (NAND3X3)
+
+Connections for cell 'U3':
+    Reference:          LOGIC1
+    Library:            c18_CORELIB_TYP
+    Area:               14.112
+    dont_touch:         FALSE
+
+    Output Pins         Net            Net Load Pins     Load Pin Type
+    ----------------    ------------   ----------------  ----------------
+    Q                   *Logic1*       CONTROL_PART/ROUTING_TABLE_L/U150/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_L/U279/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_L/U146/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_L/U275/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_L/U136/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_L/U264/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_L/U128/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_L/U256/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_L/U118/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_L/U246/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_L/U104/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_L/U232/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_L/U96/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_L/U224/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_L/U86/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_L/U214/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_L/U76/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_L/U204/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_L/U72/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_L/U200/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_L/U64/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_L/U192/B
+                                                         Input Pin (AND2X3)
+                                       CONTROL_PART/ROUTING_TABLE_L/U54/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_L/U182/B
+                                                         Input Pin (AND2X3)
+                                       CONTROL_PART/ROUTING_TABLE_L/U44/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_L/U172/B
+                                                         Input Pin (AND2X3)
+                                       CONTROL_PART/ROUTING_TABLE_L/U40/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_L/U168/B
+                                                         Input Pin (AND2X3)
+                                       CONTROL_PART/ROUTING_TABLE_L/U32/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_L/U160/B
+                                                         Input Pin (AND2X3)
+                                       CONTROL_PART/ROUTING_TABLE_N/U76/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_N/U204/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_N/U44/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_N/U172/B
+                                                         Input Pin (AND2X3)
+                                       CONTROL_PART/ROUTING_TABLE_E/U150/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_E/U279/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_E/U146/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_E/U275/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_E/U118/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_E/U246/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_E/U86/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_E/U214/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_E/U76/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_E/U204/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_E/U54/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_E/U182/B
+                                                         Input Pin (AND2X3)
+                                       CONTROL_PART/ROUTING_TABLE_E/U44/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_E/U172/B
+                                                         Input Pin (AND2X3)
+                                       CONTROL_PART/ROUTING_TABLE_W/U146/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_W/U275/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_W/U136/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_W/U264/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_W/U128/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_W/U256/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_W/U104/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_W/U232/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_W/U96/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_W/U224/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_W/U76/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_W/U204/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_W/U72/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_W/U200/B
+                                                         Input Pin (AND2X2)
+                                       CONTROL_PART/ROUTING_TABLE_W/U64/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_W/U192/B
+                                                         Input Pin (AND2X3)
+                                       CONTROL_PART/ROUTING_TABLE_W/U44/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_W/U172/B
+                                                         Input Pin (AND2X3)
+                                       CONTROL_PART/ROUTING_TABLE_W/U40/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_W/U168/B
+                                                         Input Pin (AND2X3)
+                                       CONTROL_PART/ROUTING_TABLE_W/U32/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_W/U160/B
+                                                         Input Pin (AND2X3)
+                                       CONTROL_PART/ROUTING_TABLE_S/U146/A
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/ROUTING_TABLE_S/U275/B
+                                                         Input Pin (AND2X2)
+
