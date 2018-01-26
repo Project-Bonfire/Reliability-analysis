@@ -31,9 +31,11 @@ set resultfolder=`mktemp -d`
 cp modelsim.ini $resultfolder/modelsim.ini
 echo "$*" >> $propertypath
 mkdir ../results/single
-(setenv ROUTERFOLDER $routerfile;setenv SCENARIOFILE $scnfile;setenv RESULTFILE ../results/single/Process1.results;setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; vsim  -modelsimini $resultfolder/modelsim.ini -novopt -t 1ns -c -do simulate.do  )
+(setenv DEBUG "true";setenv ROUTERFOLDER $routerfile;setenv SCENARIOFILE $scnfile;setenv RESULTFILE ../results/single/Process1.results;setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; vsim  -modelsimini $resultfolder/modelsim.ini -novopt -t 1ns -c -do simulate.do  )
 
 echo "Find the results here:"
 echo "cd ../results/single"
 echo "Tmp Folder was here:"
+
+#this should be the last line of output, or change the code in ./setup.sh
 echo "cd $resultfolder"

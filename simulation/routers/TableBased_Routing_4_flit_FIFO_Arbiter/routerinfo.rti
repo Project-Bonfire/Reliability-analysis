@@ -1,0 +1,5 @@
+modules=['fifod', 'xbar', 'fifoc', 'rtable', 'arbiter']
+nrfaultlocs=19719
+locspermodule={'rtable': 5532, 'arbiter': 970, 'fifod': 9662, 'fifoc': 705, 'xbar': 2850}
+ralgo_name="XYRouting"
+info="tablebased 4 flit fifo arbiter"

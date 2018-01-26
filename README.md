@@ -11,6 +11,7 @@ This should run many experiments where faults are injected into the router and i
  - `results` contains all results of simulations. Each run creates a folder with the current date and time. In the Folder, there are the log files of the simulation and the results from the experiments in `all.results.gz`. This is a compressed text file which contains all the experiments.
  - `eval_sim` contains the evaluator for the output of the experiments.
  - `multi_params.sh <outputfile>` runs multiple simulation runs with different scenarios. It evaluates these scenarios and writes the framelength, the packetsize and the fault probability to the output file. 
+ - `gen_explst_by_rti.sh <searchoattern in rti file>` helps creating .explst files. The explst file can help to store all experiment names which belong to a specific router setup.
  
 The simulation is paralelized on the number of given processes. For that a temp file and folder are created. The tempfile contains the parameterlist for this process, the tempfolder is used to store the results.
 The results are copied then into the resultsfolder. The foldername in the resultsfolder is the startdate and time.

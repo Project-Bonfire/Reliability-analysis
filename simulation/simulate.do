@@ -12,6 +12,10 @@ set STARTID $env(STARTID)
 set RESULTFILE $env(RESULTFILE)
 set SCENARIOFILE $env(SCENARIOFILE)
 set ROUTERFOLDER $env(ROUTERFOLDER)
+if {[info exists env(DEBUG)]} {
+    set DEBUG $env(DEBUG)
+}
+
 
 puts $ROUTERFOLDER
 puts $PROPERTYPATH
@@ -117,11 +121,12 @@ while {$data != ""} {
     close $recvfile
     puts $concatdresultfile "#####"
 
-
-    file delete "$RESULTFOLDER/sent.txt"
-    file delete "$RESULTFOLDER/received.txt"
-    file delete {*}[glob -nocomplain "$RESULTFOLDER/*.vcd"]
-    
+    #no cleanup on debug
+    if {$DEBUG != "true"} {
+        file delete "$RESULTFOLDER/sent.txt"
+        file delete "$RESULTFOLDER/received.txt"    
+        file delete {*}[glob -nocomplain "$RESULTFOLDER/*.vcd"]
+    }
     puts "finished experiment #$i"
     #increment line
     gets $fp data
