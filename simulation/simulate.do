@@ -14,6 +14,8 @@ set SCENARIOFILE $env(SCENARIOFILE)
 set ROUTERFOLDER $env(ROUTERFOLDER)
 if {[info exists env(DEBUG)]} {
     set DEBUG $env(DEBUG)
+} else {
+    set DEBUG "false"
 }
 
 
