@@ -18,15 +18,15 @@ package TB_Package is
 
   procedure credit_counter_control(signal clk: in std_logic; 
                                  signal credit_in: in std_logic; signal valid_out: in std_logic; 
-                                 signal credit_counter_out: out std_logic_vector(1 downto 0));
+                                 signal credit_counter_out: out std_logic_vector(2 downto 0));
   procedure gen_random_packet(filename: in string;
                       network_size, frame_length, source, initial_delay, min_packet_size, max_packet_size: in integer;
                       finish_time: in time; signal clk: in std_logic;
-                      signal credit_counter_in: in std_logic_vector(1 downto 0); signal valid_out: out std_logic; 
+                      signal credit_counter_in: in std_logic_vector(2 downto 0); signal valid_out: out std_logic; 
                       signal port_in: out std_logic_vector);
   --procedure gen_bit_reversed_packet(network_size, frame_length, source, initial_delay, min_packet_size, max_packet_size: in integer;
   --                    finish_time: in time; signal clk: in std_logic;
-  --                    signal credit_counter_in: in std_logic_vector(1 downto 0); signal valid_out: out std_logic; 
+  --                    signal credit_counter_in: in std_logic_vector(2 downto 0); signal valid_out: out std_logic; 
   --                    signal port_in: out std_logic_vector); 
   procedure get_packet(filename: in string;
                   DATA_WIDTH, initial_delay, Node_ID: in integer; signal clk: in std_logic; 
@@ -77,12 +77,12 @@ package body TB_Package is
 
   procedure credit_counter_control(signal clk: in std_logic; 
                                    signal credit_in: in std_logic; signal valid_out: in std_logic; 
-                                   signal credit_counter_out: out std_logic_vector(1 downto 0)) is
+                                   signal credit_counter_out: out std_logic_vector(2 downto 0)) is
 
-    variable credit_counter: std_logic_vector (1 downto 0);
+    variable credit_counter: std_logic_vector (2 downto 0);
 
     begin
-    credit_counter := "11";
+    credit_counter := "111";
     
     while true loop
       credit_counter_out<= credit_counter;
@@ -102,7 +102,7 @@ package body TB_Package is
   procedure gen_random_packet(filename: in string;
                       network_size, frame_length, source, initial_delay, min_packet_size, max_packet_size: in integer;
                       finish_time: in time; signal clk: in std_logic;
-                      signal credit_counter_in: in std_logic_vector(1 downto 0); signal valid_out: out std_logic; 
+                      signal credit_counter_in: in std_logic_vector(2 downto 0); signal valid_out: out std_logic; 
                       signal port_in: out std_logic_vector) is
     variable seed1 :positive := source+1;
     variable seed2 :positive := source+1;
@@ -111,7 +111,7 @@ package body TB_Package is
     variable rand : real ;
     variable destination_id: integer;
     variable id_counter, frame_starting_delay, Packet_length, frame_ending_delay : integer:= 0;
-    variable credit_counter: std_logic_vector (1 downto 0);
+    variable credit_counter: std_logic_vector (2 downto 0);
     variable x,y :integer ;
     begin
 
@@ -195,7 +195,7 @@ package body TB_Package is
       for I in 0 to Packet_length-3 loop  
             -- The reason for -3 is that we have packet length of Packet_length, now if you exclude header and tail
             -- it would be Packet_length-2 to enumerate them, you can count from 0 to Packet_length-3. 
-            if credit_counter_in = "00" then 
+            if credit_counter_in = "000" then 
              valid_out <= '0'; 
              -- Wait until next router/NI has at least enough space for one flit in its input FIFO
              wait until credit_counter_in'event and credit_counter_in > 0; 
@@ -217,7 +217,7 @@ package body TB_Package is
              wait until clk'event and clk ='0';             
       end loop;
 
-      if credit_counter_in = "00" then 
+      if credit_counter_in = "000" then 
              valid_out <= '0'; 
              -- Wait until next router/NI has at least enough space for one flit in its input FIFO
              wait until credit_counter_in'event and credit_counter_in > 0; 
@@ -251,7 +251,7 @@ package body TB_Package is
 
 --procedure gen_bit_reversed_packet(network_size, frame_length, source, initial_delay, min_packet_size, max_packet_size: in integer;
 --                      finish_time: in time; signal clk: in std_logic;
---                      signal credit_counter_in: in std_logic_vector(1 downto 0); signal valid_out: out std_logic; 
+--                      signal credit_counter_in: in std_logic_vector(2 downto 0); signal valid_out: out std_logic; 
 --                      signal port_in: out std_logic_vector) is
 --    variable seed1 :positive ;
 --    variable seed2 :positive ;
@@ -260,7 +260,7 @@ package body TB_Package is
 --    variable rand : real ;
 --    variable destination_id: integer;
 --    variable id_counter, frame_starting_delay, Packet_length, frame_ending_delay : integer:= 0;
---    variable credit_counter: std_logic_vector (1 downto 0);
+--    variable credit_counter: std_logic_vector (2 downto 0);
 --    begin
 
 --    Packet_length := integer((integer(rand*100.0)*frame_length)/300);
@@ -316,7 +316,7 @@ package body TB_Package is
 --      wait until clk'event and clk ='0';
 
 --      for I in 0 to Packet_length-3 loop 
---            if credit_counter_in = "00" then 
+--            if credit_counter_in = "000" then 
 --             valid_out <= '0'; 
 --             wait until credit_counter_in'event and credit_counter_in >0;
 --             wait until clk'event and clk ='0';
@@ -328,7 +328,7 @@ package body TB_Package is
 --             wait until clk'event and clk ='0';
 --      end loop;
 
---      if credit_counter_in = "00" then 
+--      if credit_counter_in = "000" then 
 --             valid_out <= '0'; 
 --             wait until credit_counter_in'event and credit_counter_in >0;
 --             wait until clk'event and clk ='0';

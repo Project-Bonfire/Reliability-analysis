@@ -13,7 +13,7 @@ import os
 
 # This file lets us create plots of the most current module data
 
-parser = argparse.ArgumentParser(description='Evaluation the result of a Reliability-analysis simulation.')
+parser = argparse.ArgumentParser(description='Evaluate the result of a Reliability-analysis simulation.')
 parser.add_argument('imagefolder', type=str, help='The folder where the plots should be saved`.')
 args = parser.parse_args()
 
@@ -196,7 +196,9 @@ currentname ="lbdr_8flit_arbiter"
 # Download dataset and prepare it
 def getdataset():
     invalids = []
+
     file = 'http://ati.ttu.ee/~thilo/evals'+currentname+'.log'
+
     r = requests.get(file, stream=True)
     buffers = []
     buffer = []

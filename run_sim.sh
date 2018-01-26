@@ -63,7 +63,7 @@ cd simulation
 rm -rf results/
 mkdir results
 set i=0
-set routerinfo=`readlink -f routerinfo.rti`
+set routerinfo=`readlink -f $routerfile/routerinfo.rti`
 mkdir "../results/$curtime"
 mkdir "../results/$curtime/results"
 set num_experiments=`wc -l <$simruns`
@@ -81,7 +81,7 @@ while ($x <= $num_processes)
     echo "Startid: $startid"
     #sed -n 1,${i}p < sim_runs > /tmp/test
     # create tmpfile which contains the experiment parameters for this instance
-    sed -n ${startline},${endline}p  < ../sim_runs >> $propertypath
+    sed -n ${startline},${endline}p  < $simruns >> $propertypath
     set resultfolder=`mktemp -d`
     set cleanupdirs="$cleanupdirs $propertypath $resultfolder"
     cp modelsim.ini $resultfolder/modelsim.ini

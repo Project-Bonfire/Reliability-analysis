@@ -57,11 +57,11 @@ end component;
 		valid_out_N_5, valid_out_E_5, valid_out_W_5, valid_out_S_5, valid_out_L_5,
 		credit_out_N_5, credit_out_E_5, credit_out_W_5, credit_out_S_5, credit_out_L_5: std_logic;
 
-	signal credit_counter_out_5:  std_logic_vector (1 downto 0);
-	signal credit_counter_out_1:  std_logic_vector (1 downto 0);
-	signal credit_counter_out_4:  std_logic_vector (1 downto 0);
-	signal credit_counter_out_6:  std_logic_vector (1 downto 0);
-	signal credit_counter_out_9:  std_logic_vector (1 downto 0);
+	signal credit_counter_out_5:  std_logic_vector (2 downto 0);
+	signal credit_counter_out_1:  std_logic_vector (2 downto 0);
+	signal credit_counter_out_4:  std_logic_vector (2 downto 0);
+	signal credit_counter_out_6:  std_logic_vector (2 downto 0);
+	signal credit_counter_out_9:  std_logic_vector (2 downto 0);
 
 	--------------
 	constant clk_period : time := 10 ns;
@@ -82,7 +82,7 @@ reset <= '1' after 1 ns;
 
 -- instantiating the router
 R_5: router_credit_based 
---generic map (DATA_WIDTH => 32, current_address=>5)
+--generic map (DATA_WIDTH => 32, current_address=>5, NoC_size=>4)
 PORT MAP (  reset, clk, 
 
         	RX_N_5, RX_E_5, RX_W_5, RX_S_5, RX_L_5,

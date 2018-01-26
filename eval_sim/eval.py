@@ -40,11 +40,13 @@ if verbose:
 refdata = {}
 if args.routerinfo:
     for line in args.routerinfo.readlines():
-        l, r = line.split('=', 1)
-        refdata[l] = ast.literal_eval(r)
+        if line.strip():
+            l, r = line.split('=', 1)
+            refdata[l] = ast.literal_eval(r)
 modules:List[str]=refdata["modules"]
 refdata['nrfaultlocs'] = sum(refdata['locspermodule'].values())
-modules.remove('none')
+if 'none' in modules:
+    modules.remove('none')
 tldmodules=modules
 
 results: List[Result] = None

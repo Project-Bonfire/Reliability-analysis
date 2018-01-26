@@ -56,7 +56,8 @@ if args.module_representative_numbers:
     modulelines = {}
     for l in lines:
         modulelines.setdefault(l.split(' ')[2].strip()[1:],[]).append(l)
-    del modulelines['none']
+    if 'none' in modulelines:
+        del modulelines['none']
     print("creating paramsets from locs per module %s"%str({k:len(modulelines[k])for k in modulelines.keys()}),file=sys.stderr)
     lens = {k: len(v) for k, v in modulelines.items()}
     for k in modulelines.keys():

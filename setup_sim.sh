@@ -13,6 +13,9 @@ if [ ! -d "$params" ]; then
   echo "Usage: $0 <routername in simulation/routers>"
   exit
 fi
+if [ "$2" == "" ];  then
+    params+=" --cellexport Cells_Report_with_Connections_Verbose.txt"
+fi
  if [ "$2" != "" ];  then
     params+=" --cellexport $2"
 fi
