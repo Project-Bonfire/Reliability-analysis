@@ -53,9 +53,9 @@ class Result:
     errornous = False
 
     # flags
-    # if the number of packets which where sent to router 5 is unexpected
+    # if the number of packets which were sent to router 5 is unexpected
     unexpected_len_sent:bool = False
-    # if the number of packets which where sent from router 5 is unexpected
+    # if the number of packets which were sent from router 5 is unexpected
     unexpected_len_recv:bool = False
     # number of actual packets
     len_sent = -1

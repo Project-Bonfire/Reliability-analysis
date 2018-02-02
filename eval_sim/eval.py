@@ -123,6 +123,7 @@ for k, v in uncorrect_module_ratios.items():
 correction_multipliers = {k: module_size_ratio[k] /v for k, v in uncorrect_module_ratios.items()}
 corrected_ratio = sum([violations_per_module[m] * correction_multipliers[m] for m in tldmodules])/num_runs
 
+#
 param_module_failed_corrected_counts  = {n: sum(1 for r in m_invalid_fixed_fifo[n])* correction_multipliers[n] for n in modules}
         
 param_module_failed_corrected_ratio  = {k: v/num_runs for k,v in param_module_failed_corrected_counts.items()}
