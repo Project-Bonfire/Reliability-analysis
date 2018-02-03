@@ -86,6 +86,7 @@ The structure has to be as follows:
 The setup phase creates all the files that are needed during an assessment.
 
 To setup a router a gate level netlist with broken hirarchy but sensible cellnames and an verbose export of all cells is needed (Supported is the format from  the Synopsys Design Compiler).
+For more information on the verbose cell export see `prepare_sim/cell_export_parser/README.md`
 
 At first, the matching from cellnames to modulenames has to be setup. 
 For this the  files `pattern_to_modules.py` and  `record_modules.tcl` have to be created in the folder of the router. 
