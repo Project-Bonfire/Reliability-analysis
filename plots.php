@@ -20,6 +20,7 @@
       $(".gardenimage").hide()
       console.log($("#"+window.router+" ."+window.figure))
       $("#"+window.router+" ."+window.figure).show()
+      $("#link-data").attr("href", "../evals"+window.router+".log")
     }
   };
  
@@ -48,9 +49,10 @@ foreach ($dirs as $dir){
 }
 ?>
  </div>
+<div class="pull-right"><a id="link-data">data file of the current router</a> </div>
 
- <div id="routerfigs">
  <br>
+ <div id="routerfigs">
   <?php
 
 #figureButtons

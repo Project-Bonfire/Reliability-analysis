@@ -1,5 +1,5 @@
 #!/bin/tcsh -f
-
+#Usage: $0 <scnfile> <routerfile> '<faultsimline>'
 #source /cad/unsetenvs.csh
 setenv PATH /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin
 setenv MANPATH /usr/man:/usr/share/man:/usr/local/man:/usr/local/share/man
