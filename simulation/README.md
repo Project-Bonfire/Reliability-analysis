@@ -36,7 +36,7 @@ What happened during an experiment is written down as:
 <experimentparams>
 !modules:
 <one line for each module of the router in the format:
-[arbiter|xbar|fifo|lbdr]:<hash of the vcd file of that modules outputs>
+[arbiter|xbar|fifo|lbdr|...]:<hash of the vcd file of that modules outputs>
 >
 !sent:
 <one line for each packet sent into the router>
@@ -67,6 +67,8 @@ The parameters for the whole simulation are given via env vars:
 - `RESULTFOLDER` is a folder which is used temporarly for results before they are copied to the experiment results folder. This may be removed in further versions, and the result will be written to the correct destination directly.
 - `RESULTFILE` is the file where the results of the experiments are written to. See section `output`.
 - `SCENARIOFILE` the scenariofile contains the scenario for these experiments.
+- `DEBUG` The debug flag should be set to `"true"` when cleanup should not be done, therefore, the `RESULTFOLDER` will staz populated.
+- `ROUTERFOLDER` the path where the `gate_level_netlist.v` is found that contains the router that should be simulated. 
 ```
     setenv PROPERTYPATH $propertypath; 
     setenv STARTID $startid; 
@@ -94,26 +96,12 @@ Sending packets is delayed when there is not enough credit.
 The simulation can be run with `vsim -t 1ns -c -do simulate.do`. `-c` runs the simulation headless.
 
 
-## Replace router
+# Router
+The router that should be used can be specified with the env var `ROUTERFOLDER`.
+This folder has to contain a `gate_level_netlist.v` file which contains the router without hirachy.
+Also the folder has to contain a `pattern_to_modules.py` and a `record_modules.tcl` file.
+`pattern_to_modules.py` to match pins to modules during setup and `record_modules.tcl` to setup recording of the modules outputs during the experiments.
 
-The router can be simply replaced by changing the `Router_32_bit_credit_based_gate_level_without_hierarchy.v` file. The path can be changed in the `simulation.do`.
-
-The module should have no hirachy. Also a list of the names of all pins is needed.
-
-### Generate Pin Names
-To get a list of all pins one can export the full list of all cells of the design. The export must conatin the input and output ports of the cells.
-
-The `../cell_export_parser` folder contains a converter which takes the export of the Synopsys Design Compiler and compains it to the required list.
-Also see the readme there.
+For further information, see the section setup in the `../README.md`
 
 
-
-#### Behrads description of what we did
-
-
-1) First, We took the RTL code of the router along with its internal components. Using ModelSim (QuestaSim) from Mentor Graphics, we simulated the design, using a test-bench. The test-bench has packet injectors and packet consumers implemented in it at software layer, which act as Processing Elements (PEs). We have focused on random uniform traffic so far. One of the considered cases is that all input ports of the router send to the same direction or to different directions (destinations).
-We have focused on router 5 in a 4x4 2D Mesh topology. XY routing is assumed and the router has connectivity to all its 4 neighbors and its local port. 
-2) After making sure that the design at RTL works with the written test-bench, we synthesized the design using Synopsys Design Compiler (and Design Vision as part of it for visualization pusposes) using AMS 180 nm CMOS technology library (TYPICAL one, CORELIB). We broke the hierarchy (ungrouped everything) and using a synthesis script, we got the gate-level net-list of the router, which are in terms of the cells defined in AMS library. 
-3) We exported the full list of all cells in the synthesized design and parsed it. 
-4) To make sure everything works, we put the Verilog gate-level net-list of the design and tested it again with the same previous test-bench. The results matched. The way we check the results, one of them is checking two files received.txt and sent.txt. The number of lines should match, showing that every packet that was injected into the network has been eventually received by its destination.  
-5) Using TCL script, we injected faults at different locations in the net-list and simulated each scenario to see the effect of the injected fault at gate-level on system-level behaviour of the NoC router -> For instance: mis-routing, mis-arbitrating, routing request(s) getting muted, corrupted data, flit loss or duplicated flit, ... . -> Similar work has been done in Peh's paper, but they have focused on the effect of process variation and run-time variation on system-level faults in a NoC router. 

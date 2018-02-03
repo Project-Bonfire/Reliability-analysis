@@ -50,6 +50,8 @@ This is a compressed text file which contains all the experiments.
 During evaluation, a `all.intmdtresults.gz` file is created, which contains the assessed experiments, before they are accumulated. 
 
 ## Simulation
+The simulation is tested using QuestaSim.
+
 The simulation is paralelized on the number of given processes. For that a temp file and folder are created. 
 The tempfile contains the parameterlist for this process, the tempfolder is used to store the results.
 The results are copied then into the resultsfolder. The foldername in the resultsfolder is the startdate and time.
@@ -79,3 +81,21 @@ The structure has to be as follows:
     - One folder for each router
       - one `.png` file for each plot
       - a `.txt` file with the same prefix as the `.png` with the description
+
+# Setup
+The setup phase creates all the files that are needed during an assessment.
+
+To setup a router a gate level netlist with broken hirarchy but sensible cellnames and an verbose export of all cells is needed (Supported is the format from  the Synopsys Design Compiler).
+
+At first, the matching from cellnames to modulenames has to be setup. 
+For this the  files `pattern_to_modules.py` and  `record_modules.tcl` have to be created in the folder of the router. 
+See examples in the routers in `simulation/routers` for further information.
+
+ - `pattern_to_modules.py` contains a map from regular expressions to module names.
+ - `record_modules.tcl` sets up the recording of the module outputs during the simulation. This information will be used to see if the output of a module has been changed by the fault injection.
+
+When these two files are present, the setup process can be done with the `setup.sh` script.
+The output of this script should be read carefully, as it contains hints if the setup was successfull.
+
+The script gathers the fault injection locations creates the `routerinfo.rti` file and runs a test simulation.
+Also, from the test simulation, the list of pins which are recorded as module outputs are written to the `moduleoutputsignals` folder of the router.
