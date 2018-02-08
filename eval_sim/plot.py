@@ -22,7 +22,7 @@ packetlengths = [3, 5, 10, 20, 30]
 
 
 def createdataset_modules(buffers: List[List[str]], attribute, flattensecondlayer=False, relativeto=None,
-                          layerselforrel=lambda arr: arr[0]):
+                          layerselforrel=lambda arr: arr[0],connectingword=" "):
     """
 
     :param buffers:
@@ -52,9 +52,9 @@ def createdataset_modules(buffers: List[List[str]], attribute, flattensecondlaye
             for k1, v1 in tmp.items():
                 for k2, v2 in v1.items():
                     if rel:
-                        val[k1 + " " + k2] = v2 / rel[layerselforrel([k1, k2])]
+                        val[k1 + connectingword + k2] = v2 / rel[layerselforrel([k1, k2])]
                     else:
-                        val[k1 + " " + k2] = v2
+                        val[k1 + connectingword + k2] = v2
         if not flattensecondlayer and rel:
             for k1, v1 in val.items():
                 val[k1] = v1 / rel[k1]
@@ -111,8 +111,8 @@ def set_shared_ylabel(a, ylabel, labelpad = 0.01):
 
 
 
-def plotmodules(dataset, reference, xlabel, ylabel, title="", logscale=False, packetlengths: List[int] = [3, 5, 10, 20],
-                ylim=None,shapehint=None,sizehint=(3,2),labelsonce:bool=False,refissimple=False,refhasmodules=False):
+def plotmodules(dataset, reference, xlabel, ylabel, title="",titlefontsize=12, logscale=False, packetlengths: List[int] = [3, 5, 10, 20],
+                ylim=None,shapehint=None,sizehint=(3,2),labelsonce:bool=False,refissimple=False,refhasmodules=False,onlylowerxlabels=False):
     """
     plots the given dataset in 4 subplots, one for each module
     :param dataset: the dataset to show in the format [(packetlength,framrate, valuetoshow)]
@@ -128,7 +128,7 @@ def plotmodules(dataset, reference, xlabel, ylabel, title="", logscale=False, pa
     height = math.ceil(len(type) / 6) if not shapehint else shapehint[0]
     width = min(len(type), 6) if not shapehint else shapehint[1]
     f, ax = plt2.subplots(height, width, figsize=(width * sizehint[0], height * sizehint[1] +(1 if xlabel else 0)+(0.1 if title else 0)), sharey=True, gridspec_kw={'wspace':0})
-    st = f.suptitle(title, fontsize="x-large")
+    st = f.suptitle(title, fontsize=11)
     ax = ax.flatten()
 
 
@@ -145,17 +145,17 @@ def plotmodules(dataset, reference, xlabel, ylabel, title="", logscale=False, pa
                                                                 pl if not refissimple else 0)
         handles, labels = create_singleplot(ax[i], packetlengths, "" if labelsonce else xlabel, "" if labelsonce else ylabel ,
                                             lambda pl: preparelist(res[type[i]], pl),
-                                            reference=ref, ylim=ylim, title=type[i], logscale=logscale)
+                                            reference=ref, ylim=ylim, title=type[i], logscale=logscale,titlefontsize=titlefontsize,showxlabels=(i/width >= height-1)if onlylowerxlabels else True)
 
     f.legend(handles, labels)
 
     plt2.tight_layout()
     if title:
-        st.set_y(0.98)
-        f.subplots_adjust(top=0.80)
+        st.set_y(1)
+        f.subplots_adjust(top=0.9)
     if labelsonce:
-
         f.text(0, 0.5, ylabel, va='center', rotation='vertical')
+        f.text(0.5,0.02,xlabel,va='center')
         #f.text(0.5, 0.04, xlabel, ha='center')
         #set_shared_ylabel(ax, ylabel)
 
@@ -173,7 +173,7 @@ def plotsimple(dataset, reference, xlabel, ylabel, title="", logscale=False, pac
     """
     f = plt2.figure()
     ax = f.add_subplot(111)
-    st = f.suptitle(title, fontsize="x-large")
+    st = f.suptitle(title, fontsize=11)
 
     handles, labels = None, None
 
@@ -196,7 +196,7 @@ def plotsimple(dataset, reference, xlabel, ylabel, title="", logscale=False, pac
 
 
 def create_singleplot(ax, packetlengths, xlabel,
-                      ylabel, data, reference=None, ylim=None, title="", logscale=False):
+                      ylabel, data, reference=None, ylim=None, title="", logscale=False,titlefontsize="x-large",showxlabels =True):
     """
     plots a single plot
     :param ax: the figure to plot on
@@ -211,7 +211,7 @@ def create_singleplot(ax, packetlengths, xlabel,
     :return: the handles and the labels to draw the legend.
     """
     plt2.locator_params(axis='x', nticks=10)
-    ax.set_title(title)
+    ax.set_title(title,fontsize=titlefontsize)
     for pl in packetlengths:
         x, y = data(pl)
         # y = np.log([float(z) for z in y])
@@ -227,6 +227,8 @@ def create_singleplot(ax, packetlengths, xlabel,
         ax.set_yscale("log", nonposy='clip')
         ax.get_yaxis().set_major_formatter(
             plt.ticker.FuncFormatter(lambda x, p: "%.4f" % float(x)))
+    if not showxlabels:
+        ax.get_xaxis().set_ticklabels([])
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
     if ylim:
@@ -323,7 +325,7 @@ explanation = '<ul><li>INVALIDFLITS: a flittype violated the fsm (HEAD BODY+ TAI
 #result, fitted = fitcurve_simple(referencecorrected)#+failedsimulations)
 
 plotsimple([(x, y, z) for x, y, z in referencecorrected], None,
-           'Port Load Density', 'ratio', title=currentname, packetlengths=packetlengths, ylim=(0,.21))
+           'Port Load Density', 'Fault Sensitivity', title=currentname, packetlengths=packetlengths, ylim=(0,.21))
 plt2.savefig(path + 'corrected_system_failure_probability.png')
 with open(path + 'corrected_system_failure_probability.txt', 'w') as the_file:
     the_file.write('P(system failed)<br>\n'
@@ -350,7 +352,7 @@ valarr = {k: [val for pl,fl,val in v] for k, v in dat.items()}
 contribution_pars = {k:np.linalg.lstsq(np.vstack([flarr[k], np.ones(len(flarr[k]))]).T, valarr[k])[0] for k in valarr.keys()}
 regdat = {k:[(0, fl, contribution_pars[k][0] * fl + contribution_pars[k][1]) for pl, fl, val in v] for k, v in dat.items()}
 plotmodules(dat, regdat,
-            'Port Load Density ', 'ratio', title="module_fail_sens_contribution", packetlengths=packetlengths, ylim=(0, 1),refissimple=True,refhasmodules=True)
+            'Port Load Density ', 'ratio', title="module_fail_sens_contribution", packetlengths=packetlengths, ylim=(0, .8),refissimple=True,refhasmodules=True)
 plt2.savefig(path + 'module_fail_sens_contribution.png')
 with open(path + 'module_fail_sens_contribution.txt', 'w') as the_file:
     the_file.write('The contribution per module to the failure sensitivity.<br>\n'
@@ -372,7 +374,7 @@ with open(path + 'ratio_violations_per_module.txt', 'w') as the_file:
 
 #estimate the fail sens by using the estimated contribution from  above contribution_m * failsens_m
 plotsimple([(x,y,z) for x, y, z in referencecorrected], [(0, y, sum((sens_p_mod_pars[k][0]*y+sens_p_mod_pars[k][1])*(v[0] * y + v[1]) for k, v in contribution_pars.items())) for x, y, z in referencecorrected],
-           'Port Load Density', 'ratio', title=currentname, packetlengths=packetlengths, ylim=(0,.3),refissimple=True,)
+           'Port Load Density', 'ratio', title=currentname, packetlengths=packetlengths, ylim=(0,.21),refissimple=True,)
 plt2.savefig(path + 'module_fail_sens_contribution_estimation.png')
 with open(path + 'module_fail_sens_contribution_estimation.txt', 'w') as the_file:
     the_file.write('estimates the fail sens from module_fail_sens_contribution\n<br> sensitivity per module:' +str(sens_p_mod_pars) + '<br>\ncontribution per module: '+str(contribution_pars))
@@ -447,15 +449,15 @@ with open(path + 'faulttype_ratios_given_invalid.txt', 'w') as the_file:
 dat = createdataset_modules(buffers, 'faulttype_and_module_output_changed', flattensecondlayer=True,
                             relativeto='faulttype_counts', layerselforrel=lambda arr: arr[0])
 plotmodules(dat, None,
-            '', 'ratio', title="", packetlengths=packetlengths, ylim=(0.45, 1),shapehint=(3,5),sizehint=(3,1))
+            'Port Load Density', 'ratio', title=currentname, packetlengths=packetlengths, ylim=(0.45, 1),shapehint=(3,5),sizehint=(3,1),labelsonce=True,titlefontsize=10,onlylowerxlabels=True)
 plt2.savefig(path + 'faulttype_and_module_output_changed.png')
 with open(path + 'faulttype_and_module_output_changed.txt', 'w') as the_file:
     the_file.write('P(moduleoutput changed |failureclass present)<br>\n'
         'faulttype_and_module_output_changed: the probability that when a certain fault occurs the modules output changed too.' + explanation)
 
-dat = createdataset_modules(buffers, 'faulttype_correlation', flattensecondlayer=True)
+dat = createdataset_modules(buffers, 'faulttype_correlation', flattensecondlayer=True,connectingword=" given ")
 plotmodules(dat, None,
-            'Port Load Density ', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1.01),shapehint=(3,3))
+            'Port Load Density ', 'correlation between failure classes on the same experiment', title=currentname, sizehint=(3,1), packetlengths=packetlengths, ylim=(0, 1.01),shapehint=(3,3),labelsonce=True,titlefontsize=9,onlylowerxlabels=True)
 plt2.savefig(path + 'faulttype_correlation.png')
 with open(path + 'faulttype_correlation.txt', 'w') as the_file:
     the_file.write('P(failuretype1 | failuretype2)<br>\n'
