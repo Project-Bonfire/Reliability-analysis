@@ -112,7 +112,7 @@ def set_shared_ylabel(a, ylabel, labelpad = 0.01):
 
 
 def plotmodules(dataset, reference, xlabel, ylabel, title="", logscale=False, packetlengths: List[int] = [3, 5, 10, 20],
-                ylim=None,shapehint=None,labelsonce:bool=False):
+                ylim=None,shapehint=None,sizehint=(3,2),labelsonce:bool=False,refissimple=False,refhasmodules=False):
     """
     plots the given dataset in 4 subplots, one for each module
     :param dataset: the dataset to show in the format [(packetlength,framrate, valuetoshow)]
@@ -127,7 +127,7 @@ def plotmodules(dataset, reference, xlabel, ylabel, title="", logscale=False, pa
     type = sorted(list(res.keys()))
     height = math.ceil(len(type) / 6) if not shapehint else shapehint[0]
     width = min(len(type), 6) if not shapehint else shapehint[1]
-    f, ax = plt2.subplots(height, width, figsize=(width * 3, height * 2 + 1+(0.1 if title else 0)), sharey=True, gridspec_kw={'wspace':0})
+    f, ax = plt2.subplots(height, width, figsize=(width * sizehint[0], height * sizehint[1] +(1 if xlabel else 0)+(0.1 if title else 0)), sharey=True, gridspec_kw={'wspace':0})
     st = f.suptitle(title, fontsize="x-large")
     ax = ax.flatten()
 
@@ -139,8 +139,10 @@ def plotmodules(dataset, reference, xlabel, ylabel, title="", logscale=False, pa
         list = sorted(list, key=lambda x: x[1])
         return [v[1] for v in list], [v[2] for v in list]
 
-    ref = None if not reference else lambda pl: preparelist(reference, pl)
+
     for i in range(len(type)):
+        ref = None if not reference else lambda pl: preparelist(reference if not refhasmodules else reference[type[i]],
+                                                                pl if not refissimple else 0)
         handles, labels = create_singleplot(ax[i], packetlengths, "" if labelsonce else xlabel, "" if labelsonce else ylabel ,
                                             lambda pl: preparelist(res[type[i]], pl),
                                             reference=ref, ylim=ylim, title=type[i], logscale=logscale)
@@ -160,7 +162,7 @@ def plotmodules(dataset, reference, xlabel, ylabel, title="", logscale=False, pa
 
 
 def plotsimple(dataset, reference, xlabel, ylabel, title="", logscale=False, packetlengths: List[int] = [3, 5, 10, 20],
-               ylim=None):
+               ylim=None,refissimple=False):
     """
     plots the given dataset in 4 subplots, one for each module
     :param dataset: the dataset to show in the format [(packetlength,framrate, valuetoshow)]
@@ -180,15 +182,17 @@ def plotsimple(dataset, reference, xlabel, ylabel, title="", logscale=False, pac
         list = sorted(list, key=lambda x: x[1])
         return [v[1] for v in list], [v[2] for v in list]
 
-    ref = None if not reference else lambda pl: preparelist(reference, pl)
+    ref = None if not reference else lambda pl: preparelist(reference, pl if not refissimple else 0)
+
     handles, labels = create_singleplot(ax, packetlengths, xlabel, ylabel,
                                         lambda pl: preparelist(dataset, pl),
                                         reference=ref, ylim=ylim, title="", logscale=logscale)
     f.legend(handles, labels)
+
+    plt2.tight_layout()
     if title:
         st.set_y(0.98)
-        f.subplots_adjust(top=0.70)
-    plt2.tight_layout()
+        f.subplots_adjust(top=0.90)
 
 
 def create_singleplot(ax, packetlengths, xlabel,
@@ -242,6 +246,9 @@ def enrich_values(values):
     values["module_output_changed_when_system_failed_ratio"] = str(tmp)
     tmp = {k: v / int(values["num_runs"]) for k, v in mod.items()}
     values["module_output_changed_when_system_failed_ratio_total"] = str(tmp)
+    ratio = float(values['corrected_ratio'])
+    mod = ast.literal_eval(values["param_module_failed_corrected_ratio"])
+    values["module_fail_sens_contribution"] = str({k: v/ratio for k,v in mod.items()})
     return values
 
 currentname =args.routername
@@ -316,7 +323,7 @@ explanation = '<ul><li>INVALIDFLITS: a flittype violated the fsm (HEAD BODY+ TAI
 #result, fitted = fitcurve_simple(referencecorrected)#+failedsimulations)
 
 plotsimple([(x, y, z) for x, y, z in referencecorrected], None,
-           'Port Load Density', 'ratio', title=currentname, packetlengths=packetlengths, ylim=(0,1))
+           'Port Load Density', 'ratio', title=currentname, packetlengths=packetlengths, ylim=(0,.21))
 plt2.savefig(path + 'corrected_system_failure_probability.png')
 with open(path + 'corrected_system_failure_probability.txt', 'w') as the_file:
     the_file.write('P(system failed)<br>\n'
@@ -328,7 +335,7 @@ with open(path + 'corrected_system_failure_probability.txt', 'w') as the_file:
 
 dat = createdataset_modules(buffers, 'param_module_failed_corrected_ratio')
 plotmodules(dat, referencecorrected,
-            'Port Load Density $\\frac{\mathit{packet\ length}}{\mathit{injection\ cycle\ length}}$', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 0.3))
+            'Port Load Density ', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 0.3))
 plt2.savefig(path + 'param_module_failed_corrected_ratio.png')
 with open(path + 'param_module_failed_corrected_ratio.txt', 'w') as the_file:
     the_file.write('P(faultinejected into module and system failed)<br>\n'
@@ -336,9 +343,44 @@ with open(path + 'param_module_failed_corrected_ratio.txt', 'w') as the_file:
     'The ratio are all where the system failed and the fault was injected into the module .<br>\n'
         '')
 
+
+dat = createdataset_modules(buffers, 'module_fail_sens_contribution')
+flarr = {k: [fl for pl,fl,val in v] for k, v in dat.items()}
+valarr = {k: [val for pl,fl,val in v] for k, v in dat.items()}
+contribution_pars = {k:np.linalg.lstsq(np.vstack([flarr[k], np.ones(len(flarr[k]))]).T, valarr[k])[0] for k in valarr.keys()}
+regdat = {k:[(0, fl, contribution_pars[k][0] * fl + contribution_pars[k][1]) for pl, fl, val in v] for k, v in dat.items()}
+plotmodules(dat, regdat,
+            'Port Load Density ', 'ratio', title="module_fail_sens_contribution", packetlengths=packetlengths, ylim=(0, 1),refissimple=True,refhasmodules=True)
+plt2.savefig(path + 'module_fail_sens_contribution.png')
+with open(path + 'module_fail_sens_contribution.txt', 'w') as the_file:
+    the_file.write('The contribution per module to the failure sensitivity.<br>\n'
+                   'Calculated for each module from the fraction the param_module_failed_corrected_ratio has from the corrected_system_failure_probability.')
+
+dat = createdataset_modules(buffers, 'ratio_violations_per_module')
+flarr = {k: [fl for pl,fl,val in v] for k, v in dat.items()}
+valarr = {k: [val for pl,fl,val in v] for k, v in dat.items()}
+sens_p_mod_pars = {k:np.linalg.lstsq(np.vstack([flarr[k], np.ones(len(flarr[k]))]).T, valarr[k])[0] for k in valarr.keys()}
+regdat = {k:[(0, fl, sens_p_mod_pars[k][0] * fl + sens_p_mod_pars[k][1]) for pl, fl, val in v] for k, v in dat.items()}
+plotmodules(dat, regdat,
+            'Port Load Density ', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 0.35),refissimple=True,refhasmodules=True)
+plt2.savefig(path + 'ratio_violations_per_module.png')
+with open(path + 'ratio_violations_per_module.txt', 'w') as the_file:
+    the_file.write('P(system failure | fault injected into module)<br>\n'
+    '100% are all the experiments where the fault was injected into the module.<br>\n'
+    'The ratio are all where the system failed .<br>\n'
+        'ratio_violations_per_module: the probability that a fault injection into a module causes system failure.')
+
+#estimate the fail sens by using the estimated contribution from  above contribution_m * failsens_m
+plotsimple([(x,y,z) for x, y, z in referencecorrected], [(0, y, sum((sens_p_mod_pars[k][0]*y+sens_p_mod_pars[k][1])*(v[0] * y + v[1]) for k, v in contribution_pars.items())) for x, y, z in referencecorrected],
+           'Port Load Density', 'ratio', title=currentname, packetlengths=packetlengths, ylim=(0,.3),refissimple=True,)
+plt2.savefig(path + 'module_fail_sens_contribution_estimation.png')
+with open(path + 'module_fail_sens_contribution_estimation.txt', 'w') as the_file:
+    the_file.write('estimates the fail sens from module_fail_sens_contribution\n<br> sensitivity per module:' +str(sens_p_mod_pars) + '<br>\ncontribution per module: '+str(contribution_pars))
+
+
 # when the system failed, how high is the probability, that also the module output changed
 plotmodules(createdataset_modules(buffers, 'module_output_changed_when_system_failed_ratio'), None,
-            'Port Load Density $\\frac{\mathit{packet\ length}}{\mathit{injection\ cycle\ length}}$',
+            'Port Load Density ',
             'ratio', title="", logscale=False, packetlengths=packetlengths, ylim=(0, 1))
 plt2.savefig(path + 'module_output_changed_when_system_failed_ratio.png')
 with open(path + 'module_output_changed_when_system_failed_ratio.txt', 'w') as the_file:
@@ -349,7 +391,7 @@ with open(path + 'module_output_changed_when_system_failed_ratio.txt', 'w') as t
 
 # fault in module caused system failure probability
 plotmodules(createdataset_modules(buffers, 'param_module_changed_and_invalid_ratios'), None,
-            'Port Load Density $\\frac{\mathit{packet\ length}}{\mathit{injection\ cycle\ length}}$',
+            'Port Load Density ',
             'ratio',
             title="", packetlengths=packetlengths, ylim=(0, 1))
 plt2.savefig(path + 'param_module_changed_and_invalid_ratios.png')
@@ -359,7 +401,9 @@ with open(path + 'param_module_changed_and_invalid_ratios.txt', 'w') as the_file
     'The ratio are the experiments where the system violated an invariant.<br>\n'
         'param_module_changed_and_invalid_ratios: the probability that a fault introduced into the module which changed the output of the module causes system failure.')
 
-plotmodules(createdataset_modules(buffers, 'param_module_changed_ratios'), None,
+
+dat=createdataset_modules(buffers, 'param_module_changed_ratios')
+plotmodules(dat, None,
             '',
             'ratio',labelsonce=True,
             title=currentname, packetlengths=packetlengths, ylim=(0, 1))
@@ -371,7 +415,7 @@ with open(path + 'param_module_changed_ratios.txt', 'w') as the_file:
                    'param_module_changed_ratios: the probability that a fault introduced into the module causes the module`s output to change.')
 
 plotmodules(createdataset_modules(buffers, 'faulttype_caused_by_module_ratio_corrected', flattensecondlayer=True), None,
-            'Port Load Density $\\frac{\mathit{packet\ length}}{\mathit{injection\ cycle\ length}}$', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1))
+            'Port Load Density ', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1))
 plt2.savefig(path + 'faulttype_caused_by_module_ratio_corrected.png')
 with open(path + 'faulttype_caused_by_module_ratio_corrected.txt', 'w') as the_file:
     the_file.write('P(failureclass present| fault injected into module)<br>\n'
@@ -381,7 +425,7 @@ with open(path + 'faulttype_caused_by_module_ratio_corrected.txt', 'w') as the_f
          + explanation)
 
 plotmodules(createdataset_modules(buffers, 'faulttype_ratios_total'), None,
-            'Port Load Density $\\frac{\mathit{packet\ length}}{\mathit{injection\ cycle\ length}}$', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 0.2))
+            'Port Load Density ', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 0.2))
 plt2.savefig(path + 'faulttype_ratios_total.png')
 with open(path + 'faulttype_ratios_total.txt', 'w') as the_file:
     the_file.write('P(failureclass present)<br>\n'
@@ -391,7 +435,7 @@ with open(path + 'faulttype_ratios_total.txt', 'w') as the_file:
     )
 
 plotmodules(createdataset_modules(buffers, 'faulttype_ratios_given_invalid'), None,
-            'Port Load Density $\\frac{\mathit{packet\ length}}{\mathit{injection\ cycle\ length}}$', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1))
+            'Port Load Density ', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1))
 plt2.savefig(path + 'faulttype_ratios_given_invalid.png')
 with open(path + 'faulttype_ratios_given_invalid.txt', 'w') as the_file:
     the_file.write('P(failureclass present)<br>\n'
@@ -403,7 +447,7 @@ with open(path + 'faulttype_ratios_given_invalid.txt', 'w') as the_file:
 dat = createdataset_modules(buffers, 'faulttype_and_module_output_changed', flattensecondlayer=True,
                             relativeto='faulttype_counts', layerselforrel=lambda arr: arr[0])
 plotmodules(dat, None,
-            'Port Load Density $\\frac{\mathit{packet\ length}}{\mathit{injection\ cycle\ length}}$', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1))
+            '', 'ratio', title="", packetlengths=packetlengths, ylim=(0.45, 1),shapehint=(3,5),sizehint=(3,1))
 plt2.savefig(path + 'faulttype_and_module_output_changed.png')
 with open(path + 'faulttype_and_module_output_changed.txt', 'w') as the_file:
     the_file.write('P(moduleoutput changed |failureclass present)<br>\n'
@@ -411,7 +455,7 @@ with open(path + 'faulttype_and_module_output_changed.txt', 'w') as the_file:
 
 dat = createdataset_modules(buffers, 'faulttype_correlation', flattensecondlayer=True)
 plotmodules(dat, None,
-            'Port Load Density $\\frac{\mathit{packet\ length}}{\mathit{injection\ cycle\ length}}$', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1.01),shapehint=(3,3))
+            'Port Load Density ', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1.01),shapehint=(3,3))
 plt2.savefig(path + 'faulttype_correlation.png')
 with open(path + 'faulttype_correlation.txt', 'w') as the_file:
     the_file.write('P(failuretype1 | failuretype2)<br>\n'
@@ -420,13 +464,5 @@ with open(path + 'faulttype_correlation.txt', 'w') as the_file:
         'faulttype_correlation: the probability that 2 failure types happened in the same run.' + explanation)
 #
 
-dat = createdataset_modules(buffers, 'ratio_violations_per_module')
-plotmodules(dat, referencecorrected,
-            'Port Load Density $\\frac{\mathit{packet\ length}}{\mathit{injection\ cycle\ length}}$', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 0.35))
-plt2.savefig(path + 'ratio_violations_per_module.png')
-with open(path + 'ratio_violations_per_module.txt', 'w') as the_file:
-    the_file.write('P(system failure | fault injected into module)<br>\n'
-    '100% are all the experiments where the fault was injected into the module.<br>\n'
-    'The ratio are all where the system failed .<br>\n'
-        'ratio_violations_per_module: the probability that a fault injection into a module causes system failure.')
+
 
