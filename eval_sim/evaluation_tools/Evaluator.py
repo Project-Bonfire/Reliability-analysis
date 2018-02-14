@@ -93,10 +93,9 @@ class Result:
     # if the modules vcd's differed from the expected.
     vcd_of_module_equal: Dict[str, bool] = None
 
-    def getFaultModuleFromParam(self,fifodcrecovery=True):
+    def getFaultModuleFromParam(self):
         """
         returns the faultmodule based on the param string.
-        fifodcrecovery: set to True if fifod and fifoc are grouped together to fifo in the params to split this up by regex search.
         :return: the module string
         """
         #new format:
@@ -105,6 +104,7 @@ class Result:
                 return self.params.split(' ')[6][1:]
 
         print("parseerror at: " + self.params, file=sys.stderr)
+        sys.exit("Parseerror!")
         return None
 
 

@@ -463,7 +463,7 @@ with open(path + 'param_module_changed_ratios.txt', 'w') as the_file:
                    'param_module_changed_ratios: the probability that a fault introduced into the module causes the module`s output to change.')
 
 plotmodules(createdataset_modules(buffers, 'faulttype_caused_by_module_ratio_corrected', flattensecondlayer=True), None,
-            'Port Load Density ', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1))
+            'Port Load Density ', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1),shapehint=(3,5),sizehint=(3,1),labelsonce=True,titlefontsize=10,onlylowerxlabels=True)
 plt2.savefig(path + 'faulttype_caused_by_module_ratio_corrected.png')
 with open(path + 'faulttype_caused_by_module_ratio_corrected.txt', 'w') as the_file:
     the_file.write('P(failureclass present| fault injected into module)<br>\n'

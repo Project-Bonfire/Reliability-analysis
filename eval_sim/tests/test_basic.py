@@ -96,14 +96,6 @@ class MyTest(unittest.TestCase):
         self.assertTrue(res.vcd_of_module_equal['lbdr'])
         self.assertTrue(res.vcd_of_module_equal['fifo'])
 
-    def testError(self):
-        noc_rg = init()
-        filename = "tests/resources/dest_bit_flipped.results"
-        errornous, results = evaluate_file(noc_rg, filename)
-        self.assertEqual(len(errornous), 0)
-        self.assertEqual(len(results), 1)
-
-        self.assertFalse(results[0].is_valid())
 
     def testMisrouted(self):
         '''
@@ -283,25 +275,6 @@ class MyTest(unittest.TestCase):
         self.assertEqual(results[0].len_sent, 509)
         self.assertFalse(results[0].is_valid())
 
-    def testPacketIntegrity1(self):
-        '''
-        Swapped the length of 2 packets on the same connection. One is now too long, one is too short. The differences cancel each other out.
-        :return:
-        '''
-        noc_rg = init()
-        filename = "tests/resources/PacketIntegrity/packetlength.results"
-        errornous, results = evaluate_file(noc_rg, filename)
-        self.assertEqual(len(errornous), 0)
-        self.assertEqual(len(results), 1)
-        self.assertFalse(results[0].errornous)
-        self.assertFalse(results[0].connection_counter_invalid)
-        self.assertFalse(results[0].unexpected_len_recv)
-        self.assertFalse(results[0].unexpected_len_sent)
-        self.assertEqual(results[0].recv_invalid, 0)
-        self.assertEqual(results[0].sents_invalid, 0)
-        self.assertEqual(results[0].len_recv, 743)
-        self.assertEqual(results[0].len_sent, 743)
-        self.assertFalse(results[0].is_valid())
 
     def testReplacedFlit(self):
         '''
