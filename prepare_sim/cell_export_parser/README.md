@@ -1,17 +1,37 @@
 # Cell Connection converter
 
-This projects defines an antlr grammar and a listener to output all pins of all cells of a ams_syn?? export of all cells.
+This projects defines an antlr grammar and a listener to output all pins of all cells from the verbose cell export of a circuit.
+The pins are then assigned to modules based on their names.
+
+To be able to do the assignment correctly, a `pattern_to_modules.py` file has to be present in the router's folder.
+This script mus contain a map from regular expressions to module names.
+An example can be seen below:
+
+```
+{
+    r'^valid_': 'arbiter',
+    r'^CONTROL_PART/allocator_unit': 'arbiter',
+    r'^allocator_unit': 'arbiter',
+    r'^CONTROL_PART/LBDR': 'none',
+    r'^CONTROL_PART/Req':'rtable',
+    r'^CONTROL_PART/ROUTING_TABLE': 'rtable',
+    r'^FIFO_[NESLW]/FIFO_CONTROL_PART': 'fifoc',
+    r'^FIFO_[NESLW]/FIFO_DATA_PATH': 'fifod',
+    r'^XBAR': 'xbar',
+    r'^Xbar': 'xbar'
+}
+```
 
 ## Output
 Each pin has its own line in the output.
 each line consists of 3 columns:
     1. cellname
     2. pinname
-    3. module where this pin belongs to: one of `lbdr,fifo,arbiter,xbar`
+    3. module where this pin belongs to: such as `lbdr,fifo,arbiter,xbar`
 
 Pay attention to the stderr output for further information on module guessing.
 
-## Generating `cell_connections.txt`
+## Generating the verbose cell export
 
 To generate the `cell_connections.txt` file:
  - Open `Synopsys 2016 EDA version w/ AMS HITKIT 4.11 0.18um designkit` with `ams_syn`
@@ -32,16 +52,8 @@ To generate the `cell_connections.txt` file:
  - `cell_connections.txt` is the last full export of all cells.
 
 ## Usage
-    python convert_to_pins.py path_to_file > results.txt
 
-## Reference Data
-`{}` marks strings, so all lines can be wrapped in these.
+    `python convert_to_pins.py <routerdir>`
+    
+    For additional arguments see the help of the script.
 
-
-    add wave -position insertpoint {sim/:tb_router:R_5:\FIFO_N/FIFO_seq/FIFO_MEM_1_reg[6] :*}
-    add wave -position insertpoint {sim/:tb_router:R_5:\CONTROL_PART/LBDR_L/U50 :*}
-    add wave -position insertpoint sim/:tb_router:R_5:U2994:*
-    force -freeze {sim/:tb_router:R_5:\FIFO_N/FIFO_seq/FIFO_MEM_1_reg[6] :CP} St0 0
-    force -freeze {sim/:tb_router:R_5:\CONTROL_PART/LBDR_L/U50 :A} St1 0
-    force -freeze sim/:tb_router:R_5:U2994:A1 StX 0
-    force -freeze sim/:tb_router:R_5:U2994:A2 St1 0
