@@ -117,7 +117,7 @@ def plotmodules(dataset, reference, xlabel, ylabel, title="",titlefontsize=12, l
     plots the given dataset in 4 subplots, one for each module
     :param dataset: the dataset to show in the format [(packetlength,framrate, valuetoshow)]
     :param reference: a reference set or None. Same format as the dataset
-    :param title: a title to add to the figure
+    :param title: a title to add to the figure *ignored currently
     :param logscale: if True, setting the yaxis to logscale
     :return:
     """
@@ -127,8 +127,8 @@ def plotmodules(dataset, reference, xlabel, ylabel, title="",titlefontsize=12, l
     type = sorted(list(res.keys()))
     height = math.ceil(len(type) / 6) if not shapehint else shapehint[0]
     width = min(len(type), 6) if not shapehint else shapehint[1]
-    f, ax = plt2.subplots(height, width, figsize=(width * sizehint[0], height * sizehint[1] +(1 if xlabel else 0)+(0.1 if title else 0)), sharey=True, gridspec_kw={'wspace':0})
-    st = f.suptitle(title, fontsize=11)
+    f, ax = plt2.subplots(height, width, figsize=(width * sizehint[0], height * sizehint[1] +(1 if xlabel else 0)), sharey=True, gridspec_kw={'wspace':0})
+    #st = f.suptitle(title, fontsize=11)
     ax = ax.flatten()
 
 
@@ -150,9 +150,9 @@ def plotmodules(dataset, reference, xlabel, ylabel, title="",titlefontsize=12, l
     f.legend(handles, labels)
 
     plt2.tight_layout()
-    if title:
-        st.set_y(1)
-        f.subplots_adjust(top=0.9)
+   # if False and title:
+    #    st.set_y(1)
+     #   f.subplots_adjust(top=1-(0.15/height))
     if labelsonce:
         f.text(0, 0.5, ylabel, va='center', rotation='vertical')
         f.text(0.5,0.02,xlabel,va='center')
@@ -337,7 +337,7 @@ with open(path + 'corrected_system_failure_probability.txt', 'w') as the_file:
 
 dat = createdataset_modules(buffers, 'param_module_failed_corrected_ratio')
 plotmodules(dat, referencecorrected,
-            'Port Load Density ', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 0.3))
+            'Port Load Density ', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 0.25),sizehint=(3,1),labelsonce=True)
 plt2.savefig(path + 'param_module_failed_corrected_ratio.png')
 with open(path + 'param_module_failed_corrected_ratio.txt', 'w') as the_file:
     the_file.write('P(faultinejected into module and system failed)<br>\n'
@@ -348,23 +348,26 @@ with open(path + 'param_module_failed_corrected_ratio.txt', 'w') as the_file:
 
 dat = createdataset_modules(buffers, 'module_fail_sens_contribution')
 flarr = {k: [fl for pl,fl,val in v] for k, v in dat.items()}
+plarr = {k: [pl for pl,fl,val in v] for k, v in dat.items()}
 valarr = {k: [val for pl,fl,val in v] for k, v in dat.items()}
-contribution_pars = {k:np.linalg.lstsq(np.vstack([flarr[k], np.ones(len(flarr[k]))]).T, valarr[k])[0] for k in valarr.keys()}
-regdat = {k:[(0, fl, contribution_pars[k][0] * fl + contribution_pars[k][1]) for pl, fl, val in v] for k, v in dat.items()}
+contribution_pars = {k:np.linalg.lstsq(np.vstack([flarr[k], np.ones(len(flarr[k])),plarr[k]]).T, valarr[k])[0] for k in valarr.keys()}
+regdat = {k:[(pl, fl, contribution_pars[k][0] * fl + contribution_pars[k][1]+contribution_pars[k][2]*pl) for pl, fl, val in v] for k, v in dat.items()}
 plotmodules(dat, regdat,
-            'Port Load Density ', 'ratio', title="module_fail_sens_contribution", packetlengths=packetlengths, ylim=(0, .8),refissimple=True,refhasmodules=True)
+            'Port Load Density ', 'ratio', title="module_fail_sens_contribution", packetlengths=packetlengths, ylim=(0, .8),sizehint=(3,1),refhasmodules=True)
 plt2.savefig(path + 'module_fail_sens_contribution.png')
 with open(path + 'module_fail_sens_contribution.txt', 'w') as the_file:
     the_file.write('The contribution per module to the failure sensitivity.<br>\n'
                    'Calculated for each module from the fraction the param_module_failed_corrected_ratio has from the corrected_system_failure_probability.')
 
 dat = createdataset_modules(buffers, 'ratio_violations_per_module')
+
 flarr = {k: [fl for pl,fl,val in v] for k, v in dat.items()}
 valarr = {k: [val for pl,fl,val in v] for k, v in dat.items()}
-sens_p_mod_pars = {k:np.linalg.lstsq(np.vstack([flarr[k], np.ones(len(flarr[k]))]).T, valarr[k])[0] for k in valarr.keys()}
-regdat = {k:[(0, fl, sens_p_mod_pars[k][0] * fl + sens_p_mod_pars[k][1]) for pl, fl, val in v] for k, v in dat.items()}
+plarr = {k: [pl for pl,fl,val in v] for k, v in dat.items()}
+sens_p_mod_pars = {k:np.linalg.lstsq(np.vstack([flarr[k], np.ones(len(flarr[k])),plarr[k]]).T, valarr[k])[0] for k in valarr.keys()}
+regdat = {k:[(pl, fl, sens_p_mod_pars[k][0] * fl + sens_p_mod_pars[k][1]+sens_p_mod_pars[k][2]*pl) for pl, fl, val in v] for k, v in dat.items()}
 plotmodules(dat, regdat,
-            'Port Load Density ', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 0.35),refissimple=True,refhasmodules=True)
+            'Port Load Density ', 'failure sensitivity per module', title="", packetlengths=packetlengths, ylim=(0, 0.35),refhasmodules=True,sizehint=(3,1),labelsonce=True)
 plt2.savefig(path + 'ratio_violations_per_module.png')
 with open(path + 'ratio_violations_per_module.txt', 'w') as the_file:
     the_file.write('P(system failure | fault injected into module)<br>\n'
@@ -372,13 +375,56 @@ with open(path + 'ratio_violations_per_module.txt', 'w') as the_file:
     'The ratio are all where the system failed .<br>\n'
         'ratio_violations_per_module: the probability that a fault injection into a module causes system failure.')
 
+deviations = [abs(1-(z/(sum((sens_p_mod_pars[k][0]*y+sens_p_mod_pars[k][1]+sens_p_mod_pars[k][2]*x)*(v[0] * y + v[1]+x*v[2]) for k, v in contribution_pars.items())))) for x, y, z in referencecorrected]
+
 #estimate the fail sens by using the estimated contribution from  above contribution_m * failsens_m
-plotsimple([(x,y,z) for x, y, z in referencecorrected], [(0, y, sum((sens_p_mod_pars[k][0]*y+sens_p_mod_pars[k][1])*(v[0] * y + v[1]) for k, v in contribution_pars.items())) for x, y, z in referencecorrected],
-           'Port Load Density', 'ratio', title=currentname, packetlengths=packetlengths, ylim=(0,.21),refissimple=True,)
+plotsimple([(x,y,z) for x, y, z in referencecorrected], [(x, y, sum((sens_p_mod_pars[k][0]*y+sens_p_mod_pars[k][1]+sens_p_mod_pars[k][2]*x)*(v[0] * y + v[1]+x*v[2]) for k, v in contribution_pars.items())) for x, y, z in referencecorrected],
+           'Port Load Density', 'ratio', title=currentname, packetlengths=packetlengths, ylim=(0,.21))
 plt2.savefig(path + 'module_fail_sens_contribution_estimation.png')
 with open(path + 'module_fail_sens_contribution_estimation.txt', 'w') as the_file:
-    the_file.write('estimates the fail sens from module_fail_sens_contribution\n<br> sensitivity per module:' +str(sens_p_mod_pars) + '<br>\ncontribution per module: '+str(contribution_pars))
+    #sensstr = {k:"%.3f&%.3f"%(v[0],v[1]) for k, v in sens_p_mod_pars.items()}
+    the_file.write('estimates the fail sens from module_fail_sens_contribution\n<br> sensitivity per module:<br>' +
+                   "\\\\<br>\n".join(["&%s&%.3f&%.3f&%.3f&%.3f"%(k,v[0],v[1],contribution_pars[k][0],contribution_pars[k][1]) for k, v in sens_p_mod_pars.items()]) +
+                   '<br>\ncontribution per module: ' + str({k:"%.3f&%.3f"%(v[0],v[1]) for k, v in contribution_pars.items()})
+                   + '\n<br>mean_dev:' + str(sum(deviations) / len(deviations))
+                   + '\n<br>sespars:' + str(sens_p_mod_pars)
+                   + '\n<br>contrpars:' + str(contribution_pars))
 
+
+parstring="\\\\<br>\n".join(
+                       ["&%s & (%.3f,%.4f)&%.3f & (%.3f,%.4f)&%.3f" % (k, v[0],v[2], v[1], contribution_pars[k][0],contribution_pars[k][2], contribution_pars[k][1])
+                        for k, v in sorted(sens_p_mod_pars.items())])
+
+#if currentname == "tablebased_8flit_fifo_arbiter" :
+#    sens_p_mod_pars = {'fifoc': [ 0.09257753, 0.25840331, -0.00153694], 'rtable': [ 0.09721898, 0.06431979, -0.00109392], 'xbar': [ 2.88465464e-01, 1.12200663e-02, 1.53996623e-04], 'fifod': [ 0.21033248, 0.02109283, -0.00120949], 'arbiter': [ 0.06762769, 0.02598317, -0.00034926]}
+#    contribution_pars = {'fifoc': [-0.30408281, 0.24402532, 0.00091733], 'rtable': [ -2.06342283e-01, 2.62495047e-01, -1.59526997e-04], 'xbar': [ 0.08815214, 0.0694756 , 0.00127239], 'fifod': [ 0.43922389, 0.39907756, -0.00211289], 'arbiter': [ -1.69509290e-02, 2.49264743e-02, 8.27089146e-05]}
+
+deviations = [(x,y,abs((z-(sum((sens_p_mod_pars[k][0]*y+sens_p_mod_pars[k][1]+sens_p_mod_pars[k][2]*x)*(v[0] * y + v[1]+x*v[2]) for k, v in contribution_pars.items()))))) for x, y, z in referencecorrected]
+
+#estimate the fail sens by using the estimated contribution from  above contribution_m * failsens_m
+estimation = [(x, y, sum(
+    (sens_p_mod_pars[k][0]*y+sens_p_mod_pars[k][1]+sens_p_mod_pars[k][2]*x)*(v[0] * y + v[1]+x*v[2])for k, v in contribution_pars.items())) for
+                       x, y, z in referencecorrected]
+plotsimple([(x,y,z) for x, y, z in referencecorrected], estimation,
+           'Port Load Density', 'ratio', title=currentname, packetlengths=packetlengths, ylim=(0,.21))
+plt2.savefig(path + 'testestimation.png')
+with open(path + 'testestimation.txt', 'w') as the_file:
+    #sensstr = {k:"%.3f&%.3f"%(v[0],v[1]) for k, v in sens_p_mod_pars.items()}
+    the_file.write('testestimation'
+                   +'\n<br>mean_dev:' #+ str(sum(deviations)/len(deviations))
+                   + '\n<br>sespars:' + str(sens_p_mod_pars)
+                   + '\n<br>contrpars:' + str(contribution_pars)+ '\n<br>Parameters: '+
+                   parstring
+                   )
+plotsimple(deviations,None,
+           'Port Load Density', 'ratio', title=currentname, packetlengths=packetlengths, ylim=(0,.1))
+plt2.savefig(path + 'estimation_deviation.png')
+with open(path + 'estimation_deviation.txt', 'w') as the_file:
+    #sensstr = {k:"%.3f&%.3f"%(v[0],v[1]) for k, v in sens_p_mod_pars.items()}
+    the_file.write('estimation_deviation'
+                   +'\n<br>mean_dev:' #+ str(sum(deviations)/len(deviations))
+                   + '\n<br>sespars:' + str(sens_p_mod_pars)
+                   )
 
 # when the system failed, how high is the probability, that also the module output changed
 plotmodules(createdataset_modules(buffers, 'module_output_changed_when_system_failed_ratio'), None,
@@ -406,9 +452,9 @@ with open(path + 'param_module_changed_and_invalid_ratios.txt', 'w') as the_file
 
 dat=createdataset_modules(buffers, 'param_module_changed_ratios')
 plotmodules(dat, None,
-            '',
+            'Port Load Density',
             'ratio',labelsonce=True,
-            title=currentname, packetlengths=packetlengths, ylim=(0, 1))
+            title=currentname, packetlengths=packetlengths, ylim=(0, 0.7),sizehint=(3,1),titlefontsize=10)
 plt2.savefig(path + 'param_module_changed_ratios.png')
 with open(path + 'param_module_changed_ratios.txt', 'w') as the_file:
     the_file.write('P(module output changed| fault injected into module )<br>\n'
@@ -437,7 +483,7 @@ with open(path + 'faulttype_ratios_total.txt', 'w') as the_file:
     )
 
 plotmodules(createdataset_modules(buffers, 'faulttype_ratios_given_invalid'), None,
-            'Port Load Density ', 'ratio', title="", packetlengths=packetlengths, ylim=(0, 1))
+            'Port Load Density ', 'failure class ratio', title="", packetlengths=packetlengths, ylim=(0, 1),sizehint=(3,1),labelsonce=True,)
 plt2.savefig(path + 'faulttype_ratios_given_invalid.png')
 with open(path + 'faulttype_ratios_given_invalid.txt', 'w') as the_file:
     the_file.write('P(failureclass present)<br>\n'
@@ -457,7 +503,7 @@ with open(path + 'faulttype_and_module_output_changed.txt', 'w') as the_file:
 
 dat = createdataset_modules(buffers, 'faulttype_correlation', flattensecondlayer=True,connectingword=" given ")
 plotmodules(dat, None,
-            'Port Load Density ', 'correlation between failure classes on the same experiment', title=currentname, sizehint=(3,1), packetlengths=packetlengths, ylim=(0, 1.01),shapehint=(3,3),labelsonce=True,titlefontsize=9,onlylowerxlabels=True)
+            'Port Load Density ', 'ratio of the correlation between failure classes ', title=currentname, sizehint=(3,.9), packetlengths=packetlengths, ylim=(0, 1.01),shapehint=(3,3),labelsonce=True,titlefontsize=9,onlylowerxlabels=True)
 plt2.savefig(path + 'faulttype_correlation.png')
 with open(path + 'faulttype_correlation.txt', 'w') as the_file:
     the_file.write('P(failuretype1 | failuretype2)<br>\n'
