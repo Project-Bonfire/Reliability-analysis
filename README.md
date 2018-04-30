@@ -9,7 +9,7 @@ This toolsuite therefore has tools from the following categories:
   3. Evaluating the Benchmark
   4. Statistics and plotting
 
-  ![Structure Image](images/structure.png "Workflow of the Assessment")
+  ![Structure Image](doc/structure.png "Workflow of the Assessment")
   
 The standard workflow for assessing a router is as follows:
  1. Setup: `setup_sim.sh`
