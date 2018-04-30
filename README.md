@@ -9,15 +9,19 @@ This toolsuite therefore has tools from the following categories:
   3. Evaluating the Benchmark
   4. Statistics and plotting
 
-  ![Structure Image](doc/structure.png "Workflow of the Assessment")
+The standard workflow for assessing the reliability of a router is as follows:
+
+  ![](doc/structure.png "Workflow of the Assessment")
   
-The standard workflow for assessing a router is as follows:
+
  1. Setup: `setup_sim.sh`
- 2. Simulate/Benchmark: `multi_params.sh`
- 3. Collect benchmarks of the same router: `gen_explst_by_rti.sh`
- 3. Evaluation/Accumulation: `meval.sh`
- 4. Plot: `eval_sim/plot.py`
- 5. Compare routers using the plot dashboard: `plots.php`
+ 2. Simulation:
+      1. Simulate/Benchmark: `multi_params.sh`
+      2. Collect benchmarks of the same router: `gen_explst_by_rti.sh`
+ 3. Evaluation: `meval.sh`
+ 4. Accumulation: `meval.sh`
+ 5. Plot: `eval_sim/plot.py`
+ 6. Compare routers using the plot dashboard: `plots.php`
 
   For these tasks, the main entry points are scripts in this directory (only important/required parameters are listed):
 
