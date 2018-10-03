@@ -1,4 +1,4 @@
-from evaluation_tools.Evaluator import evaluate_file, init, Result
+from evaluation_tools.Evaluator import evaluate_file, init, Result, Faulttype
 
 import unittest
 
@@ -36,6 +36,354 @@ class MyTest(unittest.TestCase):
         self.assertTrue(res.vcd_of_module_equal['fifod'])
         self.assertTrue(res.vcd_of_module_equal['fifoc'])
         self.assertEqual(res.guessComponent(),'nofault')
+
+    def testNoError3(self):
+        noc_rg = init()
+        filename = "tests/resources/3flittests/noerror3.results"
+        module_dict = {
+            'xbar': 'b825ea8fa845a73e9dcb22beefb5acec75103e95',
+            'arbiter': '134771791c89f5bbd306e5156023e1e19409b73f',
+            'lbdr': '8ca292256f6e056fe592ee5fcfa84b9e39e5c8bb',
+            'fifo': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifod': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifoc': '1209a2e8847e82d48828b5e5fe336d19de9d2816'
+        }
+        errornous, results = evaluate_file(noc_rg, filename, module_reference=module_dict, print_verbose=True)
+        self.assertEqual(len(errornous), 0)
+        self.assertEqual(len(results), 1)
+        res: Result = results[0]
+        self.assertFalse(
+            results[0].errornous or results[0].connection_counter_invalid or results[0].unexpected_len_sent or results[
+                0].unexpected_len_recv)
+        self.assertEqual(results[0].recv_invalid, 0)
+        self.assertEqual(results[0].sents_invalid, 0)
+        self.assertEqual(results[0].misrouted_recv, 0)
+        self.assertEqual(results[0].misrouted_sent, 0)
+        self.assertEqual(results[0].len_recv, 3)
+        self.assertEqual(results[0].len_sent, 3)
+        self.assertTrue(results[0].is_valid())
+        self.assertTrue(res.vcd_of_module_equal['xbar'])
+        self.assertTrue(res.vcd_of_module_equal['arbiter'])
+        self.assertTrue(res.vcd_of_module_equal['lbdr'])
+        self.assertTrue(res.vcd_of_module_equal['fifo'])
+        self.assertTrue(res.vcd_of_module_equal['fifod'])
+        self.assertTrue(res.vcd_of_module_equal['fifoc'])
+        self.assertEqual(res.guessComponent(), 'nofault')
+        self.assertFalse(res.hasError(Faulttype.INVALIDFLITS))
+        self.assertFalse(res.hasError(Faulttype.MISROUTED))
+        self.assertFalse(res.hasError(Faulttype.FAILEDDELIVERY))
+
+    def testNoError4(self):
+        """
+        test 4 flits
+        :return:
+        """
+        noc_rg = init()
+        filename = "tests/resources/3flittests/4flit.results"
+        module_dict = {
+            'xbar': 'b825ea8fa845a73e9dcb22beefb5acec75103e95',
+            'arbiter': '134771791c89f5bbd306e5156023e1e19409b73f',
+            'lbdr': '8ca292256f6e056fe592ee5fcfa84b9e39e5c8bb',
+            'fifo': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifod': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifoc': '1209a2e8847e82d48828b5e5fe336d19de9d2816'
+        }
+        errornous, results = evaluate_file(noc_rg, filename, module_reference=module_dict, print_verbose=True)
+        self.assertEqual(len(errornous), 0)
+        self.assertEqual(len(results), 1)
+        res: Result = results[0]
+        self.assertFalse(
+            results[0].errornous or results[0].connection_counter_invalid or results[0].unexpected_len_sent or results[
+                0].unexpected_len_recv)
+        self.assertEqual(results[0].recv_invalid, 0)
+        self.assertEqual(results[0].sents_invalid, 0)
+        self.assertEqual(results[0].misrouted_recv, 0)
+        self.assertEqual(results[0].misrouted_sent, 0)
+        self.assertEqual(results[0].len_recv, 4)
+        self.assertEqual(results[0].len_sent, 4)
+        self.assertTrue(results[0].is_valid())
+        self.assertTrue(res.vcd_of_module_equal['xbar'])
+        self.assertTrue(res.vcd_of_module_equal['arbiter'])
+        self.assertTrue(res.vcd_of_module_equal['lbdr'])
+        self.assertTrue(res.vcd_of_module_equal['fifo'])
+        self.assertTrue(res.vcd_of_module_equal['fifod'])
+        self.assertTrue(res.vcd_of_module_equal['fifoc'])
+        self.assertEqual(res.guessComponent(), 'nofault')
+        self.assertFalse(res.hasError(Faulttype.INVALIDFLITS))
+        self.assertFalse(res.hasError(Faulttype.MISROUTED))
+        self.assertFalse(res.hasError(Faulttype.FAILEDDELIVERY))
+
+    def test4flitmisr1(self):
+        """
+        make a 4flit packet to a 3 flit by misrouting
+        :return:
+        """
+        noc_rg = init()
+        filename = "tests/resources/3flittests/4flitmisrouted1.results"
+        module_dict = {
+            'xbar': 'b825ea8fa845a73e9dcb22beefb5acec75103e95',
+            'arbiter': '134771791c89f5bbd306e5156023e1e19409b73f',
+            'lbdr': '8ca292256f6e056fe592ee5fcfa84b9e39e5c8bb',
+            'fifo': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifod': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifoc': '1209a2e8847e82d48828b5e5fe336d19de9d2816'
+        }
+        errornous, results = evaluate_file(noc_rg, filename, module_reference=module_dict, print_verbose=True)
+        self.assertEqual(len(errornous), 0)
+        self.assertEqual(len(results), 1)
+        res: Result = results[0]
+        self.assertFalse(
+            results[0].errornous or results[0].connection_counter_invalid or results[0].unexpected_len_sent or results[
+                0].unexpected_len_recv)
+        self.assertEqual(results[0].recv_invalid, 2)
+        self.assertEqual(results[0].sents_invalid, 0)
+        self.assertEqual(results[0].misrouted_recv, 1)
+        self.assertEqual(results[0].misrouted_sent, 0)
+        self.assertEqual(results[0].len_recv, 4)
+        self.assertEqual(results[0].len_sent, 4)
+        self.assertFalse(results[0].is_valid())
+        self.assertTrue(res.vcd_of_module_equal['xbar'])
+        self.assertTrue(res.vcd_of_module_equal['arbiter'])
+        self.assertTrue(res.vcd_of_module_equal['lbdr'])
+        self.assertTrue(res.vcd_of_module_equal['fifo'])
+        self.assertTrue(res.vcd_of_module_equal['fifod'])
+        self.assertTrue(res.vcd_of_module_equal['fifoc'])
+        self.assertEqual(res.guessComponent(), 'nofault')
+        self.assertTrue(res.hasError(Faulttype.INVALIDFLITS))
+        self.assertTrue(res.hasError(Faulttype.MISROUTED))
+        self.assertFalse(res.hasError(Faulttype.FAILEDDELIVERY))
+
+    def test4flitdropped1(self):
+        """
+        make a 4 flit packet to a 3 flit packet by dropping the body
+        :return:
+        """
+        noc_rg = init()
+        filename = "tests/resources/3flittests/4flitdropped1.results"
+        module_dict = {
+            'xbar': 'b825ea8fa845a73e9dcb22beefb5acec75103e95',
+            'arbiter': '134771791c89f5bbd306e5156023e1e19409b73f',
+            'lbdr': '8ca292256f6e056fe592ee5fcfa84b9e39e5c8bb',
+            'fifo': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifod': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifoc': '1209a2e8847e82d48828b5e5fe336d19de9d2816'
+        }
+        errornous, results = evaluate_file(noc_rg, filename, module_reference=module_dict, print_verbose=True)
+        self.assertEqual(len(errornous), 0)
+        self.assertEqual(len(results), 1)
+        res: Result = results[0]
+        self.assertEqual(results[0].recv_invalid, 0)
+        self.assertEqual(results[0].sents_invalid, 0)
+        self.assertEqual(results[0].misrouted_recv, 0)
+        self.assertEqual(results[0].misrouted_sent, 0)
+        self.assertEqual(results[0].len_recv, 3)
+        self.assertEqual(results[0].len_sent, 4)
+        self.assertFalse(results[0].is_valid())
+        self.assertTrue(res.vcd_of_module_equal['xbar'])
+        self.assertTrue(res.vcd_of_module_equal['arbiter'])
+        self.assertTrue(res.vcd_of_module_equal['lbdr'])
+        self.assertTrue(res.vcd_of_module_equal['fifo'])
+        self.assertTrue(res.vcd_of_module_equal['fifod'])
+        self.assertTrue(res.vcd_of_module_equal['fifoc'])
+        self.assertEqual(res.guessComponent(), 'nofault')
+        self.assertFalse(res.hasError(Faulttype.INVALIDFLITS))
+        self.assertFalse(res.hasError(Faulttype.MISROUTED))
+        self.assertTrue(res.hasError(Faulttype.FAILEDDELIVERY))
+
+    def test3flitdropped1(self):
+        """
+        test dropped B1 flit
+        :return:
+        """
+        noc_rg = init()
+        filename = "tests/resources/3flittests/droppedB1.results"
+        module_dict = {
+            'xbar': 'b825ea8fa845a73e9dcb22beefb5acec75103e95',
+            'arbiter': '134771791c89f5bbd306e5156023e1e19409b73f',
+            'lbdr': '8ca292256f6e056fe592ee5fcfa84b9e39e5c8bb',
+            'fifo': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifod': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifoc': '1209a2e8847e82d48828b5e5fe336d19de9d2816'
+        }
+        errornous, results = evaluate_file(noc_rg, filename, module_reference=module_dict, print_verbose=True)
+        self.assertEqual(len(errornous), 0)
+        self.assertEqual(len(results), 1)
+        res: Result = results[0]
+        self.assertEqual(results[0].recv_invalid, 1)
+        self.assertEqual(results[0].sents_invalid, 0)
+        self.assertEqual(results[0].misrouted_recv, 0)
+        self.assertEqual(results[0].misrouted_sent, 0)
+        self.assertEqual(results[0].len_recv, 2)
+        self.assertEqual(results[0].len_sent, 3)
+        self.assertFalse(results[0].is_valid())
+        self.assertTrue(res.vcd_of_module_equal['xbar'])
+        self.assertTrue(res.vcd_of_module_equal['arbiter'])
+        self.assertTrue(res.vcd_of_module_equal['lbdr'])
+        self.assertTrue(res.vcd_of_module_equal['fifo'])
+        self.assertTrue(res.vcd_of_module_equal['fifod'])
+        self.assertTrue(res.vcd_of_module_equal['fifoc'])
+        self.assertEqual(res.guessComponent(), 'nofault')
+        self.assertTrue(res.hasError(Faulttype.INVALIDFLITS))
+        self.assertFalse(res.hasError(Faulttype.MISROUTED))
+        self.assertTrue(res.hasError(Faulttype.FAILEDDELIVERY))
+
+    def test3flitchangedtail(self):
+        noc_rg = init()
+        filename = "tests/resources/3flittests/changedtail.results"
+        module_dict = {
+            'xbar': 'b825ea8fa845a73e9dcb22beefb5acec75103e95',
+            'arbiter': '134771791c89f5bbd306e5156023e1e19409b73f',
+            'lbdr': '8ca292256f6e056fe592ee5fcfa84b9e39e5c8bb',
+            'fifo': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifod': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifoc': '1209a2e8847e82d48828b5e5fe336d19de9d2816'
+        }
+        errornous, results = evaluate_file(noc_rg, filename, module_reference=module_dict, print_verbose=True)
+        self.assertEqual(len(errornous), 0)
+        self.assertEqual(len(results), 1)
+        res: Result = results[0]
+        self.assertFalse(
+            results[0].errornous or results[0].connection_counter_invalid or results[0].unexpected_len_sent or results[
+                0].unexpected_len_recv)
+        self.assertEqual(results[0].recv_invalid, 1)
+        self.assertEqual(results[0].sents_invalid, 0)
+        self.assertEqual(results[0].misrouted_recv, 0)
+        self.assertEqual(results[0].misrouted_sent, 0)
+        self.assertEqual(results[0].len_recv, 3)
+        self.assertEqual(results[0].len_sent, 3)
+        self.assertFalse(results[0].is_valid())
+        self.assertTrue(res.vcd_of_module_equal['xbar'])
+        self.assertTrue(res.vcd_of_module_equal['arbiter'])
+        self.assertTrue(res.vcd_of_module_equal['lbdr'])
+        self.assertTrue(res.vcd_of_module_equal['fifo'])
+        self.assertTrue(res.vcd_of_module_equal['fifod'])
+        self.assertTrue(res.vcd_of_module_equal['fifoc'])
+        self.assertEqual(res.guessComponent(), 'nofault')
+        self.assertTrue(res.hasError(Faulttype.INVALIDFLITS))
+        self.assertFalse(res.hasError(Faulttype.MISROUTED))
+        self.assertFalse(res.hasError(Faulttype.FAILEDDELIVERY))
+
+    def testMisrouted3flits(self):
+        """
+        test if a misrouted flit causes invalid and misrouted
+        3 misrouted, all fsms valid, all flits correct
+
+        """
+        noc_rg = init()
+        filename = "tests/resources/3flittests/misrouted.results"
+        module_dict = {
+            'xbar': 'b825ea8fa845a73e9dcb22beefb5acec75103e95',
+            'arbiter': '134771791c89f5bbd306e5156023e1e19409b73f',
+            'lbdr': '8ca292256f6e056fe592ee5fcfa84b9e39e5c8bb',
+            'fifo': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifod': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifoc': '1209a2e8847e82d48828b5e5fe336d19de9d2816'
+        }
+        errornous, results = evaluate_file(noc_rg, filename, module_reference=module_dict, print_verbose=True)
+        self.assertEqual(len(errornous), 0)
+        self.assertEqual(len(results), 1)
+        res: Result = results[0]
+        self.assertFalse(
+            results[0].errornous or results[0].connection_counter_invalid or results[0].unexpected_len_sent or results[
+                0].unexpected_len_recv)
+        self.assertEqual(results[0].recv_invalid, 0)
+        self.assertEqual(results[0].sents_invalid, 0)
+        self.assertEqual(results[0].misrouted_recv, 3)
+        self.assertEqual(results[0].misrouted_sent, 0)
+        self.assertEqual(results[0].len_recv, 3)
+        self.assertEqual(results[0].len_sent, 3)
+        self.assertFalse(results[0].is_valid())
+        self.assertTrue(res.vcd_of_module_equal['xbar'])
+        self.assertTrue(res.vcd_of_module_equal['arbiter'])
+        self.assertTrue(res.vcd_of_module_equal['lbdr'])
+        self.assertTrue(res.vcd_of_module_equal['fifo'])
+        self.assertTrue(res.vcd_of_module_equal['fifod'])
+        self.assertTrue(res.vcd_of_module_equal['fifoc'])
+        self.assertEqual(res.guessComponent(), 'nofault')
+        self.assertFalse(res.hasError(Faulttype.INVALIDFLITS))
+        self.assertTrue(res.hasError(Faulttype.MISROUTED))
+        self.assertFalse(res.hasError(Faulttype.FAILEDDELIVERY))
+
+    def testMisrouted3flits2(self):
+        """
+        test if a misrouted flit causes invalid and misrouted
+        2 flits misrouterd, 2 times invalid, because 2 fsms were violated
+        :return:
+        """
+        noc_rg = init()
+        filename = "tests/resources/3flittests/misrouted2.results"
+        module_dict = {
+            'xbar': 'b825ea8fa845a73e9dcb22beefb5acec75103e95',
+            'arbiter': '134771791c89f5bbd306e5156023e1e19409b73f',
+            'lbdr': '8ca292256f6e056fe592ee5fcfa84b9e39e5c8bb',
+            'fifo': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifod': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifoc': '1209a2e8847e82d48828b5e5fe336d19de9d2816'
+        }
+        errornous, results = evaluate_file(noc_rg, filename, module_reference=module_dict, print_verbose=True)
+        self.assertEqual(len(errornous), 0)
+        self.assertEqual(len(results), 1)
+        res: Result = results[0]
+        self.assertFalse(
+            results[0].errornous or results[0].connection_counter_invalid or results[0].unexpected_len_sent or results[
+                0].unexpected_len_recv)
+        self.assertEqual(results[0].recv_invalid, 2)
+        self.assertEqual(results[0].sents_invalid, 0)
+        self.assertEqual(results[0].misrouted_recv, 2)
+        self.assertEqual(results[0].misrouted_sent, 0)
+        self.assertEqual(results[0].len_recv, 3)
+        self.assertEqual(results[0].len_sent, 3)
+        self.assertFalse(results[0].is_valid())
+        self.assertTrue(res.vcd_of_module_equal['xbar'])
+        self.assertTrue(res.vcd_of_module_equal['arbiter'])
+        self.assertTrue(res.vcd_of_module_equal['lbdr'])
+        self.assertTrue(res.vcd_of_module_equal['fifo'])
+        self.assertTrue(res.vcd_of_module_equal['fifod'])
+        self.assertTrue(res.vcd_of_module_equal['fifoc'])
+        self.assertTrue(res.hasError(Faulttype.INVALIDFLITS))
+        self.assertTrue(res.hasError(Faulttype.MISROUTED))
+        self.assertFalse(res.hasError(Faulttype.FAILEDDELIVERY))
+        self.assertEqual(res.guessComponent(), 'nofault')
+
+    def testMisrouted3flits3(self):
+        """
+        test if a misrouted flit causes invalid and misrouted
+        1 flit misrouted 2 fsms violated
+        """
+        noc_rg = init()
+        filename = "tests/resources/3flittests/misrouted3.results"
+        module_dict = {
+            'xbar': 'b825ea8fa845a73e9dcb22beefb5acec75103e95',
+            'arbiter': '134771791c89f5bbd306e5156023e1e19409b73f',
+            'lbdr': '8ca292256f6e056fe592ee5fcfa84b9e39e5c8bb',
+            'fifo': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifod': '1209a2e8847e82d48828b5e5fe336d19de9d2816',
+            'fifoc': '1209a2e8847e82d48828b5e5fe336d19de9d2816'
+        }
+        errornous, results = evaluate_file(noc_rg, filename, module_reference=module_dict, print_verbose=True)
+        self.assertEqual(len(errornous), 0)
+        self.assertEqual(len(results), 1)
+        res: Result = results[0]
+        self.assertFalse(
+            results[0].errornous or results[0].connection_counter_invalid or results[0].unexpected_len_sent or results[
+                0].unexpected_len_recv)
+        self.assertEqual(results[0].recv_invalid, 2)
+        self.assertEqual(results[0].sents_invalid, 0)
+        self.assertEqual(results[0].misrouted_recv, 1)
+        self.assertEqual(results[0].misrouted_sent, 0)
+        self.assertEqual(results[0].len_recv, 3)
+        self.assertEqual(results[0].len_sent, 3)
+        self.assertFalse(results[0].is_valid())
+        self.assertTrue(res.vcd_of_module_equal['xbar'])
+        self.assertTrue(res.vcd_of_module_equal['arbiter'])
+        self.assertTrue(res.vcd_of_module_equal['lbdr'])
+        self.assertTrue(res.vcd_of_module_equal['fifo'])
+        self.assertTrue(res.vcd_of_module_equal['fifod'])
+        self.assertTrue(res.vcd_of_module_equal['fifoc'])
+        self.assertEqual(res.guessComponent(), 'nofault')
+        self.assertTrue(res.hasError(Faulttype.INVALIDFLITS))
+        self.assertTrue(res.hasError(Faulttype.MISROUTED))
+        self.assertFalse(res.hasError(Faulttype.FAILEDDELIVERY))
 
     def testFifoHashesSeperated(self):
         noc_rg = init()

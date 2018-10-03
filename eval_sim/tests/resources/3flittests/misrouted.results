@@ -1,0 +1,19 @@
+-----
+0
+5000 6000 0 10 nofault :nofault
+!modules:
+xbar:b825ea8fa845a73e9dcb22beefb5acec75103e95
+arbiter:134771791c89f5bbd306e5156023e1e19409b73f
+lbdr:8ca292256f6e056fe592ee5fcfa84b9e39e5c8bb
+fifo:1209a2e8847e82d48828b5e5fe336d19de9d2816
+fifod:1209a2e8847e82d48828b5e5fe336d19de9d2816
+fifoc:1209a2e8847e82d48828b5e5fe336d19de9d2816
+!sent:
+type:header;time:9590 ns;currentrouter:4;from_node:4;to_node:11;length:-1;id:-1;flitno:0
+type:body1;time:9600 ns;currentrouter:4;from_node:4;to_node:11;length:3;id:19;flitno:16
+type:tail;time:9680 ns;currentrouter:4;from_node:4;to_node:11;length:3;id:19;flitno:7
+!recv:
+type:header;time:9625 ns;currentrouter:9;from_node:4;to_node:11;length:-1;id:-1;flitno:0;parity_failed:false
+type:body1;time:9635 ns;currentrouter:9;from_node:4;to_node:11;length:3;id:19;flitno:1;parity_failed:false
+type:tail;time:9695 ns;currentrouter:9;from_node:4;to_node:11;length:3;id:19;flitno:8;parity_failed:false;body_src:4;body_dest:11;body_packet_length:3;body_packetid:19;body_checksum:0
+#####

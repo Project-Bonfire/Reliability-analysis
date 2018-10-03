@@ -198,6 +198,14 @@ if len(results[0].vcd_of_module_equal) >= 4:
     faulttype_caused_by_module_ratio_corrected = {f.name:
         {m: (faulttype_caused_by_module[f.name][m]*correction_multipliers[m])/faulttype_counts_corrected[f.name] for
             m in modules} for f in Faulttype}
+    faulttype_combinations = {f2.name: {" ".join([str(s) for s in truths]): sum(1 for i in invalids if
+                                                                                i.hasError(Faulttype.FAILEDDELIVERY) ==
+                                                                                truths[0] and i.hasError(
+                                                                                    Faulttype.MISROUTED) == truths[
+                                                                                    1] and i.hasError(
+                                                                                    Faulttype.INVALIDFLITS) == truths[
+                                                                                    2]) / faulttype_counts[f2.name] for
+                                        truths in list(itertools.product([False, True], repeat=3))} for f2 in Faulttype}
 
 all_result = (
     attrgetter('name', 'errornous', 'unexpected_len_sent', 'unexpected_len_recv', 'len_sent', 'len_recv',

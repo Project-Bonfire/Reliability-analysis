@@ -73,6 +73,8 @@ class Result:
     misrouted_recv = 0
     misrouted_sent = 0
 
+    faultinfo = ""
+
     def has_routing_errors(self):
         return self.misrouted_recv + self.misrouted_sent != 0
 
@@ -105,7 +107,7 @@ class Result:
 
         print("parseerror at: " + self.params, file=sys.stderr)
         sys.exit("Parseerror!")
-        return None
+
 
 
 
@@ -470,13 +472,16 @@ def evaluate_file(noc_rg, filename:str, print_verbose:bool=False, ralgo_check_se
                 for k, v in fromtocounter.items():
                     if v != 0:
                         res.connection_counter_invalid = True
+                        res.faultinfo += "con_counter=(%s,v) %s\n"%(k,v,p)
                 for k, v in node_states.items():
                     if v != FlitEvent.Type.TAIL:
                         res.recv_invalid += 1
+                        res.faultinfo += "flitfsm=(%s,%s) %s\n" % (k,v,p)
             except:
                 res.errornous = True
                 errornous.append(res)
                 if print_verbose:
+                    res.faultinfo += "Unexpected error in %s: " % res.name, sys.exc_info()[0], sys.exc_info()[1]
                     print("Unexpected error in %s: " % res.name, sys.exc_info()[0], sys.exc_info()[1])
                     print(res)
 
