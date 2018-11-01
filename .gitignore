@@ -5,3 +5,4 @@ sim_runs
 results/
 */__pycache__/*
 */.synopsis*
+.vscode
