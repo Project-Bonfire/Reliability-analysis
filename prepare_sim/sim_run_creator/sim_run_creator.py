@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-Creates list experiments to be run
+Creates list experiments to run
 
 Input: List of all fault locations in the design (gatelevel netlist)
 Output: List of experiments to be run
@@ -11,8 +11,6 @@ Output file format:
 
 Usage: python3 sim_run_creator.py input_file output_file num_sims [sim_length_in_ns fault_length]
 """
-
-
 
 import argparse
 import sys
