@@ -1,0 +1,44 @@
+ 
+****************************************
+Report : cell
+        -connections
+        -verbose
+Design : router_credit_based_DATA_WIDTH32_current_address5_Rxy_rst60_Cx_rst15_NoC_size4
+Version: K-2015.06-SP4
+Date   : Thu Jan 18 17:21:19 2018
+****************************************
+
+
+Connections for cell 'CONTROL_PART/LBDR_E/Req_L_FF_reg':
+    Reference:          DFCX1
+    Library:            c18_CORELIB_TYP
+    Area:               64.9152
+    dont_touch:         FALSE          
+
+    Input Pins          Net            Net Driver Pins   Driver Pin Type
+    ----------------    ------------   ----------------  ----------------
+    D                   CONTROL_PART/LBDR_E/n1
+                                       CONTROL_PART/LBDR_E/U14/Q
+                                                         Output Pin (OAI32X3)
+    CP                  clk            clk               Input Port
+    RN                  reset          reset             Input Port
+
+    Output Pins         Net            Net Load Pins     Load Pin Type
+    ----------------    ------------   ----------------  ----------------
+    Q                   CONTROL_PART/Req_EL
+                                       CONTROL_PART/U26/A1
+                                                         Input Pin (OAI21X8)
+                                       CONTROL_PART/allocator_unit/arb_X_L/U28/B
+                                                         Input Pin (NOR2XL)
+                                       CONTROL_PART/allocator_unit/arb_X_L/U37/A1
+                                                         Input Pin (AO221X1)
+    QN                  CONTROL_PART/allocator_unit/arb_X_L/n60
+                                       CONTROL_PART/LBDR_E/U14/B1
+                                                         Input Pin (OAI32X3)
+                                       CONTROL_PART/allocator_unit/arb_X_L/U8/C
+                                                         Input Pin (NOR3X3)
+                                       CONTROL_PART/allocator_unit/arb_X_L/U22/A2
+                                                         Input Pin (AOI22X3)
+                                       CONTROL_PART/allocator_unit/arb_X_L/U38/A1
+                                                         Input Pin (AOI21X3)
+
