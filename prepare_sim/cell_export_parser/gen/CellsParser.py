@@ -1,4 +1,4 @@
-# Generated from /home/thi/git/Reliability-analysis/prepare_sim/cell_export_parser/Cells.g4 by ANTLR 4.7
+# Generated from D:/git/Reliability-analysis/prepare_sim/cell_export_parser\Cells.g4 by ANTLR 4.7
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -118,19 +118,20 @@ class CellsParser ( Parser ):
     RULE_touch = 7
     RULE_inputs = 8
     RULE_outputs = 9
-    RULE_ioline = 10
-    RULE_pinname = 11
-    RULE_netname = 12
-    RULE_pins = 13
-    RULE_pin = 14
+    RULE_io_pin = 10
+    RULE_pin_name = 11
+    RULE_net_name = 12
+    RULE_connected_pins = 13
+    RULE_connected_pin = 14
     RULE_newline = 15
-    RULE_pintype = 16
-    RULE_inputpin = 17
-    RULE_outputpin = 18
+    RULE_pin_type = 16
+    RULE_input_pin = 17
+    RULE_output_pin = 18
 
     ruleNames =  [ "r", "cell", "header", "nameline", "ref", "lib", "area", 
-                   "touch", "inputs", "outputs", "ioline", "pinname", "netname", 
-                   "pins", "pin", "newline", "pintype", "inputpin", "outputpin" ]
+                   "touch", "inputs", "outputs", "io_pin", "pin_name", "net_name", 
+                   "connected_pins", "connected_pin", "newline", "pin_type", 
+                   "input_pin", "output_pin" ]
 
     EOF = Token.EOF
     T__0=1
@@ -202,6 +203,12 @@ class CellsParser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitR" ):
                 listener.exitR(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitR" ):
+                return visitor.visitR(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -302,6 +309,12 @@ class CellsParser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitCell" ):
                 listener.exitCell(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitCell" ):
+                return visitor.visitCell(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -407,6 +420,12 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitHeader" ):
                 listener.exitHeader(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitHeader" ):
+                return visitor.visitHeader(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -480,6 +499,12 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitNameline" ):
                 listener.exitNameline(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitNameline" ):
+                return visitor.visitNameline(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -529,6 +554,12 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitRef" ):
                 listener.exitRef(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitRef" ):
+                return visitor.visitRef(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -569,6 +600,12 @@ class CellsParser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitLib" ):
                 listener.exitLib(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitLib" ):
+                return visitor.visitLib(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -611,6 +648,12 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitArea" ):
                 listener.exitArea(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitArea" ):
+                return visitor.visitArea(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -652,6 +695,12 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitTouch" ):
                 listener.exitTouch(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitTouch" ):
+                return visitor.visitTouch(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -688,11 +737,11 @@ class CellsParser ( Parser ):
         def Dashes(self):
             return self.getToken(CellsParser.Dashes, 0)
 
-        def ioline(self, i:int=None):
+        def io_pin(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(CellsParser.IolineContext)
+                return self.getTypedRuleContexts(CellsParser.Io_pinContext)
             else:
-                return self.getTypedRuleContext(CellsParser.IolineContext,i)
+                return self.getTypedRuleContext(CellsParser.Io_pinContext,i)
 
 
         def getRuleIndex(self):
@@ -705,6 +754,12 @@ class CellsParser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitInputs" ):
                 listener.exitInputs(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInputs" ):
+                return visitor.visitInputs(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -741,7 +796,7 @@ class CellsParser ( Parser ):
             _la = self._input.LA(1)
             while True:
                 self.state = 126
-                self.ioline()
+                self.io_pin()
                 self.state = 129 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
@@ -771,11 +826,11 @@ class CellsParser ( Parser ):
         def Dashes(self):
             return self.getToken(CellsParser.Dashes, 0)
 
-        def ioline(self, i:int=None):
+        def io_pin(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(CellsParser.IolineContext)
+                return self.getTypedRuleContexts(CellsParser.Io_pinContext)
             else:
-                return self.getTypedRuleContext(CellsParser.IolineContext,i)
+                return self.getTypedRuleContext(CellsParser.Io_pinContext,i)
 
 
         def getRuleIndex(self):
@@ -788,6 +843,12 @@ class CellsParser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitOutputs" ):
                 listener.exitOutputs(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitOutputs" ):
+                return visitor.visitOutputs(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
@@ -824,7 +885,7 @@ class CellsParser ( Parser ):
             _la = self._input.LA(1)
             while True:
                 self.state = 140
-                self.ioline()
+                self.io_pin()
                 self.state = 143 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
@@ -839,58 +900,64 @@ class CellsParser ( Parser ):
             self.exitRule()
         return localctx
 
-    class IolineContext(ParserRuleContext):
+    class Io_pinContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def pinname(self):
-            return self.getTypedRuleContext(CellsParser.PinnameContext,0)
+        def pin_name(self):
+            return self.getTypedRuleContext(CellsParser.Pin_nameContext,0)
 
 
         def NEWLINE(self):
             return self.getToken(CellsParser.NEWLINE, 0)
 
-        def netname(self):
-            return self.getTypedRuleContext(CellsParser.NetnameContext,0)
+        def net_name(self):
+            return self.getTypedRuleContext(CellsParser.Net_nameContext,0)
 
 
-        def pins(self):
-            return self.getTypedRuleContext(CellsParser.PinsContext,0)
+        def connected_pins(self):
+            return self.getTypedRuleContext(CellsParser.Connected_pinsContext,0)
 
 
         def getRuleIndex(self):
-            return CellsParser.RULE_ioline
+            return CellsParser.RULE_io_pin
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterIoline" ):
-                listener.enterIoline(self)
+            if hasattr( listener, "enterIo_pin" ):
+                listener.enterIo_pin(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitIoline" ):
-                listener.exitIoline(self)
+            if hasattr( listener, "exitIo_pin" ):
+                listener.exitIo_pin(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitIo_pin" ):
+                return visitor.visitIo_pin(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
 
-    def ioline(self):
+    def io_pin(self):
 
-        localctx = CellsParser.IolineContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 20, self.RULE_ioline)
+        localctx = CellsParser.Io_pinContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 20, self.RULE_io_pin)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 145
-            self.pinname()
+            self.pin_name()
             self.state = 149
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==CellsParser.AlphaNum or _la==CellsParser.Identifier:
                 self.state = 146
-                self.netname()
+                self.net_name()
                 self.state = 147
-                self.pins()
+                self.connected_pins()
 
 
             self.state = 151
@@ -903,7 +970,7 @@ class CellsParser ( Parser ):
             self.exitRule()
         return localctx
 
-    class PinnameContext(ParserRuleContext):
+    class Pin_nameContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -913,23 +980,29 @@ class CellsParser ( Parser ):
             return self.getToken(CellsParser.AlphaNum, 0)
 
         def getRuleIndex(self):
-            return CellsParser.RULE_pinname
+            return CellsParser.RULE_pin_name
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterPinname" ):
-                listener.enterPinname(self)
+            if hasattr( listener, "enterPin_name" ):
+                listener.enterPin_name(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitPinname" ):
-                listener.exitPinname(self)
+            if hasattr( listener, "exitPin_name" ):
+                listener.exitPin_name(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPin_name" ):
+                return visitor.visitPin_name(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
 
-    def pinname(self):
+    def pin_name(self):
 
-        localctx = CellsParser.PinnameContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 22, self.RULE_pinname)
+        localctx = CellsParser.Pin_nameContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 22, self.RULE_pin_name)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 153
@@ -942,7 +1015,7 @@ class CellsParser ( Parser ):
             self.exitRule()
         return localctx
 
-    class NetnameContext(ParserRuleContext):
+    class Net_nameContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -955,23 +1028,29 @@ class CellsParser ( Parser ):
             return self.getToken(CellsParser.AlphaNum, 0)
 
         def getRuleIndex(self):
-            return CellsParser.RULE_netname
+            return CellsParser.RULE_net_name
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterNetname" ):
-                listener.enterNetname(self)
+            if hasattr( listener, "enterNet_name" ):
+                listener.enterNet_name(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitNetname" ):
-                listener.exitNetname(self)
+            if hasattr( listener, "exitNet_name" ):
+                listener.exitNet_name(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitNet_name" ):
+                return visitor.visitNet_name(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
 
-    def netname(self):
+    def net_name(self):
 
-        localctx = CellsParser.NetnameContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 24, self.RULE_netname)
+        localctx = CellsParser.Net_nameContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 24, self.RULE_net_name)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
@@ -990,37 +1069,43 @@ class CellsParser ( Parser ):
             self.exitRule()
         return localctx
 
-    class PinsContext(ParserRuleContext):
+    class Connected_pinsContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def pin(self, i:int=None):
+        def connected_pin(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(CellsParser.PinContext)
+                return self.getTypedRuleContexts(CellsParser.Connected_pinContext)
             else:
-                return self.getTypedRuleContext(CellsParser.PinContext,i)
+                return self.getTypedRuleContext(CellsParser.Connected_pinContext,i)
 
 
         def getRuleIndex(self):
-            return CellsParser.RULE_pins
+            return CellsParser.RULE_connected_pins
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterPins" ):
-                listener.enterPins(self)
+            if hasattr( listener, "enterConnected_pins" ):
+                listener.enterConnected_pins(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitPins" ):
-                listener.exitPins(self)
+            if hasattr( listener, "exitConnected_pins" ):
+                listener.exitConnected_pins(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitConnected_pins" ):
+                return visitor.visitConnected_pins(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
 
-    def pins(self):
+    def connected_pins(self):
 
-        localctx = CellsParser.PinsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 26, self.RULE_pins)
+        localctx = CellsParser.Connected_pinsContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 26, self.RULE_connected_pins)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 158 
@@ -1029,7 +1114,7 @@ class CellsParser ( Parser ):
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt == 1:
                     self.state = 157
-                    self.pin()
+                    self.connected_pin()
 
                 else:
                     raise NoViableAltException(self)
@@ -1045,7 +1130,7 @@ class CellsParser ( Parser ):
             self.exitRule()
         return localctx
 
-    class PinContext(ParserRuleContext):
+    class Connected_pinContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -1058,8 +1143,8 @@ class CellsParser ( Parser ):
                 return self.getTypedRuleContext(CellsParser.NewlineContext,i)
 
 
-        def pintype(self):
-            return self.getTypedRuleContext(CellsParser.PintypeContext,0)
+        def pin_type(self):
+            return self.getTypedRuleContext(CellsParser.Pin_typeContext,0)
 
 
         def Identifier(self):
@@ -1069,23 +1154,29 @@ class CellsParser ( Parser ):
             return self.getToken(CellsParser.AlphaNum, 0)
 
         def getRuleIndex(self):
-            return CellsParser.RULE_pin
+            return CellsParser.RULE_connected_pin
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterPin" ):
-                listener.enterPin(self)
+            if hasattr( listener, "enterConnected_pin" ):
+                listener.enterConnected_pin(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitPin" ):
-                listener.exitPin(self)
+            if hasattr( listener, "exitConnected_pin" ):
+                listener.exitConnected_pin(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitConnected_pin" ):
+                return visitor.visitConnected_pin(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
 
-    def pin(self):
+    def connected_pin(self):
 
-        localctx = CellsParser.PinContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 28, self.RULE_pin)
+        localctx = CellsParser.Connected_pinContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 28, self.RULE_connected_pin)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
@@ -1101,7 +1192,7 @@ class CellsParser ( Parser ):
             self.state = 164
             self.newline()
             self.state = 165
-            self.pintype()
+            self.pin_type()
             self.state = 166
             self.newline()
         except RecognitionException as re:
@@ -1132,6 +1223,12 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitNewline" ):
                 listener.exitNewline(self)
 
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitNewline" ):
+                return visitor.visitNewline(self)
+            else:
+                return visitor.visitChildren(self)
+
 
 
 
@@ -1157,38 +1254,44 @@ class CellsParser ( Parser ):
             self.exitRule()
         return localctx
 
-    class PintypeContext(ParserRuleContext):
+    class Pin_typeContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def inputpin(self):
-            return self.getTypedRuleContext(CellsParser.InputpinContext,0)
+        def input_pin(self):
+            return self.getTypedRuleContext(CellsParser.Input_pinContext,0)
 
 
-        def outputpin(self):
-            return self.getTypedRuleContext(CellsParser.OutputpinContext,0)
+        def output_pin(self):
+            return self.getTypedRuleContext(CellsParser.Output_pinContext,0)
 
 
         def getRuleIndex(self):
-            return CellsParser.RULE_pintype
+            return CellsParser.RULE_pin_type
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterPintype" ):
-                listener.enterPintype(self)
+            if hasattr( listener, "enterPin_type" ):
+                listener.enterPin_type(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitPintype" ):
-                listener.exitPintype(self)
+            if hasattr( listener, "exitPin_type" ):
+                listener.exitPin_type(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitPin_type" ):
+                return visitor.visitPin_type(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
 
-    def pintype(self):
+    def pin_type(self):
 
-        localctx = CellsParser.PintypeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 32, self.RULE_pintype)
+        localctx = CellsParser.Pin_typeContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 32, self.RULE_pin_type)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 173
@@ -1196,11 +1299,11 @@ class CellsParser ( Parser ):
             token = self._input.LA(1)
             if token in [CellsParser.T__14, CellsParser.T__17]:
                 self.state = 171
-                self.inputpin()
+                self.input_pin()
                 pass
             elif token in [CellsParser.T__18, CellsParser.T__19]:
                 self.state = 172
-                self.outputpin()
+                self.output_pin()
                 pass
             else:
                 raise NoViableAltException(self)
@@ -1213,7 +1316,7 @@ class CellsParser ( Parser ):
             self.exitRule()
         return localctx
 
-    class InputpinContext(ParserRuleContext):
+    class Input_pinContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -1226,23 +1329,29 @@ class CellsParser ( Parser ):
             return self.getToken(CellsParser.AlphaNum, 0)
 
         def getRuleIndex(self):
-            return CellsParser.RULE_inputpin
+            return CellsParser.RULE_input_pin
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterInputpin" ):
-                listener.enterInputpin(self)
+            if hasattr( listener, "enterInput_pin" ):
+                listener.enterInput_pin(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitInputpin" ):
-                listener.exitInputpin(self)
+            if hasattr( listener, "exitInput_pin" ):
+                listener.exitInput_pin(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitInput_pin" ):
+                return visitor.visitInput_pin(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
 
-    def inputpin(self):
+    def input_pin(self):
 
-        localctx = CellsParser.InputpinContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 34, self.RULE_inputpin)
+        localctx = CellsParser.Input_pinContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 34, self.RULE_input_pin)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
@@ -1279,7 +1388,7 @@ class CellsParser ( Parser ):
             self.exitRule()
         return localctx
 
-    class OutputpinContext(ParserRuleContext):
+    class Output_pinContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
@@ -1292,23 +1401,29 @@ class CellsParser ( Parser ):
             return self.getToken(CellsParser.AlphaNum, 0)
 
         def getRuleIndex(self):
-            return CellsParser.RULE_outputpin
+            return CellsParser.RULE_output_pin
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterOutputpin" ):
-                listener.enterOutputpin(self)
+            if hasattr( listener, "enterOutput_pin" ):
+                listener.enterOutput_pin(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitOutputpin" ):
-                listener.exitOutputpin(self)
+            if hasattr( listener, "exitOutput_pin" ):
+                listener.exitOutput_pin(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitOutput_pin" ):
+                return visitor.visitOutput_pin(self)
+            else:
+                return visitor.visitChildren(self)
 
 
 
 
-    def outputpin(self):
+    def output_pin(self):
 
-        localctx = CellsParser.OutputpinContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 36, self.RULE_outputpin)
+        localctx = CellsParser.Output_pinContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 36, self.RULE_output_pin)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)

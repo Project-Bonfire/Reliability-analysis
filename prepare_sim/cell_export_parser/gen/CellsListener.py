@@ -1,4 +1,4 @@
-# Generated from /home/thi/git/Reliability-analysis/prepare_sim/cell_export_parser/Cells.g4 by ANTLR 4.7
+# Generated from D:/git/Reliability-analysis/prepare_sim/cell_export_parser\Cells.g4 by ANTLR 4.7
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .CellsParser import CellsParser
@@ -98,48 +98,48 @@ class CellsListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by CellsParser#ioline.
-    def enterIoline(self, ctx:CellsParser.IolineContext):
+    # Enter a parse tree produced by CellsParser#io_pin.
+    def enterIo_pin(self, ctx:CellsParser.Io_pinContext):
         pass
 
-    # Exit a parse tree produced by CellsParser#ioline.
-    def exitIoline(self, ctx:CellsParser.IolineContext):
-        pass
-
-
-    # Enter a parse tree produced by CellsParser#pinname.
-    def enterPinname(self, ctx:CellsParser.PinnameContext):
-        pass
-
-    # Exit a parse tree produced by CellsParser#pinname.
-    def exitPinname(self, ctx:CellsParser.PinnameContext):
+    # Exit a parse tree produced by CellsParser#io_pin.
+    def exitIo_pin(self, ctx:CellsParser.Io_pinContext):
         pass
 
 
-    # Enter a parse tree produced by CellsParser#netname.
-    def enterNetname(self, ctx:CellsParser.NetnameContext):
+    # Enter a parse tree produced by CellsParser#pin_name.
+    def enterPin_name(self, ctx:CellsParser.Pin_nameContext):
         pass
 
-    # Exit a parse tree produced by CellsParser#netname.
-    def exitNetname(self, ctx:CellsParser.NetnameContext):
-        pass
-
-
-    # Enter a parse tree produced by CellsParser#pins.
-    def enterPins(self, ctx:CellsParser.PinsContext):
-        pass
-
-    # Exit a parse tree produced by CellsParser#pins.
-    def exitPins(self, ctx:CellsParser.PinsContext):
+    # Exit a parse tree produced by CellsParser#pin_name.
+    def exitPin_name(self, ctx:CellsParser.Pin_nameContext):
         pass
 
 
-    # Enter a parse tree produced by CellsParser#pin.
-    def enterPin(self, ctx:CellsParser.PinContext):
+    # Enter a parse tree produced by CellsParser#net_name.
+    def enterNet_name(self, ctx:CellsParser.Net_nameContext):
         pass
 
-    # Exit a parse tree produced by CellsParser#pin.
-    def exitPin(self, ctx:CellsParser.PinContext):
+    # Exit a parse tree produced by CellsParser#net_name.
+    def exitNet_name(self, ctx:CellsParser.Net_nameContext):
+        pass
+
+
+    # Enter a parse tree produced by CellsParser#connected_pins.
+    def enterConnected_pins(self, ctx:CellsParser.Connected_pinsContext):
+        pass
+
+    # Exit a parse tree produced by CellsParser#connected_pins.
+    def exitConnected_pins(self, ctx:CellsParser.Connected_pinsContext):
+        pass
+
+
+    # Enter a parse tree produced by CellsParser#connected_pin.
+    def enterConnected_pin(self, ctx:CellsParser.Connected_pinContext):
+        pass
+
+    # Exit a parse tree produced by CellsParser#connected_pin.
+    def exitConnected_pin(self, ctx:CellsParser.Connected_pinContext):
         pass
 
 
@@ -152,30 +152,30 @@ class CellsListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by CellsParser#pintype.
-    def enterPintype(self, ctx:CellsParser.PintypeContext):
+    # Enter a parse tree produced by CellsParser#pin_type.
+    def enterPin_type(self, ctx:CellsParser.Pin_typeContext):
         pass
 
-    # Exit a parse tree produced by CellsParser#pintype.
-    def exitPintype(self, ctx:CellsParser.PintypeContext):
-        pass
-
-
-    # Enter a parse tree produced by CellsParser#inputpin.
-    def enterInputpin(self, ctx:CellsParser.InputpinContext):
-        pass
-
-    # Exit a parse tree produced by CellsParser#inputpin.
-    def exitInputpin(self, ctx:CellsParser.InputpinContext):
+    # Exit a parse tree produced by CellsParser#pin_type.
+    def exitPin_type(self, ctx:CellsParser.Pin_typeContext):
         pass
 
 
-    # Enter a parse tree produced by CellsParser#outputpin.
-    def enterOutputpin(self, ctx:CellsParser.OutputpinContext):
+    # Enter a parse tree produced by CellsParser#input_pin.
+    def enterInput_pin(self, ctx:CellsParser.Input_pinContext):
         pass
 
-    # Exit a parse tree produced by CellsParser#outputpin.
-    def exitOutputpin(self, ctx:CellsParser.OutputpinContext):
+    # Exit a parse tree produced by CellsParser#input_pin.
+    def exitInput_pin(self, ctx:CellsParser.Input_pinContext):
+        pass
+
+
+    # Enter a parse tree produced by CellsParser#output_pin.
+    def enterOutput_pin(self, ctx:CellsParser.Output_pinContext):
+        pass
+
+    # Exit a parse tree produced by CellsParser#output_pin.
+    def exitOutput_pin(self, ctx:CellsParser.Output_pinContext):
         pass
 
 

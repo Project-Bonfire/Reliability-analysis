@@ -9,20 +9,20 @@ lib : 'Library:' Identifier;
 area: 'Area:' Num;
 touch: 'dont_touch:' AlphaNum;
 
-inputs : 'Input Pins' 'Net' ('Net Driver Pins' 'Driver Pin Type')? NEWLINE Dashes NEWLINE ioline+;
+inputs : 'Input Pins' 'Net' ('Net Driver Pins' 'Driver Pin Type')? NEWLINE Dashes NEWLINE io_pin+;
 
-outputs : 'Output Pins' 'Net' ('Net Load Pins' 'Load Pin Type')? NEWLINE Dashes NEWLINE ioline+;
+outputs : 'Output Pins' 'Net' ('Net Load Pins' 'Load Pin Type')? NEWLINE Dashes NEWLINE io_pin+;
 
-ioline : pinname (netname pins)? NEWLINE;
-pinname: AlphaNum;
-netname: (Identifier|AlphaNum);
-pins:  pin+;
+io_pin : pin_name (net_name connected_pins)? NEWLINE;
+pin_name: AlphaNum;
+net_name: (Identifier|AlphaNum);
+connected_pins:  connected_pin+;
 // added the newline parser rule here because the list indices change otherwise all the time, if using the tokenizer rule.
-pin: newline (Identifier|AlphaNum) newline pintype newline;
+connected_pin: newline (Identifier|AlphaNum) newline pin_type newline;
 newline: NEWLINE?;
-pintype : (inputpin|outputpin) ;
-inputpin: ('Input Pin' '(' (Identifier|AlphaNum) ')' | 'Input Port');
-outputpin: ('Output Pin' '(' (Identifier|AlphaNum) ')' | 'Output Port');
+pin_type : (input_pin|output_pin) ;
+input_pin: ('Input Pin' '(' (Identifier|AlphaNum) ')' | 'Input Port');
+output_pin: ('Output Pin' '(' (Identifier|AlphaNum) ')' | 'Output Port');
 
 Dashes : [-]+ [ ]+ [-]+ ([ ]+ [-]+[ ]+ [-]+)?;
 

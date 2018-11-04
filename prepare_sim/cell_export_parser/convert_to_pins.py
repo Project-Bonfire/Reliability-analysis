@@ -10,17 +10,15 @@ from gen.CellsLexer import CellsLexer
 from gen.CellsListener import CellsListener
 from gen.CellsParser import CellsParser
 
-
 class Wire:
+    """
+    Class to store data each IO line in the cell export
+    """
     cell_name: str
     pin_name: str
     net_name: str
     pin_list: List[str]
     module: str
-
-    """
-    Object to store the parameters of wires between the components
-    """
 
     def __init__(self, cell_name, pin_name, net_name, pin_list, module) -> None:
         super().__init__()
@@ -48,25 +46,34 @@ class PinWriter(CellsListener):
         Called when the ANTLR parser exits a Cell node. 
         Will process the cell and output all its pins to the output file
         """
-        io_wires = []
+        iolines = []
         modules = []
         wires: List[Wire] = []
 
         self.num_cells += 1
 
+        # Get the name of the current cell
+        # r.cell.header.nameline.<name>
         cell_name = ctx.children[0].children[0].children[1].symbol.text
-        io_wires = ctx.children[1].children[7:] + \
+
+        # Extract all iolines in the cell (outputs and inputs)
+        # [r.cell.inputs.ioline[0:n] + (r.cell.outputs[0:n], if outputs exist)]
+        iolines = ctx.children[1].children[7:] + \
             (ctx.children[2].children[7:] if len(ctx.children) > 2 else [])
 
-        # Create one Wire object for each wire which is connected to the cell
-        for wire in io_wires:
-            pin_name, net_name, pin_list = self.handleIOline(wire)
+        # Create one Wire object for each ioline which is connected to the cell
+        for ioline in iolines:
+            pin_name, net_name, pin_list = self.handleIOline(ioline)
             module = guessModule(cell_name, net_name, pin_list,
                                  ctx, self.signal_module_map)
+
+            
 
             if module != None:
                 modules.append(module)
 
+            # if not all(x == modules[0] for x in modules):
+                # print([cell_name, pin_name, net_name, pin_list, module], '->', modules)#, file=sys.stderr)
             wires.append(Wire(cell_name, pin_name, net_name, pin_list, module))
 
         if len(set(modules)) > 1:
@@ -76,33 +83,35 @@ class PinWriter(CellsListener):
         # THIS IS WHERE ALL THE IMPORTANT DECISIONS ABOUT WHICH WIRE GOES WHERE ARE MADE!!!! #
         ######################################################################################
 
-        # Prefer the module name found directly in the wire, but if the wire had no module name, use one from the general cell.
+        # Prefer the module name found directly in the ioline, but if the ioline had no module name, use one from the general cell.
         if modules:
-            for wire in wires:
+            for ioline in wires:
                 
-                if wire.module == None:
+                if ioline.module == None:
                     # print(modules, file=sys.stderr)
-                    print([wire.cell_name, wire.pin_name, wire.net_name, wire.pin_list, wire.module], '->', modules, file=sys.stderr)
-                    wire.module = modules[0]
+                    # if not all(x == modules[0] for x in modules):
+                    # print([ioline.cell_name, ioline.pin_name, ioline.net_name, ioline.pin_list, ioline.module], '->', modules)#, file=sys.stderr)
+
+                    ioline.module = modules[0]
 
         else:  # As fallback, we assign the cell to the fifo, when we cannot guess to which module it belongs.
-            for wire in wires:
-                wire.module = 'none'
+            for ioline in wires:
+                ioline.module = 'none'
                 self.module_fallback_counter += 1
 
         # Unfortunately, for some reason, some of the pins are named differently. The only valid difference I found
         # is that the ones without backslash are starting with U
 
         # Counts the number of fault injection locations per module
-        for wire in wires:
-            if wire.module in self.fault_locs_per_module:
-                self.fault_locs_per_module[wire.module] += 1
+        for ioline in wires:
+            if ioline.module in self.fault_locs_per_module:
+                self.fault_locs_per_module[ioline.module] += 1
 
             else:
-                self.fault_locs_per_module[wire.module] = 1
+                self.fault_locs_per_module[ioline.module] = 1
 
-            print(("" if wire.cell_name.startswith("U") else "\\") + wire.cell_name +
-                  " :" + wire.pin_name + ' ' + '!' + wire.module, file=self.outstream)
+            print(("" if ioline.cell_name.startswith("U") else "\\") + ioline.cell_name +
+                  " :" + ioline.pin_name + ' ' + '!' + ioline.module, file=self.outstream)
 
     def handleIOline(self, ctx):
         """
@@ -144,9 +153,6 @@ def guessModule(cell_name, net_name, pin_list, ctx, signal_module_map):
     def guessComponent():
 
         try:
-            for signal_name, module_name in signal_module_map.items():
-                if re.match(signal_name, net_name):
-                    return net_name
             
             res = []
             for pin in pin_list:
@@ -154,10 +160,18 @@ def guessModule(cell_name, net_name, pin_list, ctx, signal_module_map):
                     not net_name.startswith('n') and \
                     not net_name == "reset":
                     res.append(pin[0])
+                    # print(pin[0], net_name, file=sys.stderr)
+
 
             if res:
+                # print(res, file=sys.stderr)
                 return res[0]
 
+            # Guess the component based on net name
+            for signal_name, module_name in signal_module_map.items():
+                if re.match(signal_name, net_name):
+                    # print(signal_name, '->', net_name, file=sys.stderr)
+                    return net_name
             if not cell_name.startswith('U'):
                 return cell_name
 
@@ -215,7 +229,7 @@ def main(file_name, mapping: Dict[Pattern[str], str], outfile):
     print("modules=%s" % str(list(set(printer.fault_locs_per_module.keys()))))
     print("nrfaultlocs=%d" % sum(printer.fault_locs_per_module.values()))
     print("fault_locs_per_module=%s" % str(printer.fault_locs_per_module))
-    print("Had to choose 'none' as fallback module on %d wires, because I could not guess to which module the wire belongs." %
+    print("Had to choose 'none' as fallback module on %d wires, because I could not guess to which module the ioline belongs." %
           printer.module_fallback_counter)
     print("Had %d cells where I assigned the pins to multiple different modules. (%d total=%f%%)" % (
         printer.multi_module_counter, printer.num_cells, printer.multi_module_counter/printer.num_cells))
