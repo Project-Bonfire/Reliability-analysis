@@ -33,15 +33,13 @@ if [ "$2" != "" ];  then
 fi
 
 outfile=`mktemp`
-echo "Cell export parser outout will be saved to the temp file: $outfile"
+echo "Cell export parser output will be saved to the temp file: $outfile"
 echo "Parsing cellexport..."
-python3 prepare_sim/cell_export_parser/convert_to_pins.py $params > $outfile
-cat $outfile
+python3 prepare_sim/cell_export_parser/convert_to_pins.py $params --temp-file $outfile
 
-# FIXME: Commented out for debugging
-# echo ""
-# echo "Ensure that the mapping to the modules looks good. Many nones mean that there went something wrong."
-# echo ""
+echo ""
+echo "Ensure that the mapping to the modules looks good."
+echo ""
 
 # if [ ! -f "$routerdir/routerinfo.rti" ]; then
 #     echo "Creating routerinfo.rti for this router. See the file below and ensure its correct:"

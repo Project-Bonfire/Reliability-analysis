@@ -269,9 +269,9 @@ class CellParser(CellsListener):
 
             except ValueError:
                 print("Failed to guess component! %s" %
-                      cell_name, file=sys.stderr)
+                      cell_name)
 
-                print(ctx, file=sys.stderr)
+                print(ctx)
 
         # ---------------------
         # End of guessComponent
@@ -291,7 +291,7 @@ class CellParser(CellsListener):
         return None
 
 
-def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, debug):
+def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, debug, temp_file):
     """
     Parses the cell export file and prints results
 
@@ -302,7 +302,7 @@ def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, 
         debug - Debug instructions
     """
     # Setting up ANTLR environment for parsing the cell export
-    print('Creating parse tree...', file=sys.stderr)
+    print('Creating parse tree...')
     input_stream = FileStream(cell_export_file)
     lexer = CellsLexer(input_stream)
     stream = CommonTokenStream(lexer)
@@ -310,7 +310,7 @@ def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, 
     tree = parser.r()
 
     # Actually parse the cell export
-    print('Parsing the cell export...', file=sys.stderr)
+    print('Parsing the cell export...')
     printer = CellParser(debug)
     printer.signal_module_map = signal_module_map
     printer.outstream = outfile
@@ -320,7 +320,6 @@ def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, 
     # Print statistics
     total_fault_injection_locs = sum(printer.fault_locs_per_module.values())
 
-    print()
     print(11 * '-')
     print('STATISTICS:')
     print(11 * '-')
@@ -335,7 +334,7 @@ def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, 
 
     print()
     print('Fault injection locations per module:')
-# sorted(dict1, key=dict1.get)
+
     longest_module_name_length = 0
     for module in printer.fault_locs_per_module.keys():
         if len(module) > longest_module_name_length:
@@ -374,6 +373,13 @@ def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, 
               'This means you might want to make sure all logic in your design is located under respective submodules.\n'
               'Alternatively you might want to update the signal-module map. Proceed at your own risk')
 
+    print(temp_file)
+    if temp_file:
+        with open(temp_file, 'w') as tmp:
+            print('modules=%s\nnrfaultlocs=%s\nlocspermodule=%s' % (str(list(set(printer.fault_locs_per_module.keys()))), 
+                                                                    str(sum(printer.fault_locs_per_module.values())), 
+                                                                    str(printer.fault_locs_per_module)), file=tmp)
+
     print()
     if printer.module_fallback_counter > 0:
         print('E R R O R ! - Had to choose \'none\' as fallback module on %d pins, '
@@ -394,18 +400,24 @@ if __name__ == '__main__':
         exit(1)
 
     print()
-    print('==================', file=sys.stderr)
-    print('CELL EXPORT PARSER', file=sys.stderr)
-    print('==================', file=sys.stderr)
+    print('==================')
+    print('CELL EXPORT PARSER')
+    print('==================')
 
     args = argparse.ArgumentParser(
         description='Creates a list of Fault injection locations for a router.')
 
-    args.add_argument('routerdir', type=str,
-                      help='The directory where the the router is located.')
+    args.add_argument('designdir', type=str,
+                      help='The directory where the design is located.')
 
     args.add_argument('--cellexport', nargs='?', type=str, default="Cells_Report_Verbose.txt",
                       help='Filename of the cellexport file in the router folder (defaults to \'Cells_Report_Verbose.txt\')')
+
+    args.add_argument('--temp-file', nargs='?', type=str, default=None,
+                      help='A temporary file, where to write the basic results in a machine readable format')
+
+    args.add_argument('--results-file', nargs='?', type=str, default="results.txt",
+                      help='Filename where to write the results (defaults to \'results.txt\')')
 
     args.add_argument('--moduledict', nargs='?', type=str, default="pattern_to_modules.py",
                       help='Name of the file, which contains the dictionary for mapping the patterns in the cell export to  module names'
@@ -427,10 +439,10 @@ if __name__ == '__main__':
         no_module_name=args.debug_no_module
     )
 
-    with open(os.path.join(args.routerdir, args.cellexport), 'r') as cellexport, \
-            open(os.path.join(args.routerdir, args.moduledict), 'r') as mapping, \
-            open(os.path.join(args.routerdir, "results.txt"), 'w') as outfile:
+    with open(os.path.join(args.designdir, args.cellexport), 'r') as cellexport, \
+            open(os.path.join(args.designdir, args.moduledict), 'r') as mapping, \
+            open(os.path.join(args.designdir, args.results_file), 'w') as outfile:
 
         signal_module_map = eval(mapping.read())
 
-        main(cellexport.name, signal_module_map, outfile, debug)
+        main(cellexport.name, signal_module_map, outfile, debug, args.temp_file)
