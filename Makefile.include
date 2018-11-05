@@ -1,0 +1,7 @@
+# Makefile inlcude file
+export SIM_ROOT_DIR=${shell pwd}
+
+
+DESIGN=""
+
+CELL_EXP_LOC=""

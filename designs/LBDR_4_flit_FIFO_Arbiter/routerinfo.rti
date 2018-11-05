@@ -1,5 +1,0 @@
-modules=['xbar', 'arbiter', 'fifod', 'lbdr', 'fifoc']
-nrfaultlocs=13961
-locspermodule={'lbdr': 440, 'arbiter': 982, 'xbar': 2793, 'fifoc': 576, 'fifod': 9170}
-ralgo_name="XYRouting"
-info="LBDR 4 flit fifo arbiter"

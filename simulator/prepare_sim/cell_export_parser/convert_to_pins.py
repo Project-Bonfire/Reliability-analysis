@@ -291,7 +291,7 @@ class CellParser(CellsListener):
         return None
 
 
-def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, debug, temp_file):
+def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, debug, fault_info_file):
     """
     Parses the cell export file and prints results
 
@@ -373,12 +373,11 @@ def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, 
               'This means you might want to make sure all logic in your design is located under respective submodules.\n'
               'Alternatively you might want to update the signal-module map. Proceed at your own risk')
 
-    print(temp_file)
-    if temp_file:
-        with open(temp_file, 'w') as tmp:
+    if fault_info_file:
+        with open(fault_info_file, 'w') as fi:
             print('modules=%s\nnrfaultlocs=%s\nlocspermodule=%s' % (str(list(set(printer.fault_locs_per_module.keys()))), 
                                                                     str(sum(printer.fault_locs_per_module.values())), 
-                                                                    str(printer.fault_locs_per_module)), file=tmp)
+                                                                    str(printer.fault_locs_per_module)), file=fi)
 
     print()
     if printer.module_fallback_counter > 0:
@@ -413,7 +412,7 @@ if __name__ == '__main__':
     args.add_argument('--cellexport', nargs='?', type=str, default="Cells_Report_Verbose.txt",
                       help='Filename of the cellexport file in the router folder (defaults to \'Cells_Report_Verbose.txt\')')
 
-    args.add_argument('--temp-file', nargs='?', type=str, default=None,
+    args.add_argument('--fault-info-file', nargs='?', type=str, default=None,
                       help='A temporary file, where to write the basic results in a machine readable format')
 
     args.add_argument('--results-file', nargs='?', type=str, default="results.txt",
@@ -445,4 +444,4 @@ if __name__ == '__main__':
 
         signal_module_map = eval(mapping.read())
 
-        main(cellexport.name, signal_module_map, outfile, debug, args.temp_file)
+        main(cellexport.name, signal_module_map, outfile, debug, args.fault_info_file)
