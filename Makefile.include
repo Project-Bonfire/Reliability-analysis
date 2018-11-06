@@ -1,7 +1,21 @@
-# Makefile inlcude file
-export SIM_ROOT_DIR=${shell pwd}
+#########################
+# Makefile include file #
+#########################
 
+# DO NOT edit this below
+export SIM_ROOT_DIR=${shell pwd}
 
 DESIGN=""
 CELL_EXP_LOC="--cellexport Cells_Report_with_Connections_Verbose.txt"
 PARAMS=""
+
+# In order to run modelsim: Change the line below to point to the script which sets up 
+# the environment (or just edit the sctipt this is pointing to)
+
+export MODELSIM_ENV_SETUP=${SIM_ROOT_DIR}/helper_scripts/include/setup_modelsim_env.csh
+
+# Alternatively, if Modelsim does not require any setup (you can just run it by typing 'vsim' at the root folder of the project),
+# Comment the above line and comment out the line below to disable modelsim environment setup:
+
+# export MODELSIM_ENV_SETUP=""
+

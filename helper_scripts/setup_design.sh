@@ -75,13 +75,26 @@ echo "SIMULATING TO VERIFY SETUP"
 echo "=========================="
 echo ""
 echo "Running a single sample simulation now! If it takes very long (>2min), there might be errors. In that case, check $outfile"
-$SIM_ROOT_DIR/helper_scripts/run_single_sim.csh smallsample.scn $1 '7385 3615 1 10 nofault :nofault ' > $outfile
+
+# Copy the system variable to TCSH
+tcsh -fc "setenv MODELSIM_ENV_SETUP `echo $MODELSIM_ENV_SETUP`"
+
+# And run the simulation
+$SIM_ROOT_DIR/helper_scripts/include/run_single_sim.csh smallsample.scn $1 '7385 3615 1 10 nofault :nofault ' > $outfile
+
+resfoldrcommand=`tail -n 1 $outfile` #the last line of the output should be the cd command
+
+if  [[ $resfoldrcommand == "E R R O R ! Modelsim environment not working!" ]] ;
+then
+    echo "Exiting..."
+    exit
+fi
 
 echo "Simulation result: "
 cat $outfile | grep -i error
 echo ""
 
-resfoldrcommand=`tail -n 1 $outfile` #the last line of the output should be the cd command
+
 if  [[ $resfoldrcommand == "cd /tmp/"* ]] ;
 then
     $resfoldrcommand #cd there

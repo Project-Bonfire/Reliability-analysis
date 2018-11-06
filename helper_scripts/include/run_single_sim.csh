@@ -1,19 +1,19 @@
 #!/bin/tcsh -f
-#Usage: $0 <scnfile> <desing_file> '<faultsimline>'
-#source /cad/unsetenvs.csh
-setenv PATH /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin
-setenv MANPATH /usr/man:/usr/share/man:/usr/local/man:/usr/local/share/man
+# Usage: $0 <scnfile> <desing_file> '<faultsimline>'
 
-setenv M_16_EDA
+if ( "$MODELSIM_ENV_SETUP" != "" ) then
+    echo "Using Modelsim/Questasim setup script: $MODELSIM_ENV_SETUP"
+    source $MODELSIM_ENV_SETUP
+    vsim -version
 
+    # Check if Modelsim is working
+    if ("$?" == 1) then
+        echo "E R R O R ! Modelsim environment not working!"
+        exit
+    endif
 
-#source /cad/cadrc.include_new
-#          echo " "
-#          echo "Environment ready for Mentor Graphics 2016 EDA version."
-#          echo " "
-#          breaksw
+endif
 
-source /eda/mentor/2015-16/scripts/QUESTA-SV-AFV_10.4c-5_RHELx86.csh
 
 set scnfile = $SIM_ROOT_DIR/scenarios/$1
 set desing_file = $SIM_ROOT_DIR/designs/$2
