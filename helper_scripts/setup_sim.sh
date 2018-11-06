@@ -1,16 +1,16 @@
 #!/bin/sh
 
-# An helper script for setting up new routers
+# An helper script for setting up new designs
 # Usage - setup_sim.sh <router name> [cell export file]
 
 printHelp ()
 {
     echo "Usage:"
     echo "    When running from Makefile:"
-    echo "        make setup DESIGN=<design_name in designs/folder>"
+    echo "        make setup DESIGN=<design_name in designs/folder> [CELL_EXP_LOC=<cell export filename>]"
     echo ""
     echo "    When running the script directly:"
-    echo "        $0 <design_name in designs/folder>"
+    echo "        $0 <design_name in designs/folder> [<cell export filename>]"
     echo ""
     echo "The following designs exist:"
     ls $SIM_ROOT_DIR/designs

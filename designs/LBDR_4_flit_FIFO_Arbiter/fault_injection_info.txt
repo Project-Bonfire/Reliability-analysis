@@ -1,3 +1,3 @@
-modules=['lbdr', 'xbar', 'fifod', 'arbiter', 'fifoc']
+modules=['fifoc', 'fifod', 'arbiter', 'xbar', 'lbdr']
 nrfaultlocs=13961
 locspermodule={'lbdr': 403, 'xbar': 2656, 'arbiter': 1044, 'fifoc': 675, 'fifod': 9183}

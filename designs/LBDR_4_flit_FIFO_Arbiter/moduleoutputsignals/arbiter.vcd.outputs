@@ -1,7 +1,0 @@
-cope module tb_router
-cope module R_5
-$var wire 1 5 valid_out_N
-$var wire 1 6 valid_out_E
-$var wire 1 7 valid_out_W
-$var wire 1 8 valid_out_S
-$var wire 1 9 valid_out_L

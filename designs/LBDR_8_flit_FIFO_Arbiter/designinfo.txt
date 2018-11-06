@@ -1,0 +1,2 @@
+ralgo_name="XYRouting"
+info="LBDR 8 flit fifo arbiter"

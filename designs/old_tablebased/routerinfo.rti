@@ -1,5 +1,0 @@
-modules=['fifo','lbdr','xbar','arbiter','none']
-nrfaultlocs=4930
-locspermodule={'all':4930,'fifo':3573,'fifoc':2361,'fifod':1212,'lbdr':1048,'xbar':288,'arbiter':21,'none':0}
-ralgo_name="XYRouting"
-info="table based routing"
