@@ -10,6 +10,9 @@ from gen.CellsLexer import CellsLexer
 from gen.CellsListener import CellsListener
 from gen.CellsParser import CellsParser
 
+RET_OK = 0
+RET_ERR = 1
+RET_DEBUG = 2
 
 class Pin:
     """
@@ -120,6 +123,10 @@ class CellParser(CellsListener):
             for io_pin in pins:
                 io_pin.module = 'none'
                 self.module_fallback_counter += 1
+
+                if self.debug['debug_nones']:
+                    print('Cell:', cell_name, 'Pin: ', pin_name, 'Net:', net_name,
+                        'Connected Pins', connected_pins, '-> None')
 
         # Counts the number of fault injection locations per module
         for io_pin in pins:
@@ -384,10 +391,11 @@ def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, 
         print('E R R O R ! - Had to choose \'none\' as fallback module on %d pins, '
               'because I could not guess to which module the io_pin belongs' %
               printer.module_fallback_counter)
-        sys.exit(1)
+        return True
 
     else:
         print('All pins were assigned into modules')
+        return False
 
     print(11 * '-')
 
@@ -429,13 +437,16 @@ if __name__ == '__main__':
                             help='Prints all io_pins which get assigned to modules based on pins they are connected to')
     debug_args.add_argument('--debug-no-module', action='store_true',
                             help='Prints all io_pins where module guessing failed and were named after other pins in the same cell')
+    debug_args.add_argument('--debug-nones', action='store_true',
+                        help='Prints all io_pins where module the \'None\' was assigned as a module')
 
     args = args.parse_args()
 
     debug = dict(
         named_after_map=args.debug_named_after_map,
         named_after_conn=args.debug_named_after_connection,
-        no_module_name=args.debug_no_module
+        no_module_name=args.debug_no_module,
+        debug_nones=args.debug_nones
     )
 
     with open(os.path.join(args.designdir, args.cellexport), 'r') as cellexport, \
@@ -444,4 +455,13 @@ if __name__ == '__main__':
 
         signal_module_map = eval(mapping.read())
 
-        main(cellexport.name, signal_module_map, outfile, debug, args.fault_info_file)
+        errors = main(cellexport.name, signal_module_map, outfile, debug, args.fault_info_file)
+
+        return_value = RET_OK
+        if errors:
+            return_value = RET_ERR
+
+        if True in debug.values():
+            return_value = RET_DEBUG
+
+        sys.exit(return_value)

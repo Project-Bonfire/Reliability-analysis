@@ -10,7 +10,7 @@ printHelp ()
     echo "        make setup DESIGN=<design_name in designs/folder> [CELL_EXP_LOC=<cell export filename>]"
     echo ""
     echo "    When running the script directly:"
-    echo "        $0 <design_name in designs/folder> [<cell export filename>]"
+    echo "        $0 <design_name in designs/folder> [CELL_EXP_LOC=<cell export filename>]"
     echo ""
     echo "The following designs exist:"
     ls $SIM_ROOT_DIR/designs
@@ -36,27 +36,37 @@ fi
 echo "Processing design $1"
 
 design_dir=`readlink -f $SIM_ROOT_DIR/designs/$1/`
-params="$SIM_ROOT_DIR/designs/$1/"
-if [ ! -d "$params" ]; then
+
+if [ ! -d "$design_dir" ]; then
     echo "Error: design '$1' does not exist in 'designs dir'."
     echo ""
     printHelp
 fi
 
-if [ "$2" == "" ];  then
-    params+=" --cellexport Cells_Report_with_Connections_Verbose.txt"
-else
-    params+=" --cellexport $2"
-fi
-
 fi_file=$design_dir/fault_injection_info.txt
 echo "Fault injection information will be stored in the following file: $fi_file"
 echo "Parsing cellexport..."
-python3 $SIM_ROOT_DIR/simulator/prepare_sim/cell_export_parser/convert_to_pins.py $params --fault-info-file $fi_file
+python3 $SIM_ROOT_DIR/simulator/prepare_sim/cell_export_parser/convert_to_pins.py $design_dir $2 $3 --fault-info-file $fi_file
+return_value=$?
 
 echo ""
 echo "Ensure that the mapping to the modules looks good."
 echo ""
+
+if [ $return_value = 1 ]; then
+    echo ""
+    echo "D E B U G : 'None'-s were found during the run... rerunning with debugging enabled:"
+    python3 $SIM_ROOT_DIR/simulator/prepare_sim/cell_export_parser/convert_to_pins.py $design_dir $2 $3 --fault-info-file $fi_file --debug-nones
+    return_value=$?
+fi
+
+if [ $return_value = 2 ]; then
+    echo ""
+    echo "N O T E : Simulation will be disabled when debugging! Not running simulation!"
+    echo ""
+    exit
+fi
+
 
 outfile=`mktemp`
 echo ""
@@ -92,3 +102,5 @@ fi
 rm $outfile
 echo ""
 echo "A T T E N T I O N : Please read the output carefully, to ensure the design was setup the way you want."
+echo ""
+

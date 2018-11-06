@@ -3,5 +3,5 @@ export SIM_ROOT_DIR=${shell pwd}
 
 
 DESIGN=""
-
-CELL_EXP_LOC=""
+CELL_EXP_LOC="--cellexport Cells_Report_with_Connections_Verbose.txt"
+PARAMS=""
