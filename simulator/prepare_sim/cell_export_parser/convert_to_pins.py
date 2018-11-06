@@ -11,8 +11,8 @@ from gen.CellsListener import CellsListener
 from gen.CellsParser import CellsParser
 
 RET_OK = 0
-RET_ERR = 1
-RET_DEBUG = 2
+RET_ERR = 2
+RET_DEBUG = 3
 
 class Pin:
     """
@@ -421,10 +421,10 @@ if __name__ == '__main__':
                       help='Filename of the cellexport file in the router folder (defaults to \'Cells_Report_Verbose.txt\')')
 
     args.add_argument('--fault-info-file', nargs='?', type=str, default=None,
-                      help='A temporary file, where to write the basic results in a machine readable format')
+                      help='A temporary, where to write the basic results in a machine readable format')
 
-    args.add_argument('--results-file', nargs='?', type=str, default="results.txt",
-                      help='Filename where to write the results (defaults to \'results.txt\')')
+    args.add_argument('--results-file', nargs='?', type=str, default="generated_files/results.txt",
+                      help='Filename where to write the results (defaults to \'generated_files/results.txt\')')
 
     args.add_argument('--moduledict', nargs='?', type=str, default="pattern_to_modules.py",
                       help='Name of the file, which contains the dictionary for mapping the patterns in the cell export to  module names'

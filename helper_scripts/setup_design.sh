@@ -43,7 +43,17 @@ if [ ! -d "$design_dir" ]; then
     printHelp
 fi
 
-fi_file=$design_dir/fault_injection_info.txt
+gen_dir=$design_dir/generated_files
+
+if [ ! -d "$gen_dir" ]; then
+    mkdir -p $gen_dir
+else
+    rm -rf $gen_dir
+    mkdir -p $gen_dir
+fi
+
+
+fi_file=$gen_dir/fault_injection_info.txt
 echo "Fault injection information will be stored in the following file: $fi_file"
 echo "Parsing cellexport..."
 python3 $SIM_ROOT_DIR/simulator/prepare_sim/cell_export_parser/convert_to_pins.py $design_dir $2 $3 --fault-info-file $fi_file
@@ -55,12 +65,18 @@ echo ""
 
 if [ $return_value = 1 ]; then
     echo ""
-    echo "D E B U G : 'None'-s were found during the run... rerunning with debugging enabled:"
-    python3 $SIM_ROOT_DIR/simulator/prepare_sim/cell_export_parser/convert_to_pins.py $design_dir $2 $3 --fault-info-file $fi_file --debug-nones
-    return_value=$?
+    echo "Errors detected during the run, exiting"
+    exit
 fi
 
 if [ $return_value = 2 ]; then
+    echo ""
+    echo "D E B U G : 'None'-s were found during the run... rerunning with debugging enabled:"
+    python3 $SIM_ROOT_DIR/simulator/prepare_sim/cell_export_parser/convert_to_pins.py $gen_dir $2 $3 --fault-info-file $fi_file --debug-nones
+    return_value=$?
+fi
+
+if [ $return_value = 3 ]; then
     echo ""
     echo "N O T E : Simulation will be disabled when debugging! Not running simulation!"
     echo ""
@@ -98,12 +114,12 @@ echo ""
 if  [[ $resfoldrcommand == "cd /tmp/"* ]] ;
 then
     $resfoldrcommand #cd there
-    rm -rf $design_dir/moduleoutputsignals
-    mkdir $design_dir/moduleoutputsignals
+    rm -rf $gen_dir/moduleoutputsignals
+    mkdir $gen_dir/moduleoutputsignals
     
     ls .
     
-    find . -name "*.vcd" -exec /bin/sh -c "cat {} | grep -oP '[^/s]+ [^/s]+(?= .end$)' > $design_dir/moduleoutputsignals/`basename {}`.outputs" \;
+    find . -name "*.vcd" -exec /bin/sh -c "cat {} | grep -oP '[^/s]+ [^/s]+(?= .end$)' > $gen_dir/moduleoutputsignals/`basename {}`.outputs" \;
     echo "Created $1/moduleoutputsignals folder, please verify that the module output signals are captured correctly!"
     
 else

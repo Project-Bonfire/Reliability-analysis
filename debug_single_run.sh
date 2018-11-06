@@ -1,9 +1,12 @@
 #!/bin/sh -e
+
+export SIM_ROOT_DIR=`pwd`
+
 if [ "$1" = "" ];  then
-    echo "Usage: $0 <simparameter string> <routername> <num_processes>"
+    echo "Usage: $0 <simparameter string> <designname> <num_processes>"
     echo ""
-    echo "possible router names:"
-    ls  simulation/routers
+    echo "possible design names:"
+    ls  designs/
     exit
 fi
 
@@ -17,15 +20,15 @@ scenario=`mktemp`
 simruns=`mktemp`
 
 echo "Num Processes: $num_processes"
-echo "Router Name: $2"
+echo "Design Name: $2"
 echo "Simulation runs temp directory $simruns"
 
 
 echo ""
-echo "=============="
-echo "Preparing sim:"
-echo "=============="
-./prepare_sim.sh $2 $simruns
+echo "====================="
+echo "Preparing simulation:"
+echo "====================="
+$SIM_ROOT_DIR/helper_scripts/prepare_sim.sh $2 $simruns
 echo ""
 #
 

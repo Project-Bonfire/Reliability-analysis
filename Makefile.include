@@ -7,6 +7,7 @@ export SIM_ROOT_DIR=${shell pwd}
 
 DESIGN=""
 CELL_EXP_LOC="--cellexport Cells_Report_with_Connections_Verbose.txt"
+OUTPUT_FILE=""
 PARAMS=""
 
 # In order to run modelsim: Change the line below to point to the script which sets up 
