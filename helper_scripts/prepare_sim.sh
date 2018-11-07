@@ -36,4 +36,18 @@ if [ "$1" = "" ];  then
     printHelp
 fi
 
-python3 $SIM_ROOT_DIR/simulator/prepare_sim/sim_run_creator/sim_run_creator.py $SIM_ROOT_DIR/designs/$1/results.txt $2 0 --module-representative-numbers
+gen_dict=$SIM_ROOT_DIR/designs/$1/generated_files
+
+if [ ! -d $gen_dict ]; then
+    echo "The design $1 is not properly set up yet"
+    echo "Please setup the design first by running \"make setup DESIGN=$1\""
+    exit
+fi
+
+if [ "$2" = "" ]; then
+    experiments_file=$gen_dict/experiments.txt
+else
+    experiments_file=$2
+fi
+
+python3 $SIM_ROOT_DIR/simulator/prepare_sim/sim_run_creator/sim_run_creator.py $gen_dict/results.txt $experiments_file 0 --module-representative-numbers

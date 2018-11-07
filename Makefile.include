@@ -6,9 +6,13 @@
 export SIM_ROOT_DIR=${shell pwd}
 
 DESIGN=""
-CELL_EXP_LOC="--cellexport Cells_Report_with_Connections_Verbose.txt"
-OUTPUT_FILE=""
 PARAMS=""
+
+# For 'make setup'
+CELL_EXP_LOC="--cellexport Cells_Report_with_Connections_Verbose.txt"
+
+# For 'make prepare'
+EXP_FILE=""
 
 # In order to run modelsim: Change the line below to point to the script which sets up 
 # the environment (or just edit the sctipt this is pointing to)

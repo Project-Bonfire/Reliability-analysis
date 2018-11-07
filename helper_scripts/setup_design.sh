@@ -132,4 +132,3 @@ rm $outfile
 echo ""
 echo "A T T E N T I O N : Please read the output carefully, to ensure the design was setup the way you want."
 echo ""
-

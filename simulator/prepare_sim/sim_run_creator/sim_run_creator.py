@@ -7,7 +7,7 @@ Input: List of all fault locations in the design (gatelevel netlist)
 Output: List of experiments to be run
 
 Output file format:
-<runtime before fault injection> <runtime after injection> <fault value (SA-0 / SA-1)> <Lenghth of the fault> <fault location (signal name)>
+<runtime before fault injection> <runtime after injection> <fault value (SA-0 / SA-1)> <Length of the fault> <fault location (signal name)>
 
 Usage: python3 sim_run_creator.py input_file output_file num_sims [sim_length_in_ns fault_length]
 """
@@ -18,46 +18,46 @@ from random import randrange, choices
 
 if (sys.version_info < (3, 6)):
     print("This script is designed to run on Python 3.6 or newer!")
-    exit (1)
+    exit(1)
 
 
 # Argument Parsing
 parser = argparse.ArgumentParser(
-    description='Creates a fault paramter set for the simulation. Outputs one line for each parameter set.\n'
+    description='Creates a fault parameter set for the simulation. Outputs one line for each parameter set.\n'
                 'Simulation length is earliest-fault-time+latest-fault-time+cooldown-time.')
 
-parser.add_argument('faultlocs_file', 
-                        type=argparse.FileType('r'), 
-                        help='The file with all possible fault locs.')
+parser.add_argument('faultlocs_file',
+                    type=argparse.FileType('r'),
+                    help='The file with all possible fault locs.')
 
-parser.add_argument('output_file', 
-                        type=argparse.FileType('w'), 
-                        help='The file where to store the list of fault experiments')
+parser.add_argument('output_file',
+                    type=argparse.FileType('w'),
+                    help='The file where to store the list of fault experiments')
 
 parser.add_argument('num_experiments', type=int,
                     help='The number of parameter sets to be generated')
 
-parser.add_argument('--latest-fault-time', 
+parser.add_argument('--latest-fault-time',
                     nargs='?', type=int,
-                    default='10000', 
+                    default='10000',
                     help='The latest fault injection time in nanoseconds.')
 
-parser.add_argument('--earliest-fault-time', nargs='?', 
-                    type=int, default='1000', 
+parser.add_argument('--earliest-fault-time', nargs='?',
+                    type=int, default='1000',
                     help='The earliest fault injection time in nanoseconds.')
 
-parser.add_argument('--cooldown-time', nargs='?', 
-                    type=int, default='1000', 
+parser.add_argument('--cooldown-time', nargs='?',
+                    type=int, default='1000',
                     help='How long after the last fault injection should the simulation keep running.')
 
-parser.add_argument('--length-of-fault', nargs='?', 
-                    type=int, default='10', 
+parser.add_argument('--length-of-fault', nargs='?',
+                    type=int, default='10',
                     help='How long should the injected fault last in nanoseconds')
 
 group = parser.add_mutually_exclusive_group()
-group.add_argument('--use-module-only', nargs='?', default='all', 
-                    choices=['lbdr', 'fifo', 'arbiter', 'xbar', 'all'],
-                    help='Choose only fault locations from the given module. "all" for all modules.')
+group.add_argument('--use-module-only', nargs='?', default='all',
+                   choices=['lbdr', 'fifo', 'arbiter', 'xbar', 'all'],
+                   help='Choose only fault locations from the given module. "all" for all modules.')
 
 group.add_argument('--module-representative-numbers', action='store_true',
                    help='Does not randomly choose fault injection locations, but tries to make the probabilities stable for each module. '
@@ -76,13 +76,15 @@ fault_locations = [line.strip() for line in args.faultlocs_file]
 module = args.use_module_only
 
 if module != 'all':
-    fault_locations = [location for location in fault_locations if location.split(' ')[2].strip()[1:] == module]
+    fault_locations = [location for location in fault_locations if location.split(' ')[
+        2].strip()[1:] == module]
 
 print("Choosing from %d possible fault locations" % len(fault_locations))
+print()
 
 sim_length = args.latest_fault_time
 offset = args.earliest_fault_time
-fault_length_arg = args.length_of_fault
+fault_length = args.length_of_fault
 cooldown_time = args.cooldown_time
 
 # Does not add a nofault line to the beginning of the output.
@@ -109,14 +111,27 @@ if args.module_representative_numbers:
     if 'none' in modulelines:
         del modulelines['none']
 
-    module_location_counts = {module_name: len(locs) for module_name, locs in modulelines.items()}
-    print("Number of fault locations per module:", module_location_counts)
-
-    print("Experiments created per module:")
     max_module_name_len = len(max(modulelines.keys(), key=len)) + 1
 
-    for module_name in modulelines.keys():
-        population = (sim_length - offset) / 10 * module_location_counts[module_name]
+    module_location_counts = {module_name: len(
+        locs) for module_name, locs in modulelines.items()}
+
+    print("Number of fault locations per module")
+    for module_name in sorted(modulelines.keys(), key=lambda x: x[0]):
+        name_len_difference = max_module_name_len - len(module_name)
+        print("\t%s:%s%d" %
+              (module_name, name_len_difference * ' ', module_location_counts[module_name]))
+
+    print()
+    print("Experiments created per module:")
+
+    for module_name in sorted(modulelines.keys(), key=lambda x: x[0]):
+
+        name_len_difference = max_module_name_len - len(module_name)
+
+        # Population = <number of fault injection time points> * <number of fault injectionlocations>
+        population = (sim_length - offset) / fault_length * \
+            module_location_counts[module_name]
 
         if population == 0:
             print("population of %s is 0. Skipping!" % module_name)
@@ -124,30 +139,32 @@ if args.module_representative_numbers:
 
         dev = 0.5
         z = 1.96
-        allowed_margin = 0.02
-        ss_pre = z**2 * dev * (1 - dev) / allowed_margin**2  # calculate samplesize
-        ss_pre = ss_pre / (1 + (ss_pre - 1) / population)
-        ss = ss_pre  # modify based on population
+        allowed_margin = 2 * 0.01
+        # calculate samplesize
+        ss = z**2 * dev * (1 - dev) / allowed_margin**2
 
-        name_len_difference = max_module_name_len - len(module_name)
+        ss_m = ss / (1 + ((ss - 1) / population))
+
         print("\t%s:%sExperiments: %d (population=%d)" %
-              (module_name, name_len_difference * ' ', ss, population))
-              
-        chosen_experiments += choices(modulelines[module_name], k=int(ss))
+              (module_name, name_len_difference * ' ', ss_m, population))
+
+        chosen_experiments += choices(modulelines[module_name], k=int(ss_m))
+    print()
 
 else:
     chosen_experiments = choices(fault_locations, k=args._)
 
 # Build injection locations file
 print("Storing fault injection experiments to:", args.output_file.name)
+print()
+
 for injection_location in chosen_experiments:
     time_before_injection = randrange(sim_length - offset) + offset
     time_after_injection = sim_length - time_before_injection + cooldown_time
 
     # Whether we inject 0 or 1 transient SA-0 or SA-1
     fault_value = randrange(2)
-    fault_length = fault_length_arg
 
     print(" ".join([str(x) for x in [time_before_injection,
-                                     time_after_injection, fault_value, fault_length, injection_location]]), 
-                                     file=args.output_file)
+                                     time_after_injection, fault_value, fault_length, injection_location]]),
+          file=args.output_file)
