@@ -1,2 +1,3 @@
+scenario=NoC
 ralgo_name="XYRouting"
 info="LBDR 4 flit fifo arbiter"

@@ -9,7 +9,7 @@ vlib work
 
 # Include files and compile them
 
-vlog "gate_level_netlist.v"
+vlog "HDL/gate_level_netlist.v"
 vlog "/cad/dk/c/v4.11/verilog/c18a6/c18_CORELIB.v"
 
 # vcom "RTL/FIFO_one_hot_CB_comb.vhd"

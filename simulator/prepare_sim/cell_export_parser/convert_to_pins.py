@@ -417,8 +417,8 @@ if __name__ == '__main__':
     args.add_argument('designdir', type=str,
                       help='The directory where the design is located.')
 
-    args.add_argument('--cellexport', nargs='?', type=str, default="Cells_Report_Verbose.txt",
-                      help='Filename of the cellexport file in the router folder (defaults to \'Cells_Report_Verbose.txt\')')
+    args.add_argument('--cellexport', nargs='?', type=str, default="gatelevel/Cells_Report_Verbose.txt",
+                      help='Filename of the cellexport file in the router folder (defaults to \'gatelevel/Cells_Report_Verbose.txt\')')
 
     args.add_argument('--fault-info-file', nargs='?', type=str, default=None,
                       help='A temporary, where to write the basic results in a machine readable format')

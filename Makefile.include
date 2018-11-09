@@ -9,7 +9,7 @@ DESIGN=""
 PARAMS=""
 
 # For 'make setup'
-CELL_EXP_LOC="--cellexport Cells_Report_with_Connections_Verbose.txt"
+CELL_EXP_LOC="--cellexport gatelevel/Cells_Report_with_Connections_Verbose.txt"
 
 # For 'make prepare'
 EXP_FILE=""
@@ -24,3 +24,4 @@ export MODELSIM_ENV_SETUP=${SIM_ROOT_DIR}/helper_scripts/include/setup_modelsim_
 
 # export MODELSIM_ENV_SETUP=""
 
+export VERILOG_CORELIB=/cad/dk/c/v4.11/verilog/c18a6/c18_CORELIB.v

@@ -16,35 +16,39 @@ if [ "$3" != "" ];  then
     num_processes=$3
 fi
 
-scenario=`mktemp`
-simruns=`mktemp`
 
 echo "Num Processes: $num_processes"
 echo "Design Name: $2"
-echo "Simulation runs temp directory $simruns"
 
+design_dir=$SIM_ROOT_DIR/designs/$2
+gen_dir=$design_dir/generated_files
 
 echo ""
 echo "====================="
 echo "Preparing simulation:"
 echo "====================="
-$SIM_ROOT_DIR/helper_scripts/prepare_sim.sh $2 $simruns
+$SIM_ROOT_DIR/helper_scripts/prepare_sim.sh $2
 echo ""
-#
 
 
-# args=$1
 
-# echo "==================="
-# echo "Scenario generation"
-# echo "==================="
+args=$1
+scenario=`mktemp`
+echo "Scenario file: $scenario"
 
-# packetlength=`cut -d' ' -f1 <<< "$args"`
-# framelength=`cut -d' ' -f2 <<< "$args"`
-# minpacketsize=`cut -d',' -f1 <<< "$args"`
+echo "==================="
+echo "Scenario generation"
+echo "==================="
 
+packetlength=`cut -d' ' -f1 <<< "$args"`
+framelength=`cut -d' ' -f2 <<< "$args"`
+minpacketsize=`cut -d',' -f1 <<< "$args"`
 
-# python3 prepare_sim/scenario_gen/frame_based.py --packetlength $packetlength --timeframe $framelength >$scenario
+echo $packetlength
+echo $framelength
+echo $minpacketsize
+
+python3 $SIM_ROOT_DIR/simulator/prepare_sim/scenario_gen/frame_based.py --packetlength $packetlength --timeframe $framelength >$scenario
 
 # echo "=================="
 # echo "Running simulation"

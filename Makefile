@@ -8,3 +8,4 @@ setup:
 
 prepare:
 	@helper_scripts/prepare_sim.sh ${DESIGN} ${EXP_FILE}
+
