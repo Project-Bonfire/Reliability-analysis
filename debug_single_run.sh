@@ -50,10 +50,10 @@ echo $minpacketsize
 
 python3 $SIM_ROOT_DIR/simulator/prepare_sim/scenario_gen/frame_based.py --packetlength $packetlength --timeframe $framelength >$scenario
 
-# echo "=================="
-# echo "Running simulation"
-# echo "=================="
-# ./run_sim.sh $scenario $2 $simruns $num_processes;
+echo "=================="
+echo "Running simulation"
+echo "=================="
+./run_sim.sh $scenario $2 $simruns $num_processes;
 
 # foldername=`ls -t results | head -n1` #select newest
 

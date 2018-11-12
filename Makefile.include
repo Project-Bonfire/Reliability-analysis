@@ -14,6 +14,9 @@ CELL_EXP_LOC="--cellexport gatelevel/Cells_Report_with_Connections_Verbose.txt"
 # For 'make prepare'
 EXP_FILE=""
 
+# For 'make simulate'
+SIM_SCENARIO_CONFIG="sim_single_point.txt"
+
 # In order to run modelsim: Change the line below to point to the script which sets up 
 # the environment (or just edit the sctipt this is pointing to)
 
