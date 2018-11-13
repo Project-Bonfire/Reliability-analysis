@@ -24,6 +24,8 @@ if [ ! -f $sim_config_file ]; then
     exit
 fi
 
+num_of_configurations=`wc -l < $sim_config_file`
+
 # make newlines the only separator
 IFS=$'\n'
 
@@ -34,6 +36,7 @@ fi
 
 scenario=$desing_folder/generated_files/scenario.scn
 
+x=0
 for sim_config in `cat $sim_config_file`; do
     echo "Found configuration $sim_config"
     echo
@@ -49,4 +52,8 @@ for sim_config in `cat $sim_config_file`; do
     fi
 
     $SIM_ROOT_DIR/helper_scripts/include/run_multiple_sims.csh $scenario $desing_folder $experiment_file $num_processes
+
+    let x++
+
+    echo "Finished $x injection runs out of $num_of_configurations..."
 done

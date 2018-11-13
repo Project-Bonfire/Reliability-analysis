@@ -138,16 +138,27 @@ while ($x <= $num_processes)
     # Create a tmpfile which contains the experiment parameters for this instance
 
     sed -n ${startline},${endline}p  < $experiment_file >> $propertypath
-    set resultfolder=`mktemp -d`
+    set temp_folder=`mktemp -d`
     
-    set cleanupdirs="$cleanupdirs $propertypath $resultfolder"
-    cp modelsim.ini $resultfolder/modelsim.ini
+    set cleanupdirs="$cleanupdirs $propertypath $temp_folder"
+    cp modelsim.ini $temp_folder/modelsim.ini
 
-    echo "Results for this process will be stored in $resultfolder"
+    echo "Results for this process will be stored in $temp_folder"
 
     # Launch an instance of vsim, create tmp folders and seperate modelsim.ini - s for each instance, to prevent race conditions.
-#     (setenv ROUTERFOLDER $design_folder;setenv SCENARIOFILE $scenario;setenv RESULTFILE ../results/$curtime/results/Process${x}.results;setenv PROPERTYPATH $propertypath; setenv STARTID $startid; setenv RESULTFOLDER $resultfolder; /usr/bin/nice -n 15 vsim -modelsimini $resultfolder/modelsim.ini -novopt -t 1ns -c -do simulate.do  >../results/$curtime/Process${x}out.log )&
-    
+    (\
+    setenv DESIGN_FOLDER $design_folder;\
+    setenv SCENARIO_FILE $scenario;\
+    setenv RESULTS_FILE $results_dir/$curtime/results/Process${x}.results;\
+    setenv PROPERTY_PATH $propertypath;\
+    setenv START_ID $startid;\
+    setenv RESULTS_FOLDER $temp_folder;\
+    setenv INPUT_FILE "$RESULTS_FOLDER/inputs.txt";\
+    setenv OUTPUT_FILE "$RESULTS_FOLDER/outputs.txt";\
+    setenv VERILOG_CORELIB "$VERILOG_CORELIB";\
+    /usr/bin/nice -n 15 vsim -modelsimini $temp_folder/modelsim.ini -novopt -t 1ns -c -do simulate.do  > $results_dir/$curtime/Process${x}out.log\
+    )&
+
     # Prevents a race condition when copying library work to tmp folder
     sleep 2
     @ x += 1
@@ -157,15 +168,13 @@ end
 
 
 echo "--------------------"
-echo "Finished $num_experiments experiments on $num_processes processes with $per_proc experiments per process"
+echo "Running $num_experiments experiments on $num_processes processes with $per_proc experiments per process..."
 echo
 wait
 
-# Stop the time and calculate time spent
-set stop_time="`date +%s`"
-set time_spent=`python -c "print ($stop_time - $start_time)"`
-echo "Time spent: `date -d@$time_spent -u +%H:%M:%S`"
+echo "Simulation Finised!"
 echo
+
 
 cd "$results_dir/$curtime"
 echo "num_experiments: $num_experiments" >> "stats.txt"
@@ -173,16 +182,29 @@ echo "num_processes: $num_processes" >> "stats.txt"
 echo "started: $curtime" >> "stats.txt"
 echo "finished: `date +%Y-%m-%d.%H:%M:%S`" >> "stats.txt"
 echo `uptime | cut -d : -f 4` >> "stats.txt"
-cp "$scenario" scenario.scn
-cp "$designinfo" designinfo.txt
+cp "$scenario" $results_dir/$curtime/scenario.scn
+cp "$designinfo" $results_dir/$curtime/designinfo.txt
 
 # Concatinate all results to one single file
 
+echo
+echo "Saving results into a single file"
 cat results/* > all.results
 rm -rf "results"
 gzip all.results
 rm -rf $cleanupdirs
 
-pwd
+ls -l
+cd -
+
+# Stop the time and calculate time spent
+set stop_time="`date +%s`"
+set time_spent=`python -c "print ($stop_time - $start_time)"`
+
+echo
+echo "--------------------"
+echo "All done!"
+echo "Time spent : `date -d@$time_spent -u +%H:%M:%S`"
+echo
 
 echo "D E B U G : No actual simulations were run"
