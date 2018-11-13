@@ -2,6 +2,8 @@
 
 design=$1
 sim_scenario_config=$2
+experiment_file=$3
+num_processes=$4
 
 desing_folder=$SIM_ROOT_DIR/designs/$design
 echo "Used design: $desing_folder"
@@ -25,8 +27,11 @@ fi
 # make newlines the only separator
 IFS=$'\n'
 
-simruns=2
-num_processes=2
+# Default to 17 CPUs
+if [ "$4" = "" ]; then
+    num_processes=17
+fi
+
 scenario=$desing_folder/generated_files/scenario.scn
 
 for sim_config in `cat $sim_config_file`; do
@@ -41,8 +46,7 @@ for sim_config in `cat $sim_config_file`; do
     else
         echo "N O T E : No scenario generator found!, not running it!"
         echo "If this is not what you intended, ensure the scenario generator is located at $scenario_folder/scenario_gen/generator.py"
-
     fi
 
-    $SIM_ROOT_DIR/helper_scripts/include/run_multiple_sims.csh $scenario $desing_folder $simruns $num_processes
+    $SIM_ROOT_DIR/helper_scripts/include/run_multiple_sims.csh $scenario $desing_folder $experiment_file $num_processes
 done

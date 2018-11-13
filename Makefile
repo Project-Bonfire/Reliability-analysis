@@ -10,4 +10,4 @@ prepare:
 	@helper_scripts/prepare_sim.sh ${DESIGN} ${EXP_FILE}
 
 simulate:
-	@helper_scripts/run_sim.sh ${DESIGN} ${SIM_SCENARIO_CONFIG}
+	@helper_scripts/run_sim.sh ${DESIGN} ${SIM_SCENARIO_CONFIG} ${EXP_FILE} ${NUM_PROC}

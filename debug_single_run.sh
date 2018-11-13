@@ -23,11 +23,13 @@ echo "Design Name: $2"
 design_dir=$SIM_ROOT_DIR/designs/$2
 gen_dir=$design_dir/generated_files
 
+exp_file=$gen_dir/experiments.txt
+
 echo ""
 echo "====================="
 echo "Preparing simulation:"
 echo "====================="
-$SIM_ROOT_DIR/helper_scripts/prepare_sim.sh $2
+$SIM_ROOT_DIR/helper_scripts/prepare_sim.sh $2 $exp_file
 echo ""
 
 
@@ -48,12 +50,12 @@ echo $packetlength
 echo $framelength
 echo $minpacketsize
 
-python3 $SIM_ROOT_DIR/simulator/prepare_sim/scenario_gen/frame_based.py --packetlength $packetlength --timeframe $framelength >$scenario
+python3 $SIM_ROOT_DIR/simulator/prepare_sim/scenario_gen/frame_based.py --packetlength $packetlength --timeframe $framelength > $scenario
 
 echo "=================="
 echo "Running simulation"
 echo "=================="
-./run_sim.sh $scenario $2 $simruns $num_processes;
+./run_sim.sh $scenario $2 $exp_file $num_processes;
 
 # foldername=`ls -t results | head -n1` #select newest
 

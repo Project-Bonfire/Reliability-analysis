@@ -14,7 +14,6 @@ if ( "$MODELSIM_ENV_SETUP" != "" ) then
 
 endif
 
-
 set desing_folder=$SIM_ROOT_DIR/designs/$2
 echo "Used design: $desing_folder"
 
