@@ -7,47 +7,39 @@ echo
 echo "Running a set of simulations..."
 
 set scenario=$1
-set desing_folder=$2
+set design_folder=$2
 set simruns=$3
 set num_processes=$4
 
 echo "Scenario file:                $scenario"
-echo "Design folder:                $desing_folder"
+echo "Design folder:                $design_folder"
 echo "Number of simulation runs:    $simruns"
 echo "Number of parallel precesses: $num_processes"
 echo
 
-echo "D E B U G : No actual simulations were run"
+if ( ! -f "$scenario") then
+    echo "E R R O R ! Scenario file '$scenario' not found!"
+    echo "Usage $0 <scenario_file> <design_folder> <sim_runs> <num_processes>"
+    exit
+endif
 
-# set scnfile="$scenario_folder/$1"
-# echo "Using scenario file: $scnfile" 
-
-# if ( ! -f "$scnfile") then
-#     echo "E R R O R ! Scenario file '$1' not found in the scenario folder"
-#     exit
-# endif
-
-# set scnfile=`readlink -f $1`
-# if ( ! -f "$scnfile" ) then
-# echo " scnfile: $scnfile "
-#     echo "Usage $0 <scenariofile> <routername> <sim_runs> <num_processes>"
-#     exit
-# endif
 
 # shift
-# set routerfile="routers/$1"
-# if ( ! -d "simulation/$routerfile" ) then
-# echo " scnfile: $scnfile routername: $routerfile "
-#     echo "Usage $0 <scenariofile> <routername> <sim_runs> <num_processes>"
-#     exit
-# endif
+
+if ( ! -d "$design_folder" ) then
+    echo "E R R O R ! Design folder '$design_folder' not found!"
+    echo "Usage $0 <scenario_file> <design_folder> <sim_runs> <num_processes>"
+    exit
+endif
+
 # shift
-# set simruns="$1"
+
 # if ( ! -f "$simruns" ) then
-# echo " scnfile: $scnfile routername: $routerfile simrunfile: $simruns"
-#     echo "Usage $0 <scenariofile> <routername> <sim_runs> <num_processes>"
+#     echo "E R R O R ! Sim_runs file '$simruns' not found!"
+#     echo "Usage $0 <scenario_file> <design_folder> <sim_runs> <num_processes>"
 #     exit
 # endif
+echo "D E B U G : No actual simulations were run"
 
 # shift
 # if ( "$1" == "" ) then 

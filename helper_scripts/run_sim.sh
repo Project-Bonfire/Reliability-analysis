@@ -27,7 +27,7 @@ IFS=$'\n'
 
 simruns=2
 num_processes=2
-scenario=$scenario_folder/scenario.scn
+scenario=$desing_folder/generated_files/scenario.scn
 
 for sim_config in `cat $sim_config_file`; do
     echo "Found configuration $sim_config"
