@@ -57,16 +57,16 @@ echo "Running simulation"
 echo "=================="
 ./run_sim.sh $scenario $2 $exp_file $num_processes;
 
-# foldername=`ls -t results | head -n1` #select newest
+foldername=$gen_dir/`ls -t $gen_dir/results | head -n1` #select newest
 
-# echo "=========="
-# echo "Evaluation"
-# echo "=========="
+echo "=========="
+echo "Evaluation"
+echo "=========="
 
-# echo "evaluating $foldername"
-# echo "Eval start:" >> results/$foldername/"stats.txt"
-# echo `date +%Y-%m-%d.%H:%M:%S` >> results/$foldername/"stats.txt"
-# python3 eval_sim/eval.py --write-results results/$foldername/all.intmdtresults.gz --output-type key-value-pairs results/$foldername/all.results.gz >> results/$foldername/eval.log
+echo "evaluating $foldername"
+echo "Eval start:" >> $foldername/"stats.txt"
+echo `date +%Y-%m-%d.%H:%M:%S` >> $foldername/"stats.txt"
+python3 $SIM_ROOT_DIR/simulator/eval_sim/eval.py --write-results $foldername/all.intmdtresults.gz --output-type key-value-pairs $foldername/all.results.gz > $foldername/eval.log
 
 # echo "=========="
 # echo "Statistics"

@@ -11,3 +11,6 @@ prepare:
 
 simulate:
 	@helper_scripts/run_sim.sh ${DESIGN} ${SIM_SCENARIO_CONFIG} ${EXP_FILE} ${NUM_PROC}
+
+evaluate:
+	@helper_scripts/eval.sh ${DESIGN}

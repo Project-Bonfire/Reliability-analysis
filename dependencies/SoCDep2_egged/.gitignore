@@ -2,3 +2,4 @@
 build/
 dist/
 socdep2.egg-info/
+.eggs
