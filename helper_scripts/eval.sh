@@ -22,19 +22,19 @@ if [[ $2 == "" ]]; then
     exit
   fi
 
-  fname=`ls -t $designfolder/generated_files/results | cut -d ' ' -f 1 | head -n1`
+  dname=`ls -t $designfolder/generated_files/results | cut -d ' ' -f 1 | head -n1`
 else
-  fname=$2
+  dname=$2
 fi
 
-folder=$designfolder/generated_files/results/$fname
+folder=$designfolder/generated_files/results/$dname
 
 if [ ! -d "$folder" ]; then
   echo "E R R O R ! Folder $folder does not exist or is not a folder!"
   exit
 fi
 
-echo "Evaluating $1 simulation results: $fname"
+echo "Evaluating $1 simulation results: $dname"
 echo "Results folder: $folder"
 echo
 
@@ -60,11 +60,17 @@ if [ -f $folder/all.intmdtresults.gz ]; then
   mode="read"
 fi
 
-echo "$folder - mode: $mode"
-python3 $SIM_ROOT_DIR/simulator/eval_sim/eval.py --$mode-results $folder/all.intmdtresults.gz --routerinfo $folder/designinfo.txt --output-type key-value-pairs $folder/all.results.gz >> $folder/eval.log
+echo "$dname - mode: $mode"
+echo
+
+python3 -u $SIM_ROOT_DIR/simulator/eval_sim/eval.py $folder/all.results.gz \
+        --$mode-results $folder/all.intmdtresults.gz \
+        --fi-info $designfolder/generated_files/fault_injection_info.txt \
+        --output-type key-value-pairs \
+        --verbose | tee $folder/eval.log
 
 echo "framelength : $framelength" >> $folder/"eval.log"
 echo "packetlength : $minpacketsize" >> $folder/"eval.log"
 
 echo "Finished processing of $folder"
-
+echo

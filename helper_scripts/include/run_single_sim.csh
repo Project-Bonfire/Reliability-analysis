@@ -38,21 +38,20 @@ shift # take first parameter and shift it away then.
 
 cd $SIM_ROOT_DIR/simulator/simulation
 
-# rm -rf results/
-rm -rf $SIM_ROOT_DIR/results/single
-
 set property_path=`mktemp`
 set start_id=0
 set results_folder=`mktemp -d`
 cp modelsim.ini $results_folder/modelsim.ini
 echo "$*" >> $property_path
-mkdir $SIM_ROOT_DIR/results/single
 
 set res_folder=$desing_folder/generated_files/results/single/
 
-if (! -d $res_folder) then
-    mkdir -p $res_folder
+
+if (-d $res_folder) then
+    rm -rf $res_folder
 endif
+
+mkdir -p $res_folder
 
 if (! -f $desing_folder/designinfo.txt) then
     echo "E R R O R ! The specified design does not have a designinfo.txt file!"
@@ -75,7 +74,7 @@ vsim  -modelsimini $results_folder/modelsim.ini -novopt -t 1ns -c -do simulate.d
 )
 
 echo "Find the results here:"
-echo "cd $SIM_ROOT_DIR/results/single"
+echo "cd $res_folder"
 echo "Tmp Folder was here:"
 
 #this should be the last line of output, or change the code in ./setup.sh

@@ -1,43 +1,31 @@
 import ast
 import copy
 import gzip
+import io
 import re
 import sys
 from enum import Enum, auto
+from typing import Dict, List
 
-import io
 from socdep2.ArchGraphUtilities.AG_Functions import *
 from socdep2.ConfigAndPackages import Config, PackageFile
 from socdep2.RoutingAlgorithms import Routing
-from socdep2.RoutingAlgorithms.Calculate_Reachability import is_destination_reachable_via_port, \
-    is_destination_reachable_from_source
+from socdep2.RoutingAlgorithms.Calculate_Reachability import (is_destination_reachable_from_source,
+                                                              is_destination_reachable_via_port)
 from socdep2.SystemHealthMonitoring import SystemHealthMonitoringUnit
 from socdep2.Utilities import misc
 
-from typing import List, Dict
-
-
-def init():
-    misc.generate_file_directories()
-    turns_health_2d_network = {"N2W": True, "N2E": True, "S2W": True, "S2E": True,
-                               "W2N": True, "W2S": True, "E2N": True, "E2S": True}
-    Config.ag.topology = '2DMesh'
-    Config.ag.x_size = 4
-    Config.ag.y_size = 4
-    Config.ag.z_size = 1
-    Config.RoutingType = 'MinimalPath'
-    ag = copy.deepcopy(generate_ag(logging=None, report=False))
-    shmu = SystemHealthMonitoringUnit.SystemHealthMonitoringUnit()
-    shmu.setup_noc_shm(ag, copy.deepcopy(turns_health_2d_network), False)
-    noc_rg = copy.deepcopy(Routing.generate_noc_route_graph(ag, shmu, PackageFile.XY_TurnModel, False, False))
-    return noc_rg
-
-
 
 class Faulttype(Enum):
-    MISROUTED=auto()
-    FAILEDDELIVERY=auto()
-    INVALIDFLITS=auto()
+    MISROUTED = auto()
+    FAILEDDELIVERY = auto()
+    INVALIDFLITS = auto()
+
+class FlitType(Enum):
+    HEAD = auto()
+    BODY = auto()
+    BODY1 = auto()
+    TAIL = auto()
 
 class Result:
     """
@@ -45,71 +33,65 @@ class Result:
     """
 
     def __init__(self):
-        pass
+        # Metadata
+        self.exp_id = ""
+        self.params = ""
 
-    name = ""
-    # If the run failed somehow, means there are now files present
-    # These are errors of the simulation program
-    errornous = False
+        # If the run failed somehow, menaing there are now files present (which files? - KJ)
+        # These are errors of the simulation program
+        self.errornous = False
 
-    # flags
-    # if the number of packets which were sent to router 5 is unexpected
-    unexpected_len_sent:bool = False
-    # if the number of packets which were sent from router 5 is unexpected
-    unexpected_len_recv:bool = False
-    # number of actual packets
-    len_sent = -1
+        # Flag specifying if the number of packets which were sent_flits to router 5 is unexpected
+        self.unexpected_len_sent: bool = False
+        # Flag specifying if the number of packets which were sent_flits from router 5 is unexpected
+        self.unexpected_len_recv: bool = False
+        # Flag specifying if number of flits sent_flits from one node to another differs from the number of flits received there
+        self.connection_counter_invalid = False
 
-    len_recv = -1
+        # Number of sent_flits and recvd packets
+        self.len_sent = -1
+        self.len_recv = -1
 
-    # When the number of flits send from one node to another differs from the number of flits received there
-    connection_counter_invalid = False
+        # Missing or errornous flits
+        self.sents_invalid = 0
+        self.recv_invalid = 0
 
-    # missing or errornous flits
-    sents_invalid = 0
-    recv_invalid = 0
+        # Due to misrouting
+        self.misrouted_recv = 0
+        self.misrouted_sent = 0
 
-    # due misrouting
-    misrouted_recv = 0
-    misrouted_sent = 0
+        # A dictionary containing the information if the modules vcd's were 
+        # different from what was expected.
+        self.vcd_of_module_equal: Dict[str, bool] = None
 
-    faultinfo = ""
+        self.faultinfo = ""
 
     def has_routing_errors(self):
-        return self.misrouted_recv + self.misrouted_sent != 0
+        return (self.misrouted_recv + self.misrouted_sent) != 0
 
     def has_invalid_flitcounts(self):
         return self.connection_counter_invalid
 
     def has_invalid_flits(self):
-        return self.sents_invalid + self.recv_invalid != 0
+        return (self.sents_invalid + self.recv_invalid) != 0
 
-    def hasError(self,faulttype:Faulttype):
-        return {Faulttype.FAILEDDELIVERY:self.has_invalid_flitcounts(),
-                Faulttype.MISROUTED:self.has_routing_errors(),
-                Faulttype.INVALIDFLITS:self.has_invalid_flits()}[faulttype]
-
-    # the parameters of the simulation
-    params = ""
-
-    # if the modules vcd's differed from the expected.
-    vcd_of_module_equal: Dict[str, bool] = None
+    def hasError(self, faulttype: Faulttype):
+        return {Faulttype.FAILEDDELIVERY: self.has_invalid_flitcounts(),
+                Faulttype.MISROUTED: self.has_routing_errors(),
+                Faulttype.INVALIDFLITS: self.has_invalid_flits()}[faulttype]
 
     def getFaultModuleFromParam(self):
         """
-        returns the faultmodule based on the param string.
+        Returns the faultmodule based on the param string.
         :return: the module string
         """
-        #new format:
-        if len(self.params.split(' '))>=7 :
+        # new format:
+        if len(self.params.split(' ')) >= 7:
             if self.params.split(' ')[6][0] == '!':
                 return self.params.split(' ')[6][1:]
 
-        print("parseerror at: " + self.params, file=sys.stderr)
+        print("Parsing error at: " + self.params, file=sys.stderr)
         sys.exit("Parseerror!")
-
-
-
 
         # r'^U',
 
@@ -119,55 +101,60 @@ class Result:
 
     def guessComponent(self):
         splitted = self.params.split(' ')
+
         if splitted[4] == 'nofault':
             return 'nofault'
+
         if splitted[4].startswith('\\'):
             return splitted[4]
         else:
             try:
                 return str(ast.literal_eval(' '.join(splitted[7:]))[0][0])
             except ValueError as ve:
-                print("Failed to guess component! %s"%self.params, file=sys.stderr)
+                print("Failed to guess component! %s" %
+                      self.params, file=sys.stderr)
                 return "nofault"
 
     def is_valid(self):
         return not (
-            self.unexpected_len_recv or self.unexpected_len_sent or self.sents_invalid > 0 or self.recv_invalid > 0 or self.misrouted_sent > 0 or self.misrouted_recv > 0 or self.errornous or self.connection_counter_invalid)
+            self.unexpected_len_recv or \
+            self.unexpected_len_sent or \
+            self.sents_invalid > 0 or \
+            self.recv_invalid > 0 or \
+            self.misrouted_sent > 0 or \
+            self.misrouted_recv > 0 or \
+            self.errornous or \
+            self.connection_counter_invalid)
 
     def __str__(self):
-        return "[Name %s, Error: %r, unexpected_len_sent %r, unexpected_len_recv %r, len_sent %d, len_recv %d, sents_invalid %d, recv_invalid %d, Params: %s]" % \
-               (self.name, self.errornous, self.unexpected_len_sent, self.unexpected_len_recv, self.len_sent,
-                self.len_recv, self.sents_invalid, self.recv_invalid, self.params)
+        return "[exp_id: %s, Error: %r, unexpected_len_sent %r, unexpected_len_recv %r, len_sent %d, len_recv %d, " \
+                "sents_invalid %d, recv_invalid %d, Params: %s]" % \
+                (self.exp_id, self.errornous, self.unexpected_len_sent, self.unexpected_len_recv, self.len_sent,
+                    self.len_recv, self.sents_invalid, self.recv_invalid, self.params)
+
+# End Class Result
 
 
 class FlitEvent:
     def __init__(self):
-        pass
+        self.flit = None
+        # According to router 5
+        self.on_in_port = False
+        self.on_out_port = False
+        # 0,1,2,3 for head body_1 body tail
+        self.flit_type = -1
 
-    class Type(Enum):
-        HEAD = auto()
-        BODY = auto()
-        BODY1 = auto()
-        TAIL = auto()
-
-    flit = None
-    # According to router 5
-    on_in_port = False
-    on_out_port = False
-    # 0,1,2,3 for head body_1 body tail
-    type = -1
-
-    time = 0
-    from_node = -1
-    to_node = -1
-    length = -1
-    currentrouter = -1
-    actual_length = -1
-    id = -1
+        self.time = 0
+        self.from_node = -1
+        self.to_node = -1
+        self.length = -1
+        self.currentrouter = -1
+        self.actual_length = -1
+        self.packet_id = -1
 
     def __str__(self):
         return "[Time=%d,From=%d,To=%d,Length=%d,Event_Location=%d,Actual_Length=%d,ID=%d]" % (
-            self.time, self.from_node, self.to_node, self.length, self.currentrouter, self.actual_length, self.id)
+            self.time, self.from_node, self.to_node, self.length, self.currentrouter, self.actual_length, self.packet_id)
 
     def switch_dir(self, dir):
         return {"S": "N",
@@ -186,6 +173,7 @@ class FlitEvent:
         """
         if not self.on_in_port:
             raise AssertionError("this is not an incoming packet event!")
+
         return self.switch_dir(self.pos_is_in_dir(self.from_node))
 
     def going_out_via(self):
@@ -207,17 +195,23 @@ class FlitEvent:
         """
         if router_id == 5:
             return "L"
+
         x = router_id % Config.ag.x_size
         y = router_id / Config.ag.y_size
+
         if x < 1:
             return "W"
+
         if x > 1:
             return "E"
+
         if y < 1:
             return "S"
+
         if y > 1:
             return "N"
 
+# End class FlitEvent
 
 class RecvFlit(FlitEvent):
     """
@@ -231,31 +225,61 @@ class RecvFlit(FlitEvent):
     body_checksum = -1
 
 
-def parse_sent_line(data):
+###########################
+# Beginning of Evaluation #
+###########################
+def init():
+    """
+    Uses SoCDep2 to generate a routing graph
+
+    Returns:
+        Routing graph
+    """
+    misc.generate_file_directories()
+    turns_health_2d_network = {"N2W": True, "N2E": True, "S2W": True, "S2E": True,
+                               "W2N": True, "W2S": True, "E2N": True, "E2S": True}
+
+    Config.ag.topology = '2DMesh'
+    Config.ag.x_size = 4
+    Config.ag.y_size = 4
+    Config.ag.z_size = 1
+    Config.RoutingType = 'MinimalPath'
+
+    ag = copy.deepcopy(generate_ag(logging=None, report=False))
+    shmu = SystemHealthMonitoringUnit.SystemHealthMonitoringUnit()
+    shmu.setup_noc_shm(ag, copy.deepcopy(turns_health_2d_network), False)
+
+    noc_rg = copy.deepcopy(Routing.generate_noc_route_graph(
+        ag, shmu, PackageFile.XY_TurnModel, False, False))
+
+    return noc_rg
+
+
+def parseSentLine(data):
     # type: (dict) -> FlitEvent
     """
-    Parser for a dict of a line of the sent file.
+    Parser for a dict of a line of the sent_flits file.
 
     :param data: the data to parse
     :return: a Flit event
     """
-    pe = dict_to_flit(data, FlitEvent)
+    pe = dictToFlit(data, FlitEvent)
     pe.on_in_port = True
     return pe
 
 
-def parse_recv_line(data):
+def parseRecvdLine(data):
     # type: (dict) -> FlitEvent
     """
     Parser for a dict of a line of the received file.
     :param data: the data to parse
     :return: a Flit event
     """
-    pe = dict_to_flit(data, RecvFlit)
+    pe = dictToFlit(data, RecvFlit)
     pe.on_out_port = True
     # Caution: inverted here!
     pe.parity_valid = True if data["parity_failed"] == "false" else False
-    if pe.type == FlitEvent.Type.TAIL or pe.type == FlitEvent.Type.BODY:
+    if pe.type == FlitType.TAIL or pe.type == FlitType.BODY:
         pe.body_src = int(data['body_src'])
         pe.body_dest = int(data['body_dest'])
         pe.body_packet_length = int(data['body_packet_length'])
@@ -264,7 +288,7 @@ def parse_recv_line(data):
     return pe
 
 
-def dict_to_flit(data, type):
+def dictToFlit(data, type):
     pe = type()
     pe.time = int(data['time'].split(' ')[0])
     pe.currentrouter = int(data['currentrouter'])
@@ -273,243 +297,357 @@ def dict_to_flit(data, type):
     pe.length = int(data['length'])
     pe.id = int(data['id'])
     pe.flitno = int(data['flitno'])
-    pe.type = [FlitEvent.Type.HEAD, FlitEvent.Type.BODY1, FlitEvent.Type.BODY, FlitEvent.Type.TAIL][
+    pe.type = [FlitType.HEAD, FlitType.BODY1, FlitType.BODY, FlitType.TAIL][
         ["header", "body1", "body", "tail"].index(data['type'])]
     return pe
 
 
-def line_to_dict(line, splitchar=';', kvchar=':'):
+def lineToDict(line, splitchar=';', kvchar=':'):
     return {e[0]: e[1] for e in [x.split(kvchar) for x in line.strip().split(splitchar)]}
 
 
-def evaluate_file(noc_rg, filename:str, print_verbose:bool=False, ralgo_check_sent_flits:bool=False,
-                  module_reference: Dict[str, str] = None,expected_len_sent: int = -1, expected_len_recv: int  = -1) -> (List[Result], List[Result]):
+def experimentToBuffer(result_file, print_verbose):
     """
-    Evaluates an simulation result file
-    :param noc_rg: the graph model of the routing algorithm.
-    :param filename: the path of the file to evaluate
-    :param module_reference: a dict containing the hashes for each module vcd file.
-    :param print_verbose: if additional information should be printed
-    :ralgo_check_sent_flits: If the sent flits should be checked by the routing algorithm
+    Generator function for creating experiment objects from the file
+    :param  result_file: file to read from
+    :param  print_verbose: Set true for additional debug messages
+
+    :yield  Yields an experiment for each experiment in the list of experiments
+            Will not yield anything if file is empty:
+        yield {
+                "exp_id" : exp_id,      # the experiment id
+                "params" : params,  # the param string
+                "sent_flits" : sent_flits,      # list containing the sent_flits lines
+                                    # These are the lines which where sent_flits to router 5
+                "recvd_flits" : recvd_flits       # list containing the recvd_flits lines
+                                    # These are the lines which where sent_flits by router 5
+                }
+
+    :return None when EOF is reached
     """
-    assumed_sent = -1
-    errornous = []
-    results = []
-    counter = 0
-    def gzip_opener(*args,**kwargs):
-        return io.BufferedReader(gzip.open(*args))
-    opener = gzip_opener if filename.endswith(".gz") else open
-    with opener(filename, 'r') as f:
-        def experiment_to_buffer(f):
-            """
-            Creates an experiment object from the file
-            :param f: file to read from
-            :return: a dict containing the experiment.
-            return {
-                "name" : name, #the experiment id
-                "params" : params, # the param string
-                "sent" : sent, # list containing the sent lines
-                        These are the lines which where sent to router 5
-                "recv" : recv # list containing the recv lines
-                        These are the lines which where sent by router 5
+
+    i = 0
+    buffer = []
+
+    for line in result_file:
+        line = line if isinstance(line, str) else line.decode("utf-8")
+
+        # Beginning of a new experiment, clean the buffer
+        if line == "-----\n":
+            buffer = []
+
+        # End of an experiment
+        elif line.startswith("#####"):
+            i += 1
+
+            # EOF
+            if len(buffer) == 0 and print_verbose:
+                print("reached end of file after %d experiments." % i)
+                return
+
+            # Experiment metadata
+            exp_id = buffer[0] # int
+            params = buffer[1] # string explaining where a fault was injected and when
+
+            # Find the different blocks in the experiment results
+            modules_index = buffer.index("!modules:\n")
+            input_index = buffer.index("!input:\n")
+            output_index = buffer.index("!output:\n")
+
+            # Read the different blocks from the buffer
+            modules = buffer[modules_index + 1:input_index]
+            sent_flits = buffer[input_index + 1:output_index]
+            recvd_flits = buffer[output_index + 1:]
+
+            # Yield a result with experiment data
+            yield {
+                "exp_id": exp_id,
+                "params": params,
+                "sent_flits": sent_flits,
+                "recvd_flits": recvd_flits,
+                "modules": modules
             }
 
-            OR None if there is no other experiment
-            """
-            i = 0
-            buffer = []
-            for line in f:
-                line = line if isinstance(line, str) else line.decode("utf-8")
-                if line.startswith("#####"):
-                    i = i + 1
-                    if len(buffer) == 0:
-                        if print_verbose:
-                            print("reached end of file after %d experiments." % i)
-                        return
-                    name = buffer[0]
-                    params = buffer[1]
-                    indmodules = buffer.index("!modules:\n")
-                    indsent = buffer.index("!sent:\n")
-                    indrecv = buffer.index("!recv:\n")
-                    modules = buffer[indmodules + 1:indsent]
-                    sent = buffer[indsent + 1:indrecv]
-                    recv = buffer[indrecv + 1:]
-                    yield {
-                        "name": name,
-                        "params": params,
-                        "sent": sent,
-                        "recv": recv,
-                        "modules": modules
-                    }
-                elif "-----\n" == line:
-                    buffer = []
-                else:
-                    buffer.append(line)
+        else:
+            buffer.append(line)
 
-        for experiment in experiment_to_buffer(f):
-            counter = counter + 1
-            if counter % 100 == 0 and print_verbose:
-                print("Evaluated %d experiments!" % counter)
+
+def gzipOpener(*args, **kwargs):
+    """
+    Implements a wrapper around gzip.open to be used instead of normal 'open' command,
+    thus making reading of gzip-ed text files transperant
+    """
+
+    return io.BufferedReader(gzip.open(*args))
+
+
+def checkModuleHashes(modules: Dict[str, str], module_hashes: Dict[str, str], result: Result, verbose=False):
+    """
+    Compares the expected module hashes to the actual.
+    :param modules:
+    :param module_references:
+    :param result:
+    :return:
+    """
+
+    result.vcd_of_module_equal = {}
+
+    if module_hashes == None:
+        return
+
+    for module, module_hash in module_hashes.items():
+        result.vcd_of_module_equal[module] = (modules[module].strip() == module_hash)
+
+
+def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check_sent_flits: bool = False,
+                  module_hashes: Dict[str, str] = None, expected_len_sent: int = -1, expected_len_recv: int = -1) -> (List[Result], List[Result]):
+    """
+    Evaluates an simulation result file
+    Params:
+        noc_rg: Graph model of the routing algorithm.
+        filename: Path to the results file to evaluate
+        module_hashes: A dict containing the hashes for each module vcd file.
+        print_verbose: Bool specifying if additional information should be printed
+        ralgo_check_sent_flits:  If the sent flits should be checked by the routing algorithm
+    """
+
+    print()
+    print('Analyzing NoC simulation results...')
+    print('-----------------------------------')
+    print('N O T E! This script assumes you ran your experiments on router 5 of a 4x4 NoC using the XY routing algorithm')
+    print('If this is not the case, please re-simulate with the correct parameters or update this code')
+    print()
+
+    results = []
+    errornous = []
+    exp_counter = 0
+    assumed_sent = -1
+
+    # Open .gz files with gzip opener, otherwise use normal opener
+    opener = gzipOpener if filename.endswith(".gz") else open
+
+    with opener(filename, 'r') as result_file:
+
+        # Process all experiments one-by-one
+        for experiment in experimentToBuffer(result_file, print_verbose):
+            exp_counter += 1
+
+            # Print a status message after every 100 experiments
+            if exp_counter % 100 == 0 and print_verbose:
+                print("Evaluated %d experiments!" % exp_counter)
+
             res: Result = Result()
-            res.name = experiment["name"].strip()
-            try:
-                recv = [parse_recv_line(line_to_dict(line)) for line in experiment["recv"]
-                        if
-                        line.strip()]
-                sent = [parse_sent_line(line_to_dict(line)) for line in experiment["sent"] if
-                        line.strip()]
-                modules = dict(item.split(":") for item in experiment["modules"])
-                if print_verbose and (len(modules) != 4 or 'lbdr' not in modules):
-                    print("Strange module count found")
-                    print(experiment["name"])
-                    print(experiment["params"])
-                    print(experiment["modules"])
-                if print_verbose and counter == 1:
-                    print("first module params: " + experiment["params"])
-                # auto detecting module reference, if first run is nofault
-                if counter == 1 and module_reference == None and "nofault" in experiment["params"]:
+            res.exp_id = experiment["exp_id"].strip()
+            
+            try:                
+                # Save all lines belonging to blocks into separate variables
+                recvd_flits = [parseRecvdLine(lineToDict(line)) for line in experiment["recvd_flits"] if line.strip()]
+                sent_flits = [parseSentLine(lineToDict(line)) for line in experiment["sent_flits"] if line.strip()]
+                modules = dict(item.strip().split(":") for item in experiment["modules"])
+                
+                # FIXME: I think the below comparison of module count 4 is not relevant anymore, as module count can be different
+                # if print_verbose and (len(modules) != 4 or 'lbdr' not in modules):
+                #     print("Strange module count found")
+                #     print(experiment["exp_id"])
+                #     print(experiment["params"])
+                #     print(experiment["modules"])
+
+                if print_verbose and exp_counter == 1:
+                    print("First module params: " + experiment["params"])
+
+                # Auto-detecting module hashes, if first run is nofault
+                if exp_counter == 1 and module_hashes == None and \
+                    "nofault" in experiment["params"]:
+
                     if print_verbose:
-                        print("Setting reference module")
-                    module_reference = {}
-                    for k, v in modules.items():
-                        module_reference[k.strip()] = v.strip()
+                        print("Setting module hashes")
 
+                    module_hashes = {}
+
+                    # FIXME What is the point of the lines below? Just to get rid of the line breaks?
+                    for module_name, module_hash in modules.items():
+                        module_hashes[module_name.strip()] = module_hash.strip()
+
+                # Populate the results dict
                 if expected_len_recv == -1 or expected_len_sent == -1:
-                    expected_len_sent = len(recv)
-                    expected_len_recv = len(recv)
+                    expected_len_sent = len(recvd_flits)
+                    expected_len_recv = len(recvd_flits)
 
-
-
-                def checkmodulehashes(modules: Dict[str, str], module_reference: Dict[str, str], result: Result,verbose=False):
-                    """
-                    compares the expected module hashes to the actual.
-                    :param modules:
-                    :param module_references:
-                    :param result:
-                    :return:
-                    """
-                    result.vcd_of_module_equal = {}
-                    if module_reference == None:
-                        return
-                    for k, v in module_reference.items():
-                        result.vcd_of_module_equal[k] = modules[k].strip() == v
-
-                checkmodulehashes(modules, module_reference, res,verbose=print_verbose)
+                checkModuleHashes(modules, module_hashes,
+                                    res, verbose=print_verbose)
 
                 res.params = experiment["params"].strip()
-                res.len_recv = len(recv)
-                res.len_sent = len(sent)
+                res.len_recv = len(recvd_flits)
+                res.len_sent = len(sent_flits)
+
                 if expected_len_recv != -1 or expected_len_sent != -1:
                     res.unexpected_len_recv = res.len_recv != expected_len_recv
                     res.unexpected_len_recv = res.len_recv != expected_len_recv
+
                 if assumed_sent == -1:
-                    assumed_sent = len(sent)
-                    # res.unexpected_len_sent = len(sent) != assumed_sent
+                    assumed_sent = len(sent_flits)
+                    # res.unexpected_len_sent = len(sent_flits) != assumed_sent
                     # If the first one is faulty, we run into problems here.
                     # But that might not happen anyways
-                    # if False and len(sent) != assumed_sent:
-                    # print("WARNING: The sent file of '%s' has an unexpected length of %d, expected %d." % (
-                    #    res.name, len(sent), assumed_sent))
-                # res.unexpected_len_recv = len(recv) != len(sent)
-                fromtocounter = {}
-                # A statemachine for the nodes. checks that the order is always (HeadBody+Tail)*
-                node_states = {i: FlitEvent.Type.TAIL for i in [1, 4, 5, 6, 9]}
-                for p in sent:
-                    def tmpfunc(nodestates, p):
-                        res.sents_invalid += 1
+                    # if False and len(sent_flits) != assumed_sent:
+                    # print("WARNING: The sent_flits file of '%s' has an unexpected length of %d, expected %d." % (
+                    #    res.exp_id, len(sent_flits), assumed_sent))
 
-                    node_states = evaluate_flit_fsm(node_states, p, res, tmpfunc)
 
-                    flitkey = str(p.from_node) + 'to' + str(p.to_node)
-                    if flitkey in fromtocounter:
-                        fromtocounter[flitkey] += 1
+                # res.unexpected_len_recv = len(recvd_flits) != len(sent_flits)
+                from_to_counter = {}
+
+                # A state machine for the neighboring nodes. Checks that the order is always (HeadBody+Tail)*
+                # We are checking the inputs / outputs of router 5. 
+                # The neighbors of router 5 in a 4x4 NoC are the nodes 1, 4, 6 and 9.
+                node_states = {i: FlitType.TAIL for i in [1, 4, 5, 6, 9]}
+
+                # Process all flits which were sent during the experiments
+                for flit in sent_flits:
+                    # def tmpfunc(nodestates, flit):
+                    #     res.sents_invalid += 1
+
+                    node_states = evaluateFlitFSM(node_states, flit, res)
+
+                    from_to_string = str(flit.from_node) + 'to' + str(flit.to_node)
+
+                    # Increase the specific counter for the source-destination pair
+                    if from_to_string in from_to_counter:
+                        from_to_counter[from_to_string] += 1
                     else:
-                        fromtocounter[flitkey] = 1
+                        from_to_counter[from_to_string] = 1
+
+
                     if ralgo_check_sent_flits:
                         result = False
-                        if p.from_node is not 5:
-                            result = is_destination_reachable_via_port(noc_rg, p.from_node, p.was_going_out_via(),
-                                                                       p.to_node, False)
+                        if flit.from_node is not 5:
+                            result = is_destination_reachable_via_port(noc_rg, flit.from_node, flit.was_going_out_via(),
+                                                                        flit.to_node, False)
                         else:
-                            result = is_destination_reachable_from_source(noc_rg, 5, p.to_node)
-                        if not result:
-                            if print_verbose:
-                                print(
-                                    "WARNING: Generated Packet was not valid according to routing algorithm. Packet was sent from %d %s to %d via router 5. %s" % (
-                                        p.from_node, p.was_going_out_via(), p.to_node, str(p)))
+                            result = is_destination_reachable_from_source(noc_rg, 5, flit.to_node)
+
+
+                        if not result and print_verbose:
+                            print("WARNING: Generated Packet was not valid according to routing algorithm. "\
+                                    "Packet was sent_flits from %d %s to %d via router 5. %s" \
+                                    % (flit.from_node, flit.was_going_out_via(), flit.to_node, str(flit)))
                             res.misrouted_sent += 1
+
+
                 for k, v in node_states.items():
-                    if v != FlitEvent.Type.TAIL:
+                    if v != FlitType.TAIL:
                         res.sents_invalid += 1
-                # A statemachine for the nodes. checks that the order is always (HeadBody+Tail)*
-                node_states = {i: FlitEvent.Type.TAIL for i in [1, 4, 5, 6, 9]}
 
-                for p in recv:
-                    def tmpfunc(nodestates, p):
-                        res.recv_invalid += 1
+                # A state machine to check the validity of flit order. Checks that the order is always (HeadBody+Tail)*
+                node_states = {i: FlitType.TAIL for i in [1, 4, 5, 6, 9]}
 
-                    node_states = evaluate_flit_fsm(node_states, p, res, tmpfunc)
-                    flitkey = str(p.from_node) + 'to' + str(p.to_node)
-                    if flitkey in fromtocounter:
-                        fromtocounter[flitkey] -= 1
+                for flit in recvd_flits:
+                    # def tmpfunc(nodestates, flit):
+                    #     res.recv_invalid += 1
+
+                    node_states = evaluateFlitFSM(node_states, flit, res)
+
+                    from_to_string = str(flit.from_node) + 'to' + str(flit.to_node)
+
+                    if from_to_string in from_to_counter:
+                        from_to_counter[from_to_string] -= 1
+
                     else:
-                        fromtocounter[flitkey] = -1
+                        from_to_counter[from_to_string] = -1
+
 
                     # check if reflected data in the body matches the packet header
-                    if p.type in [FlitEvent.Type.BODY, FlitEvent.Type.TAIL]:
-                        if p.id != p.body_id or p.from_node != p.body_src or p.to_node != p.body_dest \
-                                or p.length != p.body_packet_length or not p.parity_valid:
+                    if flit.type in [FlitType.BODY, FlitType.TAIL]:
+                        if flit.id != flit.body_id or flit.from_node != flit.body_src \
+                            or flit.to_node != flit.body_dest \
+                            or flit.length != flit.body_packet_length \
+                            or not flit.parity_valid:
+                            
                             res.recv_invalid += 1
-                    if p.to_node > 15:  # will not be valid anyways
+
+                    # If the destination address of the packet is larger than 15, it will be always faulty in a 4x4 network
+                    if flit.to_node > 15:
                         res.misrouted_recv += 1
                         continue
-                    result = is_destination_reachable_via_port(noc_rg, 5, p.going_out_via(), p.to_node, False)
+
+                    result = is_destination_reachable_via_port(
+                        noc_rg, 5, flit.going_out_via(), flit.to_node, False)
+
                     if not result:
                         # print(
-                        #   "WARNING: Received Packet was not valid according to routing algorithm. Packet was sent from %d to %d via router 5. But it was received at: %d (dir:%s) %s" % (
-                        #      p.from_node, p.to_node, p.currentrouter, p.going_out_via(), str(p)))
+                        #   "WARNING: Received Packet was not valid according to routing algorithm. Packet was sent_flits from %d to %d via router 5. But it was received at: %d (dir:%s) %s" % (
+                        #      flit.from_node, flit.to_node, flit.currentrouter, flit.going_out_via(), str(flit)))
                         res.misrouted_recv += 1
-                for k, v in fromtocounter.items():
-                    if v != 0:
+
+
+                for src_dst_pair, count in from_to_counter.items():
+                    if count != 0:
                         res.connection_counter_invalid = True
-                        res.faultinfo += "con_counter=(%s,v) %s\n"%(k,v,p)
-                for k, v in node_states.items():
-                    if v != FlitEvent.Type.TAIL:
+                        res.faultinfo += "con_counter=(%s,%d) %s\n" % (src_dst_pair, count, flit)
+
+
+                for node, flit_type in node_states.items():
+                    if flit_type != FlitType.TAIL:
                         res.recv_invalid += 1
-                        res.faultinfo += "flitfsm=(%s,%s) %s\n" % (k,v,p)
+                        res.faultinfo += "flitfsm=(%s,%s) %s\n" % (node, flit_type, flit)
+
+                # print("FT", res)
+                # print(flit) # FIXME: FOR DEBUG ONLY!!
+                # sys.exit("BYE!") # FIXME: FOR DEBUG ONLY!!
+
             except:
+                print("Exception!") # FIXME: FOR DEBUG ONLY!!
                 res.errornous = True
                 errornous.append(res)
+
                 if print_verbose:
-                    res.faultinfo += "Unexpected error in %s: " % res.name, sys.exc_info()[0], sys.exc_info()[1]
-                    print("Unexpected error in %s: " % res.name, sys.exc_info()[0], sys.exc_info()[1])
+                    res.faultinfo += "Unexpected error in %s: " % res.exp_id, sys.exc_info()[
+                        0], sys.exc_info()[1]
+                    print("Unexpected error in %s: " %
+                          res.exp_id, sys.exc_info()[0], sys.exc_info()[1])
                     print(res)
 
                 continue
             results.append(res)
+
+    print()
+    print('===============================')
+    print('Processed %d experiments in total' % exp_counter)
+    
     return errornous, results
 
 
-def evaluate_flit_fsm(node_states, p, res, callback):
+# END
+
+def evaluateFlitFSM(node_states, flit, res):
     # statemachine for flittype
-    new_state = p.type
-    if node_states[p.currentrouter] == FlitEvent.Type.HEAD:
-        if new_state != FlitEvent.Type.BODY1:
-            callback(node_states, p)
-    if node_states[p.currentrouter] == FlitEvent.Type.BODY1:
-        if new_state == FlitEvent.Type.HEAD or new_state == FlitEvent.Type.BODY1:
-            callback(node_states, p)
-    if node_states[p.currentrouter] == FlitEvent.Type.BODY:
-        if new_state == FlitEvent.Type.HEAD or new_state == FlitEvent.Type.BODY1:
-            callback(node_states, p)
-    if node_states[p.currentrouter] == FlitEvent.Type.TAIL:
-        if new_state != FlitEvent.Type.HEAD:
-            callback(node_states, p)
-    node_states[p.currentrouter] = new_state
+    new_state = flit.type
+
+    if node_states[flit.currentrouter] == FlitType.HEAD:
+        if new_state != FlitType.BODY1:
+            # callback(node_states, flit)
+            res.sents_invalid += 1
+
+    if node_states[flit.currentrouter] == FlitType.BODY1:
+        if new_state == FlitType.HEAD or new_state == FlitType.BODY1:
+            # callback(node_states, flit)
+            res.sents_invalid += 1
+
+    if node_states[flit.currentrouter] == FlitType.BODY:
+        if new_state == FlitType.HEAD or new_state == FlitType.BODY1:
+            # callback(node_states, flit)
+            res.sents_invalid += 1
+
+    if node_states[flit.currentrouter] == FlitType.TAIL:
+        if new_state != FlitType.HEAD:
+            # callback(node_states, flit)
+            res.sents_invalid += 1
+
+    node_states[flit.currentrouter] = new_state
     return node_states
 
 
-def count_fails(results):
+def countFails(results):
     faillist = []
     for res in results:
         if not res.is_valid():

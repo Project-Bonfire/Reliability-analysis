@@ -91,11 +91,13 @@ endif
 
 set results_dir=$gen_dir/results
 
-if ( -d "$results_dir" ) then
-    rm -rf $results_dir
-endif
+# if ( -d "$results_dir" ) then
+#     rm -rf $results_dir
+# endif
 
-mkdir $results_dir
+if ( ! -d "$results_dir" ) then
+    mkdir $results_dir
+endif
 
 set curtime=`date +%Y-%m-%d.%H:%M:%S`
 cd $SIM_ROOT_DIR/simulator/simulation
@@ -153,8 +155,8 @@ while ($x <= $num_processes)
     setenv PROPERTY_PATH $propertypath;\
     setenv START_ID $startid;\
     setenv RESULTS_FOLDER $temp_folder;\
-    setenv INPUT_FILE "$RESULTS_FOLDER/inputs.txt";\
-    setenv OUTPUT_FILE "$RESULTS_FOLDER/outputs.txt";\
+    setenv INPUT_FILE "$RESULTS_FOLDER/sent.txt";\
+    setenv OUTPUT_FILE "$RESULTS_FOLDER/received.txt";\
     setenv VERILOG_CORELIB "$VERILOG_CORELIB";\
     /usr/bin/nice -n 15 vsim -modelsimini $temp_folder/modelsim.ini -novopt -t 1ns -c -do simulate.do  > $results_dir/$curtime/Process${x}out.log\
     )&
@@ -194,6 +196,7 @@ rm -rf "results"
 gzip all.results
 rm -rf $cleanupdirs
 
+echo "File listing of `pwd`:"
 ls -l
 cd -
 
@@ -206,5 +209,3 @@ echo "--------------------"
 echo "All done!"
 echo "Time spent : `date -d@$time_spent -u +%H:%M:%S`"
 echo
-
-echo "D E B U G : No actual simulations were run"

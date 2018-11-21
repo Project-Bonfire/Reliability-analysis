@@ -115,7 +115,7 @@ while {$properties != ""} {
 
     # Handle the results
     puts $concat_result_file "-----"
-    puts $concat_result_file "$exp_num"
+    puts $concat_result_file $exp_num
     puts $concat_result_file $properties
     puts $concat_result_file "!modules:"
 
@@ -147,7 +147,7 @@ while {$properties != ""} {
     puts "finished experiment #$exp_num"
     # Increment line
     gets $property_fp properties
-    incr i
+    incr exp_num
 }
 close $concat_result_file
 
