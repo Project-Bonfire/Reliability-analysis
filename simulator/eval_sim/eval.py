@@ -10,10 +10,19 @@ from operator import attrgetter, sub
 from typing import List
 
 import numpy as np
-# from evaluation_tools.Evaluator import (Evaluator.Faulttype, Evaluator.Result, Evaluator.countFails,
+# from evaluation_tools.Evaluator import (Evaluator.FaultType, Evaluator.Result,
 #                                         Evaluator.evaluate_file, Evaluator.init)
 
 from evaluation_tools import Evaluator
+
+def count_fails(results):
+    faillist = []
+    
+    for res in results:
+        if not res.is_valid():
+
+            faillist.append(res)
+    return faillist
 
 def main(args):
     noc_rg = Evaluator.init()
@@ -66,7 +75,7 @@ def main(args):
         print("Write Results")
         pickle.dump(results, gzip.open(args.write_results, 'wb'))
 
-    faillist = Evaluator.countFails(results)
+    faillist = count_fails(results)
     numresults = float(len(results))
     if verbose:
         res: List[Evaluator.Result] = [r for r in results if not r.vcd_of_module_equal]
@@ -191,54 +200,54 @@ def main(args):
         faulttype_caused_by_module = {f.name:
                                     {m: sum(
                                         1 for r in m_all_fixed_fifo[m] if r.hasError(f)) for
-                                    m in modules} for f in Evaluator.Faulttype}
+                                    m in modules} for f in Evaluator.FaultType}
         faulttype_caused_by_module_corrected = {f.name:
                                                 {m: faulttype_caused_by_module[f.name][m] * correction_multipliers[m] for
-                                                m in modules} for f in Evaluator.Faulttype}
+                                                m in modules} for f in Evaluator.FaultType}
 
         faulttype_caused_by_module_when_invalid = {
             f.name: {
                 m: sum(1 for r in m_invalid_fixed_fifo[m] if r.hasError(f)) for m
                 in modules}
-            for f in Evaluator.Faulttype}
+            for f in Evaluator.FaultType}
         faulttype_caused_by_module_when_module_output_changed_and_invalid = {
             f.name: {m: sum(
                 1 for r in m_invalid_fixed_fifo[m] if r.hasError(f) and not r.vcd_of_module_equal[m]) for m
                 in
                 modules} for
-            f in Evaluator.Faulttype}
+            f in Evaluator.FaultType}
         faulttype_and_module_output_changed = {
             f.name: {m: sum(1 for r in invalids if r.hasError(f) and not r.vcd_of_module_equal[m]) for m in
                     modules}
             for
-            f in Evaluator.Faulttype}
+            f in Evaluator.FaultType}
         faulttype_counts_corrected = {
             f.name: sum(faulttype_caused_by_module[f.name][m] * correction_multipliers[m] for m in tldmodules) for
-            f in Evaluator.Faulttype}
+            f in Evaluator.FaultType}
         faulttype_counts = {
             f.name: sum(1 for i in invalids if i.hasError(f))
             for
-            f in Evaluator.Faulttype}
+            f in Evaluator.FaultType}
         faulttype_ratios_given_invalid = {f.name: sum(
-            1 for i in invalids if i.hasError(f)) / len(invalids) for f in Evaluator.Faulttype}
+            1 for i in invalids if i.hasError(f)) / len(invalids) for f in Evaluator.FaultType}
         faulttype_ratios_total = {f.name: sum(
-            1 for i in invalids if i.hasError(f)) / num_runs for f in Evaluator.Faulttype}
+            1 for i in invalids if i.hasError(f)) / num_runs for f in Evaluator.FaultType}
         faulttype_correlation = {f2.name: {f1.name: sum(1 for i in invalids if i.hasError(
-            f1) and i.hasError(f2)) / faulttype_counts[f1.name] for f1 in Evaluator.Faulttype}for f2 in Evaluator.Faulttype}
+            f1) and i.hasError(f2)) / faulttype_counts[f1.name] for f1 in Evaluator.FaultType}for f2 in Evaluator.FaultType}
         faulttype_caused_by_module_ratio_corrected = {f.name:
                                                     {m: (faulttype_caused_by_module[f.name][m]*correction_multipliers[m])/faulttype_counts_corrected[f.name] for
-                                                    m in modules} for f in Evaluator.Faulttype}
+                                                    m in modules} for f in Evaluator.FaultType}
         faulttype_combinations = {f2.name: {" ".join([str(s) for s in truths]): sum(1 for i in invalids if
-                                                                                    i.hasError(Evaluator.Faulttype.FAILEDDELIVERY) ==
+                                                                                    i.hasError(Evaluator.FaultType.FAILEDDELIVERY) ==
                                                                                     truths[0] and i.hasError(
-                                                                                        Evaluator.Faulttype.MISROUTED) == truths[
+                                                                                        Evaluator.FaultType.MISROUTED) == truths[
                                                                                         1] and i.hasError(
-                                                                                        Evaluator.Faulttype.INVALIDFLITS) == truths[
+                                                                                        Evaluator.FaultType.INVALIDFLITS) == truths[
                                                                                         2]) / faulttype_counts[f2.name] for
-                                            truths in list(itertools.product([False, True], repeat=3))} for f2 in Evaluator.Faulttype}
+                                            truths in list(itertools.product([False, True], repeat=3))} for f2 in Evaluator.FaultType}
 
     all_result = (
-        attrgetter('name', 'errornous', 'unexpected_len_sent', 'unexpected_len_recv', 'len_sent', 'len_recv',
+        attrgetter('exp_id', 'errornous', 'unexpected_len_sent', 'unexpected_len_recv', 'len_sent', 'len_recv',
                 'sents_invalid',
 
                 'recv_invalid', 'params', 'connection_counter_invalid', 'misrouted_recv', 'misrouted_sent')(obj) for obj

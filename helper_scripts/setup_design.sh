@@ -72,7 +72,7 @@ fi
 if [ $return_value = 2 ]; then
     echo ""
     echo "D E B U G : 'None'-s were found during the run... rerunning with debugging enabled:"
-    python3 $SIM_ROOT_DIR/simulator/prepare_sim/cell_export_parser/convert_to_pins.py $gen_dir $2 $3 --fault-info-file $fi_file --debug-nones
+    python3 $SIM_ROOT_DIR/simulator/prepare_sim/cell_export_parser/convert_to_pins.py $design_dir $2 $3 --fault-info-file $fi_file --debug-nones
     return_value=$?
 fi
 

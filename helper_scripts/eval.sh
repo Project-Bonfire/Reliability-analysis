@@ -63,6 +63,9 @@ fi
 echo "$dname - mode: $mode"
 echo
 
+# Start the timer
+start_time="`date +%s`"
+
 python3 -u $SIM_ROOT_DIR/simulator/eval_sim/eval.py $folder/all.results.gz \
         --$mode-results $folder/all.intmdtresults.gz \
         --fi-info $designfolder/generated_files/fault_injection_info.txt \
@@ -73,4 +76,13 @@ echo "framelength : $framelength" >> $folder/"eval.log"
 echo "packetlength : $minpacketsize" >> $folder/"eval.log"
 
 echo "Finished processing of $folder"
+
+# Stop the time and calculate time spent
+stop_time="`date +%s`"
+time_spent=`python -c "print ($stop_time - $start_time)"`
+
+echo
+echo "--------------------"
+echo "All done!"
+echo "Time spent on evaluation: `date -d@$time_spent -u +%H:%M:%S`"
 echo

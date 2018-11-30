@@ -40,8 +40,8 @@ cd $SIM_ROOT_DIR/simulator/simulation
 
 set property_path=`mktemp`
 set start_id=0
-set results_folder=`mktemp -d`
-cp modelsim.ini $results_folder/modelsim.ini
+set temp_folder=`mktemp -d`
+cp modelsim.ini $temp_folder/modelsim.ini
 echo "$*" >> $property_path
 
 set res_folder=$desing_folder/generated_files/results/single/
@@ -66,11 +66,11 @@ setenv SCENARIO_FILE $scnfile;\
 setenv RESULTS_FILE $res_folder/Process1.results;\
 setenv PROPERTY_PATH $property_path;\
 setenv START_ID $start_id;\
-setenv RESULTS_FOLDER $results_folder;\
-setenv INPUT_FILE "$RESULTS_FOLDER/sent.txt";\
-setenv OUTPUT_FILE "$RESULTS_FOLDER/received.txt";\
+setenv RESULTS_FOLDER $temp_folder;\
+setenv INPUT_FILE "$res_folder/sent.txt";\
+setenv OUTPUT_FILE "$res_folder/received.txt";\
 setenv VERILOG_CORELIB "$VERILOG_CORELIB";\
-vsim  -modelsimini $results_folder/modelsim.ini -novopt -t 1ns -c -do simulate.do\
+vsim  -modelsimini $temp_folder/modelsim.ini -novopt -t 1ns -c -do simulate.do\
 )
 
 echo "Find the results here:"
@@ -78,4 +78,4 @@ echo "cd $res_folder"
 echo "Tmp Folder was here:"
 
 #this should be the last line of output, or change the code in ./setup.sh
-echo "cd $results_folder"
+echo "cd $temp_folder"

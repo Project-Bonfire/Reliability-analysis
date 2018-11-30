@@ -126,6 +126,14 @@ echo "----------------------"
 set start_time="`date +%s`"
 echo
 
+set io_folder=$results_dir/$curtime/io_files
+
+if ( -d "$io_folder" ) then
+   rm -Rf $io_folder
+endif
+
+mkdir $io_folder
+
 #Launch number of requested processes
 while ($x <= $num_processes)
     
@@ -155,8 +163,8 @@ while ($x <= $num_processes)
     setenv PROPERTY_PATH $propertypath;\
     setenv START_ID $startid;\
     setenv RESULTS_FOLDER $temp_folder;\
-    setenv INPUT_FILE "$RESULTS_FOLDER/sent.txt";\
-    setenv OUTPUT_FILE "$RESULTS_FOLDER/received.txt";\
+    setenv INPUT_FILE "$io_folder/sent_${x}.txt";\
+    setenv OUTPUT_FILE "$io_folder/received_${x}.txt";\
     setenv VERILOG_CORELIB "$VERILOG_CORELIB";\
     /usr/bin/nice -n 15 vsim -modelsimini $temp_folder/modelsim.ini -novopt -t 1ns -c -do simulate.do  > $results_dir/$curtime/Process${x}out.log\
     )&
@@ -207,5 +215,5 @@ set time_spent=`python -c "print ($stop_time - $start_time)"`
 echo
 echo "--------------------"
 echo "All done!"
-echo "Time spent : `date -d@$time_spent -u +%H:%M:%S`"
+echo "Time spent on simulation: `date -d@$time_spent -u +%H:%M:%S`"
 echo
