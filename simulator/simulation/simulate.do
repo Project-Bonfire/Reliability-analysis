@@ -89,6 +89,9 @@ while {$properties != ""} {
     set time_after [lindex $params 1] 
     set val [lindex $params 2] 
     set fault_length [lindex $params 3] 
+
+    puts "Time before: $time_before"
+    puts "Time after: $time_after"
     #add wave -position insertpoint {sim/:tb_router:R_5:\\$name}
 
     puts "Breaking the design: Name: '$name' Time: $time_before ns Value: $val Length of fault: $fault_length ns"
@@ -142,7 +145,7 @@ while {$properties != ""} {
     if {$DEBUG != "true"} {
         file delete "$INPUT_FILE"
         file delete "$OUTPUT_FILE"    
-        file delete {*}[glob -nocomplain "$RESULTS_FOLDER/*.vcd"]
+        # file delete {*}[glob -nocomplain "$RESULTS_FOLDER/*.vcd"]
     }
     puts "finished experiment #$exp_num"
     # Increment line
@@ -152,4 +155,5 @@ while {$properties != ""} {
 close $concat_result_file
 
 #vcd flush
+ls $RESULTS_FOLDER
 exit

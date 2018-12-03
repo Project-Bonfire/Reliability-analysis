@@ -47,7 +47,7 @@ parser.add_argument('--earliest-fault-time', nargs='?',
                     help='The earliest fault injection time in nanoseconds.')
 
 parser.add_argument('--cooldown-time', nargs='?',
-                    type=int, default='1000',
+                    type=int, default='10000',
                     help='How long after the last fault injection should the simulation keep running.')
 
 parser.add_argument('--length-of-fault', nargs='?',

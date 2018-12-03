@@ -134,6 +134,10 @@ endif
 
 mkdir $io_folder
 
+# Generate a random string to use for experiment identification
+set random_string=$RANDOM_HASH
+echo "Hash for experiment identification: $random_string"
+
 #Launch number of requested processes
 while ($x <= $num_processes)
     
@@ -193,7 +197,9 @@ echo "started: $curtime" >> "stats.txt"
 echo "finished: `date +%Y-%m-%d.%H:%M:%S`" >> "stats.txt"
 echo `uptime | cut -d : -f 4` >> "stats.txt"
 cp "$scenario" $results_dir/$curtime/scenario.scn
+
 cp "$designinfo" $results_dir/$curtime/designinfo.txt
+echo "hash=$random_string" >> $results_dir/$curtime/designinfo.txt
 
 # Concatinate all results to one single file
 

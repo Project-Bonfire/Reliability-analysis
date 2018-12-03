@@ -5,6 +5,9 @@ sim_scenario_config=$2
 experiment_file=$3
 num_processes=$4
 
+export RANDOM_HASH=`date +%Y-%m-%d.%H:%M:%S`
+echo "Using random identification string: $RANDOM_HASH"
+
 desing_folder=$SIM_ROOT_DIR/designs/$design
 echo "Used design: $desing_folder"
 
@@ -55,5 +58,9 @@ for sim_config in `cat $sim_config_file`; do
 
     let x++
 
+    echo "============================================================"
     echo "Finished $x injection runs out of $num_of_configurations..."
+    echo "============================================================"
 done
+
+sh $SIM_ROOT_DIR/helper_scripts/include/gen_explst.sh $desing_folder/generated_files/results $RANDOM_HASH

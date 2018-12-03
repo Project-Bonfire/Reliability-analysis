@@ -10,19 +10,21 @@ from operator import attrgetter, sub
 from typing import List
 
 import numpy as np
+from evaluation_tools import Evaluator
+
 # from evaluation_tools.Evaluator import (Evaluator.FaultType, Evaluator.Result,
 #                                         Evaluator.evaluate_file, Evaluator.init)
 
-from evaluation_tools import Evaluator
 
 def count_fails(results):
     faillist = []
     
     for res in results:
         if not res.is_valid():
-
             faillist.append(res)
+
     return faillist
+
 
 def main(args):
     noc_rg = Evaluator.init()
@@ -55,6 +57,8 @@ def main(args):
             print("Cannot open design file", args.design_info, file=sys.stderr)
             print("Error was:", err, file=sys.stderr)
 
+    print("REF DATA", refdata)
+    # Read the list of modules
     modules: List[str] = refdata["modules"]
 
     if 'none' in modules:
@@ -62,20 +66,22 @@ def main(args):
 
     tldmodules = modules # FIXME: Why do we need this?
     
-    # Process results
+    # Process results file/
     if args.read_results:
-        print("Read Results")
+        print("Reading Results file...")
         results = pickle.load(gzip.open(args.read_results, 'rb'))
 
     else:
-        print("ELSE")
+        print("Running Evalutor...")
         errornous, results = Evaluator.evaluateFile(noc_rg, filename, print_verbose=verbose)
 
     if args.write_results:
-        print("Write Results")
+        print("Writing Results...")
         pickle.dump(results, gzip.open(args.write_results, 'wb'))
 
     faillist = count_fails(results)
+    print(faillist)
+
     numresults = float(len(results))
     if verbose:
         res: List[Evaluator.Result] = [r for r in results if not r.vcd_of_module_equal]
@@ -117,18 +123,24 @@ def main(args):
 
     module_output_changed_when_system_failed_ratio = 'invalid'
     invalids = [r for r in results if not r.is_valid()]
+
     m_all = {m: list(filter(lambda r: r.getFaultModuleFromParam()
                             == m, results)) for m in modules}
+
     # accumulate the fifo with fifod and fifoc
-    m_all_fixed_fifo = {m: list(filter(lambda r: r.getFaultModuleFromParam().startswith(
-        m) if r.getFaultModuleFromParam() else False, results)) for m in modules}
+    m_all_fixed_fifo = {m: list(filter(lambda r: r.getFaultModuleFromParam().startswith(m) if r.getFaultModuleFromParam() else False, results)) for m in modules}
+
     m_invalid = {
         m: list(filter(lambda r: not r.is_valid(), m_all[m])) for m in modules}
+
     num_runs = len(results)
+
     m_invalid_fixed_fifo = {m: list(
         filter(lambda r: not r.is_valid(), m_all_fixed_fifo[m])) for m in modules}
+
     ratio_violations_per_module = {
         m: len(m_invalid[m]) / (len(m_all[m]) + 1) for m in modules}
+
     violations_per_module = {m: len(m_invalid[m]) for m in modules}
 
     module_size_ratio = {m: refdata['locspermodule']
@@ -136,6 +148,7 @@ def main(args):
 
 
     experiments_per_module = {k: len(v) for k, v in m_all_fixed_fifo.items()}
+    print("exp_per_module:", experiments_per_module)
     for k, v in experiments_per_module.items():
         if v == 0:
             print("Error: experiments_per_module[%s] is 0" % k, file=sys.stderr)

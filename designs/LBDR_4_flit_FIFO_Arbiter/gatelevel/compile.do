@@ -1,6 +1,8 @@
 # All variables environmental variables are automatically transferred from 
 # simulator/simulation/simulate.do and are usable in this file
 
+puts "Scenario file: $SCENARIO_FILE"
+
 # Compile the netlist
 vlog "$DESIGN_FOLDER/gatelevel/gate_level_netlist.v"
 

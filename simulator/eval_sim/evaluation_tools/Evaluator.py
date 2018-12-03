@@ -561,7 +561,7 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
 
         # Process all experiments one-by-one
         for experiment in experimentToBuffer(result_file, print_verbose):
-            print(experiment['exp_id'], experiment['params'])
+            # print(experiment['exp_id'], experiment['params'])
             res: Result = Result()
             exp_counter += 1
 
@@ -652,13 +652,12 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
                                     % (flit.src_node, flit.was_going_out_via(), flit.dst_node, str(flit)))
                             res.misrouted_sent += 1
 
-                print(node_states)
                 for k, v in node_states.items():
                     if v != FlitType.TAIL:
                         res.sents_invalid += 1
 
 
-                sys.exit("BYE!") # FIXME: FOR DEBUG ONLY!!
+                # sys.exit("BYE!") # FIXME: FOR DEBUG ONLY!!
 
                 # A state machine to check the validity of flit order. Checks that the order is always (HeadBody+Tail)*
                 node_states = {i: FlitType.TAIL for i in [1, 4, 5, 6, 9]}
@@ -707,15 +706,11 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
                         res.connection_counter_invalid = True
                         res.faultinfo += "con_counter=(%s,%d) %s\n" % (src_dst_pair, count, flit)
 
-
+                print("EXPERIMENT:", exp_counter, "TIME:", flit.time, "ALL TAILS??:", all(value == FlitType.TAIL for value in node_states.values()))
                 for node, flit_type in node_states.items():
                     if flit_type != FlitType.TAIL:
                         res.recv_invalid += 1
                         res.faultinfo += "flitfsm=(%s,%s) %s\n" % (node, flit_type, flit)
-
-                # print("FT", res)
-                # print(flit) # FIXME: FOR DEBUG ONLY!!
-                # sys.exit("BYE!") # FIXME: FOR DEBUG ONLY!!
 
             except:
                 print("Exception!") # FIXME: FOR DEBUG ONLY!!
@@ -735,6 +730,8 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
     print()
     print('===============================')
     print('Processed %d experiments in total' % exp_counter)
+    
+    sys.exit(1) # FIXME: DEEEEBBBBUUUUUFGGGGGGGG
 
     return errornous, results
 # END evaluateFile()
@@ -772,10 +769,10 @@ def evaluateFlitFSM(node_states, flit, invalid_counter):
     
     # # FIXME: FOR DEBUGGING ONLY
     # if init_count != invalid_counter:
-    if flit.currentrouter == 4:
-        print(flit.currentrouter, node_states[flit.currentrouter], new_state, invalid_counter - init_count)
+    # if flit.src_node == 6:
+    #     # print(flit.currentrouter, node_states[flit.currentrouter], new_state, invalid_counter - init_count)
+    #     print(flit.src_node, flit.dst_node, flit.length, '->', node_states[flit.currentrouter])
 
     node_states[flit.currentrouter] = new_state
-
 
     return node_states
