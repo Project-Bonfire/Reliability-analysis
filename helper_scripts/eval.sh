@@ -3,6 +3,10 @@
 #   design - design which to evaluate
 #   foldername - name of the results folder under the design. If it is not specified, the newest folder is chosen
 
+ for i; do 
+    echo $i 
+ done
+
 designfolder=$SIM_ROOT_DIR/designs/$1
 
 if [ ! -d "$designfolder" ]; then

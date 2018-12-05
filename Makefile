@@ -14,3 +14,6 @@ simulate:
 
 evaluate:
 	@helper_scripts/eval.sh ${DESIGN}
+
+multi_eval:
+	@helper_scripts/meval.sh ${DESIGN} ${EXPLST_FILE}
