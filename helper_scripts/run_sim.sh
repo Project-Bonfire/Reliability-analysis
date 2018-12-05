@@ -39,6 +39,9 @@ fi
 
 scenario=$desing_folder/generated_files/scenario.scn
 
+# Start the timer
+start_time="`date +%s`"
+
 x=0
 for sim_config in `cat $sim_config_file`; do
     echo "Found configuration $sim_config"
@@ -64,3 +67,13 @@ for sim_config in `cat $sim_config_file`; do
 done
 
 sh $SIM_ROOT_DIR/helper_scripts/include/gen_explst.sh $desing_folder/generated_files/results $RANDOM_HASH
+
+# Stop the time and calculate time spent
+stop_time="`date +%s`"
+time_spent=`python -c "print ($stop_time - $start_time)"`
+
+echo
+echo "--------------------"
+echo "All simulations finished!"
+echo "Total time spent on simulation: `date -d@$time_spent -u +%H:%M:%S`"
+echo

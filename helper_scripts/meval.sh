@@ -27,3 +27,6 @@ fi
 touch $evals_file
 
 cat $explst | xargs -n 1 -I % bash -c "cat $DESIGN_DIR/generated_files/results/%/eval.log; echo ''" > $evals_file
+
+echo "=============================================="
+echo "Saved all evaluation results to $evals_file..."
