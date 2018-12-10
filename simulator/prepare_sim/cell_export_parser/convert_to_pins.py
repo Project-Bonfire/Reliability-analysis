@@ -14,7 +14,6 @@ RET_OK = 0
 RET_ERR = 2
 RET_DEBUG = 3
 
-NONE = 0
 CELL_NAME = 1
 NET_NAME = 2
 
@@ -66,13 +65,10 @@ class CellParser(CellsListener):
         self.multi_module_counter = 0
         self.module_fallback_counter = 0
 
-        self.detected_as_none = 0
+        self.no_module_found = 0
         self.detection_by_cell_name = 0
-        self.detection_by_pin_names = 0
+        self.total_pin_count = 0
         self.detection_by_net_name = 0
-
-        self.detected_by = 0
-        # self.module_guess_counter = 0
 
         self.outstream = None
         self.signal_module_map = None
@@ -129,6 +125,7 @@ class CellParser(CellsListener):
         if len(set(modules)) == 1:
 
             for io_pin in pins:
+                # We don't really care about pins which do not have a module assigned to them
                 if io_pin.module != 'none':
 
                     if io_pin.detection_method == CELL_NAME:
@@ -137,18 +134,21 @@ class CellParser(CellsListener):
                     elif io_pin.detection_method == NET_NAME:
                         self.detection_by_net_name += 1
 
-                    self.detected_as_none += 1
                     if io_pin.module in self.fault_locs_per_module:
                         self.fault_locs_per_module[io_pin.module] += 1
 
                     else:
                         self.fault_locs_per_module[io_pin.module] = 1
+
                     # Finally save the fault injection location to the output file
                     print(("" if io_pin.cell_name.startswith("U") else "\\") + io_pin.cell_name +
                         " :" + io_pin.pin_name + ' ' + '!' + io_pin.module, file=self.outstream)
+                    
+                else:
+                    self.no_module_found += 1
         else:
             self.multi_module_counter += 1
-            print(cell_name, modules)
+            # print(cell_name, modules)
 
     def handleIOPin(self, ctx):
         """
@@ -219,20 +219,18 @@ class CellParser(CellsListener):
                                         None if the module cannot be determined
         """
 
-        connected_pin_names = []
-        self.detection_by_pin_names += 1
+        self.total_pin_count += 1
         try:
 
             detection_method = None            
             detected = False
+
             for signal, module in signal_module_map.items():
                 if not re.match('^U[0-9]+$', cell_name) and re.match(signal, cell_name):
-                    # self.detection_by_cell_name += 1
                     detection_method = CELL_NAME
                     detected = True
 
                 elif re.match(signal, net_name):
-                    # self.detection_by_net_name += 1
                     detection_method = NET_NAME
                     if self.debug['named_after_map']:
                         print('Cell:', cell_name, 'Net:', net_name,
@@ -286,8 +284,10 @@ def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, 
     print(11 * '-')
     print()
 
-    print('Total number of fault injection locations:',
-          total_fault_injection_locs)
+    print('Total number of pins: %d' % printer.total_pin_count)
+    print('Could not determine modules for %d cells. (%d total = %f%%) --> CELLS IGNORED' % (
+        printer.multi_module_counter, printer.num_cells, printer.multi_module_counter/printer.num_cells))
+    print('Total number of VALID fault injection locations: %d (%f%% of all pins)' % (total_fault_injection_locs, total_fault_injection_locs * 100 / printer.total_pin_count))
 
     print()
     print('Detected modules:', str(
@@ -306,8 +306,9 @@ def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, 
         print('\t' + module_name + ':' +
               length_difference * ' ' + str(fault_locs))
 
+
     print()
-    print('Pins were assigned to modules according the following data:')
+    print('Pins from valid cells were assigned to modules according the following data:')
 
     print('\tCell name:         %d    \t(%f%%)' % (printer.detection_by_cell_name,
                                                    printer.detection_by_cell_name * 100 / total_fault_injection_locs))
@@ -315,24 +316,10 @@ def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, 
     print('\tSignal-module map: %d    \t(%f%%)' % (printer.detection_by_net_name,
                                                    printer.detection_by_net_name * 100 / total_fault_injection_locs))
 
-    print('\tConnected pins:    %d    \t(%f%%) --> PINS IGNORED' % (printer.detection_by_pin_names,
-                                                   printer.detection_by_pin_names * 100 / total_fault_injection_locs))
 
-    print('\tNo name found:     %d    \t(%f%%) --> PINS IGNORED' % (printer.detected_as_none,
-                                                   printer.detected_as_none * 100 / total_fault_injection_locs))
+    print('\tNo name found:     %d    \t(%f%%) --> PINS IGNORED' % (printer.no_module_found,
+                                                   printer.no_module_found * 100 / total_fault_injection_locs))
 
-    # print('Had to semi-randomly guess the module for %d pins (%f%%).' % (printer.module_guess_counter,
-    #                                                                      printer.module_guess_counter * 100 / total_fault_injection_locs))
-
-    print()
-    print('Multiple modules were not be found for %d cells. (%d total = %f%%) --> CELLS IGNORED' % (
-        printer.multi_module_counter, printer.num_cells, printer.multi_module_counter/printer.num_cells))
-
-    # if (printer.detection_by_cell_name + printer.detection_by_net_name) < total_fault_injection_locs:
-    #     print()
-    #     print('W A R N I N G ! - Not all modules for pins were detected from the cell name or signal-module map!\n'
-    #           'This means you might want to make sure all logic in your design is located under respective submodules.\n'
-    #           'Alternatively you might want to update the signal-module map. Proceed at your own risk')
 
     if fault_info_file:
         with open(fault_info_file, 'w') as fi:
@@ -341,7 +328,7 @@ def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, 
                                                                     str(printer.fault_locs_per_module)), file=fi)
 
     print()
-    if printer.module_fallback_counter > printer.detection_by_pin_names + printer.detected_as_none:
+    if printer.module_fallback_counter > printer.total_pin_count + printer.no_module_found:
         print('E R R O R ! - Had to choose \'none\' as fallback module on %d pins, '
               'because I could not guess to which module the io_pin belongs' %
               printer.module_fallback_counter)
