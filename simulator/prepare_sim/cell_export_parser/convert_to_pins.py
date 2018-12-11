@@ -349,7 +349,7 @@ if __name__ == '__main__':
 
     print()
     print('==================')
-    print('CELL_NAME EXPORT PARSER')
+    print('CELL EXPORT PARSER')
     print('==================')
 
     args = argparse.ArgumentParser(

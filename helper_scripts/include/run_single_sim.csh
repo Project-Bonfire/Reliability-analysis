@@ -66,7 +66,7 @@ setenv SCENARIO_FILE $scnfile;\
 setenv RESULTS_FILE $res_folder/Process1.results;\
 setenv PROPERTY_PATH $property_path;\
 setenv START_ID $start_id;\
-setenv RESULTS_FOLDER $temp_folder;\
+setenv RESULTS_FOLDER $res_folder;\
 setenv INPUT_FILE "$res_folder/sent.txt";\
 setenv OUTPUT_FILE "$res_folder/received.txt";\
 setenv VERILOG_CORELIB "$VERILOG_CORELIB";\

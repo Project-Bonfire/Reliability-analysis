@@ -72,7 +72,7 @@ def main(args):
         results = pickle.load(gzip.open(args.read_results, 'rb'))
 
     else:
-        print("Running Evalutor...")
+        print("Running Evaluator...")
         errornous, results = Evaluator.evaluateFile(noc_rg, filename, print_verbose=verbose)
 
     if args.write_results:
@@ -192,7 +192,7 @@ def main(args):
             modules}
 
 
-        # NOTE: Changed 'fict' to dict... not 100% sure it was a type though
+        # NOTE: Changed 'fict' to dict... not 100% sure it was a typo though
         module_output_changed_when_system_failed_counts = {
             n: sum(
                 1 for r in invalids if r.vcd_of_module_equal and not r.vcd_of_module_equal[n])
