@@ -5,10 +5,16 @@
 
 #source /cad/unsetenvs.csh
 
+# setenv PATH /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin
+# setenv MANPATH /usr/man:/usr/share/man:/usr/local/man:/usr/local/share/man
+
+# setenv M_16_EDA
+
 setenv PATH /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin
 setenv MANPATH /usr/man:/usr/share/man:/usr/local/man:/usr/local/share/man
+setenv LD_LIBRARY_PATH /cad/eda/mentor/2017-18/ftlib/lib:/cad/eda/mentor/2017-18/ftlib/lib64:/lib:/lib64:/usr/lib:/usr/lib64:"$LD_LIBRARY_PATH"
 
-setenv M_16_EDA
+setenv M_18_EDA
 
 #source /cad/cadrc.include_new
 #          echo " "
@@ -16,4 +22,5 @@ setenv M_16_EDA
 #          echo " "
 #          breaksw
 
-source /eda/mentor/2015-16/scripts/QUESTA-SV-AFV_10.4c-5_RHELx86.csh
+source /cad/cadrc.include_new
+# source /eda/mentor/2017-18/scripts/QUESTA-SV-AFV_10.4c-5_RHELx86.csh
