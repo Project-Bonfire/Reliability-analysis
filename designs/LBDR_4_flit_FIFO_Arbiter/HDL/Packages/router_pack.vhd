@@ -21,50 +21,52 @@ use ieee.numeric_std.all;
 
 package router_pack is
 
-    COMPONENT router_credit_based_control_part is
-        generic (
-                 cur_addr_rst: integer := 5;
-                 Rxy_rst: integer := 8;             
-                 Cx_rst: integer := 15;
-                 NoC_size: integer := 4
-                );
-
-           port (
-                 reset, clk: in std_logic;
-
-                 empty_N, empty_E, empty_W, empty_S, empty_L: in std_logic;
-                 dst_addr_N, dst_addr_E, dst_addr_W, dst_addr_S, dst_addr_L: in std_logic_vector(NoC_size-1 downto 0);
-                 flit_type_N, flit_type_E, flit_type_W, flit_type_S, flit_type_L: in std_logic_vector(2 downto 0);
-                 credit_in_N, credit_in_E, credit_in_W, credit_in_S, credit_in_L: in std_logic;
-        
-                 valid_out_N, valid_out_E, valid_out_W, valid_out_S, valid_out_L : out std_logic;
-                 Xbar_sel_N, Xbar_sel_E, Xbar_sel_W, Xbar_sel_S, Xbar_sel_L: out std_logic_vector (4 downto 0);
-                 FIFO_N_read_en_E, FIFO_N_read_en_W, FIFO_N_read_en_S, FIFO_N_read_en_L: out std_logic;
-                 FIFO_E_read_en_N, FIFO_E_read_en_W, FIFO_E_read_en_S, FIFO_E_read_en_L: out std_logic;
-                 FIFO_W_read_en_N, FIFO_W_read_en_E, FIFO_W_read_en_S, FIFO_W_read_en_L: out std_logic;
-                 FIFO_S_read_en_N, FIFO_S_read_en_E, FIFO_S_read_en_W, FIFO_S_read_en_L: out std_logic;
-                 FIFO_L_read_en_N, FIFO_L_read_en_E, FIFO_L_read_en_W, FIFO_L_read_en_S: out std_logic
-                ); 
-    end COMPONENT; 
+--    COMPONENT router_credit_based_control_part is
+--        generic (
+--                 cur_addr_rst: integer := 5;
+--                 Rxy_rst: integer := 8;             
+--                 Cx_rst: integer := 15;
+--                 NoC_size: integer := 4
+--                );
+--
+--           port (
+--                 reset, clk: in std_logic;
+--
+--                 empty_N, empty_E, empty_W, empty_S, empty_L: in std_logic;
+--                 dst_addr_N, dst_addr_E, dst_addr_W, dst_addr_S, dst_addr_L: in std_logic_vector(NoC_size-1 downto 0);
+--                 flit_type_N, flit_type_E, flit_type_W, flit_type_S, flit_type_L: in std_logic_vector(2 downto 0);
+--                 credit_in_N, credit_in_E, credit_in_W, credit_in_S, credit_in_L: in std_logic;
+--        
+--                 valid_out_N, valid_out_E, valid_out_W, valid_out_S, valid_out_L : out std_logic;
+--                 Xbar_sel_N, Xbar_sel_E, Xbar_sel_W, Xbar_sel_S, Xbar_sel_L: out std_logic_vector (4 downto 0);
+--                 FIFO_N_read_en_E, FIFO_N_read_en_W, FIFO_N_read_en_S, FIFO_N_read_en_L: out std_logic;
+--                 FIFO_E_read_en_N, FIFO_E_read_en_W, FIFO_E_read_en_S, FIFO_E_read_en_L: out std_logic;
+--                 FIFO_W_read_en_N, FIFO_W_read_en_E, FIFO_W_read_en_S, FIFO_W_read_en_L: out std_logic;
+--                 FIFO_S_read_en_N, FIFO_S_read_en_E, FIFO_S_read_en_W, FIFO_S_read_en_L: out std_logic;
+--                 FIFO_L_read_en_N, FIFO_L_read_en_E, FIFO_L_read_en_W, FIFO_L_read_en_S: out std_logic
+--                ); 
+--    end COMPONENT; 
 
     COMPONENT FIFO_credit_based
-  generic (
-        DATA_WIDTH: integer := 32
-    );
-    port (  reset: in  std_logic;
-            clk: in  std_logic;
-            RX: in std_logic_vector(DATA_WIDTH-1 downto 0);
-            valid_in: in std_logic;
-            read_en_N : in std_logic;
-            read_en_E : in std_logic;
-            read_en_W : in std_logic;
-            read_en_S : in std_logic;
-            read_en_L : in std_logic;
-            credit_out: out std_logic;
-            empty_out: out std_logic;
-            Data_out: out std_logic_vector(DATA_WIDTH-1 downto 0)
-    );
-  end COMPONENT;
+    generic (
+          DATA_WIDTH: integer := 32
+      );
+      port (  reset: in  std_logic;
+              clk: in  std_logic;
+              RX: in std_logic_vector(DATA_WIDTH-1 downto 0);
+              valid_in: in std_logic;
+              read_en_N : in std_logic;
+              read_en_E : in std_logic;
+              read_en_W : in std_logic;
+              read_en_S : in std_logic;
+              read_en_L : in std_logic;
+              credit_out: out std_logic;
+              empty_out: out std_logic;
+              Data_out: out std_logic_vector(DATA_WIDTH-1 downto 0);
+  
+              read_pointer_out_out, write_pointer_out_out: out std_logic_vector(3 downto 0);
+              write_en_out_out: out std_logic
+      );
 
   COMPONENT allocator is
 

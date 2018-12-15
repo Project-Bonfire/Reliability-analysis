@@ -1,12 +1,14 @@
 {
-    r'^valid_': 'arbiter',
-    r'^CONTROL_PART/allocator_unit': 'arbiter',
     r'^allocator_unit': 'arbiter',
-    r'^CONTROL_PART/LBDR': 'lbdr',
-    r'^CONTROL_PART/Req': 'lbdr',
-    r'^CONTROL_PART/ROUTING_TABLE': 'lbdr',
+    r'^LBDR': 'lbdr',
+    r'^XBAR': 'xbar',
+    r'^Xbar': 'xbar',
     r'^FIFO_[NESLW]/FIFO_CONTROL_PART': 'fifoc',
     r'^FIFO_[NESLW]/FIFO_DATA_PATH': 'fifod',
-    r'^XBAR': 'xbar',
-    r'^Xbar': 'xbar'
+    r'^valid_': 'arbiter',
+    r'^Req': 'lbdr',
+    r'^ROUTING_TABLE': 'lbdr',
+    r'^Grant_[NESLW]{2}': 'arbiter',
+    r'^FIFO_D_out_[NESLW]': 'fifod',
+    r'^TX_[NESLW]': 'xbar'
 }

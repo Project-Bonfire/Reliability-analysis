@@ -174,14 +174,14 @@ class Result:
             self.errornous or \
             self.connection_counter_invalid)
 
-        print(self.unexpected_len_recv, \
-            self.unexpected_len_sent, \
-            self.sents_invalid > 0, \
-            self.recv_invalid > 0, \
-            self.misrouted_sent > 0, \
-            self.misrouted_recv > 0, \
-            self.errornous, \
-            self.connection_counter_invalid, '->', is_valid)
+        # print(self.unexpected_len_recv, \
+        #     self.unexpected_len_sent, \
+        #     self.sents_invalid > 0, \
+        #     self.recv_invalid > 0, \
+        #     self.misrouted_sent > 0, \
+        #     self.misrouted_recv > 0, \
+        #     self.errornous, \
+        #     self.connection_counter_invalid, '->', is_valid)
 
         return is_valid
 
@@ -517,12 +517,12 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
         ralgo_check_sent_flits:  If the sent flits should be checked by the routing algorithm
     """
 
-    print()
-    print('Analyzing NoC simulation results...')
-    print('-----------------------------------')
-    print('N O T E! This script assumes you ran your experiments on router 5 of a 4x4 NoC using the XY routing algorithm')
-    print('If this is not the case, please re-simulate with the correct parameters or update this code')
-    print()
+    print(file=sys.stderr)
+    print('Analyzing NoC simulation results...', file=sys.stderr)
+    print('-----------------------------------', file=sys.stderr)
+    print('N O T E! This script assumes you ran your experiments on router 5 of a 4x4 NoC using the XY routing algorithm', file=sys.stderr)
+    print('If this is not the case, please re-simulate with the correct parameters or update this code', file=sys.stderr)
+    print(file=sys.stderr)
 
     results = []
     errornous = []
@@ -533,7 +533,7 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
     opener = gzipOpener if filename.endswith(".gz") else open
 
     # Count the number of experiments in the results file
-    print("Analyzing results file...")
+    print("Analyzing results file...", file=sys.stderr)
     total_exps = 0
 
     try:
@@ -548,11 +548,11 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
         print("Error was:", err, file=sys.stderr)
         sys.exit(1)
 
-    print("Total number of experiments to process:", total_exps)
+    print("Total number of experiments to process:", total_exps, file=sys.stderr)
     print()
 
     if total_exps == 0:
-        print("No experiments found! Exiting!")
+        print("No experiments found! Exiting!", file=sys.stderr)
         sys.exit(1)
 
     # Actually process the results
@@ -568,7 +568,7 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
             # Print a status message after every 100 experiments
             if exp_counter % 100 == 0 and print_verbose:
                 print("Progress: evaluated %d experiments out of %d. (%.2f%%)" % (exp_counter, total_exps, 
-                                                                                exp_counter * 100 / total_exps))
+                                                                                exp_counter * 100 / total_exps), file=sys.stderr)
 
             # Store the experiment ID
             res.exp_id = experiment["exp_id"].strip()
@@ -587,7 +587,7 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
                     "nofault" in experiment["params"]:
 
                     if print_verbose:
-                        print("Setting module hashes to be equal to the first (fault free) experiment")
+                        print("Setting module hashes to be equal to the first (fault free) experiment", file=sys.stderr)
 
                     module_hashes = {}
 
@@ -649,7 +649,7 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
                         if not result and print_verbose:
                             print("WARNING: Generated Packet was not valid according to routing algorithm. "\
                                     "Packet was sent_flits from %d %s to %d via router 5. %s" \
-                                    % (flit.src_node, flit.was_going_out_via(), flit.dst_node, str(flit)))
+                                    % (flit.src_node, flit.was_going_out_via(), flit.dst_node, str(flit)), file=sys.stderr)
                             res.misrouted_sent += 1
 
                 for k, v in node_states.items():
@@ -706,14 +706,13 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
                         res.connection_counter_invalid = True
                         res.faultinfo += "con_counter=(%s,%d) %s\n" % (src_dst_pair, count, flit)
 
-                print("EXPERIMENT:", exp_counter, "TIME:", flit.time, "ALL TAILS??:", all(value == FlitType.TAIL for value in node_states.values()))
+                # print("EXPERIMENT:", exp_counter, "TIME:", flit.time, "ALL TAILS??:", all(value == FlitType.TAIL for value in node_states.values()))
                 for node, flit_type in node_states.items():
                     if flit_type != FlitType.TAIL:
                         res.recv_invalid += 1
                         res.faultinfo += "flitfsm=(%s,%s) %s\n" % (node, flit_type, flit)
 
             except:
-                print("Exception!") # FIXME: FOR DEBUG ONLY!!
                 res.errornous = True
                 errornous.append(res)
 
@@ -727,11 +726,9 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
                 continue
             results.append(res)
 
-    print()
-    print('===============================')
-    print('Processed %d experiments in total' % exp_counter)
-    
-    sys.exit(1) # FIXME: DEEEEBBBBUUUUUFGGGGGGGG
+    print(file=sys.stderr)
+    print('===============================', file=sys.stderr)
+    print('Processed %d experiments in total' % exp_counter, file=sys.stderr)
 
     return errornous, results
 # END evaluateFile()

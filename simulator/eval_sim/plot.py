@@ -290,7 +290,7 @@ routerdisplayname=args.routerdisplayname
 def getdataset():
     invalids = []
 
-    file = 'http://ati.ttu.ee/~thilo/evals'+currentname+'.log'
+    file = 'http://ati.ttu.ee/~kjans/evals'+currentname+'.log'
     print(file)
 
     r = requests.get(file, stream=True)
