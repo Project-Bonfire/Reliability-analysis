@@ -26,7 +26,7 @@ fi
 
 touch $evals_file
 
-python3 $SIM_ROOT_DIR/simulator/eval_sim/analyzer.py --resultsDir $DESIGN_DIR/generated_files/results --exptlstFile $explst --evalsFile $evals_file
+python3 $SIM_ROOT_DIR/simulator/eval_sim/json_join.py --resultsDir $DESIGN_DIR/generated_files/results --exptlstFile $explst --evalsFile $evals_file
 # cat $explst | xargs -n 1 -I % bash -c "cat $DESIGN_DIR/generated_files/results/%/eval.log; echo ''" > $evals_file
 
 echo "=============================================="
