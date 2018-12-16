@@ -73,11 +73,14 @@ start_time="`date +%s`"
 python3 -u $SIM_ROOT_DIR/simulator/eval_sim/eval.py $folder/all.results.gz \
         --$mode-results $folder/all.intmdtresults.gz \
         --fi-info $designfolder/generated_files/fault_injection_info.txt \
-        --output-type key-value-pairs \
-        --verbose | tee $folder/eval.log
+        --output-type json \
+        --verbose \
+        --framelength $framelength \
+        --packetlength $minpacketsize | tee $folder/eval.json \
 
-echo "framelength : $framelength" >> $folder/"eval.log"
-echo "packetlength : $minpacketsize" >> $folder/"eval.log"
+
+# echo "framelength : $framelength" >> $folder/"eval.log"
+# echo "packetlength : $minpacketsize" >> $folder/"eval.log"
 
 echo "Finished processing of $folder"
 

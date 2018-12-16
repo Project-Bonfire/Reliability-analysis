@@ -5,6 +5,7 @@ import itertools
 import pickle
 import re
 import sys
+import json
 from collections import Counter
 from operator import attrgetter, sub
 from typing import List
@@ -35,7 +36,7 @@ def main(args):
     filename = args.infile
 
     if verbose:
-        print("Evaluating results file %s" % filename)
+        print("Evaluating results file %s" % filename, file=sys.stderr)
 
     refdata = {}
     
@@ -84,7 +85,7 @@ def main(args):
 
     if verbose:
         res: List[Evaluator.Result] = [r for r in results if not r.vcd_of_module_equal]
-        print("%d without module data" % len([r for r in res if r.errornous]))
+        print("%d without module data" % len([r for r in res if r.errornous]), file=sys.stderr)
 
     for module in modules:
         if module not in results[0].vcd_of_module_equal:
@@ -135,7 +136,7 @@ def main(args):
     module_size_ratio = {m: refdata['locspermodule'][m] / refdata['nrfaultlocs'] for m in modules}
     experiments_per_module = {k: len(v) for k, v in m_all_fixed_fifo.items()}
 
-    print("exp_per_module:", experiments_per_module)
+    print("exp_per_module:", experiments_per_module, file=sys.stderr)
 
     for k, v in experiments_per_module.items():
         if v == 0:
@@ -190,6 +191,8 @@ def main(args):
     names, errors, uls, ulr, ls, lr, si, ri, params, ff, mr, ms = itertools.zip_longest(*all_result)
 
     acc_result = {
+        'packet_length': args.packetlength,
+        'frame_length': args.framelength,
         'num_runs': len(results),
         'num_violations': len(faillist),
         'ratio_violations': len(faillist) / numresults,
@@ -236,6 +239,9 @@ def main(args):
     if args.output_type == 'key-value-pairs':
         for k, v in acc_result.items():
             print('%s : %s' % (str(k), str(v)))
+
+    if args.output_type == 'json':
+        print(json.dumps(acc_result, sort_keys=True, indent=4))
 
     if args.output_type == 'default':
         print("------------Statistics---------------", file=sys.stderr)
@@ -343,7 +349,7 @@ if __name__ == '__main__':
     parser.add_argument('--verbose', action='store_true',
                         help='Prints progress and adfitional information.')
 
-    parser.add_argument('--output-type', nargs='?', choices=['default', 'single-line', 'key-value-pairs'],
+    parser.add_argument('--output-type', nargs='?', choices=['default', 'single-line', 'key-value-pairs', 'json'],
                         default='default', help='The way the output should be printed.')
 
     parser.add_argument('--write-results', nargs='?', type=str, default=None,
@@ -354,6 +360,12 @@ if __name__ == '__main__':
 
     parser.add_argument('--fi-info', type=str, default=None,
                         help="The file which contains basic information about the fault injection experiments...")
+
+    parser.add_argument('--framelength', type=int, default=None,
+                    help="Frame length for this set of experiments")
+
+    parser.add_argument('--packetlength', type=int, default=None,
+                    help="Frame length for this set of experiments")
 
     args = parser.parse_args()
 

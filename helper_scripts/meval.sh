@@ -18,7 +18,7 @@ DESIGN_DIR=$SIM_ROOT_DIR/designs/$design
 
 cat $explst | xargs -n 1 -l bash -c '$SIM_ROOT_DIR/helper_scripts/eval.sh `echo $DESIGN_DIR | rev | cut -d/ -f1 | rev` $0'
 
-evals_file=$DESIGN_DIR/generated_files/results/evals_$explst_name.log
+evals_file=$DESIGN_DIR/generated_files/results/evals_$explst_name.json
 
 if [ -f "$evals_file" ]; then
     rm -f $evals_file
@@ -26,7 +26,8 @@ fi
 
 touch $evals_file
 
-cat $explst | xargs -n 1 -I % bash -c "cat $DESIGN_DIR/generated_files/results/%/eval.log; echo ''" > $evals_file
+python3 $SIM_ROOT_DIR/simulator/eval_sim/analyzer.py --resultsDir $DESIGN_DIR/generated_files/results --exptlstFile $explst --evalsFile $evals_file
+# cat $explst | xargs -n 1 -I % bash -c "cat $DESIGN_DIR/generated_files/results/%/eval.log; echo ''" > $evals_file
 
 echo "=============================================="
-echo "Saved all evaluation results to $evals_file..."
+echo "Saved all evaluation results to $evals_file"

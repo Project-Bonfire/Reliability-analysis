@@ -691,8 +691,14 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
                         res.misrouted_recv += 1
                         continue
 
-                    result = is_destination_reachable_via_port(
-                        noc_rg, 5, flit.going_out_via(), flit.dst_node, False)
+
+                    if flit.dst_node in range(0, 16):
+                        result = is_destination_reachable_via_port(
+                            noc_rg, 5, flit.going_out_via(), flit.dst_node, False)
+                    else:
+                        result = False
+                        print("Invalid dst", flit.dst_node, file=sys.stderr)
+
 
                     if not result:
                         # print(
@@ -717,10 +723,8 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
                 errornous.append(res)
 
                 if print_verbose:
-                    res.faultinfo += "Unexpected error in %s: " % res.exp_id, sys.exc_info()[
-                        0], sys.exc_info()[1]
-                    print("Unexpected error in %s: " %
-                          res.exp_id, sys.exc_info()[0], sys.exc_info()[1])
+                    res.faultinfo += ''.join(["Unexpected error in: ", str(res.exp_id), str(sys.exc_info()[0]), str(sys.exc_info()[1])])
+                    print("Unexpected error in: ", res.exp_id, sys.exc_info()[0], sys.exc_info()[1])
                     print(res)
 
                 continue
