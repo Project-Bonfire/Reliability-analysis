@@ -20,7 +20,7 @@ def main(args):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser('Analyzes the simulation results')
+    parser = argparse.ArgumentParser('Joins togenther simulation results from multiple simulations')
 
     parser.add_argument('--resultsDir', type=str,
                 help='Directory containing the simulation results')

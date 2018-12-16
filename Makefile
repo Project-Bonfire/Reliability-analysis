@@ -17,3 +17,6 @@ evaluate:
 
 multi_eval:
 	@helper_scripts/meval.sh ${DESIGN} ${EXPLST_FILE}
+
+analyze:
+	@helper_scripts/analyze.sh ${DESIGN} ${RES_FILE}
