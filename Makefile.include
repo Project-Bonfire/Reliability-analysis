@@ -32,4 +32,4 @@ export MODELSIM_ENV_SETUP=${SIM_ROOT_DIR}/helper_scripts/include/setup_modelsim_
 
 export VERILOG_CORELIB=/cad/dk/c/v4.11/verilog/c18a6/c18_CORELIB.v
 
-${RES_FILE}=""
+RES_FILE=""
