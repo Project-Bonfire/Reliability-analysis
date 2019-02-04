@@ -11,7 +11,7 @@ PARAMS=""
 export DESIGN_DIR=${SIM_ROOT_DIR}/designs/${DESIGN}
 
 # For 'make setup'
-CELL_EXP_LOC="--cellexport gatelevel/Cells_Report_with_Connections_Verbose.txt"
+CELL_EXP_LOC="gatelevel/Cells_Report_with_Connections_Verbose.txt"
 
 # For 'make prepare'
 EXP_FILE=${DESIGN_DIR}/generated_files/experiments.txt
