@@ -11,7 +11,9 @@ def main(args):
         for experiment in explst.readlines():
             exp_file = os.path.join(args.resultsDir, experiment.strip(), 'eval.json')
             with open(exp_file, 'r') as exp:
-                experiment_list.append(json.load(exp))
+                json_file_contents = json.load(exp)
+                print(json_file_contents)
+                experiment_list.append(json_file_contents)
 
     # Store all experiments into a single file
     with open(args.evalsFile, 'w') as evals:
@@ -32,4 +34,9 @@ if __name__ == '__main__':
                     help='File where to store the evaluation results')
 
     args = parser.parse_args()
+
+    print("Results Dir:\t", args.resultsDir)
+    print("Exptlst File:\t", args.exptlstFile)
+    print("Evals File:\t", args.evalsFile)
+
     main(args)

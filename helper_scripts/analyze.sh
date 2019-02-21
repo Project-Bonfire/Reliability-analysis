@@ -1,7 +1,8 @@
 #!/bin/sh
 
 designfolder=$SIM_ROOT_DIR/designs/$1
-resultsfile=$2
+results_folder=$designfolder/generated_files/results
+resultsfile=$results_folder/$2
 
 if [ ! -d "$designfolder" ]; then
   echo "E R R O R ! Design $1 not found!"
@@ -12,7 +13,6 @@ if [ ! -d "$designfolder" ]; then
   exit
 fi
 
-results_folder=$designfolder/generated_files/results
 
 if [ ! -d "$results_folder" ]; then
   echo "E R R O R ! No simulation resutlts found for design $1! Nothing to evaluate!"

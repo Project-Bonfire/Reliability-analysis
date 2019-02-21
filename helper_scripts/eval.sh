@@ -71,12 +71,12 @@ echo
 start_time="`date +%s`"
 
 python3 -u $SIM_ROOT_DIR/simulator/eval_sim/eval.py $folder/all.results.gz \
-        --$mode-results $folder/all.intmdtresults.gz \
+        --$mode-experiments $folder/all.intmdtresults.gz \
         --fi-info $designfolder/generated_files/fault_injection_info.txt \
-        --output-type json \
         --verbose \
         --framelength $framelength \
-        --packetlength $minpacketsize | tee $folder/eval.json \
+        --packetlength $minpacketsize #\
+        # --output-file $folder/eval.json
 
 
 # echo "framelength : $framelength" >> $folder/"eval.log"

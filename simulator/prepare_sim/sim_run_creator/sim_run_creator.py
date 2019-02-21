@@ -113,14 +113,14 @@ if args.module_representative_numbers:
 
     max_module_name_len = len(max(modulelines.keys(), key=len)) + 1
 
-    module_location_counts = {module_name: len(
+    module_fault_location_counts = {module_name: len(
         locs) for module_name, locs in modulelines.items()}
 
     print("Number of fault locations per module")
     for module_name in sorted(modulelines.keys(), key=lambda x: x[0]):
         name_len_difference = max_module_name_len - len(module_name)
         print("\t%s:%s%d" %
-              (module_name, name_len_difference * ' ', module_location_counts[module_name]))
+              (module_name, name_len_difference * ' ', module_fault_location_counts[module_name]))
 
     print()
     print("Experiments created per module:")
@@ -131,7 +131,7 @@ if args.module_representative_numbers:
 
         # Population = <number of fault injection time points> * <number of fault injectionlocations>
         population = (sim_length - offset) / fault_length * \
-            module_location_counts[module_name]
+            module_fault_location_counts[module_name]
 
         if population == 0:
             print("population of %s is 0. Skipping!" % module_name)

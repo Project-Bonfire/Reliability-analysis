@@ -487,7 +487,7 @@ def checkModuleHashes(modules: Dict[str, str], module_hashes: Dict[str, str], re
     Parameters:
         modules:    Dictionary containing the modules and their hashes
         module_references:  Dictionary containing module names and the expected hashes
-        result: Result data structure, where to strore the information
+        result: Result data structure, where to store the information
                     If a specific hash is equal to the expected one, True is stored into
                     result.vcd_of_module_equal[module], else false is stored
 
