@@ -64,7 +64,13 @@ def main(args):
             print('Running Evaluator...', file=sys.stderr)
 
         noc_rg = Evaluator.init()
-        errornous, experiments = Evaluator.evaluateFile(noc_rg, args.infile, print_verbose=args.verbose)
+        errornous, experiments = Evaluator.evaluateFile(noc_rg, args.infile, 
+                                                        print_verbose=args.verbose)
+
+        if errornous:
+            print('W A R N I N G: Evaluator reported errors! '
+                '(Frame Length: %d, Packet Length: %d)' % (args.framelength, args.packetlength), 
+                file=sys.stderr)
 
     # IF experiments should be stored in the file, do it.
     if args.write_experiments:
@@ -156,7 +162,8 @@ def main(args):
     if args.verbose:
         # Check if there is any experiments which does not have exp data in it.
         exp_result = [r for r in experiments if not r.vcd_of_module_equal]
-        print('%d without module data' % len([r for r in exp_result if r.errornous]), file=sys.stderr)
+        print('%d without module data' % len([r for r in exp_result if r.errornous]), 
+                file=sys.stderr)
 
 
     ##################
@@ -168,8 +175,15 @@ def main(args):
     print(formatted_json)
 
     if args.output_file:
-        with open(args.output_file, 'w') as output:
-            output.write(formatted_json)
+
+        try:
+            with open(args.output_file, 'w') as output:
+                output.write(formatted_json)
+
+        except (FileNotFoundError, PermissionError) as err:
+            print('Cannot open design file', args.design_info, file=sys.stderr)
+            print('Error was:', err, file=sys.stderr)
+
 
 #######################################################
 # Sets up the environment for running the application #
@@ -191,22 +205,26 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser('Evaluation the exp of a Reliability-analysis simulation.')
 
     parser.add_argument('infile', type=str,
-                        help='The inputfile to read, either a `.experiments` file or gzipped `experiments.gz`.')
+                        help='The inputfile to read, either a `.experiments` '
+                                'file or gzipped `experiments.gz`.')
 
     parser.add_argument('--verbose', action='store_true',
                         help='Prints progress and additional information.')
 
     parser.add_argument('--output-file', type=str,
-                        help='The file where the output should be stored. If no filename is the output will be printed on screen')
+                        help='The file where the output should be stored. '
+                                'If no filename is the output will be printed on screen')
 
     parser.add_argument('--write-experiments', nargs='?', type=str, default=None,
                         help='Stores the intermediate exp objects to the given gzip file.')
 
     parser.add_argument('--read-experiments', nargs='?', type=str, default=None,
-                        help='Loads intermediate exp objects from the given gzip file instead of evaluating `infile`.')
+                        help='Loads intermediate exp objects from the given gzip '
+                                'file instead of evaluating `infile`.')
 
     parser.add_argument('--fi-info', type=str, default=None,
-                        help='The file which contains basic information about the fault injection experiments...')
+                        help='The file which contains basic information about '
+                                'the fault injection experiments...')
 
     parser.add_argument('--framelength', type=int, default=None,
                     help='Frame length for this set of experiments')
