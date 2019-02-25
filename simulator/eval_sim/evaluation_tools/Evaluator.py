@@ -134,7 +134,7 @@ class Result:
             if self.params.split(' ')[6][0] == '!':
                 return self.params.split(' ')[6][1:]
 
-        print("Parsing error at: " + self.params, file=sys.stderr)
+        print("Parsing error at: " + self.params)
         sys.exit("Parseerror!")
 
         # r'^U',
@@ -157,8 +157,8 @@ class Result:
             try:
                 return str(ast.literal_eval(' '.join(splitted[7:]))[0][0])
             except ValueError as ve:
-                print("Failed to guess component! %s" %
-                      self.params, file=sys.stderr)
+                print("E R R O R: Failed to guess component! %s" %
+                      self.params)
                 return "nofault"
 
 
@@ -517,12 +517,12 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
         ralgo_check_sent_flits:  If the sent flits should be checked by the routing algorithm
     """
 
-    print(file=sys.stderr)
-    print('Analyzing NoC simulation results...', file=sys.stderr)
-    print('-----------------------------------', file=sys.stderr)
-    print('N O T E! This script assumes you ran your experiments on router 5 of a 4x4 NoC using the XY routing algorithm', file=sys.stderr)
-    print('If this is not the case, please re-simulate with the correct parameters or update this code', file=sys.stderr)
-    print(file=sys.stderr)
+    print()
+    print('Analyzing NoC simulation results...')
+    print('-----------------------------------')
+    print('N O T E! This script assumes you ran your experiments on router 5 of a 4x4 NoC using the XY routing algorithm')
+    print('If this is not the case, please re-simulate with the correct parameters or update this code')
+    print()
 
     results = []
     errornous = []
@@ -533,7 +533,7 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
     opener = gzipOpener if filename.endswith(".gz") else open
 
     # Count the number of experiments in the results file
-    print("Analyzing results file...", file=sys.stderr)
+    print("Analyzing results file...")
     total_exps = 0
 
     try:
@@ -544,15 +544,15 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
                     total_exps += 1
     
     except (FileNotFoundError, PermissionError) as err:
-        print("Cannot open results file", result_file, file=sys.stderr)
-        print("Error was:", err, file=sys.stderr)
+        print("E R R O R: Cannot open results file", result_file)
+        print("Error was:", err)
         sys.exit(1)
 
-    print("Total number of experiments to process:", total_exps, file=sys.stderr)
+    print("Total number of experiments to process:", total_exps)
     print()
 
     if total_exps == 0:
-        print("No experiments found! Exiting!", file=sys.stderr)
+        print("E R R O R: No experiments found! Exiting!")
         sys.exit(1)
 
     # Actually process the results
@@ -568,7 +568,7 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
             # Print a status message after every 100 experiments
             if exp_counter % 100 == 0 and print_verbose:
                 print("Progress: evaluated %d experiments out of %d. (%.2f%%)" % (exp_counter, total_exps, 
-                                                                                exp_counter * 100 / total_exps), file=sys.stderr)
+                                                                                exp_counter * 100 / total_exps))
 
             # Store the experiment ID
             res.exp_id = experiment["exp_id"].strip()
@@ -587,7 +587,7 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
                     "nofault" in experiment["params"]:
 
                     if print_verbose:
-                        print("Setting module hashes to be equal to the first (fault free) experiment", file=sys.stderr)
+                        print("Setting module hashes to be equal to the first (fault free) experiment")
 
                     module_hashes = {}
 
@@ -649,15 +649,12 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
                         if not result and print_verbose:
                             print("WARNING: Generated Packet was not valid according to routing algorithm. "\
                                     "Packet was sent_flits from %d %s to %d via router 5. %s" \
-                                    % (flit.src_node, flit.was_going_out_via(), flit.dst_node, str(flit)), file=sys.stderr)
+                                    % (flit.src_node, flit.was_going_out_via(), flit.dst_node, str(flit)))
                             res.misrouted_sent += 1
 
                 for k, v in node_states.items():
                     if v != FlitType.TAIL:
                         res.sents_invalid += 1
-
-
-                # sys.exit("BYE!") # FIXME: FOR DEBUG ONLY!!
 
                 # A state machine to check the validity of flit order. Checks that the order is always (HeadBody+Tail)*
                 node_states = {i: FlitType.TAIL for i in [1, 4, 5, 6, 9]}
@@ -697,7 +694,7 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
                             noc_rg, 5, flit.going_out_via(), flit.dst_node, False)
                     else:
                         result = False
-                        print("Invalid dst", flit.dst_node, file=sys.stderr)
+                        print("Invalid dst", flit.dst_node)
 
 
                     if not result:
@@ -730,9 +727,9 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
                 continue
             results.append(res)
 
-    print(file=sys.stderr)
-    print('===============================', file=sys.stderr)
-    print('Processed %d experiments in total' % exp_counter, file=sys.stderr)
+    print()
+    print('===============================')
+    print('Processed %d experiments in total' % exp_counter)
 
     return errornous, results
 # END evaluateFile()
@@ -768,12 +765,6 @@ def evaluateFlitFSM(node_states, flit, invalid_counter):
         if new_state != FlitType.HEAD:
             invalid_counter += 1
     
-    # # FIXME: FOR DEBUGGING ONLY
-    # if init_count != invalid_counter:
-    # if flit.src_node == 6:
-    #     # print(flit.currentrouter, node_states[flit.currentrouter], new_state, invalid_counter - init_count)
-    #     print(flit.src_node, flit.dst_node, flit.length, '->', node_states[flit.currentrouter])
-
     node_states[flit.currentrouter] = new_state
 
     return node_states

@@ -3,9 +3,9 @@
 #   design - design which to evaluate
 #   foldername - name of the results folder under the design. If it is not specified, the newest folder is chosen
 
- for i; do 
-    echo $i 
- done
+#  for i; do 
+#     echo $i 
+#  done
 
 designfolder=$SIM_ROOT_DIR/designs/$1
 
@@ -38,9 +38,9 @@ if [ ! -d "$folder" ]; then
   exit
 fi
 
-echo "Evaluating $1 simulation results: $dname"
-echo "Results folder: $folder"
-echo
+echo "Evaluating $1 simulation results: $dname" > $folder/eval.log
+echo "Results folder: $folder" >> $folder/eval.log
+echo >> $folder/eval.log
 
 if [ -f "$folder/eval.log" ]; then
   rm -f $folder/eval.log
@@ -55,41 +55,33 @@ fi
 framelength=$(grep -oP 'Framelength: \K\d+' $folder/scenario.scn)
 minpacketsize=$(grep -oP 'lengths: range\(\K\d+' $folder/scenario.scn)
 
-echo "Reading scenario information:"
-echo -e "\tFrame length:        $framelength"
-echo -e "\tMinimum packet size: $minpacketsize"
+echo "Reading scenario information:" >> $folder/eval.log
+echo -e "\tFrame length:        $framelength" >> $folder/eval.log
+echo -e "\tMinimum packet size: $minpacketsize" >> $folder/eval.log
 
 mode="write"
 if [ -f $folder/all.intmdtresults.gz ]; then
-  mode="read"
+  if [ "$FW" == 0 ]; then
+    mode="read"
+  fi
 fi
 
-echo "$dname - mode: $mode"
-echo
+echo "$dname - mode: $mode" >> $folder/eval.log
+echo >> $folder/eval.log
 
-# Start the timer
-start_time="`date +%s`"
 
 python3 -u $SIM_ROOT_DIR/simulator/eval_sim/eval.py $folder/all.results.gz \
         --$mode-experiments $folder/all.intmdtresults.gz \
         --fi-info $designfolder/generated_files/fault_injection_info.txt \
-        --verbose \
         --framelength $framelength \
-        --packetlength $minpacketsize #\
-        # --output-file $folder/eval.json
+        --packetlength $minpacketsize \
+        --verbose \
+        --output-file $folder/eval.json > $folder/eval.log
 
+error_count=`cat $folder/eval.log | grep "E R R O R:" | wc -l`
+warn_count=`cat $folder/eval.log | grep "W A R N I N G:" | wc -l`
 
-# echo "framelength : $framelength" >> $folder/"eval.log"
-# echo "packetlength : $minpacketsize" >> $folder/"eval.log"
+echo -e "\nF I N I S H: Finished processing $folder:\n \
+    logfile: $folder/eval.log\n \
+    Errors: $error_count, warnings: $warn_count\n"
 
-echo "Finished processing of $folder"
-
-# Stop the time and calculate time spent
-stop_time="`date +%s`"
-time_spent=`python -c "print ($stop_time - $start_time)"`
-
-echo
-echo "--------------------"
-echo "All done!"
-echo "Time spent on evaluation: `date -d@$time_spent -u +%H:%M:%S`"
-echo

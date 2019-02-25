@@ -18,7 +18,7 @@ EXP_FILE=${DESIGN_DIR}/generated_files/experiments.txt
 
 # For 'make simulate'
 SIM_SCENARIO_CONFIG="sim_single_point.txt"
-SIM_NUM_PROC="17"
+SIM_NUM_PROC="20"
 
 # In order to run modelsim: Change the line below to point to the script which sets up 
 # the environment (or just edit the sctipt this is pointing to)
@@ -33,3 +33,8 @@ export MODELSIM_ENV_SETUP=${SIM_ROOT_DIR}/helper_scripts/include/setup_modelsim_
 export VERILOG_CORELIB=/cad/dk/c/v4.11/verilog/c18a6/c18_CORELIB.v
 
 RES_FILE=""
+
+
+NUM_EVAL_PROC=15
+
+FORCE_WRITE=0

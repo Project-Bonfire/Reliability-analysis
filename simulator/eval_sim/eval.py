@@ -10,7 +10,7 @@ from evaluation_tools import Evaluator
 def main(args):
     
     if args.verbose:
-        print('Evaluating experiments file %s' % args.infile, file=sys.stderr)
+        print('Evaluating experiments file %s' % args.infile)
 
 
     #############################
@@ -29,12 +29,12 @@ def main(args):
                     injection_data[key] = ast.literal_eval(value)
 
         except (FileNotFoundError, PermissionError) as err:
-            print('Cannot open design file', args.design_info, file=sys.stderr)
-            print('Error was:', err, file=sys.stderr)
+            print('E R R O R: Cannot open design file', args.design_info)
+            print('Error was:', err)
 
         except ValueError as err:
-            print('Wrongly formatted line in FI info file:', line, file=sys.stderr)
-            print('The error was:', err, file=sys.stderr)
+            print('E R R O R: Wrongly formatted line in FI info file:', line)
+            print('The error was:', err)
 
 
     if 'none' in injection_data['modules']:
@@ -54,20 +54,20 @@ def main(args):
     # If the experiments have been processed earlier, just read the file
     if args.read_experiments:
         if args.verbose:
-            print('Reading Results file...', file=sys.stderr)
+            print('Reading Results file...')
 
         experiments = pickle.load(gzip.open(args.read_experiments, 'rb'))
 
     # If the experiments have not been processed, process them first
     else:
         if args.verbose:
-            print('Running Evaluator...', file=sys.stderr)
+            print('Running Evaluator...')
 
         noc_rg = Evaluator.init()
-        errornous, experiments = Evaluator.evaluateFile(noc_rg, args.infile, 
+        correct, experiments = Evaluator.evaluateFile(noc_rg, args.infile, 
                                                         print_verbose=args.verbose)
 
-        if errornous:
+        if correct:
             print('W A R N I N G: Evaluator reported errors! '
                 '(Frame Length: %d, Packet Length: %d)' % (args.framelength, args.packetlength), 
                 file=sys.stderr)
@@ -75,7 +75,7 @@ def main(args):
     # IF experiments should be stored in the file, do it.
     if args.write_experiments:
         if args.verbose:
-            print('Writing Results...', file=sys.stderr)
+            print('Writing Results...')
         pickle.dump(experiments, gzip.open(args.write_experiments, 'wb'))
     
 
@@ -141,11 +141,11 @@ def main(args):
         # Error at toplevel
         if not exp.vcd_of_module_equal['top_level']:
             results['top_level_error_count'] += 1
-            top_level_error_detected =True
+            top_level_error_detected = True
 
         # Per-module statistics
-        for module_name, errornous in exp.vcd_of_module_equal.items():
-            if errornous and module_name != 'top_level':
+        for module_name, correct in exp.vcd_of_module_equal.items():
+            if not correct and module_name != 'top_level':
 
                 results['module_total_error_count'][module_name] += 1
 
@@ -162,8 +162,7 @@ def main(args):
     if args.verbose:
         # Check if there is any experiments which does not have exp data in it.
         exp_result = [r for r in experiments if not r.vcd_of_module_equal]
-        print('%d without module data' % len([r for r in exp_result if r.errornous]), 
-                file=sys.stderr)
+        print('%d without module data' % len([r for r in exp_result if r.correct]))
 
 
     ##################
@@ -172,7 +171,8 @@ def main(args):
 
     formatted_json = json.dumps(results, sort_keys=True, indent=4)
 
-    print(formatted_json)
+    if args.verbose:
+        print(formatted_json)
 
     if args.output_file:
 
@@ -181,8 +181,8 @@ def main(args):
                 output.write(formatted_json)
 
         except (FileNotFoundError, PermissionError) as err:
-            print('Cannot open design file', args.design_info, file=sys.stderr)
-            print('Error was:', err, file=sys.stderr)
+            print('E R R O R: Cannot open design file', args.design_info)
+            print('Error was:', err)
 
 
 #######################################################
@@ -195,11 +195,7 @@ if __name__ == '__main__':
         print('This script is designed to run on Python 3.6 or newer!')
         exit(1)
 
-    print()
-    print('================')
-    print('RESULT EVALUATOR')
-    print('================')
-    print()
+
 
     # Parse arguments
     parser = argparse.ArgumentParser('Evaluation the exp of a Reliability-analysis simulation.')
@@ -233,6 +229,13 @@ if __name__ == '__main__':
                     help='Frame length for this set of experiments')
 
     args = parser.parse_args()
+
+    if args.verbose:
+        print()
+        print('================')
+        print('RESULT EVALUATOR')
+        print('================')
+        print()
 
     # Start the evaluator
     main(args)

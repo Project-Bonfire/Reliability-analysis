@@ -1,6 +1,7 @@
 import argparse
 import os
 import json
+import sys
 
 def main(args):
 
@@ -10,19 +11,37 @@ def main(args):
     with open(args.exptlstFile, 'r') as explst:
         for experiment in explst.readlines():
             exp_file = os.path.join(args.resultsDir, experiment.strip(), 'eval.json')
-            with open(exp_file, 'r') as exp:
-                json_file_contents = json.load(exp)
-                print(json_file_contents)
-                experiment_list.append(json_file_contents)
+
+            try:
+                with open(exp_file, 'r') as exp:
+                    json_file_contents = json.load(exp)
+                    experiment_list.append(json_file_contents)
+
+            except (FileNotFoundError, PermissionError) as err:
+                print('Cannot open input JSON file (%s)' % exp_file, file=sys.stderr)
+                print('Error was:', err, file=sys.stderr)
+                sys.exit()
+
+            except (json.decoder.JSONDecodeError) as err:
+                print('Error while decoding input JSON file (%s)' % exp_file, file=sys.stderr)
+                print('Error was:', err, file=sys.stderr)
+                sys.exit()
+                
 
     # Store all experiments into a single file
-    with open(args.evalsFile, 'w') as evals:
-        json.dump(experiment_list, evals, sort_keys=True, indent=4)
+    try:
+        with open(args.evalsFile, 'w') as evals:
+            json.dump(experiment_list, evals, sort_keys=True, indent=4)
+
+    except (FileNotFoundError, PermissionError) as err:
+        print('Cannot open output JSON file (%s)' % exp_file, file=sys.stderr)
+        print('Error was:', err, file=sys.stderr)
+        sys.exit()
 
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser('Joins togenther simulation results from multiple simulations')
+    parser = argparse.ArgumentParser('Joins together simulation results from multiple simulations')
 
     parser.add_argument('--resultsDir', type=str,
                 help='Directory containing the simulation results')

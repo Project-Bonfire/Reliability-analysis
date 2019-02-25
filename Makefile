@@ -16,7 +16,7 @@ evaluate:
 	@helper_scripts/eval.sh ${DESIGN}
 
 multi_eval:
-	@helper_scripts/meval.sh ${DESIGN} ${EXPLST_FILE}
+	@helper_scripts/meval.sh ${DESIGN} ${EXPLST_FILE} ${NUM_EVAL_PROC} ${FORCE_WRITE}
 
 analyze:
 	@helper_scripts/analyze.sh ${DESIGN} ${RES_FILE}
