@@ -1,2 +1,0 @@
-ralgo_name="XYRouting"
-info="tablebased 4 flit fifo arbiter"
