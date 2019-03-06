@@ -100,34 +100,35 @@ chosen_experiments = []
 # bigger number of experiments run, than they would have
 # otherwise. Ignores _
 
-if args.module_representative_numbers:
-    modulelines = {}
+modulelines = {}
 
-    # Find all modules in fault locations files
-    for location in fault_locations:
-        module_name = location.split(' ')[2].strip()[1:]
-        modulelines.setdefault(module_name, []).append(location)
+# Find all modules in fault locations files
+for location in fault_locations:
+    module_name = location.split(' ')[2].strip()[1:]
+    modulelines.setdefault(module_name, []).append(location)
 
-    if 'none' in modulelines:
-        del modulelines['none']
+if 'none' in modulelines:
+    del modulelines['none']
 
-    max_module_name_len = len(max(modulelines.keys(), key=len)) + 1
+max_module_name_len = len(max(modulelines.keys(), key=len)) + 1
 
-    module_fault_location_counts = {module_name: len(
-        locs) for module_name, locs in modulelines.items()}
+module_fault_location_counts = {module_name: len(
+    locs) for module_name, locs in modulelines.items()}
 
-    print("Number of fault locations per module")
-    for module_name in sorted(modulelines.keys(), key=lambda x: x[0]):
-        name_len_difference = max_module_name_len - len(module_name)
-        print("\t%s:%s%d" %
-              (module_name, name_len_difference * ' ', module_fault_location_counts[module_name]))
+print("Number of fault locations per module")
+for module_name in sorted(modulelines.keys(), key=lambda x: x[0]):
+    name_len_difference = max_module_name_len - len(module_name)
+    print("\t%s:%s%d" %
+            (module_name, name_len_difference * ' ', module_fault_location_counts[module_name]))
 
-    print()
-    print("Experiments created per module:")
+print()
+print("Experiments created per module:")
 
-    for module_name in sorted(modulelines.keys(), key=lambda x: x[0]):
+for module_name in sorted(modulelines.keys(), key=lambda x: x[0]):
 
-        name_len_difference = max_module_name_len - len(module_name)
+    name_len_difference = max_module_name_len - len(module_name)
+
+    if args.module_representative_numbers:
 
         # Population = <number of fault injection time points> * <number of fault injectionlocations>
         population = (sim_length - offset) / fault_length * \
@@ -146,25 +147,45 @@ if args.module_representative_numbers:
         ss_m = ss / (1 + ((ss - 1) / population))
 
         print("\t%s:%sExperiments: %d (population=%d)" %
-              (module_name, name_len_difference * ' ', ss_m, population))
+            (module_name, name_len_difference * ' ', ss_m, population))
 
         chosen_experiments += choices(modulelines[module_name], k=int(ss_m))
-    print()
 
-else:
-    chosen_experiments = choices(fault_locations, k=args._)
+    else:
+        chosen_experiments += modulelines[module_name]
+    
+        print("\t%s:%sExperiments: %d" %
+        (module_name, name_len_difference * ' ', len(modulelines[module_name])))
+
+print()
+print('Total number of experiments to run:', len(chosen_experiments))
+print()
 
 # Build injection locations file
 print("Storing fault injection experiments to:", args.output_file.name)
 print()
 
+# SA-1
 for injection_location in chosen_experiments:
     time_before_injection = randrange(sim_length - offset) + offset
     time_after_injection = sim_length - time_before_injection + cooldown_time
 
     # Whether we inject 0 or 1 transient SA-0 or SA-1
-    fault_value = randrange(2)
+    fault_value = 1 #randrange(2)
 
     print(" ".join([str(x) for x in [time_before_injection,
                                      time_after_injection, fault_value, fault_length, injection_location]]),
           file=args.output_file)
+
+# SA-0
+for injection_location in chosen_experiments:
+    time_before_injection = randrange(sim_length - offset) + offset
+    time_after_injection = sim_length - time_before_injection + cooldown_time
+
+    # Whether we inject 0 or 1 transient SA-0 or SA-1
+    fault_value = 0 #randrange(2)
+
+    print(" ".join([str(x) for x in [time_before_injection,
+                                     time_after_injection, fault_value, fault_length, injection_location]]),
+          file=args.output_file)
+

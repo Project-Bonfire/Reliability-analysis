@@ -4,6 +4,13 @@ explst=$2
 num_processes=$3
 force_write=$4
 
+if [ ! -f $EXPLST_FILE ]; then
+    echo "E R R O R! Experiment list file specified in the parameters does not exist!"
+    echo "Valid experimet list files are:"
+    ls $DESIGN_DIR/generated_files/results/*.explst
+    exit
+fi
+
 if [ "$force_write" = "" ]; then
     force_write=0
 fi

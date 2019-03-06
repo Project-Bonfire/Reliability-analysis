@@ -15,6 +15,8 @@ from socdep2.RoutingAlgorithms.Calculate_Reachability import (is_destination_rea
 from socdep2.SystemHealthMonitoring import SystemHealthMonitoringUnit
 from socdep2.Utilities import misc
 
+from .module_inputs import input_map
+
 
 class FaultType(Enum):
     MISROUTED = auto()
@@ -66,6 +68,36 @@ class Result:
 
         self.faultinfo = ""
 
+    def loc_is_input(self, module_name):
+        """
+        Checks if the fault was injected into an input signal
+
+        Parameters:
+            module_name:    Name of the module to be checked
+
+        Return:
+            True, if fault was injected into an input signal
+            False otherwise
+        """
+        signal_name = self.params.split()[4]
+
+        # if 'Credit_in' in signal_name:
+        print(signal_name)
+
+        if module_name not in input_map.keys():
+            print('ERROR:', module_name, 'is not a known module!')
+            sys.exit(1)
+
+        # # Look for input patterns
+        # for pattern in input_map[module_name]:
+        #     # print(pattern, signal_name, file=sys.stderr)
+        #     # if re.match(pattern, signal_name):
+        #     if 'credit_in' in signal_name:
+        #         print(signal_name, file=sys.stderr)
+        #         return True
+
+        # No matching patterns found. This signal is not an input.
+        return False
 
     def has_routing_errors(self):
         """

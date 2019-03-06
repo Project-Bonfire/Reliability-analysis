@@ -1,4 +1,4 @@
-# Generated from D:/git/Reliability-analysis/prepare_sim/cell_export_parser\Cells.g4 by ANTLR 4.7
+# Generated from Cells.g4 by ANTLR 4.7.1
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .CellsParser import CellsParser

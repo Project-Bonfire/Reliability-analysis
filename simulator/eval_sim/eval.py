@@ -153,6 +153,9 @@ def main(args):
                 if exp.getFaultModuleFromParam() == module_name:
                     results['fault_in_module_caused_error_at_module'][module_name] += 1
 
+                    # print(exp.params, file=sys.stderr)
+                    exp.loc_is_input(module_name)
+
                     if top_level_error_detected:
                         results['module_caused_error_at_top_level'][module_name] += 1
                     

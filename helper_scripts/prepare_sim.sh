@@ -50,4 +50,5 @@ else
     experiments_file=$2
 fi
 
-python3 $SIM_ROOT_DIR/simulator/prepare_sim/sim_run_creator/sim_run_creator.py $gen_dict/results.txt $experiments_file 0 --module-representative-numbers --cooldown-time 4000
+# python3 $SIM_ROOT_DIR/simulator/prepare_sim/sim_run_creator/sim_run_creator.py $gen_dict/results.txt $experiments_file 0 --module-representative-numbers --cooldown-time 4000
+python3 $SIM_ROOT_DIR/simulator/prepare_sim/sim_run_creator/sim_run_creator.py $gen_dict/results.txt $experiments_file 0 --cooldown-time 4000

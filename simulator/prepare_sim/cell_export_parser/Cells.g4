@@ -4,8 +4,8 @@ r  : NEWLINE* cell+  NEWLINE* ('1' NEWLINE)? EOF;
 cell : NEWLINE* header NEWLINE* inputs? NEWLINE* outputs;
 header : nameline NEWLINE ref  NEWLINE lib NEWLINE (area NEWLINE)? (touch NEWLINE)?;
 nameline : 'Connections for cell \'' (Identifier|AlphaNum) '\':';
-ref : 'Reference:' AlphaNum ;
-lib : 'Library:' Identifier;
+ref : 'Reference:' (Identifier|AlphaNum) ;
+lib : ('Library:'|'Hierarchical:') (Identifier|AlphaNum);
 area: 'Area:' Num;
 touch: 'dont_touch:' AlphaNum;
 
@@ -14,7 +14,7 @@ inputs : 'Input Pins' 'Net' ('Net Driver Pins' 'Driver Pin Type')? NEWLINE Dashe
 outputs : 'Output Pins' 'Net' ('Net Load Pins' 'Load Pin Type')? NEWLINE Dashes NEWLINE io_pin+;
 
 io_pin : pin_name (net_name connected_pins)? NEWLINE;
-pin_name: AlphaNum;
+pin_name: (Identifier|AlphaNum);
 net_name: (Identifier|AlphaNum);
 connected_pins:  connected_pin+;
 // added the newline parser rule here because the list indices change otherwise all the time, if using the tokenizer rule.

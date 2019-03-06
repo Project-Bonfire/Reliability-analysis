@@ -1,4 +1,4 @@
-# Generated from D:/git/Reliability-analysis/prepare_sim/cell_export_parser\Cells.g4 by ANTLR 4.7
+# Generated from Cells.g4 by ANTLR 4.7.1
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -7,7 +7,7 @@ import sys
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\36")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\37")
         buf.write("\u00c0\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
@@ -26,60 +26,60 @@ def serializedATN():
         buf.write("\21\5\21\u00ac\n\21\3\22\3\22\5\22\u00b0\n\22\3\23\3\23")
         buf.write("\3\23\3\23\3\23\5\23\u00b7\n\23\3\24\3\24\3\24\3\24\3")
         buf.write("\24\5\24\u00be\n\24\3\24\2\2\25\2\4\6\b\n\f\16\20\22\24")
-        buf.write("\26\30\32\34\36 \"$&\2\3\3\2\31\32\2\u00c0\2+\3\2\2\2")
-        buf.write("\4B\3\2\2\2\6W\3\2\2\2\bg\3\2\2\2\nk\3\2\2\2\fn\3\2\2")
-        buf.write("\2\16q\3\2\2\2\20t\3\2\2\2\22w\3\2\2\2\24\u0085\3\2\2")
-        buf.write("\2\26\u0093\3\2\2\2\30\u009b\3\2\2\2\32\u009d\3\2\2\2")
-        buf.write("\34\u00a0\3\2\2\2\36\u00a4\3\2\2\2 \u00ab\3\2\2\2\"\u00af")
-        buf.write("\3\2\2\2$\u00b6\3\2\2\2&\u00bd\3\2\2\2(*\7\36\2\2)(\3")
-        buf.write("\2\2\2*-\3\2\2\2+)\3\2\2\2+,\3\2\2\2,/\3\2\2\2-+\3\2\2")
-        buf.write("\2.\60\5\4\3\2/.\3\2\2\2\60\61\3\2\2\2\61/\3\2\2\2\61")
-        buf.write("\62\3\2\2\2\62\66\3\2\2\2\63\65\7\36\2\2\64\63\3\2\2\2")
-        buf.write("\658\3\2\2\2\66\64\3\2\2\2\66\67\3\2\2\2\67;\3\2\2\28")
-        buf.write("\66\3\2\2\29:\7\3\2\2:<\7\36\2\2;9\3\2\2\2;<\3\2\2\2<")
-        buf.write("=\3\2\2\2=>\7\2\2\3>\3\3\2\2\2?A\7\36\2\2@?\3\2\2\2AD")
-        buf.write("\3\2\2\2B@\3\2\2\2BC\3\2\2\2CE\3\2\2\2DB\3\2\2\2EI\5\6")
-        buf.write("\4\2FH\7\36\2\2GF\3\2\2\2HK\3\2\2\2IG\3\2\2\2IJ\3\2\2")
-        buf.write("\2JM\3\2\2\2KI\3\2\2\2LN\5\22\n\2ML\3\2\2\2MN\3\2\2\2")
-        buf.write("NR\3\2\2\2OQ\7\36\2\2PO\3\2\2\2QT\3\2\2\2RP\3\2\2\2RS")
-        buf.write("\3\2\2\2SU\3\2\2\2TR\3\2\2\2UV\5\24\13\2V\5\3\2\2\2WX")
-        buf.write("\5\b\5\2XY\7\36\2\2YZ\5\n\6\2Z[\7\36\2\2[\\\5\f\7\2\\")
-        buf.write("`\7\36\2\2]^\5\16\b\2^_\7\36\2\2_a\3\2\2\2`]\3\2\2\2`")
-        buf.write("a\3\2\2\2ae\3\2\2\2bc\5\20\t\2cd\7\36\2\2df\3\2\2\2eb")
-        buf.write("\3\2\2\2ef\3\2\2\2f\7\3\2\2\2gh\7\4\2\2hi\t\2\2\2ij\7")
-        buf.write("\5\2\2j\t\3\2\2\2kl\7\6\2\2lm\7\31\2\2m\13\3\2\2\2no\7")
-        buf.write("\7\2\2op\7\32\2\2p\r\3\2\2\2qr\7\b\2\2rs\7\30\2\2s\17")
-        buf.write("\3\2\2\2tu\7\t\2\2uv\7\31\2\2v\21\3\2\2\2wx\7\n\2\2x{")
-        buf.write("\7\13\2\2yz\7\f\2\2z|\7\r\2\2{y\3\2\2\2{|\3\2\2\2|}\3")
-        buf.write("\2\2\2}~\7\36\2\2~\177\7\27\2\2\177\u0081\7\36\2\2\u0080")
-        buf.write("\u0082\5\26\f\2\u0081\u0080\3\2\2\2\u0082\u0083\3\2\2")
-        buf.write("\2\u0083\u0081\3\2\2\2\u0083\u0084\3\2\2\2\u0084\23\3")
-        buf.write("\2\2\2\u0085\u0086\7\16\2\2\u0086\u0089\7\13\2\2\u0087")
-        buf.write("\u0088\7\17\2\2\u0088\u008a\7\20\2\2\u0089\u0087\3\2\2")
+        buf.write("\26\30\32\34\36 \"$&\2\4\3\2\32\33\3\2\7\b\2\u00c0\2+")
+        buf.write("\3\2\2\2\4B\3\2\2\2\6W\3\2\2\2\bg\3\2\2\2\nk\3\2\2\2\f")
+        buf.write("n\3\2\2\2\16q\3\2\2\2\20t\3\2\2\2\22w\3\2\2\2\24\u0085")
+        buf.write("\3\2\2\2\26\u0093\3\2\2\2\30\u009b\3\2\2\2\32\u009d\3")
+        buf.write("\2\2\2\34\u00a0\3\2\2\2\36\u00a4\3\2\2\2 \u00ab\3\2\2")
+        buf.write("\2\"\u00af\3\2\2\2$\u00b6\3\2\2\2&\u00bd\3\2\2\2(*\7\37")
+        buf.write("\2\2)(\3\2\2\2*-\3\2\2\2+)\3\2\2\2+,\3\2\2\2,/\3\2\2\2")
+        buf.write("-+\3\2\2\2.\60\5\4\3\2/.\3\2\2\2\60\61\3\2\2\2\61/\3\2")
+        buf.write("\2\2\61\62\3\2\2\2\62\66\3\2\2\2\63\65\7\37\2\2\64\63")
+        buf.write("\3\2\2\2\658\3\2\2\2\66\64\3\2\2\2\66\67\3\2\2\2\67;\3")
+        buf.write("\2\2\28\66\3\2\2\29:\7\3\2\2:<\7\37\2\2;9\3\2\2\2;<\3")
+        buf.write("\2\2\2<=\3\2\2\2=>\7\2\2\3>\3\3\2\2\2?A\7\37\2\2@?\3\2")
+        buf.write("\2\2AD\3\2\2\2B@\3\2\2\2BC\3\2\2\2CE\3\2\2\2DB\3\2\2\2")
+        buf.write("EI\5\6\4\2FH\7\37\2\2GF\3\2\2\2HK\3\2\2\2IG\3\2\2\2IJ")
+        buf.write("\3\2\2\2JM\3\2\2\2KI\3\2\2\2LN\5\22\n\2ML\3\2\2\2MN\3")
+        buf.write("\2\2\2NR\3\2\2\2OQ\7\37\2\2PO\3\2\2\2QT\3\2\2\2RP\3\2")
+        buf.write("\2\2RS\3\2\2\2SU\3\2\2\2TR\3\2\2\2UV\5\24\13\2V\5\3\2")
+        buf.write("\2\2WX\5\b\5\2XY\7\37\2\2YZ\5\n\6\2Z[\7\37\2\2[\\\5\f")
+        buf.write("\7\2\\`\7\37\2\2]^\5\16\b\2^_\7\37\2\2_a\3\2\2\2`]\3\2")
+        buf.write("\2\2`a\3\2\2\2ae\3\2\2\2bc\5\20\t\2cd\7\37\2\2df\3\2\2")
+        buf.write("\2eb\3\2\2\2ef\3\2\2\2f\7\3\2\2\2gh\7\4\2\2hi\t\2\2\2")
+        buf.write("ij\7\5\2\2j\t\3\2\2\2kl\7\6\2\2lm\t\2\2\2m\13\3\2\2\2")
+        buf.write("no\t\3\2\2op\t\2\2\2p\r\3\2\2\2qr\7\t\2\2rs\7\31\2\2s")
+        buf.write("\17\3\2\2\2tu\7\n\2\2uv\7\32\2\2v\21\3\2\2\2wx\7\13\2")
+        buf.write("\2x{\7\f\2\2yz\7\r\2\2z|\7\16\2\2{y\3\2\2\2{|\3\2\2\2")
+        buf.write("|}\3\2\2\2}~\7\37\2\2~\177\7\30\2\2\177\u0081\7\37\2\2")
+        buf.write("\u0080\u0082\5\26\f\2\u0081\u0080\3\2\2\2\u0082\u0083")
+        buf.write("\3\2\2\2\u0083\u0081\3\2\2\2\u0083\u0084\3\2\2\2\u0084")
+        buf.write("\23\3\2\2\2\u0085\u0086\7\17\2\2\u0086\u0089\7\f\2\2\u0087")
+        buf.write("\u0088\7\20\2\2\u0088\u008a\7\21\2\2\u0089\u0087\3\2\2")
         buf.write("\2\u0089\u008a\3\2\2\2\u008a\u008b\3\2\2\2\u008b\u008c")
-        buf.write("\7\36\2\2\u008c\u008d\7\27\2\2\u008d\u008f\7\36\2\2\u008e")
+        buf.write("\7\37\2\2\u008c\u008d\7\30\2\2\u008d\u008f\7\37\2\2\u008e")
         buf.write("\u0090\5\26\f\2\u008f\u008e\3\2\2\2\u0090\u0091\3\2\2")
         buf.write("\2\u0091\u008f\3\2\2\2\u0091\u0092\3\2\2\2\u0092\25\3")
         buf.write("\2\2\2\u0093\u0097\5\30\r\2\u0094\u0095\5\32\16\2\u0095")
         buf.write("\u0096\5\34\17\2\u0096\u0098\3\2\2\2\u0097\u0094\3\2\2")
         buf.write("\2\u0097\u0098\3\2\2\2\u0098\u0099\3\2\2\2\u0099\u009a")
-        buf.write("\7\36\2\2\u009a\27\3\2\2\2\u009b\u009c\7\31\2\2\u009c")
-        buf.write("\31\3\2\2\2\u009d\u009e\t\2\2\2\u009e\33\3\2\2\2\u009f")
-        buf.write("\u00a1\5\36\20\2\u00a0\u009f\3\2\2\2\u00a1\u00a2\3\2\2")
-        buf.write("\2\u00a2\u00a0\3\2\2\2\u00a2\u00a3\3\2\2\2\u00a3\35\3")
-        buf.write("\2\2\2\u00a4\u00a5\5 \21\2\u00a5\u00a6\t\2\2\2\u00a6\u00a7")
-        buf.write("\5 \21\2\u00a7\u00a8\5\"\22\2\u00a8\u00a9\5 \21\2\u00a9")
-        buf.write("\37\3\2\2\2\u00aa\u00ac\7\36\2\2\u00ab\u00aa\3\2\2\2\u00ab")
-        buf.write("\u00ac\3\2\2\2\u00ac!\3\2\2\2\u00ad\u00b0\5$\23\2\u00ae")
-        buf.write("\u00b0\5&\24\2\u00af\u00ad\3\2\2\2\u00af\u00ae\3\2\2\2")
-        buf.write("\u00b0#\3\2\2\2\u00b1\u00b2\7\21\2\2\u00b2\u00b3\7\22")
-        buf.write("\2\2\u00b3\u00b4\t\2\2\2\u00b4\u00b7\7\23\2\2\u00b5\u00b7")
-        buf.write("\7\24\2\2\u00b6\u00b1\3\2\2\2\u00b6\u00b5\3\2\2\2\u00b7")
-        buf.write("%\3\2\2\2\u00b8\u00b9\7\25\2\2\u00b9\u00ba\7\22\2\2\u00ba")
-        buf.write("\u00bb\t\2\2\2\u00bb\u00be\7\23\2\2\u00bc\u00be\7\26\2")
-        buf.write("\2\u00bd\u00b8\3\2\2\2\u00bd\u00bc\3\2\2\2\u00be\'\3\2")
-        buf.write("\2\2\26+\61\66;BIMR`e{\u0083\u0089\u0091\u0097\u00a2\u00ab")
-        buf.write("\u00af\u00b6\u00bd")
+        buf.write("\7\37\2\2\u009a\27\3\2\2\2\u009b\u009c\t\2\2\2\u009c\31")
+        buf.write("\3\2\2\2\u009d\u009e\t\2\2\2\u009e\33\3\2\2\2\u009f\u00a1")
+        buf.write("\5\36\20\2\u00a0\u009f\3\2\2\2\u00a1\u00a2\3\2\2\2\u00a2")
+        buf.write("\u00a0\3\2\2\2\u00a2\u00a3\3\2\2\2\u00a3\35\3\2\2\2\u00a4")
+        buf.write("\u00a5\5 \21\2\u00a5\u00a6\t\2\2\2\u00a6\u00a7\5 \21\2")
+        buf.write("\u00a7\u00a8\5\"\22\2\u00a8\u00a9\5 \21\2\u00a9\37\3\2")
+        buf.write("\2\2\u00aa\u00ac\7\37\2\2\u00ab\u00aa\3\2\2\2\u00ab\u00ac")
+        buf.write("\3\2\2\2\u00ac!\3\2\2\2\u00ad\u00b0\5$\23\2\u00ae\u00b0")
+        buf.write("\5&\24\2\u00af\u00ad\3\2\2\2\u00af\u00ae\3\2\2\2\u00b0")
+        buf.write("#\3\2\2\2\u00b1\u00b2\7\22\2\2\u00b2\u00b3\7\23\2\2\u00b3")
+        buf.write("\u00b4\t\2\2\2\u00b4\u00b7\7\24\2\2\u00b5\u00b7\7\25\2")
+        buf.write("\2\u00b6\u00b1\3\2\2\2\u00b6\u00b5\3\2\2\2\u00b7%\3\2")
+        buf.write("\2\2\u00b8\u00b9\7\26\2\2\u00b9\u00ba\7\23\2\2\u00ba\u00bb")
+        buf.write("\t\2\2\2\u00bb\u00be\7\24\2\2\u00bc\u00be\7\27\2\2\u00bd")
+        buf.write("\u00b8\3\2\2\2\u00bd\u00bc\3\2\2\2\u00be\'\3\2\2\2\26")
+        buf.write("+\61\66;BIMR`e{\u0083\u0089\u0091\u0097\u00a2\u00ab\u00af")
+        buf.write("\u00b6\u00bd")
         return buf.getvalue()
 
 
@@ -94,19 +94,20 @@ class CellsParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "'1'", "'Connections for cell ''", "'':'", 
-                     "'Reference:'", "'Library:'", "'Area:'", "'dont_touch:'", 
-                     "'Input Pins'", "'Net'", "'Net Driver Pins'", "'Driver Pin Type'", 
-                     "'Output Pins'", "'Net Load Pins'", "'Load Pin Type'", 
-                     "'Input Pin'", "'('", "')'", "'Input Port'", "'Output Pin'", 
-                     "'Output Port'" ]
+                     "'Reference:'", "'Library:'", "'Hierarchical:'", "'Area:'", 
+                     "'dont_touch:'", "'Input Pins'", "'Net'", "'Net Driver Pins'", 
+                     "'Driver Pin Type'", "'Output Pins'", "'Net Load Pins'", 
+                     "'Load Pin Type'", "'Input Pin'", "'('", "')'", "'Input Port'", 
+                     "'Output Pin'", "'Output Port'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "Dashes", "Num", "AlphaNum", "Identifier", 
-                      "COMMENT", "INFORMATIONLINE", "WS", "NEWLINE" ]
+                      "<INVALID>", "<INVALID>", "Dashes", "Num", "AlphaNum", 
+                      "Identifier", "COMMENT", "INFORMATIONLINE", "WS", 
+                      "NEWLINE" ]
 
     RULE_r = 0
     RULE_cell = 1
@@ -154,18 +155,19 @@ class CellsParser ( Parser ):
     T__17=18
     T__18=19
     T__19=20
-    Dashes=21
-    Num=22
-    AlphaNum=23
-    Identifier=24
-    COMMENT=25
-    INFORMATIONLINE=26
-    WS=27
-    NEWLINE=28
+    T__20=21
+    Dashes=22
+    Num=23
+    AlphaNum=24
+    Identifier=25
+    COMMENT=26
+    INFORMATIONLINE=27
+    WS=28
+    NEWLINE=29
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
-        self.checkVersion("4.7")
+        self.checkVersion("4.7.1")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
@@ -203,12 +205,6 @@ class CellsParser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitR" ):
                 listener.exitR(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitR" ):
-                return visitor.visitR(self)
-            else:
-                return visitor.visitChildren(self)
 
 
 
@@ -310,12 +306,6 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitCell" ):
                 listener.exitCell(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitCell" ):
-                return visitor.visitCell(self)
-            else:
-                return visitor.visitChildren(self)
-
 
 
 
@@ -352,7 +342,7 @@ class CellsParser ( Parser ):
             self.state = 75
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==CellsParser.T__7:
+            if _la==CellsParser.T__8:
                 self.state = 74
                 self.inputs()
 
@@ -420,12 +410,6 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitHeader" ):
                 listener.exitHeader(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitHeader" ):
-                return visitor.visitHeader(self)
-            else:
-                return visitor.visitChildren(self)
-
 
 
 
@@ -451,7 +435,7 @@ class CellsParser ( Parser ):
             self.state = 94
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==CellsParser.T__5:
+            if _la==CellsParser.T__6:
                 self.state = 91
                 self.area()
                 self.state = 92
@@ -461,7 +445,7 @@ class CellsParser ( Parser ):
             self.state = 99
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==CellsParser.T__6:
+            if _la==CellsParser.T__7:
                 self.state = 96
                 self.touch()
                 self.state = 97
@@ -499,12 +483,6 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitNameline" ):
                 listener.exitNameline(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNameline" ):
-                return visitor.visitNameline(self)
-            else:
-                return visitor.visitChildren(self)
-
 
 
 
@@ -540,6 +518,9 @@ class CellsParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def Identifier(self):
+            return self.getToken(CellsParser.Identifier, 0)
+
         def AlphaNum(self):
             return self.getToken(CellsParser.AlphaNum, 0)
 
@@ -554,12 +535,6 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitRef" ):
                 listener.exitRef(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRef" ):
-                return visitor.visitRef(self)
-            else:
-                return visitor.visitChildren(self)
-
 
 
 
@@ -567,12 +542,18 @@ class CellsParser ( Parser ):
 
         localctx = CellsParser.RefContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_ref)
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 105
             self.match(CellsParser.T__3)
             self.state = 106
-            self.match(CellsParser.AlphaNum)
+            _la = self._input.LA(1)
+            if not(_la==CellsParser.AlphaNum or _la==CellsParser.Identifier):
+                self._errHandler.recoverInline(self)
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -590,6 +571,9 @@ class CellsParser ( Parser ):
         def Identifier(self):
             return self.getToken(CellsParser.Identifier, 0)
 
+        def AlphaNum(self):
+            return self.getToken(CellsParser.AlphaNum, 0)
+
         def getRuleIndex(self):
             return CellsParser.RULE_lib
 
@@ -601,12 +585,6 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitLib" ):
                 listener.exitLib(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitLib" ):
-                return visitor.visitLib(self)
-            else:
-                return visitor.visitChildren(self)
-
 
 
 
@@ -614,12 +592,23 @@ class CellsParser ( Parser ):
 
         localctx = CellsParser.LibContext(self, self._ctx, self.state)
         self.enterRule(localctx, 10, self.RULE_lib)
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 108
-            self.match(CellsParser.T__4)
+            _la = self._input.LA(1)
+            if not(_la==CellsParser.T__4 or _la==CellsParser.T__5):
+                self._errHandler.recoverInline(self)
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
             self.state = 109
-            self.match(CellsParser.Identifier)
+            _la = self._input.LA(1)
+            if not(_la==CellsParser.AlphaNum or _la==CellsParser.Identifier):
+                self._errHandler.recoverInline(self)
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -648,12 +637,6 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitArea" ):
                 listener.exitArea(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitArea" ):
-                return visitor.visitArea(self)
-            else:
-                return visitor.visitChildren(self)
-
 
 
 
@@ -664,7 +647,7 @@ class CellsParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 111
-            self.match(CellsParser.T__5)
+            self.match(CellsParser.T__6)
             self.state = 112
             self.match(CellsParser.Num)
         except RecognitionException as re:
@@ -695,12 +678,6 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitTouch" ):
                 listener.exitTouch(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTouch" ):
-                return visitor.visitTouch(self)
-            else:
-                return visitor.visitChildren(self)
-
 
 
 
@@ -711,7 +688,7 @@ class CellsParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 114
-            self.match(CellsParser.T__6)
+            self.match(CellsParser.T__7)
             self.state = 115
             self.match(CellsParser.AlphaNum)
         except RecognitionException as re:
@@ -755,12 +732,6 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitInputs" ):
                 listener.exitInputs(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInputs" ):
-                return visitor.visitInputs(self)
-            else:
-                return visitor.visitChildren(self)
-
 
 
 
@@ -772,17 +743,17 @@ class CellsParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 117
-            self.match(CellsParser.T__7)
-            self.state = 118
             self.match(CellsParser.T__8)
+            self.state = 118
+            self.match(CellsParser.T__9)
             self.state = 121
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==CellsParser.T__9:
+            if _la==CellsParser.T__10:
                 self.state = 119
-                self.match(CellsParser.T__9)
-                self.state = 120
                 self.match(CellsParser.T__10)
+                self.state = 120
+                self.match(CellsParser.T__11)
 
 
             self.state = 123
@@ -800,7 +771,7 @@ class CellsParser ( Parser ):
                 self.state = 129 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not (_la==CellsParser.AlphaNum):
+                if not (_la==CellsParser.AlphaNum or _la==CellsParser.Identifier):
                     break
 
         except RecognitionException as re:
@@ -844,12 +815,6 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitOutputs" ):
                 listener.exitOutputs(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitOutputs" ):
-                return visitor.visitOutputs(self)
-            else:
-                return visitor.visitChildren(self)
-
 
 
 
@@ -861,17 +826,17 @@ class CellsParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 131
-            self.match(CellsParser.T__11)
+            self.match(CellsParser.T__12)
             self.state = 132
-            self.match(CellsParser.T__8)
+            self.match(CellsParser.T__9)
             self.state = 135
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==CellsParser.T__12:
+            if _la==CellsParser.T__13:
                 self.state = 133
-                self.match(CellsParser.T__12)
-                self.state = 134
                 self.match(CellsParser.T__13)
+                self.state = 134
+                self.match(CellsParser.T__14)
 
 
             self.state = 137
@@ -889,7 +854,7 @@ class CellsParser ( Parser ):
                 self.state = 143 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not (_la==CellsParser.AlphaNum):
+                if not (_la==CellsParser.AlphaNum or _la==CellsParser.Identifier):
                     break
 
         except RecognitionException as re:
@@ -932,12 +897,6 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitIo_pin" ):
                 listener.exitIo_pin(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIo_pin" ):
-                return visitor.visitIo_pin(self)
-            else:
-                return visitor.visitChildren(self)
-
 
 
 
@@ -976,6 +935,9 @@ class CellsParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def Identifier(self):
+            return self.getToken(CellsParser.Identifier, 0)
+
         def AlphaNum(self):
             return self.getToken(CellsParser.AlphaNum, 0)
 
@@ -990,12 +952,6 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitPin_name" ):
                 listener.exitPin_name(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitPin_name" ):
-                return visitor.visitPin_name(self)
-            else:
-                return visitor.visitChildren(self)
-
 
 
 
@@ -1003,10 +959,16 @@ class CellsParser ( Parser ):
 
         localctx = CellsParser.Pin_nameContext(self, self._ctx, self.state)
         self.enterRule(localctx, 22, self.RULE_pin_name)
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 153
-            self.match(CellsParser.AlphaNum)
+            _la = self._input.LA(1)
+            if not(_la==CellsParser.AlphaNum or _la==CellsParser.Identifier):
+                self._errHandler.recoverInline(self)
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1037,12 +999,6 @@ class CellsParser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitNet_name" ):
                 listener.exitNet_name(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNet_name" ):
-                return visitor.visitNet_name(self)
-            else:
-                return visitor.visitChildren(self)
 
 
 
@@ -1092,12 +1048,6 @@ class CellsParser ( Parser ):
         def exitRule(self, listener:ParseTreeListener):
             if hasattr( listener, "exitConnected_pins" ):
                 listener.exitConnected_pins(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitConnected_pins" ):
-                return visitor.visitConnected_pins(self)
-            else:
-                return visitor.visitChildren(self)
 
 
 
@@ -1164,12 +1114,6 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitConnected_pin" ):
                 listener.exitConnected_pin(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitConnected_pin" ):
-                return visitor.visitConnected_pin(self)
-            else:
-                return visitor.visitChildren(self)
-
 
 
 
@@ -1223,12 +1167,6 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitNewline" ):
                 listener.exitNewline(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitNewline" ):
-                return visitor.visitNewline(self)
-            else:
-                return visitor.visitChildren(self)
-
 
 
 
@@ -1279,12 +1217,6 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitPin_type" ):
                 listener.exitPin_type(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitPin_type" ):
-                return visitor.visitPin_type(self)
-            else:
-                return visitor.visitChildren(self)
-
 
 
 
@@ -1297,11 +1229,11 @@ class CellsParser ( Parser ):
             self.state = 173
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [CellsParser.T__14, CellsParser.T__17]:
+            if token in [CellsParser.T__15, CellsParser.T__18]:
                 self.state = 171
                 self.input_pin()
                 pass
-            elif token in [CellsParser.T__18, CellsParser.T__19]:
+            elif token in [CellsParser.T__19, CellsParser.T__20]:
                 self.state = 172
                 self.output_pin()
                 pass
@@ -1339,12 +1271,6 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitInput_pin" ):
                 listener.exitInput_pin(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitInput_pin" ):
-                return visitor.visitInput_pin(self)
-            else:
-                return visitor.visitChildren(self)
-
 
 
 
@@ -1358,11 +1284,11 @@ class CellsParser ( Parser ):
             self.state = 180
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [CellsParser.T__14]:
+            if token in [CellsParser.T__15]:
                 self.state = 175
-                self.match(CellsParser.T__14)
-                self.state = 176
                 self.match(CellsParser.T__15)
+                self.state = 176
+                self.match(CellsParser.T__16)
                 self.state = 177
                 _la = self._input.LA(1)
                 if not(_la==CellsParser.AlphaNum or _la==CellsParser.Identifier):
@@ -1371,11 +1297,11 @@ class CellsParser ( Parser ):
                     self._errHandler.reportMatch(self)
                     self.consume()
                 self.state = 178
-                self.match(CellsParser.T__16)
-                pass
-            elif token in [CellsParser.T__17]:
-                self.state = 179
                 self.match(CellsParser.T__17)
+                pass
+            elif token in [CellsParser.T__18]:
+                self.state = 179
+                self.match(CellsParser.T__18)
                 pass
             else:
                 raise NoViableAltException(self)
@@ -1411,12 +1337,6 @@ class CellsParser ( Parser ):
             if hasattr( listener, "exitOutput_pin" ):
                 listener.exitOutput_pin(self)
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitOutput_pin" ):
-                return visitor.visitOutput_pin(self)
-            else:
-                return visitor.visitChildren(self)
-
 
 
 
@@ -1430,11 +1350,11 @@ class CellsParser ( Parser ):
             self.state = 187
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [CellsParser.T__18]:
+            if token in [CellsParser.T__19]:
                 self.state = 182
-                self.match(CellsParser.T__18)
+                self.match(CellsParser.T__19)
                 self.state = 183
-                self.match(CellsParser.T__15)
+                self.match(CellsParser.T__16)
                 self.state = 184
                 _la = self._input.LA(1)
                 if not(_la==CellsParser.AlphaNum or _la==CellsParser.Identifier):
@@ -1443,11 +1363,11 @@ class CellsParser ( Parser ):
                     self._errHandler.reportMatch(self)
                     self.consume()
                 self.state = 185
-                self.match(CellsParser.T__16)
+                self.match(CellsParser.T__17)
                 pass
-            elif token in [CellsParser.T__19]:
+            elif token in [CellsParser.T__20]:
                 self.state = 186
-                self.match(CellsParser.T__19)
+                self.match(CellsParser.T__20)
                 pass
             else:
                 raise NoViableAltException(self)
