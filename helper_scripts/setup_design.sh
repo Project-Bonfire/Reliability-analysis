@@ -111,22 +111,16 @@ cat $outfile | grep -i error
 echo ""
 
 
-if  [[ $resfoldrcommand == "cd /tmp/"* ]] ;
-then
-    $resfoldrcommand #cd there
-    rm -rf $gen_dir/moduleoutputsignals
-    mkdir $gen_dir/moduleoutputsignals
+
+cd $gen_dir/results/single #cd there
+rm -rf $gen_dir/moduleoutputsignals
+mkdir $gen_dir/moduleoutputsignals
+
+ls .
+
+find . -name "*.vcd" -exec /bin/sh -c "cat {} | grep -oP '[^/s]+ [^/s]+(?= .end$)' > $gen_dir/moduleoutputsignals/`basename {}`.outputs" \;
+echo "Created $1/moduleoutputsignals folder, please verify that the module output signals are captured correctly!"
     
-    ls .
-    
-    find . -name "*.vcd" -exec /bin/sh -c "cat {} | grep -oP '[^/s]+ [^/s]+(?= .end$)' > $gen_dir/moduleoutputsignals/`basename {}`.outputs" \;
-    echo "Created $1/moduleoutputsignals folder, please verify that the module output signals are captured correctly!"
-    
-else
-    echo ""
-    echo "Error: could not find resultfolder of the sample simulation! (command was: $resfoldrcommand)"
-    echo ""
-fi
 
 echo ""
 echo "A T T E N T I O N : Please read the output carefully, to ensure the design was setup the way you want."
