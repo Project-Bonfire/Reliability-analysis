@@ -15,9 +15,6 @@ from socdep2.RoutingAlgorithms.Calculate_Reachability import (is_destination_rea
 from socdep2.SystemHealthMonitoring import SystemHealthMonitoringUnit
 from socdep2.Utilities import misc
 
-from .module_inputs import input_map
-
-
 class FaultType(Enum):
     MISROUTED = auto()
     FAILEDDELIVERY = auto()
@@ -68,33 +65,26 @@ class Result:
 
         self.faultinfo = ""
 
-    def loc_is_input(self, module_name):
+    def loc_is_input(self, input_map, curr_module):
         """
         Checks if the fault was injected into an input signal
 
         Parameters:
-            module_name:    Name of the module to be checked
+            input_map:    Map containing the input signals
+            curr_module:  Name of the module which is checked
 
         Return:
             True, if fault was injected into an input signal
             False otherwise
         """
+
         signal_name = self.params.split()[4]
+        exp_module = self.params.split()[-1][1:]
 
-        # if 'Credit_in' in signal_name:
-        print(signal_name)
-
-        if module_name not in input_map.keys():
-            print('ERROR:', module_name, 'is not a known module!')
-            sys.exit(1)
-
-        # # Look for input patterns
-        # for pattern in input_map[module_name]:
-        #     # print(pattern, signal_name, file=sys.stderr)
-        #     # if re.match(pattern, signal_name):
-        #     if 'credit_in' in signal_name:
-        #         print(signal_name, file=sys.stderr)
-        #         return True
+        if exp_module == curr_module:
+            for input_module in input_map.keys():
+                if re.match(input_module, signal_name[1:]):
+                    return True
 
         # No matching patterns found. This signal is not an input.
         return False
@@ -196,6 +186,18 @@ class Result:
 
     def is_valid(self):
 
+        # print(self.params, file=sys.stderr)
+
+        # print("unexpected_len_recv:",        self.unexpected_len_recv, file=sys.stderr)
+        # print("unexpected_len_sent:",        self.unexpected_len_sent, file=sys.stderr)
+        # print("sents_invalid:",              self.sents_invalid, file=sys.stderr)
+        # print("recv_invalid:",               self.recv_invalid, file=sys.stderr)
+        # print("misrouted_sent:",             self.misrouted_sent, file=sys.stderr)
+        # print("misrouted_recv:",             self.misrouted_recv, file=sys.stderr)
+        # print("errornous:",                  self.errornous, file=sys.stderr)
+        # print("connection_counter_invalid:", self.connection_counter_invalid, file=sys.stderr)
+        # print(file=sys.stderr)
+
         is_valid = not (
             self.unexpected_len_recv or \
             self.unexpected_len_sent or \
@@ -205,15 +207,6 @@ class Result:
             self.misrouted_recv > 0 or \
             self.errornous or \
             self.connection_counter_invalid)
-
-        # print(self.unexpected_len_recv, \
-        #     self.unexpected_len_sent, \
-        #     self.sents_invalid > 0, \
-        #     self.recv_invalid > 0, \
-        #     self.misrouted_sent > 0, \
-        #     self.misrouted_recv > 0, \
-        #     self.errornous, \
-        #     self.connection_counter_invalid, '->', is_valid)
 
         return is_valid
 
@@ -277,6 +270,7 @@ class FlitEvent:
         if not self.on_out_port:
             raise AssertionError("this is not an outgoing packet event!")
         return self.pos_is_in_dir(self.currentrouter)
+        # return self.pos_is_in_dir(self.dst_node)
 
     def pos_is_in_dir(self, router_id):
         # type: (int) -> str
@@ -402,6 +396,8 @@ def dictToFlit(data, data_type):
     Return:
         Data processed into the format specified by type
     """
+
+    # print(data, file=sys.stderr)
 
     flit = data_type()
     flit.time = int(data['time'].split(' ')[0])
@@ -678,10 +674,11 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
                             result = is_destination_reachable_from_source(noc_rg, 5, flit.dst_node)
 
 
-                        if not result and print_verbose:
-                            print("WARNING: Generated Packet was not valid according to routing algorithm. "\
-                                    "Packet was sent_flits from %d %s to %d via router 5. %s" \
-                                    % (flit.src_node, flit.was_going_out_via(), flit.dst_node, str(flit)))
+                        if not result:
+                            if print_verbose:
+                                print("WARNING: Generated Packet was not valid according to routing algorithm. "\
+                                        "Packet was sent from %d %s to %d via router 5. %s" \
+                                        % (flit.src_node, flit.was_going_out_via(), flit.dst_node, str(flit)))
                             res.misrouted_sent += 1
 
                 for k, v in node_states.items():
@@ -694,6 +691,7 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
                 for flit in recvd_flits:
                     # def tmpfunc(nodestates, flit):
                     #     res.recv_invalid += 1
+                    # print(flit, sys.stderr)
 
                     node_states = evaluateFlitFSM(node_states, flit, res.recv_invalid)
 
@@ -728,14 +726,17 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
                         result = False
                         print("Invalid dst", flit.dst_node)
 
-
                     if not result:
-                        # print(
-                        #   "WARNING: Received Packet was not valid according to routing algorithm. Packet was sent_flits from %d to %d via router 5. But it was received at: %d (dir:%s) %s" % (
-                        #      flit.src_node, flit.dst_node, flit.currentrouter, flit.going_out_via(), str(flit)))
+                        if "nofault" in experiment["params"]:
+                            print("WARNING: Received Packet was not valid according to routing algorithm."
+                                  "Packet was sent_flits from %d to %d via router 5. But it was received at: %d (dir:%s) %sm X_Size: %d, y_sixe: %d" % (
+                                  flit.src_node, flit.dst_node, flit.currentrouter, 
+                                  flit.going_out_via(), str(flit), Config.ag.x_size, Config.ag.y_size), file=sys.stderr)
+
                         res.misrouted_recv += 1
 
 
+                # print(src_to_dst_counter, file=sys.stderr)
                 for src_dst_pair, count in src_to_dst_counter.items():
                     if count != 0:
                         res.connection_counter_invalid = True
@@ -750,7 +751,7 @@ def evaluateFile(noc_rg, filename: str, print_verbose: bool = False, ralgo_check
             except:
                 res.errornous = True
                 errornous.append(res)
-
+            
                 if print_verbose:
                     res.faultinfo += ''.join(["Unexpected error in: ", str(res.exp_id), str(sys.exc_info()[0]), str(sys.exc_info()[1])])
                     print("Unexpected error in: ", res.exp_id, sys.exc_info()[0], sys.exc_info()[1])

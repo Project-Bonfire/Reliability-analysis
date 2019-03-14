@@ -208,7 +208,7 @@ echo "Saving results into a single file"
 cat results/* > all.results
 rm -rf "results"
 gzip all.results
-rm -rf $cleanupdirs
+# rm -rf $cleanupdirs
 
 echo "File listing of `pwd`:"
 ls -l

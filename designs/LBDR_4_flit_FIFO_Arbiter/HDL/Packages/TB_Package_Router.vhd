@@ -9,7 +9,7 @@ use IEEE.NUMERIC_STD.all;
  use ieee.std_logic_misc.all;
 
 package TB_Package is
-  function Header_gen(source, destination: integer ) return std_logic_vector ;
+  function Header_gen(network_size_x, source, destination: integer ) return std_logic_vector ;
 
   function Body_1_gen(Packet_length, packet_id: integer ) return std_logic_vector ;
   function Body_gen(Data: integer ) return std_logic_vector ;
@@ -20,7 +20,7 @@ package TB_Package is
                                  signal credit_in: in std_logic; signal valid_out: in std_logic; 
                                  signal credit_counter_out: out std_logic_vector(1 downto 0));
   procedure gen_random_packet(filename: in string;
-                      network_size, frame_length, source, initial_delay, min_packet_size, max_packet_size: in integer;
+                      network_size_x, network_size_y, frame_length, source, initial_delay, min_packet_size, max_packet_size: in integer;
                       finish_time: in time; signal clk: in std_logic;
                       signal credit_counter_in: in std_logic_vector(1 downto 0); signal valid_out: out std_logic; 
                       signal port_in: out std_logic_vector);
@@ -29,7 +29,7 @@ package TB_Package is
   --                    signal credit_counter_in: in std_logic_vector(1 downto 0); signal valid_out: out std_logic; 
   --                    signal port_in: out std_logic_vector); 
   procedure get_packet(filename: in string;
-                  DATA_WIDTH, initial_delay, Node_ID: in integer; signal clk: in std_logic; 
+                  network_size_x, DATA_WIDTH, initial_delay, Node_ID: in integer; signal clk: in std_logic; 
                      signal credit_out: out std_logic; signal valid_in: in std_logic; signal port_in: in std_logic_vector);
 end TB_Package;
 
@@ -38,13 +38,23 @@ package body TB_Package is
   constant Body_type : std_logic_vector := "010";
   constant Tail_type : std_logic_vector := "100";
 
-  function Header_gen(source, destination: integer)
+  function Header_gen(network_size_x, source, destination: integer)
               return std_logic_vector is
       variable Header_flit: std_logic_vector (31 downto 0);
+      variable source_x, source_y, destination_x, destination_y: integer;
+
       begin
-      Header_flit := Header_type &  std_logic_vector(to_unsigned(source, 14)) &
-                     std_logic_vector(to_unsigned(destination, 14))  & XOR_REDUCE(Header_type &  std_logic_vector(to_unsigned(source, 14)) &
-                     std_logic_vector(to_unsigned(destination, 14)));
+
+      -- We only need network_size_x for calculation of X and Y coordinates of a node!
+      source_x      := source       mod  network_size_x;
+      source_y      := source       /    network_size_x;
+      destination_x := destination  mod  network_size_x;
+      destination_y := destination  /    network_size_x;
+
+      Header_flit := Header_type &  std_logic_vector(to_unsigned(source_y,7)) & std_logic_vector(to_unsigned(source_x,7)) &
+                     std_logic_vector(to_unsigned(destination_y,7)) & std_logic_vector(to_unsigned(destination_x,7)) &
+                     XOR_REDUCE(Header_type &  std_logic_vector(to_unsigned(source_y,7)) & std_logic_vector(to_unsigned(source_x,7)) &
+                     std_logic_vector(to_unsigned(destination_y,7)) & std_logic_vector(to_unsigned(destination_x,7)));
     return Header_flit;
   end Header_gen;
 
@@ -100,7 +110,7 @@ package body TB_Package is
   end credit_counter_control;
 
   procedure gen_random_packet(filename: in string;
-                      network_size, frame_length, source, initial_delay, min_packet_size, max_packet_size: in integer;
+                      network_size_x, network_size_y, frame_length, source, initial_delay, min_packet_size, max_packet_size: in integer;
                       finish_time: in time; signal clk: in std_logic;
                       signal credit_counter_in: in std_logic_vector(1 downto 0); signal valid_out: out std_logic; 
                       signal port_in: out std_logic_vector) is
@@ -114,8 +124,17 @@ package body TB_Package is
     variable credit_counter: std_logic_vector (1 downto 0);
     variable x,y :integer ;
     begin
-
+      
+    --------------------------------------  
+    uniform(seed1, seed2, rand);
     Packet_length := integer((integer(rand*100.0)*frame_length)/100);
+    if (Packet_length < min_packet_size) then 
+        Packet_length:=min_packet_size;
+    end if;
+    if (Packet_length > max_packet_size) then 
+        Packet_length:=max_packet_size;
+    end if;
+    --------------------------------------
     valid_out <= '0';
     port_in <= "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" ;
     wait until clk'event and clk ='1';
@@ -128,7 +147,7 @@ package body TB_Package is
 
       --generating the frame initial delay
       uniform(seed1, seed2, rand);
-      frame_starting_delay := integer(((integer(rand*100.0)*(frame_length - Packet_length-1)))/100); 
+      frame_starting_delay := integer(((integer(rand*100.0)*(frame_length - Packet_length-1)))/300); 
       --generating the frame ending delay
       frame_ending_delay := frame_length - (Packet_length+frame_starting_delay);
 
@@ -162,10 +181,10 @@ package body TB_Package is
       while (destination_id = source) loop 
           uniform(seed1, seed2, rand);
           if source = 5 then
-            destination_id := integer(rand*real((network_size**2)-1)); --depending on the routing algo this generates impossible packets
+            destination_id := integer(rand*real((network_size_x*network_size_y)-1)); --depending on the routing algo this generates impossible packets
           else -- create valid destinations for xy routing
-            x := source mod network_size;
-            y := source / network_size;
+            x := source mod network_size_x;
+            y := source / network_size_x;
             --the routers location is 5
             if x = 0 then
               x:= integer((rand*real(2)))+1;
@@ -180,13 +199,13 @@ package body TB_Package is
               x:= 1;
               y:= integer(rand*real(1));
             end if;
-            destination_id := (y * network_size) + x;
+            destination_id := (y * network_size_x) + x;
           end if;
       end loop;
  
       --------------------------------------
       wait until clk'event and clk ='0'; -- On negative edge of clk (for syncing purposes)
-      port_in <= Header_gen(source, destination_id); -- Generating the header flit of the packet (All packets have a header flit)!
+      port_in <= Header_gen(network_size_x, source, destination_id); -- Generating the header flit of the packet (All packets have a header flit)!
       valid_out <= '1';
       write(LINEVARIABLE, "type:header;time:" & time'image(now) & ";causedby:" &integer'image(source) &";from:" & integer'image(source) & ";to:" & integer'image(destination_id) & ";length:"& integer'image(Packet_length)  & ";id:"& integer'image(id_counter) &  ";flitno:0");
       writeline(VEC_FILE, LINEVARIABLE);
@@ -356,10 +375,10 @@ package body TB_Package is
 
 
   procedure get_packet(filename: in string;
-                       DATA_WIDTH, initial_delay, Node_ID: in integer; signal clk: in std_logic; 
+                       network_size_x, DATA_WIDTH, initial_delay, Node_ID: in integer; signal clk: in std_logic; 
                        signal credit_out: out std_logic; signal valid_in: in std_logic; signal port_in: in std_logic_vector) is
   -- initial_delay: waits for this number of clock cycles before sending the packet!
-    variable source_node, destination_node, P_length, packet_id, counter: integer;
+    variable source_node_x, source_node_y, destination_node_x, destination_node_y, source_node, destination_node, P_length, packet_id, counter: integer;
     variable LINEVARIABLE : line; 
      file VEC_FILE : text is out filename;
      begin
@@ -372,8 +391,15 @@ package body TB_Package is
          if valid_in = '1' then
               if (port_in(DATA_WIDTH-1 downto DATA_WIDTH-3) = "001") then
                 counter := 1; 
-                source_node := to_integer(unsigned(port_in(28 downto 15)));
-                destination_node := to_integer(unsigned(port_in(14 downto 1)));
+
+                source_node_y := to_integer(unsigned(port_in(28 downto 22)));
+                source_node_x := to_integer(unsigned(port_in(21 downto 15)));
+                destination_node_y := to_integer(unsigned(port_in(14 downto 8)));
+                destination_node_x := to_integer(unsigned(port_in(7 downto 1)));
+
+                -- We only needs network_size_x for computing the node ID (convert from (X,Y) coordinate to Node ID)!
+                source_node := (source_node_y * network_size_x) + source_node_x;
+                destination_node := (destination_node_y * network_size_x) + destination_node_x;
 
                 write(LINEVARIABLE, "type:header;time:" & time'image(now) & ";causedby:" &integer'image(Node_ID) &";from:" & integer'image(source_node) & ";to:" & integer'image(destination_node)); --   ";flitno:0");
                 writeline(VEC_FILE, LINEVARIABLE);

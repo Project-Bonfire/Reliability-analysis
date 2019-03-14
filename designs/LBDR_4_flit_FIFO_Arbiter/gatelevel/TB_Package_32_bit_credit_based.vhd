@@ -37,10 +37,21 @@ package body TB_Package is
   function Header_gen(source, destination: integer)
               return std_logic_vector is
     	variable Header_flit: std_logic_vector (31 downto 0);
+      variable source_x, source_y, destination_x, destination_y: integer;
+      variable network_size_x: integer := 4; -- TODO (make it generic)
+
     	begin
-    	Header_flit := Header_type &  std_logic_vector(to_unsigned(source, 14)) &
-                     std_logic_vector(to_unsigned(destination, 14))  & XOR_REDUCE(Header_type &  std_logic_vector(to_unsigned(source, 14)) &
-                     std_logic_vector(to_unsigned(destination, 14)));
+
+      -- We only need network_size_x for calculation of X and Y coordinates of a node!
+      source_x      := source       mod  network_size_x;
+      source_y      := source       /    network_size_x;
+      destination_x := destination  mod  network_size_x;
+      destination_y := destination  /    network_size_x;
+
+      Header_flit := Header_type &  std_logic_vector(to_unsigned(source_y,7)) & std_logic_vector(to_unsigned(source_x,7)) &
+                     std_logic_vector(to_unsigned(destination_y,7)) & std_logic_vector(to_unsigned(destination_x,7)) &
+                     XOR_REDUCE(Header_type &  std_logic_vector(to_unsigned(source_y,7)) & std_logic_vector(to_unsigned(source_x,7)) &
+                     std_logic_vector(to_unsigned(destination_y,7)) & std_logic_vector(to_unsigned(destination_x,7)));
     return Header_flit;
   end Header_gen;
 
@@ -190,8 +201,6 @@ package body TB_Package is
               write(LINEVARIABLE, "type:body1;time:" & time'image(now) & ";currentrouter:" & integer'image(source) &";from_node:" & integer'image(source) & ";to_node:" & integer'image(destination_id) & ";length:"& integer'image(Packet_length)  & ";id:"& integer'image(id_counter) &  ";flitno:" & integer'image(I+1));
               writeline(VEC_FILE, LINEVARIABLE);   
             else
-              
-
               port_in <= Body_gen(to_integer(unsigned(body_data(27 downto 0))));
               write(LINEVARIABLE, "type:body;time:" & time'image(now) & ";currentrouter:" & integer'image(source) &";from_node:" & integer'image(source) & ";to_node:" & integer'image(destination_id) & ";length:"& integer'image(Packet_length)  & ";id:"& integer'image(id_counter) &  ";flitno:" & integer'image(I+1));
               writeline(VEC_FILE, LINEVARIABLE);
@@ -219,7 +228,6 @@ package body TB_Package is
       port_in <= "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ" ; -- TODO ??
       port_in <= "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU" ;
       
-      
     end loop; 
   end gen_random_packet;
 
@@ -227,7 +235,8 @@ package body TB_Package is
   DATA_WIDTH, initial_delay, Node_ID: in integer; signal clk: in std_logic; 
                        signal credit_out: out std_logic; signal valid_in: in std_logic; signal port_in: in std_logic_vector) is
   -- initial_delay: waits for this number of clock cycles before sending the packet!
-    variable source_node, destination_node, P_length, packet_id, counter: integer;
+    variable source_node_x, source_node_y, destination_node_x, destination_node_y, source_node, destination_node, P_length, packet_id, counter: integer;
+    variable network_size_x: integer := 4;
     variable parity_failed : boolean;
     variable LINEVARIABLE : line; 
     variable body_src,body_dest,body_packet_length, body_packetid, body_checksum:integer;
@@ -243,8 +252,16 @@ package body TB_Package is
              parity_failed := XOR_REDUCE(port_in(DATA_WIDTH-1 downto 1)) /= port_in(0);
               if (port_in(DATA_WIDTH-1 downto DATA_WIDTH-3) = "001") then
                 counter := 1; 
-                source_node := to_integer(unsigned(port_in(28 downto 15)));
-                destination_node := to_integer(unsigned(port_in(14 downto 1)));
+
+                source_node_y := to_integer(unsigned(port_in(28 downto 22)));
+                source_node_x := to_integer(unsigned(port_in(21 downto 15)));
+                destination_node_y := to_integer(unsigned(port_in(14 downto 8)));
+                destination_node_x := to_integer(unsigned(port_in(7 downto 1)));
+
+                -- We only needs network_size_x for computing the node ID (convert from (X,Y) coordinate to Node ID)!
+                source_node := (source_node_y * network_size_x) + source_node_x;
+                destination_node := (destination_node_y * network_size_x) + destination_node_x;
+
                 write(LINEVARIABLE, "type:header;time:" & time'image(now) & ";currentrouter:" &integer'image(Node_ID) &";from_node:" & integer'image(source_node) & ";to_node:" & integer'image(destination_node) & ";length:-1;id:-1;flitno:0;parity_failed:"&boolean'image(parity_failed));
                 writeline(VEC_FILE, LINEVARIABLE);
             end if;  

@@ -158,7 +158,7 @@ for module_name in sorted(modulelines.keys(), key=lambda x: x[0]):
         (module_name, name_len_difference * ' ', len(modulelines[module_name])))
 
 print()
-print('Total number of experiments to run:', len(chosen_experiments))
+print('Total number of experiments to run (2 experiments will be done for each injection point - one for SA-0 and one for SA-1):', len(chosen_experiments) * 2)
 print()
 
 # Build injection locations file

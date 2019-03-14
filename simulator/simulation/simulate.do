@@ -142,11 +142,11 @@ while {$properties != ""} {
     puts $concat_result_file "#####"
 
     # No cleanup on debug
-    if {$DEBUG != "true"} {
-        file delete "$INPUT_FILE"
-        file delete "$OUTPUT_FILE"    
-        # file delete {*}[glob -nocomplain "$RESULTS_FOLDER/*.vcd"]
-    }
+    # if {$DEBUG != "true"} {
+    #     file delete "$INPUT_FILE"
+    #     file delete "$OUTPUT_FILE"    
+    #     # file delete {*}[glob -nocomplain "$RESULTS_FOLDER/*.vcd"]
+    # }
     puts "finished experiment #$exp_num"
     # Increment line
     gets $property_fp properties

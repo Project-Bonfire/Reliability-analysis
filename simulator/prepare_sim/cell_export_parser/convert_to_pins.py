@@ -14,65 +14,30 @@ RET_OK = 0
 RET_ERR = 2
 RET_DEBUG = 3
 
-CELL_NAME = 1
-NET_NAME = 2
-
-class Pin:
-    """
-    Class to store data each IO line in the cell export
-    """
-    module: str
-    pin_name: str
-    net_name: str
-    cell_name: str
-    connected_pins: List[str]
-    detection_method: int
-
-    def __init__(self, cell_name, pin_name, net_name, connected_pins, module, detection_method) -> None:
-        """
-        :param
-            cell_name - name of the cell where the pin belongs to
-            pin_name - name of the pin
-            net_name - name of the net where the pin belongs to
-            connected_pins - pins which are connected to the current pin
-            module - module where the pin belongs to
-        """
-        super().__init__()
-        self.module = module
-        self.net_name = net_name
-        self.pin_name = pin_name
-        self.cell_name = cell_name
-        self.connected_pins = connected_pins
-        self.detection_method = detection_method
-
-
 class CellParser(CellsListener):
     """
     Parses te parse tree and writes found pins and the information about their the modules 
     they belong to into the output file.
     """
 
-    def __init__(self, debug):
+    def __init__(self, debug_unknown):
         """
         :param
-            debug - dict containing the list of debugging actions to be taken
+            debug_unknown - If True, the tool will print out the list of 
+                            cells which cannot be assigned to any module
         """
         CellsListener.__init__(self)
 
-        self.debug = debug
+        self.debug_unknown = debug_unknown
 
-        self.num_cells = 0
-        self.multi_module_counter = 0
-        self.module_fallback_counter = 0
-
-        self.no_module_found = 0
-        self.detection_by_cell_name = 0
+        self.total_cell_count = 0
         self.total_pin_count = 0
-        self.detection_by_net_name = 0
+        self.cells_with_unknown_module = 0
 
         self.outstream = None
         self.signal_module_map = None
-        self.fault_locs_per_module: Dict[str, Pin] = {}
+        self.fault_locs_per_module: Dict[str, int] = {}
+
 
     def exitCell(self, ctx: CellsParser.CellContext):
         """
@@ -83,174 +48,60 @@ class CellParser(CellsListener):
         :param
             ctx - Pointer to the cell to be processed in the ANTLR parse tree
         """
-        modules = []
-        io_pins = []
-        pins: List[Pin] = []
+        self.total_cell_count += 1
 
-        self.num_cells += 1
+        cell_module = None
 
         # Get the name of the current cell
         # r.cell.header.nameline.<name>
         cell_name = ctx.children[0].children[0].children[1].symbol.text
 
+        # Ignore cells without module in their name (the likes of 'U37)
+        if re.match('^U[0-9]+', cell_name):
+            if self.debug_unknown:
+                print(cell_name)
+
+            self.cells_with_unknown_module += 1
+            return
+
+        # Try to match the cell name to a module
+        for signal_regex, module_name in signal_module_map.items():
+            if re.match(signal_regex, cell_name):
+                cell_module = module_name
+                break
+
+        if cell_module == None:
+            raise ValueError("Cannot find module for cell! Cell name is:", cell_name)
+
         # Extract all io_pins in the cell (outputs and inputs)
         # [r.cell.inputs.io_pin[0:n] + (r.cell.outputs.io_pin[0:n], if outputs exist)]
-        io_pins = ctx.children[1].children[7:] + \
-            (ctx.children[2].children[7:] if len(ctx.children) > 2 else [])
-
-        # Create one Pin object for each io_pin which is connected to the cell and
-        # try to guess to which module they belongs to
-        for io_pin in io_pins:
-            pin_name, net_name, connected_pins = self.handleIOPin(io_pin)
-            module, detection_method = self.guessModule(ctx, cell_name, net_name,
-                                      connected_pins, self.signal_module_map)
-
-            if module != None:
-                
-                modules.append(module)
-                pins.append(Pin(cell_name, pin_name, net_name, connected_pins, module, detection_method))
-
-        # else:  # If we had absolutely no information for to guess the pin name
-        for io_pin in pins:
-            if io_pin.module == None:
-                # print(io_pin.pin_name, io_pin.cell_name, io_pin.net_name, io_pin.connected_pins, modules)
-                io_pin.module = 'none'
-                self.module_fallback_counter += 1
-
-                if self.debug['debug_nones']:
-                    print('Cell:', cell_name, 'Pin: ', pin_name, 'Net:', net_name,
-                        'Connected Pins:', connected_pins, '-> None')
-
-        # Counts the number of fault injection locations per module
-        if len(set(modules)) == 1:
-
-            for io_pin in pins:
-                # We don't really care about pins which do not have a module assigned to them
-                if io_pin.module != 'none':
-
-                    if io_pin.detection_method == CELL_NAME:
-                        self.detection_by_cell_name += 1
-
-                    elif io_pin.detection_method == NET_NAME:
-                        self.detection_by_net_name += 1
-
-                    if io_pin.module in self.fault_locs_per_module:
-                        self.fault_locs_per_module[io_pin.module] += 1
-
-                    else:
-                        self.fault_locs_per_module[io_pin.module] = 1
-
-                    # Finally save the fault injection location to the output file
-                    print(("" if io_pin.cell_name.startswith("U") else "\\") + io_pin.cell_name +
-                        " :" + io_pin.pin_name + ' ' + '!' + io_pin.module, file=self.outstream)
-                    
-                else:
-                    self.no_module_found += 1
+        if len(ctx.children) > 2:
+            io_pins = ctx.children[1].children[7:] + ctx.children[2].children[7:]
+        
         else:
-            self.multi_module_counter += 1
-            # print(cell_name, modules)
+            io_pins = ctx.children[1].children[7:]
 
-    def handleIOPin(self, ctx):
-        """
-        Processes an IO pin and extract relevant information from it
+        if io_pins == []:
+            raise ValueError("Cell has no pins!", cell_name)
 
-        :param
-            ctx ANTLR pointer to the IO pin which is currently processed
+        # Iterate over pins connected to the cell and log them
+        for io_pin in io_pins:
 
-        :return
-            List [pin_name, net_name, connected_pins], where
-                pin_name - name of the current IO pin
-                net_name - name of the net where the current IO pin belongs to
-                connected_pins - list of pins which are connected to the current pin
+            self.total_pin_count += 1
+            pin_name = str(io_pin.children[0].children[0])
+           
+            # Add pins to the module
+            if cell_module in self.fault_locs_per_module:
+                self.fault_locs_per_module[cell_module] += 1
 
-        Example IO pin in the cell export:
-            Connections for cell 'U670': [...]
-            Input pins          Net            Net Driver pins   Driver Pin Type
-            ----------------    ------------   ----------------  ----------------
-            A                   FIFO_N/n411    FIFO_N/U337/Q     Output Pin (XNOR2X6)
-        """
-
-        def conv_pin_type(node):
-            """
-            Converts connected pin information into a string.
-
-            :param 
-                node - connected pin information
-                        (r.cell.inputs.io_pin[n].connected_pins[0:n].pin_type.<type_name>.<pin_data>)
-            :return
-                Formated connected pin information as string
-            """
-
-            # Format of node.children is (example): ['Input Pin', '(', OAI32X3, ')']
-            # if len(node.children) >= 3, then it means there is a name there for the pin also (OAI32X3)
-            if(len(node.children) >= 3):
-                # Ex: 'Input Pin(OAI32X3)'
-                return str(node.children[0]) + '(' + str(node.children[2]) + ')'
             else:
-                # Ex: 'Input Pin'
-                return str(node.children[0])
+                self.fault_locs_per_module[cell_module] = 1
 
-        # A (r.cell.inputs.io_pin[n].pin_name.<name>)
-        pin_name = str(ctx.children[0].children[0])
+            # Save the fault injection location to the output file
+            injection_location = "\\" + cell_name + " :" + pin_name + ' ' + '!' + cell_module + '\n'
+            self.outstream.writelines(injection_location)
 
-        # FIFO_N/n411 (r.cell.inputs.io_pin[n].net_name.<name>)
-        net_name = str(ctx.children[1].children[0] if not isinstance(
-            ctx.children[1], TerminalNode) else 'None')
-
-        # [ ( FIFO_N/U337/Q , Output Pin (XNOR2X6) ) ]
-        # dict(r.cell.inputs.io_pin[n].connected_pins[0:n].<name>, r.cell.inputs.io_pin[n].connected_pins[0:n].pin_type.<type_name>),
-        # if there are connected pins
-        connected_pins = [(str(pin.children[1]), conv_pin_type(pin.children[3].children[0]))
-                          for pin in ctx.children[2].children] if net_name is not 'None' else 'None'
-
-        return pin_name, net_name, connected_pins
-
-    def guessModule(self, ctx, cell_name, net_name, connected_pins, signal_module_map):
-        """
-        Guesses to which module the io_pin belongs to.
-        :param
-            ctx - pointer to the current cell in ANTLR's parse tree
-            cell_name - name of the cell the current pin belongs to
-            net_name - name of the net where the current pin belongs to
-            connected_pins - list of the pins connected to the current pin
-            signal_module_map - a map which which is used to make decisions on the the belonging of the io_pin
-
-        :return - module name - Name of the module (according to signal_module_map), where the pin belongs to.
-                                        None if the module cannot be determined
-        """
-
-        self.total_pin_count += 1
-        try:
-
-            detection_method = None            
-            detected = False
-
-            for signal, module in signal_module_map.items():
-                if not re.match('^U[0-9]+$', cell_name) and re.match(signal, cell_name):
-                    detection_method = CELL_NAME
-                    detected = True
-
-                elif re.match(signal, net_name):
-                    detection_method = NET_NAME
-                    if self.debug['named_after_map']:
-                        print('Cell:', cell_name, 'Net:', net_name,
-                            'Connected Pins', connected_pins, '->', net_name)
-                    detected = True
-
-                if detected:
-                    return module, detection_method
-
-            return None, None
-
-        except ValueError:
-            print("Failed to guess component! %s" %
-                    cell_name)
-
-            print(ctx)
-            return None
-
-
-def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, debug, fault_info_file):
+def main(cell_export_file, signal_module_map, outfile, debug_unknown, fault_info_file):
     """
     Parses the cell export file and prints results
 
@@ -258,7 +109,7 @@ def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, 
         cell_export_file - path to the cell export file
         signal_module_map - map which maps different name patters to module names
         outfile - file where to write the output
-        debug - Debug instructions
+        debug_unknown - If enabled, the tool will print out all cells which cannot be added into any module
     """
     # Setting up ANTLR environment for parsing the cell export
     print('Creating parse tree...')
@@ -270,75 +121,53 @@ def main(cell_export_file, signal_module_map: Dict[Pattern[str], str], outfile, 
 
     # Actually parse the cell export
     print('Parsing the cell export...')
-    printer = CellParser(debug)
-    printer.signal_module_map = signal_module_map
-    printer.outstream = outfile
+    cell_parser = CellParser(debug_unknown)
+    cell_parser.signal_module_map = signal_module_map
+    cell_parser.outstream = outfile
     walker = ParseTreeWalker()
-    walker.walk(printer, tree)
+    walker.walk(cell_parser, tree)
 
     # Print statistics
-    total_fault_injection_locs = sum(printer.fault_locs_per_module.values())
+    module_list = str(sorted(list(set(cell_parser.fault_locs_per_module.keys()))))
 
+    print()
     print(11 * '-')
     print('STATISTICS:')
     print(11 * '-')
     print()
 
-    print('Total number of pins: %d' % printer.total_pin_count)
-    print('Could not determine modules for %d cells. (%d total = %f%%) --> CELLS IGNORED' % (
-        printer.multi_module_counter, printer.num_cells, printer.multi_module_counter/printer.num_cells))
-    print('Total number of VALID fault injection locations: %d (%f%% of all pins)' % (total_fault_injection_locs, total_fault_injection_locs * 100 / printer.total_pin_count))
+    print('Total number of cells:', cell_parser.total_cell_count)
+    print('Could not determine modules for', cell_parser.cells_with_unknown_module, 
+            'cells. (', round(cell_parser.cells_with_unknown_module * 100 / cell_parser.total_cell_count, 2), 
+            '% of all cells) --> CELLS IGNORED')
+    print('Those are probably cells which do not belong to any module. Use the --debug-unknown flag to list them')
+    print('Total number of VALID fault injection locations:', cell_parser.total_pin_count)
 
     print()
-    print('Detected modules:', str(
-        list(set(printer.fault_locs_per_module.keys()))))
+
+    print('Detected modules:', module_list)
 
     print()
     print('Fault injection locations per module:')
 
     longest_module_name_length = 0
-    for module in printer.fault_locs_per_module.keys():
+
+    for module in cell_parser.fault_locs_per_module.keys():
         if len(module) > longest_module_name_length:
             longest_module_name_length = len(module) + 1
 
-    for module_name, fault_locs in sorted(printer.fault_locs_per_module.items(), key=lambda x: x[1]):
+    for module_name, fault_locs in sorted(cell_parser.fault_locs_per_module.items()):
         length_difference = longest_module_name_length - len(module_name)
-        print('\t' + module_name + ':' +
-              length_difference * ' ' + str(fault_locs))
-
+        print('\t' + module_name + ':' + length_difference * ' ' + str(fault_locs))
 
     print()
-    print('Pins from valid cells were assigned to modules according the following data:')
-
-    print('\tCell name:         %d    \t(%f%%)' % (printer.detection_by_cell_name,
-                                                   printer.detection_by_cell_name * 100 / total_fault_injection_locs))
-
-    print('\tSignal-module map: %d    \t(%f%%)' % (printer.detection_by_net_name,
-                                                   printer.detection_by_net_name * 100 / total_fault_injection_locs))
-
-
-    print('\tNo name found:     %d    \t(%f%%) --> PINS IGNORED' % (printer.no_module_found,
-                                                   printer.no_module_found * 100 / total_fault_injection_locs))
-
-
+    print(11 * '-')
+    
     if fault_info_file:
         with open(fault_info_file, 'w') as fi:
-            print('modules=%s\nnrfaultlocs=%s\nlocspermodule=%s' % (str(list(set(printer.fault_locs_per_module.keys()))), 
-                                                                    str(sum(printer.fault_locs_per_module.values())), 
-                                                                    str(printer.fault_locs_per_module)), file=fi)
-
-    print()
-    if printer.module_fallback_counter > printer.total_pin_count + printer.no_module_found:
-        print('E R R O R ! - Had to choose \'none\' as fallback module on %d pins, '
-              'because I could not guess to which module the io_pin belongs' %
-              printer.module_fallback_counter)
-        return True
-
-    else:
-        print('All pins were assigned into modules')
-        return False
-
-    print(11 * '-')
+            fi.writelines('modules=' + module_list + '\n')
+            fi.writelines('nrfaultlocs=' + str(sum(cell_parser.fault_locs_per_module.values())) + '\n')
+            fi.writelines('locspermodule=' + str(cell_parser.fault_locs_per_module) + '\n')
 
 
 if __name__ == '__main__':
@@ -371,40 +200,25 @@ if __name__ == '__main__':
                       help='Name of the file, which contains the dictionary for mapping the patterns in the cell export to  module names'
                       '(defaults to \'pattern_to_modules.py\').')
 
+    args.add_argument('--inputdict', nargs='?', type=str, default="inputs_to_modules.py",
+                      help='Name of the file, which contains the dictionary for mapping the patterns in the cell export to  module names for module inputs'
+                      '(defaults to \'pattern_to_modules.py\').')
+
     debug_args = args.add_mutually_exclusive_group()
-    debug_args.add_argument('--debug-named-after-map', action='store_true',
-                            help='Prints all io_pins which get assigned to modules based on the rules in signal-module map')
-    debug_args.add_argument('--debug-named-after-connection', action='store_true',
-                            help='Prints all io_pins which get assigned to modules based on pins they are connected to')
-    debug_args.add_argument('--debug-no-module', action='store_true',
-                            help='Prints all io_pins where module guessing failed and were named after other pins in the same cell')
-    debug_args.add_argument('--debug-nones', action='store_true',
-                        help='Prints all io_pins where module the \'None\' was assigned as a module')
-    debug_args.add_argument('--debug-semirandom', action='store_true',
-                    help='Prints all io_pins where modules were assigned semi-randomly')
+    debug_args.add_argument('--debug-unknown', action='store_true',
+                            help='Prints cells which cannot be assigned to a module')
 
     args = args.parse_args()
 
-    debug = dict(
-        named_after_map=args.debug_named_after_map,
-        named_after_conn=args.debug_named_after_connection,
-        no_module_name=args.debug_no_module,
-        debug_nones=args.debug_nones
-    )
-
     with open(os.path.join(args.designdir, args.cellexport), 'r') as cellexport, \
             open(os.path.join(args.designdir, args.moduledict), 'r') as mapping, \
+            open(os.path.join(args.designdir, args.inputdict), 'r') as input_mapping, \
             open(os.path.join(args.designdir, args.results_file), 'w') as outfile:
 
-        signal_module_map = eval(mapping.read())
+        module_map = eval(mapping.read())
+        input_map = eval(input_mapping.read())
 
-        errors = main(cellexport.name, signal_module_map, outfile, debug, args.fault_info_file)
+        signal_module_map = {**input_map, **module_map}
 
-        return_value = RET_OK
-        if errors:
-            return_value = RET_ERR
+        main(cellexport.name, signal_module_map, outfile, args.debug_unknown, args.fault_info_file)
 
-        if True in debug.values():
-            return_value = RET_DEBUG
-            
-        sys.exit(return_value)

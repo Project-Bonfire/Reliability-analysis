@@ -1,8 +1,313 @@
 /////////////////////////////////////////////////////////////
 // Created by: Synopsys DC Expert(TM) in wire load mode
 // Version   : N-2017.09-SP3
-// Date      : Wed Mar  6 16:24:26 2019
+// Date      : Wed Mar 13 12:07:01 2019
 /////////////////////////////////////////////////////////////
+
+
+module LBDR_input_wire_4 ( empty, flit_type, cur_addr_y, cur_addr_x, 
+        dst_addr_y, dst_addr_x, grant_N, grant_E, grant_W, grant_S, grant_L, 
+        empty_out, flit_type_out, cur_addr_y_out, cur_addr_x_out, 
+        dst_addr_y_out, dst_addr_x_out, grant_N_out, grant_E_out, grant_W_out, 
+        grant_S_out, grant_L_out );
+  input [2:0] flit_type;
+  input [6:0] cur_addr_y;
+  input [6:0] cur_addr_x;
+  input [6:0] dst_addr_y;
+  input [6:0] dst_addr_x;
+  output [2:0] flit_type_out;
+  output [6:0] cur_addr_y_out;
+  output [6:0] cur_addr_x_out;
+  output [6:0] dst_addr_y_out;
+  output [6:0] dst_addr_x_out;
+  input empty, grant_N, grant_E, grant_W, grant_S, grant_L;
+  output empty_out, grant_N_out, grant_E_out, grant_W_out, grant_S_out,
+         grant_L_out;
+  wire   empty_out, grant_N_out, grant_E_out, grant_W_out, grant_S_out,
+         grant_L_out;
+  assign empty_out = empty;
+  assign flit_type_out[2] = flit_type[2];
+  assign flit_type_out[1] = flit_type[1];
+  assign flit_type_out[0] = flit_type[0];
+  assign cur_addr_y_out[6] = cur_addr_y[6];
+  assign cur_addr_y_out[5] = cur_addr_y[5];
+  assign cur_addr_y_out[4] = cur_addr_y[4];
+  assign cur_addr_y_out[3] = cur_addr_y[3];
+  assign cur_addr_y_out[2] = cur_addr_y[2];
+  assign cur_addr_y_out[1] = cur_addr_y[1];
+  assign cur_addr_y_out[0] = cur_addr_y[0];
+  assign cur_addr_x_out[6] = cur_addr_x[6];
+  assign cur_addr_x_out[5] = cur_addr_x[5];
+  assign cur_addr_x_out[4] = cur_addr_x[4];
+  assign cur_addr_x_out[3] = cur_addr_x[3];
+  assign cur_addr_x_out[2] = cur_addr_x[2];
+  assign cur_addr_x_out[1] = cur_addr_x[1];
+  assign cur_addr_x_out[0] = cur_addr_x[0];
+  assign dst_addr_y_out[6] = dst_addr_y[6];
+  assign dst_addr_y_out[5] = dst_addr_y[5];
+  assign dst_addr_y_out[4] = dst_addr_y[4];
+  assign dst_addr_y_out[3] = dst_addr_y[3];
+  assign dst_addr_y_out[2] = dst_addr_y[2];
+  assign dst_addr_y_out[1] = dst_addr_y[1];
+  assign dst_addr_y_out[0] = dst_addr_y[0];
+  assign dst_addr_x_out[6] = dst_addr_x[6];
+  assign dst_addr_x_out[5] = dst_addr_x[5];
+  assign dst_addr_x_out[4] = dst_addr_x[4];
+  assign dst_addr_x_out[3] = dst_addr_x[3];
+  assign dst_addr_x_out[2] = dst_addr_x[2];
+  assign dst_addr_x_out[1] = dst_addr_x[1];
+  assign dst_addr_x_out[0] = dst_addr_x[0];
+  assign grant_N_out = grant_N;
+  assign grant_E_out = grant_E;
+  assign grant_W_out = grant_W;
+  assign grant_S_out = grant_S;
+  assign grant_L_out = grant_L;
+
+endmodule
+
+
+module LBDR_input_wire_3 ( empty, flit_type, cur_addr_y, cur_addr_x, 
+        dst_addr_y, dst_addr_x, grant_N, grant_E, grant_W, grant_S, grant_L, 
+        empty_out, flit_type_out, cur_addr_y_out, cur_addr_x_out, 
+        dst_addr_y_out, dst_addr_x_out, grant_N_out, grant_E_out, grant_W_out, 
+        grant_S_out, grant_L_out );
+  input [2:0] flit_type;
+  input [6:0] cur_addr_y;
+  input [6:0] cur_addr_x;
+  input [6:0] dst_addr_y;
+  input [6:0] dst_addr_x;
+  output [2:0] flit_type_out;
+  output [6:0] cur_addr_y_out;
+  output [6:0] cur_addr_x_out;
+  output [6:0] dst_addr_y_out;
+  output [6:0] dst_addr_x_out;
+  input empty, grant_N, grant_E, grant_W, grant_S, grant_L;
+  output empty_out, grant_N_out, grant_E_out, grant_W_out, grant_S_out,
+         grant_L_out;
+  wire   empty_out, grant_N_out, grant_E_out, grant_W_out, grant_S_out,
+         grant_L_out;
+  assign empty_out = empty;
+  assign flit_type_out[2] = flit_type[2];
+  assign flit_type_out[1] = flit_type[1];
+  assign flit_type_out[0] = flit_type[0];
+  assign cur_addr_y_out[6] = cur_addr_y[6];
+  assign cur_addr_y_out[5] = cur_addr_y[5];
+  assign cur_addr_y_out[4] = cur_addr_y[4];
+  assign cur_addr_y_out[3] = cur_addr_y[3];
+  assign cur_addr_y_out[2] = cur_addr_y[2];
+  assign cur_addr_y_out[1] = cur_addr_y[1];
+  assign cur_addr_y_out[0] = cur_addr_y[0];
+  assign cur_addr_x_out[6] = cur_addr_x[6];
+  assign cur_addr_x_out[5] = cur_addr_x[5];
+  assign cur_addr_x_out[4] = cur_addr_x[4];
+  assign cur_addr_x_out[3] = cur_addr_x[3];
+  assign cur_addr_x_out[2] = cur_addr_x[2];
+  assign cur_addr_x_out[1] = cur_addr_x[1];
+  assign cur_addr_x_out[0] = cur_addr_x[0];
+  assign dst_addr_y_out[6] = dst_addr_y[6];
+  assign dst_addr_y_out[5] = dst_addr_y[5];
+  assign dst_addr_y_out[4] = dst_addr_y[4];
+  assign dst_addr_y_out[3] = dst_addr_y[3];
+  assign dst_addr_y_out[2] = dst_addr_y[2];
+  assign dst_addr_y_out[1] = dst_addr_y[1];
+  assign dst_addr_y_out[0] = dst_addr_y[0];
+  assign dst_addr_x_out[6] = dst_addr_x[6];
+  assign dst_addr_x_out[5] = dst_addr_x[5];
+  assign dst_addr_x_out[4] = dst_addr_x[4];
+  assign dst_addr_x_out[3] = dst_addr_x[3];
+  assign dst_addr_x_out[2] = dst_addr_x[2];
+  assign dst_addr_x_out[1] = dst_addr_x[1];
+  assign dst_addr_x_out[0] = dst_addr_x[0];
+  assign grant_N_out = grant_N;
+  assign grant_E_out = grant_E;
+  assign grant_W_out = grant_W;
+  assign grant_S_out = grant_S;
+  assign grant_L_out = grant_L;
+
+endmodule
+
+
+module LBDR_input_wire_2 ( empty, flit_type, cur_addr_y, cur_addr_x, 
+        dst_addr_y, dst_addr_x, grant_N, grant_E, grant_W, grant_S, grant_L, 
+        empty_out, flit_type_out, cur_addr_y_out, cur_addr_x_out, 
+        dst_addr_y_out, dst_addr_x_out, grant_N_out, grant_E_out, grant_W_out, 
+        grant_S_out, grant_L_out );
+  input [2:0] flit_type;
+  input [6:0] cur_addr_y;
+  input [6:0] cur_addr_x;
+  input [6:0] dst_addr_y;
+  input [6:0] dst_addr_x;
+  output [2:0] flit_type_out;
+  output [6:0] cur_addr_y_out;
+  output [6:0] cur_addr_x_out;
+  output [6:0] dst_addr_y_out;
+  output [6:0] dst_addr_x_out;
+  input empty, grant_N, grant_E, grant_W, grant_S, grant_L;
+  output empty_out, grant_N_out, grant_E_out, grant_W_out, grant_S_out,
+         grant_L_out;
+  wire   empty_out, grant_N_out, grant_E_out, grant_W_out, grant_S_out,
+         grant_L_out;
+  assign empty_out = empty;
+  assign flit_type_out[2] = flit_type[2];
+  assign flit_type_out[1] = flit_type[1];
+  assign flit_type_out[0] = flit_type[0];
+  assign cur_addr_y_out[6] = cur_addr_y[6];
+  assign cur_addr_y_out[5] = cur_addr_y[5];
+  assign cur_addr_y_out[4] = cur_addr_y[4];
+  assign cur_addr_y_out[3] = cur_addr_y[3];
+  assign cur_addr_y_out[2] = cur_addr_y[2];
+  assign cur_addr_y_out[1] = cur_addr_y[1];
+  assign cur_addr_y_out[0] = cur_addr_y[0];
+  assign cur_addr_x_out[6] = cur_addr_x[6];
+  assign cur_addr_x_out[5] = cur_addr_x[5];
+  assign cur_addr_x_out[4] = cur_addr_x[4];
+  assign cur_addr_x_out[3] = cur_addr_x[3];
+  assign cur_addr_x_out[2] = cur_addr_x[2];
+  assign cur_addr_x_out[1] = cur_addr_x[1];
+  assign cur_addr_x_out[0] = cur_addr_x[0];
+  assign dst_addr_y_out[6] = dst_addr_y[6];
+  assign dst_addr_y_out[5] = dst_addr_y[5];
+  assign dst_addr_y_out[4] = dst_addr_y[4];
+  assign dst_addr_y_out[3] = dst_addr_y[3];
+  assign dst_addr_y_out[2] = dst_addr_y[2];
+  assign dst_addr_y_out[1] = dst_addr_y[1];
+  assign dst_addr_y_out[0] = dst_addr_y[0];
+  assign dst_addr_x_out[6] = dst_addr_x[6];
+  assign dst_addr_x_out[5] = dst_addr_x[5];
+  assign dst_addr_x_out[4] = dst_addr_x[4];
+  assign dst_addr_x_out[3] = dst_addr_x[3];
+  assign dst_addr_x_out[2] = dst_addr_x[2];
+  assign dst_addr_x_out[1] = dst_addr_x[1];
+  assign dst_addr_x_out[0] = dst_addr_x[0];
+  assign grant_N_out = grant_N;
+  assign grant_E_out = grant_E;
+  assign grant_W_out = grant_W;
+  assign grant_S_out = grant_S;
+  assign grant_L_out = grant_L;
+
+endmodule
+
+
+module LBDR_input_wire_1 ( empty, flit_type, cur_addr_y, cur_addr_x, 
+        dst_addr_y, dst_addr_x, grant_N, grant_E, grant_W, grant_S, grant_L, 
+        empty_out, flit_type_out, cur_addr_y_out, cur_addr_x_out, 
+        dst_addr_y_out, dst_addr_x_out, grant_N_out, grant_E_out, grant_W_out, 
+        grant_S_out, grant_L_out );
+  input [2:0] flit_type;
+  input [6:0] cur_addr_y;
+  input [6:0] cur_addr_x;
+  input [6:0] dst_addr_y;
+  input [6:0] dst_addr_x;
+  output [2:0] flit_type_out;
+  output [6:0] cur_addr_y_out;
+  output [6:0] cur_addr_x_out;
+  output [6:0] dst_addr_y_out;
+  output [6:0] dst_addr_x_out;
+  input empty, grant_N, grant_E, grant_W, grant_S, grant_L;
+  output empty_out, grant_N_out, grant_E_out, grant_W_out, grant_S_out,
+         grant_L_out;
+  wire   empty_out, grant_N_out, grant_E_out, grant_W_out, grant_S_out,
+         grant_L_out;
+  assign empty_out = empty;
+  assign flit_type_out[2] = flit_type[2];
+  assign flit_type_out[1] = flit_type[1];
+  assign flit_type_out[0] = flit_type[0];
+  assign cur_addr_y_out[6] = cur_addr_y[6];
+  assign cur_addr_y_out[5] = cur_addr_y[5];
+  assign cur_addr_y_out[4] = cur_addr_y[4];
+  assign cur_addr_y_out[3] = cur_addr_y[3];
+  assign cur_addr_y_out[2] = cur_addr_y[2];
+  assign cur_addr_y_out[1] = cur_addr_y[1];
+  assign cur_addr_y_out[0] = cur_addr_y[0];
+  assign cur_addr_x_out[6] = cur_addr_x[6];
+  assign cur_addr_x_out[5] = cur_addr_x[5];
+  assign cur_addr_x_out[4] = cur_addr_x[4];
+  assign cur_addr_x_out[3] = cur_addr_x[3];
+  assign cur_addr_x_out[2] = cur_addr_x[2];
+  assign cur_addr_x_out[1] = cur_addr_x[1];
+  assign cur_addr_x_out[0] = cur_addr_x[0];
+  assign dst_addr_y_out[6] = dst_addr_y[6];
+  assign dst_addr_y_out[5] = dst_addr_y[5];
+  assign dst_addr_y_out[4] = dst_addr_y[4];
+  assign dst_addr_y_out[3] = dst_addr_y[3];
+  assign dst_addr_y_out[2] = dst_addr_y[2];
+  assign dst_addr_y_out[1] = dst_addr_y[1];
+  assign dst_addr_y_out[0] = dst_addr_y[0];
+  assign dst_addr_x_out[6] = dst_addr_x[6];
+  assign dst_addr_x_out[5] = dst_addr_x[5];
+  assign dst_addr_x_out[4] = dst_addr_x[4];
+  assign dst_addr_x_out[3] = dst_addr_x[3];
+  assign dst_addr_x_out[2] = dst_addr_x[2];
+  assign dst_addr_x_out[1] = dst_addr_x[1];
+  assign dst_addr_x_out[0] = dst_addr_x[0];
+  assign grant_N_out = grant_N;
+  assign grant_E_out = grant_E;
+  assign grant_W_out = grant_W;
+  assign grant_S_out = grant_S;
+  assign grant_L_out = grant_L;
+
+endmodule
+
+
+module LBDR_input_wire_0 ( empty, flit_type, cur_addr_y, cur_addr_x, 
+        dst_addr_y, dst_addr_x, grant_N, grant_E, grant_W, grant_S, grant_L, 
+        empty_out, flit_type_out, cur_addr_y_out, cur_addr_x_out, 
+        dst_addr_y_out, dst_addr_x_out, grant_N_out, grant_E_out, grant_W_out, 
+        grant_S_out, grant_L_out );
+  input [2:0] flit_type;
+  input [6:0] cur_addr_y;
+  input [6:0] cur_addr_x;
+  input [6:0] dst_addr_y;
+  input [6:0] dst_addr_x;
+  output [2:0] flit_type_out;
+  output [6:0] cur_addr_y_out;
+  output [6:0] cur_addr_x_out;
+  output [6:0] dst_addr_y_out;
+  output [6:0] dst_addr_x_out;
+  input empty, grant_N, grant_E, grant_W, grant_S, grant_L;
+  output empty_out, grant_N_out, grant_E_out, grant_W_out, grant_S_out,
+         grant_L_out;
+  wire   empty_out, grant_N_out, grant_E_out, grant_W_out, grant_S_out,
+         grant_L_out;
+  assign empty_out = empty;
+  assign flit_type_out[2] = flit_type[2];
+  assign flit_type_out[1] = flit_type[1];
+  assign flit_type_out[0] = flit_type[0];
+  assign cur_addr_y_out[6] = cur_addr_y[6];
+  assign cur_addr_y_out[5] = cur_addr_y[5];
+  assign cur_addr_y_out[4] = cur_addr_y[4];
+  assign cur_addr_y_out[3] = cur_addr_y[3];
+  assign cur_addr_y_out[2] = cur_addr_y[2];
+  assign cur_addr_y_out[1] = cur_addr_y[1];
+  assign cur_addr_y_out[0] = cur_addr_y[0];
+  assign cur_addr_x_out[6] = cur_addr_x[6];
+  assign cur_addr_x_out[5] = cur_addr_x[5];
+  assign cur_addr_x_out[4] = cur_addr_x[4];
+  assign cur_addr_x_out[3] = cur_addr_x[3];
+  assign cur_addr_x_out[2] = cur_addr_x[2];
+  assign cur_addr_x_out[1] = cur_addr_x[1];
+  assign cur_addr_x_out[0] = cur_addr_x[0];
+  assign dst_addr_y_out[6] = dst_addr_y[6];
+  assign dst_addr_y_out[5] = dst_addr_y[5];
+  assign dst_addr_y_out[4] = dst_addr_y[4];
+  assign dst_addr_y_out[3] = dst_addr_y[3];
+  assign dst_addr_y_out[2] = dst_addr_y[2];
+  assign dst_addr_y_out[1] = dst_addr_y[1];
+  assign dst_addr_y_out[0] = dst_addr_y[0];
+  assign dst_addr_x_out[6] = dst_addr_x[6];
+  assign dst_addr_x_out[5] = dst_addr_x[5];
+  assign dst_addr_x_out[4] = dst_addr_x[4];
+  assign dst_addr_x_out[3] = dst_addr_x[3];
+  assign dst_addr_x_out[2] = dst_addr_x[2];
+  assign dst_addr_x_out[1] = dst_addr_x[1];
+  assign dst_addr_x_out[0] = dst_addr_x[0];
+  assign grant_N_out = grant_N;
+  assign grant_E_out = grant_E;
+  assign grant_W_out = grant_W;
+  assign grant_S_out = grant_S;
+  assign grant_L_out = grant_L;
+
+endmodule
 
 
 module allocator_input_wire ( credit_in_N, credit_in_E, credit_in_W, 
@@ -79,8 +384,1303 @@ module allocator_input_wire ( credit_in_N, credit_in_E, credit_in_W,
 endmodule
 
 
+module xbar_input_wire_DATA_WIDTH32_4 ( North_in, East_in, West_in, South_in, 
+        Local_in, sel, North_in_out, East_in_out, West_in_out, South_in_out, 
+        Local_in_out, sel_out );
+  input [31:0] North_in;
+  input [31:0] East_in;
+  input [31:0] West_in;
+  input [31:0] South_in;
+  input [31:0] Local_in;
+  input [4:0] sel;
+  output [31:0] North_in_out;
+  output [31:0] East_in_out;
+  output [31:0] West_in_out;
+  output [31:0] South_in_out;
+  output [31:0] Local_in_out;
+  output [4:0] sel_out;
 
-    module router_credit_based_DATA_WIDTH32_current_address5_Rxy_rst60_Cx_rst15_NoC_size_x128 ( 
+  assign North_in_out[31] = North_in[31];
+  assign North_in_out[30] = North_in[30];
+  assign North_in_out[29] = North_in[29];
+  assign North_in_out[28] = North_in[28];
+  assign North_in_out[27] = North_in[27];
+  assign North_in_out[26] = North_in[26];
+  assign North_in_out[25] = North_in[25];
+  assign North_in_out[24] = North_in[24];
+  assign North_in_out[23] = North_in[23];
+  assign North_in_out[22] = North_in[22];
+  assign North_in_out[21] = North_in[21];
+  assign North_in_out[20] = North_in[20];
+  assign North_in_out[19] = North_in[19];
+  assign North_in_out[18] = North_in[18];
+  assign North_in_out[17] = North_in[17];
+  assign North_in_out[16] = North_in[16];
+  assign North_in_out[15] = North_in[15];
+  assign North_in_out[14] = North_in[14];
+  assign North_in_out[13] = North_in[13];
+  assign North_in_out[12] = North_in[12];
+  assign North_in_out[11] = North_in[11];
+  assign North_in_out[10] = North_in[10];
+  assign North_in_out[9] = North_in[9];
+  assign North_in_out[8] = North_in[8];
+  assign North_in_out[7] = North_in[7];
+  assign North_in_out[6] = North_in[6];
+  assign North_in_out[5] = North_in[5];
+  assign North_in_out[4] = North_in[4];
+  assign North_in_out[3] = North_in[3];
+  assign North_in_out[2] = North_in[2];
+  assign North_in_out[1] = North_in[1];
+  assign North_in_out[0] = North_in[0];
+  assign East_in_out[31] = East_in[31];
+  assign East_in_out[30] = East_in[30];
+  assign East_in_out[29] = East_in[29];
+  assign East_in_out[28] = East_in[28];
+  assign East_in_out[27] = East_in[27];
+  assign East_in_out[26] = East_in[26];
+  assign East_in_out[25] = East_in[25];
+  assign East_in_out[24] = East_in[24];
+  assign East_in_out[23] = East_in[23];
+  assign East_in_out[22] = East_in[22];
+  assign East_in_out[21] = East_in[21];
+  assign East_in_out[20] = East_in[20];
+  assign East_in_out[19] = East_in[19];
+  assign East_in_out[18] = East_in[18];
+  assign East_in_out[17] = East_in[17];
+  assign East_in_out[16] = East_in[16];
+  assign East_in_out[15] = East_in[15];
+  assign East_in_out[14] = East_in[14];
+  assign East_in_out[13] = East_in[13];
+  assign East_in_out[12] = East_in[12];
+  assign East_in_out[11] = East_in[11];
+  assign East_in_out[10] = East_in[10];
+  assign East_in_out[9] = East_in[9];
+  assign East_in_out[8] = East_in[8];
+  assign East_in_out[7] = East_in[7];
+  assign East_in_out[6] = East_in[6];
+  assign East_in_out[5] = East_in[5];
+  assign East_in_out[4] = East_in[4];
+  assign East_in_out[3] = East_in[3];
+  assign East_in_out[2] = East_in[2];
+  assign East_in_out[1] = East_in[1];
+  assign East_in_out[0] = East_in[0];
+  assign West_in_out[31] = West_in[31];
+  assign West_in_out[30] = West_in[30];
+  assign West_in_out[29] = West_in[29];
+  assign West_in_out[28] = West_in[28];
+  assign West_in_out[27] = West_in[27];
+  assign West_in_out[26] = West_in[26];
+  assign West_in_out[25] = West_in[25];
+  assign West_in_out[24] = West_in[24];
+  assign West_in_out[23] = West_in[23];
+  assign West_in_out[22] = West_in[22];
+  assign West_in_out[21] = West_in[21];
+  assign West_in_out[20] = West_in[20];
+  assign West_in_out[19] = West_in[19];
+  assign West_in_out[18] = West_in[18];
+  assign West_in_out[17] = West_in[17];
+  assign West_in_out[16] = West_in[16];
+  assign West_in_out[15] = West_in[15];
+  assign West_in_out[14] = West_in[14];
+  assign West_in_out[13] = West_in[13];
+  assign West_in_out[12] = West_in[12];
+  assign West_in_out[11] = West_in[11];
+  assign West_in_out[10] = West_in[10];
+  assign West_in_out[9] = West_in[9];
+  assign West_in_out[8] = West_in[8];
+  assign West_in_out[7] = West_in[7];
+  assign West_in_out[6] = West_in[6];
+  assign West_in_out[5] = West_in[5];
+  assign West_in_out[4] = West_in[4];
+  assign West_in_out[3] = West_in[3];
+  assign West_in_out[2] = West_in[2];
+  assign West_in_out[1] = West_in[1];
+  assign West_in_out[0] = West_in[0];
+  assign South_in_out[31] = South_in[31];
+  assign South_in_out[30] = South_in[30];
+  assign South_in_out[29] = South_in[29];
+  assign South_in_out[28] = South_in[28];
+  assign South_in_out[27] = South_in[27];
+  assign South_in_out[26] = South_in[26];
+  assign South_in_out[25] = South_in[25];
+  assign South_in_out[24] = South_in[24];
+  assign South_in_out[23] = South_in[23];
+  assign South_in_out[22] = South_in[22];
+  assign South_in_out[21] = South_in[21];
+  assign South_in_out[20] = South_in[20];
+  assign South_in_out[19] = South_in[19];
+  assign South_in_out[18] = South_in[18];
+  assign South_in_out[17] = South_in[17];
+  assign South_in_out[16] = South_in[16];
+  assign South_in_out[15] = South_in[15];
+  assign South_in_out[14] = South_in[14];
+  assign South_in_out[13] = South_in[13];
+  assign South_in_out[12] = South_in[12];
+  assign South_in_out[11] = South_in[11];
+  assign South_in_out[10] = South_in[10];
+  assign South_in_out[9] = South_in[9];
+  assign South_in_out[8] = South_in[8];
+  assign South_in_out[7] = South_in[7];
+  assign South_in_out[6] = South_in[6];
+  assign South_in_out[5] = South_in[5];
+  assign South_in_out[4] = South_in[4];
+  assign South_in_out[3] = South_in[3];
+  assign South_in_out[2] = South_in[2];
+  assign South_in_out[1] = South_in[1];
+  assign South_in_out[0] = South_in[0];
+  assign Local_in_out[31] = Local_in[31];
+  assign Local_in_out[30] = Local_in[30];
+  assign Local_in_out[29] = Local_in[29];
+  assign Local_in_out[28] = Local_in[28];
+  assign Local_in_out[27] = Local_in[27];
+  assign Local_in_out[26] = Local_in[26];
+  assign Local_in_out[25] = Local_in[25];
+  assign Local_in_out[24] = Local_in[24];
+  assign Local_in_out[23] = Local_in[23];
+  assign Local_in_out[22] = Local_in[22];
+  assign Local_in_out[21] = Local_in[21];
+  assign Local_in_out[20] = Local_in[20];
+  assign Local_in_out[19] = Local_in[19];
+  assign Local_in_out[18] = Local_in[18];
+  assign Local_in_out[17] = Local_in[17];
+  assign Local_in_out[16] = Local_in[16];
+  assign Local_in_out[15] = Local_in[15];
+  assign Local_in_out[14] = Local_in[14];
+  assign Local_in_out[13] = Local_in[13];
+  assign Local_in_out[12] = Local_in[12];
+  assign Local_in_out[11] = Local_in[11];
+  assign Local_in_out[10] = Local_in[10];
+  assign Local_in_out[9] = Local_in[9];
+  assign Local_in_out[8] = Local_in[8];
+  assign Local_in_out[7] = Local_in[7];
+  assign Local_in_out[6] = Local_in[6];
+  assign Local_in_out[5] = Local_in[5];
+  assign Local_in_out[4] = Local_in[4];
+  assign Local_in_out[3] = Local_in[3];
+  assign Local_in_out[2] = Local_in[2];
+  assign Local_in_out[1] = Local_in[1];
+  assign Local_in_out[0] = Local_in[0];
+  assign sel_out[4] = sel[4];
+  assign sel_out[3] = sel[3];
+  assign sel_out[2] = sel[2];
+  assign sel_out[1] = sel[1];
+  assign sel_out[0] = sel[0];
+
+endmodule
+
+
+module xbar_input_wire_DATA_WIDTH32_3 ( North_in, East_in, West_in, South_in, 
+        Local_in, sel, North_in_out, East_in_out, West_in_out, South_in_out, 
+        Local_in_out, sel_out );
+  input [31:0] North_in;
+  input [31:0] East_in;
+  input [31:0] West_in;
+  input [31:0] South_in;
+  input [31:0] Local_in;
+  input [4:0] sel;
+  output [31:0] North_in_out;
+  output [31:0] East_in_out;
+  output [31:0] West_in_out;
+  output [31:0] South_in_out;
+  output [31:0] Local_in_out;
+  output [4:0] sel_out;
+
+  assign North_in_out[31] = North_in[31];
+  assign North_in_out[30] = North_in[30];
+  assign North_in_out[29] = North_in[29];
+  assign North_in_out[28] = North_in[28];
+  assign North_in_out[27] = North_in[27];
+  assign North_in_out[26] = North_in[26];
+  assign North_in_out[25] = North_in[25];
+  assign North_in_out[24] = North_in[24];
+  assign North_in_out[23] = North_in[23];
+  assign North_in_out[22] = North_in[22];
+  assign North_in_out[21] = North_in[21];
+  assign North_in_out[20] = North_in[20];
+  assign North_in_out[19] = North_in[19];
+  assign North_in_out[18] = North_in[18];
+  assign North_in_out[17] = North_in[17];
+  assign North_in_out[16] = North_in[16];
+  assign North_in_out[15] = North_in[15];
+  assign North_in_out[14] = North_in[14];
+  assign North_in_out[13] = North_in[13];
+  assign North_in_out[12] = North_in[12];
+  assign North_in_out[11] = North_in[11];
+  assign North_in_out[10] = North_in[10];
+  assign North_in_out[9] = North_in[9];
+  assign North_in_out[8] = North_in[8];
+  assign North_in_out[7] = North_in[7];
+  assign North_in_out[6] = North_in[6];
+  assign North_in_out[5] = North_in[5];
+  assign North_in_out[4] = North_in[4];
+  assign North_in_out[3] = North_in[3];
+  assign North_in_out[2] = North_in[2];
+  assign North_in_out[1] = North_in[1];
+  assign North_in_out[0] = North_in[0];
+  assign East_in_out[31] = East_in[31];
+  assign East_in_out[30] = East_in[30];
+  assign East_in_out[29] = East_in[29];
+  assign East_in_out[28] = East_in[28];
+  assign East_in_out[27] = East_in[27];
+  assign East_in_out[26] = East_in[26];
+  assign East_in_out[25] = East_in[25];
+  assign East_in_out[24] = East_in[24];
+  assign East_in_out[23] = East_in[23];
+  assign East_in_out[22] = East_in[22];
+  assign East_in_out[21] = East_in[21];
+  assign East_in_out[20] = East_in[20];
+  assign East_in_out[19] = East_in[19];
+  assign East_in_out[18] = East_in[18];
+  assign East_in_out[17] = East_in[17];
+  assign East_in_out[16] = East_in[16];
+  assign East_in_out[15] = East_in[15];
+  assign East_in_out[14] = East_in[14];
+  assign East_in_out[13] = East_in[13];
+  assign East_in_out[12] = East_in[12];
+  assign East_in_out[11] = East_in[11];
+  assign East_in_out[10] = East_in[10];
+  assign East_in_out[9] = East_in[9];
+  assign East_in_out[8] = East_in[8];
+  assign East_in_out[7] = East_in[7];
+  assign East_in_out[6] = East_in[6];
+  assign East_in_out[5] = East_in[5];
+  assign East_in_out[4] = East_in[4];
+  assign East_in_out[3] = East_in[3];
+  assign East_in_out[2] = East_in[2];
+  assign East_in_out[1] = East_in[1];
+  assign East_in_out[0] = East_in[0];
+  assign West_in_out[31] = West_in[31];
+  assign West_in_out[30] = West_in[30];
+  assign West_in_out[29] = West_in[29];
+  assign West_in_out[28] = West_in[28];
+  assign West_in_out[27] = West_in[27];
+  assign West_in_out[26] = West_in[26];
+  assign West_in_out[25] = West_in[25];
+  assign West_in_out[24] = West_in[24];
+  assign West_in_out[23] = West_in[23];
+  assign West_in_out[22] = West_in[22];
+  assign West_in_out[21] = West_in[21];
+  assign West_in_out[20] = West_in[20];
+  assign West_in_out[19] = West_in[19];
+  assign West_in_out[18] = West_in[18];
+  assign West_in_out[17] = West_in[17];
+  assign West_in_out[16] = West_in[16];
+  assign West_in_out[15] = West_in[15];
+  assign West_in_out[14] = West_in[14];
+  assign West_in_out[13] = West_in[13];
+  assign West_in_out[12] = West_in[12];
+  assign West_in_out[11] = West_in[11];
+  assign West_in_out[10] = West_in[10];
+  assign West_in_out[9] = West_in[9];
+  assign West_in_out[8] = West_in[8];
+  assign West_in_out[7] = West_in[7];
+  assign West_in_out[6] = West_in[6];
+  assign West_in_out[5] = West_in[5];
+  assign West_in_out[4] = West_in[4];
+  assign West_in_out[3] = West_in[3];
+  assign West_in_out[2] = West_in[2];
+  assign West_in_out[1] = West_in[1];
+  assign West_in_out[0] = West_in[0];
+  assign South_in_out[31] = South_in[31];
+  assign South_in_out[30] = South_in[30];
+  assign South_in_out[29] = South_in[29];
+  assign South_in_out[28] = South_in[28];
+  assign South_in_out[27] = South_in[27];
+  assign South_in_out[26] = South_in[26];
+  assign South_in_out[25] = South_in[25];
+  assign South_in_out[24] = South_in[24];
+  assign South_in_out[23] = South_in[23];
+  assign South_in_out[22] = South_in[22];
+  assign South_in_out[21] = South_in[21];
+  assign South_in_out[20] = South_in[20];
+  assign South_in_out[19] = South_in[19];
+  assign South_in_out[18] = South_in[18];
+  assign South_in_out[17] = South_in[17];
+  assign South_in_out[16] = South_in[16];
+  assign South_in_out[15] = South_in[15];
+  assign South_in_out[14] = South_in[14];
+  assign South_in_out[13] = South_in[13];
+  assign South_in_out[12] = South_in[12];
+  assign South_in_out[11] = South_in[11];
+  assign South_in_out[10] = South_in[10];
+  assign South_in_out[9] = South_in[9];
+  assign South_in_out[8] = South_in[8];
+  assign South_in_out[7] = South_in[7];
+  assign South_in_out[6] = South_in[6];
+  assign South_in_out[5] = South_in[5];
+  assign South_in_out[4] = South_in[4];
+  assign South_in_out[3] = South_in[3];
+  assign South_in_out[2] = South_in[2];
+  assign South_in_out[1] = South_in[1];
+  assign South_in_out[0] = South_in[0];
+  assign Local_in_out[31] = Local_in[31];
+  assign Local_in_out[30] = Local_in[30];
+  assign Local_in_out[29] = Local_in[29];
+  assign Local_in_out[28] = Local_in[28];
+  assign Local_in_out[27] = Local_in[27];
+  assign Local_in_out[26] = Local_in[26];
+  assign Local_in_out[25] = Local_in[25];
+  assign Local_in_out[24] = Local_in[24];
+  assign Local_in_out[23] = Local_in[23];
+  assign Local_in_out[22] = Local_in[22];
+  assign Local_in_out[21] = Local_in[21];
+  assign Local_in_out[20] = Local_in[20];
+  assign Local_in_out[19] = Local_in[19];
+  assign Local_in_out[18] = Local_in[18];
+  assign Local_in_out[17] = Local_in[17];
+  assign Local_in_out[16] = Local_in[16];
+  assign Local_in_out[15] = Local_in[15];
+  assign Local_in_out[14] = Local_in[14];
+  assign Local_in_out[13] = Local_in[13];
+  assign Local_in_out[12] = Local_in[12];
+  assign Local_in_out[11] = Local_in[11];
+  assign Local_in_out[10] = Local_in[10];
+  assign Local_in_out[9] = Local_in[9];
+  assign Local_in_out[8] = Local_in[8];
+  assign Local_in_out[7] = Local_in[7];
+  assign Local_in_out[6] = Local_in[6];
+  assign Local_in_out[5] = Local_in[5];
+  assign Local_in_out[4] = Local_in[4];
+  assign Local_in_out[3] = Local_in[3];
+  assign Local_in_out[2] = Local_in[2];
+  assign Local_in_out[1] = Local_in[1];
+  assign Local_in_out[0] = Local_in[0];
+  assign sel_out[4] = sel[4];
+  assign sel_out[3] = sel[3];
+  assign sel_out[2] = sel[2];
+  assign sel_out[1] = sel[1];
+  assign sel_out[0] = sel[0];
+
+endmodule
+
+
+module xbar_input_wire_DATA_WIDTH32_2 ( North_in, East_in, West_in, South_in, 
+        Local_in, sel, North_in_out, East_in_out, West_in_out, South_in_out, 
+        Local_in_out, sel_out );
+  input [31:0] North_in;
+  input [31:0] East_in;
+  input [31:0] West_in;
+  input [31:0] South_in;
+  input [31:0] Local_in;
+  input [4:0] sel;
+  output [31:0] North_in_out;
+  output [31:0] East_in_out;
+  output [31:0] West_in_out;
+  output [31:0] South_in_out;
+  output [31:0] Local_in_out;
+  output [4:0] sel_out;
+
+  assign North_in_out[31] = North_in[31];
+  assign North_in_out[30] = North_in[30];
+  assign North_in_out[29] = North_in[29];
+  assign North_in_out[28] = North_in[28];
+  assign North_in_out[27] = North_in[27];
+  assign North_in_out[26] = North_in[26];
+  assign North_in_out[25] = North_in[25];
+  assign North_in_out[24] = North_in[24];
+  assign North_in_out[23] = North_in[23];
+  assign North_in_out[22] = North_in[22];
+  assign North_in_out[21] = North_in[21];
+  assign North_in_out[20] = North_in[20];
+  assign North_in_out[19] = North_in[19];
+  assign North_in_out[18] = North_in[18];
+  assign North_in_out[17] = North_in[17];
+  assign North_in_out[16] = North_in[16];
+  assign North_in_out[15] = North_in[15];
+  assign North_in_out[14] = North_in[14];
+  assign North_in_out[13] = North_in[13];
+  assign North_in_out[12] = North_in[12];
+  assign North_in_out[11] = North_in[11];
+  assign North_in_out[10] = North_in[10];
+  assign North_in_out[9] = North_in[9];
+  assign North_in_out[8] = North_in[8];
+  assign North_in_out[7] = North_in[7];
+  assign North_in_out[6] = North_in[6];
+  assign North_in_out[5] = North_in[5];
+  assign North_in_out[4] = North_in[4];
+  assign North_in_out[3] = North_in[3];
+  assign North_in_out[2] = North_in[2];
+  assign North_in_out[1] = North_in[1];
+  assign North_in_out[0] = North_in[0];
+  assign East_in_out[31] = East_in[31];
+  assign East_in_out[30] = East_in[30];
+  assign East_in_out[29] = East_in[29];
+  assign East_in_out[28] = East_in[28];
+  assign East_in_out[27] = East_in[27];
+  assign East_in_out[26] = East_in[26];
+  assign East_in_out[25] = East_in[25];
+  assign East_in_out[24] = East_in[24];
+  assign East_in_out[23] = East_in[23];
+  assign East_in_out[22] = East_in[22];
+  assign East_in_out[21] = East_in[21];
+  assign East_in_out[20] = East_in[20];
+  assign East_in_out[19] = East_in[19];
+  assign East_in_out[18] = East_in[18];
+  assign East_in_out[17] = East_in[17];
+  assign East_in_out[16] = East_in[16];
+  assign East_in_out[15] = East_in[15];
+  assign East_in_out[14] = East_in[14];
+  assign East_in_out[13] = East_in[13];
+  assign East_in_out[12] = East_in[12];
+  assign East_in_out[11] = East_in[11];
+  assign East_in_out[10] = East_in[10];
+  assign East_in_out[9] = East_in[9];
+  assign East_in_out[8] = East_in[8];
+  assign East_in_out[7] = East_in[7];
+  assign East_in_out[6] = East_in[6];
+  assign East_in_out[5] = East_in[5];
+  assign East_in_out[4] = East_in[4];
+  assign East_in_out[3] = East_in[3];
+  assign East_in_out[2] = East_in[2];
+  assign East_in_out[1] = East_in[1];
+  assign East_in_out[0] = East_in[0];
+  assign West_in_out[31] = West_in[31];
+  assign West_in_out[30] = West_in[30];
+  assign West_in_out[29] = West_in[29];
+  assign West_in_out[28] = West_in[28];
+  assign West_in_out[27] = West_in[27];
+  assign West_in_out[26] = West_in[26];
+  assign West_in_out[25] = West_in[25];
+  assign West_in_out[24] = West_in[24];
+  assign West_in_out[23] = West_in[23];
+  assign West_in_out[22] = West_in[22];
+  assign West_in_out[21] = West_in[21];
+  assign West_in_out[20] = West_in[20];
+  assign West_in_out[19] = West_in[19];
+  assign West_in_out[18] = West_in[18];
+  assign West_in_out[17] = West_in[17];
+  assign West_in_out[16] = West_in[16];
+  assign West_in_out[15] = West_in[15];
+  assign West_in_out[14] = West_in[14];
+  assign West_in_out[13] = West_in[13];
+  assign West_in_out[12] = West_in[12];
+  assign West_in_out[11] = West_in[11];
+  assign West_in_out[10] = West_in[10];
+  assign West_in_out[9] = West_in[9];
+  assign West_in_out[8] = West_in[8];
+  assign West_in_out[7] = West_in[7];
+  assign West_in_out[6] = West_in[6];
+  assign West_in_out[5] = West_in[5];
+  assign West_in_out[4] = West_in[4];
+  assign West_in_out[3] = West_in[3];
+  assign West_in_out[2] = West_in[2];
+  assign West_in_out[1] = West_in[1];
+  assign West_in_out[0] = West_in[0];
+  assign South_in_out[31] = South_in[31];
+  assign South_in_out[30] = South_in[30];
+  assign South_in_out[29] = South_in[29];
+  assign South_in_out[28] = South_in[28];
+  assign South_in_out[27] = South_in[27];
+  assign South_in_out[26] = South_in[26];
+  assign South_in_out[25] = South_in[25];
+  assign South_in_out[24] = South_in[24];
+  assign South_in_out[23] = South_in[23];
+  assign South_in_out[22] = South_in[22];
+  assign South_in_out[21] = South_in[21];
+  assign South_in_out[20] = South_in[20];
+  assign South_in_out[19] = South_in[19];
+  assign South_in_out[18] = South_in[18];
+  assign South_in_out[17] = South_in[17];
+  assign South_in_out[16] = South_in[16];
+  assign South_in_out[15] = South_in[15];
+  assign South_in_out[14] = South_in[14];
+  assign South_in_out[13] = South_in[13];
+  assign South_in_out[12] = South_in[12];
+  assign South_in_out[11] = South_in[11];
+  assign South_in_out[10] = South_in[10];
+  assign South_in_out[9] = South_in[9];
+  assign South_in_out[8] = South_in[8];
+  assign South_in_out[7] = South_in[7];
+  assign South_in_out[6] = South_in[6];
+  assign South_in_out[5] = South_in[5];
+  assign South_in_out[4] = South_in[4];
+  assign South_in_out[3] = South_in[3];
+  assign South_in_out[2] = South_in[2];
+  assign South_in_out[1] = South_in[1];
+  assign South_in_out[0] = South_in[0];
+  assign Local_in_out[31] = Local_in[31];
+  assign Local_in_out[30] = Local_in[30];
+  assign Local_in_out[29] = Local_in[29];
+  assign Local_in_out[28] = Local_in[28];
+  assign Local_in_out[27] = Local_in[27];
+  assign Local_in_out[26] = Local_in[26];
+  assign Local_in_out[25] = Local_in[25];
+  assign Local_in_out[24] = Local_in[24];
+  assign Local_in_out[23] = Local_in[23];
+  assign Local_in_out[22] = Local_in[22];
+  assign Local_in_out[21] = Local_in[21];
+  assign Local_in_out[20] = Local_in[20];
+  assign Local_in_out[19] = Local_in[19];
+  assign Local_in_out[18] = Local_in[18];
+  assign Local_in_out[17] = Local_in[17];
+  assign Local_in_out[16] = Local_in[16];
+  assign Local_in_out[15] = Local_in[15];
+  assign Local_in_out[14] = Local_in[14];
+  assign Local_in_out[13] = Local_in[13];
+  assign Local_in_out[12] = Local_in[12];
+  assign Local_in_out[11] = Local_in[11];
+  assign Local_in_out[10] = Local_in[10];
+  assign Local_in_out[9] = Local_in[9];
+  assign Local_in_out[8] = Local_in[8];
+  assign Local_in_out[7] = Local_in[7];
+  assign Local_in_out[6] = Local_in[6];
+  assign Local_in_out[5] = Local_in[5];
+  assign Local_in_out[4] = Local_in[4];
+  assign Local_in_out[3] = Local_in[3];
+  assign Local_in_out[2] = Local_in[2];
+  assign Local_in_out[1] = Local_in[1];
+  assign Local_in_out[0] = Local_in[0];
+  assign sel_out[4] = sel[4];
+  assign sel_out[3] = sel[3];
+  assign sel_out[2] = sel[2];
+  assign sel_out[1] = sel[1];
+  assign sel_out[0] = sel[0];
+
+endmodule
+
+
+module xbar_input_wire_DATA_WIDTH32_1 ( North_in, East_in, West_in, South_in, 
+        Local_in, sel, North_in_out, East_in_out, West_in_out, South_in_out, 
+        Local_in_out, sel_out );
+  input [31:0] North_in;
+  input [31:0] East_in;
+  input [31:0] West_in;
+  input [31:0] South_in;
+  input [31:0] Local_in;
+  input [4:0] sel;
+  output [31:0] North_in_out;
+  output [31:0] East_in_out;
+  output [31:0] West_in_out;
+  output [31:0] South_in_out;
+  output [31:0] Local_in_out;
+  output [4:0] sel_out;
+
+  assign North_in_out[31] = North_in[31];
+  assign North_in_out[30] = North_in[30];
+  assign North_in_out[29] = North_in[29];
+  assign North_in_out[28] = North_in[28];
+  assign North_in_out[27] = North_in[27];
+  assign North_in_out[26] = North_in[26];
+  assign North_in_out[25] = North_in[25];
+  assign North_in_out[24] = North_in[24];
+  assign North_in_out[23] = North_in[23];
+  assign North_in_out[22] = North_in[22];
+  assign North_in_out[21] = North_in[21];
+  assign North_in_out[20] = North_in[20];
+  assign North_in_out[19] = North_in[19];
+  assign North_in_out[18] = North_in[18];
+  assign North_in_out[17] = North_in[17];
+  assign North_in_out[16] = North_in[16];
+  assign North_in_out[15] = North_in[15];
+  assign North_in_out[14] = North_in[14];
+  assign North_in_out[13] = North_in[13];
+  assign North_in_out[12] = North_in[12];
+  assign North_in_out[11] = North_in[11];
+  assign North_in_out[10] = North_in[10];
+  assign North_in_out[9] = North_in[9];
+  assign North_in_out[8] = North_in[8];
+  assign North_in_out[7] = North_in[7];
+  assign North_in_out[6] = North_in[6];
+  assign North_in_out[5] = North_in[5];
+  assign North_in_out[4] = North_in[4];
+  assign North_in_out[3] = North_in[3];
+  assign North_in_out[2] = North_in[2];
+  assign North_in_out[1] = North_in[1];
+  assign North_in_out[0] = North_in[0];
+  assign East_in_out[31] = East_in[31];
+  assign East_in_out[30] = East_in[30];
+  assign East_in_out[29] = East_in[29];
+  assign East_in_out[28] = East_in[28];
+  assign East_in_out[27] = East_in[27];
+  assign East_in_out[26] = East_in[26];
+  assign East_in_out[25] = East_in[25];
+  assign East_in_out[24] = East_in[24];
+  assign East_in_out[23] = East_in[23];
+  assign East_in_out[22] = East_in[22];
+  assign East_in_out[21] = East_in[21];
+  assign East_in_out[20] = East_in[20];
+  assign East_in_out[19] = East_in[19];
+  assign East_in_out[18] = East_in[18];
+  assign East_in_out[17] = East_in[17];
+  assign East_in_out[16] = East_in[16];
+  assign East_in_out[15] = East_in[15];
+  assign East_in_out[14] = East_in[14];
+  assign East_in_out[13] = East_in[13];
+  assign East_in_out[12] = East_in[12];
+  assign East_in_out[11] = East_in[11];
+  assign East_in_out[10] = East_in[10];
+  assign East_in_out[9] = East_in[9];
+  assign East_in_out[8] = East_in[8];
+  assign East_in_out[7] = East_in[7];
+  assign East_in_out[6] = East_in[6];
+  assign East_in_out[5] = East_in[5];
+  assign East_in_out[4] = East_in[4];
+  assign East_in_out[3] = East_in[3];
+  assign East_in_out[2] = East_in[2];
+  assign East_in_out[1] = East_in[1];
+  assign East_in_out[0] = East_in[0];
+  assign West_in_out[31] = West_in[31];
+  assign West_in_out[30] = West_in[30];
+  assign West_in_out[29] = West_in[29];
+  assign West_in_out[28] = West_in[28];
+  assign West_in_out[27] = West_in[27];
+  assign West_in_out[26] = West_in[26];
+  assign West_in_out[25] = West_in[25];
+  assign West_in_out[24] = West_in[24];
+  assign West_in_out[23] = West_in[23];
+  assign West_in_out[22] = West_in[22];
+  assign West_in_out[21] = West_in[21];
+  assign West_in_out[20] = West_in[20];
+  assign West_in_out[19] = West_in[19];
+  assign West_in_out[18] = West_in[18];
+  assign West_in_out[17] = West_in[17];
+  assign West_in_out[16] = West_in[16];
+  assign West_in_out[15] = West_in[15];
+  assign West_in_out[14] = West_in[14];
+  assign West_in_out[13] = West_in[13];
+  assign West_in_out[12] = West_in[12];
+  assign West_in_out[11] = West_in[11];
+  assign West_in_out[10] = West_in[10];
+  assign West_in_out[9] = West_in[9];
+  assign West_in_out[8] = West_in[8];
+  assign West_in_out[7] = West_in[7];
+  assign West_in_out[6] = West_in[6];
+  assign West_in_out[5] = West_in[5];
+  assign West_in_out[4] = West_in[4];
+  assign West_in_out[3] = West_in[3];
+  assign West_in_out[2] = West_in[2];
+  assign West_in_out[1] = West_in[1];
+  assign West_in_out[0] = West_in[0];
+  assign South_in_out[31] = South_in[31];
+  assign South_in_out[30] = South_in[30];
+  assign South_in_out[29] = South_in[29];
+  assign South_in_out[28] = South_in[28];
+  assign South_in_out[27] = South_in[27];
+  assign South_in_out[26] = South_in[26];
+  assign South_in_out[25] = South_in[25];
+  assign South_in_out[24] = South_in[24];
+  assign South_in_out[23] = South_in[23];
+  assign South_in_out[22] = South_in[22];
+  assign South_in_out[21] = South_in[21];
+  assign South_in_out[20] = South_in[20];
+  assign South_in_out[19] = South_in[19];
+  assign South_in_out[18] = South_in[18];
+  assign South_in_out[17] = South_in[17];
+  assign South_in_out[16] = South_in[16];
+  assign South_in_out[15] = South_in[15];
+  assign South_in_out[14] = South_in[14];
+  assign South_in_out[13] = South_in[13];
+  assign South_in_out[12] = South_in[12];
+  assign South_in_out[11] = South_in[11];
+  assign South_in_out[10] = South_in[10];
+  assign South_in_out[9] = South_in[9];
+  assign South_in_out[8] = South_in[8];
+  assign South_in_out[7] = South_in[7];
+  assign South_in_out[6] = South_in[6];
+  assign South_in_out[5] = South_in[5];
+  assign South_in_out[4] = South_in[4];
+  assign South_in_out[3] = South_in[3];
+  assign South_in_out[2] = South_in[2];
+  assign South_in_out[1] = South_in[1];
+  assign South_in_out[0] = South_in[0];
+  assign Local_in_out[31] = Local_in[31];
+  assign Local_in_out[30] = Local_in[30];
+  assign Local_in_out[29] = Local_in[29];
+  assign Local_in_out[28] = Local_in[28];
+  assign Local_in_out[27] = Local_in[27];
+  assign Local_in_out[26] = Local_in[26];
+  assign Local_in_out[25] = Local_in[25];
+  assign Local_in_out[24] = Local_in[24];
+  assign Local_in_out[23] = Local_in[23];
+  assign Local_in_out[22] = Local_in[22];
+  assign Local_in_out[21] = Local_in[21];
+  assign Local_in_out[20] = Local_in[20];
+  assign Local_in_out[19] = Local_in[19];
+  assign Local_in_out[18] = Local_in[18];
+  assign Local_in_out[17] = Local_in[17];
+  assign Local_in_out[16] = Local_in[16];
+  assign Local_in_out[15] = Local_in[15];
+  assign Local_in_out[14] = Local_in[14];
+  assign Local_in_out[13] = Local_in[13];
+  assign Local_in_out[12] = Local_in[12];
+  assign Local_in_out[11] = Local_in[11];
+  assign Local_in_out[10] = Local_in[10];
+  assign Local_in_out[9] = Local_in[9];
+  assign Local_in_out[8] = Local_in[8];
+  assign Local_in_out[7] = Local_in[7];
+  assign Local_in_out[6] = Local_in[6];
+  assign Local_in_out[5] = Local_in[5];
+  assign Local_in_out[4] = Local_in[4];
+  assign Local_in_out[3] = Local_in[3];
+  assign Local_in_out[2] = Local_in[2];
+  assign Local_in_out[1] = Local_in[1];
+  assign Local_in_out[0] = Local_in[0];
+  assign sel_out[4] = sel[4];
+  assign sel_out[3] = sel[3];
+  assign sel_out[2] = sel[2];
+  assign sel_out[1] = sel[1];
+  assign sel_out[0] = sel[0];
+
+endmodule
+
+
+module xbar_input_wire_DATA_WIDTH32_0 ( North_in, East_in, West_in, South_in, 
+        Local_in, sel, North_in_out, East_in_out, West_in_out, South_in_out, 
+        Local_in_out, sel_out );
+  input [31:0] North_in;
+  input [31:0] East_in;
+  input [31:0] West_in;
+  input [31:0] South_in;
+  input [31:0] Local_in;
+  input [4:0] sel;
+  output [31:0] North_in_out;
+  output [31:0] East_in_out;
+  output [31:0] West_in_out;
+  output [31:0] South_in_out;
+  output [31:0] Local_in_out;
+  output [4:0] sel_out;
+
+  assign North_in_out[31] = North_in[31];
+  assign North_in_out[30] = North_in[30];
+  assign North_in_out[29] = North_in[29];
+  assign North_in_out[28] = North_in[28];
+  assign North_in_out[27] = North_in[27];
+  assign North_in_out[26] = North_in[26];
+  assign North_in_out[25] = North_in[25];
+  assign North_in_out[24] = North_in[24];
+  assign North_in_out[23] = North_in[23];
+  assign North_in_out[22] = North_in[22];
+  assign North_in_out[21] = North_in[21];
+  assign North_in_out[20] = North_in[20];
+  assign North_in_out[19] = North_in[19];
+  assign North_in_out[18] = North_in[18];
+  assign North_in_out[17] = North_in[17];
+  assign North_in_out[16] = North_in[16];
+  assign North_in_out[15] = North_in[15];
+  assign North_in_out[14] = North_in[14];
+  assign North_in_out[13] = North_in[13];
+  assign North_in_out[12] = North_in[12];
+  assign North_in_out[11] = North_in[11];
+  assign North_in_out[10] = North_in[10];
+  assign North_in_out[9] = North_in[9];
+  assign North_in_out[8] = North_in[8];
+  assign North_in_out[7] = North_in[7];
+  assign North_in_out[6] = North_in[6];
+  assign North_in_out[5] = North_in[5];
+  assign North_in_out[4] = North_in[4];
+  assign North_in_out[3] = North_in[3];
+  assign North_in_out[2] = North_in[2];
+  assign North_in_out[1] = North_in[1];
+  assign North_in_out[0] = North_in[0];
+  assign East_in_out[31] = East_in[31];
+  assign East_in_out[30] = East_in[30];
+  assign East_in_out[29] = East_in[29];
+  assign East_in_out[28] = East_in[28];
+  assign East_in_out[27] = East_in[27];
+  assign East_in_out[26] = East_in[26];
+  assign East_in_out[25] = East_in[25];
+  assign East_in_out[24] = East_in[24];
+  assign East_in_out[23] = East_in[23];
+  assign East_in_out[22] = East_in[22];
+  assign East_in_out[21] = East_in[21];
+  assign East_in_out[20] = East_in[20];
+  assign East_in_out[19] = East_in[19];
+  assign East_in_out[18] = East_in[18];
+  assign East_in_out[17] = East_in[17];
+  assign East_in_out[16] = East_in[16];
+  assign East_in_out[15] = East_in[15];
+  assign East_in_out[14] = East_in[14];
+  assign East_in_out[13] = East_in[13];
+  assign East_in_out[12] = East_in[12];
+  assign East_in_out[11] = East_in[11];
+  assign East_in_out[10] = East_in[10];
+  assign East_in_out[9] = East_in[9];
+  assign East_in_out[8] = East_in[8];
+  assign East_in_out[7] = East_in[7];
+  assign East_in_out[6] = East_in[6];
+  assign East_in_out[5] = East_in[5];
+  assign East_in_out[4] = East_in[4];
+  assign East_in_out[3] = East_in[3];
+  assign East_in_out[2] = East_in[2];
+  assign East_in_out[1] = East_in[1];
+  assign East_in_out[0] = East_in[0];
+  assign West_in_out[31] = West_in[31];
+  assign West_in_out[30] = West_in[30];
+  assign West_in_out[29] = West_in[29];
+  assign West_in_out[28] = West_in[28];
+  assign West_in_out[27] = West_in[27];
+  assign West_in_out[26] = West_in[26];
+  assign West_in_out[25] = West_in[25];
+  assign West_in_out[24] = West_in[24];
+  assign West_in_out[23] = West_in[23];
+  assign West_in_out[22] = West_in[22];
+  assign West_in_out[21] = West_in[21];
+  assign West_in_out[20] = West_in[20];
+  assign West_in_out[19] = West_in[19];
+  assign West_in_out[18] = West_in[18];
+  assign West_in_out[17] = West_in[17];
+  assign West_in_out[16] = West_in[16];
+  assign West_in_out[15] = West_in[15];
+  assign West_in_out[14] = West_in[14];
+  assign West_in_out[13] = West_in[13];
+  assign West_in_out[12] = West_in[12];
+  assign West_in_out[11] = West_in[11];
+  assign West_in_out[10] = West_in[10];
+  assign West_in_out[9] = West_in[9];
+  assign West_in_out[8] = West_in[8];
+  assign West_in_out[7] = West_in[7];
+  assign West_in_out[6] = West_in[6];
+  assign West_in_out[5] = West_in[5];
+  assign West_in_out[4] = West_in[4];
+  assign West_in_out[3] = West_in[3];
+  assign West_in_out[2] = West_in[2];
+  assign West_in_out[1] = West_in[1];
+  assign West_in_out[0] = West_in[0];
+  assign South_in_out[31] = South_in[31];
+  assign South_in_out[30] = South_in[30];
+  assign South_in_out[29] = South_in[29];
+  assign South_in_out[28] = South_in[28];
+  assign South_in_out[27] = South_in[27];
+  assign South_in_out[26] = South_in[26];
+  assign South_in_out[25] = South_in[25];
+  assign South_in_out[24] = South_in[24];
+  assign South_in_out[23] = South_in[23];
+  assign South_in_out[22] = South_in[22];
+  assign South_in_out[21] = South_in[21];
+  assign South_in_out[20] = South_in[20];
+  assign South_in_out[19] = South_in[19];
+  assign South_in_out[18] = South_in[18];
+  assign South_in_out[17] = South_in[17];
+  assign South_in_out[16] = South_in[16];
+  assign South_in_out[15] = South_in[15];
+  assign South_in_out[14] = South_in[14];
+  assign South_in_out[13] = South_in[13];
+  assign South_in_out[12] = South_in[12];
+  assign South_in_out[11] = South_in[11];
+  assign South_in_out[10] = South_in[10];
+  assign South_in_out[9] = South_in[9];
+  assign South_in_out[8] = South_in[8];
+  assign South_in_out[7] = South_in[7];
+  assign South_in_out[6] = South_in[6];
+  assign South_in_out[5] = South_in[5];
+  assign South_in_out[4] = South_in[4];
+  assign South_in_out[3] = South_in[3];
+  assign South_in_out[2] = South_in[2];
+  assign South_in_out[1] = South_in[1];
+  assign South_in_out[0] = South_in[0];
+  assign Local_in_out[31] = Local_in[31];
+  assign Local_in_out[30] = Local_in[30];
+  assign Local_in_out[29] = Local_in[29];
+  assign Local_in_out[28] = Local_in[28];
+  assign Local_in_out[27] = Local_in[27];
+  assign Local_in_out[26] = Local_in[26];
+  assign Local_in_out[25] = Local_in[25];
+  assign Local_in_out[24] = Local_in[24];
+  assign Local_in_out[23] = Local_in[23];
+  assign Local_in_out[22] = Local_in[22];
+  assign Local_in_out[21] = Local_in[21];
+  assign Local_in_out[20] = Local_in[20];
+  assign Local_in_out[19] = Local_in[19];
+  assign Local_in_out[18] = Local_in[18];
+  assign Local_in_out[17] = Local_in[17];
+  assign Local_in_out[16] = Local_in[16];
+  assign Local_in_out[15] = Local_in[15];
+  assign Local_in_out[14] = Local_in[14];
+  assign Local_in_out[13] = Local_in[13];
+  assign Local_in_out[12] = Local_in[12];
+  assign Local_in_out[11] = Local_in[11];
+  assign Local_in_out[10] = Local_in[10];
+  assign Local_in_out[9] = Local_in[9];
+  assign Local_in_out[8] = Local_in[8];
+  assign Local_in_out[7] = Local_in[7];
+  assign Local_in_out[6] = Local_in[6];
+  assign Local_in_out[5] = Local_in[5];
+  assign Local_in_out[4] = Local_in[4];
+  assign Local_in_out[3] = Local_in[3];
+  assign Local_in_out[2] = Local_in[2];
+  assign Local_in_out[1] = Local_in[1];
+  assign Local_in_out[0] = Local_in[0];
+  assign sel_out[4] = sel[4];
+  assign sel_out[3] = sel[3];
+  assign sel_out[2] = sel[2];
+  assign sel_out[1] = sel[1];
+  assign sel_out[0] = sel[0];
+
+endmodule
+
+
+module FIFO_data_path_input_wire_DATA_WIDTH32_4 ( write_en, RX, read_pointer, 
+        write_pointer, write_en_out, RX_out, read_ptr_out, write_ptr_out );
+  input [31:0] RX;
+  input [3:0] read_pointer;
+  input [3:0] write_pointer;
+  output [31:0] RX_out;
+  output [3:0] read_ptr_out;
+  output [3:0] write_ptr_out;
+  input write_en;
+  output write_en_out;
+  wire   write_en_out;
+  assign write_en_out = write_en;
+  assign RX_out[31] = RX[31];
+  assign RX_out[30] = RX[30];
+  assign RX_out[29] = RX[29];
+  assign RX_out[28] = RX[28];
+  assign RX_out[27] = RX[27];
+  assign RX_out[26] = RX[26];
+  assign RX_out[25] = RX[25];
+  assign RX_out[24] = RX[24];
+  assign RX_out[23] = RX[23];
+  assign RX_out[22] = RX[22];
+  assign RX_out[21] = RX[21];
+  assign RX_out[20] = RX[20];
+  assign RX_out[19] = RX[19];
+  assign RX_out[18] = RX[18];
+  assign RX_out[17] = RX[17];
+  assign RX_out[16] = RX[16];
+  assign RX_out[15] = RX[15];
+  assign RX_out[14] = RX[14];
+  assign RX_out[13] = RX[13];
+  assign RX_out[12] = RX[12];
+  assign RX_out[11] = RX[11];
+  assign RX_out[10] = RX[10];
+  assign RX_out[9] = RX[9];
+  assign RX_out[8] = RX[8];
+  assign RX_out[7] = RX[7];
+  assign RX_out[6] = RX[6];
+  assign RX_out[5] = RX[5];
+  assign RX_out[4] = RX[4];
+  assign RX_out[3] = RX[3];
+  assign RX_out[2] = RX[2];
+  assign RX_out[1] = RX[1];
+  assign RX_out[0] = RX[0];
+  assign read_ptr_out[3] = read_pointer[3];
+  assign read_ptr_out[2] = read_pointer[2];
+  assign read_ptr_out[1] = read_pointer[1];
+  assign read_ptr_out[0] = read_pointer[0];
+  assign write_ptr_out[3] = write_pointer[3];
+  assign write_ptr_out[2] = write_pointer[2];
+  assign write_ptr_out[1] = write_pointer[1];
+  assign write_ptr_out[0] = write_pointer[0];
+
+endmodule
+
+
+module FIFO_control_part_input_wire_4 ( valid_in, read_en_N, read_en_E, 
+        read_en_W, read_en_S, read_en_L, valid_in_out, read_en_N_out, 
+        read_en_E_out, read_en_W_out, read_en_S_out, read_en_L_out );
+  input valid_in, read_en_N, read_en_E, read_en_W, read_en_S, read_en_L;
+  output valid_in_out, read_en_N_out, read_en_E_out, read_en_W_out,
+         read_en_S_out, read_en_L_out;
+  wire   valid_in_out, read_en_N_out, read_en_E_out, read_en_W_out,
+         read_en_S_out, read_en_L_out;
+  assign valid_in_out = valid_in;
+  assign read_en_N_out = read_en_N;
+  assign read_en_E_out = read_en_E;
+  assign read_en_W_out = read_en_W;
+  assign read_en_S_out = read_en_S;
+  assign read_en_L_out = read_en_L;
+
+endmodule
+
+
+module FIFO_data_path_input_wire_DATA_WIDTH32_3 ( write_en, RX, read_pointer, 
+        write_pointer, write_en_out, RX_out, read_ptr_out, write_ptr_out );
+  input [31:0] RX;
+  input [3:0] read_pointer;
+  input [3:0] write_pointer;
+  output [31:0] RX_out;
+  output [3:0] read_ptr_out;
+  output [3:0] write_ptr_out;
+  input write_en;
+  output write_en_out;
+  wire   write_en_out;
+  assign write_en_out = write_en;
+  assign RX_out[31] = RX[31];
+  assign RX_out[30] = RX[30];
+  assign RX_out[29] = RX[29];
+  assign RX_out[28] = RX[28];
+  assign RX_out[27] = RX[27];
+  assign RX_out[26] = RX[26];
+  assign RX_out[25] = RX[25];
+  assign RX_out[24] = RX[24];
+  assign RX_out[23] = RX[23];
+  assign RX_out[22] = RX[22];
+  assign RX_out[21] = RX[21];
+  assign RX_out[20] = RX[20];
+  assign RX_out[19] = RX[19];
+  assign RX_out[18] = RX[18];
+  assign RX_out[17] = RX[17];
+  assign RX_out[16] = RX[16];
+  assign RX_out[15] = RX[15];
+  assign RX_out[14] = RX[14];
+  assign RX_out[13] = RX[13];
+  assign RX_out[12] = RX[12];
+  assign RX_out[11] = RX[11];
+  assign RX_out[10] = RX[10];
+  assign RX_out[9] = RX[9];
+  assign RX_out[8] = RX[8];
+  assign RX_out[7] = RX[7];
+  assign RX_out[6] = RX[6];
+  assign RX_out[5] = RX[5];
+  assign RX_out[4] = RX[4];
+  assign RX_out[3] = RX[3];
+  assign RX_out[2] = RX[2];
+  assign RX_out[1] = RX[1];
+  assign RX_out[0] = RX[0];
+  assign read_ptr_out[3] = read_pointer[3];
+  assign read_ptr_out[2] = read_pointer[2];
+  assign read_ptr_out[1] = read_pointer[1];
+  assign read_ptr_out[0] = read_pointer[0];
+  assign write_ptr_out[3] = write_pointer[3];
+  assign write_ptr_out[2] = write_pointer[2];
+  assign write_ptr_out[1] = write_pointer[1];
+  assign write_ptr_out[0] = write_pointer[0];
+
+endmodule
+
+
+module FIFO_control_part_input_wire_3 ( valid_in, read_en_N, read_en_E, 
+        read_en_W, read_en_S, read_en_L, valid_in_out, read_en_N_out, 
+        read_en_E_out, read_en_W_out, read_en_S_out, read_en_L_out );
+  input valid_in, read_en_N, read_en_E, read_en_W, read_en_S, read_en_L;
+  output valid_in_out, read_en_N_out, read_en_E_out, read_en_W_out,
+         read_en_S_out, read_en_L_out;
+  wire   valid_in_out, read_en_N_out, read_en_E_out, read_en_W_out,
+         read_en_S_out, read_en_L_out;
+  assign valid_in_out = valid_in;
+  assign read_en_N_out = read_en_N;
+  assign read_en_E_out = read_en_E;
+  assign read_en_W_out = read_en_W;
+  assign read_en_S_out = read_en_S;
+  assign read_en_L_out = read_en_L;
+
+endmodule
+
+
+module FIFO_data_path_input_wire_DATA_WIDTH32_2 ( write_en, RX, read_pointer, 
+        write_pointer, write_en_out, RX_out, read_ptr_out, write_ptr_out );
+  input [31:0] RX;
+  input [3:0] read_pointer;
+  input [3:0] write_pointer;
+  output [31:0] RX_out;
+  output [3:0] read_ptr_out;
+  output [3:0] write_ptr_out;
+  input write_en;
+  output write_en_out;
+  wire   write_en_out;
+  assign write_en_out = write_en;
+  assign RX_out[31] = RX[31];
+  assign RX_out[30] = RX[30];
+  assign RX_out[29] = RX[29];
+  assign RX_out[28] = RX[28];
+  assign RX_out[27] = RX[27];
+  assign RX_out[26] = RX[26];
+  assign RX_out[25] = RX[25];
+  assign RX_out[24] = RX[24];
+  assign RX_out[23] = RX[23];
+  assign RX_out[22] = RX[22];
+  assign RX_out[21] = RX[21];
+  assign RX_out[20] = RX[20];
+  assign RX_out[19] = RX[19];
+  assign RX_out[18] = RX[18];
+  assign RX_out[17] = RX[17];
+  assign RX_out[16] = RX[16];
+  assign RX_out[15] = RX[15];
+  assign RX_out[14] = RX[14];
+  assign RX_out[13] = RX[13];
+  assign RX_out[12] = RX[12];
+  assign RX_out[11] = RX[11];
+  assign RX_out[10] = RX[10];
+  assign RX_out[9] = RX[9];
+  assign RX_out[8] = RX[8];
+  assign RX_out[7] = RX[7];
+  assign RX_out[6] = RX[6];
+  assign RX_out[5] = RX[5];
+  assign RX_out[4] = RX[4];
+  assign RX_out[3] = RX[3];
+  assign RX_out[2] = RX[2];
+  assign RX_out[1] = RX[1];
+  assign RX_out[0] = RX[0];
+  assign read_ptr_out[3] = read_pointer[3];
+  assign read_ptr_out[2] = read_pointer[2];
+  assign read_ptr_out[1] = read_pointer[1];
+  assign read_ptr_out[0] = read_pointer[0];
+  assign write_ptr_out[3] = write_pointer[3];
+  assign write_ptr_out[2] = write_pointer[2];
+  assign write_ptr_out[1] = write_pointer[1];
+  assign write_ptr_out[0] = write_pointer[0];
+
+endmodule
+
+
+module FIFO_control_part_input_wire_2 ( valid_in, read_en_N, read_en_E, 
+        read_en_W, read_en_S, read_en_L, valid_in_out, read_en_N_out, 
+        read_en_E_out, read_en_W_out, read_en_S_out, read_en_L_out );
+  input valid_in, read_en_N, read_en_E, read_en_W, read_en_S, read_en_L;
+  output valid_in_out, read_en_N_out, read_en_E_out, read_en_W_out,
+         read_en_S_out, read_en_L_out;
+  wire   valid_in_out, read_en_N_out, read_en_E_out, read_en_W_out,
+         read_en_S_out, read_en_L_out;
+  assign valid_in_out = valid_in;
+  assign read_en_N_out = read_en_N;
+  assign read_en_E_out = read_en_E;
+  assign read_en_W_out = read_en_W;
+  assign read_en_S_out = read_en_S;
+  assign read_en_L_out = read_en_L;
+
+endmodule
+
+
+module FIFO_data_path_input_wire_DATA_WIDTH32_1 ( write_en, RX, read_pointer, 
+        write_pointer, write_en_out, RX_out, read_ptr_out, write_ptr_out );
+  input [31:0] RX;
+  input [3:0] read_pointer;
+  input [3:0] write_pointer;
+  output [31:0] RX_out;
+  output [3:0] read_ptr_out;
+  output [3:0] write_ptr_out;
+  input write_en;
+  output write_en_out;
+  wire   write_en_out;
+  assign write_en_out = write_en;
+  assign RX_out[31] = RX[31];
+  assign RX_out[30] = RX[30];
+  assign RX_out[29] = RX[29];
+  assign RX_out[28] = RX[28];
+  assign RX_out[27] = RX[27];
+  assign RX_out[26] = RX[26];
+  assign RX_out[25] = RX[25];
+  assign RX_out[24] = RX[24];
+  assign RX_out[23] = RX[23];
+  assign RX_out[22] = RX[22];
+  assign RX_out[21] = RX[21];
+  assign RX_out[20] = RX[20];
+  assign RX_out[19] = RX[19];
+  assign RX_out[18] = RX[18];
+  assign RX_out[17] = RX[17];
+  assign RX_out[16] = RX[16];
+  assign RX_out[15] = RX[15];
+  assign RX_out[14] = RX[14];
+  assign RX_out[13] = RX[13];
+  assign RX_out[12] = RX[12];
+  assign RX_out[11] = RX[11];
+  assign RX_out[10] = RX[10];
+  assign RX_out[9] = RX[9];
+  assign RX_out[8] = RX[8];
+  assign RX_out[7] = RX[7];
+  assign RX_out[6] = RX[6];
+  assign RX_out[5] = RX[5];
+  assign RX_out[4] = RX[4];
+  assign RX_out[3] = RX[3];
+  assign RX_out[2] = RX[2];
+  assign RX_out[1] = RX[1];
+  assign RX_out[0] = RX[0];
+  assign read_ptr_out[3] = read_pointer[3];
+  assign read_ptr_out[2] = read_pointer[2];
+  assign read_ptr_out[1] = read_pointer[1];
+  assign read_ptr_out[0] = read_pointer[0];
+  assign write_ptr_out[3] = write_pointer[3];
+  assign write_ptr_out[2] = write_pointer[2];
+  assign write_ptr_out[1] = write_pointer[1];
+  assign write_ptr_out[0] = write_pointer[0];
+
+endmodule
+
+
+module FIFO_control_part_input_wire_1 ( valid_in, read_en_N, read_en_E, 
+        read_en_W, read_en_S, read_en_L, valid_in_out, read_en_N_out, 
+        read_en_E_out, read_en_W_out, read_en_S_out, read_en_L_out );
+  input valid_in, read_en_N, read_en_E, read_en_W, read_en_S, read_en_L;
+  output valid_in_out, read_en_N_out, read_en_E_out, read_en_W_out,
+         read_en_S_out, read_en_L_out;
+  wire   valid_in_out, read_en_N_out, read_en_E_out, read_en_W_out,
+         read_en_S_out, read_en_L_out;
+  assign valid_in_out = valid_in;
+  assign read_en_N_out = read_en_N;
+  assign read_en_E_out = read_en_E;
+  assign read_en_W_out = read_en_W;
+  assign read_en_S_out = read_en_S;
+  assign read_en_L_out = read_en_L;
+
+endmodule
+
+
+module FIFO_data_path_input_wire_DATA_WIDTH32_0 ( write_en, RX, read_pointer, 
+        write_pointer, write_en_out, RX_out, read_ptr_out, write_ptr_out );
+  input [31:0] RX;
+  input [3:0] read_pointer;
+  input [3:0] write_pointer;
+  output [31:0] RX_out;
+  output [3:0] read_ptr_out;
+  output [3:0] write_ptr_out;
+  input write_en;
+  output write_en_out;
+  wire   write_en_out;
+  assign write_en_out = write_en;
+  assign RX_out[31] = RX[31];
+  assign RX_out[30] = RX[30];
+  assign RX_out[29] = RX[29];
+  assign RX_out[28] = RX[28];
+  assign RX_out[27] = RX[27];
+  assign RX_out[26] = RX[26];
+  assign RX_out[25] = RX[25];
+  assign RX_out[24] = RX[24];
+  assign RX_out[23] = RX[23];
+  assign RX_out[22] = RX[22];
+  assign RX_out[21] = RX[21];
+  assign RX_out[20] = RX[20];
+  assign RX_out[19] = RX[19];
+  assign RX_out[18] = RX[18];
+  assign RX_out[17] = RX[17];
+  assign RX_out[16] = RX[16];
+  assign RX_out[15] = RX[15];
+  assign RX_out[14] = RX[14];
+  assign RX_out[13] = RX[13];
+  assign RX_out[12] = RX[12];
+  assign RX_out[11] = RX[11];
+  assign RX_out[10] = RX[10];
+  assign RX_out[9] = RX[9];
+  assign RX_out[8] = RX[8];
+  assign RX_out[7] = RX[7];
+  assign RX_out[6] = RX[6];
+  assign RX_out[5] = RX[5];
+  assign RX_out[4] = RX[4];
+  assign RX_out[3] = RX[3];
+  assign RX_out[2] = RX[2];
+  assign RX_out[1] = RX[1];
+  assign RX_out[0] = RX[0];
+  assign read_ptr_out[3] = read_pointer[3];
+  assign read_ptr_out[2] = read_pointer[2];
+  assign read_ptr_out[1] = read_pointer[1];
+  assign read_ptr_out[0] = read_pointer[0];
+  assign write_ptr_out[3] = write_pointer[3];
+  assign write_ptr_out[2] = write_pointer[2];
+  assign write_ptr_out[1] = write_pointer[1];
+  assign write_ptr_out[0] = write_pointer[0];
+
+endmodule
+
+
+module FIFO_control_part_input_wire_0 ( valid_in, read_en_N, read_en_E, 
+        read_en_W, read_en_S, read_en_L, valid_in_out, read_en_N_out, 
+        read_en_E_out, read_en_W_out, read_en_S_out, read_en_L_out );
+  input valid_in, read_en_N, read_en_E, read_en_W, read_en_S, read_en_L;
+  output valid_in_out, read_en_N_out, read_en_E_out, read_en_W_out,
+         read_en_S_out, read_en_L_out;
+  wire   valid_in_out, read_en_N_out, read_en_E_out, read_en_W_out,
+         read_en_S_out, read_en_L_out;
+  assign valid_in_out = valid_in;
+  assign read_en_N_out = read_en_N;
+  assign read_en_E_out = read_en_E;
+  assign read_en_W_out = read_en_W;
+  assign read_en_S_out = read_en_S;
+  assign read_en_L_out = read_en_L;
+
+endmodule
+
+
+
+    module router_credit_based ( 
         reset, clk, RX_N, RX_E, RX_W, RX_S, RX_L, credit_in_N, credit_in_E, 
         credit_in_W, credit_in_S, credit_in_L, valid_in_N, valid_in_E, 
         valid_in_W, valid_in_S, valid_in_L, valid_out_N, valid_out_E, 
@@ -147,19 +1747,31 @@ endmodule
          empty_N_out, empty_E_out, empty_W_out, empty_S_out, empty_L_out,
          write_en_out_N_out, write_en_out_E_out, write_en_out_W_out,
          write_en_out_S_out, write_en_out_L_out;
-  wire   \Xbar_sel_L_out[0] , Grant_NE_out, Grant_NW_out, Grant_NS_out,
-         Grant_NL_out, Grant_EN_out, Grant_EW_out, Grant_ES_out, Grant_EL_out,
-         Grant_WN_out, Grant_WE_out, Grant_WS_out, Grant_WL_out, Grant_SN_out,
-         Grant_SE_out, Grant_SW_out, Grant_SL_out, Grant_LN_out, Grant_LE_out,
-         Grant_LW_out, Grant_LS_out, credit_in_N_out_sig, credit_in_E_out_sig,
+  wire   \*Logic1* , \Xbar_sel_L_out[0] , Grant_NE_out, Grant_NW_out,
+         Grant_NS_out, Grant_NL_out, Grant_EN_out, Grant_EW_out, Grant_ES_out,
+         Grant_EL_out, Grant_WN_out, Grant_WE_out, Grant_WS_out, Grant_WL_out,
+         Grant_SN_out, Grant_SE_out, Grant_SW_out, Grant_SL_out, Grant_LN_out,
+         Grant_LE_out, Grant_LW_out, Grant_LS_out, empty_N_out_sig_LBDR,
+         grant_NN_out_sig_LBDR, grant_EN_out_sig_LBDR, grant_WN_out_sig_LBDR,
+         grant_SN_out_sig_LBDR, grant_LN_out_sig_LBDR, empty_E_out_sig_LBDR,
+         grant_NE_out_sig_LBDR, grant_WE_out_sig_LBDR, grant_SE_out_sig_LBDR,
+         grant_LE_out_sig_LBDR, empty_W_out_sig_LBDR, grant_NW_out_sig_LBDR,
+         grant_EW_out_sig_LBDR, grant_SW_out_sig_LBDR, grant_LW_out_sig_LBDR,
+         empty_S_out_sig_LBDR, grant_NS_out_sig_LBDR, grant_ES_out_sig_LBDR,
+         grant_WS_out_sig_LBDR, grant_LS_out_sig_LBDR, empty_L_out_sig_LBDR,
+         grant_NL_out_sig_LBDR, grant_EL_out_sig_LBDR, grant_WL_out_sig_LBDR,
+         grant_SL_out_sig_LBDR, credit_in_N_out_sig, credit_in_E_out_sig,
          credit_in_W_out_sig, credit_in_S_out_sig, credit_in_L_out_sig,
          req_N_E_out_sig, req_N_W_out_sig, req_N_S_out_sig, req_N_L_out_sig,
          req_E_N_out_sig, req_E_W_out_sig, req_E_S_out_sig, req_E_L_out_sig,
          req_W_N_out_sig, req_W_E_out_sig, req_W_S_out_sig, req_W_L_out_sig,
          req_S_N_out_sig, req_S_E_out_sig, req_S_W_out_sig, req_S_L_out_sig,
          req_L_N_out_sig, req_L_E_out_sig, req_L_W_out_sig, req_L_S_out_sig,
-         empty_N_out_sig, empty_E_out_sig, empty_W_out_sig, empty_S_out_sig,
-         empty_L_out_sig, \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[0] ,
+         empty_N_out_sig_arbiter, empty_E_out_sig_arbiter,
+         empty_W_out_sig_arbiter, empty_S_out_sig_arbiter,
+         empty_L_out_sig_arbiter, n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11,
+         n12, n13, n14, n15, n16, n17, n18, n19, n20, n21, n22,
+         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[0] ,
          \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[1] ,
          \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[2] ,
          \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[3] ,
@@ -384,17 +1996,20 @@ endmodule
          \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[2] ,
          \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[3] ,
          \FIFO_N/FIFO_CONTROL_PART/n12 , \FIFO_N/FIFO_CONTROL_PART/n13 ,
-         \FIFO_N/FIFO_CONTROL_PART/n14 , \FIFO_N/FIFO_CONTROL_PART/n16 ,
-         \FIFO_N/FIFO_CONTROL_PART/n17 , \FIFO_N/FIFO_CONTROL_PART/n18 ,
-         \FIFO_N/FIFO_CONTROL_PART/n19 , \FIFO_N/FIFO_CONTROL_PART/n20 ,
-         \FIFO_N/FIFO_CONTROL_PART/n21 , \FIFO_N/FIFO_CONTROL_PART/n22 ,
-         \FIFO_N/FIFO_CONTROL_PART/n23 , \FIFO_N/FIFO_CONTROL_PART/n24 ,
-         \FIFO_N/FIFO_CONTROL_PART/n25 , \FIFO_N/FIFO_CONTROL_PART/n26 ,
-         \FIFO_N/FIFO_CONTROL_PART/n27 , \FIFO_N/FIFO_CONTROL_PART/n28 ,
-         \FIFO_N/FIFO_CONTROL_PART/n29 , \FIFO_N/FIFO_CONTROL_PART/n30 ,
-         \FIFO_N/FIFO_CONTROL_PART/n31 , \FIFO_N/FIFO_CONTROL_PART/n32 ,
-         \FIFO_N/FIFO_CONTROL_PART/n1 , n1, n2,
-         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[0] ,
+         \FIFO_N/FIFO_CONTROL_PART/n14 , \FIFO_N/FIFO_CONTROL_PART/n15 ,
+         \FIFO_N/FIFO_CONTROL_PART/n16 , \FIFO_N/FIFO_CONTROL_PART/n17 ,
+         \FIFO_N/FIFO_CONTROL_PART/n18 , \FIFO_N/FIFO_CONTROL_PART/n19 ,
+         \FIFO_N/FIFO_CONTROL_PART/n20 , \FIFO_N/FIFO_CONTROL_PART/n21 ,
+         \FIFO_N/FIFO_CONTROL_PART/n22 , \FIFO_N/FIFO_CONTROL_PART/n23 ,
+         \FIFO_N/FIFO_CONTROL_PART/n24 , \FIFO_N/FIFO_CONTROL_PART/n25 ,
+         \FIFO_N/FIFO_CONTROL_PART/n26 , \FIFO_N/FIFO_CONTROL_PART/n27 ,
+         \FIFO_N/FIFO_CONTROL_PART/n28 , \FIFO_N/FIFO_CONTROL_PART/n29 ,
+         \FIFO_N/FIFO_CONTROL_PART/n30 , \FIFO_N/FIFO_CONTROL_PART/n31 ,
+         \FIFO_N/FIFO_CONTROL_PART/n32 , \FIFO_N/FIFO_CONTROL_PART/n1 ,
+         \FIFO_N/write_en_out_sig , \FIFO_N/read_en_L_out_sig ,
+         \FIFO_N/read_en_S_out_sig , \FIFO_N/read_en_W_out_sig ,
+         \FIFO_N/read_en_E_out_sig , \FIFO_N/read_en_N_out_sig ,
+         \FIFO_N/valid_in_out_sig , \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[0] ,
          \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[1] ,
          \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[2] ,
          \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[3] ,
@@ -629,7 +2244,10 @@ endmodule
          \FIFO_E/FIFO_CONTROL_PART/n32 , \FIFO_E/FIFO_CONTROL_PART/n33 ,
          \FIFO_E/FIFO_CONTROL_PART/n34 , \FIFO_E/FIFO_CONTROL_PART/n35 ,
          \FIFO_E/FIFO_CONTROL_PART/n36 , \FIFO_E/FIFO_CONTROL_PART/n37 ,
-         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[0] ,
+         \FIFO_E/write_en_out_sig , \FIFO_E/read_en_L_out_sig ,
+         \FIFO_E/read_en_S_out_sig , \FIFO_E/read_en_W_out_sig ,
+         \FIFO_E/read_en_E_out_sig , \FIFO_E/read_en_N_out_sig ,
+         \FIFO_E/valid_in_out_sig , \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[0] ,
          \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[1] ,
          \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[2] ,
          \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[3] ,
@@ -863,8 +2481,11 @@ endmodule
          \FIFO_W/FIFO_CONTROL_PART/n30 , \FIFO_W/FIFO_CONTROL_PART/n31 ,
          \FIFO_W/FIFO_CONTROL_PART/n32 , \FIFO_W/FIFO_CONTROL_PART/n33 ,
          \FIFO_W/FIFO_CONTROL_PART/n34 , \FIFO_W/FIFO_CONTROL_PART/n35 ,
-         \FIFO_W/FIFO_CONTROL_PART/n36 , \FIFO_W/FIFO_CONTROL_PART/n37 , n3,
-         n4, \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[0] ,
+         \FIFO_W/FIFO_CONTROL_PART/n36 , \FIFO_W/FIFO_CONTROL_PART/n37 ,
+         \FIFO_W/write_en_out_sig , \FIFO_W/read_en_L_out_sig ,
+         \FIFO_W/read_en_S_out_sig , \FIFO_W/read_en_W_out_sig ,
+         \FIFO_W/read_en_E_out_sig , \FIFO_W/read_en_N_out_sig ,
+         \FIFO_W/valid_in_out_sig , \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[0] ,
          \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[1] ,
          \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[2] ,
          \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[3] ,
@@ -1097,9 +2718,12 @@ endmodule
          \FIFO_S/FIFO_CONTROL_PART/n28 , \FIFO_S/FIFO_CONTROL_PART/n29 ,
          \FIFO_S/FIFO_CONTROL_PART/n30 , \FIFO_S/FIFO_CONTROL_PART/n31 ,
          \FIFO_S/FIFO_CONTROL_PART/n32 , \FIFO_S/FIFO_CONTROL_PART/n33 ,
-         \FIFO_S/FIFO_CONTROL_PART/n35 , \FIFO_S/FIFO_CONTROL_PART/n36 ,
-         \FIFO_S/FIFO_CONTROL_PART/n37 , n5, n6,
-         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[0] ,
+         \FIFO_S/FIFO_CONTROL_PART/n34 , \FIFO_S/FIFO_CONTROL_PART/n35 ,
+         \FIFO_S/FIFO_CONTROL_PART/n36 , \FIFO_S/FIFO_CONTROL_PART/n37 ,
+         \FIFO_S/write_en_out_sig , \FIFO_S/read_en_L_out_sig ,
+         \FIFO_S/read_en_S_out_sig , \FIFO_S/read_en_W_out_sig ,
+         \FIFO_S/read_en_E_out_sig , \FIFO_S/read_en_N_out_sig ,
+         \FIFO_S/valid_in_out_sig , \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[0] ,
          \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[1] ,
          \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[2] ,
          \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[3] ,
@@ -1334,58 +2958,88 @@ endmodule
          \FIFO_L/FIFO_CONTROL_PART/n32 , \FIFO_L/FIFO_CONTROL_PART/n33 ,
          \FIFO_L/FIFO_CONTROL_PART/n34 , \FIFO_L/FIFO_CONTROL_PART/n35 ,
          \FIFO_L/FIFO_CONTROL_PART/n36 , \FIFO_L/FIFO_CONTROL_PART/n37 ,
-         \LBDR_N/n72 , \LBDR_N/n71 , \LBDR_N/n70 , \LBDR_N/n69 , \LBDR_N/n68 ,
-         \LBDR_N/n67 , \LBDR_N/n66 , \LBDR_N/n65 , \LBDR_N/n64 , \LBDR_N/n60 ,
-         \LBDR_N/n58 , \LBDR_N/n57 , \LBDR_N/n55 , \LBDR_N/n54 , \LBDR_N/n53 ,
-         \LBDR_N/n52 , \LBDR_N/n51 , \LBDR_N/n48 , \LBDR_N/n46 , \LBDR_N/n45 ,
-         \LBDR_N/n43 , \LBDR_N/n42 , \LBDR_N/n41 , \LBDR_N/n40 , \LBDR_N/n38 ,
-         \LBDR_N/n32 , \LBDR_N/n31 , \LBDR_N/n28 , \LBDR_N/n13 , \LBDR_N/n6 ,
-         \LBDR_N/n5 , \LBDR_N/n4 , \LBDR_N/n3 , \LBDR_N/n2 , \LBDR_N/n1 ,
-         \LBDR_N/n26 , \LBDR_N/n24 , \LBDR_N/n23 , \LBDR_N/n22 , \LBDR_N/n21 ,
-         \LBDR_N/n20 , \LBDR_N/n19 , \LBDR_N/n18 , \LBDR_N/n17 , \LBDR_N/n16 ,
-         \LBDR_N/n11 , \LBDR_N/N5 , \LBDR_N/N4 , \LBDR_N/N3 , \LBDR_E/n84 ,
-         \LBDR_E/n83 , \LBDR_E/n82 , \LBDR_E/n81 , \LBDR_E/n80 , \LBDR_E/n79 ,
-         \LBDR_E/n78 , \LBDR_E/n77 , \LBDR_E/n76 , \LBDR_E/n75 , \LBDR_E/n73 ,
+         \FIFO_L/write_en_out_sig , \FIFO_L/read_en_L_out_sig ,
+         \FIFO_L/read_en_S_out_sig , \FIFO_L/read_en_W_out_sig ,
+         \FIFO_L/read_en_E_out_sig , \FIFO_L/read_en_N_out_sig ,
+         \FIFO_L/valid_in_out_sig , \LBDR_N/n72 , \LBDR_N/n71 , \LBDR_N/n70 ,
+         \LBDR_N/n69 , \LBDR_N/n68 , \LBDR_N/n67 , \LBDR_N/n66 , \LBDR_N/n65 ,
+         \LBDR_N/n64 , \LBDR_N/n63 , \LBDR_N/n62 , \LBDR_N/n61 , \LBDR_N/n60 ,
+         \LBDR_N/n59 , \LBDR_N/n58 , \LBDR_N/n57 , \LBDR_N/n56 , \LBDR_N/n55 ,
+         \LBDR_N/n54 , \LBDR_N/n53 , \LBDR_N/n52 , \LBDR_N/n51 , \LBDR_N/n50 ,
+         \LBDR_N/n49 , \LBDR_N/n48 , \LBDR_N/n47 , \LBDR_N/n46 , \LBDR_N/n45 ,
+         \LBDR_N/n44 , \LBDR_N/n43 , \LBDR_N/n42 , \LBDR_N/n41 , \LBDR_N/n40 ,
+         \LBDR_N/n39 , \LBDR_N/n38 , \LBDR_N/n37 , \LBDR_N/n36 , \LBDR_N/n35 ,
+         \LBDR_N/n34 , \LBDR_N/n33 , \LBDR_N/n32 , \LBDR_N/n31 , \LBDR_N/n30 ,
+         \LBDR_N/n29 , \LBDR_N/n28 , \LBDR_N/n27 , \LBDR_N/n15 , \LBDR_N/n14 ,
+         \LBDR_N/n13 , \LBDR_N/n12 , \LBDR_N/n10 , \LBDR_N/n9 , \LBDR_N/n8 ,
+         \LBDR_N/n7 , \LBDR_N/n6 , \LBDR_N/n5 , \LBDR_N/n4 , \LBDR_N/n3 ,
+         \LBDR_N/n2 , \LBDR_N/n1 , \LBDR_N/n26 , \LBDR_N/n25 , \LBDR_N/n24 ,
+         \LBDR_N/n23 , \LBDR_N/n22 , \LBDR_N/n21 , \LBDR_N/n20 , \LBDR_N/n19 ,
+         \LBDR_N/n18 , \LBDR_N/n17 , \LBDR_N/n16 , \LBDR_N/n11 , \LBDR_N/N5 ,
+         \LBDR_N/N4 , \LBDR_N/N3 , \LBDR_N/N2 , \LBDR_E/n84 , \LBDR_E/n83 ,
+         \LBDR_E/n82 , \LBDR_E/n81 , \LBDR_E/n80 , \LBDR_E/n79 , \LBDR_E/n78 ,
+         \LBDR_E/n77 , \LBDR_E/n76 , \LBDR_E/n75 , \LBDR_E/n74 , \LBDR_E/n73 ,
          \LBDR_E/n72 , \LBDR_E/n71 , \LBDR_E/n70 , \LBDR_E/n69 , \LBDR_E/n68 ,
-         \LBDR_E/n67 , \LBDR_E/n66 , \LBDR_E/n65 , \LBDR_E/n64 , \LBDR_E/n60 ,
-         \LBDR_E/n58 , \LBDR_E/n57 , \LBDR_E/n55 , \LBDR_E/n54 , \LBDR_E/n53 ,
-         \LBDR_E/n52 , \LBDR_E/n51 , \LBDR_E/n48 , \LBDR_E/n46 , \LBDR_E/n45 ,
-         \LBDR_E/n43 , \LBDR_E/n42 , \LBDR_E/n41 , \LBDR_E/n40 , \LBDR_E/n38 ,
-         \LBDR_E/n32 , \LBDR_E/n31 , \LBDR_E/n28 , \LBDR_E/n13 , \LBDR_E/n6 ,
+         \LBDR_E/n67 , \LBDR_E/n66 , \LBDR_E/n65 , \LBDR_E/n64 , \LBDR_E/n63 ,
+         \LBDR_E/n62 , \LBDR_E/n61 , \LBDR_E/n60 , \LBDR_E/n59 , \LBDR_E/n58 ,
+         \LBDR_E/n57 , \LBDR_E/n56 , \LBDR_E/n55 , \LBDR_E/n54 , \LBDR_E/n53 ,
+         \LBDR_E/n52 , \LBDR_E/n51 , \LBDR_E/n50 , \LBDR_E/n49 , \LBDR_E/n48 ,
+         \LBDR_E/n47 , \LBDR_E/n46 , \LBDR_E/n45 , \LBDR_E/n44 , \LBDR_E/n43 ,
+         \LBDR_E/n42 , \LBDR_E/n41 , \LBDR_E/n40 , \LBDR_E/n39 , \LBDR_E/n38 ,
+         \LBDR_E/n37 , \LBDR_E/n36 , \LBDR_E/n35 , \LBDR_E/n34 , \LBDR_E/n33 ,
+         \LBDR_E/n32 , \LBDR_E/n31 , \LBDR_E/n30 , \LBDR_E/n29 , \LBDR_E/n28 ,
+         \LBDR_E/n27 , \LBDR_E/n15 , \LBDR_E/n14 , \LBDR_E/n13 , \LBDR_E/n12 ,
+         \LBDR_E/n10 , \LBDR_E/n9 , \LBDR_E/n8 , \LBDR_E/n7 , \LBDR_E/n6 ,
          \LBDR_E/n5 , \LBDR_E/n4 , \LBDR_E/n3 , \LBDR_E/n2 , \LBDR_E/n1 ,
-         \LBDR_E/N5 , \LBDR_E/N4 , \LBDR_E/N3 , \LBDR_W/n84 , \LBDR_W/n83 ,
-         \LBDR_W/n82 , \LBDR_W/n81 , \LBDR_W/n80 , \LBDR_W/n79 , \LBDR_W/n78 ,
-         \LBDR_W/n77 , \LBDR_W/n76 , \LBDR_W/n75 , \LBDR_W/n73 , \LBDR_W/n72 ,
-         \LBDR_W/n71 , \LBDR_W/n70 , \LBDR_W/n69 , \LBDR_W/n68 , \LBDR_W/n67 ,
-         \LBDR_W/n66 , \LBDR_W/n65 , \LBDR_W/n64 , \LBDR_W/n60 , \LBDR_W/n58 ,
-         \LBDR_W/n57 , \LBDR_W/n55 , \LBDR_W/n54 , \LBDR_W/n53 , \LBDR_W/n52 ,
-         \LBDR_W/n51 , \LBDR_W/n48 , \LBDR_W/n46 , \LBDR_W/n45 , \LBDR_W/n43 ,
-         \LBDR_W/n42 , \LBDR_W/n41 , \LBDR_W/n40 , \LBDR_W/n38 , \LBDR_W/n32 ,
-         \LBDR_W/n31 , \LBDR_W/n28 , \LBDR_W/n13 , \LBDR_W/n6 , \LBDR_W/n5 ,
-         \LBDR_W/n4 , \LBDR_W/n3 , \LBDR_W/n2 , \LBDR_W/n1 , \LBDR_W/N5 ,
-         \LBDR_W/N4 , \LBDR_W/N3 , \LBDR_S/n84 , \LBDR_S/n83 , \LBDR_S/n82 ,
-         \LBDR_S/n81 , \LBDR_S/n80 , \LBDR_S/n79 , \LBDR_S/n78 , \LBDR_S/n77 ,
-         \LBDR_S/n76 , \LBDR_S/n75 , \LBDR_S/n73 , \LBDR_S/n72 , \LBDR_S/n71 ,
-         \LBDR_S/n70 , \LBDR_S/n69 , \LBDR_S/n68 , \LBDR_S/n67 , \LBDR_S/n66 ,
-         \LBDR_S/n65 , \LBDR_S/n64 , \LBDR_S/n60 , \LBDR_S/n58 , \LBDR_S/n57 ,
-         \LBDR_S/n55 , \LBDR_S/n54 , \LBDR_S/n53 , \LBDR_S/n52 , \LBDR_S/n51 ,
-         \LBDR_S/n48 , \LBDR_S/n46 , \LBDR_S/n45 , \LBDR_S/n43 , \LBDR_S/n42 ,
-         \LBDR_S/n41 , \LBDR_S/n40 , \LBDR_S/n38 , \LBDR_S/n32 , \LBDR_S/n31 ,
-         \LBDR_S/n28 , \LBDR_S/n13 , \LBDR_S/n6 , \LBDR_S/n5 , \LBDR_S/n4 ,
-         \LBDR_S/n3 , \LBDR_S/n2 , \LBDR_S/n1 , \LBDR_S/N5 , \LBDR_S/N4 ,
-         \LBDR_S/N3 , \LBDR_L/n84 , \LBDR_L/n83 , \LBDR_L/n82 , \LBDR_L/n81 ,
+         \LBDR_E/N5 , \LBDR_E/N4 , \LBDR_E/N3 , \LBDR_E/N2 , \LBDR_W/n84 ,
+         \LBDR_W/n83 , \LBDR_W/n82 , \LBDR_W/n81 , \LBDR_W/n80 , \LBDR_W/n79 ,
+         \LBDR_W/n78 , \LBDR_W/n77 , \LBDR_W/n76 , \LBDR_W/n75 , \LBDR_W/n74 ,
+         \LBDR_W/n73 , \LBDR_W/n72 , \LBDR_W/n71 , \LBDR_W/n70 , \LBDR_W/n69 ,
+         \LBDR_W/n68 , \LBDR_W/n67 , \LBDR_W/n66 , \LBDR_W/n65 , \LBDR_W/n64 ,
+         \LBDR_W/n63 , \LBDR_W/n62 , \LBDR_W/n61 , \LBDR_W/n60 , \LBDR_W/n59 ,
+         \LBDR_W/n58 , \LBDR_W/n57 , \LBDR_W/n56 , \LBDR_W/n55 , \LBDR_W/n54 ,
+         \LBDR_W/n53 , \LBDR_W/n52 , \LBDR_W/n51 , \LBDR_W/n50 , \LBDR_W/n49 ,
+         \LBDR_W/n48 , \LBDR_W/n47 , \LBDR_W/n46 , \LBDR_W/n45 , \LBDR_W/n44 ,
+         \LBDR_W/n43 , \LBDR_W/n42 , \LBDR_W/n41 , \LBDR_W/n40 , \LBDR_W/n39 ,
+         \LBDR_W/n38 , \LBDR_W/n37 , \LBDR_W/n36 , \LBDR_W/n35 , \LBDR_W/n34 ,
+         \LBDR_W/n33 , \LBDR_W/n32 , \LBDR_W/n31 , \LBDR_W/n30 , \LBDR_W/n29 ,
+         \LBDR_W/n28 , \LBDR_W/n27 , \LBDR_W/n15 , \LBDR_W/n14 , \LBDR_W/n13 ,
+         \LBDR_W/n12 , \LBDR_W/n10 , \LBDR_W/n9 , \LBDR_W/n8 , \LBDR_W/n7 ,
+         \LBDR_W/n6 , \LBDR_W/n5 , \LBDR_W/n4 , \LBDR_W/n3 , \LBDR_W/n2 ,
+         \LBDR_W/n1 , \LBDR_W/N5 , \LBDR_W/N4 , \LBDR_W/N3 , \LBDR_W/N2 ,
+         \LBDR_S/n84 , \LBDR_S/n83 , \LBDR_S/n82 , \LBDR_S/n81 , \LBDR_S/n80 ,
+         \LBDR_S/n79 , \LBDR_S/n78 , \LBDR_S/n77 , \LBDR_S/n76 , \LBDR_S/n75 ,
+         \LBDR_S/n74 , \LBDR_S/n73 , \LBDR_S/n72 , \LBDR_S/n71 , \LBDR_S/n70 ,
+         \LBDR_S/n69 , \LBDR_S/n68 , \LBDR_S/n67 , \LBDR_S/n66 , \LBDR_S/n65 ,
+         \LBDR_S/n64 , \LBDR_S/n63 , \LBDR_S/n62 , \LBDR_S/n61 , \LBDR_S/n60 ,
+         \LBDR_S/n59 , \LBDR_S/n58 , \LBDR_S/n57 , \LBDR_S/n56 , \LBDR_S/n55 ,
+         \LBDR_S/n54 , \LBDR_S/n53 , \LBDR_S/n52 , \LBDR_S/n51 , \LBDR_S/n50 ,
+         \LBDR_S/n49 , \LBDR_S/n48 , \LBDR_S/n47 , \LBDR_S/n46 , \LBDR_S/n45 ,
+         \LBDR_S/n44 , \LBDR_S/n43 , \LBDR_S/n42 , \LBDR_S/n41 , \LBDR_S/n40 ,
+         \LBDR_S/n39 , \LBDR_S/n38 , \LBDR_S/n37 , \LBDR_S/n36 , \LBDR_S/n35 ,
+         \LBDR_S/n34 , \LBDR_S/n33 , \LBDR_S/n32 , \LBDR_S/n31 , \LBDR_S/n30 ,
+         \LBDR_S/n29 , \LBDR_S/n28 , \LBDR_S/n27 , \LBDR_S/n15 , \LBDR_S/n14 ,
+         \LBDR_S/n13 , \LBDR_S/n12 , \LBDR_S/n10 , \LBDR_S/n9 , \LBDR_S/n8 ,
+         \LBDR_S/n7 , \LBDR_S/n6 , \LBDR_S/n5 , \LBDR_S/n4 , \LBDR_S/n3 ,
+         \LBDR_S/n2 , \LBDR_S/n1 , \LBDR_S/N5 , \LBDR_S/N4 , \LBDR_S/N3 ,
+         \LBDR_S/N2 , \LBDR_L/n84 , \LBDR_L/n83 , \LBDR_L/n82 , \LBDR_L/n81 ,
          \LBDR_L/n80 , \LBDR_L/n79 , \LBDR_L/n78 , \LBDR_L/n77 , \LBDR_L/n76 ,
-         \LBDR_L/n75 , \LBDR_L/n73 , \LBDR_L/n72 , \LBDR_L/n71 , \LBDR_L/n70 ,
-         \LBDR_L/n69 , \LBDR_L/n68 , \LBDR_L/n67 , \LBDR_L/n66 , \LBDR_L/n65 ,
-         \LBDR_L/n64 , \LBDR_L/n60 , \LBDR_L/n58 , \LBDR_L/n57 , \LBDR_L/n55 ,
-         \LBDR_L/n54 , \LBDR_L/n53 , \LBDR_L/n52 , \LBDR_L/n51 , \LBDR_L/n48 ,
-         \LBDR_L/n46 , \LBDR_L/n45 , \LBDR_L/n43 , \LBDR_L/n42 , \LBDR_L/n41 ,
-         \LBDR_L/n40 , \LBDR_L/n38 , \LBDR_L/n32 , \LBDR_L/n31 , \LBDR_L/n28 ,
-         \LBDR_L/n13 , \LBDR_L/n6 , \LBDR_L/n5 , \LBDR_L/n4 , \LBDR_L/n3 ,
-         \LBDR_L/n2 , \LBDR_L/n1 , \LBDR_L/N5 , \LBDR_L/N4 , \LBDR_L/N3 , n7,
-         n8, n9, n10, n11, n12, n13, n14, n15, n16, n17, n18, n19, n20, n21,
-         n22, n23, n24, n25, n26, n27, \allocator_unit/arb_X_L/state[0] ,
-         \allocator_unit/arb_X_L/state[1] , \allocator_unit/arb_X_L/state[2] ,
+         \LBDR_L/n75 , \LBDR_L/n74 , \LBDR_L/n73 , \LBDR_L/n72 , \LBDR_L/n71 ,
+         \LBDR_L/n70 , \LBDR_L/n69 , \LBDR_L/n68 , \LBDR_L/n67 , \LBDR_L/n66 ,
+         \LBDR_L/n65 , \LBDR_L/n64 , \LBDR_L/n63 , \LBDR_L/n62 , \LBDR_L/n61 ,
+         \LBDR_L/n60 , \LBDR_L/n59 , \LBDR_L/n58 , \LBDR_L/n57 , \LBDR_L/n56 ,
+         \LBDR_L/n55 , \LBDR_L/n54 , \LBDR_L/n53 , \LBDR_L/n52 , \LBDR_L/n51 ,
+         \LBDR_L/n50 , \LBDR_L/n49 , \LBDR_L/n48 , \LBDR_L/n47 , \LBDR_L/n46 ,
+         \LBDR_L/n45 , \LBDR_L/n44 , \LBDR_L/n43 , \LBDR_L/n42 , \LBDR_L/n41 ,
+         \LBDR_L/n40 , \LBDR_L/n39 , \LBDR_L/n38 , \LBDR_L/n37 , \LBDR_L/n36 ,
+         \LBDR_L/n35 , \LBDR_L/n34 , \LBDR_L/n33 , \LBDR_L/n32 , \LBDR_L/n31 ,
+         \LBDR_L/n30 , \LBDR_L/n29 , \LBDR_L/n28 , \LBDR_L/n27 , \LBDR_L/n15 ,
+         \LBDR_L/n14 , \LBDR_L/n13 , \LBDR_L/n12 , \LBDR_L/n10 , \LBDR_L/n9 ,
+         \LBDR_L/n8 , \LBDR_L/n7 , \LBDR_L/n6 , \LBDR_L/n5 , \LBDR_L/n4 ,
+         \LBDR_L/n3 , \LBDR_L/n2 , \LBDR_L/n1 , \LBDR_L/N5 , \LBDR_L/N4 ,
+         \LBDR_L/N3 , \LBDR_L/N2 , n23, n24, n25, n26,
+         \allocator_unit/arb_X_L/state[0] , \allocator_unit/arb_X_L/state[1] ,
+         \allocator_unit/arb_X_L/state[2] ,
          \allocator_unit/arb_X_L/state_in[0] ,
          \allocator_unit/arb_X_L/state_in[1] ,
          \allocator_unit/arb_X_L/state_in[2] , \allocator_unit/arb_X_L/N41 ,
@@ -1515,8 +3169,8 @@ endmodule
          \allocator_unit/grant_E_L_sig , \allocator_unit/grant_E_S_sig ,
          \allocator_unit/grant_E_W_sig , \allocator_unit/grant_E_N_sig ,
          \allocator_unit/grant_N_L_sig , \allocator_unit/grant_N_S_sig ,
-         \allocator_unit/grant_N_W_sig , \allocator_unit/grant_N_E_sig , n28,
-         n29, n30, n31, n32, \XBAR_N/n125 , \XBAR_N/n124 , \XBAR_N/n123 ,
+         \allocator_unit/grant_N_W_sig , \allocator_unit/grant_N_E_sig , n27,
+         n28, n29, n30, n31, \XBAR_N/n125 , \XBAR_N/n124 , \XBAR_N/n123 ,
          \XBAR_N/n122 , \XBAR_N/n121 , \XBAR_N/n120 , \XBAR_N/n119 ,
          \XBAR_N/n118 , \XBAR_N/n117 , \XBAR_N/n116 , \XBAR_N/n115 ,
          \XBAR_N/n114 , \XBAR_N/n113 , \XBAR_N/n112 , \XBAR_N/n37 ,
@@ -1654,6 +3308,42 @@ endmodule
   wire   [31:0] FIFO_D_out_W;
   wire   [31:0] FIFO_D_out_S;
   wire   [31:0] FIFO_D_out_L;
+  wire   [2:0] flit_type_N_out_sig_LBDR;
+  wire   [6:0] cur_addr_y_N_out_sig_LBDR;
+  wire   [6:0] cur_addr_x_N_out_sig_LBDR;
+  wire   [6:0] dst_addr_y_N_out_sig_LBDR;
+  wire   [6:0] dst_addr_x_N_out_sig_LBDR;
+  wire   [6:0] cur_addr_y_E_out_sig_LBDR;
+  wire   [6:0] cur_addr_x_E_out_sig_LBDR;
+  wire   [6:0] dst_addr_y_E_out_sig_LBDR;
+  wire   [6:0] dst_addr_x_E_out_sig_LBDR;
+  wire   [6:0] cur_addr_y_W_out_sig_LBDR;
+  wire   [6:0] cur_addr_x_W_out_sig_LBDR;
+  wire   [6:0] dst_addr_y_W_out_sig_LBDR;
+  wire   [6:0] dst_addr_x_W_out_sig_LBDR;
+  wire   [6:0] cur_addr_y_S_out_sig_LBDR;
+  wire   [6:0] cur_addr_x_S_out_sig_LBDR;
+  wire   [6:0] dst_addr_y_S_out_sig_LBDR;
+  wire   [6:0] dst_addr_x_S_out_sig_LBDR;
+  wire   [6:0] cur_addr_y_L_out_sig_LBDR;
+  wire   [6:0] cur_addr_x_L_out_sig_LBDR;
+  wire   [6:0] dst_addr_y_L_out_sig_LBDR;
+  wire   [6:0] dst_addr_x_L_out_sig_LBDR;
+  wire   [3:0] \FIFO_N/write_pointer_out_sig ;
+  wire   [3:0] \FIFO_N/read_pointer_out_sig ;
+  wire   [31:0] \FIFO_N/RX_out_sig ;
+  wire   [3:0] \FIFO_E/write_pointer_out_sig ;
+  wire   [3:0] \FIFO_E/read_pointer_out_sig ;
+  wire   [31:0] \FIFO_E/RX_out_sig ;
+  wire   [3:0] \FIFO_W/write_pointer_out_sig ;
+  wire   [3:0] \FIFO_W/read_pointer_out_sig ;
+  wire   [31:0] \FIFO_W/RX_out_sig ;
+  wire   [3:0] \FIFO_S/write_pointer_out_sig ;
+  wire   [3:0] \FIFO_S/read_pointer_out_sig ;
+  wire   [31:0] \FIFO_S/RX_out_sig ;
+  wire   [3:0] \FIFO_L/write_pointer_out_sig ;
+  wire   [3:0] \FIFO_L/read_pointer_out_sig ;
+  wire   [31:0] \FIFO_L/RX_out_sig ;
   wire   [1:0] \allocator_unit/credit_counter_L_in ;
   wire   [1:0] \allocator_unit/credit_counter_S_in ;
   wire   [1:0] \allocator_unit/credit_counter_W_in ;
@@ -1664,11 +3354,6 @@ endmodule
   wire   [1:0] \allocator_unit/credit_counter_W_out ;
   wire   [1:0] \allocator_unit/credit_counter_E_out ;
   wire   [1:0] \allocator_unit/credit_counter_N_out ;
-  assign Req_LN_out = \Xbar_sel_L_out[0] ;
-  assign Req_SN_out = \Xbar_sel_L_out[0] ;
-  assign Req_WN_out = \Xbar_sel_L_out[0] ;
-  assign Req_EN_out = \Xbar_sel_L_out[0] ;
-  assign Req_NN_out = \Xbar_sel_L_out[0] ;
   assign Xbar_sel_L_out[0] = \Xbar_sel_L_out[0] ;
   assign Xbar_sel_S_out[1] = \Xbar_sel_L_out[0] ;
   assign Xbar_sel_W_out[2] = \Xbar_sel_L_out[0] ;
@@ -1695,35 +3380,184 @@ endmodule
   assign Xbar_sel_L_out[2] = Grant_LW_out;
   assign Xbar_sel_L_out[1] = Grant_LS_out;
 
+  LBDR_input_wire_4 LBDR_N_inputs ( .empty(empty_N_out), .flit_type({n22, n21, 
+        n20}), .cur_addr_y({\Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \*Logic1* }), .cur_addr_x({\Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \*Logic1* }), .dst_addr_y({
+        n19, FIFO_D_out_N[13:8]}), .dst_addr_x({n18, FIFO_D_out_N[6:1]}), 
+        .grant_N(\Xbar_sel_L_out[0] ), .grant_E(Grant_EN_out), .grant_W(
+        Grant_WN_out), .grant_S(Grant_SN_out), .grant_L(Grant_LN_out), 
+        .empty_out(empty_N_out_sig_LBDR), .flit_type_out(
+        flit_type_N_out_sig_LBDR), .cur_addr_y_out(cur_addr_y_N_out_sig_LBDR), 
+        .cur_addr_x_out(cur_addr_x_N_out_sig_LBDR), .dst_addr_y_out(
+        dst_addr_y_N_out_sig_LBDR), .dst_addr_x_out(dst_addr_x_N_out_sig_LBDR), 
+        .grant_N_out(grant_NN_out_sig_LBDR), .grant_E_out(
+        grant_EN_out_sig_LBDR), .grant_W_out(grant_WN_out_sig_LBDR), 
+        .grant_S_out(grant_SN_out_sig_LBDR), .grant_L_out(
+        grant_LN_out_sig_LBDR) );
+  LBDR_input_wire_3 LBDR_E_inputs ( .empty(empty_E_out), .flit_type({n17, n16, 
+        FIFO_D_out_E[29]}), .cur_addr_y({\Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \*Logic1* }), .cur_addr_x({
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , 
+        \*Logic1* }), .dst_addr_y({n15, FIFO_D_out_E[13:8]}), .dst_addr_x({n14, 
+        FIFO_D_out_E[6:1]}), .grant_N(Grant_NE_out), .grant_E(
+        \Xbar_sel_L_out[0] ), .grant_W(Grant_WE_out), .grant_S(Grant_SE_out), 
+        .grant_L(Grant_LE_out), .empty_out(empty_E_out_sig_LBDR), 
+        .cur_addr_y_out(cur_addr_y_E_out_sig_LBDR), .cur_addr_x_out(
+        cur_addr_x_E_out_sig_LBDR), .dst_addr_y_out(dst_addr_y_E_out_sig_LBDR), 
+        .dst_addr_x_out(dst_addr_x_E_out_sig_LBDR), .grant_N_out(
+        grant_NE_out_sig_LBDR), .grant_W_out(grant_WE_out_sig_LBDR), 
+        .grant_S_out(grant_SE_out_sig_LBDR), .grant_L_out(
+        grant_LE_out_sig_LBDR) );
+  LBDR_input_wire_2 LBDR_W_inputs ( .empty(empty_W_out), .flit_type({n13, n12, 
+        n11}), .cur_addr_y({\Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \*Logic1* }), .cur_addr_x({\Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \*Logic1* }), .dst_addr_y({
+        n10, FIFO_D_out_W[13:8]}), .dst_addr_x({n9, FIFO_D_out_W[6:1]}), 
+        .grant_N(Grant_NW_out), .grant_E(Grant_EW_out), .grant_W(
+        \Xbar_sel_L_out[0] ), .grant_S(Grant_SW_out), .grant_L(Grant_LW_out), 
+        .empty_out(empty_W_out_sig_LBDR), .cur_addr_y_out(
+        cur_addr_y_W_out_sig_LBDR), .cur_addr_x_out(cur_addr_x_W_out_sig_LBDR), 
+        .dst_addr_y_out(dst_addr_y_W_out_sig_LBDR), .dst_addr_x_out(
+        dst_addr_x_W_out_sig_LBDR), .grant_N_out(grant_NW_out_sig_LBDR), 
+        .grant_E_out(grant_EW_out_sig_LBDR), .grant_S_out(
+        grant_SW_out_sig_LBDR), .grant_L_out(grant_LW_out_sig_LBDR) );
+  LBDR_input_wire_1 LBDR_S_inputs ( .empty(empty_S_out), .flit_type({n8, n7, 
+        FIFO_D_out_S[29]}), .cur_addr_y({\Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \*Logic1* }), .cur_addr_x({
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , 
+        \*Logic1* }), .dst_addr_y({n6, FIFO_D_out_S[13:8]}), .dst_addr_x({n5, 
+        FIFO_D_out_S[6:1]}), .grant_N(Grant_NS_out), .grant_E(Grant_ES_out), 
+        .grant_W(Grant_WS_out), .grant_S(\Xbar_sel_L_out[0] ), .grant_L(
+        Grant_LS_out), .empty_out(empty_S_out_sig_LBDR), .cur_addr_y_out(
+        cur_addr_y_S_out_sig_LBDR), .cur_addr_x_out(cur_addr_x_S_out_sig_LBDR), 
+        .dst_addr_y_out(dst_addr_y_S_out_sig_LBDR), .dst_addr_x_out(
+        dst_addr_x_S_out_sig_LBDR), .grant_N_out(grant_NS_out_sig_LBDR), 
+        .grant_E_out(grant_ES_out_sig_LBDR), .grant_W_out(
+        grant_WS_out_sig_LBDR), .grant_L_out(grant_LS_out_sig_LBDR) );
+  LBDR_input_wire_0 LBDR_L_inputs ( .empty(empty_L_out), .flit_type({n4, n3, 
+        FIFO_D_out_L[29]}), .cur_addr_y({\Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \*Logic1* }), .cur_addr_x({
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , 
+        \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , \Xbar_sel_L_out[0] , 
+        \*Logic1* }), .dst_addr_y({n2, FIFO_D_out_L[13:8]}), .dst_addr_x({n1, 
+        FIFO_D_out_L[6:1]}), .grant_N(Grant_NL_out), .grant_E(Grant_EL_out), 
+        .grant_W(Grant_WL_out), .grant_S(Grant_SL_out), .grant_L(
+        \Xbar_sel_L_out[0] ), .empty_out(empty_L_out_sig_LBDR), 
+        .cur_addr_y_out(cur_addr_y_L_out_sig_LBDR), .cur_addr_x_out(
+        cur_addr_x_L_out_sig_LBDR), .dst_addr_y_out(dst_addr_y_L_out_sig_LBDR), 
+        .dst_addr_x_out(dst_addr_x_L_out_sig_LBDR), .grant_N_out(
+        grant_NL_out_sig_LBDR), .grant_E_out(grant_EL_out_sig_LBDR), 
+        .grant_W_out(grant_WL_out_sig_LBDR), .grant_S_out(
+        grant_SL_out_sig_LBDR) );
   allocator_input_wire allocator_inputs ( .credit_in_N(credit_in_N), 
         .credit_in_E(credit_in_E), .credit_in_W(credit_in_W), .credit_in_S(
-        credit_in_S), .credit_in_L(credit_in_L), .req_N_N(\Xbar_sel_L_out[0] ), 
+        credit_in_S), .credit_in_L(credit_in_L), .req_N_N(Req_NN_out), 
         .req_N_E(Req_NE_out), .req_N_W(Req_NW_out), .req_N_S(Req_NS_out), 
-        .req_N_L(Req_NL_out), .req_E_N(\Xbar_sel_L_out[0] ), .req_E_E(
-        Req_EE_out), .req_E_W(Req_EW_out), .req_E_S(Req_ES_out), .req_E_L(
-        Req_EL_out), .req_W_N(\Xbar_sel_L_out[0] ), .req_W_E(Req_WE_out), 
-        .req_W_W(Req_WW_out), .req_W_S(Req_WS_out), .req_W_L(Req_WL_out), 
-        .req_S_N(\Xbar_sel_L_out[0] ), .req_S_E(Req_SE_out), .req_S_W(
-        Req_SW_out), .req_S_S(Req_SS_out), .req_S_L(Req_SL_out), .req_L_N(
-        \Xbar_sel_L_out[0] ), .req_L_E(Req_LE_out), .req_L_W(Req_LW_out), 
-        .req_L_S(Req_LS_out), .req_L_L(Req_LL_out), .empty_N(empty_N_out), 
-        .empty_E(empty_E_out), .empty_W(empty_W_out), .empty_S(empty_S_out), 
-        .empty_L(empty_L_out), .credit_in_N_out(credit_in_N_out_sig), 
-        .credit_in_E_out(credit_in_E_out_sig), .credit_in_W_out(
-        credit_in_W_out_sig), .credit_in_S_out(credit_in_S_out_sig), 
-        .credit_in_L_out(credit_in_L_out_sig), .req_N_E_out(req_N_E_out_sig), 
-        .req_N_W_out(req_N_W_out_sig), .req_N_S_out(req_N_S_out_sig), 
-        .req_N_L_out(req_N_L_out_sig), .req_E_N_out(req_E_N_out_sig), 
-        .req_E_W_out(req_E_W_out_sig), .req_E_S_out(req_E_S_out_sig), 
-        .req_E_L_out(req_E_L_out_sig), .req_W_N_out(req_W_N_out_sig), 
-        .req_W_E_out(req_W_E_out_sig), .req_W_S_out(req_W_S_out_sig), 
-        .req_W_L_out(req_W_L_out_sig), .req_S_N_out(req_S_N_out_sig), 
-        .req_S_E_out(req_S_E_out_sig), .req_S_W_out(req_S_W_out_sig), 
-        .req_S_L_out(req_S_L_out_sig), .req_L_N_out(req_L_N_out_sig), 
-        .req_L_E_out(req_L_E_out_sig), .req_L_W_out(req_L_W_out_sig), 
-        .req_L_S_out(req_L_S_out_sig), .empty_N_out(empty_N_out_sig), 
-        .empty_E_out(empty_E_out_sig), .empty_W_out(empty_W_out_sig), 
-        .empty_S_out(empty_S_out_sig), .empty_L_out(empty_L_out_sig) );
+        .req_N_L(Req_NL_out), .req_E_N(Req_EN_out), .req_E_E(Req_EE_out), 
+        .req_E_W(Req_EW_out), .req_E_S(Req_ES_out), .req_E_L(Req_EL_out), 
+        .req_W_N(Req_WN_out), .req_W_E(Req_WE_out), .req_W_W(Req_WW_out), 
+        .req_W_S(Req_WS_out), .req_W_L(Req_WL_out), .req_S_N(Req_SN_out), 
+        .req_S_E(Req_SE_out), .req_S_W(Req_SW_out), .req_S_S(Req_SS_out), 
+        .req_S_L(Req_SL_out), .req_L_N(Req_LN_out), .req_L_E(Req_LE_out), 
+        .req_L_W(Req_LW_out), .req_L_S(Req_LS_out), .req_L_L(Req_LL_out), 
+        .empty_N(empty_N_out), .empty_E(empty_E_out), .empty_W(empty_W_out), 
+        .empty_S(empty_S_out), .empty_L(empty_L_out), .credit_in_N_out(
+        credit_in_N_out_sig), .credit_in_E_out(credit_in_E_out_sig), 
+        .credit_in_W_out(credit_in_W_out_sig), .credit_in_S_out(
+        credit_in_S_out_sig), .credit_in_L_out(credit_in_L_out_sig), 
+        .req_N_E_out(req_N_E_out_sig), .req_N_W_out(req_N_W_out_sig), 
+        .req_N_S_out(req_N_S_out_sig), .req_N_L_out(req_N_L_out_sig), 
+        .req_E_N_out(req_E_N_out_sig), .req_E_W_out(req_E_W_out_sig), 
+        .req_E_S_out(req_E_S_out_sig), .req_E_L_out(req_E_L_out_sig), 
+        .req_W_N_out(req_W_N_out_sig), .req_W_E_out(req_W_E_out_sig), 
+        .req_W_S_out(req_W_S_out_sig), .req_W_L_out(req_W_L_out_sig), 
+        .req_S_N_out(req_S_N_out_sig), .req_S_E_out(req_S_E_out_sig), 
+        .req_S_W_out(req_S_W_out_sig), .req_S_L_out(req_S_L_out_sig), 
+        .req_L_N_out(req_L_N_out_sig), .req_L_E_out(req_L_E_out_sig), 
+        .req_L_W_out(req_L_W_out_sig), .req_L_S_out(req_L_S_out_sig), 
+        .empty_N_out(empty_N_out_sig_arbiter), .empty_E_out(
+        empty_E_out_sig_arbiter), .empty_W_out(empty_W_out_sig_arbiter), 
+        .empty_S_out(empty_S_out_sig_arbiter), .empty_L_out(
+        empty_L_out_sig_arbiter) );
+  xbar_input_wire_DATA_WIDTH32_4 XBAR_N_inputs ( .North_in({n22, n21, n20, 
+        FIFO_D_out_N[28:15], n19, FIFO_D_out_N[13:8], n18, FIFO_D_out_N[6:0]}), 
+        .East_in({n17, n16, FIFO_D_out_E[29:15], n15, FIFO_D_out_E[13:8], n14, 
+        FIFO_D_out_E[6:0]}), .West_in({n13, n12, n11, FIFO_D_out_W[28:15], n10, 
+        FIFO_D_out_W[13:8], n9, FIFO_D_out_W[6:0]}), .South_in({n8, n7, 
+        FIFO_D_out_S[29:15], n6, FIFO_D_out_S[13:8], n5, FIFO_D_out_S[6:0]}), 
+        .Local_in({n4, n3, FIFO_D_out_L[29:15], n2, FIFO_D_out_L[13:8], n1, 
+        FIFO_D_out_L[6:0]}), .sel({\Xbar_sel_L_out[0] , Grant_NE_out, 
+        Grant_NW_out, Grant_NS_out, Grant_NL_out}) );
+  xbar_input_wire_DATA_WIDTH32_3 XBAR_E_inputs ( .North_in({n22, n21, n20, 
+        FIFO_D_out_N[28:15], n19, FIFO_D_out_N[13:8], n18, FIFO_D_out_N[6:0]}), 
+        .East_in({n17, n16, FIFO_D_out_E[29:15], n15, FIFO_D_out_E[13:8], n14, 
+        FIFO_D_out_E[6:0]}), .West_in({n13, n12, n11, FIFO_D_out_W[28:15], n10, 
+        FIFO_D_out_W[13:8], n9, FIFO_D_out_W[6:0]}), .South_in({n8, n7, 
+        FIFO_D_out_S[29:15], n6, FIFO_D_out_S[13:8], n5, FIFO_D_out_S[6:0]}), 
+        .Local_in({n4, n3, FIFO_D_out_L[29:15], n2, FIFO_D_out_L[13:8], n1, 
+        FIFO_D_out_L[6:0]}), .sel({Grant_EN_out, \Xbar_sel_L_out[0] , 
+        Grant_EW_out, Grant_ES_out, Grant_EL_out}) );
+  xbar_input_wire_DATA_WIDTH32_2 XBAR_W_inputs ( .North_in({n22, n21, n20, 
+        FIFO_D_out_N[28:15], n19, FIFO_D_out_N[13:8], n18, FIFO_D_out_N[6:0]}), 
+        .East_in({n17, n16, FIFO_D_out_E[29:15], n15, FIFO_D_out_E[13:8], n14, 
+        FIFO_D_out_E[6:0]}), .West_in({n13, n12, n11, FIFO_D_out_W[28:15], n10, 
+        FIFO_D_out_W[13:8], n9, FIFO_D_out_W[6:0]}), .South_in({n8, n7, 
+        FIFO_D_out_S[29:15], n6, FIFO_D_out_S[13:8], n5, FIFO_D_out_S[6:0]}), 
+        .Local_in({n4, n3, FIFO_D_out_L[29:15], n2, FIFO_D_out_L[13:8], n1, 
+        FIFO_D_out_L[6:0]}), .sel({Grant_WN_out, Grant_WE_out, 
+        \Xbar_sel_L_out[0] , Grant_WS_out, Grant_WL_out}) );
+  xbar_input_wire_DATA_WIDTH32_1 XBAR_S_inputs ( .North_in({n22, n21, n20, 
+        FIFO_D_out_N[28:15], n19, FIFO_D_out_N[13:8], n18, FIFO_D_out_N[6:0]}), 
+        .East_in({n17, n16, FIFO_D_out_E[29:15], n15, FIFO_D_out_E[13:8], n14, 
+        FIFO_D_out_E[6:0]}), .West_in({n13, n12, n11, FIFO_D_out_W[28:15], n10, 
+        FIFO_D_out_W[13:8], n9, FIFO_D_out_W[6:0]}), .South_in({n8, n7, 
+        FIFO_D_out_S[29:15], n6, FIFO_D_out_S[13:8], n5, FIFO_D_out_S[6:0]}), 
+        .Local_in({n4, n3, FIFO_D_out_L[29:15], n2, FIFO_D_out_L[13:8], n1, 
+        FIFO_D_out_L[6:0]}), .sel({Grant_SN_out, Grant_SE_out, Grant_SW_out, 
+        \Xbar_sel_L_out[0] , Grant_SL_out}) );
+  xbar_input_wire_DATA_WIDTH32_0 XBAR_L_inputs ( .North_in({n22, n21, n20, 
+        FIFO_D_out_N[28:15], n19, FIFO_D_out_N[13:8], n18, FIFO_D_out_N[6:0]}), 
+        .East_in({n17, n16, FIFO_D_out_E[29:15], n15, FIFO_D_out_E[13:8], n14, 
+        FIFO_D_out_E[6:0]}), .West_in({n13, n12, n11, FIFO_D_out_W[28:15], n10, 
+        FIFO_D_out_W[13:8], n9, FIFO_D_out_W[6:0]}), .South_in({n8, n7, 
+        FIFO_D_out_S[29:15], n6, FIFO_D_out_S[13:8], n5, FIFO_D_out_S[6:0]}), 
+        .Local_in({n4, n3, FIFO_D_out_L[29:15], n2, FIFO_D_out_L[13:8], n1, 
+        FIFO_D_out_L[6:0]}), .sel({Grant_LN_out, Grant_LE_out, Grant_LW_out, 
+        Grant_LS_out, \Xbar_sel_L_out[0] }) );
+  CLKBUFX2 U3 ( .A(FIFO_D_out_S[7]), .Q(n5) );
+  CLKBUFX2 U4 ( .A(FIFO_D_out_S[31]), .Q(n8) );
+  CLKBUFX2 U5 ( .A(FIFO_D_out_S[14]), .Q(n6) );
+  CLKBUFX2 U6 ( .A(FIFO_D_out_N[31]), .Q(n22) );
+  CLKBUFX2 U7 ( .A(FIFO_D_out_W[31]), .Q(n13) );
+  CLKBUFX2 U8 ( .A(FIFO_D_out_W[14]), .Q(n10) );
+  CLKBUFX2 U9 ( .A(FIFO_D_out_N[14]), .Q(n19) );
+  CLKBUFX2 U10 ( .A(FIFO_D_out_N[7]), .Q(n18) );
+  CLKBUFX2 U11 ( .A(FIFO_D_out_W[7]), .Q(n9) );
+  CLKBUFX2 U12 ( .A(FIFO_D_out_L[31]), .Q(n4) );
+  CLKBUFX2 U13 ( .A(FIFO_D_out_E[31]), .Q(n17) );
+  CLKBUFX2 U14 ( .A(FIFO_D_out_S[30]), .Q(n7) );
+  CLKBUFX2 U15 ( .A(FIFO_D_out_E[14]), .Q(n15) );
+  CLKBUFX2 U16 ( .A(FIFO_D_out_L[14]), .Q(n2) );
+  CLKBUFX2 U17 ( .A(FIFO_D_out_N[30]), .Q(n21) );
+  CLKBUFX2 U18 ( .A(FIFO_D_out_W[30]), .Q(n12) );
+  CLKBUFX2 U19 ( .A(FIFO_D_out_L[7]), .Q(n1) );
+  CLKBUFX2 U20 ( .A(FIFO_D_out_E[7]), .Q(n14) );
+  CLKBUFX2 U21 ( .A(FIFO_D_out_N[29]), .Q(n20) );
+  CLKBUFX2 U22 ( .A(FIFO_D_out_W[29]), .Q(n11) );
+  CLKBUFX2 U23 ( .A(FIFO_D_out_L[30]), .Q(n3) );
+  CLKBUFX2 U24 ( .A(FIFO_D_out_E[30]), .Q(n16) );
+  LOGIC1 U25 ( .Q(\*Logic1* ) );
+  LOGIC0 U26 ( .Q(\Xbar_sel_L_out[0] ) );
   DFCX1 \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3_reg[28]  ( .D(
         \FIFO_N/FIFO_DATA_PATH/n152 ), .CP(clk), .RN(reset), .Q(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[28] ) );
@@ -2121,9 +3955,9 @@ endmodule
   INVXL \FIFO_N/FIFO_DATA_PATH/U7  ( .A(\FIFO_N/FIFO_DATA_PATH/n82 ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n87 ) );
   CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U8  ( .A(\FIFO_N/FIFO_DATA_PATH/n113 ), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n72 ) );
-  CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U9  ( .A(\FIFO_N/FIFO_DATA_PATH/n113 ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n73 ) );
+  CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U9  ( .A(\FIFO_N/FIFO_DATA_PATH/n113 ), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n72 ) );
   CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U10  ( .A(\FIFO_N/FIFO_DATA_PATH/n113 ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n74 ) );
   CLKINVX2 \FIFO_N/FIFO_DATA_PATH/U11  ( .A(\FIFO_N/FIFO_DATA_PATH/n87 ), .Q(
@@ -2147,18 +3981,18 @@ endmodule
         \FIFO_N/FIFO_DATA_PATH/n81 ) );
   CLKINVX2 \FIFO_N/FIFO_DATA_PATH/U20  ( .A(\FIFO_N/FIFO_DATA_PATH/n83 ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n88 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U21  ( .A(\FIFO_N/FIFO_DATA_PATH/n70 ), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n71 ) );
-  CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U22  ( .A(\FIFO_N/FIFO_DATA_PATH/n117 ), .Q(
+  CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U21  ( .A(\FIFO_N/FIFO_DATA_PATH/n117 ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n67 ) );
-  CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U23  ( .A(\FIFO_N/FIFO_DATA_PATH/n116 ), .Q(
+  CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U22  ( .A(\FIFO_N/FIFO_DATA_PATH/n116 ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n69 ) );
-  CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U24  ( .A(\FIFO_N/FIFO_DATA_PATH/n107 ), .Q(
+  CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U23  ( .A(\FIFO_N/FIFO_DATA_PATH/n107 ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n89 ) );
-  CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U25  ( .A(\FIFO_N/FIFO_DATA_PATH/n107 ), .Q(
+  CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U24  ( .A(\FIFO_N/FIFO_DATA_PATH/n107 ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n90 ) );
-  CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U26  ( .A(\FIFO_N/FIFO_DATA_PATH/n107 ), .Q(
+  CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U25  ( .A(\FIFO_N/FIFO_DATA_PATH/n107 ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n91 ) );
+  INVXL \FIFO_N/FIFO_DATA_PATH/U26  ( .A(\FIFO_N/FIFO_DATA_PATH/n70 ), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n71 ) );
   CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U27  ( .A(\FIFO_N/FIFO_DATA_PATH/n109 ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n82 ) );
   CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U28  ( .A(\FIFO_N/FIFO_DATA_PATH/n109 ), .Q(
@@ -2190,8 +4024,8 @@ endmodule
         .A2(\FIFO_N/FIFO_DATA_PATH/n73 ), .B1(\FIFO_N/FIFO_DATA_PATH/n31 ), 
         .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n137 ), 
         .Q(FIFO_D_out_N[1]) );
-  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U39  ( .A1(\FIFO_N/FIFO_DATA_PATH/n69 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[1] ), .B1(
+  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U39  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
+        .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[1] ), .B1(
         \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[1] ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n137 ) );
@@ -2199,8 +4033,8 @@ endmodule
         .A2(\FIFO_N/FIFO_DATA_PATH/n72 ), .B1(\FIFO_N/FIFO_DATA_PATH/n29 ), 
         .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n123 ), 
         .Q(FIFO_D_out_N[3]) );
-  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U41  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
-        .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[3] ), .B1(
+  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U41  ( .A1(\FIFO_N/FIFO_DATA_PATH/n68 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[3] ), .B1(
         \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[3] ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n123 ) );
@@ -2208,7 +4042,7 @@ endmodule
         .A2(\FIFO_N/FIFO_DATA_PATH/n72 ), .B1(\FIFO_N/FIFO_DATA_PATH/n27 ), 
         .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n121 ), 
         .Q(FIFO_D_out_N[5]) );
-  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U43  ( .A1(\FIFO_N/FIFO_DATA_PATH/n68 ), .A2(
+  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U43  ( .A1(\FIFO_N/FIFO_DATA_PATH/n69 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[5] ), .B1(
         \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[5] ), .Q(
@@ -2222,231 +4056,232 @@ endmodule
         \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[6] ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n120 ) );
-  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U46  ( .A1(\FIFO_N/FIFO_DATA_PATH/n54 ), 
-        .A2(\FIFO_N/FIFO_DATA_PATH/n74 ), .B1(\FIFO_N/FIFO_DATA_PATH/n22 ), 
-        .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n147 ), 
-        .Q(FIFO_D_out_N[10]) );
-  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U47  ( .A1(\FIFO_N/FIFO_DATA_PATH/n68 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[10] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n66 ), .B2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[10] ), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n147 ) );
-  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U48  ( .A1(\FIFO_N/FIFO_DATA_PATH/n52 ), 
-        .A2(\FIFO_N/FIFO_DATA_PATH/n74 ), .B1(\FIFO_N/FIFO_DATA_PATH/n20 ), 
-        .B2(\FIFO_N/FIFO_DATA_PATH/n114 ), .C1(\FIFO_N/FIFO_DATA_PATH/n145 ), 
-        .Q(\LBDR_N/n4 ) );
-  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U49  ( .A1(\FIFO_N/FIFO_DATA_PATH/n68 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[12] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n66 ), .B2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[12] ), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n145 ) );
-  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U50  ( .A1(\FIFO_N/FIFO_DATA_PATH/n56 ), 
-        .A2(\FIFO_N/FIFO_DATA_PATH/n72 ), .B1(\FIFO_N/FIFO_DATA_PATH/n24 ), 
-        .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n118 ), 
-        .Q(FIFO_D_out_N[8]) );
-  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U51  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
-        .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[8] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n118 ) );
-  NOR4X3 \FIFO_N/FIFO_DATA_PATH/U52  ( .A(\FIFO_N/FIFO_DATA_PATH/n100 ), .B(
-        read_pointer_out_N_out[0]), .C(read_pointer_out_N_out[2]), .D(
-        read_pointer_out_N_out[3]), .Q(\FIFO_N/FIFO_DATA_PATH/n117 ) );
-  NOR4X3 \FIFO_N/FIFO_DATA_PATH/U53  ( .A(\FIFO_N/FIFO_DATA_PATH/n101 ), .B(
-        read_pointer_out_N_out[0]), .C(read_pointer_out_N_out[1]), .D(
-        read_pointer_out_N_out[3]), .Q(\FIFO_N/FIFO_DATA_PATH/n116 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U54  ( .A(read_pointer_out_N_out[1]), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n100 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U55  ( .A(read_pointer_out_N_out[2]), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n101 ) );
-  CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U56  ( .A(\FIFO_N/FIFO_DATA_PATH/n114 ), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n70 ) );
-  NAND4X3 \FIFO_N/FIFO_DATA_PATH/U57  ( .A(read_pointer_out_N_out[3]), .B(
-        \FIFO_N/FIFO_DATA_PATH/n99 ), .C(\FIFO_N/FIFO_DATA_PATH/n100 ), .D(
-        \FIFO_N/FIFO_DATA_PATH/n101 ), .Q(\FIFO_N/FIFO_DATA_PATH/n114 ) );
-  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U59  ( .A1(\FIFO_N/FIFO_DATA_PATH/n33 ), 
-        .A2(\FIFO_N/FIFO_DATA_PATH/n72 ), .B1(\FIFO_N/FIFO_DATA_PATH/n1 ), 
-        .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n124 ), 
-        .Q(FIFO_D_out_N[31]) );
-  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U60  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
-        .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[31] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n124 ) );
-  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U61  ( .A1(\FIFO_N/FIFO_DATA_PATH/n50 ), 
-        .A2(\FIFO_N/FIFO_DATA_PATH/n73 ), .B1(\FIFO_N/FIFO_DATA_PATH/n18 ), 
-        .B2(\FIFO_N/FIFO_DATA_PATH/n114 ), .C1(\FIFO_N/FIFO_DATA_PATH/n143 ), 
-        .Q(\LBDR_N/n32 ) );
-  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U62  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
-        .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[14] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n143 ) );
-  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U63  ( .A1(\FIFO_N/FIFO_DATA_PATH/n57 ), 
-        .A2(\FIFO_N/FIFO_DATA_PATH/n72 ), .B1(\FIFO_N/FIFO_DATA_PATH/n25 ), 
-        .B2(\FIFO_N/FIFO_DATA_PATH/n114 ), .C1(\FIFO_N/FIFO_DATA_PATH/n119 ), 
-        .Q(\LBDR_N/n60 ) );
-  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U64  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
-        .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[7] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n119 ) );
-  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U65  ( .A1(\FIFO_N/FIFO_DATA_PATH/n34 ), 
-        .A2(\FIFO_N/FIFO_DATA_PATH/n72 ), .B1(\FIFO_N/FIFO_DATA_PATH/n2 ), 
-        .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n125 ), 
-        .Q(FIFO_D_out_N[30]) );
-  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U66  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
-        .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[30] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n125 ) );
-  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U67  ( .A1(\FIFO_N/FIFO_DATA_PATH/n35 ), 
-        .A2(\FIFO_N/FIFO_DATA_PATH/n72 ), .B1(\FIFO_N/FIFO_DATA_PATH/n3 ), 
-        .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n127 ), 
-        .Q(FIFO_D_out_N[29]) );
-  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U68  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
-        .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[29] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n127 ) );
-  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U69  ( .A1(\FIFO_N/FIFO_DATA_PATH/n53 ), 
-        .A2(\FIFO_N/FIFO_DATA_PATH/n74 ), .B1(\FIFO_N/FIFO_DATA_PATH/n21 ), 
-        .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n146 ), 
-        .Q(FIFO_D_out_N[11]) );
-  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U70  ( .A1(\FIFO_N/FIFO_DATA_PATH/n68 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[11] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n66 ), .B2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n146 ) );
-  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U71  ( .A1(\FIFO_N/FIFO_DATA_PATH/n55 ), 
+  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U46  ( .A1(\FIFO_N/FIFO_DATA_PATH/n55 ), 
         .A2(\FIFO_N/FIFO_DATA_PATH/n72 ), .B1(\FIFO_N/FIFO_DATA_PATH/n23 ), 
         .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n115 ), 
         .Q(FIFO_D_out_N[9]) );
-  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U72  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
+  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U47  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
         .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[9] ), .B1(
         \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n115 ) );
-  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U73  ( .A1(\FIFO_N/FIFO_DATA_PATH/n60 ), 
+  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U48  ( .A1(\FIFO_N/FIFO_DATA_PATH/n54 ), 
+        .A2(\FIFO_N/FIFO_DATA_PATH/n74 ), .B1(\FIFO_N/FIFO_DATA_PATH/n22 ), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n147 ), 
+        .Q(FIFO_D_out_N[10]) );
+  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U49  ( .A1(\FIFO_N/FIFO_DATA_PATH/n68 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[10] ), .B1(
+        \FIFO_N/FIFO_DATA_PATH/n66 ), .B2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[10] ), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n147 ) );
+  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U50  ( .A1(\FIFO_N/FIFO_DATA_PATH/n52 ), 
+        .A2(\FIFO_N/FIFO_DATA_PATH/n74 ), .B1(\FIFO_N/FIFO_DATA_PATH/n20 ), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n114 ), .C1(\FIFO_N/FIFO_DATA_PATH/n145 ), 
+        .Q(FIFO_D_out_N[12]) );
+  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U51  ( .A1(\FIFO_N/FIFO_DATA_PATH/n68 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[12] ), .B1(
+        \FIFO_N/FIFO_DATA_PATH/n66 ), .B2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[12] ), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n145 ) );
+  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U52  ( .A1(\FIFO_N/FIFO_DATA_PATH/n56 ), 
+        .A2(\FIFO_N/FIFO_DATA_PATH/n72 ), .B1(\FIFO_N/FIFO_DATA_PATH/n24 ), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n118 ), 
+        .Q(FIFO_D_out_N[8]) );
+  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U53  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
+        .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[8] ), .B1(
+        \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n118 ) );
+  NOR4X3 \FIFO_N/FIFO_DATA_PATH/U54  ( .A(\FIFO_N/FIFO_DATA_PATH/n100 ), .B(
+        \FIFO_N/read_pointer_out_sig [0]), .C(\FIFO_N/read_pointer_out_sig [2]), .D(\FIFO_N/read_pointer_out_sig [3]), .Q(\FIFO_N/FIFO_DATA_PATH/n117 ) );
+  NOR4X3 \FIFO_N/FIFO_DATA_PATH/U55  ( .A(\FIFO_N/FIFO_DATA_PATH/n101 ), .B(
+        \FIFO_N/read_pointer_out_sig [0]), .C(\FIFO_N/read_pointer_out_sig [1]), .D(\FIFO_N/read_pointer_out_sig [3]), .Q(\FIFO_N/FIFO_DATA_PATH/n116 ) );
+  INVXL \FIFO_N/FIFO_DATA_PATH/U56  ( .A(\FIFO_N/read_pointer_out_sig [1]), 
+        .Q(\FIFO_N/FIFO_DATA_PATH/n100 ) );
+  INVXL \FIFO_N/FIFO_DATA_PATH/U57  ( .A(\FIFO_N/read_pointer_out_sig [2]), 
+        .Q(\FIFO_N/FIFO_DATA_PATH/n101 ) );
+  CLKBUFX2 \FIFO_N/FIFO_DATA_PATH/U58  ( .A(\FIFO_N/FIFO_DATA_PATH/n114 ), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n70 ) );
+  NAND4X3 \FIFO_N/FIFO_DATA_PATH/U59  ( .A(\FIFO_N/read_pointer_out_sig [3]), 
+        .B(\FIFO_N/FIFO_DATA_PATH/n99 ), .C(\FIFO_N/FIFO_DATA_PATH/n100 ), .D(
+        \FIFO_N/FIFO_DATA_PATH/n101 ), .Q(\FIFO_N/FIFO_DATA_PATH/n114 ) );
+  INVXL \FIFO_N/FIFO_DATA_PATH/U60  ( .A(\FIFO_N/read_pointer_out_sig [0]), 
+        .Q(\FIFO_N/FIFO_DATA_PATH/n99 ) );
+  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U61  ( .A1(\FIFO_N/FIFO_DATA_PATH/n53 ), 
+        .A2(\FIFO_N/FIFO_DATA_PATH/n74 ), .B1(\FIFO_N/FIFO_DATA_PATH/n21 ), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n146 ), 
+        .Q(FIFO_D_out_N[11]) );
+  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U62  ( .A1(\FIFO_N/FIFO_DATA_PATH/n68 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[11] ), .B1(
+        \FIFO_N/FIFO_DATA_PATH/n66 ), .B2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n146 ) );
+  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U63  ( .A1(\FIFO_N/FIFO_DATA_PATH/n60 ), 
         .A2(\FIFO_N/FIFO_DATA_PATH/n72 ), .B1(\FIFO_N/FIFO_DATA_PATH/n28 ), 
         .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n122 ), 
         .Q(FIFO_D_out_N[4]) );
-  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U74  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
+  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U64  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
         .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[4] ), .B1(
         \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n122 ) );
-  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U75  ( .A1(\FIFO_N/FIFO_DATA_PATH/n51 ), 
+  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U65  ( .A1(\FIFO_N/FIFO_DATA_PATH/n51 ), 
         .A2(\FIFO_N/FIFO_DATA_PATH/n73 ), .B1(\FIFO_N/FIFO_DATA_PATH/n19 ), 
         .B2(\FIFO_N/FIFO_DATA_PATH/n114 ), .C1(\FIFO_N/FIFO_DATA_PATH/n144 ), 
-        .Q(\LBDR_N/n31 ) );
-  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U76  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
+        .Q(FIFO_D_out_N[13]) );
+  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U66  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
         .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[13] ), .B1(
         \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n144 ) );
-  NAND3X3 \FIFO_N/FIFO_DATA_PATH/U77  ( .A(write_pointer_out_N_out[1]), .B(
-        write_en_out_N_out), .C(\FIFO_N/FIFO_DATA_PATH/n108 ), .Q(
+  NAND3X3 \FIFO_N/FIFO_DATA_PATH/U67  ( .A(\FIFO_N/write_pointer_out_sig [1]), 
+        .B(\FIFO_N/write_en_out_sig ), .C(\FIFO_N/FIFO_DATA_PATH/n108 ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n107 ) );
-  NOR3X3 \FIFO_N/FIFO_DATA_PATH/U78  ( .A(write_pointer_out_N_out[0]), .B(
-        write_pointer_out_N_out[3]), .C(write_pointer_out_N_out[2]), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n108 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U79  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[28] ), .B1(RX_N[28]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n184 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U80  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .B1(RX_N[29]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n183 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U81  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .B1(RX_N[30]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n182 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U82  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .B1(RX_N[31]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n181 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U83  ( .A1(\FIFO_N/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[0] ), .B1(RX_N[0]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n212 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U84  ( .A1(\FIFO_N/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[1] ), .B1(RX_N[1]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n211 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U85  ( .A1(\FIFO_N/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[2] ), .B1(RX_N[2]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n210 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U86  ( .A1(\FIFO_N/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[3] ), .B1(RX_N[3]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n209 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U87  ( .A1(\FIFO_N/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .B1(RX_N[4]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n208 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U88  ( .A1(\FIFO_N/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[5] ), .B1(RX_N[5]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n207 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U89  ( .A1(\FIFO_N/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[6] ), .B1(RX_N[6]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n206 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U90  ( .A1(\FIFO_N/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .B1(RX_N[7]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n205 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U91  ( .A1(\FIFO_N/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .B1(RX_N[8]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n204 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U92  ( .A1(\FIFO_N/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .B1(RX_N[9]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n203 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U93  ( .A1(\FIFO_N/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[10] ), .B1(RX_N[10]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n202 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U94  ( .A1(\FIFO_N/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .B1(RX_N[11]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n201 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U95  ( .A1(\FIFO_N/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[12] ), .B1(RX_N[12]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n200 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U96  ( .A1(\FIFO_N/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .B1(RX_N[13]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n199 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U97  ( .A1(\FIFO_N/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .B1(RX_N[14]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n198 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U98  ( .A1(\FIFO_N/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[15] ), .B1(RX_N[15]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n197 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U99  ( .A1(\FIFO_N/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[16] ), .B1(RX_N[16]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n196 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U100  ( .A1(\FIFO_N/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[17] ), .B1(RX_N[17]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n195 ) );
+  NOR3X3 \FIFO_N/FIFO_DATA_PATH/U68  ( .A(\FIFO_N/write_pointer_out_sig [0]), 
+        .B(\FIFO_N/write_pointer_out_sig [3]), .C(
+        \FIFO_N/write_pointer_out_sig [2]), .Q(\FIFO_N/FIFO_DATA_PATH/n108 )
+         );
+  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U69  ( .A1(\FIFO_N/FIFO_DATA_PATH/n33 ), 
+        .A2(\FIFO_N/FIFO_DATA_PATH/n72 ), .B1(\FIFO_N/FIFO_DATA_PATH/n1 ), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n124 ), 
+        .Q(FIFO_D_out_N[31]) );
+  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U70  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
+        .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[31] ), .B1(
+        \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n124 ) );
+  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U71  ( .A1(\FIFO_N/FIFO_DATA_PATH/n50 ), 
+        .A2(\FIFO_N/FIFO_DATA_PATH/n73 ), .B1(\FIFO_N/FIFO_DATA_PATH/n18 ), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n114 ), .C1(\FIFO_N/FIFO_DATA_PATH/n143 ), 
+        .Q(FIFO_D_out_N[14]) );
+  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U72  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
+        .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[14] ), .B1(
+        \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n143 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U73  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[28] ), .B1(\FIFO_N/RX_out_sig [28]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n184 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U74  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .B1(\FIFO_N/RX_out_sig [29]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n183 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U75  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .B1(\FIFO_N/RX_out_sig [30]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n182 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U76  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .B1(\FIFO_N/RX_out_sig [31]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n181 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U77  ( .A1(\FIFO_N/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[0] ), .B1(\FIFO_N/RX_out_sig [0]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n212 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U78  ( .A1(\FIFO_N/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[1] ), .B1(\FIFO_N/RX_out_sig [1]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n211 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U79  ( .A1(\FIFO_N/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[2] ), .B1(\FIFO_N/RX_out_sig [2]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n210 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U80  ( .A1(\FIFO_N/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[3] ), .B1(\FIFO_N/RX_out_sig [3]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n209 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U81  ( .A1(\FIFO_N/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .B1(\FIFO_N/RX_out_sig [4]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n208 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U82  ( .A1(\FIFO_N/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[5] ), .B1(\FIFO_N/RX_out_sig [5]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n207 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U83  ( .A1(\FIFO_N/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[6] ), .B1(\FIFO_N/RX_out_sig [6]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n206 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U84  ( .A1(\FIFO_N/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .B1(\FIFO_N/RX_out_sig [7]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n205 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U85  ( .A1(\FIFO_N/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .B1(\FIFO_N/RX_out_sig [8]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n204 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U86  ( .A1(\FIFO_N/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .B1(\FIFO_N/RX_out_sig [9]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n203 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U87  ( .A1(\FIFO_N/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[10] ), .B1(\FIFO_N/RX_out_sig [10]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n202 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U88  ( .A1(\FIFO_N/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .B1(\FIFO_N/RX_out_sig [11]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n201 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U89  ( .A1(\FIFO_N/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[12] ), .B1(\FIFO_N/RX_out_sig [12]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n200 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U90  ( .A1(\FIFO_N/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .B1(\FIFO_N/RX_out_sig [13]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n199 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U91  ( .A1(\FIFO_N/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .B1(\FIFO_N/RX_out_sig [14]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n198 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U92  ( .A1(\FIFO_N/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[15] ), .B1(\FIFO_N/RX_out_sig [15]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n197 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U93  ( .A1(\FIFO_N/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[16] ), .B1(\FIFO_N/RX_out_sig [16]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n196 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U94  ( .A1(\FIFO_N/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[17] ), .B1(\FIFO_N/RX_out_sig [17]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n195 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U95  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[18] ), .B1(\FIFO_N/RX_out_sig [18]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n194 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U96  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[19] ), .B1(\FIFO_N/RX_out_sig [19]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n193 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U97  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[20] ), .B1(\FIFO_N/RX_out_sig [20]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n192 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U98  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[21] ), .B1(\FIFO_N/RX_out_sig [21]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n191 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U99  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[22] ), .B1(\FIFO_N/RX_out_sig [22]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n190 ) );
+  AO22X3 \FIFO_N/FIFO_DATA_PATH/U100  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[23] ), .B1(\FIFO_N/RX_out_sig [23]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n189 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U101  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[18] ), .B1(RX_N[18]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n194 ) );
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[24] ), .B1(\FIFO_N/RX_out_sig [24]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n188 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U102  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[19] ), .B1(RX_N[19]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n193 ) );
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[25] ), .B1(\FIFO_N/RX_out_sig [25]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n187 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U103  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[20] ), .B1(RX_N[20]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n192 ) );
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[26] ), .B1(\FIFO_N/RX_out_sig [26]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n186 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U104  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[21] ), .B1(RX_N[21]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n191 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U105  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[22] ), .B1(RX_N[22]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n190 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U106  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[23] ), .B1(RX_N[23]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n189 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U107  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[24] ), .B1(RX_N[24]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n188 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U108  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[25] ), .B1(RX_N[25]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n187 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U109  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[26] ), .B1(RX_N[26]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n186 ) );
-  AO22X3 \FIFO_N/FIFO_DATA_PATH/U110  ( .A1(\FIFO_N/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[27] ), .B1(RX_N[27]), .B2(
-        \FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n185 ) );
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[27] ), .B1(\FIFO_N/RX_out_sig [27]), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n93 ), .Q(\FIFO_N/FIFO_DATA_PATH/n185 ) );
+  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U105  ( .A1(\FIFO_N/FIFO_DATA_PATH/n57 ), 
+        .A2(\FIFO_N/FIFO_DATA_PATH/n72 ), .B1(\FIFO_N/FIFO_DATA_PATH/n25 ), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n119 ), 
+        .Q(FIFO_D_out_N[7]) );
+  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U106  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
+        .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[7] ), .B1(
+        \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n119 ) );
+  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U107  ( .A1(\FIFO_N/FIFO_DATA_PATH/n34 ), 
+        .A2(\FIFO_N/FIFO_DATA_PATH/n72 ), .B1(\FIFO_N/FIFO_DATA_PATH/n2 ), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n125 ), 
+        .Q(FIFO_D_out_N[30]) );
+  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U108  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
+        .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[30] ), .B1(
+        \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n125 ) );
+  OAI221X3 \FIFO_N/FIFO_DATA_PATH/U109  ( .A1(\FIFO_N/FIFO_DATA_PATH/n35 ), 
+        .A2(\FIFO_N/FIFO_DATA_PATH/n72 ), .B1(\FIFO_N/FIFO_DATA_PATH/n3 ), 
+        .B2(\FIFO_N/FIFO_DATA_PATH/n70 ), .C1(\FIFO_N/FIFO_DATA_PATH/n127 ), 
+        .Q(FIFO_D_out_N[29]) );
+  AOI22X3 \FIFO_N/FIFO_DATA_PATH/U110  ( .A1(\FIFO_N/FIFO_DATA_PATH/n116 ), 
+        .A2(\FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[29] ), .B1(
+        \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n127 ) );
   OAI221X3 \FIFO_N/FIFO_DATA_PATH/U111  ( .A1(\FIFO_N/FIFO_DATA_PATH/n64 ), 
         .A2(\FIFO_N/FIFO_DATA_PATH/n74 ), .B1(\FIFO_N/FIFO_DATA_PATH/n32 ), 
         .B2(\FIFO_N/FIFO_DATA_PATH/n114 ), .C1(\FIFO_N/FIFO_DATA_PATH/n148 ), 
@@ -2582,24 +4417,27 @@ endmodule
         \FIFO_N/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_2[28] ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n128 ) );
-  NAND3X3 \FIFO_N/FIFO_DATA_PATH/U141  ( .A(write_en_out_N_out), .B(
-        write_pointer_out_N_out[2]), .C(\FIFO_N/FIFO_DATA_PATH/n106 ), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n105 ) );
-  NOR3X3 \FIFO_N/FIFO_DATA_PATH/U142  ( .A(write_pointer_out_N_out[0]), .B(
-        write_pointer_out_N_out[3]), .C(write_pointer_out_N_out[1]), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n106 ) );
-  NAND3X3 \FIFO_N/FIFO_DATA_PATH/U143  ( .A(write_pointer_out_N_out[0]), .B(
-        write_en_out_N_out), .C(\FIFO_N/FIFO_DATA_PATH/n110 ), .Q(
+  NAND3X3 \FIFO_N/FIFO_DATA_PATH/U141  ( .A(\FIFO_N/write_en_out_sig ), .B(
+        \FIFO_N/write_pointer_out_sig [2]), .C(\FIFO_N/FIFO_DATA_PATH/n106 ), 
+        .Q(\FIFO_N/FIFO_DATA_PATH/n105 ) );
+  NOR3X3 \FIFO_N/FIFO_DATA_PATH/U142  ( .A(\FIFO_N/write_pointer_out_sig [0]), 
+        .B(\FIFO_N/write_pointer_out_sig [3]), .C(
+        \FIFO_N/write_pointer_out_sig [1]), .Q(\FIFO_N/FIFO_DATA_PATH/n106 )
+         );
+  NAND3X3 \FIFO_N/FIFO_DATA_PATH/U143  ( .A(\FIFO_N/write_pointer_out_sig [0]), 
+        .B(\FIFO_N/write_en_out_sig ), .C(\FIFO_N/FIFO_DATA_PATH/n110 ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n109 ) );
-  NOR3X3 \FIFO_N/FIFO_DATA_PATH/U144  ( .A(write_pointer_out_N_out[1]), .B(
-        write_pointer_out_N_out[3]), .C(write_pointer_out_N_out[2]), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n110 ) );
-  NAND3X3 \FIFO_N/FIFO_DATA_PATH/U145  ( .A(write_pointer_out_N_out[3]), .B(
-        write_en_out_N_out), .C(\FIFO_N/FIFO_DATA_PATH/n112 ), .Q(
+  NOR3X3 \FIFO_N/FIFO_DATA_PATH/U144  ( .A(\FIFO_N/write_pointer_out_sig [1]), 
+        .B(\FIFO_N/write_pointer_out_sig [3]), .C(
+        \FIFO_N/write_pointer_out_sig [2]), .Q(\FIFO_N/FIFO_DATA_PATH/n110 )
+         );
+  NAND3X3 \FIFO_N/FIFO_DATA_PATH/U145  ( .A(\FIFO_N/write_pointer_out_sig [3]), 
+        .B(\FIFO_N/write_en_out_sig ), .C(\FIFO_N/FIFO_DATA_PATH/n112 ), .Q(
         \FIFO_N/FIFO_DATA_PATH/n111 ) );
-  NOR3X3 \FIFO_N/FIFO_DATA_PATH/U146  ( .A(write_pointer_out_N_out[0]), .B(
-        write_pointer_out_N_out[2]), .C(write_pointer_out_N_out[1]), .Q(
-        \FIFO_N/FIFO_DATA_PATH/n112 ) );
+  NOR3X3 \FIFO_N/FIFO_DATA_PATH/U146  ( .A(\FIFO_N/write_pointer_out_sig [0]), 
+        .B(\FIFO_N/write_pointer_out_sig [2]), .C(
+        \FIFO_N/write_pointer_out_sig [1]), .Q(\FIFO_N/FIFO_DATA_PATH/n112 )
+         );
   OAI22X3 \FIFO_N/FIFO_DATA_PATH/U147  ( .A1(\FIFO_N/FIFO_DATA_PATH/n86 ), 
         .A2(\FIFO_N/FIFO_DATA_PATH/n64 ), .B1(\FIFO_N/FIFO_DATA_PATH/n305 ), 
         .B2(\FIFO_N/FIFO_DATA_PATH/n84 ), .Q(\FIFO_N/FIFO_DATA_PATH/n244 ) );
@@ -2794,208 +4632,208 @@ endmodule
         .B2(\FIFO_N/FIFO_DATA_PATH/n78 ), .Q(\FIFO_N/FIFO_DATA_PATH/n245 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U211  ( .A1(\FIFO_N/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[0] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[0]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [0]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n180 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U212  ( .A1(\FIFO_N/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[1] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[1]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [1]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n179 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U213  ( .A1(\FIFO_N/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[2] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[2]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [2]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n178 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U214  ( .A1(\FIFO_N/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[3] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[3]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [3]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n177 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U215  ( .A1(\FIFO_N/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[4] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[4]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [4]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n176 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U216  ( .A1(\FIFO_N/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[5] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[5]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [5]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n175 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U217  ( .A1(\FIFO_N/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[6] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[6]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [6]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n174 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U218  ( .A1(\FIFO_N/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[7] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[7]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [7]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n173 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U219  ( .A1(\FIFO_N/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[8] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[8]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [8]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n172 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U220  ( .A1(\FIFO_N/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[9] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[9]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [9]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n171 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U221  ( .A1(\FIFO_N/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[10] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[10]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [10]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n170 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U222  ( .A1(\FIFO_N/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[11] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[11]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [11]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n169 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U223  ( .A1(\FIFO_N/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[12] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[12]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [12]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n168 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U224  ( .A1(\FIFO_N/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[13] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[13]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [13]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n167 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U225  ( .A1(\FIFO_N/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[14] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[14]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [14]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n166 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U226  ( .A1(\FIFO_N/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[15] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[15]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [15]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n165 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U227  ( .A1(\FIFO_N/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[16] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[16]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [16]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n164 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U228  ( .A1(\FIFO_N/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[17] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[17]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [17]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n163 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U229  ( .A1(\FIFO_N/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[18] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[18]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [18]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n162 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U230  ( .A1(\FIFO_N/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[19] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[19]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [19]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n161 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U231  ( .A1(\FIFO_N/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[20] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[20]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [20]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n160 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U232  ( .A1(\FIFO_N/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[21] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[21]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [21]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n159 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U233  ( .A1(\FIFO_N/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[22] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[22]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [22]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n158 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U234  ( .A1(\FIFO_N/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[23] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[23]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [23]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n157 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U235  ( .A1(\FIFO_N/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[24] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[24]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [24]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n156 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U236  ( .A1(\FIFO_N/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[25] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[25]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [25]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n155 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U237  ( .A1(\FIFO_N/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[26] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[26]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [26]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n154 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U238  ( .A1(\FIFO_N/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[27] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[27]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [27]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n153 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U239  ( .A1(\FIFO_N/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[28] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[28]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [28]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n152 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U240  ( .A1(\FIFO_N/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[29] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[29]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [29]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n151 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U241  ( .A1(\FIFO_N/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[30] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[30]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [30]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n150 ) );
   AO22X3 \FIFO_N/FIFO_DATA_PATH/U242  ( .A1(\FIFO_N/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_N/FIFO_DATA_PATH/FIFO_MEM_3[31] ), .B1(
-        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(RX_N[31]), .Q(
+        \FIFO_N/FIFO_DATA_PATH/n98 ), .B2(\FIFO_N/RX_out_sig [31]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n149 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U243  ( .A(RX_N[0]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U243  ( .A(\FIFO_N/RX_out_sig [0]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n305 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U244  ( .A(RX_N[1]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U244  ( .A(\FIFO_N/RX_out_sig [1]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n304 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U245  ( .A(RX_N[2]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U245  ( .A(\FIFO_N/RX_out_sig [2]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n303 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U246  ( .A(RX_N[3]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U246  ( .A(\FIFO_N/RX_out_sig [3]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n302 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U247  ( .A(RX_N[4]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U247  ( .A(\FIFO_N/RX_out_sig [4]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n301 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U248  ( .A(RX_N[5]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U248  ( .A(\FIFO_N/RX_out_sig [5]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n300 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U249  ( .A(RX_N[6]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U249  ( .A(\FIFO_N/RX_out_sig [6]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n299 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U250  ( .A(RX_N[7]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U250  ( .A(\FIFO_N/RX_out_sig [7]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n298 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U251  ( .A(RX_N[8]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U251  ( .A(\FIFO_N/RX_out_sig [8]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n297 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U252  ( .A(RX_N[9]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U252  ( .A(\FIFO_N/RX_out_sig [9]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n296 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U253  ( .A(RX_N[10]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U253  ( .A(\FIFO_N/RX_out_sig [10]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n295 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U254  ( .A(RX_N[11]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U254  ( .A(\FIFO_N/RX_out_sig [11]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n294 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U255  ( .A(RX_N[12]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U255  ( .A(\FIFO_N/RX_out_sig [12]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n293 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U256  ( .A(RX_N[13]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U256  ( .A(\FIFO_N/RX_out_sig [13]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n292 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U257  ( .A(RX_N[14]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U257  ( .A(\FIFO_N/RX_out_sig [14]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n291 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U258  ( .A(RX_N[15]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U258  ( .A(\FIFO_N/RX_out_sig [15]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n290 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U259  ( .A(RX_N[16]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U259  ( .A(\FIFO_N/RX_out_sig [16]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n289 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U260  ( .A(RX_N[17]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U260  ( .A(\FIFO_N/RX_out_sig [17]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n288 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U261  ( .A(RX_N[18]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U261  ( .A(\FIFO_N/RX_out_sig [18]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n287 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U262  ( .A(RX_N[19]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U262  ( .A(\FIFO_N/RX_out_sig [19]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n286 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U263  ( .A(RX_N[20]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U263  ( .A(\FIFO_N/RX_out_sig [20]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n285 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U264  ( .A(RX_N[21]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U264  ( .A(\FIFO_N/RX_out_sig [21]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n284 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U265  ( .A(RX_N[22]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U265  ( .A(\FIFO_N/RX_out_sig [22]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n283 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U266  ( .A(RX_N[23]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U266  ( .A(\FIFO_N/RX_out_sig [23]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n282 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U267  ( .A(RX_N[24]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U267  ( .A(\FIFO_N/RX_out_sig [24]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n281 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U268  ( .A(RX_N[25]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U268  ( .A(\FIFO_N/RX_out_sig [25]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n280 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U269  ( .A(RX_N[26]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U269  ( .A(\FIFO_N/RX_out_sig [26]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n279 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U270  ( .A(RX_N[27]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U270  ( .A(\FIFO_N/RX_out_sig [27]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n278 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U271  ( .A(RX_N[28]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U271  ( .A(\FIFO_N/RX_out_sig [28]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n277 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U272  ( .A(RX_N[29]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U272  ( .A(\FIFO_N/RX_out_sig [29]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n104 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U273  ( .A(RX_N[30]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U273  ( .A(\FIFO_N/RX_out_sig [30]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n103 ) );
-  INVXL \FIFO_N/FIFO_DATA_PATH/U274  ( .A(RX_N[31]), .Q(
+  INVXL \FIFO_N/FIFO_DATA_PATH/U274  ( .A(\FIFO_N/RX_out_sig [31]), .Q(
         \FIFO_N/FIFO_DATA_PATH/n102 ) );
   DFPX3 \FIFO_N/FIFO_CONTROL_PART/write_pointer_reg[0]  ( .D(
         \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[0] ), .CP(clk), .SN(reset), 
         .Q(write_pointer_out_N_out[0]), .QN(\FIFO_N/FIFO_CONTROL_PART/n19 ) );
   DFPX3 \FIFO_N/FIFO_CONTROL_PART/read_pointer_reg[0]  ( .D(
         \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[0] ), .CP(clk), .SN(reset), 
-        .Q(read_pointer_out_N_out[0]), .QN(\FIFO_N/FIFO_DATA_PATH/n99 ) );
+        .Q(read_pointer_out_N_out[0]), .QN(\FIFO_N/FIFO_CONTROL_PART/n15 ) );
   XOR2X1 \FIFO_N/FIFO_CONTROL_PART/U19  ( .A(\FIFO_N/FIFO_CONTROL_PART/n14 ), 
         .B(write_pointer_out_N_out[1]), .Q(\FIFO_N/FIFO_CONTROL_PART/n27 ) );
   XOR2X1 \FIFO_N/FIFO_CONTROL_PART/U20  ( .A(\FIFO_N/FIFO_CONTROL_PART/n13 ), 
         .B(write_pointer_out_N_out[2]), .Q(\FIFO_N/FIFO_CONTROL_PART/n26 ) );
-  XOR2X1 \FIFO_N/FIFO_CONTROL_PART/U21  ( .A(\FIFO_N/FIFO_DATA_PATH/n99 ), .B(
-        write_pointer_out_N_out[0]), .Q(\FIFO_N/FIFO_CONTROL_PART/n25 ) );
+  XOR2X1 \FIFO_N/FIFO_CONTROL_PART/U21  ( .A(\FIFO_N/FIFO_CONTROL_PART/n15 ), 
+        .B(write_pointer_out_N_out[0]), .Q(\FIFO_N/FIFO_CONTROL_PART/n25 ) );
   XOR2X1 \FIFO_N/FIFO_CONTROL_PART/U22  ( .A(\FIFO_N/FIFO_CONTROL_PART/n12 ), 
         .B(write_pointer_out_N_out[3]), .Q(\FIFO_N/FIFO_CONTROL_PART/n24 ) );
   XOR2X1 \FIFO_N/FIFO_CONTROL_PART/U23  ( .A(write_pointer_out_N_out[3]), .B(
@@ -3034,7 +4872,7 @@ endmodule
   INVXL \FIFO_N/FIFO_CONTROL_PART/U5  ( .A(\FIFO_N/FIFO_CONTROL_PART/n23 ), 
         .Q(empty_N_out) );
   OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U6  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n12 ), 
-        .A2(\FIFO_N/FIFO_CONTROL_PART/n21 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B2(\FIFO_N/FIFO_DATA_PATH/n99 ), .Q(
+        .A2(\FIFO_N/FIFO_CONTROL_PART/n21 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B2(\FIFO_N/FIFO_CONTROL_PART/n15 ), .Q(
         \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[0] ) );
   OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U7  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n13 ), 
         .A2(\FIFO_N/FIFO_CONTROL_PART/n21 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B2(\FIFO_N/FIFO_CONTROL_PART/n12 ), .Q(
@@ -3042,7 +4880,7 @@ endmodule
   OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U8  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n14 ), 
         .A2(\FIFO_N/FIFO_CONTROL_PART/n21 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B2(\FIFO_N/FIFO_CONTROL_PART/n13 ), .Q(
         \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[2] ) );
-  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U9  ( .A1(\FIFO_N/FIFO_DATA_PATH/n99 ), 
+  OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U9  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n15 ), 
         .A2(\FIFO_N/FIFO_CONTROL_PART/n21 ), .B1(\FIFO_N/FIFO_CONTROL_PART/n1 ), .B2(\FIFO_N/FIFO_CONTROL_PART/n14 ), .Q(
         \FIFO_N/FIFO_CONTROL_PART/read_pointer_in[1] ) );
   NAND4X3 \FIFO_N/FIFO_CONTROL_PART/U10  ( .A(\FIFO_N/FIFO_CONTROL_PART/n24 ), 
@@ -3051,14 +4889,17 @@ endmodule
          );
   OAI31X2 \FIFO_N/FIFO_CONTROL_PART/U11  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n28 ), 
         .A2(\FIFO_N/FIFO_CONTROL_PART/n29 ), .A3(
-        \FIFO_N/FIFO_CONTROL_PART/n30 ), .B1(valid_in_N), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/n30 ), .B1(\FIFO_N/valid_in_out_sig ), .Q(
         \FIFO_N/FIFO_CONTROL_PART/n20 ) );
   NAND2XL \FIFO_N/FIFO_CONTROL_PART/U12  ( .A(\FIFO_N/FIFO_CONTROL_PART/n31 ), 
         .B(\FIFO_N/FIFO_CONTROL_PART/n32 ), .Q(\FIFO_N/FIFO_CONTROL_PART/n28 )
          );
   OAI31X2 \FIFO_N/FIFO_CONTROL_PART/U13  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n22 ), 
-        .A2(Grant_LN_out), .A3(Grant_EN_out), .B1(
+        .A2(\FIFO_N/read_en_L_out_sig ), .A3(\FIFO_N/read_en_E_out_sig ), .B1(
         \FIFO_N/FIFO_CONTROL_PART/n23 ), .Q(\FIFO_N/FIFO_CONTROL_PART/n21 ) );
+  OR3X3 \FIFO_N/FIFO_CONTROL_PART/U14  ( .A(\FIFO_N/read_en_W_out_sig ), .B(
+        \FIFO_N/read_en_S_out_sig ), .C(\FIFO_N/read_en_N_out_sig ), .Q(
+        \FIFO_N/FIFO_CONTROL_PART/n22 ) );
   OAI22X3 \FIFO_N/FIFO_CONTROL_PART/U15  ( .A1(\FIFO_N/FIFO_CONTROL_PART/n16 ), 
         .A2(\FIFO_N/FIFO_CONTROL_PART/n20 ), .B1(write_en_out_N_out), .B2(
         \FIFO_N/FIFO_CONTROL_PART/n19 ), .Q(
@@ -3075,9 +4916,19 @@ endmodule
         .A2(\FIFO_N/FIFO_CONTROL_PART/n20 ), .B1(write_en_out_N_out), .B2(
         \FIFO_N/FIFO_CONTROL_PART/n18 ), .Q(
         \FIFO_N/FIFO_CONTROL_PART/write_pointer_in[1] ) );
-  NAND2X6 U5 ( .A(n1), .B(n2), .Q(\FIFO_N/FIFO_CONTROL_PART/n22 ) );
-  CLKINVX4 U6 ( .A(Grant_WN_out), .Q(n1) );
-  CLKINVX4 U7 ( .A(Grant_SN_out), .Q(n2) );
+  FIFO_data_path_input_wire_DATA_WIDTH32_4 \FIFO_N/FIFO_DATA_PATH_inputs  ( 
+        .write_en(write_en_out_N_out), .RX(RX_N), .read_pointer(
+        read_pointer_out_N_out), .write_pointer(write_pointer_out_N_out), 
+        .write_en_out(\FIFO_N/write_en_out_sig ), .RX_out(\FIFO_N/RX_out_sig ), 
+        .read_ptr_out(\FIFO_N/read_pointer_out_sig ), .write_ptr_out(
+        \FIFO_N/write_pointer_out_sig ) );
+  FIFO_control_part_input_wire_4 \FIFO_N/FIFO_CONTROL_PART_inputs  ( 
+        .valid_in(valid_in_N), .read_en_N(\Xbar_sel_L_out[0] ), .read_en_E(
+        Grant_EN_out), .read_en_W(Grant_WN_out), .read_en_S(Grant_SN_out), 
+        .read_en_L(Grant_LN_out), .valid_in_out(\FIFO_N/valid_in_out_sig ), 
+        .read_en_N_out(\FIFO_N/read_en_N_out_sig ), .read_en_E_out(
+        \FIFO_N/read_en_E_out_sig ), .read_en_W_out(\FIFO_N/read_en_W_out_sig ), .read_en_S_out(\FIFO_N/read_en_S_out_sig ), .read_en_L_out(
+        \FIFO_N/read_en_L_out_sig ) );
   DFCX1 \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3_reg[28]  ( .D(
         \FIFO_E/FIFO_DATA_PATH/n430 ), .CP(clk), .RN(reset), .Q(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[28] ) );
@@ -3475,9 +5326,9 @@ endmodule
   INVXL \FIFO_E/FIFO_DATA_PATH/U7  ( .A(\FIFO_E/FIFO_DATA_PATH/n82 ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n87 ) );
   CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U8  ( .A(\FIFO_E/FIFO_DATA_PATH/n469 ), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n72 ) );
-  CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U9  ( .A(\FIFO_E/FIFO_DATA_PATH/n469 ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n73 ) );
+  CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U9  ( .A(\FIFO_E/FIFO_DATA_PATH/n469 ), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n72 ) );
   CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U10  ( .A(\FIFO_E/FIFO_DATA_PATH/n469 ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n74 ) );
   CLKINVX2 \FIFO_E/FIFO_DATA_PATH/U11  ( .A(\FIFO_E/FIFO_DATA_PATH/n87 ), .Q(
@@ -3501,18 +5352,18 @@ endmodule
         \FIFO_E/FIFO_DATA_PATH/n81 ) );
   CLKINVX2 \FIFO_E/FIFO_DATA_PATH/U20  ( .A(\FIFO_E/FIFO_DATA_PATH/n83 ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n88 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U21  ( .A(\FIFO_E/FIFO_DATA_PATH/n70 ), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n71 ) );
-  CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U22  ( .A(\FIFO_E/FIFO_DATA_PATH/n465 ), .Q(
+  CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U21  ( .A(\FIFO_E/FIFO_DATA_PATH/n465 ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n67 ) );
-  CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U23  ( .A(\FIFO_E/FIFO_DATA_PATH/n466 ), .Q(
+  CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U22  ( .A(\FIFO_E/FIFO_DATA_PATH/n466 ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n69 ) );
-  CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U24  ( .A(\FIFO_E/FIFO_DATA_PATH/n475 ), .Q(
+  CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U23  ( .A(\FIFO_E/FIFO_DATA_PATH/n475 ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n89 ) );
-  CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U25  ( .A(\FIFO_E/FIFO_DATA_PATH/n475 ), .Q(
+  CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U24  ( .A(\FIFO_E/FIFO_DATA_PATH/n475 ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n90 ) );
-  CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U26  ( .A(\FIFO_E/FIFO_DATA_PATH/n475 ), .Q(
+  CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U25  ( .A(\FIFO_E/FIFO_DATA_PATH/n475 ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n91 ) );
+  INVXL \FIFO_E/FIFO_DATA_PATH/U26  ( .A(\FIFO_E/FIFO_DATA_PATH/n70 ), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n71 ) );
   CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U27  ( .A(\FIFO_E/FIFO_DATA_PATH/n473 ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n82 ) );
   CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U28  ( .A(\FIFO_E/FIFO_DATA_PATH/n473 ), .Q(
@@ -3544,8 +5395,8 @@ endmodule
         .A2(\FIFO_E/FIFO_DATA_PATH/n73 ), .B1(\FIFO_E/FIFO_DATA_PATH/n511 ), 
         .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n445 ), 
         .Q(FIFO_D_out_E[1]) );
-  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U39  ( .A1(\FIFO_E/FIFO_DATA_PATH/n69 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[1] ), .B1(
+  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U39  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[1] ), .B1(
         \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[1] ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n445 ) );
@@ -3553,8 +5404,8 @@ endmodule
         .A2(\FIFO_E/FIFO_DATA_PATH/n72 ), .B1(\FIFO_E/FIFO_DATA_PATH/n513 ), 
         .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n459 ), 
         .Q(FIFO_D_out_E[3]) );
-  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U41  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[3] ), .B1(
+  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U41  ( .A1(\FIFO_E/FIFO_DATA_PATH/n68 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[3] ), .B1(
         \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[3] ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n459 ) );
@@ -3562,7 +5413,7 @@ endmodule
         .A2(\FIFO_E/FIFO_DATA_PATH/n72 ), .B1(\FIFO_E/FIFO_DATA_PATH/n515 ), 
         .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n461 ), 
         .Q(FIFO_D_out_E[5]) );
-  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U43  ( .A1(\FIFO_E/FIFO_DATA_PATH/n68 ), .A2(
+  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U43  ( .A1(\FIFO_E/FIFO_DATA_PATH/n69 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[5] ), .B1(
         \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[5] ), .Q(
@@ -3588,221 +5439,220 @@ endmodule
   OAI221X3 \FIFO_E/FIFO_DATA_PATH/U48  ( .A1(\FIFO_E/FIFO_DATA_PATH/n490 ), 
         .A2(\FIFO_E/FIFO_DATA_PATH/n74 ), .B1(\FIFO_E/FIFO_DATA_PATH/n522 ), 
         .B2(\FIFO_E/FIFO_DATA_PATH/n468 ), .C1(\FIFO_E/FIFO_DATA_PATH/n437 ), 
-        .Q(\LBDR_E/n4 ) );
+        .Q(FIFO_D_out_E[12]) );
   AOI22X3 \FIFO_E/FIFO_DATA_PATH/U49  ( .A1(\FIFO_E/FIFO_DATA_PATH/n68 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[12] ), .B1(
         \FIFO_E/FIFO_DATA_PATH/n66 ), .B2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[12] ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n437 ) );
-  NOR4X3 \FIFO_E/FIFO_DATA_PATH/U50  ( .A(\FIFO_E/FIFO_DATA_PATH/n100 ), .B(
-        read_pointer_out_E_out[0]), .C(read_pointer_out_E_out[2]), .D(
-        read_pointer_out_E_out[3]), .Q(\FIFO_E/FIFO_DATA_PATH/n465 ) );
-  NOR4X3 \FIFO_E/FIFO_DATA_PATH/U51  ( .A(\FIFO_E/FIFO_DATA_PATH/n101 ), .B(
-        read_pointer_out_E_out[0]), .C(read_pointer_out_E_out[1]), .D(
-        read_pointer_out_E_out[3]), .Q(\FIFO_E/FIFO_DATA_PATH/n466 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U52  ( .A(read_pointer_out_E_out[1]), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n100 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U53  ( .A(read_pointer_out_E_out[2]), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n101 ) );
-  CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U54  ( .A(\FIFO_E/FIFO_DATA_PATH/n468 ), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n70 ) );
-  NAND4X3 \FIFO_E/FIFO_DATA_PATH/U55  ( .A(read_pointer_out_E_out[3]), .B(
-        \FIFO_E/FIFO_DATA_PATH/n99 ), .C(\FIFO_E/FIFO_DATA_PATH/n100 ), .D(
-        \FIFO_E/FIFO_DATA_PATH/n101 ), .Q(\FIFO_E/FIFO_DATA_PATH/n468 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U56  ( .A(read_pointer_out_E_out[0]), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n99 ) );
-  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U57  ( .A1(\FIFO_E/FIFO_DATA_PATH/n509 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/n72 ), .B1(\FIFO_E/FIFO_DATA_PATH/n541 ), 
-        .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n458 ), 
-        .Q(FIFO_D_out_E[31]) );
-  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U58  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[31] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n458 ) );
-  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U59  ( .A1(\FIFO_E/FIFO_DATA_PATH/n492 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/n73 ), .B1(\FIFO_E/FIFO_DATA_PATH/n524 ), 
-        .B2(\FIFO_E/FIFO_DATA_PATH/n468 ), .C1(\FIFO_E/FIFO_DATA_PATH/n439 ), 
-        .Q(\LBDR_E/n32 ) );
-  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U60  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[14] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n439 ) );
-  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U61  ( .A1(\FIFO_E/FIFO_DATA_PATH/n485 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/n72 ), .B1(\FIFO_E/FIFO_DATA_PATH/n517 ), 
-        .B2(\FIFO_E/FIFO_DATA_PATH/n468 ), .C1(\FIFO_E/FIFO_DATA_PATH/n463 ), 
-        .Q(\LBDR_E/n60 ) );
-  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U62  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[7] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n463 ) );
-  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U63  ( .A1(\FIFO_E/FIFO_DATA_PATH/n508 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/n72 ), .B1(\FIFO_E/FIFO_DATA_PATH/n540 ), 
-        .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n457 ), 
-        .Q(FIFO_D_out_E[30]) );
-  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U64  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[30] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n457 ) );
-  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U65  ( .A1(\FIFO_E/FIFO_DATA_PATH/n507 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/n72 ), .B1(\FIFO_E/FIFO_DATA_PATH/n539 ), 
-        .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n455 ), 
-        .Q(FIFO_D_out_E[29]) );
-  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U66  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[29] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n455 ) );
-  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U67  ( .A1(\FIFO_E/FIFO_DATA_PATH/n489 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/n74 ), .B1(\FIFO_E/FIFO_DATA_PATH/n521 ), 
-        .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n436 ), 
-        .Q(FIFO_D_out_E[11]) );
-  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U68  ( .A1(\FIFO_E/FIFO_DATA_PATH/n68 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[11] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n66 ), .B2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n436 ) );
-  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U69  ( .A1(\FIFO_E/FIFO_DATA_PATH/n487 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/n72 ), .B1(\FIFO_E/FIFO_DATA_PATH/n519 ), 
-        .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n467 ), 
-        .Q(FIFO_D_out_E[9]) );
-  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U70  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[9] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n467 ) );
-  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U71  ( .A1(\FIFO_E/FIFO_DATA_PATH/n482 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/n72 ), .B1(\FIFO_E/FIFO_DATA_PATH/n514 ), 
-        .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n460 ), 
-        .Q(FIFO_D_out_E[4]) );
-  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U72  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[4] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n460 ) );
-  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U73  ( .A1(\FIFO_E/FIFO_DATA_PATH/n491 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/n73 ), .B1(\FIFO_E/FIFO_DATA_PATH/n523 ), 
-        .B2(\FIFO_E/FIFO_DATA_PATH/n468 ), .C1(\FIFO_E/FIFO_DATA_PATH/n438 ), 
-        .Q(\LBDR_E/n31 ) );
-  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U74  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[13] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n438 ) );
-  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U75  ( .A1(\FIFO_E/FIFO_DATA_PATH/n486 ), 
+  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U50  ( .A1(\FIFO_E/FIFO_DATA_PATH/n486 ), 
         .A2(\FIFO_E/FIFO_DATA_PATH/n72 ), .B1(\FIFO_E/FIFO_DATA_PATH/n518 ), 
         .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n464 ), 
         .Q(FIFO_D_out_E[8]) );
-  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U76  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
+  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U51  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
         .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[8] ), .B1(
         \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n464 ) );
-  NAND3X3 \FIFO_E/FIFO_DATA_PATH/U77  ( .A(write_pointer_out_E_out[1]), .B(
-        write_en_out_E_out), .C(\FIFO_E/FIFO_DATA_PATH/n474 ), .Q(
+  NOR4X3 \FIFO_E/FIFO_DATA_PATH/U52  ( .A(\FIFO_E/FIFO_DATA_PATH/n100 ), .B(
+        \FIFO_E/read_pointer_out_sig [0]), .C(\FIFO_E/read_pointer_out_sig [2]), .D(\FIFO_E/read_pointer_out_sig [3]), .Q(\FIFO_E/FIFO_DATA_PATH/n465 ) );
+  NOR4X3 \FIFO_E/FIFO_DATA_PATH/U53  ( .A(\FIFO_E/FIFO_DATA_PATH/n101 ), .B(
+        \FIFO_E/read_pointer_out_sig [0]), .C(\FIFO_E/read_pointer_out_sig [1]), .D(\FIFO_E/read_pointer_out_sig [3]), .Q(\FIFO_E/FIFO_DATA_PATH/n466 ) );
+  INVXL \FIFO_E/FIFO_DATA_PATH/U54  ( .A(\FIFO_E/read_pointer_out_sig [1]), 
+        .Q(\FIFO_E/FIFO_DATA_PATH/n100 ) );
+  INVXL \FIFO_E/FIFO_DATA_PATH/U55  ( .A(\FIFO_E/read_pointer_out_sig [2]), 
+        .Q(\FIFO_E/FIFO_DATA_PATH/n101 ) );
+  CLKBUFX2 \FIFO_E/FIFO_DATA_PATH/U56  ( .A(\FIFO_E/FIFO_DATA_PATH/n468 ), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n70 ) );
+  NAND4X3 \FIFO_E/FIFO_DATA_PATH/U57  ( .A(\FIFO_E/read_pointer_out_sig [3]), 
+        .B(\FIFO_E/FIFO_DATA_PATH/n99 ), .C(\FIFO_E/FIFO_DATA_PATH/n100 ), .D(
+        \FIFO_E/FIFO_DATA_PATH/n101 ), .Q(\FIFO_E/FIFO_DATA_PATH/n468 ) );
+  INVXL \FIFO_E/FIFO_DATA_PATH/U58  ( .A(\FIFO_E/read_pointer_out_sig [0]), 
+        .Q(\FIFO_E/FIFO_DATA_PATH/n99 ) );
+  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U59  ( .A1(\FIFO_E/FIFO_DATA_PATH/n507 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/n72 ), .B1(\FIFO_E/FIFO_DATA_PATH/n539 ), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n455 ), 
+        .Q(FIFO_D_out_E[29]) );
+  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U60  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[29] ), .B1(
+        \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n455 ) );
+  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U61  ( .A1(\FIFO_E/FIFO_DATA_PATH/n489 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/n74 ), .B1(\FIFO_E/FIFO_DATA_PATH/n521 ), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n436 ), 
+        .Q(FIFO_D_out_E[11]) );
+  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U62  ( .A1(\FIFO_E/FIFO_DATA_PATH/n68 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[11] ), .B1(
+        \FIFO_E/FIFO_DATA_PATH/n66 ), .B2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n436 ) );
+  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U63  ( .A1(\FIFO_E/FIFO_DATA_PATH/n487 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/n72 ), .B1(\FIFO_E/FIFO_DATA_PATH/n519 ), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n467 ), 
+        .Q(FIFO_D_out_E[9]) );
+  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U64  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[9] ), .B1(
+        \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n467 ) );
+  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U65  ( .A1(\FIFO_E/FIFO_DATA_PATH/n482 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/n72 ), .B1(\FIFO_E/FIFO_DATA_PATH/n514 ), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n460 ), 
+        .Q(FIFO_D_out_E[4]) );
+  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U66  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[4] ), .B1(
+        \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n460 ) );
+  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U67  ( .A1(\FIFO_E/FIFO_DATA_PATH/n491 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/n73 ), .B1(\FIFO_E/FIFO_DATA_PATH/n523 ), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n468 ), .C1(\FIFO_E/FIFO_DATA_PATH/n438 ), 
+        .Q(FIFO_D_out_E[13]) );
+  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U68  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[13] ), .B1(
+        \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n438 ) );
+  NAND3X3 \FIFO_E/FIFO_DATA_PATH/U69  ( .A(\FIFO_E/write_pointer_out_sig [1]), 
+        .B(\FIFO_E/write_en_out_sig ), .C(\FIFO_E/FIFO_DATA_PATH/n474 ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n475 ) );
-  NOR3X3 \FIFO_E/FIFO_DATA_PATH/U78  ( .A(write_pointer_out_E_out[0]), .B(
-        write_pointer_out_E_out[3]), .C(write_pointer_out_E_out[2]), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n474 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U79  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[28] ), .B1(RX_E[28]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n398 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U80  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .B1(RX_E[29]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n399 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U81  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .B1(RX_E[30]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n400 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U82  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .B1(RX_E[31]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n401 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U83  ( .A1(\FIFO_E/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[0] ), .B1(RX_E[0]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n370 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U84  ( .A1(\FIFO_E/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[1] ), .B1(RX_E[1]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n371 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U85  ( .A1(\FIFO_E/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[2] ), .B1(RX_E[2]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n372 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U86  ( .A1(\FIFO_E/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[3] ), .B1(RX_E[3]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n373 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U87  ( .A1(\FIFO_E/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .B1(RX_E[4]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n374 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U88  ( .A1(\FIFO_E/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[5] ), .B1(RX_E[5]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n375 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U89  ( .A1(\FIFO_E/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[6] ), .B1(RX_E[6]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n376 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U90  ( .A1(\FIFO_E/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .B1(RX_E[7]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n377 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U91  ( .A1(\FIFO_E/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .B1(RX_E[8]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n378 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U92  ( .A1(\FIFO_E/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .B1(RX_E[9]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n379 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U93  ( .A1(\FIFO_E/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[10] ), .B1(RX_E[10]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n380 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U94  ( .A1(\FIFO_E/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .B1(RX_E[11]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n381 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U95  ( .A1(\FIFO_E/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[12] ), .B1(RX_E[12]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n382 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U96  ( .A1(\FIFO_E/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .B1(RX_E[13]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n383 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U97  ( .A1(\FIFO_E/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .B1(RX_E[14]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n384 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U98  ( .A1(\FIFO_E/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[15] ), .B1(RX_E[15]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n385 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U99  ( .A1(\FIFO_E/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[16] ), .B1(RX_E[16]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n386 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U100  ( .A1(\FIFO_E/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[17] ), .B1(RX_E[17]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n387 ) );
+  NOR3X3 \FIFO_E/FIFO_DATA_PATH/U70  ( .A(\FIFO_E/write_pointer_out_sig [0]), 
+        .B(\FIFO_E/write_pointer_out_sig [3]), .C(
+        \FIFO_E/write_pointer_out_sig [2]), .Q(\FIFO_E/FIFO_DATA_PATH/n474 )
+         );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U71  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[28] ), .B1(\FIFO_E/RX_out_sig [28]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n398 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U72  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .B1(\FIFO_E/RX_out_sig [29]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n399 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U73  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .B1(\FIFO_E/RX_out_sig [30]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n400 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U74  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .B1(\FIFO_E/RX_out_sig [31]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n401 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U75  ( .A1(\FIFO_E/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[0] ), .B1(\FIFO_E/RX_out_sig [0]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n370 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U76  ( .A1(\FIFO_E/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[1] ), .B1(\FIFO_E/RX_out_sig [1]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n371 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U77  ( .A1(\FIFO_E/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[2] ), .B1(\FIFO_E/RX_out_sig [2]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n372 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U78  ( .A1(\FIFO_E/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[3] ), .B1(\FIFO_E/RX_out_sig [3]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n373 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U79  ( .A1(\FIFO_E/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .B1(\FIFO_E/RX_out_sig [4]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n374 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U80  ( .A1(\FIFO_E/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[5] ), .B1(\FIFO_E/RX_out_sig [5]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n375 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U81  ( .A1(\FIFO_E/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[6] ), .B1(\FIFO_E/RX_out_sig [6]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n376 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U82  ( .A1(\FIFO_E/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .B1(\FIFO_E/RX_out_sig [7]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n377 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U83  ( .A1(\FIFO_E/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .B1(\FIFO_E/RX_out_sig [8]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n378 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U84  ( .A1(\FIFO_E/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .B1(\FIFO_E/RX_out_sig [9]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n379 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U85  ( .A1(\FIFO_E/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[10] ), .B1(\FIFO_E/RX_out_sig [10]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n380 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U86  ( .A1(\FIFO_E/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .B1(\FIFO_E/RX_out_sig [11]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n381 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U87  ( .A1(\FIFO_E/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[12] ), .B1(\FIFO_E/RX_out_sig [12]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n382 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U88  ( .A1(\FIFO_E/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .B1(\FIFO_E/RX_out_sig [13]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n383 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U89  ( .A1(\FIFO_E/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .B1(\FIFO_E/RX_out_sig [14]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n384 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U90  ( .A1(\FIFO_E/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[15] ), .B1(\FIFO_E/RX_out_sig [15]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n385 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U91  ( .A1(\FIFO_E/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[16] ), .B1(\FIFO_E/RX_out_sig [16]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n386 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U92  ( .A1(\FIFO_E/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[17] ), .B1(\FIFO_E/RX_out_sig [17]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n387 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U93  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[18] ), .B1(\FIFO_E/RX_out_sig [18]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n388 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U94  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[19] ), .B1(\FIFO_E/RX_out_sig [19]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n389 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U95  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[20] ), .B1(\FIFO_E/RX_out_sig [20]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n390 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U96  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[21] ), .B1(\FIFO_E/RX_out_sig [21]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n391 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U97  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[22] ), .B1(\FIFO_E/RX_out_sig [22]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n392 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U98  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[23] ), .B1(\FIFO_E/RX_out_sig [23]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n393 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U99  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[24] ), .B1(\FIFO_E/RX_out_sig [24]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n394 ) );
+  AO22X3 \FIFO_E/FIFO_DATA_PATH/U100  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[25] ), .B1(\FIFO_E/RX_out_sig [25]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n395 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U101  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[18] ), .B1(RX_E[18]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n388 ) );
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[26] ), .B1(\FIFO_E/RX_out_sig [26]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n396 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U102  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[19] ), .B1(RX_E[19]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n389 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U103  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[20] ), .B1(RX_E[20]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n390 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U104  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[21] ), .B1(RX_E[21]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n391 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U105  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[22] ), .B1(RX_E[22]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n392 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U106  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[23] ), .B1(RX_E[23]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n393 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U107  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[24] ), .B1(RX_E[24]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n394 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U108  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[25] ), .B1(RX_E[25]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n395 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U109  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[26] ), .B1(RX_E[26]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n396 ) );
-  AO22X3 \FIFO_E/FIFO_DATA_PATH/U110  ( .A1(\FIFO_E/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[27] ), .B1(RX_E[27]), .B2(
-        \FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n397 ) );
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[27] ), .B1(\FIFO_E/RX_out_sig [27]), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n93 ), .Q(\FIFO_E/FIFO_DATA_PATH/n397 ) );
+  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U103  ( .A1(\FIFO_E/FIFO_DATA_PATH/n509 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/n72 ), .B1(\FIFO_E/FIFO_DATA_PATH/n541 ), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n458 ), 
+        .Q(FIFO_D_out_E[31]) );
+  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U104  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[31] ), .B1(
+        \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n458 ) );
+  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U105  ( .A1(\FIFO_E/FIFO_DATA_PATH/n492 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/n73 ), .B1(\FIFO_E/FIFO_DATA_PATH/n524 ), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n468 ), .C1(\FIFO_E/FIFO_DATA_PATH/n439 ), 
+        .Q(FIFO_D_out_E[14]) );
+  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U106  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[14] ), .B1(
+        \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n439 ) );
+  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U107  ( .A1(\FIFO_E/FIFO_DATA_PATH/n485 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/n72 ), .B1(\FIFO_E/FIFO_DATA_PATH/n517 ), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n463 ), 
+        .Q(FIFO_D_out_E[7]) );
+  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U108  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[7] ), .B1(
+        \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n463 ) );
+  OAI221X3 \FIFO_E/FIFO_DATA_PATH/U109  ( .A1(\FIFO_E/FIFO_DATA_PATH/n508 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/n72 ), .B1(\FIFO_E/FIFO_DATA_PATH/n540 ), 
+        .B2(\FIFO_E/FIFO_DATA_PATH/n70 ), .C1(\FIFO_E/FIFO_DATA_PATH/n457 ), 
+        .Q(FIFO_D_out_E[30]) );
+  AOI22X3 \FIFO_E/FIFO_DATA_PATH/U110  ( .A1(\FIFO_E/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[30] ), .B1(
+        \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n457 ) );
   OAI221X3 \FIFO_E/FIFO_DATA_PATH/U111  ( .A1(\FIFO_E/FIFO_DATA_PATH/n478 ), 
         .A2(\FIFO_E/FIFO_DATA_PATH/n74 ), .B1(\FIFO_E/FIFO_DATA_PATH/n510 ), 
         .B2(\FIFO_E/FIFO_DATA_PATH/n468 ), .C1(\FIFO_E/FIFO_DATA_PATH/n434 ), 
@@ -3938,24 +5788,27 @@ endmodule
         \FIFO_E/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_2[28] ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n454 ) );
-  NAND3X3 \FIFO_E/FIFO_DATA_PATH/U141  ( .A(write_en_out_E_out), .B(
-        write_pointer_out_E_out[2]), .C(\FIFO_E/FIFO_DATA_PATH/n476 ), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n477 ) );
-  NOR3X3 \FIFO_E/FIFO_DATA_PATH/U142  ( .A(write_pointer_out_E_out[0]), .B(
-        write_pointer_out_E_out[3]), .C(write_pointer_out_E_out[1]), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n476 ) );
-  NAND3X3 \FIFO_E/FIFO_DATA_PATH/U143  ( .A(write_pointer_out_E_out[0]), .B(
-        write_en_out_E_out), .C(\FIFO_E/FIFO_DATA_PATH/n472 ), .Q(
+  NAND3X3 \FIFO_E/FIFO_DATA_PATH/U141  ( .A(\FIFO_E/write_en_out_sig ), .B(
+        \FIFO_E/write_pointer_out_sig [2]), .C(\FIFO_E/FIFO_DATA_PATH/n476 ), 
+        .Q(\FIFO_E/FIFO_DATA_PATH/n477 ) );
+  NOR3X3 \FIFO_E/FIFO_DATA_PATH/U142  ( .A(\FIFO_E/write_pointer_out_sig [0]), 
+        .B(\FIFO_E/write_pointer_out_sig [3]), .C(
+        \FIFO_E/write_pointer_out_sig [1]), .Q(\FIFO_E/FIFO_DATA_PATH/n476 )
+         );
+  NAND3X3 \FIFO_E/FIFO_DATA_PATH/U143  ( .A(\FIFO_E/write_pointer_out_sig [0]), 
+        .B(\FIFO_E/write_en_out_sig ), .C(\FIFO_E/FIFO_DATA_PATH/n472 ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n473 ) );
-  NOR3X3 \FIFO_E/FIFO_DATA_PATH/U144  ( .A(write_pointer_out_E_out[1]), .B(
-        write_pointer_out_E_out[3]), .C(write_pointer_out_E_out[2]), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n472 ) );
-  NAND3X3 \FIFO_E/FIFO_DATA_PATH/U145  ( .A(write_pointer_out_E_out[3]), .B(
-        write_en_out_E_out), .C(\FIFO_E/FIFO_DATA_PATH/n470 ), .Q(
+  NOR3X3 \FIFO_E/FIFO_DATA_PATH/U144  ( .A(\FIFO_E/write_pointer_out_sig [1]), 
+        .B(\FIFO_E/write_pointer_out_sig [3]), .C(
+        \FIFO_E/write_pointer_out_sig [2]), .Q(\FIFO_E/FIFO_DATA_PATH/n472 )
+         );
+  NAND3X3 \FIFO_E/FIFO_DATA_PATH/U145  ( .A(\FIFO_E/write_pointer_out_sig [3]), 
+        .B(\FIFO_E/write_en_out_sig ), .C(\FIFO_E/FIFO_DATA_PATH/n470 ), .Q(
         \FIFO_E/FIFO_DATA_PATH/n471 ) );
-  NOR3X3 \FIFO_E/FIFO_DATA_PATH/U146  ( .A(write_pointer_out_E_out[0]), .B(
-        write_pointer_out_E_out[2]), .C(write_pointer_out_E_out[1]), .Q(
-        \FIFO_E/FIFO_DATA_PATH/n470 ) );
+  NOR3X3 \FIFO_E/FIFO_DATA_PATH/U146  ( .A(\FIFO_E/write_pointer_out_sig [0]), 
+        .B(\FIFO_E/write_pointer_out_sig [2]), .C(
+        \FIFO_E/write_pointer_out_sig [1]), .Q(\FIFO_E/FIFO_DATA_PATH/n470 )
+         );
   OAI22X3 \FIFO_E/FIFO_DATA_PATH/U147  ( .A1(\FIFO_E/FIFO_DATA_PATH/n86 ), 
         .A2(\FIFO_E/FIFO_DATA_PATH/n478 ), .B1(\FIFO_E/FIFO_DATA_PATH/n305 ), 
         .B2(\FIFO_E/FIFO_DATA_PATH/n84 ), .Q(\FIFO_E/FIFO_DATA_PATH/n338 ) );
@@ -4150,195 +6003,195 @@ endmodule
         .B2(\FIFO_E/FIFO_DATA_PATH/n78 ), .Q(\FIFO_E/FIFO_DATA_PATH/n337 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U211  ( .A1(\FIFO_E/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[0] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[0]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [0]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n402 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U212  ( .A1(\FIFO_E/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[1] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[1]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [1]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n403 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U213  ( .A1(\FIFO_E/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[2] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[2]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [2]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n404 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U214  ( .A1(\FIFO_E/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[3] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[3]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [3]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n405 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U215  ( .A1(\FIFO_E/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[4] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[4]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [4]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n406 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U216  ( .A1(\FIFO_E/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[5] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[5]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [5]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n407 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U217  ( .A1(\FIFO_E/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[6] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[6]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [6]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n408 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U218  ( .A1(\FIFO_E/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[7] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[7]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [7]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n409 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U219  ( .A1(\FIFO_E/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[8] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[8]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [8]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n410 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U220  ( .A1(\FIFO_E/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[9] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[9]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [9]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n411 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U221  ( .A1(\FIFO_E/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[10] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[10]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [10]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n412 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U222  ( .A1(\FIFO_E/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[11] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[11]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [11]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n413 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U223  ( .A1(\FIFO_E/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[12] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[12]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [12]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n414 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U224  ( .A1(\FIFO_E/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[13] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[13]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [13]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n415 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U225  ( .A1(\FIFO_E/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[14] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[14]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [14]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n416 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U226  ( .A1(\FIFO_E/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[15] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[15]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [15]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n417 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U227  ( .A1(\FIFO_E/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[16] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[16]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [16]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n418 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U228  ( .A1(\FIFO_E/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[17] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[17]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [17]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n419 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U229  ( .A1(\FIFO_E/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[18] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[18]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [18]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n420 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U230  ( .A1(\FIFO_E/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[19] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[19]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [19]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n421 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U231  ( .A1(\FIFO_E/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[20] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[20]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [20]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n422 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U232  ( .A1(\FIFO_E/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[21] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[21]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [21]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n423 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U233  ( .A1(\FIFO_E/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[22] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[22]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [22]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n424 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U234  ( .A1(\FIFO_E/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[23] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[23]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [23]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n425 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U235  ( .A1(\FIFO_E/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[24] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[24]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [24]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n426 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U236  ( .A1(\FIFO_E/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[25] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[25]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [25]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n427 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U237  ( .A1(\FIFO_E/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[26] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[26]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [26]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n428 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U238  ( .A1(\FIFO_E/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[27] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[27]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [27]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n429 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U239  ( .A1(\FIFO_E/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[28] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[28]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [28]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n430 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U240  ( .A1(\FIFO_E/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[29] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[29]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [29]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n431 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U241  ( .A1(\FIFO_E/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[30] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[30]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [30]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n432 ) );
   AO22X3 \FIFO_E/FIFO_DATA_PATH/U242  ( .A1(\FIFO_E/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_E/FIFO_DATA_PATH/FIFO_MEM_3[31] ), .B1(
-        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(RX_E[31]), .Q(
+        \FIFO_E/FIFO_DATA_PATH/n98 ), .B2(\FIFO_E/RX_out_sig [31]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n433 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U243  ( .A(RX_E[0]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U243  ( .A(\FIFO_E/RX_out_sig [0]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n305 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U244  ( .A(RX_E[1]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U244  ( .A(\FIFO_E/RX_out_sig [1]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n304 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U245  ( .A(RX_E[2]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U245  ( .A(\FIFO_E/RX_out_sig [2]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n303 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U246  ( .A(RX_E[3]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U246  ( .A(\FIFO_E/RX_out_sig [3]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n302 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U247  ( .A(RX_E[4]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U247  ( .A(\FIFO_E/RX_out_sig [4]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n301 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U248  ( .A(RX_E[5]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U248  ( .A(\FIFO_E/RX_out_sig [5]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n300 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U249  ( .A(RX_E[6]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U249  ( .A(\FIFO_E/RX_out_sig [6]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n299 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U250  ( .A(RX_E[7]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U250  ( .A(\FIFO_E/RX_out_sig [7]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n298 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U251  ( .A(RX_E[8]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U251  ( .A(\FIFO_E/RX_out_sig [8]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n297 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U252  ( .A(RX_E[9]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U252  ( .A(\FIFO_E/RX_out_sig [9]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n296 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U253  ( .A(RX_E[10]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U253  ( .A(\FIFO_E/RX_out_sig [10]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n295 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U254  ( .A(RX_E[11]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U254  ( .A(\FIFO_E/RX_out_sig [11]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n294 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U255  ( .A(RX_E[12]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U255  ( .A(\FIFO_E/RX_out_sig [12]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n293 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U256  ( .A(RX_E[13]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U256  ( .A(\FIFO_E/RX_out_sig [13]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n292 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U257  ( .A(RX_E[14]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U257  ( .A(\FIFO_E/RX_out_sig [14]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n291 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U258  ( .A(RX_E[15]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U258  ( .A(\FIFO_E/RX_out_sig [15]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n290 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U259  ( .A(RX_E[16]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U259  ( .A(\FIFO_E/RX_out_sig [16]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n289 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U260  ( .A(RX_E[17]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U260  ( .A(\FIFO_E/RX_out_sig [17]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n288 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U261  ( .A(RX_E[18]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U261  ( .A(\FIFO_E/RX_out_sig [18]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n287 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U262  ( .A(RX_E[19]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U262  ( .A(\FIFO_E/RX_out_sig [19]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n286 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U263  ( .A(RX_E[20]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U263  ( .A(\FIFO_E/RX_out_sig [20]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n285 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U264  ( .A(RX_E[21]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U264  ( .A(\FIFO_E/RX_out_sig [21]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n284 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U265  ( .A(RX_E[22]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U265  ( .A(\FIFO_E/RX_out_sig [22]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n283 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U266  ( .A(RX_E[23]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U266  ( .A(\FIFO_E/RX_out_sig [23]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n282 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U267  ( .A(RX_E[24]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U267  ( .A(\FIFO_E/RX_out_sig [24]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n281 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U268  ( .A(RX_E[25]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U268  ( .A(\FIFO_E/RX_out_sig [25]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n280 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U269  ( .A(RX_E[26]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U269  ( .A(\FIFO_E/RX_out_sig [26]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n279 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U270  ( .A(RX_E[27]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U270  ( .A(\FIFO_E/RX_out_sig [27]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n278 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U271  ( .A(RX_E[28]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U271  ( .A(\FIFO_E/RX_out_sig [28]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n277 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U272  ( .A(RX_E[29]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U272  ( .A(\FIFO_E/RX_out_sig [29]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n104 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U273  ( .A(RX_E[30]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U273  ( .A(\FIFO_E/RX_out_sig [30]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n103 ) );
-  INVXL \FIFO_E/FIFO_DATA_PATH/U274  ( .A(RX_E[31]), .Q(
+  INVXL \FIFO_E/FIFO_DATA_PATH/U274  ( .A(\FIFO_E/RX_out_sig [31]), .Q(
         \FIFO_E/FIFO_DATA_PATH/n102 ) );
   DFPX3 \FIFO_E/FIFO_CONTROL_PART/write_pointer_reg[0]  ( .D(
         \FIFO_E/FIFO_CONTROL_PART/write_pointer_in[0] ), .CP(clk), .SN(reset), 
@@ -4389,8 +6242,12 @@ endmodule
         .Q(\FIFO_E/FIFO_CONTROL_PART/n1 ) );
   INVXL \FIFO_E/FIFO_CONTROL_PART/U5  ( .A(\FIFO_E/FIFO_CONTROL_PART/n26 ), 
         .Q(empty_E_out) );
-  OR3X3 \FIFO_E/FIFO_CONTROL_PART/U7  ( .A(Grant_WE_out), .B(Grant_SE_out), 
-        .C(Grant_NE_out), .Q(\FIFO_E/FIFO_CONTROL_PART/n27 ) );
+  OAI31X2 \FIFO_E/FIFO_CONTROL_PART/U6  ( .A1(\FIFO_E/FIFO_CONTROL_PART/n27 ), 
+        .A2(\FIFO_E/read_en_L_out_sig ), .A3(\FIFO_E/read_en_E_out_sig ), .B1(
+        \FIFO_E/FIFO_CONTROL_PART/n26 ), .Q(\FIFO_E/FIFO_CONTROL_PART/n28 ) );
+  OR3X3 \FIFO_E/FIFO_CONTROL_PART/U7  ( .A(\FIFO_E/read_en_W_out_sig ), .B(
+        \FIFO_E/read_en_S_out_sig ), .C(\FIFO_E/read_en_N_out_sig ), .Q(
+        \FIFO_E/FIFO_CONTROL_PART/n27 ) );
   OAI22X3 \FIFO_E/FIFO_CONTROL_PART/U8  ( .A1(\FIFO_E/FIFO_CONTROL_PART/n37 ), 
         .A2(\FIFO_E/FIFO_CONTROL_PART/n28 ), .B1(\FIFO_E/FIFO_CONTROL_PART/n1 ), .B2(\FIFO_E/FIFO_CONTROL_PART/n34 ), .Q(
         \FIFO_E/FIFO_CONTROL_PART/read_pointer_in[0] ) );
@@ -4409,7 +6266,7 @@ endmodule
          );
   OAI31X2 \FIFO_E/FIFO_CONTROL_PART/U13  ( .A1(\FIFO_E/FIFO_CONTROL_PART/n8 ), 
         .A2(\FIFO_E/FIFO_CONTROL_PART/n7 ), .A3(\FIFO_E/FIFO_CONTROL_PART/n6 ), 
-        .B1(valid_in_E), .Q(\FIFO_E/FIFO_CONTROL_PART/n29 ) );
+        .B1(\FIFO_E/valid_in_out_sig ), .Q(\FIFO_E/FIFO_CONTROL_PART/n29 ) );
   NAND2XL \FIFO_E/FIFO_CONTROL_PART/U14  ( .A(\FIFO_E/FIFO_CONTROL_PART/n5 ), 
         .B(\FIFO_E/FIFO_CONTROL_PART/n4 ), .Q(\FIFO_E/FIFO_CONTROL_PART/n8 )
          );
@@ -4429,8 +6286,19 @@ endmodule
         .A2(\FIFO_E/FIFO_CONTROL_PART/n29 ), .B1(write_en_out_E_out), .B2(
         \FIFO_E/FIFO_CONTROL_PART/n31 ), .Q(
         \FIFO_E/FIFO_CONTROL_PART/write_pointer_in[1] ) );
-  OAI21X8 U8 ( .A1(\FIFO_E/FIFO_CONTROL_PART/n27 ), .A2(Grant_LE_out), .B1(
-        \FIFO_E/FIFO_CONTROL_PART/n26 ), .Q(\FIFO_E/FIFO_CONTROL_PART/n28 ) );
+  FIFO_data_path_input_wire_DATA_WIDTH32_3 \FIFO_E/FIFO_DATA_PATH_inputs  ( 
+        .write_en(write_en_out_E_out), .RX(RX_E), .read_pointer(
+        read_pointer_out_E_out), .write_pointer(write_pointer_out_E_out), 
+        .write_en_out(\FIFO_E/write_en_out_sig ), .RX_out(\FIFO_E/RX_out_sig ), 
+        .read_ptr_out(\FIFO_E/read_pointer_out_sig ), .write_ptr_out(
+        \FIFO_E/write_pointer_out_sig ) );
+  FIFO_control_part_input_wire_3 \FIFO_E/FIFO_CONTROL_PART_inputs  ( 
+        .valid_in(valid_in_E), .read_en_N(Grant_NE_out), .read_en_E(
+        \Xbar_sel_L_out[0] ), .read_en_W(Grant_WE_out), .read_en_S(
+        Grant_SE_out), .read_en_L(Grant_LE_out), .valid_in_out(
+        \FIFO_E/valid_in_out_sig ), .read_en_N_out(\FIFO_E/read_en_N_out_sig ), 
+        .read_en_E_out(\FIFO_E/read_en_E_out_sig ), .read_en_W_out(
+        \FIFO_E/read_en_W_out_sig ), .read_en_S_out(\FIFO_E/read_en_S_out_sig ), .read_en_L_out(\FIFO_E/read_en_L_out_sig ) );
   DFCX1 \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3_reg[28]  ( .D(
         \FIFO_W/FIFO_DATA_PATH/n430 ), .CP(clk), .RN(reset), .Q(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[28] ) );
@@ -4828,9 +6696,9 @@ endmodule
   INVXL \FIFO_W/FIFO_DATA_PATH/U7  ( .A(\FIFO_W/FIFO_DATA_PATH/n82 ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n87 ) );
   CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U8  ( .A(\FIFO_W/FIFO_DATA_PATH/n469 ), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n72 ) );
-  CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U9  ( .A(\FIFO_W/FIFO_DATA_PATH/n469 ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n73 ) );
+  CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U9  ( .A(\FIFO_W/FIFO_DATA_PATH/n469 ), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n72 ) );
   CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U10  ( .A(\FIFO_W/FIFO_DATA_PATH/n469 ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n74 ) );
   CLKINVX2 \FIFO_W/FIFO_DATA_PATH/U11  ( .A(\FIFO_W/FIFO_DATA_PATH/n87 ), .Q(
@@ -4854,18 +6722,18 @@ endmodule
         \FIFO_W/FIFO_DATA_PATH/n81 ) );
   CLKINVX2 \FIFO_W/FIFO_DATA_PATH/U20  ( .A(\FIFO_W/FIFO_DATA_PATH/n83 ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n88 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U21  ( .A(\FIFO_W/FIFO_DATA_PATH/n70 ), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n71 ) );
-  CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U22  ( .A(\FIFO_W/FIFO_DATA_PATH/n465 ), .Q(
+  CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U21  ( .A(\FIFO_W/FIFO_DATA_PATH/n465 ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n67 ) );
-  CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U23  ( .A(\FIFO_W/FIFO_DATA_PATH/n466 ), .Q(
+  CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U22  ( .A(\FIFO_W/FIFO_DATA_PATH/n466 ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n69 ) );
-  CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U24  ( .A(\FIFO_W/FIFO_DATA_PATH/n475 ), .Q(
+  CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U23  ( .A(\FIFO_W/FIFO_DATA_PATH/n475 ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n89 ) );
-  CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U25  ( .A(\FIFO_W/FIFO_DATA_PATH/n475 ), .Q(
+  CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U24  ( .A(\FIFO_W/FIFO_DATA_PATH/n475 ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n90 ) );
-  CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U26  ( .A(\FIFO_W/FIFO_DATA_PATH/n475 ), .Q(
+  CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U25  ( .A(\FIFO_W/FIFO_DATA_PATH/n475 ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n91 ) );
+  INVXL \FIFO_W/FIFO_DATA_PATH/U26  ( .A(\FIFO_W/FIFO_DATA_PATH/n70 ), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n71 ) );
   CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U27  ( .A(\FIFO_W/FIFO_DATA_PATH/n473 ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n82 ) );
   CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U28  ( .A(\FIFO_W/FIFO_DATA_PATH/n473 ), .Q(
@@ -4897,8 +6765,8 @@ endmodule
         .A2(\FIFO_W/FIFO_DATA_PATH/n73 ), .B1(\FIFO_W/FIFO_DATA_PATH/n511 ), 
         .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n445 ), 
         .Q(FIFO_D_out_W[1]) );
-  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U39  ( .A1(\FIFO_W/FIFO_DATA_PATH/n69 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[1] ), .B1(
+  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U39  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[1] ), .B1(
         \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[1] ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n445 ) );
@@ -4906,8 +6774,8 @@ endmodule
         .A2(\FIFO_W/FIFO_DATA_PATH/n72 ), .B1(\FIFO_W/FIFO_DATA_PATH/n513 ), 
         .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n459 ), 
         .Q(FIFO_D_out_W[3]) );
-  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U41  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[3] ), .B1(
+  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U41  ( .A1(\FIFO_W/FIFO_DATA_PATH/n68 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[3] ), .B1(
         \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[3] ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n459 ) );
@@ -4915,7 +6783,7 @@ endmodule
         .A2(\FIFO_W/FIFO_DATA_PATH/n72 ), .B1(\FIFO_W/FIFO_DATA_PATH/n515 ), 
         .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n461 ), 
         .Q(FIFO_D_out_W[5]) );
-  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U43  ( .A1(\FIFO_W/FIFO_DATA_PATH/n68 ), .A2(
+  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U43  ( .A1(\FIFO_W/FIFO_DATA_PATH/n69 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[5] ), .B1(
         \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[5] ), .Q(
@@ -4929,233 +6797,232 @@ endmodule
         \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[6] ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n462 ) );
-  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U46  ( .A1(\FIFO_W/FIFO_DATA_PATH/n488 ), 
-        .A2(\FIFO_W/FIFO_DATA_PATH/n74 ), .B1(\FIFO_W/FIFO_DATA_PATH/n520 ), 
-        .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n435 ), 
-        .Q(FIFO_D_out_W[10]) );
-  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U47  ( .A1(\FIFO_W/FIFO_DATA_PATH/n68 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[10] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n66 ), .B2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[10] ), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n435 ) );
-  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U48  ( .A1(\FIFO_W/FIFO_DATA_PATH/n490 ), 
-        .A2(\FIFO_W/FIFO_DATA_PATH/n74 ), .B1(\FIFO_W/FIFO_DATA_PATH/n522 ), 
-        .B2(\FIFO_W/FIFO_DATA_PATH/n468 ), .C1(\FIFO_W/FIFO_DATA_PATH/n437 ), 
-        .Q(\LBDR_W/n4 ) );
-  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U49  ( .A1(\FIFO_W/FIFO_DATA_PATH/n68 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[12] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n66 ), .B2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[12] ), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n437 ) );
-  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U50  ( .A1(\FIFO_W/FIFO_DATA_PATH/n486 ), 
-        .A2(\FIFO_W/FIFO_DATA_PATH/n72 ), .B1(\FIFO_W/FIFO_DATA_PATH/n518 ), 
-        .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n464 ), 
-        .Q(FIFO_D_out_W[8]) );
-  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U51  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[8] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n464 ) );
-  NOR4X3 \FIFO_W/FIFO_DATA_PATH/U52  ( .A(\FIFO_W/FIFO_DATA_PATH/n100 ), .B(
-        read_pointer_out_W_out[0]), .C(read_pointer_out_W_out[2]), .D(
-        read_pointer_out_W_out[3]), .Q(\FIFO_W/FIFO_DATA_PATH/n465 ) );
-  NOR4X3 \FIFO_W/FIFO_DATA_PATH/U53  ( .A(\FIFO_W/FIFO_DATA_PATH/n101 ), .B(
-        read_pointer_out_W_out[0]), .C(read_pointer_out_W_out[1]), .D(
-        read_pointer_out_W_out[3]), .Q(\FIFO_W/FIFO_DATA_PATH/n466 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U54  ( .A(read_pointer_out_W_out[1]), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n100 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U55  ( .A(read_pointer_out_W_out[2]), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n101 ) );
-  CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U56  ( .A(\FIFO_W/FIFO_DATA_PATH/n468 ), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n70 ) );
-  NAND4X3 \FIFO_W/FIFO_DATA_PATH/U57  ( .A(read_pointer_out_W_out[3]), .B(
-        \FIFO_W/FIFO_DATA_PATH/n99 ), .C(\FIFO_W/FIFO_DATA_PATH/n100 ), .D(
-        \FIFO_W/FIFO_DATA_PATH/n101 ), .Q(\FIFO_W/FIFO_DATA_PATH/n468 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U58  ( .A(read_pointer_out_W_out[0]), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n99 ) );
-  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U59  ( .A1(\FIFO_W/FIFO_DATA_PATH/n509 ), 
-        .A2(\FIFO_W/FIFO_DATA_PATH/n72 ), .B1(\FIFO_W/FIFO_DATA_PATH/n541 ), 
-        .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n458 ), 
-        .Q(FIFO_D_out_W[31]) );
-  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U60  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[31] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n458 ) );
-  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U61  ( .A1(\FIFO_W/FIFO_DATA_PATH/n492 ), 
-        .A2(\FIFO_W/FIFO_DATA_PATH/n73 ), .B1(\FIFO_W/FIFO_DATA_PATH/n524 ), 
-        .B2(\FIFO_W/FIFO_DATA_PATH/n468 ), .C1(\FIFO_W/FIFO_DATA_PATH/n439 ), 
-        .Q(\LBDR_W/n32 ) );
-  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U62  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[14] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n439 ) );
-  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U63  ( .A1(\FIFO_W/FIFO_DATA_PATH/n485 ), 
-        .A2(\FIFO_W/FIFO_DATA_PATH/n72 ), .B1(\FIFO_W/FIFO_DATA_PATH/n517 ), 
-        .B2(\FIFO_W/FIFO_DATA_PATH/n468 ), .C1(\FIFO_W/FIFO_DATA_PATH/n463 ), 
-        .Q(\LBDR_W/n60 ) );
-  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U64  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[7] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n463 ) );
-  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U65  ( .A1(\FIFO_W/FIFO_DATA_PATH/n508 ), 
-        .A2(\FIFO_W/FIFO_DATA_PATH/n72 ), .B1(\FIFO_W/FIFO_DATA_PATH/n540 ), 
-        .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n457 ), 
-        .Q(FIFO_D_out_W[30]) );
-  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U66  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[30] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n457 ) );
-  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U67  ( .A1(\FIFO_W/FIFO_DATA_PATH/n507 ), 
-        .A2(\FIFO_W/FIFO_DATA_PATH/n72 ), .B1(\FIFO_W/FIFO_DATA_PATH/n539 ), 
-        .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n455 ), 
-        .Q(FIFO_D_out_W[29]) );
-  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U68  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[29] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n455 ) );
-  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U69  ( .A1(\FIFO_W/FIFO_DATA_PATH/n489 ), 
-        .A2(\FIFO_W/FIFO_DATA_PATH/n74 ), .B1(\FIFO_W/FIFO_DATA_PATH/n521 ), 
-        .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n436 ), 
-        .Q(FIFO_D_out_W[11]) );
-  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U70  ( .A1(\FIFO_W/FIFO_DATA_PATH/n68 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[11] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n66 ), .B2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n436 ) );
-  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U71  ( .A1(\FIFO_W/FIFO_DATA_PATH/n487 ), 
+  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U46  ( .A1(\FIFO_W/FIFO_DATA_PATH/n487 ), 
         .A2(\FIFO_W/FIFO_DATA_PATH/n72 ), .B1(\FIFO_W/FIFO_DATA_PATH/n519 ), 
         .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n467 ), 
         .Q(FIFO_D_out_W[9]) );
-  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U72  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
+  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U47  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
         .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[9] ), .B1(
         \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n467 ) );
-  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U73  ( .A1(\FIFO_W/FIFO_DATA_PATH/n482 ), 
+  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U48  ( .A1(\FIFO_W/FIFO_DATA_PATH/n488 ), 
+        .A2(\FIFO_W/FIFO_DATA_PATH/n74 ), .B1(\FIFO_W/FIFO_DATA_PATH/n520 ), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n435 ), 
+        .Q(FIFO_D_out_W[10]) );
+  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U49  ( .A1(\FIFO_W/FIFO_DATA_PATH/n68 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[10] ), .B1(
+        \FIFO_W/FIFO_DATA_PATH/n66 ), .B2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[10] ), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n435 ) );
+  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U50  ( .A1(\FIFO_W/FIFO_DATA_PATH/n490 ), 
+        .A2(\FIFO_W/FIFO_DATA_PATH/n74 ), .B1(\FIFO_W/FIFO_DATA_PATH/n522 ), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n468 ), .C1(\FIFO_W/FIFO_DATA_PATH/n437 ), 
+        .Q(FIFO_D_out_W[12]) );
+  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U51  ( .A1(\FIFO_W/FIFO_DATA_PATH/n68 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[12] ), .B1(
+        \FIFO_W/FIFO_DATA_PATH/n66 ), .B2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[12] ), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n437 ) );
+  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U52  ( .A1(\FIFO_W/FIFO_DATA_PATH/n486 ), 
+        .A2(\FIFO_W/FIFO_DATA_PATH/n72 ), .B1(\FIFO_W/FIFO_DATA_PATH/n518 ), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n464 ), 
+        .Q(FIFO_D_out_W[8]) );
+  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U53  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[8] ), .B1(
+        \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n464 ) );
+  NOR4X3 \FIFO_W/FIFO_DATA_PATH/U54  ( .A(\FIFO_W/FIFO_DATA_PATH/n100 ), .B(
+        \FIFO_W/read_pointer_out_sig [0]), .C(\FIFO_W/read_pointer_out_sig [2]), .D(\FIFO_W/read_pointer_out_sig [3]), .Q(\FIFO_W/FIFO_DATA_PATH/n465 ) );
+  NOR4X3 \FIFO_W/FIFO_DATA_PATH/U55  ( .A(\FIFO_W/FIFO_DATA_PATH/n101 ), .B(
+        \FIFO_W/read_pointer_out_sig [0]), .C(\FIFO_W/read_pointer_out_sig [1]), .D(\FIFO_W/read_pointer_out_sig [3]), .Q(\FIFO_W/FIFO_DATA_PATH/n466 ) );
+  INVXL \FIFO_W/FIFO_DATA_PATH/U56  ( .A(\FIFO_W/read_pointer_out_sig [1]), 
+        .Q(\FIFO_W/FIFO_DATA_PATH/n100 ) );
+  INVXL \FIFO_W/FIFO_DATA_PATH/U57  ( .A(\FIFO_W/read_pointer_out_sig [2]), 
+        .Q(\FIFO_W/FIFO_DATA_PATH/n101 ) );
+  CLKBUFX2 \FIFO_W/FIFO_DATA_PATH/U58  ( .A(\FIFO_W/FIFO_DATA_PATH/n468 ), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n70 ) );
+  NAND4X3 \FIFO_W/FIFO_DATA_PATH/U59  ( .A(\FIFO_W/read_pointer_out_sig [3]), 
+        .B(\FIFO_W/FIFO_DATA_PATH/n99 ), .C(\FIFO_W/FIFO_DATA_PATH/n100 ), .D(
+        \FIFO_W/FIFO_DATA_PATH/n101 ), .Q(\FIFO_W/FIFO_DATA_PATH/n468 ) );
+  INVXL \FIFO_W/FIFO_DATA_PATH/U60  ( .A(\FIFO_W/read_pointer_out_sig [0]), 
+        .Q(\FIFO_W/FIFO_DATA_PATH/n99 ) );
+  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U61  ( .A1(\FIFO_W/FIFO_DATA_PATH/n489 ), 
+        .A2(\FIFO_W/FIFO_DATA_PATH/n74 ), .B1(\FIFO_W/FIFO_DATA_PATH/n521 ), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n436 ), 
+        .Q(FIFO_D_out_W[11]) );
+  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U62  ( .A1(\FIFO_W/FIFO_DATA_PATH/n68 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[11] ), .B1(
+        \FIFO_W/FIFO_DATA_PATH/n66 ), .B2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n436 ) );
+  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U63  ( .A1(\FIFO_W/FIFO_DATA_PATH/n482 ), 
         .A2(\FIFO_W/FIFO_DATA_PATH/n72 ), .B1(\FIFO_W/FIFO_DATA_PATH/n514 ), 
         .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n460 ), 
         .Q(FIFO_D_out_W[4]) );
-  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U74  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
+  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U64  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
         .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[4] ), .B1(
         \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n460 ) );
-  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U75  ( .A1(\FIFO_W/FIFO_DATA_PATH/n491 ), 
+  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U65  ( .A1(\FIFO_W/FIFO_DATA_PATH/n491 ), 
         .A2(\FIFO_W/FIFO_DATA_PATH/n73 ), .B1(\FIFO_W/FIFO_DATA_PATH/n523 ), 
         .B2(\FIFO_W/FIFO_DATA_PATH/n468 ), .C1(\FIFO_W/FIFO_DATA_PATH/n438 ), 
-        .Q(\LBDR_W/n31 ) );
-  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U76  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
+        .Q(FIFO_D_out_W[13]) );
+  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U66  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
         .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[13] ), .B1(
         \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n438 ) );
-  NAND3X3 \FIFO_W/FIFO_DATA_PATH/U77  ( .A(write_pointer_out_W_out[1]), .B(
-        write_en_out_W_out), .C(\FIFO_W/FIFO_DATA_PATH/n474 ), .Q(
+  NAND3X3 \FIFO_W/FIFO_DATA_PATH/U67  ( .A(\FIFO_W/write_pointer_out_sig [1]), 
+        .B(\FIFO_W/write_en_out_sig ), .C(\FIFO_W/FIFO_DATA_PATH/n474 ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n475 ) );
-  NOR3X3 \FIFO_W/FIFO_DATA_PATH/U78  ( .A(write_pointer_out_W_out[0]), .B(
-        write_pointer_out_W_out[3]), .C(write_pointer_out_W_out[2]), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n474 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U79  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[28] ), .B1(RX_W[28]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n398 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U80  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .B1(RX_W[29]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n399 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U81  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .B1(RX_W[30]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n400 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U82  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .B1(RX_W[31]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n401 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U83  ( .A1(\FIFO_W/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[0] ), .B1(RX_W[0]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n370 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U84  ( .A1(\FIFO_W/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[1] ), .B1(RX_W[1]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n371 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U85  ( .A1(\FIFO_W/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[2] ), .B1(RX_W[2]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n372 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U86  ( .A1(\FIFO_W/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[3] ), .B1(RX_W[3]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n373 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U87  ( .A1(\FIFO_W/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .B1(RX_W[4]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n374 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U88  ( .A1(\FIFO_W/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[5] ), .B1(RX_W[5]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n375 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U89  ( .A1(\FIFO_W/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[6] ), .B1(RX_W[6]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n376 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U90  ( .A1(\FIFO_W/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .B1(RX_W[7]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n377 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U91  ( .A1(\FIFO_W/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .B1(RX_W[8]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n378 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U92  ( .A1(\FIFO_W/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .B1(RX_W[9]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n379 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U93  ( .A1(\FIFO_W/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[10] ), .B1(RX_W[10]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n380 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U94  ( .A1(\FIFO_W/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .B1(RX_W[11]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n381 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U95  ( .A1(\FIFO_W/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[12] ), .B1(RX_W[12]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n382 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U96  ( .A1(\FIFO_W/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .B1(RX_W[13]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n383 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U97  ( .A1(\FIFO_W/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .B1(RX_W[14]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n384 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U98  ( .A1(\FIFO_W/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[15] ), .B1(RX_W[15]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n385 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U99  ( .A1(\FIFO_W/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[16] ), .B1(RX_W[16]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n386 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U100  ( .A1(\FIFO_W/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[17] ), .B1(RX_W[17]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n387 ) );
+  NOR3X3 \FIFO_W/FIFO_DATA_PATH/U68  ( .A(\FIFO_W/write_pointer_out_sig [0]), 
+        .B(\FIFO_W/write_pointer_out_sig [3]), .C(
+        \FIFO_W/write_pointer_out_sig [2]), .Q(\FIFO_W/FIFO_DATA_PATH/n474 )
+         );
+  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U69  ( .A1(\FIFO_W/FIFO_DATA_PATH/n509 ), 
+        .A2(\FIFO_W/FIFO_DATA_PATH/n72 ), .B1(\FIFO_W/FIFO_DATA_PATH/n541 ), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n458 ), 
+        .Q(FIFO_D_out_W[31]) );
+  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U70  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[31] ), .B1(
+        \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n458 ) );
+  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U71  ( .A1(\FIFO_W/FIFO_DATA_PATH/n492 ), 
+        .A2(\FIFO_W/FIFO_DATA_PATH/n73 ), .B1(\FIFO_W/FIFO_DATA_PATH/n524 ), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n468 ), .C1(\FIFO_W/FIFO_DATA_PATH/n439 ), 
+        .Q(FIFO_D_out_W[14]) );
+  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U72  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[14] ), .B1(
+        \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n439 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U73  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[28] ), .B1(\FIFO_W/RX_out_sig [28]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n398 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U74  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .B1(\FIFO_W/RX_out_sig [29]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n399 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U75  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .B1(\FIFO_W/RX_out_sig [30]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n400 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U76  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .B1(\FIFO_W/RX_out_sig [31]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n401 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U77  ( .A1(\FIFO_W/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[0] ), .B1(\FIFO_W/RX_out_sig [0]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n370 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U78  ( .A1(\FIFO_W/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[1] ), .B1(\FIFO_W/RX_out_sig [1]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n371 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U79  ( .A1(\FIFO_W/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[2] ), .B1(\FIFO_W/RX_out_sig [2]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n372 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U80  ( .A1(\FIFO_W/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[3] ), .B1(\FIFO_W/RX_out_sig [3]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n373 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U81  ( .A1(\FIFO_W/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .B1(\FIFO_W/RX_out_sig [4]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n374 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U82  ( .A1(\FIFO_W/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[5] ), .B1(\FIFO_W/RX_out_sig [5]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n375 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U83  ( .A1(\FIFO_W/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[6] ), .B1(\FIFO_W/RX_out_sig [6]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n376 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U84  ( .A1(\FIFO_W/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .B1(\FIFO_W/RX_out_sig [7]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n377 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U85  ( .A1(\FIFO_W/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .B1(\FIFO_W/RX_out_sig [8]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n378 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U86  ( .A1(\FIFO_W/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .B1(\FIFO_W/RX_out_sig [9]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n379 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U87  ( .A1(\FIFO_W/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[10] ), .B1(\FIFO_W/RX_out_sig [10]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n380 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U88  ( .A1(\FIFO_W/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .B1(\FIFO_W/RX_out_sig [11]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n381 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U89  ( .A1(\FIFO_W/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[12] ), .B1(\FIFO_W/RX_out_sig [12]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n382 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U90  ( .A1(\FIFO_W/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .B1(\FIFO_W/RX_out_sig [13]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n383 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U91  ( .A1(\FIFO_W/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .B1(\FIFO_W/RX_out_sig [14]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n384 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U92  ( .A1(\FIFO_W/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[15] ), .B1(\FIFO_W/RX_out_sig [15]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n385 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U93  ( .A1(\FIFO_W/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[16] ), .B1(\FIFO_W/RX_out_sig [16]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n386 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U94  ( .A1(\FIFO_W/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[17] ), .B1(\FIFO_W/RX_out_sig [17]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n387 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U95  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[18] ), .B1(\FIFO_W/RX_out_sig [18]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n388 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U96  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[19] ), .B1(\FIFO_W/RX_out_sig [19]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n389 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U97  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[20] ), .B1(\FIFO_W/RX_out_sig [20]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n390 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U98  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[21] ), .B1(\FIFO_W/RX_out_sig [21]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n391 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U99  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[22] ), .B1(\FIFO_W/RX_out_sig [22]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n392 ) );
+  AO22X3 \FIFO_W/FIFO_DATA_PATH/U100  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[23] ), .B1(\FIFO_W/RX_out_sig [23]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n393 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U101  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[18] ), .B1(RX_W[18]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n388 ) );
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[24] ), .B1(\FIFO_W/RX_out_sig [24]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n394 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U102  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[19] ), .B1(RX_W[19]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n389 ) );
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[25] ), .B1(\FIFO_W/RX_out_sig [25]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n395 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U103  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[20] ), .B1(RX_W[20]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n390 ) );
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[26] ), .B1(\FIFO_W/RX_out_sig [26]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n396 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U104  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[21] ), .B1(RX_W[21]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n391 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U105  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[22] ), .B1(RX_W[22]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n392 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U106  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[23] ), .B1(RX_W[23]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n393 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U107  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[24] ), .B1(RX_W[24]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n394 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U108  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[25] ), .B1(RX_W[25]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n395 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U109  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[26] ), .B1(RX_W[26]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n396 ) );
-  AO22X3 \FIFO_W/FIFO_DATA_PATH/U110  ( .A1(\FIFO_W/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[27] ), .B1(RX_W[27]), .B2(
-        \FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n397 ) );
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[27] ), .B1(\FIFO_W/RX_out_sig [27]), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n93 ), .Q(\FIFO_W/FIFO_DATA_PATH/n397 ) );
+  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U105  ( .A1(\FIFO_W/FIFO_DATA_PATH/n485 ), 
+        .A2(\FIFO_W/FIFO_DATA_PATH/n72 ), .B1(\FIFO_W/FIFO_DATA_PATH/n517 ), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n463 ), 
+        .Q(FIFO_D_out_W[7]) );
+  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U106  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[7] ), .B1(
+        \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n463 ) );
+  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U107  ( .A1(\FIFO_W/FIFO_DATA_PATH/n508 ), 
+        .A2(\FIFO_W/FIFO_DATA_PATH/n72 ), .B1(\FIFO_W/FIFO_DATA_PATH/n540 ), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n457 ), 
+        .Q(FIFO_D_out_W[30]) );
+  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U108  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[30] ), .B1(
+        \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n457 ) );
+  OAI221X3 \FIFO_W/FIFO_DATA_PATH/U109  ( .A1(\FIFO_W/FIFO_DATA_PATH/n507 ), 
+        .A2(\FIFO_W/FIFO_DATA_PATH/n72 ), .B1(\FIFO_W/FIFO_DATA_PATH/n539 ), 
+        .B2(\FIFO_W/FIFO_DATA_PATH/n70 ), .C1(\FIFO_W/FIFO_DATA_PATH/n455 ), 
+        .Q(FIFO_D_out_W[29]) );
+  AOI22X3 \FIFO_W/FIFO_DATA_PATH/U110  ( .A1(\FIFO_W/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[29] ), .B1(
+        \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n455 ) );
   OAI221X3 \FIFO_W/FIFO_DATA_PATH/U111  ( .A1(\FIFO_W/FIFO_DATA_PATH/n478 ), 
         .A2(\FIFO_W/FIFO_DATA_PATH/n74 ), .B1(\FIFO_W/FIFO_DATA_PATH/n510 ), 
         .B2(\FIFO_W/FIFO_DATA_PATH/n468 ), .C1(\FIFO_W/FIFO_DATA_PATH/n434 ), 
@@ -5291,24 +7158,27 @@ endmodule
         \FIFO_W/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_2[28] ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n454 ) );
-  NAND3X3 \FIFO_W/FIFO_DATA_PATH/U141  ( .A(write_en_out_W_out), .B(
-        write_pointer_out_W_out[2]), .C(\FIFO_W/FIFO_DATA_PATH/n476 ), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n477 ) );
-  NOR3X3 \FIFO_W/FIFO_DATA_PATH/U142  ( .A(write_pointer_out_W_out[0]), .B(
-        write_pointer_out_W_out[3]), .C(write_pointer_out_W_out[1]), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n476 ) );
-  NAND3X3 \FIFO_W/FIFO_DATA_PATH/U143  ( .A(write_pointer_out_W_out[0]), .B(
-        write_en_out_W_out), .C(\FIFO_W/FIFO_DATA_PATH/n472 ), .Q(
+  NAND3X3 \FIFO_W/FIFO_DATA_PATH/U141  ( .A(\FIFO_W/write_en_out_sig ), .B(
+        \FIFO_W/write_pointer_out_sig [2]), .C(\FIFO_W/FIFO_DATA_PATH/n476 ), 
+        .Q(\FIFO_W/FIFO_DATA_PATH/n477 ) );
+  NOR3X3 \FIFO_W/FIFO_DATA_PATH/U142  ( .A(\FIFO_W/write_pointer_out_sig [0]), 
+        .B(\FIFO_W/write_pointer_out_sig [3]), .C(
+        \FIFO_W/write_pointer_out_sig [1]), .Q(\FIFO_W/FIFO_DATA_PATH/n476 )
+         );
+  NAND3X3 \FIFO_W/FIFO_DATA_PATH/U143  ( .A(\FIFO_W/write_pointer_out_sig [0]), 
+        .B(\FIFO_W/write_en_out_sig ), .C(\FIFO_W/FIFO_DATA_PATH/n472 ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n473 ) );
-  NOR3X3 \FIFO_W/FIFO_DATA_PATH/U144  ( .A(write_pointer_out_W_out[1]), .B(
-        write_pointer_out_W_out[3]), .C(write_pointer_out_W_out[2]), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n472 ) );
-  NAND3X3 \FIFO_W/FIFO_DATA_PATH/U145  ( .A(write_pointer_out_W_out[3]), .B(
-        write_en_out_W_out), .C(\FIFO_W/FIFO_DATA_PATH/n470 ), .Q(
+  NOR3X3 \FIFO_W/FIFO_DATA_PATH/U144  ( .A(\FIFO_W/write_pointer_out_sig [1]), 
+        .B(\FIFO_W/write_pointer_out_sig [3]), .C(
+        \FIFO_W/write_pointer_out_sig [2]), .Q(\FIFO_W/FIFO_DATA_PATH/n472 )
+         );
+  NAND3X3 \FIFO_W/FIFO_DATA_PATH/U145  ( .A(\FIFO_W/write_pointer_out_sig [3]), 
+        .B(\FIFO_W/write_en_out_sig ), .C(\FIFO_W/FIFO_DATA_PATH/n470 ), .Q(
         \FIFO_W/FIFO_DATA_PATH/n471 ) );
-  NOR3X3 \FIFO_W/FIFO_DATA_PATH/U146  ( .A(write_pointer_out_W_out[0]), .B(
-        write_pointer_out_W_out[2]), .C(write_pointer_out_W_out[1]), .Q(
-        \FIFO_W/FIFO_DATA_PATH/n470 ) );
+  NOR3X3 \FIFO_W/FIFO_DATA_PATH/U146  ( .A(\FIFO_W/write_pointer_out_sig [0]), 
+        .B(\FIFO_W/write_pointer_out_sig [2]), .C(
+        \FIFO_W/write_pointer_out_sig [1]), .Q(\FIFO_W/FIFO_DATA_PATH/n470 )
+         );
   OAI22X3 \FIFO_W/FIFO_DATA_PATH/U147  ( .A1(\FIFO_W/FIFO_DATA_PATH/n86 ), 
         .A2(\FIFO_W/FIFO_DATA_PATH/n478 ), .B1(\FIFO_W/FIFO_DATA_PATH/n305 ), 
         .B2(\FIFO_W/FIFO_DATA_PATH/n84 ), .Q(\FIFO_W/FIFO_DATA_PATH/n338 ) );
@@ -5503,195 +7373,195 @@ endmodule
         .B2(\FIFO_W/FIFO_DATA_PATH/n78 ), .Q(\FIFO_W/FIFO_DATA_PATH/n337 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U211  ( .A1(\FIFO_W/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[0] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[0]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [0]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n402 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U212  ( .A1(\FIFO_W/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[1] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[1]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [1]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n403 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U213  ( .A1(\FIFO_W/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[2] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[2]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [2]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n404 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U214  ( .A1(\FIFO_W/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[3] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[3]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [3]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n405 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U215  ( .A1(\FIFO_W/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[4] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[4]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [4]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n406 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U216  ( .A1(\FIFO_W/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[5] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[5]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [5]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n407 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U217  ( .A1(\FIFO_W/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[6] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[6]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [6]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n408 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U218  ( .A1(\FIFO_W/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[7] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[7]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [7]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n409 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U219  ( .A1(\FIFO_W/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[8] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[8]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [8]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n410 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U220  ( .A1(\FIFO_W/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[9] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[9]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [9]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n411 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U221  ( .A1(\FIFO_W/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[10] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[10]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [10]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n412 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U222  ( .A1(\FIFO_W/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[11] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[11]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [11]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n413 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U223  ( .A1(\FIFO_W/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[12] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[12]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [12]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n414 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U224  ( .A1(\FIFO_W/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[13] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[13]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [13]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n415 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U225  ( .A1(\FIFO_W/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[14] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[14]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [14]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n416 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U226  ( .A1(\FIFO_W/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[15] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[15]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [15]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n417 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U227  ( .A1(\FIFO_W/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[16] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[16]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [16]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n418 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U228  ( .A1(\FIFO_W/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[17] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[17]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [17]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n419 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U229  ( .A1(\FIFO_W/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[18] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[18]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [18]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n420 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U230  ( .A1(\FIFO_W/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[19] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[19]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [19]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n421 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U231  ( .A1(\FIFO_W/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[20] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[20]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [20]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n422 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U232  ( .A1(\FIFO_W/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[21] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[21]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [21]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n423 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U233  ( .A1(\FIFO_W/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[22] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[22]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [22]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n424 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U234  ( .A1(\FIFO_W/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[23] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[23]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [23]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n425 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U235  ( .A1(\FIFO_W/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[24] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[24]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [24]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n426 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U236  ( .A1(\FIFO_W/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[25] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[25]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [25]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n427 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U237  ( .A1(\FIFO_W/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[26] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[26]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [26]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n428 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U238  ( .A1(\FIFO_W/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[27] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[27]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [27]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n429 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U239  ( .A1(\FIFO_W/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[28] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[28]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [28]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n430 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U240  ( .A1(\FIFO_W/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[29] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[29]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [29]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n431 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U241  ( .A1(\FIFO_W/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[30] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[30]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [30]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n432 ) );
   AO22X3 \FIFO_W/FIFO_DATA_PATH/U242  ( .A1(\FIFO_W/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_W/FIFO_DATA_PATH/FIFO_MEM_3[31] ), .B1(
-        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(RX_W[31]), .Q(
+        \FIFO_W/FIFO_DATA_PATH/n98 ), .B2(\FIFO_W/RX_out_sig [31]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n433 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U243  ( .A(RX_W[0]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U243  ( .A(\FIFO_W/RX_out_sig [0]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n305 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U244  ( .A(RX_W[1]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U244  ( .A(\FIFO_W/RX_out_sig [1]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n304 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U245  ( .A(RX_W[2]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U245  ( .A(\FIFO_W/RX_out_sig [2]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n303 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U246  ( .A(RX_W[3]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U246  ( .A(\FIFO_W/RX_out_sig [3]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n302 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U247  ( .A(RX_W[4]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U247  ( .A(\FIFO_W/RX_out_sig [4]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n301 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U248  ( .A(RX_W[5]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U248  ( .A(\FIFO_W/RX_out_sig [5]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n300 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U249  ( .A(RX_W[6]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U249  ( .A(\FIFO_W/RX_out_sig [6]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n299 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U250  ( .A(RX_W[7]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U250  ( .A(\FIFO_W/RX_out_sig [7]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n298 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U251  ( .A(RX_W[8]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U251  ( .A(\FIFO_W/RX_out_sig [8]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n297 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U252  ( .A(RX_W[9]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U252  ( .A(\FIFO_W/RX_out_sig [9]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n296 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U253  ( .A(RX_W[10]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U253  ( .A(\FIFO_W/RX_out_sig [10]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n295 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U254  ( .A(RX_W[11]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U254  ( .A(\FIFO_W/RX_out_sig [11]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n294 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U255  ( .A(RX_W[12]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U255  ( .A(\FIFO_W/RX_out_sig [12]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n293 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U256  ( .A(RX_W[13]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U256  ( .A(\FIFO_W/RX_out_sig [13]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n292 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U257  ( .A(RX_W[14]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U257  ( .A(\FIFO_W/RX_out_sig [14]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n291 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U258  ( .A(RX_W[15]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U258  ( .A(\FIFO_W/RX_out_sig [15]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n290 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U259  ( .A(RX_W[16]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U259  ( .A(\FIFO_W/RX_out_sig [16]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n289 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U260  ( .A(RX_W[17]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U260  ( .A(\FIFO_W/RX_out_sig [17]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n288 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U261  ( .A(RX_W[18]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U261  ( .A(\FIFO_W/RX_out_sig [18]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n287 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U262  ( .A(RX_W[19]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U262  ( .A(\FIFO_W/RX_out_sig [19]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n286 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U263  ( .A(RX_W[20]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U263  ( .A(\FIFO_W/RX_out_sig [20]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n285 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U264  ( .A(RX_W[21]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U264  ( .A(\FIFO_W/RX_out_sig [21]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n284 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U265  ( .A(RX_W[22]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U265  ( .A(\FIFO_W/RX_out_sig [22]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n283 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U266  ( .A(RX_W[23]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U266  ( .A(\FIFO_W/RX_out_sig [23]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n282 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U267  ( .A(RX_W[24]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U267  ( .A(\FIFO_W/RX_out_sig [24]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n281 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U268  ( .A(RX_W[25]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U268  ( .A(\FIFO_W/RX_out_sig [25]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n280 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U269  ( .A(RX_W[26]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U269  ( .A(\FIFO_W/RX_out_sig [26]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n279 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U270  ( .A(RX_W[27]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U270  ( .A(\FIFO_W/RX_out_sig [27]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n278 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U271  ( .A(RX_W[28]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U271  ( .A(\FIFO_W/RX_out_sig [28]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n277 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U272  ( .A(RX_W[29]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U272  ( .A(\FIFO_W/RX_out_sig [29]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n104 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U273  ( .A(RX_W[30]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U273  ( .A(\FIFO_W/RX_out_sig [30]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n103 ) );
-  INVXL \FIFO_W/FIFO_DATA_PATH/U274  ( .A(RX_W[31]), .Q(
+  INVXL \FIFO_W/FIFO_DATA_PATH/U274  ( .A(\FIFO_W/RX_out_sig [31]), .Q(
         \FIFO_W/FIFO_DATA_PATH/n102 ) );
   DFPX3 \FIFO_W/FIFO_CONTROL_PART/write_pointer_reg[0]  ( .D(
         \FIFO_W/FIFO_CONTROL_PART/write_pointer_in[0] ), .CP(clk), .SN(reset), 
@@ -5743,8 +7613,11 @@ endmodule
   INVXL \FIFO_W/FIFO_CONTROL_PART/U5  ( .A(\FIFO_W/FIFO_CONTROL_PART/n26 ), 
         .Q(empty_W_out) );
   OAI31X2 \FIFO_W/FIFO_CONTROL_PART/U6  ( .A1(\FIFO_W/FIFO_CONTROL_PART/n27 ), 
-        .A2(Grant_LW_out), .A3(Grant_EW_out), .B1(
+        .A2(\FIFO_W/read_en_L_out_sig ), .A3(\FIFO_W/read_en_E_out_sig ), .B1(
         \FIFO_W/FIFO_CONTROL_PART/n26 ), .Q(\FIFO_W/FIFO_CONTROL_PART/n28 ) );
+  OR3X3 \FIFO_W/FIFO_CONTROL_PART/U7  ( .A(\FIFO_W/read_en_W_out_sig ), .B(
+        \FIFO_W/read_en_S_out_sig ), .C(\FIFO_W/read_en_N_out_sig ), .Q(
+        \FIFO_W/FIFO_CONTROL_PART/n27 ) );
   OAI22X3 \FIFO_W/FIFO_CONTROL_PART/U8  ( .A1(\FIFO_W/FIFO_CONTROL_PART/n37 ), 
         .A2(\FIFO_W/FIFO_CONTROL_PART/n28 ), .B1(\FIFO_W/FIFO_CONTROL_PART/n1 ), .B2(\FIFO_W/FIFO_CONTROL_PART/n34 ), .Q(
         \FIFO_W/FIFO_CONTROL_PART/read_pointer_in[0] ) );
@@ -5763,7 +7636,7 @@ endmodule
          );
   OAI31X2 \FIFO_W/FIFO_CONTROL_PART/U13  ( .A1(\FIFO_W/FIFO_CONTROL_PART/n8 ), 
         .A2(\FIFO_W/FIFO_CONTROL_PART/n7 ), .A3(\FIFO_W/FIFO_CONTROL_PART/n6 ), 
-        .B1(valid_in_W), .Q(\FIFO_W/FIFO_CONTROL_PART/n29 ) );
+        .B1(\FIFO_W/valid_in_out_sig ), .Q(\FIFO_W/FIFO_CONTROL_PART/n29 ) );
   NAND2XL \FIFO_W/FIFO_CONTROL_PART/U14  ( .A(\FIFO_W/FIFO_CONTROL_PART/n5 ), 
         .B(\FIFO_W/FIFO_CONTROL_PART/n4 ), .Q(\FIFO_W/FIFO_CONTROL_PART/n8 )
          );
@@ -5783,8 +7656,19 @@ endmodule
         .A2(\FIFO_W/FIFO_CONTROL_PART/n29 ), .B1(write_en_out_W_out), .B2(
         \FIFO_W/FIFO_CONTROL_PART/n31 ), .Q(
         \FIFO_W/FIFO_CONTROL_PART/write_pointer_in[1] ) );
-  NAND2X6 U9 ( .A(n3), .B(n4), .Q(\FIFO_W/FIFO_CONTROL_PART/n27 ) );
-  CLKINVX4 U11 ( .A(Grant_NW_out), .Q(n4) );
+  FIFO_data_path_input_wire_DATA_WIDTH32_2 \FIFO_W/FIFO_DATA_PATH_inputs  ( 
+        .write_en(write_en_out_W_out), .RX(RX_W), .read_pointer(
+        read_pointer_out_W_out), .write_pointer(write_pointer_out_W_out), 
+        .write_en_out(\FIFO_W/write_en_out_sig ), .RX_out(\FIFO_W/RX_out_sig ), 
+        .read_ptr_out(\FIFO_W/read_pointer_out_sig ), .write_ptr_out(
+        \FIFO_W/write_pointer_out_sig ) );
+  FIFO_control_part_input_wire_2 \FIFO_W/FIFO_CONTROL_PART_inputs  ( 
+        .valid_in(valid_in_W), .read_en_N(Grant_NW_out), .read_en_E(
+        Grant_EW_out), .read_en_W(\Xbar_sel_L_out[0] ), .read_en_S(
+        Grant_SW_out), .read_en_L(Grant_LW_out), .valid_in_out(
+        \FIFO_W/valid_in_out_sig ), .read_en_N_out(\FIFO_W/read_en_N_out_sig ), 
+        .read_en_E_out(\FIFO_W/read_en_E_out_sig ), .read_en_W_out(
+        \FIFO_W/read_en_W_out_sig ), .read_en_S_out(\FIFO_W/read_en_S_out_sig ), .read_en_L_out(\FIFO_W/read_en_L_out_sig ) );
   DFCX1 \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3_reg[28]  ( .D(
         \FIFO_S/FIFO_DATA_PATH/n430 ), .CP(clk), .RN(reset), .Q(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[28] ) );
@@ -6182,9 +8066,9 @@ endmodule
   INVXL \FIFO_S/FIFO_DATA_PATH/U7  ( .A(\FIFO_S/FIFO_DATA_PATH/n82 ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n87 ) );
   CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U8  ( .A(\FIFO_S/FIFO_DATA_PATH/n469 ), .Q(
-        \FIFO_S/FIFO_DATA_PATH/n72 ) );
-  CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U9  ( .A(\FIFO_S/FIFO_DATA_PATH/n469 ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n73 ) );
+  CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U9  ( .A(\FIFO_S/FIFO_DATA_PATH/n469 ), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n72 ) );
   CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U10  ( .A(\FIFO_S/FIFO_DATA_PATH/n469 ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n74 ) );
   CLKINVX2 \FIFO_S/FIFO_DATA_PATH/U11  ( .A(\FIFO_S/FIFO_DATA_PATH/n87 ), .Q(
@@ -6208,18 +8092,18 @@ endmodule
         \FIFO_S/FIFO_DATA_PATH/n81 ) );
   CLKINVX2 \FIFO_S/FIFO_DATA_PATH/U20  ( .A(\FIFO_S/FIFO_DATA_PATH/n83 ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n88 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U21  ( .A(\FIFO_S/FIFO_DATA_PATH/n70 ), .Q(
-        \FIFO_S/FIFO_DATA_PATH/n71 ) );
-  CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U22  ( .A(\FIFO_S/FIFO_DATA_PATH/n465 ), .Q(
+  CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U21  ( .A(\FIFO_S/FIFO_DATA_PATH/n465 ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n67 ) );
-  CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U23  ( .A(\FIFO_S/FIFO_DATA_PATH/n466 ), .Q(
+  CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U22  ( .A(\FIFO_S/FIFO_DATA_PATH/n466 ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n69 ) );
-  CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U24  ( .A(\FIFO_S/FIFO_DATA_PATH/n475 ), .Q(
+  CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U23  ( .A(\FIFO_S/FIFO_DATA_PATH/n475 ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n89 ) );
-  CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U25  ( .A(\FIFO_S/FIFO_DATA_PATH/n475 ), .Q(
+  CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U24  ( .A(\FIFO_S/FIFO_DATA_PATH/n475 ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n90 ) );
-  CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U26  ( .A(\FIFO_S/FIFO_DATA_PATH/n475 ), .Q(
+  CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U25  ( .A(\FIFO_S/FIFO_DATA_PATH/n475 ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n91 ) );
+  INVXL \FIFO_S/FIFO_DATA_PATH/U26  ( .A(\FIFO_S/FIFO_DATA_PATH/n70 ), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n71 ) );
   CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U27  ( .A(\FIFO_S/FIFO_DATA_PATH/n473 ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n82 ) );
   CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U28  ( .A(\FIFO_S/FIFO_DATA_PATH/n473 ), .Q(
@@ -6251,8 +8135,8 @@ endmodule
         .A2(\FIFO_S/FIFO_DATA_PATH/n73 ), .B1(\FIFO_S/FIFO_DATA_PATH/n511 ), 
         .B2(\FIFO_S/FIFO_DATA_PATH/n70 ), .C1(\FIFO_S/FIFO_DATA_PATH/n445 ), 
         .Q(FIFO_D_out_S[1]) );
-  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U39  ( .A1(\FIFO_S/FIFO_DATA_PATH/n69 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[1] ), .B1(
+  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U39  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[1] ), .B1(
         \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[1] ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n445 ) );
@@ -6260,8 +8144,8 @@ endmodule
         .A2(\FIFO_S/FIFO_DATA_PATH/n72 ), .B1(\FIFO_S/FIFO_DATA_PATH/n513 ), 
         .B2(\FIFO_S/FIFO_DATA_PATH/n70 ), .C1(\FIFO_S/FIFO_DATA_PATH/n459 ), 
         .Q(FIFO_D_out_S[3]) );
-  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U41  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[3] ), .B1(
+  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U41  ( .A1(\FIFO_S/FIFO_DATA_PATH/n68 ), .A2(
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[3] ), .B1(
         \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[3] ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n459 ) );
@@ -6269,7 +8153,7 @@ endmodule
         .A2(\FIFO_S/FIFO_DATA_PATH/n72 ), .B1(\FIFO_S/FIFO_DATA_PATH/n515 ), 
         .B2(\FIFO_S/FIFO_DATA_PATH/n70 ), .C1(\FIFO_S/FIFO_DATA_PATH/n461 ), 
         .Q(FIFO_D_out_S[5]) );
-  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U43  ( .A1(\FIFO_S/FIFO_DATA_PATH/n68 ), .A2(
+  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U43  ( .A1(\FIFO_S/FIFO_DATA_PATH/n69 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[5] ), .B1(
         \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[5] ), .Q(
@@ -6278,8 +8162,8 @@ endmodule
         .A2(\FIFO_S/FIFO_DATA_PATH/n72 ), .B1(\FIFO_S/FIFO_DATA_PATH/n516 ), 
         .B2(\FIFO_S/FIFO_DATA_PATH/n70 ), .C1(\FIFO_S/FIFO_DATA_PATH/n462 ), 
         .Q(FIFO_D_out_S[6]) );
-  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U45  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[6] ), .B1(
+  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U45  ( .A1(\FIFO_S/FIFO_DATA_PATH/n69 ), .A2(
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[6] ), .B1(
         \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[6] ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n462 ) );
@@ -6294,8 +8178,8 @@ endmodule
         \FIFO_S/FIFO_DATA_PATH/n435 ) );
   OAI221X3 \FIFO_S/FIFO_DATA_PATH/U48  ( .A1(\FIFO_S/FIFO_DATA_PATH/n490 ), 
         .A2(\FIFO_S/FIFO_DATA_PATH/n74 ), .B1(\FIFO_S/FIFO_DATA_PATH/n522 ), 
-        .B2(\FIFO_S/FIFO_DATA_PATH/n468 ), .C1(\FIFO_S/FIFO_DATA_PATH/n437 ), 
-        .Q(\LBDR_S/n4 ) );
+        .B2(\FIFO_S/FIFO_DATA_PATH/n70 ), .C1(\FIFO_S/FIFO_DATA_PATH/n437 ), 
+        .Q(FIFO_D_out_S[12]) );
   AOI22X3 \FIFO_S/FIFO_DATA_PATH/U49  ( .A1(\FIFO_S/FIFO_DATA_PATH/n68 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[12] ), .B1(
         \FIFO_S/FIFO_DATA_PATH/n66 ), .B2(
@@ -6311,203 +8195,204 @@ endmodule
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n464 ) );
   NOR4X3 \FIFO_S/FIFO_DATA_PATH/U52  ( .A(\FIFO_S/FIFO_DATA_PATH/n100 ), .B(
-        read_pointer_out_S_out[0]), .C(read_pointer_out_S_out[2]), .D(
-        read_pointer_out_S_out[3]), .Q(\FIFO_S/FIFO_DATA_PATH/n465 ) );
+        \FIFO_S/read_pointer_out_sig [0]), .C(\FIFO_S/read_pointer_out_sig [2]), .D(\FIFO_S/read_pointer_out_sig [3]), .Q(\FIFO_S/FIFO_DATA_PATH/n465 ) );
   NOR4X3 \FIFO_S/FIFO_DATA_PATH/U53  ( .A(\FIFO_S/FIFO_DATA_PATH/n101 ), .B(
-        read_pointer_out_S_out[0]), .C(read_pointer_out_S_out[1]), .D(
-        read_pointer_out_S_out[3]), .Q(\FIFO_S/FIFO_DATA_PATH/n466 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U54  ( .A(read_pointer_out_S_out[1]), .Q(
-        \FIFO_S/FIFO_DATA_PATH/n100 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U55  ( .A(read_pointer_out_S_out[2]), .Q(
-        \FIFO_S/FIFO_DATA_PATH/n101 ) );
+        \FIFO_S/read_pointer_out_sig [0]), .C(\FIFO_S/read_pointer_out_sig [1]), .D(\FIFO_S/read_pointer_out_sig [3]), .Q(\FIFO_S/FIFO_DATA_PATH/n466 ) );
+  INVXL \FIFO_S/FIFO_DATA_PATH/U54  ( .A(\FIFO_S/read_pointer_out_sig [1]), 
+        .Q(\FIFO_S/FIFO_DATA_PATH/n100 ) );
+  INVXL \FIFO_S/FIFO_DATA_PATH/U55  ( .A(\FIFO_S/read_pointer_out_sig [2]), 
+        .Q(\FIFO_S/FIFO_DATA_PATH/n101 ) );
   CLKBUFX2 \FIFO_S/FIFO_DATA_PATH/U56  ( .A(\FIFO_S/FIFO_DATA_PATH/n468 ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n70 ) );
-  NAND4X3 \FIFO_S/FIFO_DATA_PATH/U57  ( .A(read_pointer_out_S_out[3]), .B(
-        \FIFO_S/FIFO_DATA_PATH/n99 ), .C(\FIFO_S/FIFO_DATA_PATH/n100 ), .D(
+  NAND4X3 \FIFO_S/FIFO_DATA_PATH/U57  ( .A(\FIFO_S/read_pointer_out_sig [3]), 
+        .B(\FIFO_S/FIFO_DATA_PATH/n99 ), .C(\FIFO_S/FIFO_DATA_PATH/n100 ), .D(
         \FIFO_S/FIFO_DATA_PATH/n101 ), .Q(\FIFO_S/FIFO_DATA_PATH/n468 ) );
-  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U59  ( .A1(\FIFO_S/FIFO_DATA_PATH/n509 ), 
-        .A2(\FIFO_S/FIFO_DATA_PATH/n72 ), .B1(\FIFO_S/FIFO_DATA_PATH/n541 ), 
-        .B2(\FIFO_S/FIFO_DATA_PATH/n70 ), .C1(\FIFO_S/FIFO_DATA_PATH/n458 ), 
-        .Q(FIFO_D_out_S[31]) );
-  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U60  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[31] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .Q(
-        \FIFO_S/FIFO_DATA_PATH/n458 ) );
-  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U61  ( .A1(\FIFO_S/FIFO_DATA_PATH/n492 ), 
-        .A2(\FIFO_S/FIFO_DATA_PATH/n73 ), .B1(\FIFO_S/FIFO_DATA_PATH/n524 ), 
-        .B2(\FIFO_S/FIFO_DATA_PATH/n468 ), .C1(\FIFO_S/FIFO_DATA_PATH/n439 ), 
-        .Q(\LBDR_S/n32 ) );
-  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U62  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[14] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .Q(
-        \FIFO_S/FIFO_DATA_PATH/n439 ) );
-  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U63  ( .A1(\FIFO_S/FIFO_DATA_PATH/n485 ), 
-        .A2(\FIFO_S/FIFO_DATA_PATH/n72 ), .B1(\FIFO_S/FIFO_DATA_PATH/n517 ), 
-        .B2(\FIFO_S/FIFO_DATA_PATH/n70 ), .C1(\FIFO_S/FIFO_DATA_PATH/n463 ), 
-        .Q(\LBDR_S/n60 ) );
-  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U64  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[7] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .Q(
-        \FIFO_S/FIFO_DATA_PATH/n463 ) );
-  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U65  ( .A1(\FIFO_S/FIFO_DATA_PATH/n508 ), 
-        .A2(\FIFO_S/FIFO_DATA_PATH/n72 ), .B1(\FIFO_S/FIFO_DATA_PATH/n540 ), 
-        .B2(\FIFO_S/FIFO_DATA_PATH/n70 ), .C1(\FIFO_S/FIFO_DATA_PATH/n457 ), 
-        .Q(FIFO_D_out_S[30]) );
-  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U66  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[30] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .Q(
-        \FIFO_S/FIFO_DATA_PATH/n457 ) );
-  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U67  ( .A1(\FIFO_S/FIFO_DATA_PATH/n507 ), 
+  INVXL \FIFO_S/FIFO_DATA_PATH/U58  ( .A(\FIFO_S/read_pointer_out_sig [0]), 
+        .Q(\FIFO_S/FIFO_DATA_PATH/n99 ) );
+  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U59  ( .A1(\FIFO_S/FIFO_DATA_PATH/n507 ), 
         .A2(\FIFO_S/FIFO_DATA_PATH/n72 ), .B1(\FIFO_S/FIFO_DATA_PATH/n539 ), 
         .B2(\FIFO_S/FIFO_DATA_PATH/n70 ), .C1(\FIFO_S/FIFO_DATA_PATH/n455 ), 
         .Q(FIFO_D_out_S[29]) );
-  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U68  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
+  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U60  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
         .A2(\FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[29] ), .B1(
         \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n455 ) );
-  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U69  ( .A1(\FIFO_S/FIFO_DATA_PATH/n489 ), 
+  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U61  ( .A1(\FIFO_S/FIFO_DATA_PATH/n489 ), 
         .A2(\FIFO_S/FIFO_DATA_PATH/n74 ), .B1(\FIFO_S/FIFO_DATA_PATH/n521 ), 
         .B2(\FIFO_S/FIFO_DATA_PATH/n70 ), .C1(\FIFO_S/FIFO_DATA_PATH/n436 ), 
         .Q(FIFO_D_out_S[11]) );
-  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U70  ( .A1(\FIFO_S/FIFO_DATA_PATH/n68 ), .A2(
+  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U62  ( .A1(\FIFO_S/FIFO_DATA_PATH/n68 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[11] ), .B1(
         \FIFO_S/FIFO_DATA_PATH/n66 ), .B2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n436 ) );
-  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U71  ( .A1(\FIFO_S/FIFO_DATA_PATH/n487 ), 
+  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U63  ( .A1(\FIFO_S/FIFO_DATA_PATH/n487 ), 
         .A2(\FIFO_S/FIFO_DATA_PATH/n72 ), .B1(\FIFO_S/FIFO_DATA_PATH/n519 ), 
         .B2(\FIFO_S/FIFO_DATA_PATH/n70 ), .C1(\FIFO_S/FIFO_DATA_PATH/n467 ), 
         .Q(FIFO_D_out_S[9]) );
-  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U72  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
+  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U64  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
         .A2(\FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[9] ), .B1(
         \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n467 ) );
-  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U73  ( .A1(\FIFO_S/FIFO_DATA_PATH/n482 ), 
+  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U65  ( .A1(\FIFO_S/FIFO_DATA_PATH/n482 ), 
         .A2(\FIFO_S/FIFO_DATA_PATH/n72 ), .B1(\FIFO_S/FIFO_DATA_PATH/n514 ), 
         .B2(\FIFO_S/FIFO_DATA_PATH/n70 ), .C1(\FIFO_S/FIFO_DATA_PATH/n460 ), 
         .Q(FIFO_D_out_S[4]) );
-  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U74  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
+  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U66  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
         .A2(\FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[4] ), .B1(
         \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n460 ) );
-  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U75  ( .A1(\FIFO_S/FIFO_DATA_PATH/n491 ), 
+  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U67  ( .A1(\FIFO_S/FIFO_DATA_PATH/n491 ), 
         .A2(\FIFO_S/FIFO_DATA_PATH/n73 ), .B1(\FIFO_S/FIFO_DATA_PATH/n523 ), 
-        .B2(\FIFO_S/FIFO_DATA_PATH/n468 ), .C1(\FIFO_S/FIFO_DATA_PATH/n438 ), 
-        .Q(\LBDR_S/n31 ) );
-  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U76  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n70 ), .C1(\FIFO_S/FIFO_DATA_PATH/n438 ), 
+        .Q(FIFO_D_out_S[13]) );
+  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U68  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
         .A2(\FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[13] ), .B1(
         \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n438 ) );
-  NAND3X3 \FIFO_S/FIFO_DATA_PATH/U77  ( .A(write_pointer_out_S_out[1]), .B(
-        write_en_out_S_out), .C(\FIFO_S/FIFO_DATA_PATH/n474 ), .Q(
+  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U69  ( .A1(\FIFO_S/FIFO_DATA_PATH/n485 ), 
+        .A2(\FIFO_S/FIFO_DATA_PATH/n72 ), .B1(\FIFO_S/FIFO_DATA_PATH/n517 ), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n70 ), .C1(\FIFO_S/FIFO_DATA_PATH/n463 ), 
+        .Q(FIFO_D_out_S[7]) );
+  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U70  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[7] ), .B1(
+        \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n463 ) );
+  NAND3X3 \FIFO_S/FIFO_DATA_PATH/U71  ( .A(\FIFO_S/write_pointer_out_sig [1]), 
+        .B(\FIFO_S/write_en_out_sig ), .C(\FIFO_S/FIFO_DATA_PATH/n474 ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n475 ) );
-  NOR3X3 \FIFO_S/FIFO_DATA_PATH/U78  ( .A(write_pointer_out_S_out[0]), .B(
-        write_pointer_out_S_out[3]), .C(write_pointer_out_S_out[2]), .Q(
-        \FIFO_S/FIFO_DATA_PATH/n474 ) );
+  NOR3X3 \FIFO_S/FIFO_DATA_PATH/U72  ( .A(\FIFO_S/write_pointer_out_sig [0]), 
+        .B(\FIFO_S/write_pointer_out_sig [3]), .C(
+        \FIFO_S/write_pointer_out_sig [2]), .Q(\FIFO_S/FIFO_DATA_PATH/n474 )
+         );
+  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U73  ( .A1(\FIFO_S/FIFO_DATA_PATH/n509 ), 
+        .A2(\FIFO_S/FIFO_DATA_PATH/n72 ), .B1(\FIFO_S/FIFO_DATA_PATH/n541 ), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n70 ), .C1(\FIFO_S/FIFO_DATA_PATH/n458 ), 
+        .Q(FIFO_D_out_S[31]) );
+  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U74  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[31] ), .B1(
+        \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n458 ) );
+  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U75  ( .A1(\FIFO_S/FIFO_DATA_PATH/n492 ), 
+        .A2(\FIFO_S/FIFO_DATA_PATH/n73 ), .B1(\FIFO_S/FIFO_DATA_PATH/n524 ), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n468 ), .C1(\FIFO_S/FIFO_DATA_PATH/n439 ), 
+        .Q(FIFO_D_out_S[14]) );
+  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U76  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[14] ), .B1(
+        \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n439 ) );
+  AO22X3 \FIFO_S/FIFO_DATA_PATH/U77  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[28] ), .B1(\FIFO_S/RX_out_sig [28]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n398 ) );
+  AO22X3 \FIFO_S/FIFO_DATA_PATH/U78  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .B1(\FIFO_S/RX_out_sig [29]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n399 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U79  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[28] ), .B1(RX_S[28]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n398 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .B1(\FIFO_S/RX_out_sig [30]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n400 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U80  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .B1(RX_S[29]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n399 ) );
-  AO22X3 \FIFO_S/FIFO_DATA_PATH/U81  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .B1(RX_S[30]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n400 ) );
-  AO22X3 \FIFO_S/FIFO_DATA_PATH/U82  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .B1(RX_S[31]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n401 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .B1(\FIFO_S/RX_out_sig [31]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n401 ) );
+  AO22X3 \FIFO_S/FIFO_DATA_PATH/U81  ( .A1(\FIFO_S/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[0] ), .B1(\FIFO_S/RX_out_sig [0]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n370 ) );
+  AO22X3 \FIFO_S/FIFO_DATA_PATH/U82  ( .A1(\FIFO_S/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[1] ), .B1(\FIFO_S/RX_out_sig [1]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n371 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U83  ( .A1(\FIFO_S/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[0] ), .B1(RX_S[0]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n370 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[2] ), .B1(\FIFO_S/RX_out_sig [2]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n372 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U84  ( .A1(\FIFO_S/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[1] ), .B1(RX_S[1]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n371 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[3] ), .B1(\FIFO_S/RX_out_sig [3]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n373 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U85  ( .A1(\FIFO_S/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[2] ), .B1(RX_S[2]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n372 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .B1(\FIFO_S/RX_out_sig [4]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n374 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U86  ( .A1(\FIFO_S/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[3] ), .B1(RX_S[3]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n373 ) );
-  AO22X3 \FIFO_S/FIFO_DATA_PATH/U87  ( .A1(\FIFO_S/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .B1(RX_S[4]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n374 ) );
-  AO22X3 \FIFO_S/FIFO_DATA_PATH/U88  ( .A1(\FIFO_S/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[5] ), .B1(RX_S[5]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n375 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[5] ), .B1(\FIFO_S/RX_out_sig [5]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n375 ) );
+  AO22X3 \FIFO_S/FIFO_DATA_PATH/U87  ( .A1(\FIFO_S/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[6] ), .B1(\FIFO_S/RX_out_sig [6]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n376 ) );
+  AO22X3 \FIFO_S/FIFO_DATA_PATH/U88  ( .A1(\FIFO_S/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .B1(\FIFO_S/RX_out_sig [7]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n377 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U89  ( .A1(\FIFO_S/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[6] ), .B1(RX_S[6]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n376 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .B1(\FIFO_S/RX_out_sig [8]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n378 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U90  ( .A1(\FIFO_S/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .B1(RX_S[7]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n377 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .B1(\FIFO_S/RX_out_sig [9]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n379 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U91  ( .A1(\FIFO_S/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .B1(RX_S[8]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n378 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[10] ), .B1(\FIFO_S/RX_out_sig [10]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n380 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U92  ( .A1(\FIFO_S/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .B1(RX_S[9]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n379 ) );
-  AO22X3 \FIFO_S/FIFO_DATA_PATH/U93  ( .A1(\FIFO_S/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[10] ), .B1(RX_S[10]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n380 ) );
-  AO22X3 \FIFO_S/FIFO_DATA_PATH/U94  ( .A1(\FIFO_S/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .B1(RX_S[11]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n381 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .B1(\FIFO_S/RX_out_sig [11]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n381 ) );
+  AO22X3 \FIFO_S/FIFO_DATA_PATH/U93  ( .A1(\FIFO_S/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[12] ), .B1(\FIFO_S/RX_out_sig [12]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n382 ) );
+  AO22X3 \FIFO_S/FIFO_DATA_PATH/U94  ( .A1(\FIFO_S/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .B1(\FIFO_S/RX_out_sig [13]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n383 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U95  ( .A1(\FIFO_S/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[12] ), .B1(RX_S[12]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n382 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .B1(\FIFO_S/RX_out_sig [14]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n384 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U96  ( .A1(\FIFO_S/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .B1(RX_S[13]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n383 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[15] ), .B1(\FIFO_S/RX_out_sig [15]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n385 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U97  ( .A1(\FIFO_S/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .B1(RX_S[14]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n384 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[16] ), .B1(\FIFO_S/RX_out_sig [16]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n386 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U98  ( .A1(\FIFO_S/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[15] ), .B1(RX_S[15]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n385 ) );
-  AO22X3 \FIFO_S/FIFO_DATA_PATH/U99  ( .A1(\FIFO_S/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[16] ), .B1(RX_S[16]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n386 ) );
-  AO22X3 \FIFO_S/FIFO_DATA_PATH/U100  ( .A1(\FIFO_S/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[17] ), .B1(RX_S[17]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n387 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[17] ), .B1(\FIFO_S/RX_out_sig [17]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n387 ) );
+  AO22X3 \FIFO_S/FIFO_DATA_PATH/U99  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[18] ), .B1(\FIFO_S/RX_out_sig [18]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n388 ) );
+  AO22X3 \FIFO_S/FIFO_DATA_PATH/U100  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[19] ), .B1(\FIFO_S/RX_out_sig [19]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n389 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U101  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[18] ), .B1(RX_S[18]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n388 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[20] ), .B1(\FIFO_S/RX_out_sig [20]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n390 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U102  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[19] ), .B1(RX_S[19]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n389 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[21] ), .B1(\FIFO_S/RX_out_sig [21]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n391 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U103  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[20] ), .B1(RX_S[20]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n390 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[22] ), .B1(\FIFO_S/RX_out_sig [22]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n392 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U104  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[21] ), .B1(RX_S[21]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n391 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[23] ), .B1(\FIFO_S/RX_out_sig [23]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n393 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U105  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[22] ), .B1(RX_S[22]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n392 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[24] ), .B1(\FIFO_S/RX_out_sig [24]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n394 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U106  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[23] ), .B1(RX_S[23]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n393 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[25] ), .B1(\FIFO_S/RX_out_sig [25]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n395 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U107  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[24] ), .B1(RX_S[24]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n394 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[26] ), .B1(\FIFO_S/RX_out_sig [26]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n396 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U108  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[25] ), .B1(RX_S[25]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n395 ) );
-  AO22X3 \FIFO_S/FIFO_DATA_PATH/U109  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[26] ), .B1(RX_S[26]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n396 ) );
-  AO22X3 \FIFO_S/FIFO_DATA_PATH/U110  ( .A1(\FIFO_S/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[27] ), .B1(RX_S[27]), .B2(
-        \FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n397 ) );
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[27] ), .B1(\FIFO_S/RX_out_sig [27]), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n93 ), .Q(\FIFO_S/FIFO_DATA_PATH/n397 ) );
+  OAI221X3 \FIFO_S/FIFO_DATA_PATH/U109  ( .A1(\FIFO_S/FIFO_DATA_PATH/n508 ), 
+        .A2(\FIFO_S/FIFO_DATA_PATH/n72 ), .B1(\FIFO_S/FIFO_DATA_PATH/n540 ), 
+        .B2(\FIFO_S/FIFO_DATA_PATH/n70 ), .C1(\FIFO_S/FIFO_DATA_PATH/n457 ), 
+        .Q(FIFO_D_out_S[30]) );
+  AOI22X3 \FIFO_S/FIFO_DATA_PATH/U110  ( .A1(\FIFO_S/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[30] ), .B1(
+        \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n457 ) );
   OAI221X3 \FIFO_S/FIFO_DATA_PATH/U111  ( .A1(\FIFO_S/FIFO_DATA_PATH/n478 ), 
         .A2(\FIFO_S/FIFO_DATA_PATH/n74 ), .B1(\FIFO_S/FIFO_DATA_PATH/n510 ), 
         .B2(\FIFO_S/FIFO_DATA_PATH/n468 ), .C1(\FIFO_S/FIFO_DATA_PATH/n434 ), 
@@ -6643,24 +8528,27 @@ endmodule
         \FIFO_S/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_2[28] ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n454 ) );
-  NAND3X3 \FIFO_S/FIFO_DATA_PATH/U141  ( .A(write_en_out_S_out), .B(
-        write_pointer_out_S_out[2]), .C(\FIFO_S/FIFO_DATA_PATH/n476 ), .Q(
-        \FIFO_S/FIFO_DATA_PATH/n477 ) );
-  NOR3X3 \FIFO_S/FIFO_DATA_PATH/U142  ( .A(write_pointer_out_S_out[0]), .B(
-        write_pointer_out_S_out[3]), .C(write_pointer_out_S_out[1]), .Q(
-        \FIFO_S/FIFO_DATA_PATH/n476 ) );
-  NAND3X3 \FIFO_S/FIFO_DATA_PATH/U143  ( .A(write_pointer_out_S_out[0]), .B(
-        write_en_out_S_out), .C(\FIFO_S/FIFO_DATA_PATH/n472 ), .Q(
+  NAND3X3 \FIFO_S/FIFO_DATA_PATH/U141  ( .A(\FIFO_S/write_en_out_sig ), .B(
+        \FIFO_S/write_pointer_out_sig [2]), .C(\FIFO_S/FIFO_DATA_PATH/n476 ), 
+        .Q(\FIFO_S/FIFO_DATA_PATH/n477 ) );
+  NOR3X3 \FIFO_S/FIFO_DATA_PATH/U142  ( .A(\FIFO_S/write_pointer_out_sig [0]), 
+        .B(\FIFO_S/write_pointer_out_sig [3]), .C(
+        \FIFO_S/write_pointer_out_sig [1]), .Q(\FIFO_S/FIFO_DATA_PATH/n476 )
+         );
+  NAND3X3 \FIFO_S/FIFO_DATA_PATH/U143  ( .A(\FIFO_S/write_pointer_out_sig [0]), 
+        .B(\FIFO_S/write_en_out_sig ), .C(\FIFO_S/FIFO_DATA_PATH/n472 ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n473 ) );
-  NOR3X3 \FIFO_S/FIFO_DATA_PATH/U144  ( .A(write_pointer_out_S_out[1]), .B(
-        write_pointer_out_S_out[3]), .C(write_pointer_out_S_out[2]), .Q(
-        \FIFO_S/FIFO_DATA_PATH/n472 ) );
-  NAND3X3 \FIFO_S/FIFO_DATA_PATH/U145  ( .A(write_pointer_out_S_out[3]), .B(
-        write_en_out_S_out), .C(\FIFO_S/FIFO_DATA_PATH/n470 ), .Q(
+  NOR3X3 \FIFO_S/FIFO_DATA_PATH/U144  ( .A(\FIFO_S/write_pointer_out_sig [1]), 
+        .B(\FIFO_S/write_pointer_out_sig [3]), .C(
+        \FIFO_S/write_pointer_out_sig [2]), .Q(\FIFO_S/FIFO_DATA_PATH/n472 )
+         );
+  NAND3X3 \FIFO_S/FIFO_DATA_PATH/U145  ( .A(\FIFO_S/write_pointer_out_sig [3]), 
+        .B(\FIFO_S/write_en_out_sig ), .C(\FIFO_S/FIFO_DATA_PATH/n470 ), .Q(
         \FIFO_S/FIFO_DATA_PATH/n471 ) );
-  NOR3X3 \FIFO_S/FIFO_DATA_PATH/U146  ( .A(write_pointer_out_S_out[0]), .B(
-        write_pointer_out_S_out[2]), .C(write_pointer_out_S_out[1]), .Q(
-        \FIFO_S/FIFO_DATA_PATH/n470 ) );
+  NOR3X3 \FIFO_S/FIFO_DATA_PATH/U146  ( .A(\FIFO_S/write_pointer_out_sig [0]), 
+        .B(\FIFO_S/write_pointer_out_sig [2]), .C(
+        \FIFO_S/write_pointer_out_sig [1]), .Q(\FIFO_S/FIFO_DATA_PATH/n470 )
+         );
   OAI22X3 \FIFO_S/FIFO_DATA_PATH/U147  ( .A1(\FIFO_S/FIFO_DATA_PATH/n86 ), 
         .A2(\FIFO_S/FIFO_DATA_PATH/n478 ), .B1(\FIFO_S/FIFO_DATA_PATH/n305 ), 
         .B2(\FIFO_S/FIFO_DATA_PATH/n84 ), .Q(\FIFO_S/FIFO_DATA_PATH/n338 ) );
@@ -6855,208 +8743,208 @@ endmodule
         .B2(\FIFO_S/FIFO_DATA_PATH/n78 ), .Q(\FIFO_S/FIFO_DATA_PATH/n337 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U211  ( .A1(\FIFO_S/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[0] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[0]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [0]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n402 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U212  ( .A1(\FIFO_S/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[1] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[1]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [1]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n403 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U213  ( .A1(\FIFO_S/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[2] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[2]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [2]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n404 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U214  ( .A1(\FIFO_S/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[3] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[3]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [3]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n405 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U215  ( .A1(\FIFO_S/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[4] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[4]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [4]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n406 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U216  ( .A1(\FIFO_S/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[5] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[5]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [5]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n407 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U217  ( .A1(\FIFO_S/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[6] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[6]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [6]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n408 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U218  ( .A1(\FIFO_S/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[7] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[7]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [7]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n409 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U219  ( .A1(\FIFO_S/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[8] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[8]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [8]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n410 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U220  ( .A1(\FIFO_S/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[9] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[9]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [9]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n411 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U221  ( .A1(\FIFO_S/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[10] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[10]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [10]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n412 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U222  ( .A1(\FIFO_S/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[11] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[11]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [11]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n413 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U223  ( .A1(\FIFO_S/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[12] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[12]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [12]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n414 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U224  ( .A1(\FIFO_S/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[13] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[13]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [13]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n415 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U225  ( .A1(\FIFO_S/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[14] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[14]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [14]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n416 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U226  ( .A1(\FIFO_S/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[15] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[15]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [15]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n417 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U227  ( .A1(\FIFO_S/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[16] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[16]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [16]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n418 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U228  ( .A1(\FIFO_S/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[17] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[17]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [17]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n419 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U229  ( .A1(\FIFO_S/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[18] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[18]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [18]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n420 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U230  ( .A1(\FIFO_S/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[19] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[19]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [19]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n421 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U231  ( .A1(\FIFO_S/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[20] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[20]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [20]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n422 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U232  ( .A1(\FIFO_S/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[21] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[21]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [21]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n423 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U233  ( .A1(\FIFO_S/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[22] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[22]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [22]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n424 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U234  ( .A1(\FIFO_S/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[23] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[23]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [23]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n425 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U235  ( .A1(\FIFO_S/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[24] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[24]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [24]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n426 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U236  ( .A1(\FIFO_S/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[25] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[25]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [25]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n427 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U237  ( .A1(\FIFO_S/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[26] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[26]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [26]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n428 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U238  ( .A1(\FIFO_S/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[27] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[27]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [27]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n429 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U239  ( .A1(\FIFO_S/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[28] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[28]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [28]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n430 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U240  ( .A1(\FIFO_S/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[29] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[29]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [29]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n431 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U241  ( .A1(\FIFO_S/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[30] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[30]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [30]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n432 ) );
   AO22X3 \FIFO_S/FIFO_DATA_PATH/U242  ( .A1(\FIFO_S/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_S/FIFO_DATA_PATH/FIFO_MEM_3[31] ), .B1(
-        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(RX_S[31]), .Q(
+        \FIFO_S/FIFO_DATA_PATH/n98 ), .B2(\FIFO_S/RX_out_sig [31]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n433 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U243  ( .A(RX_S[0]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U243  ( .A(\FIFO_S/RX_out_sig [0]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n305 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U244  ( .A(RX_S[1]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U244  ( .A(\FIFO_S/RX_out_sig [1]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n304 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U245  ( .A(RX_S[2]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U245  ( .A(\FIFO_S/RX_out_sig [2]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n303 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U246  ( .A(RX_S[3]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U246  ( .A(\FIFO_S/RX_out_sig [3]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n302 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U247  ( .A(RX_S[4]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U247  ( .A(\FIFO_S/RX_out_sig [4]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n301 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U248  ( .A(RX_S[5]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U248  ( .A(\FIFO_S/RX_out_sig [5]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n300 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U249  ( .A(RX_S[6]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U249  ( .A(\FIFO_S/RX_out_sig [6]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n299 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U250  ( .A(RX_S[7]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U250  ( .A(\FIFO_S/RX_out_sig [7]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n298 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U251  ( .A(RX_S[8]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U251  ( .A(\FIFO_S/RX_out_sig [8]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n297 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U252  ( .A(RX_S[9]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U252  ( .A(\FIFO_S/RX_out_sig [9]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n296 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U253  ( .A(RX_S[10]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U253  ( .A(\FIFO_S/RX_out_sig [10]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n295 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U254  ( .A(RX_S[11]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U254  ( .A(\FIFO_S/RX_out_sig [11]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n294 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U255  ( .A(RX_S[12]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U255  ( .A(\FIFO_S/RX_out_sig [12]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n293 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U256  ( .A(RX_S[13]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U256  ( .A(\FIFO_S/RX_out_sig [13]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n292 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U257  ( .A(RX_S[14]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U257  ( .A(\FIFO_S/RX_out_sig [14]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n291 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U258  ( .A(RX_S[15]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U258  ( .A(\FIFO_S/RX_out_sig [15]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n290 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U259  ( .A(RX_S[16]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U259  ( .A(\FIFO_S/RX_out_sig [16]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n289 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U260  ( .A(RX_S[17]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U260  ( .A(\FIFO_S/RX_out_sig [17]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n288 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U261  ( .A(RX_S[18]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U261  ( .A(\FIFO_S/RX_out_sig [18]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n287 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U262  ( .A(RX_S[19]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U262  ( .A(\FIFO_S/RX_out_sig [19]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n286 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U263  ( .A(RX_S[20]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U263  ( .A(\FIFO_S/RX_out_sig [20]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n285 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U264  ( .A(RX_S[21]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U264  ( .A(\FIFO_S/RX_out_sig [21]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n284 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U265  ( .A(RX_S[22]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U265  ( .A(\FIFO_S/RX_out_sig [22]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n283 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U266  ( .A(RX_S[23]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U266  ( .A(\FIFO_S/RX_out_sig [23]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n282 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U267  ( .A(RX_S[24]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U267  ( .A(\FIFO_S/RX_out_sig [24]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n281 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U268  ( .A(RX_S[25]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U268  ( .A(\FIFO_S/RX_out_sig [25]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n280 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U269  ( .A(RX_S[26]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U269  ( .A(\FIFO_S/RX_out_sig [26]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n279 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U270  ( .A(RX_S[27]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U270  ( .A(\FIFO_S/RX_out_sig [27]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n278 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U271  ( .A(RX_S[28]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U271  ( .A(\FIFO_S/RX_out_sig [28]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n277 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U272  ( .A(RX_S[29]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U272  ( .A(\FIFO_S/RX_out_sig [29]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n104 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U273  ( .A(RX_S[30]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U273  ( .A(\FIFO_S/RX_out_sig [30]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n103 ) );
-  INVXL \FIFO_S/FIFO_DATA_PATH/U274  ( .A(RX_S[31]), .Q(
+  INVXL \FIFO_S/FIFO_DATA_PATH/U274  ( .A(\FIFO_S/RX_out_sig [31]), .Q(
         \FIFO_S/FIFO_DATA_PATH/n102 ) );
   DFPX3 \FIFO_S/FIFO_CONTROL_PART/write_pointer_reg[0]  ( .D(
         \FIFO_S/FIFO_CONTROL_PART/write_pointer_in[0] ), .CP(clk), .SN(reset), 
         .Q(write_pointer_out_S_out[0]), .QN(\FIFO_S/FIFO_CONTROL_PART/n30 ) );
   DFPX3 \FIFO_S/FIFO_CONTROL_PART/read_pointer_reg[0]  ( .D(
         \FIFO_S/FIFO_CONTROL_PART/read_pointer_in[0] ), .CP(clk), .SN(reset), 
-        .Q(read_pointer_out_S_out[0]), .QN(\FIFO_S/FIFO_DATA_PATH/n99 ) );
+        .Q(read_pointer_out_S_out[0]), .QN(\FIFO_S/FIFO_CONTROL_PART/n34 ) );
   XOR2X1 \FIFO_S/FIFO_CONTROL_PART/U19  ( .A(\FIFO_S/FIFO_CONTROL_PART/n35 ), 
         .B(write_pointer_out_S_out[1]), .Q(\FIFO_S/FIFO_CONTROL_PART/n9 ) );
   XOR2X1 \FIFO_S/FIFO_CONTROL_PART/U20  ( .A(\FIFO_S/FIFO_CONTROL_PART/n36 ), 
         .B(write_pointer_out_S_out[2]), .Q(\FIFO_S/FIFO_CONTROL_PART/n10 ) );
-  XOR2X1 \FIFO_S/FIFO_CONTROL_PART/U21  ( .A(\FIFO_S/FIFO_DATA_PATH/n99 ), .B(
-        write_pointer_out_S_out[0]), .Q(\FIFO_S/FIFO_CONTROL_PART/n11 ) );
+  XOR2X1 \FIFO_S/FIFO_CONTROL_PART/U21  ( .A(\FIFO_S/FIFO_CONTROL_PART/n34 ), 
+        .B(write_pointer_out_S_out[0]), .Q(\FIFO_S/FIFO_CONTROL_PART/n11 ) );
   XOR2X1 \FIFO_S/FIFO_CONTROL_PART/U22  ( .A(\FIFO_S/FIFO_CONTROL_PART/n37 ), 
         .B(write_pointer_out_S_out[3]), .Q(\FIFO_S/FIFO_CONTROL_PART/n25 ) );
   XOR2X1 \FIFO_S/FIFO_CONTROL_PART/U23  ( .A(write_pointer_out_S_out[3]), .B(
@@ -7095,10 +8983,13 @@ endmodule
   INVXL \FIFO_S/FIFO_CONTROL_PART/U5  ( .A(\FIFO_S/FIFO_CONTROL_PART/n26 ), 
         .Q(empty_S_out) );
   OAI31X2 \FIFO_S/FIFO_CONTROL_PART/U6  ( .A1(\FIFO_S/FIFO_CONTROL_PART/n27 ), 
-        .A2(Grant_LS_out), .A3(Grant_ES_out), .B1(
+        .A2(\FIFO_S/read_en_L_out_sig ), .A3(\FIFO_S/read_en_E_out_sig ), .B1(
         \FIFO_S/FIFO_CONTROL_PART/n26 ), .Q(\FIFO_S/FIFO_CONTROL_PART/n28 ) );
+  OR3X3 \FIFO_S/FIFO_CONTROL_PART/U7  ( .A(\FIFO_S/read_en_W_out_sig ), .B(
+        \FIFO_S/read_en_S_out_sig ), .C(\FIFO_S/read_en_N_out_sig ), .Q(
+        \FIFO_S/FIFO_CONTROL_PART/n27 ) );
   OAI22X3 \FIFO_S/FIFO_CONTROL_PART/U8  ( .A1(\FIFO_S/FIFO_CONTROL_PART/n37 ), 
-        .A2(\FIFO_S/FIFO_CONTROL_PART/n28 ), .B1(\FIFO_S/FIFO_CONTROL_PART/n1 ), .B2(\FIFO_S/FIFO_DATA_PATH/n99 ), .Q(
+        .A2(\FIFO_S/FIFO_CONTROL_PART/n28 ), .B1(\FIFO_S/FIFO_CONTROL_PART/n1 ), .B2(\FIFO_S/FIFO_CONTROL_PART/n34 ), .Q(
         \FIFO_S/FIFO_CONTROL_PART/read_pointer_in[0] ) );
   OAI22X3 \FIFO_S/FIFO_CONTROL_PART/U9  ( .A1(\FIFO_S/FIFO_CONTROL_PART/n36 ), 
         .A2(\FIFO_S/FIFO_CONTROL_PART/n28 ), .B1(\FIFO_S/FIFO_CONTROL_PART/n1 ), .B2(\FIFO_S/FIFO_CONTROL_PART/n37 ), .Q(
@@ -7106,7 +8997,7 @@ endmodule
   OAI22X3 \FIFO_S/FIFO_CONTROL_PART/U10  ( .A1(\FIFO_S/FIFO_CONTROL_PART/n35 ), 
         .A2(\FIFO_S/FIFO_CONTROL_PART/n28 ), .B1(\FIFO_S/FIFO_CONTROL_PART/n1 ), .B2(\FIFO_S/FIFO_CONTROL_PART/n36 ), .Q(
         \FIFO_S/FIFO_CONTROL_PART/read_pointer_in[2] ) );
-  OAI22X3 \FIFO_S/FIFO_CONTROL_PART/U11  ( .A1(\FIFO_S/FIFO_DATA_PATH/n99 ), 
+  OAI22X3 \FIFO_S/FIFO_CONTROL_PART/U11  ( .A1(\FIFO_S/FIFO_CONTROL_PART/n34 ), 
         .A2(\FIFO_S/FIFO_CONTROL_PART/n28 ), .B1(\FIFO_S/FIFO_CONTROL_PART/n1 ), .B2(\FIFO_S/FIFO_CONTROL_PART/n35 ), .Q(
         \FIFO_S/FIFO_CONTROL_PART/read_pointer_in[1] ) );
   NAND4X3 \FIFO_S/FIFO_CONTROL_PART/U12  ( .A(\FIFO_S/FIFO_CONTROL_PART/n25 ), 
@@ -7115,7 +9006,7 @@ endmodule
          );
   OAI31X2 \FIFO_S/FIFO_CONTROL_PART/U13  ( .A1(\FIFO_S/FIFO_CONTROL_PART/n8 ), 
         .A2(\FIFO_S/FIFO_CONTROL_PART/n7 ), .A3(\FIFO_S/FIFO_CONTROL_PART/n6 ), 
-        .B1(valid_in_S), .Q(\FIFO_S/FIFO_CONTROL_PART/n29 ) );
+        .B1(\FIFO_S/valid_in_out_sig ), .Q(\FIFO_S/FIFO_CONTROL_PART/n29 ) );
   NAND2XL \FIFO_S/FIFO_CONTROL_PART/U14  ( .A(\FIFO_S/FIFO_CONTROL_PART/n5 ), 
         .B(\FIFO_S/FIFO_CONTROL_PART/n4 ), .Q(\FIFO_S/FIFO_CONTROL_PART/n8 )
          );
@@ -7135,8 +9026,19 @@ endmodule
         .A2(\FIFO_S/FIFO_CONTROL_PART/n29 ), .B1(write_en_out_S_out), .B2(
         \FIFO_S/FIFO_CONTROL_PART/n31 ), .Q(
         \FIFO_S/FIFO_CONTROL_PART/write_pointer_in[1] ) );
-  NAND2X6 U12 ( .A(n5), .B(n6), .Q(\FIFO_S/FIFO_CONTROL_PART/n27 ) );
-  CLKINVX4 U13 ( .A(Grant_WS_out), .Q(n5) );
+  FIFO_data_path_input_wire_DATA_WIDTH32_1 \FIFO_S/FIFO_DATA_PATH_inputs  ( 
+        .write_en(write_en_out_S_out), .RX(RX_S), .read_pointer(
+        read_pointer_out_S_out), .write_pointer(write_pointer_out_S_out), 
+        .write_en_out(\FIFO_S/write_en_out_sig ), .RX_out(\FIFO_S/RX_out_sig ), 
+        .read_ptr_out(\FIFO_S/read_pointer_out_sig ), .write_ptr_out(
+        \FIFO_S/write_pointer_out_sig ) );
+  FIFO_control_part_input_wire_1 \FIFO_S/FIFO_CONTROL_PART_inputs  ( 
+        .valid_in(valid_in_S), .read_en_N(Grant_NS_out), .read_en_E(
+        Grant_ES_out), .read_en_W(Grant_WS_out), .read_en_S(
+        \Xbar_sel_L_out[0] ), .read_en_L(Grant_LS_out), .valid_in_out(
+        \FIFO_S/valid_in_out_sig ), .read_en_N_out(\FIFO_S/read_en_N_out_sig ), 
+        .read_en_E_out(\FIFO_S/read_en_E_out_sig ), .read_en_W_out(
+        \FIFO_S/read_en_W_out_sig ), .read_en_S_out(\FIFO_S/read_en_S_out_sig ), .read_en_L_out(\FIFO_S/read_en_L_out_sig ) );
   DFCX1 \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3_reg[28]  ( .D(
         \FIFO_L/FIFO_DATA_PATH/n430 ), .CP(clk), .RN(reset), .Q(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[28] ) );
@@ -7534,9 +9436,9 @@ endmodule
   INVXL \FIFO_L/FIFO_DATA_PATH/U7  ( .A(\FIFO_L/FIFO_DATA_PATH/n82 ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n87 ) );
   CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U8  ( .A(\FIFO_L/FIFO_DATA_PATH/n469 ), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n72 ) );
-  CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U9  ( .A(\FIFO_L/FIFO_DATA_PATH/n469 ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n73 ) );
+  CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U9  ( .A(\FIFO_L/FIFO_DATA_PATH/n469 ), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n72 ) );
   CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U10  ( .A(\FIFO_L/FIFO_DATA_PATH/n469 ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n74 ) );
   CLKINVX2 \FIFO_L/FIFO_DATA_PATH/U11  ( .A(\FIFO_L/FIFO_DATA_PATH/n87 ), .Q(
@@ -7560,18 +9462,18 @@ endmodule
         \FIFO_L/FIFO_DATA_PATH/n81 ) );
   CLKINVX2 \FIFO_L/FIFO_DATA_PATH/U20  ( .A(\FIFO_L/FIFO_DATA_PATH/n83 ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n88 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U21  ( .A(\FIFO_L/FIFO_DATA_PATH/n70 ), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n71 ) );
-  CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U22  ( .A(\FIFO_L/FIFO_DATA_PATH/n465 ), .Q(
+  CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U21  ( .A(\FIFO_L/FIFO_DATA_PATH/n465 ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n67 ) );
-  CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U23  ( .A(\FIFO_L/FIFO_DATA_PATH/n466 ), .Q(
+  CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U22  ( .A(\FIFO_L/FIFO_DATA_PATH/n466 ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n69 ) );
-  CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U24  ( .A(\FIFO_L/FIFO_DATA_PATH/n475 ), .Q(
+  CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U23  ( .A(\FIFO_L/FIFO_DATA_PATH/n475 ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n89 ) );
-  CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U25  ( .A(\FIFO_L/FIFO_DATA_PATH/n475 ), .Q(
+  CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U24  ( .A(\FIFO_L/FIFO_DATA_PATH/n475 ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n90 ) );
-  CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U26  ( .A(\FIFO_L/FIFO_DATA_PATH/n475 ), .Q(
+  CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U25  ( .A(\FIFO_L/FIFO_DATA_PATH/n475 ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n91 ) );
+  INVXL \FIFO_L/FIFO_DATA_PATH/U26  ( .A(\FIFO_L/FIFO_DATA_PATH/n70 ), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n71 ) );
   CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U27  ( .A(\FIFO_L/FIFO_DATA_PATH/n473 ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n82 ) );
   CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U28  ( .A(\FIFO_L/FIFO_DATA_PATH/n473 ), .Q(
@@ -7603,8 +9505,8 @@ endmodule
         .A2(\FIFO_L/FIFO_DATA_PATH/n73 ), .B1(\FIFO_L/FIFO_DATA_PATH/n511 ), 
         .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n445 ), 
         .Q(FIFO_D_out_L[1]) );
-  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U39  ( .A1(\FIFO_L/FIFO_DATA_PATH/n69 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[1] ), .B1(
+  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U39  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[1] ), .B1(
         \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[1] ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n445 ) );
@@ -7612,8 +9514,8 @@ endmodule
         .A2(\FIFO_L/FIFO_DATA_PATH/n72 ), .B1(\FIFO_L/FIFO_DATA_PATH/n513 ), 
         .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n459 ), 
         .Q(FIFO_D_out_L[3]) );
-  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U41  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[3] ), .B1(
+  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U41  ( .A1(\FIFO_L/FIFO_DATA_PATH/n68 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[3] ), .B1(
         \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[3] ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n459 ) );
@@ -7621,7 +9523,7 @@ endmodule
         .A2(\FIFO_L/FIFO_DATA_PATH/n72 ), .B1(\FIFO_L/FIFO_DATA_PATH/n515 ), 
         .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n461 ), 
         .Q(FIFO_D_out_L[5]) );
-  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U43  ( .A1(\FIFO_L/FIFO_DATA_PATH/n68 ), .A2(
+  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U43  ( .A1(\FIFO_L/FIFO_DATA_PATH/n69 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[5] ), .B1(
         \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[5] ), .Q(
@@ -7647,221 +9549,220 @@ endmodule
   OAI221X3 \FIFO_L/FIFO_DATA_PATH/U48  ( .A1(\FIFO_L/FIFO_DATA_PATH/n490 ), 
         .A2(\FIFO_L/FIFO_DATA_PATH/n74 ), .B1(\FIFO_L/FIFO_DATA_PATH/n522 ), 
         .B2(\FIFO_L/FIFO_DATA_PATH/n468 ), .C1(\FIFO_L/FIFO_DATA_PATH/n437 ), 
-        .Q(\LBDR_L/n4 ) );
+        .Q(FIFO_D_out_L[12]) );
   AOI22X3 \FIFO_L/FIFO_DATA_PATH/U49  ( .A1(\FIFO_L/FIFO_DATA_PATH/n68 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[12] ), .B1(
         \FIFO_L/FIFO_DATA_PATH/n66 ), .B2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[12] ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n437 ) );
-  NOR4X3 \FIFO_L/FIFO_DATA_PATH/U50  ( .A(\FIFO_L/FIFO_DATA_PATH/n100 ), .B(
-        read_pointer_out_L_out[0]), .C(read_pointer_out_L_out[2]), .D(
-        read_pointer_out_L_out[3]), .Q(\FIFO_L/FIFO_DATA_PATH/n465 ) );
-  NOR4X3 \FIFO_L/FIFO_DATA_PATH/U51  ( .A(\FIFO_L/FIFO_DATA_PATH/n101 ), .B(
-        read_pointer_out_L_out[0]), .C(read_pointer_out_L_out[1]), .D(
-        read_pointer_out_L_out[3]), .Q(\FIFO_L/FIFO_DATA_PATH/n466 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U52  ( .A(read_pointer_out_L_out[1]), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n100 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U53  ( .A(read_pointer_out_L_out[2]), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n101 ) );
-  CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U54  ( .A(\FIFO_L/FIFO_DATA_PATH/n468 ), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n70 ) );
-  NAND4X3 \FIFO_L/FIFO_DATA_PATH/U55  ( .A(read_pointer_out_L_out[3]), .B(
-        \FIFO_L/FIFO_DATA_PATH/n99 ), .C(\FIFO_L/FIFO_DATA_PATH/n100 ), .D(
-        \FIFO_L/FIFO_DATA_PATH/n101 ), .Q(\FIFO_L/FIFO_DATA_PATH/n468 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U56  ( .A(read_pointer_out_L_out[0]), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n99 ) );
-  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U57  ( .A1(\FIFO_L/FIFO_DATA_PATH/n509 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/n72 ), .B1(\FIFO_L/FIFO_DATA_PATH/n541 ), 
-        .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n458 ), 
-        .Q(FIFO_D_out_L[31]) );
-  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U58  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[31] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n458 ) );
-  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U59  ( .A1(\FIFO_L/FIFO_DATA_PATH/n492 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/n73 ), .B1(\FIFO_L/FIFO_DATA_PATH/n524 ), 
-        .B2(\FIFO_L/FIFO_DATA_PATH/n468 ), .C1(\FIFO_L/FIFO_DATA_PATH/n439 ), 
-        .Q(\LBDR_L/n32 ) );
-  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U60  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[14] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n439 ) );
-  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U61  ( .A1(\FIFO_L/FIFO_DATA_PATH/n485 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/n72 ), .B1(\FIFO_L/FIFO_DATA_PATH/n517 ), 
-        .B2(\FIFO_L/FIFO_DATA_PATH/n468 ), .C1(\FIFO_L/FIFO_DATA_PATH/n463 ), 
-        .Q(\LBDR_L/n60 ) );
-  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U62  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[7] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n463 ) );
-  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U63  ( .A1(\FIFO_L/FIFO_DATA_PATH/n508 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/n72 ), .B1(\FIFO_L/FIFO_DATA_PATH/n540 ), 
-        .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n457 ), 
-        .Q(FIFO_D_out_L[30]) );
-  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U64  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[30] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n457 ) );
-  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U65  ( .A1(\FIFO_L/FIFO_DATA_PATH/n507 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/n72 ), .B1(\FIFO_L/FIFO_DATA_PATH/n539 ), 
-        .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n455 ), 
-        .Q(FIFO_D_out_L[29]) );
-  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U66  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[29] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n455 ) );
-  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U67  ( .A1(\FIFO_L/FIFO_DATA_PATH/n489 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/n74 ), .B1(\FIFO_L/FIFO_DATA_PATH/n521 ), 
-        .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n436 ), 
-        .Q(FIFO_D_out_L[11]) );
-  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U68  ( .A1(\FIFO_L/FIFO_DATA_PATH/n68 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[11] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n66 ), .B2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n436 ) );
-  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U69  ( .A1(\FIFO_L/FIFO_DATA_PATH/n487 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/n72 ), .B1(\FIFO_L/FIFO_DATA_PATH/n519 ), 
-        .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n467 ), 
-        .Q(FIFO_D_out_L[9]) );
-  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U70  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[9] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n467 ) );
-  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U71  ( .A1(\FIFO_L/FIFO_DATA_PATH/n482 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/n72 ), .B1(\FIFO_L/FIFO_DATA_PATH/n514 ), 
-        .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n460 ), 
-        .Q(FIFO_D_out_L[4]) );
-  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U72  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[4] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n460 ) );
-  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U73  ( .A1(\FIFO_L/FIFO_DATA_PATH/n491 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/n73 ), .B1(\FIFO_L/FIFO_DATA_PATH/n523 ), 
-        .B2(\FIFO_L/FIFO_DATA_PATH/n468 ), .C1(\FIFO_L/FIFO_DATA_PATH/n438 ), 
-        .Q(\LBDR_L/n31 ) );
-  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U74  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
-        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[13] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n438 ) );
-  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U75  ( .A1(\FIFO_L/FIFO_DATA_PATH/n486 ), 
+  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U50  ( .A1(\FIFO_L/FIFO_DATA_PATH/n486 ), 
         .A2(\FIFO_L/FIFO_DATA_PATH/n72 ), .B1(\FIFO_L/FIFO_DATA_PATH/n518 ), 
         .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n464 ), 
         .Q(FIFO_D_out_L[8]) );
-  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U76  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
+  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U51  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
         .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[8] ), .B1(
         \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n464 ) );
-  NAND3X3 \FIFO_L/FIFO_DATA_PATH/U77  ( .A(write_pointer_out_L_out[1]), .B(
-        write_en_out_L_out), .C(\FIFO_L/FIFO_DATA_PATH/n474 ), .Q(
+  NOR4X3 \FIFO_L/FIFO_DATA_PATH/U52  ( .A(\FIFO_L/FIFO_DATA_PATH/n100 ), .B(
+        \FIFO_L/read_pointer_out_sig [0]), .C(\FIFO_L/read_pointer_out_sig [2]), .D(\FIFO_L/read_pointer_out_sig [3]), .Q(\FIFO_L/FIFO_DATA_PATH/n465 ) );
+  NOR4X3 \FIFO_L/FIFO_DATA_PATH/U53  ( .A(\FIFO_L/FIFO_DATA_PATH/n101 ), .B(
+        \FIFO_L/read_pointer_out_sig [0]), .C(\FIFO_L/read_pointer_out_sig [1]), .D(\FIFO_L/read_pointer_out_sig [3]), .Q(\FIFO_L/FIFO_DATA_PATH/n466 ) );
+  INVXL \FIFO_L/FIFO_DATA_PATH/U54  ( .A(\FIFO_L/read_pointer_out_sig [1]), 
+        .Q(\FIFO_L/FIFO_DATA_PATH/n100 ) );
+  INVXL \FIFO_L/FIFO_DATA_PATH/U55  ( .A(\FIFO_L/read_pointer_out_sig [2]), 
+        .Q(\FIFO_L/FIFO_DATA_PATH/n101 ) );
+  CLKBUFX2 \FIFO_L/FIFO_DATA_PATH/U56  ( .A(\FIFO_L/FIFO_DATA_PATH/n468 ), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n70 ) );
+  NAND4X3 \FIFO_L/FIFO_DATA_PATH/U57  ( .A(\FIFO_L/read_pointer_out_sig [3]), 
+        .B(\FIFO_L/FIFO_DATA_PATH/n99 ), .C(\FIFO_L/FIFO_DATA_PATH/n100 ), .D(
+        \FIFO_L/FIFO_DATA_PATH/n101 ), .Q(\FIFO_L/FIFO_DATA_PATH/n468 ) );
+  INVXL \FIFO_L/FIFO_DATA_PATH/U58  ( .A(\FIFO_L/read_pointer_out_sig [0]), 
+        .Q(\FIFO_L/FIFO_DATA_PATH/n99 ) );
+  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U59  ( .A1(\FIFO_L/FIFO_DATA_PATH/n507 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/n72 ), .B1(\FIFO_L/FIFO_DATA_PATH/n539 ), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n455 ), 
+        .Q(FIFO_D_out_L[29]) );
+  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U60  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[29] ), .B1(
+        \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n455 ) );
+  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U61  ( .A1(\FIFO_L/FIFO_DATA_PATH/n489 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/n74 ), .B1(\FIFO_L/FIFO_DATA_PATH/n521 ), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n436 ), 
+        .Q(FIFO_D_out_L[11]) );
+  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U62  ( .A1(\FIFO_L/FIFO_DATA_PATH/n68 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[11] ), .B1(
+        \FIFO_L/FIFO_DATA_PATH/n66 ), .B2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n436 ) );
+  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U63  ( .A1(\FIFO_L/FIFO_DATA_PATH/n487 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/n72 ), .B1(\FIFO_L/FIFO_DATA_PATH/n519 ), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n467 ), 
+        .Q(FIFO_D_out_L[9]) );
+  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U64  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[9] ), .B1(
+        \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n467 ) );
+  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U65  ( .A1(\FIFO_L/FIFO_DATA_PATH/n482 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/n72 ), .B1(\FIFO_L/FIFO_DATA_PATH/n514 ), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n460 ), 
+        .Q(FIFO_D_out_L[4]) );
+  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U66  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[4] ), .B1(
+        \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n460 ) );
+  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U67  ( .A1(\FIFO_L/FIFO_DATA_PATH/n491 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/n73 ), .B1(\FIFO_L/FIFO_DATA_PATH/n523 ), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n468 ), .C1(\FIFO_L/FIFO_DATA_PATH/n438 ), 
+        .Q(FIFO_D_out_L[13]) );
+  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U68  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[13] ), .B1(
+        \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n438 ) );
+  NAND3X3 \FIFO_L/FIFO_DATA_PATH/U69  ( .A(\FIFO_L/write_pointer_out_sig [1]), 
+        .B(\FIFO_L/write_en_out_sig ), .C(\FIFO_L/FIFO_DATA_PATH/n474 ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n475 ) );
-  NOR3X3 \FIFO_L/FIFO_DATA_PATH/U78  ( .A(write_pointer_out_L_out[0]), .B(
-        write_pointer_out_L_out[3]), .C(write_pointer_out_L_out[2]), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n474 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U79  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[28] ), .B1(RX_L[28]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n398 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U80  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .B1(RX_L[29]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n399 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U81  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .B1(RX_L[30]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n400 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U82  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .B1(RX_L[31]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n401 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U83  ( .A1(\FIFO_L/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[0] ), .B1(RX_L[0]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n370 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U84  ( .A1(\FIFO_L/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[1] ), .B1(RX_L[1]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n371 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U85  ( .A1(\FIFO_L/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[2] ), .B1(RX_L[2]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n372 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U86  ( .A1(\FIFO_L/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[3] ), .B1(RX_L[3]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n373 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U87  ( .A1(\FIFO_L/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .B1(RX_L[4]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n374 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U88  ( .A1(\FIFO_L/FIFO_DATA_PATH/n89 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[5] ), .B1(RX_L[5]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n375 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U89  ( .A1(\FIFO_L/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[6] ), .B1(RX_L[6]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n376 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U90  ( .A1(\FIFO_L/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .B1(RX_L[7]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n377 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U91  ( .A1(\FIFO_L/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .B1(RX_L[8]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n378 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U92  ( .A1(\FIFO_L/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .B1(RX_L[9]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n379 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U93  ( .A1(\FIFO_L/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[10] ), .B1(RX_L[10]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n380 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U94  ( .A1(\FIFO_L/FIFO_DATA_PATH/n90 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .B1(RX_L[11]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n381 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U95  ( .A1(\FIFO_L/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[12] ), .B1(RX_L[12]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n382 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U96  ( .A1(\FIFO_L/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .B1(RX_L[13]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n383 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U97  ( .A1(\FIFO_L/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .B1(RX_L[14]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n384 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U98  ( .A1(\FIFO_L/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[15] ), .B1(RX_L[15]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n385 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U99  ( .A1(\FIFO_L/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[16] ), .B1(RX_L[16]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n386 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U100  ( .A1(\FIFO_L/FIFO_DATA_PATH/n91 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[17] ), .B1(RX_L[17]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n387 ) );
+  NOR3X3 \FIFO_L/FIFO_DATA_PATH/U70  ( .A(\FIFO_L/write_pointer_out_sig [0]), 
+        .B(\FIFO_L/write_pointer_out_sig [3]), .C(
+        \FIFO_L/write_pointer_out_sig [2]), .Q(\FIFO_L/FIFO_DATA_PATH/n474 )
+         );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U71  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[28] ), .B1(\FIFO_L/RX_out_sig [28]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n398 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U72  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[29] ), .B1(\FIFO_L/RX_out_sig [29]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n399 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U73  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .B1(\FIFO_L/RX_out_sig [30]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n400 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U74  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .B1(\FIFO_L/RX_out_sig [31]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n401 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U75  ( .A1(\FIFO_L/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[0] ), .B1(\FIFO_L/RX_out_sig [0]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n370 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U76  ( .A1(\FIFO_L/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[1] ), .B1(\FIFO_L/RX_out_sig [1]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n371 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U77  ( .A1(\FIFO_L/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[2] ), .B1(\FIFO_L/RX_out_sig [2]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n372 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U78  ( .A1(\FIFO_L/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[3] ), .B1(\FIFO_L/RX_out_sig [3]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n373 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U79  ( .A1(\FIFO_L/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[4] ), .B1(\FIFO_L/RX_out_sig [4]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n374 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U80  ( .A1(\FIFO_L/FIFO_DATA_PATH/n89 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[5] ), .B1(\FIFO_L/RX_out_sig [5]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n375 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U81  ( .A1(\FIFO_L/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[6] ), .B1(\FIFO_L/RX_out_sig [6]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n376 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U82  ( .A1(\FIFO_L/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .B1(\FIFO_L/RX_out_sig [7]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n377 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U83  ( .A1(\FIFO_L/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[8] ), .B1(\FIFO_L/RX_out_sig [8]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n378 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U84  ( .A1(\FIFO_L/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[9] ), .B1(\FIFO_L/RX_out_sig [9]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n379 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U85  ( .A1(\FIFO_L/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[10] ), .B1(\FIFO_L/RX_out_sig [10]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n380 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U86  ( .A1(\FIFO_L/FIFO_DATA_PATH/n90 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[11] ), .B1(\FIFO_L/RX_out_sig [11]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n381 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U87  ( .A1(\FIFO_L/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[12] ), .B1(\FIFO_L/RX_out_sig [12]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n382 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U88  ( .A1(\FIFO_L/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[13] ), .B1(\FIFO_L/RX_out_sig [13]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n383 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U89  ( .A1(\FIFO_L/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .B1(\FIFO_L/RX_out_sig [14]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n384 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U90  ( .A1(\FIFO_L/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[15] ), .B1(\FIFO_L/RX_out_sig [15]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n385 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U91  ( .A1(\FIFO_L/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[16] ), .B1(\FIFO_L/RX_out_sig [16]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n386 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U92  ( .A1(\FIFO_L/FIFO_DATA_PATH/n91 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[17] ), .B1(\FIFO_L/RX_out_sig [17]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n387 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U93  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[18] ), .B1(\FIFO_L/RX_out_sig [18]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n388 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U94  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[19] ), .B1(\FIFO_L/RX_out_sig [19]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n389 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U95  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[20] ), .B1(\FIFO_L/RX_out_sig [20]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n390 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U96  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[21] ), .B1(\FIFO_L/RX_out_sig [21]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n391 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U97  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[22] ), .B1(\FIFO_L/RX_out_sig [22]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n392 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U98  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[23] ), .B1(\FIFO_L/RX_out_sig [23]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n393 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U99  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[24] ), .B1(\FIFO_L/RX_out_sig [24]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n394 ) );
+  AO22X3 \FIFO_L/FIFO_DATA_PATH/U100  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[25] ), .B1(\FIFO_L/RX_out_sig [25]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n395 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U101  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[18] ), .B1(RX_L[18]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n388 ) );
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[26] ), .B1(\FIFO_L/RX_out_sig [26]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n396 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U102  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[19] ), .B1(RX_L[19]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n389 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U103  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[20] ), .B1(RX_L[20]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n390 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U104  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[21] ), .B1(RX_L[21]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n391 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U105  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[22] ), .B1(RX_L[22]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n392 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U106  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[23] ), .B1(RX_L[23]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n393 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U107  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[24] ), .B1(RX_L[24]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n394 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U108  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[25] ), .B1(RX_L[25]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n395 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U109  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[26] ), .B1(RX_L[26]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n396 ) );
-  AO22X3 \FIFO_L/FIFO_DATA_PATH/U110  ( .A1(\FIFO_L/FIFO_DATA_PATH/n92 ), .A2(
-        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[27] ), .B1(RX_L[27]), .B2(
-        \FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n397 ) );
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[27] ), .B1(\FIFO_L/RX_out_sig [27]), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n93 ), .Q(\FIFO_L/FIFO_DATA_PATH/n397 ) );
+  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U103  ( .A1(\FIFO_L/FIFO_DATA_PATH/n509 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/n72 ), .B1(\FIFO_L/FIFO_DATA_PATH/n541 ), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n458 ), 
+        .Q(FIFO_D_out_L[31]) );
+  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U104  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[31] ), .B1(
+        \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[31] ), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n458 ) );
+  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U105  ( .A1(\FIFO_L/FIFO_DATA_PATH/n492 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/n73 ), .B1(\FIFO_L/FIFO_DATA_PATH/n524 ), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n468 ), .C1(\FIFO_L/FIFO_DATA_PATH/n439 ), 
+        .Q(FIFO_D_out_L[14]) );
+  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U106  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[14] ), .B1(
+        \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[14] ), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n439 ) );
+  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U107  ( .A1(\FIFO_L/FIFO_DATA_PATH/n485 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/n72 ), .B1(\FIFO_L/FIFO_DATA_PATH/n517 ), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n463 ), 
+        .Q(FIFO_D_out_L[7]) );
+  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U108  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[7] ), .B1(
+        \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[7] ), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n463 ) );
+  OAI221X3 \FIFO_L/FIFO_DATA_PATH/U109  ( .A1(\FIFO_L/FIFO_DATA_PATH/n508 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/n72 ), .B1(\FIFO_L/FIFO_DATA_PATH/n540 ), 
+        .B2(\FIFO_L/FIFO_DATA_PATH/n70 ), .C1(\FIFO_L/FIFO_DATA_PATH/n457 ), 
+        .Q(FIFO_D_out_L[30]) );
+  AOI22X3 \FIFO_L/FIFO_DATA_PATH/U110  ( .A1(\FIFO_L/FIFO_DATA_PATH/n466 ), 
+        .A2(\FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[30] ), .B1(
+        \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
+        \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[30] ), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n457 ) );
   OAI221X3 \FIFO_L/FIFO_DATA_PATH/U111  ( .A1(\FIFO_L/FIFO_DATA_PATH/n478 ), 
         .A2(\FIFO_L/FIFO_DATA_PATH/n74 ), .B1(\FIFO_L/FIFO_DATA_PATH/n510 ), 
         .B2(\FIFO_L/FIFO_DATA_PATH/n468 ), .C1(\FIFO_L/FIFO_DATA_PATH/n434 ), 
@@ -7997,24 +9898,27 @@ endmodule
         \FIFO_L/FIFO_DATA_PATH/n65 ), .B2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_2[28] ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n454 ) );
-  NAND3X3 \FIFO_L/FIFO_DATA_PATH/U141  ( .A(write_en_out_L_out), .B(
-        write_pointer_out_L_out[2]), .C(\FIFO_L/FIFO_DATA_PATH/n476 ), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n477 ) );
-  NOR3X3 \FIFO_L/FIFO_DATA_PATH/U142  ( .A(write_pointer_out_L_out[0]), .B(
-        write_pointer_out_L_out[3]), .C(write_pointer_out_L_out[1]), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n476 ) );
-  NAND3X3 \FIFO_L/FIFO_DATA_PATH/U143  ( .A(write_pointer_out_L_out[0]), .B(
-        write_en_out_L_out), .C(\FIFO_L/FIFO_DATA_PATH/n472 ), .Q(
+  NAND3X3 \FIFO_L/FIFO_DATA_PATH/U141  ( .A(\FIFO_L/write_en_out_sig ), .B(
+        \FIFO_L/write_pointer_out_sig [2]), .C(\FIFO_L/FIFO_DATA_PATH/n476 ), 
+        .Q(\FIFO_L/FIFO_DATA_PATH/n477 ) );
+  NOR3X3 \FIFO_L/FIFO_DATA_PATH/U142  ( .A(\FIFO_L/write_pointer_out_sig [0]), 
+        .B(\FIFO_L/write_pointer_out_sig [3]), .C(
+        \FIFO_L/write_pointer_out_sig [1]), .Q(\FIFO_L/FIFO_DATA_PATH/n476 )
+         );
+  NAND3X3 \FIFO_L/FIFO_DATA_PATH/U143  ( .A(\FIFO_L/write_pointer_out_sig [0]), 
+        .B(\FIFO_L/write_en_out_sig ), .C(\FIFO_L/FIFO_DATA_PATH/n472 ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n473 ) );
-  NOR3X3 \FIFO_L/FIFO_DATA_PATH/U144  ( .A(write_pointer_out_L_out[1]), .B(
-        write_pointer_out_L_out[3]), .C(write_pointer_out_L_out[2]), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n472 ) );
-  NAND3X3 \FIFO_L/FIFO_DATA_PATH/U145  ( .A(write_pointer_out_L_out[3]), .B(
-        write_en_out_L_out), .C(\FIFO_L/FIFO_DATA_PATH/n470 ), .Q(
+  NOR3X3 \FIFO_L/FIFO_DATA_PATH/U144  ( .A(\FIFO_L/write_pointer_out_sig [1]), 
+        .B(\FIFO_L/write_pointer_out_sig [3]), .C(
+        \FIFO_L/write_pointer_out_sig [2]), .Q(\FIFO_L/FIFO_DATA_PATH/n472 )
+         );
+  NAND3X3 \FIFO_L/FIFO_DATA_PATH/U145  ( .A(\FIFO_L/write_pointer_out_sig [3]), 
+        .B(\FIFO_L/write_en_out_sig ), .C(\FIFO_L/FIFO_DATA_PATH/n470 ), .Q(
         \FIFO_L/FIFO_DATA_PATH/n471 ) );
-  NOR3X3 \FIFO_L/FIFO_DATA_PATH/U146  ( .A(write_pointer_out_L_out[0]), .B(
-        write_pointer_out_L_out[2]), .C(write_pointer_out_L_out[1]), .Q(
-        \FIFO_L/FIFO_DATA_PATH/n470 ) );
+  NOR3X3 \FIFO_L/FIFO_DATA_PATH/U146  ( .A(\FIFO_L/write_pointer_out_sig [0]), 
+        .B(\FIFO_L/write_pointer_out_sig [2]), .C(
+        \FIFO_L/write_pointer_out_sig [1]), .Q(\FIFO_L/FIFO_DATA_PATH/n470 )
+         );
   OAI22X3 \FIFO_L/FIFO_DATA_PATH/U147  ( .A1(\FIFO_L/FIFO_DATA_PATH/n86 ), 
         .A2(\FIFO_L/FIFO_DATA_PATH/n478 ), .B1(\FIFO_L/FIFO_DATA_PATH/n305 ), 
         .B2(\FIFO_L/FIFO_DATA_PATH/n84 ), .Q(\FIFO_L/FIFO_DATA_PATH/n338 ) );
@@ -8209,195 +10113,195 @@ endmodule
         .B2(\FIFO_L/FIFO_DATA_PATH/n78 ), .Q(\FIFO_L/FIFO_DATA_PATH/n337 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U211  ( .A1(\FIFO_L/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[0] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[0]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [0]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n402 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U212  ( .A1(\FIFO_L/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[1] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[1]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [1]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n403 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U213  ( .A1(\FIFO_L/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[2] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[2]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [2]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n404 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U214  ( .A1(\FIFO_L/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[3] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[3]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [3]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n405 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U215  ( .A1(\FIFO_L/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[4] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[4]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [4]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n406 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U216  ( .A1(\FIFO_L/FIFO_DATA_PATH/n94 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[5] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[5]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [5]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n407 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U217  ( .A1(\FIFO_L/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[6] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[6]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [6]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n408 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U218  ( .A1(\FIFO_L/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[7] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[7]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [7]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n409 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U219  ( .A1(\FIFO_L/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[8] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[8]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [8]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n410 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U220  ( .A1(\FIFO_L/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[9] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[9]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [9]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n411 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U221  ( .A1(\FIFO_L/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[10] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[10]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [10]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n412 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U222  ( .A1(\FIFO_L/FIFO_DATA_PATH/n95 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[11] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[11]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [11]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n413 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U223  ( .A1(\FIFO_L/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[12] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[12]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [12]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n414 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U224  ( .A1(\FIFO_L/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[13] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[13]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [13]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n415 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U225  ( .A1(\FIFO_L/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[14] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[14]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [14]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n416 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U226  ( .A1(\FIFO_L/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[15] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[15]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [15]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n417 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U227  ( .A1(\FIFO_L/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[16] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[16]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [16]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n418 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U228  ( .A1(\FIFO_L/FIFO_DATA_PATH/n96 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[17] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[17]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [17]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n419 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U229  ( .A1(\FIFO_L/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[18] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[18]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [18]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n420 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U230  ( .A1(\FIFO_L/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[19] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[19]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [19]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n421 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U231  ( .A1(\FIFO_L/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[20] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[20]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [20]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n422 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U232  ( .A1(\FIFO_L/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[21] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[21]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [21]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n423 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U233  ( .A1(\FIFO_L/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[22] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[22]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [22]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n424 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U234  ( .A1(\FIFO_L/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[23] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[23]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [23]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n425 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U235  ( .A1(\FIFO_L/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[24] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[24]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [24]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n426 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U236  ( .A1(\FIFO_L/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[25] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[25]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [25]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n427 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U237  ( .A1(\FIFO_L/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[26] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[26]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [26]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n428 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U238  ( .A1(\FIFO_L/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[27] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[27]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [27]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n429 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U239  ( .A1(\FIFO_L/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[28] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[28]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [28]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n430 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U240  ( .A1(\FIFO_L/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[29] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[29]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [29]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n431 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U241  ( .A1(\FIFO_L/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[30] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[30]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [30]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n432 ) );
   AO22X3 \FIFO_L/FIFO_DATA_PATH/U242  ( .A1(\FIFO_L/FIFO_DATA_PATH/n97 ), .A2(
         \FIFO_L/FIFO_DATA_PATH/FIFO_MEM_3[31] ), .B1(
-        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(RX_L[31]), .Q(
+        \FIFO_L/FIFO_DATA_PATH/n98 ), .B2(\FIFO_L/RX_out_sig [31]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n433 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U243  ( .A(RX_L[0]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U243  ( .A(\FIFO_L/RX_out_sig [0]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n305 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U244  ( .A(RX_L[1]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U244  ( .A(\FIFO_L/RX_out_sig [1]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n304 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U245  ( .A(RX_L[2]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U245  ( .A(\FIFO_L/RX_out_sig [2]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n303 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U246  ( .A(RX_L[3]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U246  ( .A(\FIFO_L/RX_out_sig [3]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n302 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U247  ( .A(RX_L[4]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U247  ( .A(\FIFO_L/RX_out_sig [4]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n301 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U248  ( .A(RX_L[5]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U248  ( .A(\FIFO_L/RX_out_sig [5]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n300 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U249  ( .A(RX_L[6]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U249  ( .A(\FIFO_L/RX_out_sig [6]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n299 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U250  ( .A(RX_L[7]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U250  ( .A(\FIFO_L/RX_out_sig [7]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n298 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U251  ( .A(RX_L[8]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U251  ( .A(\FIFO_L/RX_out_sig [8]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n297 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U252  ( .A(RX_L[9]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U252  ( .A(\FIFO_L/RX_out_sig [9]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n296 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U253  ( .A(RX_L[10]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U253  ( .A(\FIFO_L/RX_out_sig [10]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n295 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U254  ( .A(RX_L[11]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U254  ( .A(\FIFO_L/RX_out_sig [11]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n294 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U255  ( .A(RX_L[12]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U255  ( .A(\FIFO_L/RX_out_sig [12]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n293 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U256  ( .A(RX_L[13]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U256  ( .A(\FIFO_L/RX_out_sig [13]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n292 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U257  ( .A(RX_L[14]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U257  ( .A(\FIFO_L/RX_out_sig [14]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n291 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U258  ( .A(RX_L[15]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U258  ( .A(\FIFO_L/RX_out_sig [15]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n290 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U259  ( .A(RX_L[16]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U259  ( .A(\FIFO_L/RX_out_sig [16]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n289 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U260  ( .A(RX_L[17]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U260  ( .A(\FIFO_L/RX_out_sig [17]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n288 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U261  ( .A(RX_L[18]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U261  ( .A(\FIFO_L/RX_out_sig [18]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n287 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U262  ( .A(RX_L[19]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U262  ( .A(\FIFO_L/RX_out_sig [19]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n286 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U263  ( .A(RX_L[20]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U263  ( .A(\FIFO_L/RX_out_sig [20]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n285 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U264  ( .A(RX_L[21]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U264  ( .A(\FIFO_L/RX_out_sig [21]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n284 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U265  ( .A(RX_L[22]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U265  ( .A(\FIFO_L/RX_out_sig [22]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n283 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U266  ( .A(RX_L[23]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U266  ( .A(\FIFO_L/RX_out_sig [23]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n282 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U267  ( .A(RX_L[24]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U267  ( .A(\FIFO_L/RX_out_sig [24]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n281 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U268  ( .A(RX_L[25]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U268  ( .A(\FIFO_L/RX_out_sig [25]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n280 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U269  ( .A(RX_L[26]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U269  ( .A(\FIFO_L/RX_out_sig [26]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n279 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U270  ( .A(RX_L[27]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U270  ( .A(\FIFO_L/RX_out_sig [27]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n278 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U271  ( .A(RX_L[28]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U271  ( .A(\FIFO_L/RX_out_sig [28]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n277 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U272  ( .A(RX_L[29]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U272  ( .A(\FIFO_L/RX_out_sig [29]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n104 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U273  ( .A(RX_L[30]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U273  ( .A(\FIFO_L/RX_out_sig [30]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n103 ) );
-  INVXL \FIFO_L/FIFO_DATA_PATH/U274  ( .A(RX_L[31]), .Q(
+  INVXL \FIFO_L/FIFO_DATA_PATH/U274  ( .A(\FIFO_L/RX_out_sig [31]), .Q(
         \FIFO_L/FIFO_DATA_PATH/n102 ) );
   DFPX3 \FIFO_L/FIFO_CONTROL_PART/write_pointer_reg[0]  ( .D(
         \FIFO_L/FIFO_CONTROL_PART/write_pointer_in[0] ), .CP(clk), .SN(reset), 
@@ -8466,12 +10370,16 @@ endmodule
          );
   OAI31X2 \FIFO_L/FIFO_CONTROL_PART/U11  ( .A1(\FIFO_L/FIFO_CONTROL_PART/n8 ), 
         .A2(\FIFO_L/FIFO_CONTROL_PART/n7 ), .A3(\FIFO_L/FIFO_CONTROL_PART/n6 ), 
-        .B1(valid_in_L), .Q(\FIFO_L/FIFO_CONTROL_PART/n29 ) );
+        .B1(\FIFO_L/valid_in_out_sig ), .Q(\FIFO_L/FIFO_CONTROL_PART/n29 ) );
   NAND2XL \FIFO_L/FIFO_CONTROL_PART/U12  ( .A(\FIFO_L/FIFO_CONTROL_PART/n5 ), 
         .B(\FIFO_L/FIFO_CONTROL_PART/n4 ), .Q(\FIFO_L/FIFO_CONTROL_PART/n8 )
          );
-  OR3X3 \FIFO_L/FIFO_CONTROL_PART/U14  ( .A(Grant_WL_out), .B(Grant_SL_out), 
-        .C(Grant_NL_out), .Q(\FIFO_L/FIFO_CONTROL_PART/n27 ) );
+  OAI31X2 \FIFO_L/FIFO_CONTROL_PART/U13  ( .A1(\FIFO_L/FIFO_CONTROL_PART/n27 ), 
+        .A2(\FIFO_L/read_en_L_out_sig ), .A3(\FIFO_L/read_en_E_out_sig ), .B1(
+        \FIFO_L/FIFO_CONTROL_PART/n26 ), .Q(\FIFO_L/FIFO_CONTROL_PART/n28 ) );
+  OR3X3 \FIFO_L/FIFO_CONTROL_PART/U14  ( .A(\FIFO_L/read_en_W_out_sig ), .B(
+        \FIFO_L/read_en_S_out_sig ), .C(\FIFO_L/read_en_N_out_sig ), .Q(
+        \FIFO_L/FIFO_CONTROL_PART/n27 ) );
   OAI22X3 \FIFO_L/FIFO_CONTROL_PART/U15  ( .A1(\FIFO_L/FIFO_CONTROL_PART/n33 ), 
         .A2(\FIFO_L/FIFO_CONTROL_PART/n29 ), .B1(write_en_out_L_out), .B2(
         \FIFO_L/FIFO_CONTROL_PART/n30 ), .Q(
@@ -8488,34 +10396,150 @@ endmodule
         .A2(\FIFO_L/FIFO_CONTROL_PART/n29 ), .B1(write_en_out_L_out), .B2(
         \FIFO_L/FIFO_CONTROL_PART/n31 ), .Q(
         \FIFO_L/FIFO_CONTROL_PART/write_pointer_in[1] ) );
-  OAI21X8 U15 ( .A1(\FIFO_L/FIFO_CONTROL_PART/n27 ), .A2(Grant_EL_out), .B1(
-        \FIFO_L/FIFO_CONTROL_PART/n26 ), .Q(\FIFO_L/FIFO_CONTROL_PART/n28 ) );
+  FIFO_data_path_input_wire_DATA_WIDTH32_0 \FIFO_L/FIFO_DATA_PATH_inputs  ( 
+        .write_en(write_en_out_L_out), .RX(RX_L), .read_pointer(
+        read_pointer_out_L_out), .write_pointer(write_pointer_out_L_out), 
+        .write_en_out(\FIFO_L/write_en_out_sig ), .RX_out(\FIFO_L/RX_out_sig ), 
+        .read_ptr_out(\FIFO_L/read_pointer_out_sig ), .write_ptr_out(
+        \FIFO_L/write_pointer_out_sig ) );
+  FIFO_control_part_input_wire_0 \FIFO_L/FIFO_CONTROL_PART_inputs  ( 
+        .valid_in(valid_in_L), .read_en_N(Grant_NL_out), .read_en_E(
+        Grant_EL_out), .read_en_W(Grant_WL_out), .read_en_S(Grant_SL_out), 
+        .read_en_L(\Xbar_sel_L_out[0] ), .valid_in_out(
+        \FIFO_L/valid_in_out_sig ), .read_en_N_out(\FIFO_L/read_en_N_out_sig ), 
+        .read_en_E_out(\FIFO_L/read_en_E_out_sig ), .read_en_W_out(
+        \FIFO_L/read_en_W_out_sig ), .read_en_S_out(\FIFO_L/read_en_S_out_sig ), .read_en_L_out(\FIFO_L/read_en_L_out_sig ) );
+  OAI32X1 \LBDR_N/U77  ( .A1(\LBDR_N/n60 ), .A2(\LBDR_N/n59 ), .A3(
+        \LBDR_N/n58 ), .B1(cur_addr_x_N_out_sig_LBDR[6]), .B2(\LBDR_N/n68 ), 
+        .Q(\LBDR_N/N3 ) );
+  AOI311X1 \LBDR_N/U76  ( .A1(\LBDR_N/n57 ), .A2(\LBDR_N/n56 ), .A3(
+        \LBDR_N/n55 ), .B1(\LBDR_N/n54 ), .C1(\LBDR_N/n53 ), .Q(\LBDR_N/n58 )
+         );
+  OAI311X1 \LBDR_N/U75  ( .A1(\LBDR_N/n52 ), .A2(\LBDR_N/n51 ), .A3(
+        \LBDR_N/n50 ), .B1(\LBDR_N/n49 ), .C1(\LBDR_N/n48 ), .Q(\LBDR_N/n57 )
+         );
+  NOR2XL \LBDR_N/U74  ( .A(\LBDR_N/n47 ), .B(\LBDR_N/n63 ), .Q(\LBDR_N/n50 )
+         );
+  AOI21X1 \LBDR_N/U73  ( .A1(\LBDR_N/n47 ), .A2(\LBDR_N/n63 ), .B1(
+        dst_addr_x_N_out_sig_LBDR[1]), .Q(\LBDR_N/n51 ) );
+  NOR2XL \LBDR_N/U72  ( .A(\LBDR_N/n64 ), .B(cur_addr_x_N_out_sig_LBDR[0]), 
+        .Q(\LBDR_N/n47 ) );
+  OAI32X1 \LBDR_N/U71  ( .A1(\LBDR_N/n60 ), .A2(\LBDR_N/n54 ), .A3(
+        \LBDR_N/n46 ), .B1(dst_addr_x_N_out_sig_LBDR[6]), .B2(\LBDR_N/n61 ), 
+        .Q(\LBDR_N/N4 ) );
+  AOI311X1 \LBDR_N/U70  ( .A1(\LBDR_N/n45 ), .A2(\LBDR_N/n48 ), .A3(
+        \LBDR_N/n55 ), .B1(\LBDR_N/n44 ), .C1(\LBDR_N/n59 ), .Q(\LBDR_N/n46 )
+         );
+  AND2X1 \LBDR_N/U69  ( .A(cur_addr_x_N_out_sig_LBDR[5]), .B(\LBDR_N/n67 ), 
+        .Q(\LBDR_N/n59 ) );
+  NOR2XL \LBDR_N/U68  ( .A(\LBDR_N/n44 ), .B(\LBDR_N/n53 ), .Q(\LBDR_N/n55 )
+         );
+  NOR2XL \LBDR_N/U67  ( .A(\LBDR_N/n66 ), .B(cur_addr_x_N_out_sig_LBDR[4]), 
+        .Q(\LBDR_N/n53 ) );
+  AND2X1 \LBDR_N/U66  ( .A(cur_addr_x_N_out_sig_LBDR[4]), .B(\LBDR_N/n66 ), 
+        .Q(\LBDR_N/n44 ) );
+  NAND2XL \LBDR_N/U65  ( .A(dst_addr_x_N_out_sig_LBDR[3]), .B(\LBDR_N/n62 ), 
+        .Q(\LBDR_N/n48 ) );
+  OAI211X1 \LBDR_N/U64  ( .A1(\LBDR_N/n52 ), .A2(\LBDR_N/n43 ), .B1(
+        \LBDR_N/n56 ), .C1(\LBDR_N/n42 ), .Q(\LBDR_N/n45 ) );
+  OR2X1 \LBDR_N/U63  ( .A(\LBDR_N/n62 ), .B(dst_addr_x_N_out_sig_LBDR[3]), .Q(
+        \LBDR_N/n56 ) );
+  MAJ3X3 \LBDR_N/U62  ( .A(\LBDR_N/n63 ), .B(\LBDR_N/n41 ), .C(
+        dst_addr_x_N_out_sig_LBDR[1]), .Q(\LBDR_N/n43 ) );
+  NAND2XL \LBDR_N/U61  ( .A(\LBDR_N/n64 ), .B(cur_addr_x_N_out_sig_LBDR[0]), 
+        .Q(\LBDR_N/n41 ) );
+  NAND2XL \LBDR_N/U60  ( .A(\LBDR_N/n42 ), .B(\LBDR_N/n49 ), .Q(\LBDR_N/n52 )
+         );
+  OR2X1 \LBDR_N/U59  ( .A(\LBDR_N/n65 ), .B(cur_addr_x_N_out_sig_LBDR[2]), .Q(
+        \LBDR_N/n49 ) );
+  NAND2XL \LBDR_N/U58  ( .A(cur_addr_x_N_out_sig_LBDR[2]), .B(\LBDR_N/n65 ), 
+        .Q(\LBDR_N/n42 ) );
+  NOR2XL \LBDR_N/U57  ( .A(\LBDR_N/n67 ), .B(cur_addr_x_N_out_sig_LBDR[5]), 
+        .Q(\LBDR_N/n54 ) );
+  XOR2X1 \LBDR_N/U56  ( .A(cur_addr_x_N_out_sig_LBDR[6]), .B(
+        dst_addr_x_N_out_sig_LBDR[6]), .Q(\LBDR_N/n60 ) );
+  OAI32X1 \LBDR_N/U55  ( .A1(\LBDR_N/n32 ), .A2(\LBDR_N/n31 ), .A3(
+        \LBDR_N/n30 ), .B1(dst_addr_y_N_out_sig_LBDR[6]), .B2(\LBDR_N/n33 ), 
+        .Q(\LBDR_N/N2 ) );
+  AOI311X1 \LBDR_N/U54  ( .A1(\LBDR_N/n29 ), .A2(\LBDR_N/n28 ), .A3(
+        \LBDR_N/n27 ), .B1(\LBDR_N/n15 ), .C1(\LBDR_N/n14 ), .Q(\LBDR_N/n30 )
+         );
+  OAI311X1 \LBDR_N/U53  ( .A1(\LBDR_N/n13 ), .A2(\LBDR_N/n12 ), .A3(
+        \LBDR_N/n10 ), .B1(\LBDR_N/n9 ), .C1(\LBDR_N/n8 ), .Q(\LBDR_N/n29 ) );
+  NOR2XL \LBDR_N/U52  ( .A(\LBDR_N/n7 ), .B(\LBDR_N/n38 ), .Q(\LBDR_N/n10 ) );
+  AOI21X1 \LBDR_N/U51  ( .A1(\LBDR_N/n7 ), .A2(\LBDR_N/n38 ), .B1(
+        cur_addr_y_N_out_sig_LBDR[1]), .Q(\LBDR_N/n12 ) );
+  NOR2XL \LBDR_N/U50  ( .A(\LBDR_N/n37 ), .B(dst_addr_y_N_out_sig_LBDR[0]), 
+        .Q(\LBDR_N/n7 ) );
+  OAI32X1 \LBDR_N/U49  ( .A1(\LBDR_N/n32 ), .A2(\LBDR_N/n15 ), .A3(\LBDR_N/n6 ), .B1(cur_addr_y_N_out_sig_LBDR[6]), .B2(\LBDR_N/n40 ), .Q(\LBDR_N/N5 ) );
+  AOI311X1 \LBDR_N/U48  ( .A1(\LBDR_N/n5 ), .A2(\LBDR_N/n8 ), .A3(\LBDR_N/n27 ), .B1(\LBDR_N/n4 ), .C1(\LBDR_N/n31 ), .Q(\LBDR_N/n6 ) );
+  AND2X1 \LBDR_N/U47  ( .A(dst_addr_y_N_out_sig_LBDR[5]), .B(\LBDR_N/n34 ), 
+        .Q(\LBDR_N/n31 ) );
+  NOR2XL \LBDR_N/U46  ( .A(\LBDR_N/n4 ), .B(\LBDR_N/n14 ), .Q(\LBDR_N/n27 ) );
+  NOR2XL \LBDR_N/U45  ( .A(\LBDR_N/n35 ), .B(dst_addr_y_N_out_sig_LBDR[4]), 
+        .Q(\LBDR_N/n14 ) );
+  AND2X1 \LBDR_N/U44  ( .A(dst_addr_y_N_out_sig_LBDR[4]), .B(\LBDR_N/n35 ), 
+        .Q(\LBDR_N/n4 ) );
+  NAND2XL \LBDR_N/U43  ( .A(cur_addr_y_N_out_sig_LBDR[3]), .B(\LBDR_N/n39 ), 
+        .Q(\LBDR_N/n8 ) );
   OAI211X1 \LBDR_N/U42  ( .A1(\LBDR_N/n13 ), .A2(\LBDR_N/n3 ), .B1(
         \LBDR_N/n28 ), .C1(\LBDR_N/n2 ), .Q(\LBDR_N/n5 ) );
-  OR2X3 \LBDR_N/U24  ( .A(FIFO_D_out_N[29]), .B(FIFO_D_out_N[30]), .Q(
-        \LBDR_N/n20 ) );
-  OAI31X2 \LBDR_N/U23  ( .A1(\LBDR_N/n21 ), .A2(Grant_LN_out), .A3(
-        Grant_EN_out), .B1(FIFO_D_out_N[31]), .Q(\LBDR_N/n19 ) );
-  OAI31X2 \LBDR_N/U22  ( .A1(\LBDR_N/n19 ), .A2(empty_N_out), .A3(\LBDR_N/n20 ), .B1(\LBDR_N/n71 ), .Q(\LBDR_N/n18 ) );
-  AO22X3 \LBDR_N/U21  ( .A1(Req_NS_out), .A2(\LBDR_N/n69 ), .B1(\LBDR_N/N5 ), 
+  OR2X1 \LBDR_N/U41  ( .A(\LBDR_N/n39 ), .B(cur_addr_y_N_out_sig_LBDR[3]), .Q(
+        \LBDR_N/n28 ) );
+  MAJ3X3 \LBDR_N/U40  ( .A(\LBDR_N/n38 ), .B(\LBDR_N/n1 ), .C(
+        cur_addr_y_N_out_sig_LBDR[1]), .Q(\LBDR_N/n3 ) );
+  NAND2XL \LBDR_N/U39  ( .A(\LBDR_N/n37 ), .B(dst_addr_y_N_out_sig_LBDR[0]), 
+        .Q(\LBDR_N/n1 ) );
+  NAND2XL \LBDR_N/U38  ( .A(\LBDR_N/n2 ), .B(\LBDR_N/n9 ), .Q(\LBDR_N/n13 ) );
+  OR2X1 \LBDR_N/U37  ( .A(\LBDR_N/n36 ), .B(dst_addr_y_N_out_sig_LBDR[2]), .Q(
+        \LBDR_N/n9 ) );
+  NAND2XL \LBDR_N/U36  ( .A(dst_addr_y_N_out_sig_LBDR[2]), .B(\LBDR_N/n36 ), 
+        .Q(\LBDR_N/n2 ) );
+  NOR2XL \LBDR_N/U35  ( .A(\LBDR_N/n34 ), .B(dst_addr_y_N_out_sig_LBDR[5]), 
+        .Q(\LBDR_N/n15 ) );
+  XOR2X1 \LBDR_N/U34  ( .A(dst_addr_y_N_out_sig_LBDR[6]), .B(
+        cur_addr_y_N_out_sig_LBDR[6]), .Q(\LBDR_N/n32 ) );
+  INVXL \LBDR_N/U33  ( .A(cur_addr_y_N_out_sig_LBDR[0]), .Q(\LBDR_N/n37 ) );
+  INVXL \LBDR_N/U32  ( .A(cur_addr_y_N_out_sig_LBDR[5]), .Q(\LBDR_N/n34 ) );
+  INVXL \LBDR_N/U31  ( .A(cur_addr_y_N_out_sig_LBDR[4]), .Q(\LBDR_N/n35 ) );
+  INVXL \LBDR_N/U30  ( .A(cur_addr_y_N_out_sig_LBDR[2]), .Q(\LBDR_N/n36 ) );
+  INVXL \LBDR_N/U29  ( .A(cur_addr_x_N_out_sig_LBDR[3]), .Q(\LBDR_N/n62 ) );
+  INVXL \LBDR_N/U28  ( .A(cur_addr_x_N_out_sig_LBDR[1]), .Q(\LBDR_N/n63 ) );
+  OR3X3 \LBDR_N/U27  ( .A(grant_WN_out_sig_LBDR), .B(grant_SN_out_sig_LBDR), 
+        .C(grant_NN_out_sig_LBDR), .Q(\LBDR_N/n21 ) );
+  OR2X3 \LBDR_N/U26  ( .A(flit_type_N_out_sig_LBDR[0]), .B(
+        flit_type_N_out_sig_LBDR[1]), .Q(\LBDR_N/n20 ) );
+  OAI31X2 \LBDR_N/U25  ( .A1(\LBDR_N/n21 ), .A2(grant_LN_out_sig_LBDR), .A3(
+        grant_EN_out_sig_LBDR), .B1(flit_type_N_out_sig_LBDR[2]), .Q(
+        \LBDR_N/n19 ) );
+  OAI31X2 \LBDR_N/U24  ( .A1(\LBDR_N/n19 ), .A2(empty_N_out_sig_LBDR), .A3(
+        \LBDR_N/n20 ), .B1(\LBDR_N/n71 ), .Q(\LBDR_N/n18 ) );
+  AO22X3 \LBDR_N/U23  ( .A1(Req_NN_out), .A2(\LBDR_N/n69 ), .B1(\LBDR_N/N2 ), 
+        .B2(\LBDR_N/n16 ), .Q(\LBDR_N/n25 ) );
+  AO22X3 \LBDR_N/U22  ( .A1(Req_NS_out), .A2(\LBDR_N/n69 ), .B1(\LBDR_N/N5 ), 
         .B2(\LBDR_N/n16 ), .Q(\LBDR_N/n22 ) );
-  AO22X3 \LBDR_N/U20  ( .A1(Req_NE_out), .A2(\LBDR_N/n69 ), .B1(\LBDR_N/N3 ), 
+  AO22X3 \LBDR_N/U21  ( .A1(Req_NE_out), .A2(\LBDR_N/n69 ), .B1(\LBDR_N/N3 ), 
         .B2(\LBDR_N/n17 ), .Q(\LBDR_N/n24 ) );
-  AO22X3 \LBDR_N/U19  ( .A1(Req_NW_out), .A2(\LBDR_N/n69 ), .B1(\LBDR_N/N4 ), 
+  AO22X3 \LBDR_N/U20  ( .A1(Req_NW_out), .A2(\LBDR_N/n69 ), .B1(\LBDR_N/N4 ), 
         .B2(\LBDR_N/n17 ), .Q(\LBDR_N/n23 ) );
-  INVXL \LBDR_N/U18  ( .A(\LBDR_N/n16 ), .Q(\LBDR_N/n70 ) );
-  INVXL \LBDR_N/U16  ( .A(\LBDR_N/n32 ), .Q(\LBDR_N/n40 ) );
-  INVXL \LBDR_N/U15  ( .A(\LBDR_N/n60 ), .Q(\LBDR_N/n68 ) );
-  INVXL \LBDR_N/U13  ( .A(FIFO_D_out_N[11]), .Q(\LBDR_N/n28 ) );
+  INVXL \LBDR_N/U19  ( .A(\LBDR_N/n16 ), .Q(\LBDR_N/n70 ) );
+  OAI32X3 \LBDR_N/U18  ( .A1(\LBDR_N/N2 ), .A2(\LBDR_N/N5 ), .A3(\LBDR_N/n70 ), 
+        .B1(\LBDR_N/n11 ), .B2(\LBDR_N/n18 ), .Q(\LBDR_N/n26 ) );
+  INVXL \LBDR_N/U17  ( .A(dst_addr_y_N_out_sig_LBDR[6]), .Q(\LBDR_N/n40 ) );
+  INVXL \LBDR_N/U16  ( .A(cur_addr_y_N_out_sig_LBDR[6]), .Q(\LBDR_N/n33 ) );
+  INVXL \LBDR_N/U15  ( .A(dst_addr_x_N_out_sig_LBDR[6]), .Q(\LBDR_N/n68 ) );
+  INVXL \LBDR_N/U14  ( .A(cur_addr_x_N_out_sig_LBDR[6]), .Q(\LBDR_N/n61 ) );
+  INVXL \LBDR_N/U13  ( .A(dst_addr_y_N_out_sig_LBDR[3]), .Q(\LBDR_N/n39 ) );
   INVXL \LBDR_N/U12  ( .A(\LBDR_N/n18 ), .Q(\LBDR_N/n69 ) );
-  INVXL \LBDR_N/U11  ( .A(FIFO_D_out_N[9]), .Q(\LBDR_N/n38 ) );
-  INVXL \LBDR_N/U10  ( .A(FIFO_D_out_N[29]), .Q(\LBDR_N/n72 ) );
-  NOR4X3 \LBDR_N/U9  ( .A(\LBDR_N/n72 ), .B(empty_N_out), .C(FIFO_D_out_N[30]), 
-        .D(FIFO_D_out_N[31]), .Q(\LBDR_N/n17 ) );
-  INVXL \LBDR_N/U8  ( .A(FIFO_D_out_N[1]), .Q(\LBDR_N/n64 ) );
-  INVXL \LBDR_N/U7  ( .A(FIFO_D_out_N[6]), .Q(\LBDR_N/n67 ) );
-  INVXL \LBDR_N/U6  ( .A(FIFO_D_out_N[5]), .Q(\LBDR_N/n66 ) );
-  INVXL \LBDR_N/U5  ( .A(FIFO_D_out_N[3]), .Q(\LBDR_N/n65 ) );
+  INVXL \LBDR_N/U11  ( .A(flit_type_N_out_sig_LBDR[0]), .Q(\LBDR_N/n72 ) );
+  NOR4X3 \LBDR_N/U10  ( .A(\LBDR_N/n72 ), .B(empty_N_out_sig_LBDR), .C(
+        flit_type_N_out_sig_LBDR[1]), .D(flit_type_N_out_sig_LBDR[2]), .Q(
+        \LBDR_N/n17 ) );
+  INVXL \LBDR_N/U9  ( .A(dst_addr_x_N_out_sig_LBDR[0]), .Q(\LBDR_N/n64 ) );
+  INVXL \LBDR_N/U8  ( .A(dst_addr_x_N_out_sig_LBDR[5]), .Q(\LBDR_N/n67 ) );
+  INVXL \LBDR_N/U7  ( .A(dst_addr_x_N_out_sig_LBDR[4]), .Q(\LBDR_N/n66 ) );
+  INVXL \LBDR_N/U6  ( .A(dst_addr_x_N_out_sig_LBDR[2]), .Q(\LBDR_N/n65 ) );
+  INVXL \LBDR_N/U5  ( .A(dst_addr_y_N_out_sig_LBDR[1]), .Q(\LBDR_N/n38 ) );
   NOR3X3 \LBDR_N/U4  ( .A(\LBDR_N/N3 ), .B(\LBDR_N/N4 ), .C(\LBDR_N/n71 ), .Q(
         \LBDR_N/n16 ) );
   INVXL \LBDR_N/U3  ( .A(\LBDR_N/n17 ), .Q(\LBDR_N/n71 ) );
@@ -8527,32 +10551,134 @@ endmodule
         Req_NE_out) );
   DFCX1 \LBDR_N/Req_L_FF_reg  ( .D(\LBDR_N/n26 ), .CP(clk), .RN(reset), .Q(
         Req_NL_out), .QN(\LBDR_N/n11 ) );
+  DFCX1 \LBDR_N/Req_N_FF_reg  ( .D(\LBDR_N/n25 ), .CP(clk), .RN(reset), .Q(
+        Req_NN_out) );
+  OAI32X1 \LBDR_E/U77  ( .A1(\LBDR_E/n60 ), .A2(\LBDR_E/n59 ), .A3(
+        \LBDR_E/n58 ), .B1(cur_addr_x_E_out_sig_LBDR[6]), .B2(\LBDR_E/n68 ), 
+        .Q(\LBDR_E/N3 ) );
+  AOI311X1 \LBDR_E/U76  ( .A1(\LBDR_E/n57 ), .A2(\LBDR_E/n56 ), .A3(
+        \LBDR_E/n55 ), .B1(\LBDR_E/n54 ), .C1(\LBDR_E/n53 ), .Q(\LBDR_E/n58 )
+         );
+  OAI311X1 \LBDR_E/U75  ( .A1(\LBDR_E/n52 ), .A2(\LBDR_E/n51 ), .A3(
+        \LBDR_E/n50 ), .B1(\LBDR_E/n49 ), .C1(\LBDR_E/n48 ), .Q(\LBDR_E/n57 )
+         );
+  NOR2XL \LBDR_E/U74  ( .A(\LBDR_E/n47 ), .B(\LBDR_E/n63 ), .Q(\LBDR_E/n50 )
+         );
+  AOI21X1 \LBDR_E/U73  ( .A1(\LBDR_E/n47 ), .A2(\LBDR_E/n63 ), .B1(
+        dst_addr_x_E_out_sig_LBDR[1]), .Q(\LBDR_E/n51 ) );
+  NOR2XL \LBDR_E/U72  ( .A(\LBDR_E/n64 ), .B(cur_addr_x_E_out_sig_LBDR[0]), 
+        .Q(\LBDR_E/n47 ) );
+  OAI32X1 \LBDR_E/U71  ( .A1(\LBDR_E/n60 ), .A2(\LBDR_E/n54 ), .A3(
+        \LBDR_E/n46 ), .B1(dst_addr_x_E_out_sig_LBDR[6]), .B2(\LBDR_E/n61 ), 
+        .Q(\LBDR_E/N4 ) );
+  AOI311X1 \LBDR_E/U70  ( .A1(\LBDR_E/n45 ), .A2(\LBDR_E/n48 ), .A3(
+        \LBDR_E/n55 ), .B1(\LBDR_E/n44 ), .C1(\LBDR_E/n59 ), .Q(\LBDR_E/n46 )
+         );
+  AND2X1 \LBDR_E/U69  ( .A(cur_addr_x_E_out_sig_LBDR[5]), .B(\LBDR_E/n67 ), 
+        .Q(\LBDR_E/n59 ) );
+  NOR2XL \LBDR_E/U68  ( .A(\LBDR_E/n44 ), .B(\LBDR_E/n53 ), .Q(\LBDR_E/n55 )
+         );
+  NOR2XL \LBDR_E/U67  ( .A(\LBDR_E/n66 ), .B(cur_addr_x_E_out_sig_LBDR[4]), 
+        .Q(\LBDR_E/n53 ) );
+  AND2X1 \LBDR_E/U66  ( .A(cur_addr_x_E_out_sig_LBDR[4]), .B(\LBDR_E/n66 ), 
+        .Q(\LBDR_E/n44 ) );
+  NAND2XL \LBDR_E/U65  ( .A(dst_addr_x_E_out_sig_LBDR[3]), .B(\LBDR_E/n62 ), 
+        .Q(\LBDR_E/n48 ) );
+  OAI211X1 \LBDR_E/U64  ( .A1(\LBDR_E/n52 ), .A2(\LBDR_E/n43 ), .B1(
+        \LBDR_E/n56 ), .C1(\LBDR_E/n42 ), .Q(\LBDR_E/n45 ) );
+  OR2X1 \LBDR_E/U63  ( .A(\LBDR_E/n62 ), .B(dst_addr_x_E_out_sig_LBDR[3]), .Q(
+        \LBDR_E/n56 ) );
+  MAJ3X3 \LBDR_E/U62  ( .A(\LBDR_E/n63 ), .B(\LBDR_E/n41 ), .C(
+        dst_addr_x_E_out_sig_LBDR[1]), .Q(\LBDR_E/n43 ) );
+  NAND2XL \LBDR_E/U61  ( .A(\LBDR_E/n64 ), .B(cur_addr_x_E_out_sig_LBDR[0]), 
+        .Q(\LBDR_E/n41 ) );
+  NAND2XL \LBDR_E/U60  ( .A(\LBDR_E/n42 ), .B(\LBDR_E/n49 ), .Q(\LBDR_E/n52 )
+         );
+  OR2X1 \LBDR_E/U59  ( .A(\LBDR_E/n65 ), .B(cur_addr_x_E_out_sig_LBDR[2]), .Q(
+        \LBDR_E/n49 ) );
+  NAND2XL \LBDR_E/U58  ( .A(cur_addr_x_E_out_sig_LBDR[2]), .B(\LBDR_E/n65 ), 
+        .Q(\LBDR_E/n42 ) );
+  NOR2XL \LBDR_E/U57  ( .A(\LBDR_E/n67 ), .B(cur_addr_x_E_out_sig_LBDR[5]), 
+        .Q(\LBDR_E/n54 ) );
+  XOR2X1 \LBDR_E/U56  ( .A(cur_addr_x_E_out_sig_LBDR[6]), .B(
+        dst_addr_x_E_out_sig_LBDR[6]), .Q(\LBDR_E/n60 ) );
+  OAI32X1 \LBDR_E/U55  ( .A1(\LBDR_E/n32 ), .A2(\LBDR_E/n31 ), .A3(
+        \LBDR_E/n30 ), .B1(dst_addr_y_E_out_sig_LBDR[6]), .B2(\LBDR_E/n33 ), 
+        .Q(\LBDR_E/N2 ) );
+  AOI311X1 \LBDR_E/U54  ( .A1(\LBDR_E/n29 ), .A2(\LBDR_E/n28 ), .A3(
+        \LBDR_E/n27 ), .B1(\LBDR_E/n15 ), .C1(\LBDR_E/n14 ), .Q(\LBDR_E/n30 )
+         );
+  OAI311X1 \LBDR_E/U53  ( .A1(\LBDR_E/n13 ), .A2(\LBDR_E/n12 ), .A3(
+        \LBDR_E/n10 ), .B1(\LBDR_E/n9 ), .C1(\LBDR_E/n8 ), .Q(\LBDR_E/n29 ) );
+  NOR2XL \LBDR_E/U52  ( .A(\LBDR_E/n7 ), .B(\LBDR_E/n38 ), .Q(\LBDR_E/n10 ) );
+  AOI21X1 \LBDR_E/U51  ( .A1(\LBDR_E/n7 ), .A2(\LBDR_E/n38 ), .B1(
+        cur_addr_y_E_out_sig_LBDR[1]), .Q(\LBDR_E/n12 ) );
+  NOR2XL \LBDR_E/U50  ( .A(\LBDR_E/n37 ), .B(dst_addr_y_E_out_sig_LBDR[0]), 
+        .Q(\LBDR_E/n7 ) );
+  OAI32X1 \LBDR_E/U49  ( .A1(\LBDR_E/n32 ), .A2(\LBDR_E/n15 ), .A3(\LBDR_E/n6 ), .B1(cur_addr_y_E_out_sig_LBDR[6]), .B2(\LBDR_E/n40 ), .Q(\LBDR_E/N5 ) );
+  AOI311X1 \LBDR_E/U48  ( .A1(\LBDR_E/n5 ), .A2(\LBDR_E/n8 ), .A3(\LBDR_E/n27 ), .B1(\LBDR_E/n4 ), .C1(\LBDR_E/n31 ), .Q(\LBDR_E/n6 ) );
+  AND2X1 \LBDR_E/U47  ( .A(dst_addr_y_E_out_sig_LBDR[5]), .B(\LBDR_E/n34 ), 
+        .Q(\LBDR_E/n31 ) );
+  NOR2XL \LBDR_E/U46  ( .A(\LBDR_E/n4 ), .B(\LBDR_E/n14 ), .Q(\LBDR_E/n27 ) );
+  NOR2XL \LBDR_E/U45  ( .A(\LBDR_E/n35 ), .B(dst_addr_y_E_out_sig_LBDR[4]), 
+        .Q(\LBDR_E/n14 ) );
+  AND2X1 \LBDR_E/U44  ( .A(dst_addr_y_E_out_sig_LBDR[4]), .B(\LBDR_E/n35 ), 
+        .Q(\LBDR_E/n4 ) );
+  NAND2XL \LBDR_E/U43  ( .A(cur_addr_y_E_out_sig_LBDR[3]), .B(\LBDR_E/n39 ), 
+        .Q(\LBDR_E/n8 ) );
   OAI211X1 \LBDR_E/U42  ( .A1(\LBDR_E/n13 ), .A2(\LBDR_E/n3 ), .B1(
         \LBDR_E/n28 ), .C1(\LBDR_E/n2 ), .Q(\LBDR_E/n5 ) );
-  OR3X3 \LBDR_E/U25  ( .A(Grant_WE_out), .B(Grant_SE_out), .C(Grant_NE_out), 
-        .Q(\LBDR_E/n78 ) );
-  OR2X3 \LBDR_E/U24  ( .A(FIFO_D_out_E[29]), .B(FIFO_D_out_E[30]), .Q(
-        \LBDR_E/n79 ) );
-  OAI31X2 \LBDR_E/U22  ( .A1(\LBDR_E/n80 ), .A2(empty_E_out), .A3(\LBDR_E/n79 ), .B1(\LBDR_E/n71 ), .Q(\LBDR_E/n81 ) );
-  AO22X3 \LBDR_E/U21  ( .A1(Req_ES_out), .A2(\LBDR_E/n69 ), .B1(\LBDR_E/N5 ), 
+  OR2X1 \LBDR_E/U41  ( .A(\LBDR_E/n39 ), .B(cur_addr_y_E_out_sig_LBDR[3]), .Q(
+        \LBDR_E/n28 ) );
+  MAJ3X3 \LBDR_E/U40  ( .A(\LBDR_E/n38 ), .B(\LBDR_E/n1 ), .C(
+        cur_addr_y_E_out_sig_LBDR[1]), .Q(\LBDR_E/n3 ) );
+  NAND2XL \LBDR_E/U39  ( .A(\LBDR_E/n37 ), .B(dst_addr_y_E_out_sig_LBDR[0]), 
+        .Q(\LBDR_E/n1 ) );
+  NAND2XL \LBDR_E/U38  ( .A(\LBDR_E/n2 ), .B(\LBDR_E/n9 ), .Q(\LBDR_E/n13 ) );
+  OR2X1 \LBDR_E/U37  ( .A(\LBDR_E/n36 ), .B(dst_addr_y_E_out_sig_LBDR[2]), .Q(
+        \LBDR_E/n9 ) );
+  NAND2XL \LBDR_E/U36  ( .A(dst_addr_y_E_out_sig_LBDR[2]), .B(\LBDR_E/n36 ), 
+        .Q(\LBDR_E/n2 ) );
+  NOR2XL \LBDR_E/U35  ( .A(\LBDR_E/n34 ), .B(dst_addr_y_E_out_sig_LBDR[5]), 
+        .Q(\LBDR_E/n15 ) );
+  XOR2X1 \LBDR_E/U34  ( .A(dst_addr_y_E_out_sig_LBDR[6]), .B(
+        cur_addr_y_E_out_sig_LBDR[6]), .Q(\LBDR_E/n32 ) );
+  INVXL \LBDR_E/U33  ( .A(cur_addr_y_E_out_sig_LBDR[0]), .Q(\LBDR_E/n37 ) );
+  INVXL \LBDR_E/U32  ( .A(cur_addr_y_E_out_sig_LBDR[5]), .Q(\LBDR_E/n34 ) );
+  INVXL \LBDR_E/U31  ( .A(cur_addr_y_E_out_sig_LBDR[4]), .Q(\LBDR_E/n35 ) );
+  INVXL \LBDR_E/U30  ( .A(cur_addr_y_E_out_sig_LBDR[2]), .Q(\LBDR_E/n36 ) );
+  INVXL \LBDR_E/U29  ( .A(cur_addr_x_E_out_sig_LBDR[3]), .Q(\LBDR_E/n62 ) );
+  INVXL \LBDR_E/U28  ( .A(cur_addr_x_E_out_sig_LBDR[1]), .Q(\LBDR_E/n63 ) );
+  OR3X3 \LBDR_E/U27  ( .A(grant_WE_out_sig_LBDR), .B(grant_SE_out_sig_LBDR), 
+        .C(grant_NE_out_sig_LBDR), .Q(\LBDR_E/n78 ) );
+  OR2X3 \LBDR_E/U26  ( .A(FIFO_D_out_E[29]), .B(n16), .Q(\LBDR_E/n79 ) );
+  OAI31X2 \LBDR_E/U24  ( .A1(\LBDR_E/n80 ), .A2(empty_E_out_sig_LBDR), .A3(
+        \LBDR_E/n79 ), .B1(\LBDR_E/n71 ), .Q(\LBDR_E/n81 ) );
+  AO22X3 \LBDR_E/U23  ( .A1(Req_EN_out), .A2(\LBDR_E/n69 ), .B1(\LBDR_E/N2 ), 
+        .B2(\LBDR_E/n83 ), .Q(\LBDR_E/n74 ) );
+  AO22X3 \LBDR_E/U22  ( .A1(Req_ES_out), .A2(\LBDR_E/n69 ), .B1(\LBDR_E/N5 ), 
         .B2(\LBDR_E/n83 ), .Q(\LBDR_E/n77 ) );
-  AO22X3 \LBDR_E/U20  ( .A1(Req_EE_out), .A2(\LBDR_E/n69 ), .B1(\LBDR_E/N3 ), 
+  AO22X3 \LBDR_E/U21  ( .A1(Req_EE_out), .A2(\LBDR_E/n69 ), .B1(\LBDR_E/N3 ), 
         .B2(\LBDR_E/n82 ), .Q(\LBDR_E/n75 ) );
-  AO22X3 \LBDR_E/U19  ( .A1(Req_EW_out), .A2(\LBDR_E/n69 ), .B1(\LBDR_E/N4 ), 
+  AO22X3 \LBDR_E/U20  ( .A1(Req_EW_out), .A2(\LBDR_E/n69 ), .B1(\LBDR_E/N4 ), 
         .B2(\LBDR_E/n82 ), .Q(\LBDR_E/n76 ) );
-  INVXL \LBDR_E/U18  ( .A(\LBDR_E/n83 ), .Q(\LBDR_E/n70 ) );
-  INVXL \LBDR_E/U16  ( .A(\LBDR_E/n60 ), .Q(\LBDR_E/n68 ) );
-  INVXL \LBDR_E/U15  ( .A(\LBDR_E/n32 ), .Q(\LBDR_E/n40 ) );
-  INVXL \LBDR_E/U13  ( .A(FIFO_D_out_E[11]), .Q(\LBDR_E/n28 ) );
+  INVXL \LBDR_E/U19  ( .A(\LBDR_E/n83 ), .Q(\LBDR_E/n70 ) );
+  OAI32X3 \LBDR_E/U18  ( .A1(\LBDR_E/N2 ), .A2(\LBDR_E/N5 ), .A3(\LBDR_E/n70 ), 
+        .B1(\LBDR_E/n84 ), .B2(\LBDR_E/n81 ), .Q(\LBDR_E/n73 ) );
+  INVXL \LBDR_E/U17  ( .A(cur_addr_y_E_out_sig_LBDR[6]), .Q(\LBDR_E/n33 ) );
+  INVXL \LBDR_E/U16  ( .A(dst_addr_x_E_out_sig_LBDR[6]), .Q(\LBDR_E/n68 ) );
+  INVXL \LBDR_E/U15  ( .A(dst_addr_y_E_out_sig_LBDR[6]), .Q(\LBDR_E/n40 ) );
+  INVXL \LBDR_E/U14  ( .A(cur_addr_x_E_out_sig_LBDR[6]), .Q(\LBDR_E/n61 ) );
+  INVXL \LBDR_E/U13  ( .A(dst_addr_y_E_out_sig_LBDR[3]), .Q(\LBDR_E/n39 ) );
   INVXL \LBDR_E/U12  ( .A(\LBDR_E/n81 ), .Q(\LBDR_E/n69 ) );
-  INVXL \LBDR_E/U11  ( .A(FIFO_D_out_E[9]), .Q(\LBDR_E/n38 ) );
+  INVXL \LBDR_E/U11  ( .A(dst_addr_y_E_out_sig_LBDR[1]), .Q(\LBDR_E/n38 ) );
   INVXL \LBDR_E/U10  ( .A(FIFO_D_out_E[29]), .Q(\LBDR_E/n72 ) );
-  NOR4X3 \LBDR_E/U9  ( .A(\LBDR_E/n72 ), .B(empty_E_out), .C(FIFO_D_out_E[30]), 
-        .D(FIFO_D_out_E[31]), .Q(\LBDR_E/n82 ) );
-  INVXL \LBDR_E/U8  ( .A(FIFO_D_out_E[1]), .Q(\LBDR_E/n64 ) );
-  INVXL \LBDR_E/U7  ( .A(FIFO_D_out_E[6]), .Q(\LBDR_E/n67 ) );
-  INVXL \LBDR_E/U6  ( .A(FIFO_D_out_E[5]), .Q(\LBDR_E/n66 ) );
-  INVXL \LBDR_E/U5  ( .A(FIFO_D_out_E[3]), .Q(\LBDR_E/n65 ) );
+  NOR4X3 \LBDR_E/U9  ( .A(\LBDR_E/n72 ), .B(empty_E_out_sig_LBDR), .C(n16), 
+        .D(n17), .Q(\LBDR_E/n82 ) );
+  INVXL \LBDR_E/U8  ( .A(dst_addr_x_E_out_sig_LBDR[0]), .Q(\LBDR_E/n64 ) );
+  INVXL \LBDR_E/U7  ( .A(dst_addr_x_E_out_sig_LBDR[5]), .Q(\LBDR_E/n67 ) );
+  INVXL \LBDR_E/U6  ( .A(dst_addr_x_E_out_sig_LBDR[4]), .Q(\LBDR_E/n66 ) );
+  INVXL \LBDR_E/U5  ( .A(dst_addr_x_E_out_sig_LBDR[2]), .Q(\LBDR_E/n65 ) );
   NOR3X3 \LBDR_E/U4  ( .A(\LBDR_E/N3 ), .B(\LBDR_E/N4 ), .C(\LBDR_E/n71 ), .Q(
         \LBDR_E/n83 ) );
   INVXL \LBDR_E/U3  ( .A(\LBDR_E/n82 ), .Q(\LBDR_E/n71 ) );
@@ -8560,34 +10686,136 @@ endmodule
         Req_ES_out) );
   DFCX1 \LBDR_E/Req_W_FF_reg  ( .D(\LBDR_E/n76 ), .CP(clk), .RN(reset), .Q(
         Req_EW_out) );
+  DFCX1 \LBDR_E/Req_N_FF_reg  ( .D(\LBDR_E/n74 ), .CP(clk), .RN(reset), .Q(
+        Req_EN_out) );
   DFCX1 \LBDR_E/Req_L_FF_reg  ( .D(\LBDR_E/n73 ), .CP(clk), .RN(reset), .Q(
         Req_EL_out), .QN(\LBDR_E/n84 ) );
   DFCX1 \LBDR_E/Req_E_FF_reg  ( .D(\LBDR_E/n75 ), .CP(clk), .RN(reset), .Q(
         Req_EE_out) );
+  OAI32X1 \LBDR_W/U77  ( .A1(\LBDR_W/n60 ), .A2(\LBDR_W/n59 ), .A3(
+        \LBDR_W/n58 ), .B1(cur_addr_x_W_out_sig_LBDR[6]), .B2(\LBDR_W/n68 ), 
+        .Q(\LBDR_W/N3 ) );
+  AOI311X1 \LBDR_W/U76  ( .A1(\LBDR_W/n57 ), .A2(\LBDR_W/n56 ), .A3(
+        \LBDR_W/n55 ), .B1(\LBDR_W/n54 ), .C1(\LBDR_W/n53 ), .Q(\LBDR_W/n58 )
+         );
+  OAI311X1 \LBDR_W/U75  ( .A1(\LBDR_W/n52 ), .A2(\LBDR_W/n51 ), .A3(
+        \LBDR_W/n50 ), .B1(\LBDR_W/n49 ), .C1(\LBDR_W/n48 ), .Q(\LBDR_W/n57 )
+         );
+  NOR2XL \LBDR_W/U74  ( .A(\LBDR_W/n47 ), .B(\LBDR_W/n63 ), .Q(\LBDR_W/n50 )
+         );
+  AOI21X1 \LBDR_W/U73  ( .A1(\LBDR_W/n47 ), .A2(\LBDR_W/n63 ), .B1(
+        dst_addr_x_W_out_sig_LBDR[1]), .Q(\LBDR_W/n51 ) );
+  NOR2XL \LBDR_W/U72  ( .A(\LBDR_W/n64 ), .B(cur_addr_x_W_out_sig_LBDR[0]), 
+        .Q(\LBDR_W/n47 ) );
+  OAI32X1 \LBDR_W/U71  ( .A1(\LBDR_W/n60 ), .A2(\LBDR_W/n54 ), .A3(
+        \LBDR_W/n46 ), .B1(dst_addr_x_W_out_sig_LBDR[6]), .B2(\LBDR_W/n61 ), 
+        .Q(\LBDR_W/N4 ) );
+  AOI311X1 \LBDR_W/U70  ( .A1(\LBDR_W/n45 ), .A2(\LBDR_W/n48 ), .A3(
+        \LBDR_W/n55 ), .B1(\LBDR_W/n44 ), .C1(\LBDR_W/n59 ), .Q(\LBDR_W/n46 )
+         );
+  AND2X1 \LBDR_W/U69  ( .A(cur_addr_x_W_out_sig_LBDR[5]), .B(\LBDR_W/n67 ), 
+        .Q(\LBDR_W/n59 ) );
+  NOR2XL \LBDR_W/U68  ( .A(\LBDR_W/n44 ), .B(\LBDR_W/n53 ), .Q(\LBDR_W/n55 )
+         );
+  NOR2XL \LBDR_W/U67  ( .A(\LBDR_W/n66 ), .B(cur_addr_x_W_out_sig_LBDR[4]), 
+        .Q(\LBDR_W/n53 ) );
+  AND2X1 \LBDR_W/U66  ( .A(cur_addr_x_W_out_sig_LBDR[4]), .B(\LBDR_W/n66 ), 
+        .Q(\LBDR_W/n44 ) );
+  NAND2XL \LBDR_W/U65  ( .A(dst_addr_x_W_out_sig_LBDR[3]), .B(\LBDR_W/n62 ), 
+        .Q(\LBDR_W/n48 ) );
+  OAI211X1 \LBDR_W/U64  ( .A1(\LBDR_W/n52 ), .A2(\LBDR_W/n43 ), .B1(
+        \LBDR_W/n56 ), .C1(\LBDR_W/n42 ), .Q(\LBDR_W/n45 ) );
+  OR2X1 \LBDR_W/U63  ( .A(\LBDR_W/n62 ), .B(dst_addr_x_W_out_sig_LBDR[3]), .Q(
+        \LBDR_W/n56 ) );
+  MAJ3X3 \LBDR_W/U62  ( .A(\LBDR_W/n63 ), .B(\LBDR_W/n41 ), .C(
+        dst_addr_x_W_out_sig_LBDR[1]), .Q(\LBDR_W/n43 ) );
+  NAND2XL \LBDR_W/U61  ( .A(\LBDR_W/n64 ), .B(cur_addr_x_W_out_sig_LBDR[0]), 
+        .Q(\LBDR_W/n41 ) );
+  NAND2XL \LBDR_W/U60  ( .A(\LBDR_W/n42 ), .B(\LBDR_W/n49 ), .Q(\LBDR_W/n52 )
+         );
+  OR2X1 \LBDR_W/U59  ( .A(\LBDR_W/n65 ), .B(cur_addr_x_W_out_sig_LBDR[2]), .Q(
+        \LBDR_W/n49 ) );
+  NAND2XL \LBDR_W/U58  ( .A(cur_addr_x_W_out_sig_LBDR[2]), .B(\LBDR_W/n65 ), 
+        .Q(\LBDR_W/n42 ) );
+  NOR2XL \LBDR_W/U57  ( .A(\LBDR_W/n67 ), .B(cur_addr_x_W_out_sig_LBDR[5]), 
+        .Q(\LBDR_W/n54 ) );
+  XOR2X1 \LBDR_W/U56  ( .A(cur_addr_x_W_out_sig_LBDR[6]), .B(
+        dst_addr_x_W_out_sig_LBDR[6]), .Q(\LBDR_W/n60 ) );
+  OAI32X1 \LBDR_W/U55  ( .A1(\LBDR_W/n32 ), .A2(\LBDR_W/n31 ), .A3(
+        \LBDR_W/n30 ), .B1(dst_addr_y_W_out_sig_LBDR[6]), .B2(\LBDR_W/n33 ), 
+        .Q(\LBDR_W/N2 ) );
+  AOI311X1 \LBDR_W/U54  ( .A1(\LBDR_W/n29 ), .A2(\LBDR_W/n28 ), .A3(
+        \LBDR_W/n27 ), .B1(\LBDR_W/n15 ), .C1(\LBDR_W/n14 ), .Q(\LBDR_W/n30 )
+         );
+  OAI311X1 \LBDR_W/U53  ( .A1(\LBDR_W/n13 ), .A2(\LBDR_W/n12 ), .A3(
+        \LBDR_W/n10 ), .B1(\LBDR_W/n9 ), .C1(\LBDR_W/n8 ), .Q(\LBDR_W/n29 ) );
+  NOR2XL \LBDR_W/U52  ( .A(\LBDR_W/n7 ), .B(\LBDR_W/n38 ), .Q(\LBDR_W/n10 ) );
+  AOI21X1 \LBDR_W/U51  ( .A1(\LBDR_W/n7 ), .A2(\LBDR_W/n38 ), .B1(
+        cur_addr_y_W_out_sig_LBDR[1]), .Q(\LBDR_W/n12 ) );
+  NOR2XL \LBDR_W/U50  ( .A(\LBDR_W/n37 ), .B(dst_addr_y_W_out_sig_LBDR[0]), 
+        .Q(\LBDR_W/n7 ) );
+  OAI32X1 \LBDR_W/U49  ( .A1(\LBDR_W/n32 ), .A2(\LBDR_W/n15 ), .A3(\LBDR_W/n6 ), .B1(cur_addr_y_W_out_sig_LBDR[6]), .B2(\LBDR_W/n40 ), .Q(\LBDR_W/N5 ) );
+  AOI311X1 \LBDR_W/U48  ( .A1(\LBDR_W/n5 ), .A2(\LBDR_W/n8 ), .A3(\LBDR_W/n27 ), .B1(\LBDR_W/n4 ), .C1(\LBDR_W/n31 ), .Q(\LBDR_W/n6 ) );
+  AND2X1 \LBDR_W/U47  ( .A(dst_addr_y_W_out_sig_LBDR[5]), .B(\LBDR_W/n34 ), 
+        .Q(\LBDR_W/n31 ) );
+  NOR2XL \LBDR_W/U46  ( .A(\LBDR_W/n4 ), .B(\LBDR_W/n14 ), .Q(\LBDR_W/n27 ) );
+  NOR2XL \LBDR_W/U45  ( .A(\LBDR_W/n35 ), .B(dst_addr_y_W_out_sig_LBDR[4]), 
+        .Q(\LBDR_W/n14 ) );
+  AND2X1 \LBDR_W/U44  ( .A(dst_addr_y_W_out_sig_LBDR[4]), .B(\LBDR_W/n35 ), 
+        .Q(\LBDR_W/n4 ) );
+  NAND2XL \LBDR_W/U43  ( .A(cur_addr_y_W_out_sig_LBDR[3]), .B(\LBDR_W/n39 ), 
+        .Q(\LBDR_W/n8 ) );
   OAI211X1 \LBDR_W/U42  ( .A1(\LBDR_W/n13 ), .A2(\LBDR_W/n3 ), .B1(
         \LBDR_W/n28 ), .C1(\LBDR_W/n2 ), .Q(\LBDR_W/n5 ) );
-  OR2X3 \LBDR_W/U24  ( .A(FIFO_D_out_W[29]), .B(FIFO_D_out_W[30]), .Q(
-        \LBDR_W/n79 ) );
-  OAI31X2 \LBDR_W/U22  ( .A1(\LBDR_W/n80 ), .A2(empty_W_out), .A3(\LBDR_W/n79 ), .B1(\LBDR_W/n71 ), .Q(\LBDR_W/n81 ) );
-  AO22X3 \LBDR_W/U21  ( .A1(Req_WS_out), .A2(\LBDR_W/n69 ), .B1(\LBDR_W/N5 ), 
+  OR2X1 \LBDR_W/U41  ( .A(\LBDR_W/n39 ), .B(cur_addr_y_W_out_sig_LBDR[3]), .Q(
+        \LBDR_W/n28 ) );
+  MAJ3X3 \LBDR_W/U40  ( .A(\LBDR_W/n38 ), .B(\LBDR_W/n1 ), .C(
+        cur_addr_y_W_out_sig_LBDR[1]), .Q(\LBDR_W/n3 ) );
+  NAND2XL \LBDR_W/U39  ( .A(\LBDR_W/n37 ), .B(dst_addr_y_W_out_sig_LBDR[0]), 
+        .Q(\LBDR_W/n1 ) );
+  NAND2XL \LBDR_W/U38  ( .A(\LBDR_W/n2 ), .B(\LBDR_W/n9 ), .Q(\LBDR_W/n13 ) );
+  OR2X1 \LBDR_W/U37  ( .A(\LBDR_W/n36 ), .B(dst_addr_y_W_out_sig_LBDR[2]), .Q(
+        \LBDR_W/n9 ) );
+  NAND2XL \LBDR_W/U36  ( .A(dst_addr_y_W_out_sig_LBDR[2]), .B(\LBDR_W/n36 ), 
+        .Q(\LBDR_W/n2 ) );
+  NOR2XL \LBDR_W/U35  ( .A(\LBDR_W/n34 ), .B(dst_addr_y_W_out_sig_LBDR[5]), 
+        .Q(\LBDR_W/n15 ) );
+  XOR2X1 \LBDR_W/U34  ( .A(dst_addr_y_W_out_sig_LBDR[6]), .B(
+        cur_addr_y_W_out_sig_LBDR[6]), .Q(\LBDR_W/n32 ) );
+  INVXL \LBDR_W/U33  ( .A(cur_addr_y_W_out_sig_LBDR[0]), .Q(\LBDR_W/n37 ) );
+  INVXL \LBDR_W/U32  ( .A(cur_addr_y_W_out_sig_LBDR[5]), .Q(\LBDR_W/n34 ) );
+  INVXL \LBDR_W/U31  ( .A(cur_addr_y_W_out_sig_LBDR[4]), .Q(\LBDR_W/n35 ) );
+  INVXL \LBDR_W/U30  ( .A(cur_addr_y_W_out_sig_LBDR[2]), .Q(\LBDR_W/n36 ) );
+  INVXL \LBDR_W/U29  ( .A(cur_addr_x_W_out_sig_LBDR[3]), .Q(\LBDR_W/n62 ) );
+  INVXL \LBDR_W/U28  ( .A(cur_addr_x_W_out_sig_LBDR[1]), .Q(\LBDR_W/n63 ) );
+  OR2X3 \LBDR_W/U26  ( .A(n11), .B(n12), .Q(\LBDR_W/n79 ) );
+  OAI31X2 \LBDR_W/U24  ( .A1(\LBDR_W/n80 ), .A2(empty_W_out_sig_LBDR), .A3(
+        \LBDR_W/n79 ), .B1(\LBDR_W/n71 ), .Q(\LBDR_W/n81 ) );
+  AO22X3 \LBDR_W/U23  ( .A1(Req_WN_out), .A2(\LBDR_W/n69 ), .B1(\LBDR_W/N2 ), 
+        .B2(\LBDR_W/n83 ), .Q(\LBDR_W/n74 ) );
+  AO22X3 \LBDR_W/U22  ( .A1(Req_WS_out), .A2(\LBDR_W/n69 ), .B1(\LBDR_W/N5 ), 
         .B2(\LBDR_W/n83 ), .Q(\LBDR_W/n77 ) );
-  AO22X3 \LBDR_W/U20  ( .A1(Req_WE_out), .A2(\LBDR_W/n69 ), .B1(\LBDR_W/N3 ), 
+  AO22X3 \LBDR_W/U21  ( .A1(Req_WE_out), .A2(\LBDR_W/n69 ), .B1(\LBDR_W/N3 ), 
         .B2(\LBDR_W/n82 ), .Q(\LBDR_W/n75 ) );
-  AO22X3 \LBDR_W/U19  ( .A1(Req_WW_out), .A2(\LBDR_W/n69 ), .B1(\LBDR_W/N4 ), 
+  AO22X3 \LBDR_W/U20  ( .A1(Req_WW_out), .A2(\LBDR_W/n69 ), .B1(\LBDR_W/N4 ), 
         .B2(\LBDR_W/n82 ), .Q(\LBDR_W/n76 ) );
-  INVXL \LBDR_W/U18  ( .A(\LBDR_W/n83 ), .Q(\LBDR_W/n70 ) );
-  INVXL \LBDR_W/U16  ( .A(\LBDR_W/n32 ), .Q(\LBDR_W/n40 ) );
-  INVXL \LBDR_W/U15  ( .A(\LBDR_W/n60 ), .Q(\LBDR_W/n68 ) );
-  INVXL \LBDR_W/U13  ( .A(FIFO_D_out_W[11]), .Q(\LBDR_W/n28 ) );
+  INVXL \LBDR_W/U19  ( .A(\LBDR_W/n83 ), .Q(\LBDR_W/n70 ) );
+  OAI32X3 \LBDR_W/U18  ( .A1(\LBDR_W/N2 ), .A2(\LBDR_W/N5 ), .A3(\LBDR_W/n70 ), 
+        .B1(\LBDR_W/n84 ), .B2(\LBDR_W/n81 ), .Q(\LBDR_W/n73 ) );
+  INVXL \LBDR_W/U17  ( .A(dst_addr_y_W_out_sig_LBDR[6]), .Q(\LBDR_W/n40 ) );
+  INVXL \LBDR_W/U16  ( .A(cur_addr_y_W_out_sig_LBDR[6]), .Q(\LBDR_W/n33 ) );
+  INVXL \LBDR_W/U15  ( .A(dst_addr_x_W_out_sig_LBDR[6]), .Q(\LBDR_W/n68 ) );
+  INVXL \LBDR_W/U14  ( .A(cur_addr_x_W_out_sig_LBDR[6]), .Q(\LBDR_W/n61 ) );
+  INVXL \LBDR_W/U13  ( .A(dst_addr_y_W_out_sig_LBDR[3]), .Q(\LBDR_W/n39 ) );
   INVXL \LBDR_W/U12  ( .A(\LBDR_W/n81 ), .Q(\LBDR_W/n69 ) );
-  INVXL \LBDR_W/U11  ( .A(FIFO_D_out_W[9]), .Q(\LBDR_W/n38 ) );
-  INVXL \LBDR_W/U10  ( .A(FIFO_D_out_W[29]), .Q(\LBDR_W/n72 ) );
-  NOR4X3 \LBDR_W/U9  ( .A(\LBDR_W/n72 ), .B(empty_W_out), .C(FIFO_D_out_W[30]), 
-        .D(FIFO_D_out_W[31]), .Q(\LBDR_W/n82 ) );
-  INVXL \LBDR_W/U8  ( .A(FIFO_D_out_W[1]), .Q(\LBDR_W/n64 ) );
-  INVXL \LBDR_W/U7  ( .A(FIFO_D_out_W[6]), .Q(\LBDR_W/n67 ) );
-  INVXL \LBDR_W/U6  ( .A(FIFO_D_out_W[5]), .Q(\LBDR_W/n66 ) );
-  INVXL \LBDR_W/U5  ( .A(FIFO_D_out_W[3]), .Q(\LBDR_W/n65 ) );
+  INVXL \LBDR_W/U11  ( .A(n11), .Q(\LBDR_W/n72 ) );
+  NOR4X3 \LBDR_W/U10  ( .A(\LBDR_W/n72 ), .B(empty_W_out_sig_LBDR), .C(n12), 
+        .D(n13), .Q(\LBDR_W/n82 ) );
+  INVXL \LBDR_W/U9  ( .A(dst_addr_x_W_out_sig_LBDR[0]), .Q(\LBDR_W/n64 ) );
+  INVXL \LBDR_W/U8  ( .A(dst_addr_x_W_out_sig_LBDR[5]), .Q(\LBDR_W/n67 ) );
+  INVXL \LBDR_W/U7  ( .A(dst_addr_x_W_out_sig_LBDR[4]), .Q(\LBDR_W/n66 ) );
+  INVXL \LBDR_W/U6  ( .A(dst_addr_x_W_out_sig_LBDR[2]), .Q(\LBDR_W/n65 ) );
+  INVXL \LBDR_W/U5  ( .A(dst_addr_y_W_out_sig_LBDR[1]), .Q(\LBDR_W/n38 ) );
   NOR3X3 \LBDR_W/U4  ( .A(\LBDR_W/N3 ), .B(\LBDR_W/N4 ), .C(\LBDR_W/n71 ), .Q(
         \LBDR_W/n83 ) );
   INVXL \LBDR_W/U3  ( .A(\LBDR_W/n82 ), .Q(\LBDR_W/n71 ) );
@@ -8595,36 +10823,138 @@ endmodule
         Req_WS_out) );
   DFCX1 \LBDR_W/Req_E_FF_reg  ( .D(\LBDR_W/n75 ), .CP(clk), .RN(reset), .Q(
         Req_WE_out) );
+  DFCX1 \LBDR_W/Req_N_FF_reg  ( .D(\LBDR_W/n74 ), .CP(clk), .RN(reset), .Q(
+        Req_WN_out) );
   DFCX1 \LBDR_W/Req_L_FF_reg  ( .D(\LBDR_W/n73 ), .CP(clk), .RN(reset), .Q(
         Req_WL_out), .QN(\LBDR_W/n84 ) );
   DFCX1 \LBDR_W/Req_W_FF_reg  ( .D(\LBDR_W/n76 ), .CP(clk), .RN(reset), .Q(
         Req_WW_out) );
+  OAI32X1 \LBDR_S/U77  ( .A1(\LBDR_S/n60 ), .A2(\LBDR_S/n59 ), .A3(
+        \LBDR_S/n58 ), .B1(cur_addr_x_S_out_sig_LBDR[6]), .B2(\LBDR_S/n68 ), 
+        .Q(\LBDR_S/N3 ) );
+  AOI311X1 \LBDR_S/U76  ( .A1(\LBDR_S/n57 ), .A2(\LBDR_S/n56 ), .A3(
+        \LBDR_S/n55 ), .B1(\LBDR_S/n54 ), .C1(\LBDR_S/n53 ), .Q(\LBDR_S/n58 )
+         );
+  OAI311X1 \LBDR_S/U75  ( .A1(\LBDR_S/n52 ), .A2(\LBDR_S/n51 ), .A3(
+        \LBDR_S/n50 ), .B1(\LBDR_S/n49 ), .C1(\LBDR_S/n48 ), .Q(\LBDR_S/n57 )
+         );
+  NOR2XL \LBDR_S/U74  ( .A(\LBDR_S/n47 ), .B(\LBDR_S/n63 ), .Q(\LBDR_S/n50 )
+         );
+  AOI21X1 \LBDR_S/U73  ( .A1(\LBDR_S/n47 ), .A2(\LBDR_S/n63 ), .B1(
+        dst_addr_x_S_out_sig_LBDR[1]), .Q(\LBDR_S/n51 ) );
+  NOR2XL \LBDR_S/U72  ( .A(\LBDR_S/n64 ), .B(cur_addr_x_S_out_sig_LBDR[0]), 
+        .Q(\LBDR_S/n47 ) );
+  OAI32X1 \LBDR_S/U71  ( .A1(\LBDR_S/n60 ), .A2(\LBDR_S/n54 ), .A3(
+        \LBDR_S/n46 ), .B1(dst_addr_x_S_out_sig_LBDR[6]), .B2(\LBDR_S/n61 ), 
+        .Q(\LBDR_S/N4 ) );
+  AOI311X1 \LBDR_S/U70  ( .A1(\LBDR_S/n45 ), .A2(\LBDR_S/n48 ), .A3(
+        \LBDR_S/n55 ), .B1(\LBDR_S/n44 ), .C1(\LBDR_S/n59 ), .Q(\LBDR_S/n46 )
+         );
+  AND2X1 \LBDR_S/U69  ( .A(cur_addr_x_S_out_sig_LBDR[5]), .B(\LBDR_S/n67 ), 
+        .Q(\LBDR_S/n59 ) );
+  NOR2XL \LBDR_S/U68  ( .A(\LBDR_S/n44 ), .B(\LBDR_S/n53 ), .Q(\LBDR_S/n55 )
+         );
+  NOR2XL \LBDR_S/U67  ( .A(\LBDR_S/n66 ), .B(cur_addr_x_S_out_sig_LBDR[4]), 
+        .Q(\LBDR_S/n53 ) );
+  AND2X1 \LBDR_S/U66  ( .A(cur_addr_x_S_out_sig_LBDR[4]), .B(\LBDR_S/n66 ), 
+        .Q(\LBDR_S/n44 ) );
+  NAND2XL \LBDR_S/U65  ( .A(dst_addr_x_S_out_sig_LBDR[3]), .B(\LBDR_S/n62 ), 
+        .Q(\LBDR_S/n48 ) );
+  OAI211X1 \LBDR_S/U64  ( .A1(\LBDR_S/n52 ), .A2(\LBDR_S/n43 ), .B1(
+        \LBDR_S/n56 ), .C1(\LBDR_S/n42 ), .Q(\LBDR_S/n45 ) );
+  OR2X1 \LBDR_S/U63  ( .A(\LBDR_S/n62 ), .B(dst_addr_x_S_out_sig_LBDR[3]), .Q(
+        \LBDR_S/n56 ) );
+  MAJ3X3 \LBDR_S/U62  ( .A(\LBDR_S/n63 ), .B(\LBDR_S/n41 ), .C(
+        dst_addr_x_S_out_sig_LBDR[1]), .Q(\LBDR_S/n43 ) );
+  NAND2XL \LBDR_S/U61  ( .A(\LBDR_S/n64 ), .B(cur_addr_x_S_out_sig_LBDR[0]), 
+        .Q(\LBDR_S/n41 ) );
+  NAND2XL \LBDR_S/U60  ( .A(\LBDR_S/n42 ), .B(\LBDR_S/n49 ), .Q(\LBDR_S/n52 )
+         );
+  OR2X1 \LBDR_S/U59  ( .A(\LBDR_S/n65 ), .B(cur_addr_x_S_out_sig_LBDR[2]), .Q(
+        \LBDR_S/n49 ) );
+  NAND2XL \LBDR_S/U58  ( .A(cur_addr_x_S_out_sig_LBDR[2]), .B(\LBDR_S/n65 ), 
+        .Q(\LBDR_S/n42 ) );
+  NOR2XL \LBDR_S/U57  ( .A(\LBDR_S/n67 ), .B(cur_addr_x_S_out_sig_LBDR[5]), 
+        .Q(\LBDR_S/n54 ) );
+  XOR2X1 \LBDR_S/U56  ( .A(cur_addr_x_S_out_sig_LBDR[6]), .B(
+        dst_addr_x_S_out_sig_LBDR[6]), .Q(\LBDR_S/n60 ) );
+  OAI32X1 \LBDR_S/U55  ( .A1(\LBDR_S/n32 ), .A2(\LBDR_S/n31 ), .A3(
+        \LBDR_S/n30 ), .B1(dst_addr_y_S_out_sig_LBDR[6]), .B2(\LBDR_S/n33 ), 
+        .Q(\LBDR_S/N2 ) );
+  AOI311X1 \LBDR_S/U54  ( .A1(\LBDR_S/n29 ), .A2(\LBDR_S/n28 ), .A3(
+        \LBDR_S/n27 ), .B1(\LBDR_S/n15 ), .C1(\LBDR_S/n14 ), .Q(\LBDR_S/n30 )
+         );
+  OAI311X1 \LBDR_S/U53  ( .A1(\LBDR_S/n13 ), .A2(\LBDR_S/n12 ), .A3(
+        \LBDR_S/n10 ), .B1(\LBDR_S/n9 ), .C1(\LBDR_S/n8 ), .Q(\LBDR_S/n29 ) );
+  NOR2XL \LBDR_S/U52  ( .A(\LBDR_S/n7 ), .B(\LBDR_S/n38 ), .Q(\LBDR_S/n10 ) );
+  AOI21X1 \LBDR_S/U51  ( .A1(\LBDR_S/n7 ), .A2(\LBDR_S/n38 ), .B1(
+        cur_addr_y_S_out_sig_LBDR[1]), .Q(\LBDR_S/n12 ) );
+  NOR2XL \LBDR_S/U50  ( .A(\LBDR_S/n37 ), .B(dst_addr_y_S_out_sig_LBDR[0]), 
+        .Q(\LBDR_S/n7 ) );
+  OAI32X1 \LBDR_S/U49  ( .A1(\LBDR_S/n32 ), .A2(\LBDR_S/n15 ), .A3(\LBDR_S/n6 ), .B1(cur_addr_y_S_out_sig_LBDR[6]), .B2(\LBDR_S/n40 ), .Q(\LBDR_S/N5 ) );
+  AOI311X1 \LBDR_S/U48  ( .A1(\LBDR_S/n5 ), .A2(\LBDR_S/n8 ), .A3(\LBDR_S/n27 ), .B1(\LBDR_S/n4 ), .C1(\LBDR_S/n31 ), .Q(\LBDR_S/n6 ) );
+  AND2X1 \LBDR_S/U47  ( .A(dst_addr_y_S_out_sig_LBDR[5]), .B(\LBDR_S/n34 ), 
+        .Q(\LBDR_S/n31 ) );
+  NOR2XL \LBDR_S/U46  ( .A(\LBDR_S/n4 ), .B(\LBDR_S/n14 ), .Q(\LBDR_S/n27 ) );
+  NOR2XL \LBDR_S/U45  ( .A(\LBDR_S/n35 ), .B(dst_addr_y_S_out_sig_LBDR[4]), 
+        .Q(\LBDR_S/n14 ) );
+  AND2X1 \LBDR_S/U44  ( .A(dst_addr_y_S_out_sig_LBDR[4]), .B(\LBDR_S/n35 ), 
+        .Q(\LBDR_S/n4 ) );
+  NAND2XL \LBDR_S/U43  ( .A(cur_addr_y_S_out_sig_LBDR[3]), .B(\LBDR_S/n39 ), 
+        .Q(\LBDR_S/n8 ) );
   OAI211X1 \LBDR_S/U42  ( .A1(\LBDR_S/n13 ), .A2(\LBDR_S/n3 ), .B1(
         \LBDR_S/n28 ), .C1(\LBDR_S/n2 ), .Q(\LBDR_S/n5 ) );
-  OR2X3 \LBDR_S/U24  ( .A(FIFO_D_out_S[29]), .B(FIFO_D_out_S[30]), .Q(
-        \LBDR_S/n79 ) );
-  OAI31X2 \LBDR_S/U23  ( .A1(\LBDR_S/n78 ), .A2(Grant_LS_out), .A3(
-        Grant_ES_out), .B1(FIFO_D_out_S[31]), .Q(\LBDR_S/n80 ) );
-  OAI31X2 \LBDR_S/U22  ( .A1(\LBDR_S/n80 ), .A2(empty_S_out), .A3(\LBDR_S/n79 ), .B1(\LBDR_S/n71 ), .Q(\LBDR_S/n81 ) );
-  AO22X3 \LBDR_S/U21  ( .A1(Req_SS_out), .A2(\LBDR_S/n69 ), .B1(\LBDR_S/N5 ), 
+  OR2X1 \LBDR_S/U41  ( .A(\LBDR_S/n39 ), .B(cur_addr_y_S_out_sig_LBDR[3]), .Q(
+        \LBDR_S/n28 ) );
+  MAJ3X3 \LBDR_S/U40  ( .A(\LBDR_S/n38 ), .B(\LBDR_S/n1 ), .C(
+        cur_addr_y_S_out_sig_LBDR[1]), .Q(\LBDR_S/n3 ) );
+  NAND2XL \LBDR_S/U39  ( .A(\LBDR_S/n37 ), .B(dst_addr_y_S_out_sig_LBDR[0]), 
+        .Q(\LBDR_S/n1 ) );
+  NAND2XL \LBDR_S/U38  ( .A(\LBDR_S/n2 ), .B(\LBDR_S/n9 ), .Q(\LBDR_S/n13 ) );
+  OR2X1 \LBDR_S/U37  ( .A(\LBDR_S/n36 ), .B(dst_addr_y_S_out_sig_LBDR[2]), .Q(
+        \LBDR_S/n9 ) );
+  NAND2XL \LBDR_S/U36  ( .A(dst_addr_y_S_out_sig_LBDR[2]), .B(\LBDR_S/n36 ), 
+        .Q(\LBDR_S/n2 ) );
+  NOR2XL \LBDR_S/U35  ( .A(\LBDR_S/n34 ), .B(dst_addr_y_S_out_sig_LBDR[5]), 
+        .Q(\LBDR_S/n15 ) );
+  XOR2X1 \LBDR_S/U34  ( .A(dst_addr_y_S_out_sig_LBDR[6]), .B(
+        cur_addr_y_S_out_sig_LBDR[6]), .Q(\LBDR_S/n32 ) );
+  INVXL \LBDR_S/U33  ( .A(cur_addr_y_S_out_sig_LBDR[0]), .Q(\LBDR_S/n37 ) );
+  INVXL \LBDR_S/U32  ( .A(cur_addr_y_S_out_sig_LBDR[5]), .Q(\LBDR_S/n34 ) );
+  INVXL \LBDR_S/U31  ( .A(cur_addr_y_S_out_sig_LBDR[4]), .Q(\LBDR_S/n35 ) );
+  INVXL \LBDR_S/U30  ( .A(cur_addr_y_S_out_sig_LBDR[2]), .Q(\LBDR_S/n36 ) );
+  INVXL \LBDR_S/U29  ( .A(cur_addr_x_S_out_sig_LBDR[3]), .Q(\LBDR_S/n62 ) );
+  INVXL \LBDR_S/U28  ( .A(cur_addr_x_S_out_sig_LBDR[1]), .Q(\LBDR_S/n63 ) );
+  OR2X3 \LBDR_S/U26  ( .A(FIFO_D_out_S[29]), .B(n7), .Q(\LBDR_S/n79 ) );
+  OAI31X2 \LBDR_S/U25  ( .A1(\LBDR_S/n78 ), .A2(grant_LS_out_sig_LBDR), .A3(
+        grant_ES_out_sig_LBDR), .B1(n8), .Q(\LBDR_S/n80 ) );
+  OAI31X2 \LBDR_S/U24  ( .A1(\LBDR_S/n80 ), .A2(empty_S_out_sig_LBDR), .A3(
+        \LBDR_S/n79 ), .B1(\LBDR_S/n71 ), .Q(\LBDR_S/n81 ) );
+  AO22X3 \LBDR_S/U23  ( .A1(Req_SN_out), .A2(\LBDR_S/n69 ), .B1(\LBDR_S/N2 ), 
+        .B2(\LBDR_S/n83 ), .Q(\LBDR_S/n74 ) );
+  AO22X3 \LBDR_S/U22  ( .A1(Req_SS_out), .A2(\LBDR_S/n69 ), .B1(\LBDR_S/N5 ), 
         .B2(\LBDR_S/n83 ), .Q(\LBDR_S/n77 ) );
-  AO22X3 \LBDR_S/U20  ( .A1(Req_SE_out), .A2(\LBDR_S/n69 ), .B1(\LBDR_S/N3 ), 
+  AO22X3 \LBDR_S/U21  ( .A1(Req_SE_out), .A2(\LBDR_S/n69 ), .B1(\LBDR_S/N3 ), 
         .B2(\LBDR_S/n82 ), .Q(\LBDR_S/n75 ) );
-  AO22X3 \LBDR_S/U19  ( .A1(Req_SW_out), .A2(\LBDR_S/n69 ), .B1(\LBDR_S/N4 ), 
+  AO22X3 \LBDR_S/U20  ( .A1(Req_SW_out), .A2(\LBDR_S/n69 ), .B1(\LBDR_S/N4 ), 
         .B2(\LBDR_S/n82 ), .Q(\LBDR_S/n76 ) );
-  INVXL \LBDR_S/U18  ( .A(\LBDR_S/n83 ), .Q(\LBDR_S/n70 ) );
-  INVXL \LBDR_S/U16  ( .A(\LBDR_S/n60 ), .Q(\LBDR_S/n68 ) );
-  INVXL \LBDR_S/U15  ( .A(\LBDR_S/n32 ), .Q(\LBDR_S/n40 ) );
-  INVXL \LBDR_S/U13  ( .A(FIFO_D_out_S[11]), .Q(\LBDR_S/n28 ) );
+  INVXL \LBDR_S/U19  ( .A(\LBDR_S/n83 ), .Q(\LBDR_S/n70 ) );
+  OAI32X3 \LBDR_S/U18  ( .A1(\LBDR_S/N2 ), .A2(\LBDR_S/N5 ), .A3(\LBDR_S/n70 ), 
+        .B1(\LBDR_S/n84 ), .B2(\LBDR_S/n81 ), .Q(\LBDR_S/n73 ) );
+  INVXL \LBDR_S/U17  ( .A(cur_addr_y_S_out_sig_LBDR[6]), .Q(\LBDR_S/n33 ) );
+  INVXL \LBDR_S/U16  ( .A(dst_addr_x_S_out_sig_LBDR[6]), .Q(\LBDR_S/n68 ) );
+  INVXL \LBDR_S/U15  ( .A(dst_addr_y_S_out_sig_LBDR[6]), .Q(\LBDR_S/n40 ) );
+  INVXL \LBDR_S/U14  ( .A(cur_addr_x_S_out_sig_LBDR[6]), .Q(\LBDR_S/n61 ) );
+  INVXL \LBDR_S/U13  ( .A(dst_addr_y_S_out_sig_LBDR[3]), .Q(\LBDR_S/n39 ) );
   INVXL \LBDR_S/U12  ( .A(\LBDR_S/n81 ), .Q(\LBDR_S/n69 ) );
-  INVXL \LBDR_S/U11  ( .A(FIFO_D_out_S[9]), .Q(\LBDR_S/n38 ) );
+  INVXL \LBDR_S/U11  ( .A(dst_addr_y_S_out_sig_LBDR[1]), .Q(\LBDR_S/n38 ) );
   INVXL \LBDR_S/U10  ( .A(FIFO_D_out_S[29]), .Q(\LBDR_S/n72 ) );
-  NOR4X3 \LBDR_S/U9  ( .A(\LBDR_S/n72 ), .B(empty_S_out), .C(FIFO_D_out_S[30]), 
-        .D(FIFO_D_out_S[31]), .Q(\LBDR_S/n82 ) );
-  INVXL \LBDR_S/U8  ( .A(FIFO_D_out_S[1]), .Q(\LBDR_S/n64 ) );
-  INVXL \LBDR_S/U7  ( .A(FIFO_D_out_S[6]), .Q(\LBDR_S/n67 ) );
-  INVXL \LBDR_S/U6  ( .A(FIFO_D_out_S[5]), .Q(\LBDR_S/n66 ) );
-  INVXL \LBDR_S/U5  ( .A(FIFO_D_out_S[3]), .Q(\LBDR_S/n65 ) );
+  NOR4X3 \LBDR_S/U9  ( .A(\LBDR_S/n72 ), .B(empty_S_out_sig_LBDR), .C(n7), .D(
+        n8), .Q(\LBDR_S/n82 ) );
+  INVXL \LBDR_S/U8  ( .A(dst_addr_x_S_out_sig_LBDR[0]), .Q(\LBDR_S/n64 ) );
+  INVXL \LBDR_S/U7  ( .A(dst_addr_x_S_out_sig_LBDR[5]), .Q(\LBDR_S/n67 ) );
+  INVXL \LBDR_S/U6  ( .A(dst_addr_x_S_out_sig_LBDR[4]), .Q(\LBDR_S/n66 ) );
+  INVXL \LBDR_S/U5  ( .A(dst_addr_x_S_out_sig_LBDR[2]), .Q(\LBDR_S/n65 ) );
   NOR3X3 \LBDR_S/U4  ( .A(\LBDR_S/N3 ), .B(\LBDR_S/N4 ), .C(\LBDR_S/n71 ), .Q(
         \LBDR_S/n83 ) );
   INVXL \LBDR_S/U3  ( .A(\LBDR_S/n82 ), .Q(\LBDR_S/n71 ) );
@@ -8632,36 +10962,138 @@ endmodule
         Req_SW_out) );
   DFCX1 \LBDR_S/Req_E_FF_reg  ( .D(\LBDR_S/n75 ), .CP(clk), .RN(reset), .Q(
         Req_SE_out) );
+  DFCX1 \LBDR_S/Req_N_FF_reg  ( .D(\LBDR_S/n74 ), .CP(clk), .RN(reset), .Q(
+        Req_SN_out) );
   DFCX1 \LBDR_S/Req_L_FF_reg  ( .D(\LBDR_S/n73 ), .CP(clk), .RN(reset), .Q(
         Req_SL_out), .QN(\LBDR_S/n84 ) );
   DFCX1 \LBDR_S/Req_S_FF_reg  ( .D(\LBDR_S/n77 ), .CP(clk), .RN(reset), .Q(
         Req_SS_out) );
+  OAI32X1 \LBDR_L/U77  ( .A1(\LBDR_L/n60 ), .A2(\LBDR_L/n59 ), .A3(
+        \LBDR_L/n58 ), .B1(cur_addr_x_L_out_sig_LBDR[6]), .B2(\LBDR_L/n68 ), 
+        .Q(\LBDR_L/N3 ) );
+  AOI311X1 \LBDR_L/U76  ( .A1(\LBDR_L/n57 ), .A2(\LBDR_L/n56 ), .A3(
+        \LBDR_L/n55 ), .B1(\LBDR_L/n54 ), .C1(\LBDR_L/n53 ), .Q(\LBDR_L/n58 )
+         );
+  OAI311X1 \LBDR_L/U75  ( .A1(\LBDR_L/n52 ), .A2(\LBDR_L/n51 ), .A3(
+        \LBDR_L/n50 ), .B1(\LBDR_L/n49 ), .C1(\LBDR_L/n48 ), .Q(\LBDR_L/n57 )
+         );
+  NOR2XL \LBDR_L/U74  ( .A(\LBDR_L/n47 ), .B(\LBDR_L/n63 ), .Q(\LBDR_L/n50 )
+         );
+  AOI21X1 \LBDR_L/U73  ( .A1(\LBDR_L/n47 ), .A2(\LBDR_L/n63 ), .B1(
+        dst_addr_x_L_out_sig_LBDR[1]), .Q(\LBDR_L/n51 ) );
+  NOR2XL \LBDR_L/U72  ( .A(\LBDR_L/n64 ), .B(cur_addr_x_L_out_sig_LBDR[0]), 
+        .Q(\LBDR_L/n47 ) );
+  OAI32X1 \LBDR_L/U71  ( .A1(\LBDR_L/n60 ), .A2(\LBDR_L/n54 ), .A3(
+        \LBDR_L/n46 ), .B1(dst_addr_x_L_out_sig_LBDR[6]), .B2(\LBDR_L/n61 ), 
+        .Q(\LBDR_L/N4 ) );
+  AOI311X1 \LBDR_L/U70  ( .A1(\LBDR_L/n45 ), .A2(\LBDR_L/n48 ), .A3(
+        \LBDR_L/n55 ), .B1(\LBDR_L/n44 ), .C1(\LBDR_L/n59 ), .Q(\LBDR_L/n46 )
+         );
+  AND2X1 \LBDR_L/U69  ( .A(cur_addr_x_L_out_sig_LBDR[5]), .B(\LBDR_L/n67 ), 
+        .Q(\LBDR_L/n59 ) );
+  NOR2XL \LBDR_L/U68  ( .A(\LBDR_L/n44 ), .B(\LBDR_L/n53 ), .Q(\LBDR_L/n55 )
+         );
+  NOR2XL \LBDR_L/U67  ( .A(\LBDR_L/n66 ), .B(cur_addr_x_L_out_sig_LBDR[4]), 
+        .Q(\LBDR_L/n53 ) );
+  AND2X1 \LBDR_L/U66  ( .A(cur_addr_x_L_out_sig_LBDR[4]), .B(\LBDR_L/n66 ), 
+        .Q(\LBDR_L/n44 ) );
+  NAND2XL \LBDR_L/U65  ( .A(dst_addr_x_L_out_sig_LBDR[3]), .B(\LBDR_L/n62 ), 
+        .Q(\LBDR_L/n48 ) );
+  OAI211X1 \LBDR_L/U64  ( .A1(\LBDR_L/n52 ), .A2(\LBDR_L/n43 ), .B1(
+        \LBDR_L/n56 ), .C1(\LBDR_L/n42 ), .Q(\LBDR_L/n45 ) );
+  OR2X1 \LBDR_L/U63  ( .A(\LBDR_L/n62 ), .B(dst_addr_x_L_out_sig_LBDR[3]), .Q(
+        \LBDR_L/n56 ) );
+  MAJ3X3 \LBDR_L/U62  ( .A(\LBDR_L/n63 ), .B(\LBDR_L/n41 ), .C(
+        dst_addr_x_L_out_sig_LBDR[1]), .Q(\LBDR_L/n43 ) );
+  NAND2XL \LBDR_L/U61  ( .A(\LBDR_L/n64 ), .B(cur_addr_x_L_out_sig_LBDR[0]), 
+        .Q(\LBDR_L/n41 ) );
+  NAND2XL \LBDR_L/U60  ( .A(\LBDR_L/n42 ), .B(\LBDR_L/n49 ), .Q(\LBDR_L/n52 )
+         );
+  OR2X1 \LBDR_L/U59  ( .A(\LBDR_L/n65 ), .B(cur_addr_x_L_out_sig_LBDR[2]), .Q(
+        \LBDR_L/n49 ) );
+  NAND2XL \LBDR_L/U58  ( .A(cur_addr_x_L_out_sig_LBDR[2]), .B(\LBDR_L/n65 ), 
+        .Q(\LBDR_L/n42 ) );
+  NOR2XL \LBDR_L/U57  ( .A(\LBDR_L/n67 ), .B(cur_addr_x_L_out_sig_LBDR[5]), 
+        .Q(\LBDR_L/n54 ) );
+  XOR2X1 \LBDR_L/U56  ( .A(cur_addr_x_L_out_sig_LBDR[6]), .B(
+        dst_addr_x_L_out_sig_LBDR[6]), .Q(\LBDR_L/n60 ) );
+  OAI32X1 \LBDR_L/U55  ( .A1(\LBDR_L/n32 ), .A2(\LBDR_L/n31 ), .A3(
+        \LBDR_L/n30 ), .B1(dst_addr_y_L_out_sig_LBDR[6]), .B2(\LBDR_L/n33 ), 
+        .Q(\LBDR_L/N2 ) );
+  AOI311X1 \LBDR_L/U54  ( .A1(\LBDR_L/n29 ), .A2(\LBDR_L/n28 ), .A3(
+        \LBDR_L/n27 ), .B1(\LBDR_L/n15 ), .C1(\LBDR_L/n14 ), .Q(\LBDR_L/n30 )
+         );
+  OAI311X1 \LBDR_L/U53  ( .A1(\LBDR_L/n13 ), .A2(\LBDR_L/n12 ), .A3(
+        \LBDR_L/n10 ), .B1(\LBDR_L/n9 ), .C1(\LBDR_L/n8 ), .Q(\LBDR_L/n29 ) );
+  NOR2XL \LBDR_L/U52  ( .A(\LBDR_L/n7 ), .B(\LBDR_L/n38 ), .Q(\LBDR_L/n10 ) );
+  AOI21X1 \LBDR_L/U51  ( .A1(\LBDR_L/n7 ), .A2(\LBDR_L/n38 ), .B1(
+        cur_addr_y_L_out_sig_LBDR[1]), .Q(\LBDR_L/n12 ) );
+  NOR2XL \LBDR_L/U50  ( .A(\LBDR_L/n37 ), .B(dst_addr_y_L_out_sig_LBDR[0]), 
+        .Q(\LBDR_L/n7 ) );
+  OAI32X1 \LBDR_L/U49  ( .A1(\LBDR_L/n32 ), .A2(\LBDR_L/n15 ), .A3(\LBDR_L/n6 ), .B1(cur_addr_y_L_out_sig_LBDR[6]), .B2(\LBDR_L/n40 ), .Q(\LBDR_L/N5 ) );
+  AOI311X1 \LBDR_L/U48  ( .A1(\LBDR_L/n5 ), .A2(\LBDR_L/n8 ), .A3(\LBDR_L/n27 ), .B1(\LBDR_L/n4 ), .C1(\LBDR_L/n31 ), .Q(\LBDR_L/n6 ) );
+  AND2X1 \LBDR_L/U47  ( .A(dst_addr_y_L_out_sig_LBDR[5]), .B(\LBDR_L/n34 ), 
+        .Q(\LBDR_L/n31 ) );
+  NOR2XL \LBDR_L/U46  ( .A(\LBDR_L/n4 ), .B(\LBDR_L/n14 ), .Q(\LBDR_L/n27 ) );
+  NOR2XL \LBDR_L/U45  ( .A(\LBDR_L/n35 ), .B(dst_addr_y_L_out_sig_LBDR[4]), 
+        .Q(\LBDR_L/n14 ) );
+  AND2X1 \LBDR_L/U44  ( .A(dst_addr_y_L_out_sig_LBDR[4]), .B(\LBDR_L/n35 ), 
+        .Q(\LBDR_L/n4 ) );
+  NAND2XL \LBDR_L/U43  ( .A(cur_addr_y_L_out_sig_LBDR[3]), .B(\LBDR_L/n39 ), 
+        .Q(\LBDR_L/n8 ) );
   OAI211X1 \LBDR_L/U42  ( .A1(\LBDR_L/n13 ), .A2(\LBDR_L/n3 ), .B1(
         \LBDR_L/n28 ), .C1(\LBDR_L/n2 ), .Q(\LBDR_L/n5 ) );
-  OR3X3 \LBDR_L/U25  ( .A(Grant_WL_out), .B(Grant_SL_out), .C(Grant_NL_out), 
-        .Q(\LBDR_L/n78 ) );
-  OR2X3 \LBDR_L/U24  ( .A(FIFO_D_out_L[29]), .B(FIFO_D_out_L[30]), .Q(
-        \LBDR_L/n79 ) );
-  OAI31X2 \LBDR_L/U22  ( .A1(\LBDR_L/n80 ), .A2(empty_L_out), .A3(\LBDR_L/n79 ), .B1(\LBDR_L/n71 ), .Q(\LBDR_L/n81 ) );
-  AO22X3 \LBDR_L/U21  ( .A1(Req_LS_out), .A2(\LBDR_L/n69 ), .B1(\LBDR_L/N5 ), 
+  OR2X1 \LBDR_L/U41  ( .A(\LBDR_L/n39 ), .B(cur_addr_y_L_out_sig_LBDR[3]), .Q(
+        \LBDR_L/n28 ) );
+  MAJ3X3 \LBDR_L/U40  ( .A(\LBDR_L/n38 ), .B(\LBDR_L/n1 ), .C(
+        cur_addr_y_L_out_sig_LBDR[1]), .Q(\LBDR_L/n3 ) );
+  NAND2XL \LBDR_L/U39  ( .A(\LBDR_L/n37 ), .B(dst_addr_y_L_out_sig_LBDR[0]), 
+        .Q(\LBDR_L/n1 ) );
+  NAND2XL \LBDR_L/U38  ( .A(\LBDR_L/n2 ), .B(\LBDR_L/n9 ), .Q(\LBDR_L/n13 ) );
+  OR2X1 \LBDR_L/U37  ( .A(\LBDR_L/n36 ), .B(dst_addr_y_L_out_sig_LBDR[2]), .Q(
+        \LBDR_L/n9 ) );
+  NAND2XL \LBDR_L/U36  ( .A(dst_addr_y_L_out_sig_LBDR[2]), .B(\LBDR_L/n36 ), 
+        .Q(\LBDR_L/n2 ) );
+  NOR2XL \LBDR_L/U35  ( .A(\LBDR_L/n34 ), .B(dst_addr_y_L_out_sig_LBDR[5]), 
+        .Q(\LBDR_L/n15 ) );
+  XOR2X1 \LBDR_L/U34  ( .A(dst_addr_y_L_out_sig_LBDR[6]), .B(
+        cur_addr_y_L_out_sig_LBDR[6]), .Q(\LBDR_L/n32 ) );
+  INVXL \LBDR_L/U33  ( .A(cur_addr_y_L_out_sig_LBDR[0]), .Q(\LBDR_L/n37 ) );
+  INVXL \LBDR_L/U32  ( .A(cur_addr_y_L_out_sig_LBDR[5]), .Q(\LBDR_L/n34 ) );
+  INVXL \LBDR_L/U31  ( .A(cur_addr_y_L_out_sig_LBDR[4]), .Q(\LBDR_L/n35 ) );
+  INVXL \LBDR_L/U30  ( .A(cur_addr_y_L_out_sig_LBDR[2]), .Q(\LBDR_L/n36 ) );
+  INVXL \LBDR_L/U29  ( .A(cur_addr_x_L_out_sig_LBDR[3]), .Q(\LBDR_L/n62 ) );
+  INVXL \LBDR_L/U28  ( .A(cur_addr_x_L_out_sig_LBDR[1]), .Q(\LBDR_L/n63 ) );
+  OR3X3 \LBDR_L/U27  ( .A(grant_WL_out_sig_LBDR), .B(grant_SL_out_sig_LBDR), 
+        .C(grant_NL_out_sig_LBDR), .Q(\LBDR_L/n78 ) );
+  OR2X3 \LBDR_L/U26  ( .A(FIFO_D_out_L[29]), .B(n3), .Q(\LBDR_L/n79 ) );
+  OAI31X2 \LBDR_L/U24  ( .A1(\LBDR_L/n80 ), .A2(empty_L_out_sig_LBDR), .A3(
+        \LBDR_L/n79 ), .B1(\LBDR_L/n71 ), .Q(\LBDR_L/n81 ) );
+  AO22X3 \LBDR_L/U23  ( .A1(Req_LN_out), .A2(\LBDR_L/n69 ), .B1(\LBDR_L/N2 ), 
+        .B2(\LBDR_L/n83 ), .Q(\LBDR_L/n74 ) );
+  AO22X3 \LBDR_L/U22  ( .A1(Req_LS_out), .A2(\LBDR_L/n69 ), .B1(\LBDR_L/N5 ), 
         .B2(\LBDR_L/n83 ), .Q(\LBDR_L/n77 ) );
-  AO22X3 \LBDR_L/U20  ( .A1(Req_LE_out), .A2(\LBDR_L/n69 ), .B1(\LBDR_L/N3 ), 
+  AO22X3 \LBDR_L/U21  ( .A1(Req_LE_out), .A2(\LBDR_L/n69 ), .B1(\LBDR_L/N3 ), 
         .B2(\LBDR_L/n82 ), .Q(\LBDR_L/n75 ) );
-  AO22X3 \LBDR_L/U19  ( .A1(Req_LW_out), .A2(\LBDR_L/n69 ), .B1(\LBDR_L/N4 ), 
+  AO22X3 \LBDR_L/U20  ( .A1(Req_LW_out), .A2(\LBDR_L/n69 ), .B1(\LBDR_L/N4 ), 
         .B2(\LBDR_L/n82 ), .Q(\LBDR_L/n76 ) );
-  INVXL \LBDR_L/U18  ( .A(\LBDR_L/n83 ), .Q(\LBDR_L/n70 ) );
-  INVXL \LBDR_L/U16  ( .A(\LBDR_L/n60 ), .Q(\LBDR_L/n68 ) );
-  INVXL \LBDR_L/U15  ( .A(\LBDR_L/n32 ), .Q(\LBDR_L/n40 ) );
-  INVXL \LBDR_L/U13  ( .A(FIFO_D_out_L[11]), .Q(\LBDR_L/n28 ) );
+  INVXL \LBDR_L/U19  ( .A(\LBDR_L/n83 ), .Q(\LBDR_L/n70 ) );
+  OAI32X3 \LBDR_L/U18  ( .A1(\LBDR_L/N2 ), .A2(\LBDR_L/N5 ), .A3(\LBDR_L/n70 ), 
+        .B1(\LBDR_L/n84 ), .B2(\LBDR_L/n81 ), .Q(\LBDR_L/n73 ) );
+  INVXL \LBDR_L/U17  ( .A(cur_addr_y_L_out_sig_LBDR[6]), .Q(\LBDR_L/n33 ) );
+  INVXL \LBDR_L/U16  ( .A(dst_addr_x_L_out_sig_LBDR[6]), .Q(\LBDR_L/n68 ) );
+  INVXL \LBDR_L/U15  ( .A(dst_addr_y_L_out_sig_LBDR[6]), .Q(\LBDR_L/n40 ) );
+  INVXL \LBDR_L/U14  ( .A(cur_addr_x_L_out_sig_LBDR[6]), .Q(\LBDR_L/n61 ) );
+  INVXL \LBDR_L/U13  ( .A(dst_addr_y_L_out_sig_LBDR[3]), .Q(\LBDR_L/n39 ) );
   INVXL \LBDR_L/U12  ( .A(\LBDR_L/n81 ), .Q(\LBDR_L/n69 ) );
-  INVXL \LBDR_L/U11  ( .A(FIFO_D_out_L[9]), .Q(\LBDR_L/n38 ) );
+  INVXL \LBDR_L/U11  ( .A(dst_addr_y_L_out_sig_LBDR[1]), .Q(\LBDR_L/n38 ) );
   INVXL \LBDR_L/U10  ( .A(FIFO_D_out_L[29]), .Q(\LBDR_L/n72 ) );
-  NOR4X3 \LBDR_L/U9  ( .A(\LBDR_L/n72 ), .B(empty_L_out), .C(FIFO_D_out_L[30]), 
-        .D(FIFO_D_out_L[31]), .Q(\LBDR_L/n82 ) );
-  INVXL \LBDR_L/U8  ( .A(FIFO_D_out_L[1]), .Q(\LBDR_L/n64 ) );
-  INVXL \LBDR_L/U7  ( .A(FIFO_D_out_L[6]), .Q(\LBDR_L/n67 ) );
-  INVXL \LBDR_L/U6  ( .A(FIFO_D_out_L[5]), .Q(\LBDR_L/n66 ) );
-  INVXL \LBDR_L/U5  ( .A(FIFO_D_out_L[3]), .Q(\LBDR_L/n65 ) );
+  NOR4X3 \LBDR_L/U9  ( .A(\LBDR_L/n72 ), .B(empty_L_out_sig_LBDR), .C(n3), .D(
+        n4), .Q(\LBDR_L/n82 ) );
+  INVXL \LBDR_L/U8  ( .A(dst_addr_x_L_out_sig_LBDR[0]), .Q(\LBDR_L/n64 ) );
+  INVXL \LBDR_L/U7  ( .A(dst_addr_x_L_out_sig_LBDR[5]), .Q(\LBDR_L/n67 ) );
+  INVXL \LBDR_L/U6  ( .A(dst_addr_x_L_out_sig_LBDR[4]), .Q(\LBDR_L/n66 ) );
+  INVXL \LBDR_L/U5  ( .A(dst_addr_x_L_out_sig_LBDR[2]), .Q(\LBDR_L/n65 ) );
   NOR3X3 \LBDR_L/U4  ( .A(\LBDR_L/N3 ), .B(\LBDR_L/N4 ), .C(\LBDR_L/n71 ), .Q(
         \LBDR_L/n83 ) );
   INVXL \LBDR_L/U3  ( .A(\LBDR_L/n82 ), .Q(\LBDR_L/n71 ) );
@@ -8671,194 +11103,20 @@ endmodule
         Req_LW_out) );
   DFCX1 \LBDR_L/Req_E_FF_reg  ( .D(\LBDR_L/n75 ), .CP(clk), .RN(reset), .Q(
         Req_LE_out) );
+  DFCX1 \LBDR_L/Req_N_FF_reg  ( .D(\LBDR_L/n74 ), .CP(clk), .RN(reset), .Q(
+        Req_LN_out) );
   DFCX1 \LBDR_L/Req_L_FF_reg  ( .D(\LBDR_L/n73 ), .CP(clk), .RN(reset), .Q(
         Req_LL_out), .QN(\LBDR_L/n84 ) );
-  INVXL U3 ( .A(Grant_NS_out), .Q(n25) );
-  INVXL U4 ( .A(Grant_NS_out), .Q(n6) );
-  INVXL U10 ( .A(Grant_SW_out), .Q(n21) );
-  INVXL U14 ( .A(Grant_SW_out), .Q(n3) );
-  LOGIC0 U16 ( .Q(\Xbar_sel_L_out[0] ) );
-  CLKINVX4 U17 ( .A(\LBDR_L/n42 ), .Q(\LBDR_L/n52 ) );
-  CLKINVX4 U18 ( .A(\LBDR_S/n42 ), .Q(\LBDR_S/n52 ) );
-  CLKINVX4 U19 ( .A(\LBDR_W/n42 ), .Q(\LBDR_W/n52 ) );
-  CLKINVX4 U20 ( .A(\LBDR_E/n42 ), .Q(\LBDR_E/n52 ) );
-  CLKINVX4 U21 ( .A(\LBDR_N/n42 ), .Q(\LBDR_N/n52 ) );
-  NOR3X12 U22 ( .A(\LBDR_L/n4 ), .B(\LBDR_L/n5 ), .C(\LBDR_L/n31 ), .Q(
-        \LBDR_L/n6 ) );
-  CLKINVX4 U23 ( .A(\LBDR_L/n2 ), .Q(\LBDR_L/n13 ) );
-  CLKINVX4 U24 ( .A(FIFO_D_out_L[10]), .Q(\LBDR_L/n2 ) );
-  CLKINVX4 U25 ( .A(FIFO_D_out_L[8]), .Q(\LBDR_L/n1 ) );
-  NOR3X12 U26 ( .A(\LBDR_L/n46 ), .B(\LBDR_L/n60 ), .C(\LBDR_L/n54 ), .Q(
-        \LBDR_L/N4 ) );
-  NOR3X12 U27 ( .A(\LBDR_L/n53 ), .B(\LBDR_L/n57 ), .C(\LBDR_L/n54 ), .Q(
-        \LBDR_L/n58 ) );
-  OAI21X8 U28 ( .A1(\LBDR_L/n52 ), .A2(\LBDR_L/n43 ), .B1(\LBDR_L/n42 ), .Q(
-        \LBDR_L/n45 ) );
-  CLKINVX4 U29 ( .A(FIFO_D_out_L[4]), .Q(\LBDR_L/n48 ) );
-  NAND2X6 U30 ( .A(n7), .B(n8), .Q(\LBDR_L/n43 ) );
-  CLKINVX4 U31 ( .A(\LBDR_L/n41 ), .Q(n7) );
-  CLKINVX4 U32 ( .A(FIFO_D_out_L[2]), .Q(n8) );
-  NOR3X12 U33 ( .A(\LBDR_S/n4 ), .B(\LBDR_S/n5 ), .C(\LBDR_S/n31 ), .Q(
-        \LBDR_S/n6 ) );
-  CLKINVX4 U34 ( .A(\LBDR_S/n2 ), .Q(\LBDR_S/n13 ) );
-  CLKINVX4 U35 ( .A(FIFO_D_out_S[10]), .Q(\LBDR_S/n2 ) );
-  CLKINVX4 U36 ( .A(FIFO_D_out_S[8]), .Q(\LBDR_S/n1 ) );
-  NOR3X12 U37 ( .A(\LBDR_S/n46 ), .B(\LBDR_S/n60 ), .C(\LBDR_S/n54 ), .Q(
-        \LBDR_S/N4 ) );
-  NOR3X12 U38 ( .A(\LBDR_S/n53 ), .B(\LBDR_S/n57 ), .C(\LBDR_S/n54 ), .Q(
-        \LBDR_S/n58 ) );
-  OAI21X8 U39 ( .A1(\LBDR_S/n52 ), .A2(\LBDR_S/n43 ), .B1(\LBDR_S/n42 ), .Q(
-        \LBDR_S/n45 ) );
-  CLKINVX4 U40 ( .A(FIFO_D_out_S[4]), .Q(\LBDR_S/n48 ) );
-  NAND2X6 U41 ( .A(n9), .B(n10), .Q(\LBDR_S/n43 ) );
-  CLKINVX4 U42 ( .A(\LBDR_S/n41 ), .Q(n9) );
-  CLKINVX4 U43 ( .A(FIFO_D_out_S[2]), .Q(n10) );
-  NOR3X12 U44 ( .A(\LBDR_W/n4 ), .B(\LBDR_W/n5 ), .C(\LBDR_W/n31 ), .Q(
-        \LBDR_W/n6 ) );
-  CLKINVX4 U45 ( .A(\LBDR_W/n2 ), .Q(\LBDR_W/n13 ) );
-  CLKINVX4 U46 ( .A(FIFO_D_out_W[10]), .Q(\LBDR_W/n2 ) );
-  CLKINVX4 U47 ( .A(FIFO_D_out_W[8]), .Q(\LBDR_W/n1 ) );
-  NOR3X12 U48 ( .A(\LBDR_W/n46 ), .B(\LBDR_W/n60 ), .C(\LBDR_W/n54 ), .Q(
-        \LBDR_W/N4 ) );
-  NOR3X12 U49 ( .A(\LBDR_W/n53 ), .B(\LBDR_W/n57 ), .C(\LBDR_W/n54 ), .Q(
-        \LBDR_W/n58 ) );
-  OAI21X8 U50 ( .A1(\LBDR_W/n52 ), .A2(\LBDR_W/n43 ), .B1(\LBDR_W/n42 ), .Q(
-        \LBDR_W/n45 ) );
-  CLKINVX4 U51 ( .A(FIFO_D_out_W[4]), .Q(\LBDR_W/n48 ) );
-  NAND2X6 U52 ( .A(n11), .B(n12), .Q(\LBDR_W/n43 ) );
-  CLKINVX4 U53 ( .A(\LBDR_W/n41 ), .Q(n11) );
-  CLKINVX4 U54 ( .A(FIFO_D_out_W[2]), .Q(n12) );
-  NOR3X12 U55 ( .A(\LBDR_E/n4 ), .B(\LBDR_E/n5 ), .C(\LBDR_E/n31 ), .Q(
-        \LBDR_E/n6 ) );
-  CLKINVX4 U56 ( .A(\LBDR_E/n2 ), .Q(\LBDR_E/n13 ) );
-  CLKINVX4 U57 ( .A(FIFO_D_out_E[10]), .Q(\LBDR_E/n2 ) );
-  CLKINVX4 U58 ( .A(FIFO_D_out_E[8]), .Q(\LBDR_E/n1 ) );
-  NOR3X12 U59 ( .A(\LBDR_E/n46 ), .B(\LBDR_E/n60 ), .C(\LBDR_E/n54 ), .Q(
-        \LBDR_E/N4 ) );
-  NOR3X12 U60 ( .A(\LBDR_E/n53 ), .B(\LBDR_E/n57 ), .C(\LBDR_E/n54 ), .Q(
-        \LBDR_E/n58 ) );
-  OAI21X8 U61 ( .A1(\LBDR_E/n52 ), .A2(\LBDR_E/n43 ), .B1(\LBDR_E/n42 ), .Q(
-        \LBDR_E/n45 ) );
-  CLKINVX4 U62 ( .A(FIFO_D_out_E[4]), .Q(\LBDR_E/n48 ) );
-  NAND2X6 U63 ( .A(n13), .B(n14), .Q(\LBDR_E/n43 ) );
-  CLKINVX4 U64 ( .A(\LBDR_E/n41 ), .Q(n13) );
-  CLKINVX4 U65 ( .A(FIFO_D_out_E[2]), .Q(n14) );
-  NOR3X12 U66 ( .A(\LBDR_N/n4 ), .B(\LBDR_N/n5 ), .C(\LBDR_N/n31 ), .Q(
-        \LBDR_N/n6 ) );
-  CLKINVX4 U67 ( .A(\LBDR_N/n2 ), .Q(\LBDR_N/n13 ) );
-  CLKINVX4 U68 ( .A(FIFO_D_out_N[10]), .Q(\LBDR_N/n2 ) );
-  CLKINVX4 U69 ( .A(FIFO_D_out_N[8]), .Q(\LBDR_N/n1 ) );
-  NOR3X12 U70 ( .A(\LBDR_N/n46 ), .B(\LBDR_N/n60 ), .C(\LBDR_N/n54 ), .Q(
-        \LBDR_N/N4 ) );
-  NOR3X12 U71 ( .A(\LBDR_N/n53 ), .B(\LBDR_N/n57 ), .C(\LBDR_N/n54 ), .Q(
-        \LBDR_N/n58 ) );
-  OAI21X8 U72 ( .A1(\LBDR_N/n52 ), .A2(\LBDR_N/n43 ), .B1(\LBDR_N/n42 ), .Q(
-        \LBDR_N/n45 ) );
-  CLKINVX4 U73 ( .A(FIFO_D_out_N[4]), .Q(\LBDR_N/n48 ) );
-  NAND2X6 U74 ( .A(n15), .B(n16), .Q(\LBDR_N/n43 ) );
-  CLKINVX4 U75 ( .A(\LBDR_N/n41 ), .Q(n15) );
-  CLKINVX4 U76 ( .A(FIFO_D_out_N[2]), .Q(n16) );
-  CLKINVX4 U77 ( .A(\LBDR_N/n64 ), .Q(\LBDR_N/n41 ) );
-  CLKINVX4 U78 ( .A(\LBDR_N/n65 ), .Q(\LBDR_N/n42 ) );
-  CLKINVX4 U79 ( .A(\LBDR_E/n64 ), .Q(\LBDR_E/n41 ) );
-  CLKINVX4 U80 ( .A(\LBDR_E/n65 ), .Q(\LBDR_E/n42 ) );
-  CLKINVX4 U81 ( .A(\LBDR_W/n64 ), .Q(\LBDR_W/n41 ) );
-  CLKINVX4 U82 ( .A(\LBDR_W/n65 ), .Q(\LBDR_W/n42 ) );
-  CLKINVX4 U83 ( .A(\LBDR_S/n64 ), .Q(\LBDR_S/n41 ) );
-  CLKINVX4 U84 ( .A(\LBDR_S/n65 ), .Q(\LBDR_S/n42 ) );
-  CLKINVX4 U85 ( .A(\LBDR_L/n64 ), .Q(\LBDR_L/n41 ) );
-  CLKINVX4 U86 ( .A(\LBDR_L/n65 ), .Q(\LBDR_L/n42 ) );
-  OAI21X8 U87 ( .A1(\LBDR_L/n52 ), .A2(\LBDR_L/n51 ), .B1(\LBDR_L/n48 ), .Q(
-        \LBDR_L/n57 ) );
-  CLKINVX4 U88 ( .A(FIFO_D_out_L[2]), .Q(\LBDR_L/n51 ) );
-  OAI21X8 U89 ( .A1(\LBDR_S/n52 ), .A2(\LBDR_S/n51 ), .B1(\LBDR_S/n48 ), .Q(
-        \LBDR_S/n57 ) );
-  CLKINVX4 U90 ( .A(FIFO_D_out_S[2]), .Q(\LBDR_S/n51 ) );
-  OAI21X8 U91 ( .A1(\LBDR_W/n52 ), .A2(\LBDR_W/n51 ), .B1(\LBDR_W/n48 ), .Q(
-        \LBDR_W/n57 ) );
-  CLKINVX4 U92 ( .A(FIFO_D_out_W[2]), .Q(\LBDR_W/n51 ) );
-  OAI21X8 U93 ( .A1(\LBDR_E/n52 ), .A2(\LBDR_E/n51 ), .B1(\LBDR_E/n48 ), .Q(
-        \LBDR_E/n57 ) );
-  CLKINVX4 U94 ( .A(FIFO_D_out_E[2]), .Q(\LBDR_E/n51 ) );
-  OAI21X8 U95 ( .A1(\LBDR_N/n52 ), .A2(\LBDR_N/n51 ), .B1(\LBDR_N/n48 ), .Q(
-        \LBDR_N/n57 ) );
-  CLKINVX4 U96 ( .A(FIFO_D_out_N[2]), .Q(\LBDR_N/n51 ) );
-  OAI22X8 U97 ( .A1(\LBDR_L/N5 ), .A2(\LBDR_L/n70 ), .B1(\LBDR_L/n84 ), .B2(
-        \LBDR_L/n81 ), .Q(\LBDR_L/n73 ) );
-  NAND3X6 U98 ( .A(\LBDR_L/n48 ), .B(\LBDR_L/n55 ), .C(\LBDR_L/n45 ), .Q(
-        \LBDR_L/n46 ) );
-  CLKINVX4 U99 ( .A(\LBDR_L/n53 ), .Q(\LBDR_L/n55 ) );
-  OAI22X8 U100 ( .A1(\LBDR_S/N5 ), .A2(\LBDR_S/n70 ), .B1(\LBDR_S/n84 ), .B2(
-        \LBDR_S/n81 ), .Q(\LBDR_S/n73 ) );
-  NAND3X6 U101 ( .A(\LBDR_S/n48 ), .B(\LBDR_S/n55 ), .C(\LBDR_S/n45 ), .Q(
-        \LBDR_S/n46 ) );
-  CLKINVX4 U102 ( .A(\LBDR_S/n53 ), .Q(\LBDR_S/n55 ) );
-  OAI22X8 U103 ( .A1(\LBDR_W/N5 ), .A2(\LBDR_W/n70 ), .B1(\LBDR_W/n84 ), .B2(
-        \LBDR_W/n81 ), .Q(\LBDR_W/n73 ) );
-  NAND3X6 U104 ( .A(\LBDR_W/n48 ), .B(\LBDR_W/n55 ), .C(\LBDR_W/n45 ), .Q(
-        \LBDR_W/n46 ) );
-  CLKINVX4 U105 ( .A(\LBDR_W/n53 ), .Q(\LBDR_W/n55 ) );
-  OAI22X8 U106 ( .A1(\LBDR_E/N5 ), .A2(\LBDR_E/n70 ), .B1(\LBDR_E/n84 ), .B2(
-        \LBDR_E/n81 ), .Q(\LBDR_E/n73 ) );
-  NAND3X6 U107 ( .A(\LBDR_E/n48 ), .B(\LBDR_E/n55 ), .C(\LBDR_E/n45 ), .Q(
-        \LBDR_E/n46 ) );
-  CLKINVX4 U108 ( .A(\LBDR_E/n53 ), .Q(\LBDR_E/n55 ) );
-  OAI22X8 U109 ( .A1(\LBDR_N/N5 ), .A2(\LBDR_N/n70 ), .B1(\LBDR_N/n11 ), .B2(
-        \LBDR_N/n18 ), .Q(\LBDR_N/n26 ) );
-  NAND3X6 U110 ( .A(\LBDR_N/n48 ), .B(\LBDR_N/n55 ), .C(\LBDR_N/n45 ), .Q(
-        \LBDR_N/n46 ) );
-  CLKINVX4 U111 ( .A(\LBDR_N/n53 ), .Q(\LBDR_N/n55 ) );
-  NAND2X6 U112 ( .A(n17), .B(n18), .Q(\LBDR_N/n21 ) );
-  CLKINVX4 U113 ( .A(Grant_WN_out), .Q(n17) );
-  CLKINVX4 U114 ( .A(Grant_SN_out), .Q(n18) );
-  CLKINVX4 U115 ( .A(\LBDR_N/n66 ), .Q(\LBDR_N/n53 ) );
-  CLKINVX4 U116 ( .A(\LBDR_N/n67 ), .Q(\LBDR_N/n54 ) );
-  OAI21X8 U117 ( .A1(\LBDR_N/n60 ), .A2(\LBDR_N/n58 ), .B1(\LBDR_N/n68 ), .Q(
-        \LBDR_N/N3 ) );
-  NAND2X6 U118 ( .A(\LBDR_N/n1 ), .B(\LBDR_N/n38 ), .Q(n19) );
-  CLKINVX4 U119 ( .A(n19), .Q(\LBDR_N/n3 ) );
-  OAI21X8 U120 ( .A1(\LBDR_N/n32 ), .A2(\LBDR_N/n6 ), .B1(\LBDR_N/n40 ), .Q(
-        \LBDR_N/N5 ) );
-  OAI21X8 U121 ( .A1(\LBDR_E/n78 ), .A2(Grant_LE_out), .B1(FIFO_D_out_E[31]), 
-        .Q(\LBDR_E/n80 ) );
-  CLKINVX4 U122 ( .A(\LBDR_E/n66 ), .Q(\LBDR_E/n53 ) );
-  CLKINVX4 U123 ( .A(\LBDR_E/n67 ), .Q(\LBDR_E/n54 ) );
-  OAI21X8 U124 ( .A1(\LBDR_E/n60 ), .A2(\LBDR_E/n58 ), .B1(\LBDR_E/n68 ), .Q(
-        \LBDR_E/N3 ) );
-  NAND2X6 U125 ( .A(\LBDR_E/n1 ), .B(\LBDR_E/n38 ), .Q(n20) );
-  CLKINVX4 U126 ( .A(n20), .Q(\LBDR_E/n3 ) );
-  OAI21X8 U127 ( .A1(\LBDR_E/n32 ), .A2(\LBDR_E/n6 ), .B1(\LBDR_E/n40 ), .Q(
-        \LBDR_E/N5 ) );
-  NAND2X6 U128 ( .A(n21), .B(n22), .Q(\LBDR_W/n78 ) );
-  CLKINVX4 U129 ( .A(Grant_NW_out), .Q(n22) );
-  CLKINVX4 U130 ( .A(\LBDR_W/n66 ), .Q(\LBDR_W/n53 ) );
-  CLKINVX4 U131 ( .A(\LBDR_W/n67 ), .Q(\LBDR_W/n54 ) );
-  OAI21X8 U132 ( .A1(\LBDR_W/n60 ), .A2(\LBDR_W/n58 ), .B1(\LBDR_W/n68 ), .Q(
-        \LBDR_W/N3 ) );
-  NAND2X6 U133 ( .A(\LBDR_W/n1 ), .B(\LBDR_W/n38 ), .Q(n23) );
-  CLKINVX4 U134 ( .A(n23), .Q(\LBDR_W/n3 ) );
-  OAI21X8 U135 ( .A1(\LBDR_W/n32 ), .A2(\LBDR_W/n6 ), .B1(\LBDR_W/n40 ), .Q(
-        \LBDR_W/N5 ) );
-  NAND2X6 U136 ( .A(n24), .B(n25), .Q(\LBDR_S/n78 ) );
-  CLKINVX4 U137 ( .A(Grant_WS_out), .Q(n24) );
-  CLKINVX4 U138 ( .A(\LBDR_S/n66 ), .Q(\LBDR_S/n53 ) );
-  CLKINVX4 U139 ( .A(\LBDR_S/n67 ), .Q(\LBDR_S/n54 ) );
-  OAI21X8 U140 ( .A1(\LBDR_S/n60 ), .A2(\LBDR_S/n58 ), .B1(\LBDR_S/n68 ), .Q(
-        \LBDR_S/N3 ) );
-  NAND2X6 U141 ( .A(\LBDR_S/n1 ), .B(\LBDR_S/n38 ), .Q(n26) );
-  CLKINVX4 U142 ( .A(n26), .Q(\LBDR_S/n3 ) );
-  OAI21X8 U143 ( .A1(\LBDR_S/n32 ), .A2(\LBDR_S/n6 ), .B1(\LBDR_S/n40 ), .Q(
-        \LBDR_S/N5 ) );
-  OAI21X8 U144 ( .A1(\LBDR_L/n78 ), .A2(Grant_EL_out), .B1(FIFO_D_out_L[31]), 
-        .Q(\LBDR_L/n80 ) );
-  CLKINVX4 U145 ( .A(\LBDR_L/n66 ), .Q(\LBDR_L/n53 ) );
-  CLKINVX4 U146 ( .A(\LBDR_L/n67 ), .Q(\LBDR_L/n54 ) );
-  OAI21X8 U147 ( .A1(\LBDR_L/n60 ), .A2(\LBDR_L/n58 ), .B1(\LBDR_L/n68 ), .Q(
-        \LBDR_L/N3 ) );
-  NAND2X6 U148 ( .A(\LBDR_L/n1 ), .B(\LBDR_L/n38 ), .Q(n27) );
-  CLKINVX4 U149 ( .A(n27), .Q(\LBDR_L/n3 ) );
-  OAI21X8 U150 ( .A1(\LBDR_L/n32 ), .A2(\LBDR_L/n6 ), .B1(\LBDR_L/n40 ), .Q(
-        \LBDR_L/N5 ) );
+  OAI21X8 U27 ( .A1(\LBDR_E/n78 ), .A2(grant_LE_out_sig_LBDR), .B1(n17), .Q(
+        \LBDR_E/n80 ) );
+  NAND2X6 U28 ( .A(n23), .B(n24), .Q(\LBDR_W/n78 ) );
+  CLKINVX4 U29 ( .A(grant_SW_out_sig_LBDR), .Q(n23) );
+  CLKINVX4 U30 ( .A(grant_NW_out_sig_LBDR), .Q(n24) );
+  NAND2X6 U31 ( .A(n25), .B(n26), .Q(\LBDR_S/n78 ) );
+  CLKINVX4 U32 ( .A(grant_WS_out_sig_LBDR), .Q(n25) );
+  CLKINVX4 U33 ( .A(grant_NS_out_sig_LBDR), .Q(n26) );
+  OAI21X8 U34 ( .A1(\LBDR_L/n78 ), .A2(grant_EL_out_sig_LBDR), .B1(n4), .Q(
+        \LBDR_L/n80 ) );
   DFCX1 \allocator_unit/arb_X_L/state_reg[1]  ( .D(
         \allocator_unit/arb_X_L/state_in[1] ), .CP(clk), .RN(reset), .Q(
         \allocator_unit/arb_X_L/state[1] ), .QN(\allocator_unit/arb_X_L/n56 )
@@ -9498,16 +11756,17 @@ endmodule
         \allocator_unit/n14 ), .Q(Grant_WL_out) );
   AND2X3 \allocator_unit/U20  ( .A(\allocator_unit/grant_S_L_sig ), .B(
         \allocator_unit/n14 ), .Q(Grant_SL_out) );
-  INVXL \allocator_unit/U19  ( .A(empty_N_out_sig), .Q(\allocator_unit/n15 )
-         );
-  INVXL \allocator_unit/U18  ( .A(empty_E_out_sig), .Q(\allocator_unit/n9 ) );
-  INVXL \allocator_unit/U17  ( .A(empty_W_out_sig), .Q(\allocator_unit/n10 )
-         );
-  INVXL \allocator_unit/U16  ( .A(empty_L_out_sig), .Q(\allocator_unit/n14 )
-         );
+  INVXL \allocator_unit/U19  ( .A(empty_N_out_sig_arbiter), .Q(
+        \allocator_unit/n15 ) );
+  INVXL \allocator_unit/U18  ( .A(empty_E_out_sig_arbiter), .Q(
+        \allocator_unit/n9 ) );
+  INVXL \allocator_unit/U17  ( .A(empty_W_out_sig_arbiter), .Q(
+        \allocator_unit/n10 ) );
+  INVXL \allocator_unit/U16  ( .A(empty_L_out_sig_arbiter), .Q(
+        \allocator_unit/n14 ) );
   INVXL \allocator_unit/U14  ( .A(\allocator_unit/n77 ), .Q(Grant_WN_out) );
-  INVXL \allocator_unit/U13  ( .A(empty_S_out_sig), .Q(\allocator_unit/n12 )
-         );
+  INVXL \allocator_unit/U13  ( .A(empty_S_out_sig_arbiter), .Q(
+        \allocator_unit/n12 ) );
   INVXL \allocator_unit/U12  ( .A(\allocator_unit/n76 ), .Q(Grant_WE_out) );
   INVXL \allocator_unit/U11  ( .A(\allocator_unit/n84 ), .Q(Grant_SW_out) );
   INVXL \allocator_unit/U10  ( .A(\allocator_unit/n93 ), .Q(Grant_NS_out) );
@@ -9563,300 +11822,298 @@ endmodule
   XNOR2X2 \allocator_unit/U5  ( .A(\allocator_unit/credit_counter_W_out [0]), 
         .B(\allocator_unit/n74 ), .Q(\allocator_unit/credit_counter_W_in [0])
          );
-  NAND2X6 U151 ( .A(\allocator_unit/arb_X_N/n6 ), .B(
+  NAND2X6 U35 ( .A(\allocator_unit/arb_X_N/n6 ), .B(
         \allocator_unit/arb_X_N/n21 ), .Q(\allocator_unit/arb_X_N/n16 ) );
-  OAI21X8 U152 ( .A1(\allocator_unit/arb_X_N/n27 ), .A2(
+  OAI21X8 U36 ( .A1(\allocator_unit/arb_X_N/n27 ), .A2(
         \allocator_unit/arb_X_N/n14 ), .B1(\allocator_unit/arb_X_N/n28 ), .Q(
         \allocator_unit/arb_X_N/state_in[0] ) );
-  OAI21X8 U153 ( .A1(req_E_N_out_sig), .A2(\allocator_unit/arb_X_N/n2 ), .B1(
+  OAI21X8 U37 ( .A1(req_E_N_out_sig), .A2(\allocator_unit/arb_X_N/n2 ), .B1(
         \allocator_unit/arb_X_N/n8 ), .Q(\allocator_unit/arb_X_N/n30 ) );
-  NOR2X8 U154 ( .A(\allocator_unit/arb_X_E/n8 ), .B(req_N_E_out_sig), .Q(
+  NOR2X8 U38 ( .A(\allocator_unit/arb_X_E/n8 ), .B(req_N_E_out_sig), .Q(
         \allocator_unit/arb_X_E/N41 ) );
-  AOI21X8 U155 ( .A1(\allocator_unit/arb_X_E/n39 ), .A2(
+  AOI21X8 U39 ( .A1(\allocator_unit/arb_X_E/n39 ), .A2(
         \allocator_unit/arb_X_E/n3 ), .B1(\allocator_unit/arb_X_E/n40 ), .Q(
         \allocator_unit/arb_X_E/n41 ) );
-  NOR2X8 U156 ( .A(\allocator_unit/arb_X_W/n8 ), .B(req_N_W_out_sig), .Q(
+  NOR2X8 U40 ( .A(\allocator_unit/arb_X_W/n8 ), .B(req_N_W_out_sig), .Q(
         \allocator_unit/arb_X_W/N41 ) );
-  NAND2X6 U157 ( .A(\allocator_unit/arb_X_W/n11 ), .B(
+  NAND2X6 U41 ( .A(\allocator_unit/arb_X_W/n11 ), .B(
         \allocator_unit/arb_X_W/n12 ), .Q(\allocator_unit/arb_X_W/n39 ) );
-  NOR2X8 U158 ( .A(req_L_S_out_sig), .B(req_W_S_out_sig), .Q(
+  NOR2X8 U42 ( .A(req_L_S_out_sig), .B(req_W_S_out_sig), .Q(
         \allocator_unit/arb_X_S/n38 ) );
-  NOR2X8 U159 ( .A(\allocator_unit/arb_X_S/n51 ), .B(
+  NOR2X8 U43 ( .A(\allocator_unit/arb_X_S/n51 ), .B(
         \allocator_unit/arb_X_S/n50 ), .Q(\allocator_unit/arb_X_S/n44 ) );
-  OAI21X8 U160 ( .A1(req_E_L_out_sig), .A2(\allocator_unit/arb_X_L/n9 ), .B1(
+  OAI21X8 U44 ( .A1(req_E_L_out_sig), .A2(\allocator_unit/arb_X_L/n9 ), .B1(
         \allocator_unit/arb_X_L/n12 ), .Q(\allocator_unit/arb_X_L/n39 ) );
-  NOR2X8 U161 ( .A(Grant_NW_out), .B(Grant_NE_out), .Q(\allocator_unit/n94 )
+  NOR2X8 U45 ( .A(Grant_NW_out), .B(Grant_NE_out), .Q(\allocator_unit/n94 ) );
+  NOR2X8 U46 ( .A(Grant_EW_out), .B(Grant_EN_out), .Q(\allocator_unit/n110 )
          );
-  NOR2X8 U162 ( .A(Grant_EW_out), .B(Grant_EN_out), .Q(\allocator_unit/n110 )
+  NOR2X8 U47 ( .A(Grant_WL_out), .B(Grant_WS_out), .Q(\allocator_unit/n78 ) );
+  NAND2X6 U48 ( .A(req_E_W_out_sig), .B(\allocator_unit/arb_X_W/n47 ), .Q(n27)
          );
-  NOR2X8 U163 ( .A(Grant_WL_out), .B(Grant_WS_out), .Q(\allocator_unit/n78 )
+  NAND2X6 U49 ( .A(\allocator_unit/arb_X_W/N41 ), .B(
+        \allocator_unit/arb_X_W/n46 ), .Q(n28) );
+  NAND2X6 U50 ( .A(n27), .B(n28), .Q(\allocator_unit/arb_X_W/state_in[1] ) );
+  NOR2X8 U51 ( .A(Grant_SN_out), .B(Grant_SL_out), .Q(\allocator_unit/n86 ) );
+  NOR2X8 U52 ( .A(Grant_LE_out), .B(Grant_LN_out), .Q(\allocator_unit/n102 )
          );
-  NOR2X8 U164 ( .A(Grant_SN_out), .B(Grant_SL_out), .Q(\allocator_unit/n86 )
-         );
-  NOR2X8 U165 ( .A(Grant_LE_out), .B(Grant_LN_out), .Q(\allocator_unit/n102 )
-         );
-  NAND2X6 U166 ( .A(req_E_W_out_sig), .B(\allocator_unit/arb_X_W/n47 ), .Q(n28) );
-  NAND2X6 U167 ( .A(\allocator_unit/arb_X_W/N41 ), .B(
-        \allocator_unit/arb_X_W/n46 ), .Q(n29) );
-  NAND2X6 U168 ( .A(n28), .B(n29), .Q(\allocator_unit/arb_X_W/state_in[1] ) );
-  CLKINVX4 U169 ( .A(req_S_L_out_sig), .Q(\allocator_unit/arb_X_L/n54 ) );
-  NAND2X6 U170 ( .A(\allocator_unit/arb_X_L/n51 ), .B(
+  CLKINVX4 U53 ( .A(req_S_L_out_sig), .Q(\allocator_unit/arb_X_L/n54 ) );
+  NAND2X6 U54 ( .A(\allocator_unit/arb_X_L/n51 ), .B(
         \allocator_unit/arb_X_L/n11 ), .Q(\allocator_unit/arb_X_L/n52 ) );
-  CLKINVX4 U171 ( .A(req_W_L_out_sig), .Q(\allocator_unit/arb_X_L/n38 ) );
-  NAND2X6 U172 ( .A(\allocator_unit/arb_X_L/n44 ), .B(
+  CLKINVX4 U55 ( .A(req_W_L_out_sig), .Q(\allocator_unit/arb_X_L/n38 ) );
+  NAND2X6 U56 ( .A(\allocator_unit/arb_X_L/n44 ), .B(
         \allocator_unit/arb_X_L/n43 ), .Q(\allocator_unit/arb_X_L/n46 ) );
-  CLKINVX4 U173 ( .A(req_L_S_out_sig), .Q(\allocator_unit/arb_X_S/n54 ) );
-  NAND2X6 U174 ( .A(\allocator_unit/arb_X_S/n12 ), .B(
-        \allocator_unit/arb_X_S/n38 ), .Q(n30) );
-  CLKINVX4 U175 ( .A(n30), .Q(\allocator_unit/arb_X_S/n42 ) );
-  OAI211X6 U176 ( .A1(\allocator_unit/arb_X_W/n55 ), .A2(
+  CLKINVX4 U57 ( .A(req_L_S_out_sig), .Q(\allocator_unit/arb_X_S/n54 ) );
+  NAND2X6 U58 ( .A(\allocator_unit/arb_X_S/n12 ), .B(
+        \allocator_unit/arb_X_S/n38 ), .Q(n29) );
+  CLKINVX4 U59 ( .A(n29), .Q(\allocator_unit/arb_X_S/n42 ) );
+  OAI211X6 U60 ( .A1(\allocator_unit/arb_X_W/n55 ), .A2(
         \allocator_unit/arb_X_W/n54 ), .B1(\allocator_unit/arb_X_W/n52 ), .C1(
         \allocator_unit/arb_X_W/n53 ), .Q(\allocator_unit/arb_X_W/state_in[2] ) );
-  CLKINVX4 U177 ( .A(req_E_W_out_sig), .Q(\allocator_unit/arb_X_W/n48 ) );
-  NAND2X6 U178 ( .A(\allocator_unit/arb_X_W/n9 ), .B(req_L_W_out_sig), .Q(
+  CLKINVX4 U61 ( .A(req_E_W_out_sig), .Q(\allocator_unit/arb_X_W/n48 ) );
+  NAND2X6 U62 ( .A(\allocator_unit/arb_X_W/n9 ), .B(req_L_W_out_sig), .Q(
         \allocator_unit/arb_X_W/n38 ) );
-  CLKINVX4 U179 ( .A(req_W_E_out_sig), .Q(\allocator_unit/arb_X_E/n48 ) );
-  CLKINVX4 U180 ( .A(\allocator_unit/arb_X_E/n45 ), .Q(n31) );
-  NAND2X6 U181 ( .A(\allocator_unit/arb_X_E/N41 ), .B(
-        \allocator_unit/arb_X_E/n46 ), .Q(n32) );
-  NAND2X6 U182 ( .A(n31), .B(n32), .Q(\allocator_unit/arb_X_E/state_in[1] ) );
-  NAND3X6 U183 ( .A(\allocator_unit/arb_X_E/n11 ), .B(
+  CLKINVX4 U63 ( .A(req_W_E_out_sig), .Q(\allocator_unit/arb_X_E/n48 ) );
+  CLKINVX4 U64 ( .A(\allocator_unit/arb_X_E/n45 ), .Q(n30) );
+  NAND2X6 U65 ( .A(\allocator_unit/arb_X_E/N41 ), .B(
+        \allocator_unit/arb_X_E/n46 ), .Q(n31) );
+  NAND2X6 U66 ( .A(n30), .B(n31), .Q(\allocator_unit/arb_X_E/state_in[1] ) );
+  NAND3X6 U67 ( .A(\allocator_unit/arb_X_E/n11 ), .B(
         \allocator_unit/arb_X_E/n12 ), .C(\allocator_unit/arb_X_E/n8 ), .Q(
         \allocator_unit/arb_X_E/n39 ) );
-  NAND2X6 U184 ( .A(\allocator_unit/arb_X_N/n1 ), .B(
+  NAND2X6 U68 ( .A(\allocator_unit/arb_X_N/n1 ), .B(
         \allocator_unit/arb_X_N/n2 ), .Q(\allocator_unit/arb_X_N/N41 ) );
-  OAI21X8 U185 ( .A1(\allocator_unit/arb_X_N/n6 ), .A2(
+  OAI21X8 U69 ( .A1(\allocator_unit/arb_X_N/n6 ), .A2(
         \allocator_unit/arb_X_N/n14 ), .B1(\allocator_unit/arb_X_N/n9 ), .Q(
         \allocator_unit/arb_X_N/n22 ) );
-  NOR4X1 \XBAR_N/U10  ( .A(\XBAR_N/n124 ), .B(Grant_NL_out), .C(Grant_NS_out), 
-        .D(Grant_NE_out), .Q(\XBAR_N/n44 ) );
   CLKBUFX2 \XBAR_N/U157  ( .A(\XBAR_N/n41 ), .Q(\XBAR_N/n12 ) );
   CLKBUFX2 \XBAR_N/U156  ( .A(\XBAR_N/n41 ), .Q(\XBAR_N/n10 ) );
   CLKBUFX2 \XBAR_N/U155  ( .A(\XBAR_N/n41 ), .Q(\XBAR_N/n11 ) );
   INVXL \XBAR_N/U152  ( .A(\XBAR_N/n111 ), .Q(\XBAR_N/n123 ) );
   NAND2XL \XBAR_N/U151  ( .A(\XBAR_N/n123 ), .B(\XBAR_N/n110 ), .Q(
         \XBAR_N/n107 ) );
-  AOI22X3 \XBAR_N/U149  ( .A1(FIFO_D_out_L[28]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[28]), .B2(\XBAR_N/n42 ), .Q(\XBAR_N/n66 ) );
-  AOI22X3 \XBAR_N/U148  ( .A1(FIFO_D_out_E[28]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[28]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n65 ) );
-  INVXL \XBAR_N/U147  ( .A(FIFO_D_out_S[28]), .Q(\XBAR_N/n19 ) );
-  OAI211X3 \XBAR_N/U146  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n19 ), .B1(
-        \XBAR_N/n65 ), .C1(\XBAR_N/n66 ), .Q(TX_N[28]) );
-  AOI22X3 \XBAR_N/U145  ( .A1(FIFO_D_out_L[27]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[27]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n68 ) );
-  AOI22X3 \XBAR_N/U144  ( .A1(FIFO_D_out_E[27]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[27]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n67 ) );
-  INVXL \XBAR_N/U143  ( .A(FIFO_D_out_S[27]), .Q(\XBAR_N/n20 ) );
-  OAI211X3 \XBAR_N/U142  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n20 ), .B1(
-        \XBAR_N/n67 ), .C1(\XBAR_N/n68 ), .Q(TX_N[27]) );
-  AOI22X3 \XBAR_N/U141  ( .A1(FIFO_D_out_L[26]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[26]), .B2(\XBAR_N/n9 ), .Q(\XBAR_N/n70 ) );
-  AOI22X3 \XBAR_N/U140  ( .A1(FIFO_D_out_E[26]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[26]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n69 ) );
-  INVXL \XBAR_N/U139  ( .A(FIFO_D_out_S[26]), .Q(\XBAR_N/n21 ) );
-  OAI211X3 \XBAR_N/U138  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n21 ), .B1(
-        \XBAR_N/n69 ), .C1(\XBAR_N/n70 ), .Q(TX_N[26]) );
-  AOI22X3 \XBAR_N/U137  ( .A1(FIFO_D_out_L[25]), .A2(\XBAR_N/n11 ), .B1(
-        FIFO_D_out_N[25]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n72 ) );
-  AOI22X3 \XBAR_N/U136  ( .A1(FIFO_D_out_E[25]), .A2(\XBAR_N/n5 ), .B1(
-        FIFO_D_out_W[25]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n71 ) );
-  INVXL \XBAR_N/U135  ( .A(FIFO_D_out_S[25]), .Q(\XBAR_N/n22 ) );
-  OAI211X3 \XBAR_N/U134  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n22 ), .B1(
-        \XBAR_N/n71 ), .C1(\XBAR_N/n72 ), .Q(TX_N[25]) );
-  AOI22X3 \XBAR_N/U133  ( .A1(FIFO_D_out_L[24]), .A2(\XBAR_N/n11 ), .B1(
-        FIFO_D_out_N[24]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n74 ) );
-  AOI22X3 \XBAR_N/U132  ( .A1(FIFO_D_out_E[24]), .A2(\XBAR_N/n5 ), .B1(
-        FIFO_D_out_W[24]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n73 ) );
-  INVXL \XBAR_N/U131  ( .A(FIFO_D_out_S[24]), .Q(\XBAR_N/n23 ) );
-  OAI211X3 \XBAR_N/U130  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n23 ), .B1(
-        \XBAR_N/n73 ), .C1(\XBAR_N/n74 ), .Q(TX_N[24]) );
-  AOI22X3 \XBAR_N/U129  ( .A1(FIFO_D_out_L[23]), .A2(\XBAR_N/n11 ), .B1(
-        FIFO_D_out_N[23]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n76 ) );
-  AOI22X3 \XBAR_N/U128  ( .A1(FIFO_D_out_E[23]), .A2(\XBAR_N/n5 ), .B1(
-        FIFO_D_out_W[23]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n75 ) );
-  INVXL \XBAR_N/U127  ( .A(FIFO_D_out_S[23]), .Q(\XBAR_N/n24 ) );
-  OAI211X3 \XBAR_N/U126  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n24 ), .B1(
-        \XBAR_N/n75 ), .C1(\XBAR_N/n76 ), .Q(TX_N[23]) );
-  AOI22X3 \XBAR_N/U125  ( .A1(FIFO_D_out_L[22]), .A2(\XBAR_N/n11 ), .B1(
-        FIFO_D_out_N[22]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n78 ) );
-  AOI22X3 \XBAR_N/U124  ( .A1(FIFO_D_out_E[22]), .A2(\XBAR_N/n5 ), .B1(
-        FIFO_D_out_W[22]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n77 ) );
-  INVXL \XBAR_N/U123  ( .A(FIFO_D_out_S[22]), .Q(\XBAR_N/n25 ) );
-  OAI211X3 \XBAR_N/U122  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n25 ), .B1(
-        \XBAR_N/n77 ), .C1(\XBAR_N/n78 ), .Q(TX_N[22]) );
-  AOI22X3 \XBAR_N/U121  ( .A1(FIFO_D_out_L[21]), .A2(\XBAR_N/n11 ), .B1(
-        FIFO_D_out_N[21]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n80 ) );
-  AOI22X3 \XBAR_N/U120  ( .A1(FIFO_D_out_E[21]), .A2(\XBAR_N/n5 ), .B1(
-        FIFO_D_out_W[21]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n79 ) );
-  INVXL \XBAR_N/U119  ( .A(FIFO_D_out_S[21]), .Q(\XBAR_N/n26 ) );
-  OAI211X3 \XBAR_N/U118  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n26 ), .B1(
-        \XBAR_N/n79 ), .C1(\XBAR_N/n80 ), .Q(TX_N[21]) );
-  AOI22X3 \XBAR_N/U117  ( .A1(FIFO_D_out_L[20]), .A2(\XBAR_N/n11 ), .B1(
-        FIFO_D_out_N[20]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n82 ) );
-  AOI22X3 \XBAR_N/U116  ( .A1(FIFO_D_out_E[20]), .A2(\XBAR_N/n5 ), .B1(
-        FIFO_D_out_W[20]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n81 ) );
-  INVXL \XBAR_N/U115  ( .A(FIFO_D_out_S[20]), .Q(\XBAR_N/n27 ) );
-  OAI211X3 \XBAR_N/U114  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n27 ), .B1(
-        \XBAR_N/n81 ), .C1(\XBAR_N/n82 ), .Q(TX_N[20]) );
-  AOI22X3 \XBAR_N/U113  ( .A1(FIFO_D_out_L[19]), .A2(\XBAR_N/n11 ), .B1(
-        FIFO_D_out_N[19]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n86 ) );
-  AOI22X3 \XBAR_N/U112  ( .A1(FIFO_D_out_E[19]), .A2(\XBAR_N/n5 ), .B1(
-        FIFO_D_out_W[19]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n85 ) );
-  INVXL \XBAR_N/U111  ( .A(FIFO_D_out_S[19]), .Q(\XBAR_N/n28 ) );
-  OAI211X3 \XBAR_N/U110  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n28 ), .B1(
-        \XBAR_N/n85 ), .C1(\XBAR_N/n86 ), .Q(TX_N[19]) );
-  AOI22X3 \XBAR_N/U109  ( .A1(FIFO_D_out_L[18]), .A2(\XBAR_N/n11 ), .B1(
-        FIFO_D_out_N[18]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n88 ) );
-  AOI22X3 \XBAR_N/U108  ( .A1(FIFO_D_out_E[18]), .A2(\XBAR_N/n5 ), .B1(
-        FIFO_D_out_W[18]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n87 ) );
-  INVXL \XBAR_N/U107  ( .A(FIFO_D_out_S[18]), .Q(\XBAR_N/n29 ) );
-  OAI211X3 \XBAR_N/U106  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n29 ), .B1(
-        \XBAR_N/n87 ), .C1(\XBAR_N/n88 ), .Q(TX_N[18]) );
-  AOI22X3 \XBAR_N/U105  ( .A1(FIFO_D_out_L[17]), .A2(\XBAR_N/n11 ), .B1(
-        FIFO_D_out_N[17]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n90 ) );
-  AOI22X3 \XBAR_N/U104  ( .A1(FIFO_D_out_E[17]), .A2(\XBAR_N/n5 ), .B1(
-        FIFO_D_out_W[17]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n89 ) );
-  INVXL \XBAR_N/U103  ( .A(FIFO_D_out_S[17]), .Q(\XBAR_N/n30 ) );
-  OAI211X3 \XBAR_N/U102  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n30 ), .B1(
-        \XBAR_N/n89 ), .C1(\XBAR_N/n90 ), .Q(TX_N[17]) );
-  AOI22X3 \XBAR_N/U101  ( .A1(FIFO_D_out_L[16]), .A2(\XBAR_N/n11 ), .B1(
-        FIFO_D_out_N[16]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n92 ) );
-  AOI22X3 \XBAR_N/U100  ( .A1(FIFO_D_out_E[16]), .A2(\XBAR_N/n5 ), .B1(
-        FIFO_D_out_W[16]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n91 ) );
-  INVXL \XBAR_N/U99  ( .A(FIFO_D_out_S[16]), .Q(\XBAR_N/n31 ) );
-  OAI211X3 \XBAR_N/U98  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n31 ), .B1(
-        \XBAR_N/n91 ), .C1(\XBAR_N/n92 ), .Q(TX_N[16]) );
-  AOI22X3 \XBAR_N/U97  ( .A1(FIFO_D_out_L[15]), .A2(\XBAR_N/n11 ), .B1(
-        FIFO_D_out_N[15]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n94 ) );
-  AOI22X3 \XBAR_N/U96  ( .A1(FIFO_D_out_E[15]), .A2(\XBAR_N/n5 ), .B1(
-        FIFO_D_out_W[15]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n93 ) );
-  INVXL \XBAR_N/U95  ( .A(FIFO_D_out_S[15]), .Q(\XBAR_N/n32 ) );
-  OAI211X3 \XBAR_N/U94  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n32 ), .B1(
-        \XBAR_N/n93 ), .C1(\XBAR_N/n94 ), .Q(TX_N[15]) );
-  AOI22X3 \XBAR_N/U93  ( .A1(FIFO_D_out_L[0]), .A2(\XBAR_N/n12 ), .B1(
-        FIFO_D_out_N[0]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n106 ) );
-  AOI22X3 \XBAR_N/U92  ( .A1(FIFO_D_out_E[0]), .A2(\XBAR_N/n6 ), .B1(
-        FIFO_D_out_W[0]), .B2(\XBAR_N/n3 ), .Q(\XBAR_N/n105 ) );
-  INVXL \XBAR_N/U91  ( .A(FIFO_D_out_S[0]), .Q(\XBAR_N/n121 ) );
-  OAI211X3 \XBAR_N/U90  ( .A1(\XBAR_N/n15 ), .A2(\XBAR_N/n121 ), .B1(
-        \XBAR_N/n105 ), .C1(\XBAR_N/n106 ), .Q(TX_N[0]) );
-  AOI22X3 \XBAR_N/U89  ( .A1(FIFO_D_out_L[8]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[8]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n46 ) );
-  AOI22X3 \XBAR_N/U88  ( .A1(FIFO_D_out_E[8]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[8]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n45 ) );
-  INVXL \XBAR_N/U87  ( .A(FIFO_D_out_S[8]), .Q(\XBAR_N/n113 ) );
-  OAI211X3 \XBAR_N/U86  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n113 ), .B1(
-        \XBAR_N/n45 ), .C1(\XBAR_N/n46 ), .Q(TX_N[8]) );
-  AOI22X3 \XBAR_N/U85  ( .A1(\LBDR_L/n31 ), .A2(\XBAR_N/n11 ), .B1(
-        \LBDR_N/n31 ), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n98 ) );
-  AOI22X3 \XBAR_N/U84  ( .A1(\LBDR_E/n31 ), .A2(\XBAR_N/n5 ), .B1(\LBDR_W/n31 ), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n97 ) );
-  INVXL \XBAR_N/U83  ( .A(\LBDR_S/n31 ), .Q(\XBAR_N/n34 ) );
-  OAI211X3 \XBAR_N/U82  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n34 ), .B1(
-        \XBAR_N/n97 ), .C1(\XBAR_N/n98 ), .Q(TX_N[13]) );
-  AOI22X3 \XBAR_N/U81  ( .A1(\LBDR_L/n4 ), .A2(\XBAR_N/n12 ), .B1(\LBDR_N/n4 ), 
-        .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n100 ) );
-  AOI22X3 \XBAR_N/U80  ( .A1(\LBDR_E/n4 ), .A2(\XBAR_N/n6 ), .B1(\LBDR_W/n4 ), 
-        .B2(\XBAR_N/n3 ), .Q(\XBAR_N/n99 ) );
-  INVXL \XBAR_N/U79  ( .A(\LBDR_S/n4 ), .Q(\XBAR_N/n35 ) );
-  OAI211X3 \XBAR_N/U78  ( .A1(\XBAR_N/n15 ), .A2(\XBAR_N/n35 ), .B1(
-        \XBAR_N/n99 ), .C1(\XBAR_N/n100 ), .Q(TX_N[12]) );
-  AOI22X3 \XBAR_N/U77  ( .A1(FIFO_D_out_L[10]), .A2(\XBAR_N/n12 ), .B1(
-        FIFO_D_out_N[10]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n104 ) );
-  AOI22X3 \XBAR_N/U76  ( .A1(FIFO_D_out_E[10]), .A2(\XBAR_N/n6 ), .B1(
-        FIFO_D_out_W[10]), .B2(\XBAR_N/n3 ), .Q(\XBAR_N/n103 ) );
-  INVXL \XBAR_N/U75  ( .A(FIFO_D_out_S[10]), .Q(\XBAR_N/n37 ) );
-  OAI211X3 \XBAR_N/U74  ( .A1(\XBAR_N/n15 ), .A2(\XBAR_N/n37 ), .B1(
-        \XBAR_N/n103 ), .C1(\XBAR_N/n104 ), .Q(TX_N[10]) );
-  AOI22X3 \XBAR_N/U73  ( .A1(FIFO_D_out_L[4]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[4]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n54 ) );
-  AOI22X3 \XBAR_N/U72  ( .A1(FIFO_D_out_E[4]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[4]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n53 ) );
-  INVXL \XBAR_N/U71  ( .A(FIFO_D_out_S[4]), .Q(\XBAR_N/n117 ) );
-  OAI211X3 \XBAR_N/U70  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n117 ), .B1(
-        \XBAR_N/n53 ), .C1(\XBAR_N/n54 ), .Q(TX_N[4]) );
-  AOI22X3 \XBAR_N/U69  ( .A1(FIFO_D_out_L[11]), .A2(\XBAR_N/n12 ), .B1(
-        FIFO_D_out_N[11]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n102 ) );
-  AOI22X3 \XBAR_N/U68  ( .A1(FIFO_D_out_E[11]), .A2(\XBAR_N/n6 ), .B1(
-        FIFO_D_out_W[11]), .B2(\XBAR_N/n3 ), .Q(\XBAR_N/n101 ) );
-  INVXL \XBAR_N/U67  ( .A(FIFO_D_out_S[11]), .Q(\XBAR_N/n36 ) );
-  OAI211X3 \XBAR_N/U66  ( .A1(\XBAR_N/n15 ), .A2(\XBAR_N/n36 ), .B1(
-        \XBAR_N/n101 ), .C1(\XBAR_N/n102 ), .Q(TX_N[11]) );
-  AOI22X3 \XBAR_N/U65  ( .A1(FIFO_D_out_L[9]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[9]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n40 ) );
-  AOI22X3 \XBAR_N/U64  ( .A1(FIFO_D_out_E[9]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[9]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n39 ) );
-  INVXL \XBAR_N/U63  ( .A(FIFO_D_out_S[9]), .Q(\XBAR_N/n112 ) );
-  OAI211X3 \XBAR_N/U62  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n112 ), .B1(
-        \XBAR_N/n39 ), .C1(\XBAR_N/n40 ), .Q(TX_N[9]) );
-  AOI22X3 \XBAR_N/U61  ( .A1(FIFO_D_out_L[6]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[6]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n50 ) );
-  AOI22X3 \XBAR_N/U60  ( .A1(FIFO_D_out_E[6]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[6]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n49 ) );
-  INVXL \XBAR_N/U59  ( .A(FIFO_D_out_S[6]), .Q(\XBAR_N/n115 ) );
-  OAI211X3 \XBAR_N/U58  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n115 ), .B1(
-        \XBAR_N/n49 ), .C1(\XBAR_N/n50 ), .Q(TX_N[6]) );
-  AOI22X3 \XBAR_N/U57  ( .A1(FIFO_D_out_L[5]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[5]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n52 ) );
-  AOI22X3 \XBAR_N/U56  ( .A1(FIFO_D_out_E[5]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[5]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n51 ) );
-  INVXL \XBAR_N/U55  ( .A(FIFO_D_out_S[5]), .Q(\XBAR_N/n116 ) );
-  OAI211X3 \XBAR_N/U54  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n116 ), .B1(
-        \XBAR_N/n51 ), .C1(\XBAR_N/n52 ), .Q(TX_N[5]) );
-  AOI22X3 \XBAR_N/U53  ( .A1(FIFO_D_out_L[3]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[3]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n56 ) );
-  AOI22X3 \XBAR_N/U52  ( .A1(FIFO_D_out_E[3]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[3]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n55 ) );
-  INVXL \XBAR_N/U51  ( .A(FIFO_D_out_S[3]), .Q(\XBAR_N/n118 ) );
-  OAI211X3 \XBAR_N/U50  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n118 ), .B1(
-        \XBAR_N/n55 ), .C1(\XBAR_N/n56 ), .Q(TX_N[3]) );
-  AOI22X3 \XBAR_N/U49  ( .A1(FIFO_D_out_L[1]), .A2(\XBAR_N/n11 ), .B1(
-        FIFO_D_out_N[1]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n84 ) );
-  AOI22X3 \XBAR_N/U48  ( .A1(FIFO_D_out_E[1]), .A2(\XBAR_N/n5 ), .B1(
-        FIFO_D_out_W[1]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n83 ) );
-  INVXL \XBAR_N/U47  ( .A(FIFO_D_out_S[1]), .Q(\XBAR_N/n120 ) );
-  OAI211X3 \XBAR_N/U46  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n120 ), .B1(
-        \XBAR_N/n83 ), .C1(\XBAR_N/n84 ), .Q(TX_N[1]) );
-  AOI22X3 \XBAR_N/U45  ( .A1(FIFO_D_out_L[2]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[2]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n62 ) );
-  AOI22X3 \XBAR_N/U44  ( .A1(FIFO_D_out_E[2]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[2]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n61 ) );
-  INVXL \XBAR_N/U43  ( .A(FIFO_D_out_S[2]), .Q(\XBAR_N/n119 ) );
-  OAI211X3 \XBAR_N/U42  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n119 ), .B1(
-        \XBAR_N/n61 ), .C1(\XBAR_N/n62 ), .Q(TX_N[2]) );
-  AOI22X3 \XBAR_N/U41  ( .A1(FIFO_D_out_L[29]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[29]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n64 ) );
-  AOI22X3 \XBAR_N/U40  ( .A1(FIFO_D_out_E[29]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[29]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n63 ) );
-  INVXL \XBAR_N/U39  ( .A(FIFO_D_out_S[29]), .Q(\XBAR_N/n18 ) );
-  OAI211X3 \XBAR_N/U38  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n18 ), .B1(
-        \XBAR_N/n63 ), .C1(\XBAR_N/n64 ), .Q(TX_N[29]) );
-  AOI22X3 \XBAR_N/U37  ( .A1(FIFO_D_out_L[30]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[30]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n60 ) );
-  AOI22X3 \XBAR_N/U36  ( .A1(FIFO_D_out_E[30]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[30]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n59 ) );
-  INVXL \XBAR_N/U35  ( .A(FIFO_D_out_S[30]), .Q(\XBAR_N/n17 ) );
-  OAI211X3 \XBAR_N/U34  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n17 ), .B1(
-        \XBAR_N/n59 ), .C1(\XBAR_N/n60 ), .Q(TX_N[30]) );
-  AOI22X3 \XBAR_N/U33  ( .A1(\LBDR_L/n60 ), .A2(\XBAR_N/n10 ), .B1(
-        \LBDR_N/n60 ), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n48 ) );
-  AOI22X3 \XBAR_N/U32  ( .A1(\LBDR_E/n60 ), .A2(\XBAR_N/n4 ), .B1(\LBDR_W/n60 ), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n47 ) );
-  INVXL \XBAR_N/U31  ( .A(\LBDR_S/n60 ), .Q(\XBAR_N/n114 ) );
-  OAI211X3 \XBAR_N/U30  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n114 ), .B1(
-        \XBAR_N/n47 ), .C1(\XBAR_N/n48 ), .Q(TX_N[7]) );
-  AOI22X3 \XBAR_N/U29  ( .A1(\LBDR_L/n32 ), .A2(\XBAR_N/n11 ), .B1(
-        \LBDR_N/n32 ), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n96 ) );
-  AOI22X3 \XBAR_N/U28  ( .A1(\LBDR_E/n32 ), .A2(\XBAR_N/n5 ), .B1(\LBDR_W/n32 ), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n95 ) );
-  INVXL \XBAR_N/U27  ( .A(\LBDR_S/n32 ), .Q(\XBAR_N/n33 ) );
-  OAI211X3 \XBAR_N/U26  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n33 ), .B1(
-        \XBAR_N/n95 ), .C1(\XBAR_N/n96 ), .Q(TX_N[14]) );
-  AOI22X3 \XBAR_N/U25  ( .A1(FIFO_D_out_L[31]), .A2(\XBAR_N/n10 ), .B1(
-        FIFO_D_out_N[31]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n58 ) );
-  AOI22X3 \XBAR_N/U24  ( .A1(FIFO_D_out_E[31]), .A2(\XBAR_N/n4 ), .B1(
-        FIFO_D_out_W[31]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n57 ) );
-  INVXL \XBAR_N/U23  ( .A(FIFO_D_out_S[31]), .Q(\XBAR_N/n16 ) );
-  OAI211X3 \XBAR_N/U22  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n16 ), .B1(
+  AOI22X3 \XBAR_N/U149  ( .A1(n4), .A2(\XBAR_N/n10 ), .B1(n22), .B2(
+        \XBAR_N/n42 ), .Q(\XBAR_N/n58 ) );
+  AOI22X3 \XBAR_N/U148  ( .A1(n17), .A2(\XBAR_N/n4 ), .B1(n13), .B2(
+        \XBAR_N/n1 ), .Q(\XBAR_N/n57 ) );
+  INVXL \XBAR_N/U147  ( .A(n8), .Q(\XBAR_N/n16 ) );
+  OAI211X3 \XBAR_N/U146  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n16 ), .B1(
         \XBAR_N/n57 ), .C1(\XBAR_N/n58 ), .Q(TX_N[31]) );
+  AOI22X3 \XBAR_N/U145  ( .A1(n3), .A2(\XBAR_N/n10 ), .B1(n21), .B2(
+        \XBAR_N/n7 ), .Q(\XBAR_N/n60 ) );
+  AOI22X3 \XBAR_N/U144  ( .A1(n16), .A2(\XBAR_N/n4 ), .B1(n12), .B2(
+        \XBAR_N/n1 ), .Q(\XBAR_N/n59 ) );
+  INVXL \XBAR_N/U143  ( .A(n7), .Q(\XBAR_N/n17 ) );
+  OAI211X3 \XBAR_N/U142  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n17 ), .B1(
+        \XBAR_N/n59 ), .C1(\XBAR_N/n60 ), .Q(TX_N[30]) );
+  AOI22X3 \XBAR_N/U141  ( .A1(n2), .A2(\XBAR_N/n11 ), .B1(n19), .B2(
+        \XBAR_N/n7 ), .Q(\XBAR_N/n96 ) );
+  AOI22X3 \XBAR_N/U140  ( .A1(n15), .A2(\XBAR_N/n5 ), .B1(n10), .B2(
+        \XBAR_N/n2 ), .Q(\XBAR_N/n95 ) );
+  INVXL \XBAR_N/U139  ( .A(n6), .Q(\XBAR_N/n33 ) );
+  OAI211X3 \XBAR_N/U138  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n33 ), .B1(
+        \XBAR_N/n95 ), .C1(\XBAR_N/n96 ), .Q(TX_N[14]) );
+  AOI22X3 \XBAR_N/U137  ( .A1(n1), .A2(\XBAR_N/n10 ), .B1(n18), .B2(
+        \XBAR_N/n9 ), .Q(\XBAR_N/n48 ) );
+  AOI22X3 \XBAR_N/U136  ( .A1(n14), .A2(\XBAR_N/n4 ), .B1(n9), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n47 ) );
+  INVXL \XBAR_N/U135  ( .A(n5), .Q(\XBAR_N/n114 ) );
+  OAI211X3 \XBAR_N/U134  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n114 ), .B1(
+        \XBAR_N/n47 ), .C1(\XBAR_N/n48 ), .Q(TX_N[7]) );
+  AOI22X3 \XBAR_N/U133  ( .A1(FIFO_D_out_L[29]), .A2(\XBAR_N/n10 ), .B1(n20), 
+        .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n64 ) );
+  AOI22X3 \XBAR_N/U132  ( .A1(FIFO_D_out_E[29]), .A2(\XBAR_N/n4 ), .B1(n11), 
+        .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n63 ) );
+  INVXL \XBAR_N/U131  ( .A(FIFO_D_out_S[29]), .Q(\XBAR_N/n18 ) );
+  OAI211X3 \XBAR_N/U130  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n18 ), .B1(
+        \XBAR_N/n63 ), .C1(\XBAR_N/n64 ), .Q(TX_N[29]) );
+  AOI22X3 \XBAR_N/U129  ( .A1(FIFO_D_out_L[28]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[28]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n66 ) );
+  AOI22X3 \XBAR_N/U128  ( .A1(FIFO_D_out_E[28]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[28]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n65 ) );
+  INVXL \XBAR_N/U127  ( .A(FIFO_D_out_S[28]), .Q(\XBAR_N/n19 ) );
+  OAI211X3 \XBAR_N/U126  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n19 ), .B1(
+        \XBAR_N/n65 ), .C1(\XBAR_N/n66 ), .Q(TX_N[28]) );
+  AOI22X3 \XBAR_N/U125  ( .A1(FIFO_D_out_L[27]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[27]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n68 ) );
+  AOI22X3 \XBAR_N/U124  ( .A1(FIFO_D_out_E[27]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[27]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n67 ) );
+  INVXL \XBAR_N/U123  ( .A(FIFO_D_out_S[27]), .Q(\XBAR_N/n20 ) );
+  OAI211X3 \XBAR_N/U122  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n20 ), .B1(
+        \XBAR_N/n67 ), .C1(\XBAR_N/n68 ), .Q(TX_N[27]) );
+  AOI22X3 \XBAR_N/U121  ( .A1(FIFO_D_out_L[26]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[26]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n70 ) );
+  AOI22X3 \XBAR_N/U120  ( .A1(FIFO_D_out_E[26]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[26]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n69 ) );
+  INVXL \XBAR_N/U119  ( .A(FIFO_D_out_S[26]), .Q(\XBAR_N/n21 ) );
+  OAI211X3 \XBAR_N/U118  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n21 ), .B1(
+        \XBAR_N/n69 ), .C1(\XBAR_N/n70 ), .Q(TX_N[26]) );
+  AOI22X3 \XBAR_N/U117  ( .A1(FIFO_D_out_L[25]), .A2(\XBAR_N/n11 ), .B1(
+        FIFO_D_out_N[25]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n72 ) );
+  AOI22X3 \XBAR_N/U116  ( .A1(FIFO_D_out_E[25]), .A2(\XBAR_N/n5 ), .B1(
+        FIFO_D_out_W[25]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n71 ) );
+  INVXL \XBAR_N/U115  ( .A(FIFO_D_out_S[25]), .Q(\XBAR_N/n22 ) );
+  OAI211X3 \XBAR_N/U114  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n22 ), .B1(
+        \XBAR_N/n71 ), .C1(\XBAR_N/n72 ), .Q(TX_N[25]) );
+  AOI22X3 \XBAR_N/U113  ( .A1(FIFO_D_out_L[24]), .A2(\XBAR_N/n11 ), .B1(
+        FIFO_D_out_N[24]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n74 ) );
+  AOI22X3 \XBAR_N/U112  ( .A1(FIFO_D_out_E[24]), .A2(\XBAR_N/n5 ), .B1(
+        FIFO_D_out_W[24]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n73 ) );
+  INVXL \XBAR_N/U111  ( .A(FIFO_D_out_S[24]), .Q(\XBAR_N/n23 ) );
+  OAI211X3 \XBAR_N/U110  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n23 ), .B1(
+        \XBAR_N/n73 ), .C1(\XBAR_N/n74 ), .Q(TX_N[24]) );
+  AOI22X3 \XBAR_N/U109  ( .A1(FIFO_D_out_L[23]), .A2(\XBAR_N/n11 ), .B1(
+        FIFO_D_out_N[23]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n76 ) );
+  AOI22X3 \XBAR_N/U108  ( .A1(FIFO_D_out_E[23]), .A2(\XBAR_N/n5 ), .B1(
+        FIFO_D_out_W[23]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n75 ) );
+  INVXL \XBAR_N/U107  ( .A(FIFO_D_out_S[23]), .Q(\XBAR_N/n24 ) );
+  OAI211X3 \XBAR_N/U106  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n24 ), .B1(
+        \XBAR_N/n75 ), .C1(\XBAR_N/n76 ), .Q(TX_N[23]) );
+  AOI22X3 \XBAR_N/U105  ( .A1(FIFO_D_out_L[22]), .A2(\XBAR_N/n11 ), .B1(
+        FIFO_D_out_N[22]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n78 ) );
+  AOI22X3 \XBAR_N/U104  ( .A1(FIFO_D_out_E[22]), .A2(\XBAR_N/n5 ), .B1(
+        FIFO_D_out_W[22]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n77 ) );
+  INVXL \XBAR_N/U103  ( .A(FIFO_D_out_S[22]), .Q(\XBAR_N/n25 ) );
+  OAI211X3 \XBAR_N/U102  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n25 ), .B1(
+        \XBAR_N/n77 ), .C1(\XBAR_N/n78 ), .Q(TX_N[22]) );
+  AOI22X3 \XBAR_N/U101  ( .A1(FIFO_D_out_L[21]), .A2(\XBAR_N/n11 ), .B1(
+        FIFO_D_out_N[21]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n80 ) );
+  AOI22X3 \XBAR_N/U100  ( .A1(FIFO_D_out_E[21]), .A2(\XBAR_N/n5 ), .B1(
+        FIFO_D_out_W[21]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n79 ) );
+  INVXL \XBAR_N/U99  ( .A(FIFO_D_out_S[21]), .Q(\XBAR_N/n26 ) );
+  OAI211X3 \XBAR_N/U98  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n26 ), .B1(
+        \XBAR_N/n79 ), .C1(\XBAR_N/n80 ), .Q(TX_N[21]) );
+  AOI22X3 \XBAR_N/U97  ( .A1(FIFO_D_out_L[20]), .A2(\XBAR_N/n11 ), .B1(
+        FIFO_D_out_N[20]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n82 ) );
+  AOI22X3 \XBAR_N/U96  ( .A1(FIFO_D_out_E[20]), .A2(\XBAR_N/n5 ), .B1(
+        FIFO_D_out_W[20]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n81 ) );
+  INVXL \XBAR_N/U95  ( .A(FIFO_D_out_S[20]), .Q(\XBAR_N/n27 ) );
+  OAI211X3 \XBAR_N/U94  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n27 ), .B1(
+        \XBAR_N/n81 ), .C1(\XBAR_N/n82 ), .Q(TX_N[20]) );
+  AOI22X3 \XBAR_N/U93  ( .A1(FIFO_D_out_L[19]), .A2(\XBAR_N/n11 ), .B1(
+        FIFO_D_out_N[19]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n86 ) );
+  AOI22X3 \XBAR_N/U92  ( .A1(FIFO_D_out_E[19]), .A2(\XBAR_N/n5 ), .B1(
+        FIFO_D_out_W[19]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n85 ) );
+  INVXL \XBAR_N/U91  ( .A(FIFO_D_out_S[19]), .Q(\XBAR_N/n28 ) );
+  OAI211X3 \XBAR_N/U90  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n28 ), .B1(
+        \XBAR_N/n85 ), .C1(\XBAR_N/n86 ), .Q(TX_N[19]) );
+  AOI22X3 \XBAR_N/U89  ( .A1(FIFO_D_out_L[18]), .A2(\XBAR_N/n11 ), .B1(
+        FIFO_D_out_N[18]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n88 ) );
+  AOI22X3 \XBAR_N/U88  ( .A1(FIFO_D_out_E[18]), .A2(\XBAR_N/n5 ), .B1(
+        FIFO_D_out_W[18]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n87 ) );
+  INVXL \XBAR_N/U87  ( .A(FIFO_D_out_S[18]), .Q(\XBAR_N/n29 ) );
+  OAI211X3 \XBAR_N/U86  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n29 ), .B1(
+        \XBAR_N/n87 ), .C1(\XBAR_N/n88 ), .Q(TX_N[18]) );
+  AOI22X3 \XBAR_N/U85  ( .A1(FIFO_D_out_L[17]), .A2(\XBAR_N/n11 ), .B1(
+        FIFO_D_out_N[17]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n90 ) );
+  AOI22X3 \XBAR_N/U84  ( .A1(FIFO_D_out_E[17]), .A2(\XBAR_N/n5 ), .B1(
+        FIFO_D_out_W[17]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n89 ) );
+  INVXL \XBAR_N/U83  ( .A(FIFO_D_out_S[17]), .Q(\XBAR_N/n30 ) );
+  OAI211X3 \XBAR_N/U82  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n30 ), .B1(
+        \XBAR_N/n89 ), .C1(\XBAR_N/n90 ), .Q(TX_N[17]) );
+  AOI22X3 \XBAR_N/U81  ( .A1(FIFO_D_out_L[16]), .A2(\XBAR_N/n11 ), .B1(
+        FIFO_D_out_N[16]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n92 ) );
+  AOI22X3 \XBAR_N/U80  ( .A1(FIFO_D_out_E[16]), .A2(\XBAR_N/n5 ), .B1(
+        FIFO_D_out_W[16]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n91 ) );
+  INVXL \XBAR_N/U79  ( .A(FIFO_D_out_S[16]), .Q(\XBAR_N/n31 ) );
+  OAI211X3 \XBAR_N/U78  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n31 ), .B1(
+        \XBAR_N/n91 ), .C1(\XBAR_N/n92 ), .Q(TX_N[16]) );
+  AOI22X3 \XBAR_N/U77  ( .A1(FIFO_D_out_L[15]), .A2(\XBAR_N/n11 ), .B1(
+        FIFO_D_out_N[15]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n94 ) );
+  AOI22X3 \XBAR_N/U76  ( .A1(FIFO_D_out_E[15]), .A2(\XBAR_N/n5 ), .B1(
+        FIFO_D_out_W[15]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n93 ) );
+  INVXL \XBAR_N/U75  ( .A(FIFO_D_out_S[15]), .Q(\XBAR_N/n32 ) );
+  OAI211X3 \XBAR_N/U74  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n32 ), .B1(
+        \XBAR_N/n93 ), .C1(\XBAR_N/n94 ), .Q(TX_N[15]) );
+  AOI22X3 \XBAR_N/U73  ( .A1(FIFO_D_out_L[0]), .A2(\XBAR_N/n12 ), .B1(
+        FIFO_D_out_N[0]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n106 ) );
+  AOI22X3 \XBAR_N/U72  ( .A1(FIFO_D_out_E[0]), .A2(\XBAR_N/n6 ), .B1(
+        FIFO_D_out_W[0]), .B2(\XBAR_N/n3 ), .Q(\XBAR_N/n105 ) );
+  INVXL \XBAR_N/U71  ( .A(FIFO_D_out_S[0]), .Q(\XBAR_N/n121 ) );
+  OAI211X3 \XBAR_N/U70  ( .A1(\XBAR_N/n15 ), .A2(\XBAR_N/n121 ), .B1(
+        \XBAR_N/n105 ), .C1(\XBAR_N/n106 ), .Q(TX_N[0]) );
+  AOI22X3 \XBAR_N/U69  ( .A1(FIFO_D_out_L[8]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[8]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n46 ) );
+  AOI22X3 \XBAR_N/U68  ( .A1(FIFO_D_out_E[8]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[8]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n45 ) );
+  INVXL \XBAR_N/U67  ( .A(FIFO_D_out_S[8]), .Q(\XBAR_N/n113 ) );
+  OAI211X3 \XBAR_N/U66  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n113 ), .B1(
+        \XBAR_N/n45 ), .C1(\XBAR_N/n46 ), .Q(TX_N[8]) );
+  AOI22X3 \XBAR_N/U65  ( .A1(FIFO_D_out_L[13]), .A2(\XBAR_N/n11 ), .B1(
+        FIFO_D_out_N[13]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n98 ) );
+  AOI22X3 \XBAR_N/U64  ( .A1(FIFO_D_out_E[13]), .A2(\XBAR_N/n5 ), .B1(
+        FIFO_D_out_W[13]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n97 ) );
+  INVXL \XBAR_N/U63  ( .A(FIFO_D_out_S[13]), .Q(\XBAR_N/n34 ) );
+  OAI211X3 \XBAR_N/U62  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n34 ), .B1(
+        \XBAR_N/n97 ), .C1(\XBAR_N/n98 ), .Q(TX_N[13]) );
+  AOI22X3 \XBAR_N/U61  ( .A1(FIFO_D_out_L[12]), .A2(\XBAR_N/n12 ), .B1(
+        FIFO_D_out_N[12]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n100 ) );
+  AOI22X3 \XBAR_N/U60  ( .A1(FIFO_D_out_E[12]), .A2(\XBAR_N/n6 ), .B1(
+        FIFO_D_out_W[12]), .B2(\XBAR_N/n3 ), .Q(\XBAR_N/n99 ) );
+  INVXL \XBAR_N/U59  ( .A(FIFO_D_out_S[12]), .Q(\XBAR_N/n35 ) );
+  OAI211X3 \XBAR_N/U58  ( .A1(\XBAR_N/n15 ), .A2(\XBAR_N/n35 ), .B1(
+        \XBAR_N/n99 ), .C1(\XBAR_N/n100 ), .Q(TX_N[12]) );
+  AOI22X3 \XBAR_N/U57  ( .A1(FIFO_D_out_L[10]), .A2(\XBAR_N/n12 ), .B1(
+        FIFO_D_out_N[10]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n104 ) );
+  AOI22X3 \XBAR_N/U56  ( .A1(FIFO_D_out_E[10]), .A2(\XBAR_N/n6 ), .B1(
+        FIFO_D_out_W[10]), .B2(\XBAR_N/n3 ), .Q(\XBAR_N/n103 ) );
+  INVXL \XBAR_N/U55  ( .A(FIFO_D_out_S[10]), .Q(\XBAR_N/n37 ) );
+  OAI211X3 \XBAR_N/U54  ( .A1(\XBAR_N/n15 ), .A2(\XBAR_N/n37 ), .B1(
+        \XBAR_N/n103 ), .C1(\XBAR_N/n104 ), .Q(TX_N[10]) );
+  AOI22X3 \XBAR_N/U53  ( .A1(FIFO_D_out_L[4]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[4]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n54 ) );
+  AOI22X3 \XBAR_N/U52  ( .A1(FIFO_D_out_E[4]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[4]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n53 ) );
+  INVXL \XBAR_N/U51  ( .A(FIFO_D_out_S[4]), .Q(\XBAR_N/n117 ) );
+  OAI211X3 \XBAR_N/U50  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n117 ), .B1(
+        \XBAR_N/n53 ), .C1(\XBAR_N/n54 ), .Q(TX_N[4]) );
+  AOI22X3 \XBAR_N/U49  ( .A1(FIFO_D_out_L[11]), .A2(\XBAR_N/n12 ), .B1(
+        FIFO_D_out_N[11]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n102 ) );
+  AOI22X3 \XBAR_N/U48  ( .A1(FIFO_D_out_E[11]), .A2(\XBAR_N/n6 ), .B1(
+        FIFO_D_out_W[11]), .B2(\XBAR_N/n3 ), .Q(\XBAR_N/n101 ) );
+  INVXL \XBAR_N/U47  ( .A(FIFO_D_out_S[11]), .Q(\XBAR_N/n36 ) );
+  OAI211X3 \XBAR_N/U46  ( .A1(\XBAR_N/n15 ), .A2(\XBAR_N/n36 ), .B1(
+        \XBAR_N/n101 ), .C1(\XBAR_N/n102 ), .Q(TX_N[11]) );
+  AOI22X3 \XBAR_N/U45  ( .A1(FIFO_D_out_L[9]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[9]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n40 ) );
+  AOI22X3 \XBAR_N/U44  ( .A1(FIFO_D_out_E[9]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[9]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n39 ) );
+  INVXL \XBAR_N/U43  ( .A(FIFO_D_out_S[9]), .Q(\XBAR_N/n112 ) );
+  OAI211X3 \XBAR_N/U42  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n112 ), .B1(
+        \XBAR_N/n39 ), .C1(\XBAR_N/n40 ), .Q(TX_N[9]) );
+  AOI22X3 \XBAR_N/U41  ( .A1(FIFO_D_out_L[6]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[6]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n50 ) );
+  AOI22X3 \XBAR_N/U40  ( .A1(FIFO_D_out_E[6]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[6]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n49 ) );
+  INVXL \XBAR_N/U39  ( .A(FIFO_D_out_S[6]), .Q(\XBAR_N/n115 ) );
+  OAI211X3 \XBAR_N/U38  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n115 ), .B1(
+        \XBAR_N/n49 ), .C1(\XBAR_N/n50 ), .Q(TX_N[6]) );
+  AOI22X3 \XBAR_N/U37  ( .A1(FIFO_D_out_L[5]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[5]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n52 ) );
+  AOI22X3 \XBAR_N/U36  ( .A1(FIFO_D_out_E[5]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[5]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n51 ) );
+  INVXL \XBAR_N/U35  ( .A(FIFO_D_out_S[5]), .Q(\XBAR_N/n116 ) );
+  OAI211X3 \XBAR_N/U34  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n116 ), .B1(
+        \XBAR_N/n51 ), .C1(\XBAR_N/n52 ), .Q(TX_N[5]) );
+  AOI22X3 \XBAR_N/U33  ( .A1(FIFO_D_out_L[3]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[3]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n56 ) );
+  AOI22X3 \XBAR_N/U32  ( .A1(FIFO_D_out_E[3]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[3]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n55 ) );
+  INVXL \XBAR_N/U31  ( .A(FIFO_D_out_S[3]), .Q(\XBAR_N/n118 ) );
+  OAI211X3 \XBAR_N/U30  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n118 ), .B1(
+        \XBAR_N/n55 ), .C1(\XBAR_N/n56 ), .Q(TX_N[3]) );
+  AOI22X3 \XBAR_N/U29  ( .A1(FIFO_D_out_L[1]), .A2(\XBAR_N/n11 ), .B1(
+        FIFO_D_out_N[1]), .B2(\XBAR_N/n7 ), .Q(\XBAR_N/n84 ) );
+  AOI22X3 \XBAR_N/U28  ( .A1(FIFO_D_out_E[1]), .A2(\XBAR_N/n5 ), .B1(
+        FIFO_D_out_W[1]), .B2(\XBAR_N/n2 ), .Q(\XBAR_N/n83 ) );
+  INVXL \XBAR_N/U27  ( .A(FIFO_D_out_S[1]), .Q(\XBAR_N/n120 ) );
+  OAI211X3 \XBAR_N/U26  ( .A1(\XBAR_N/n14 ), .A2(\XBAR_N/n120 ), .B1(
+        \XBAR_N/n83 ), .C1(\XBAR_N/n84 ), .Q(TX_N[1]) );
+  AOI22X3 \XBAR_N/U25  ( .A1(FIFO_D_out_L[2]), .A2(\XBAR_N/n10 ), .B1(
+        FIFO_D_out_N[2]), .B2(\XBAR_N/n8 ), .Q(\XBAR_N/n62 ) );
+  AOI22X3 \XBAR_N/U24  ( .A1(FIFO_D_out_E[2]), .A2(\XBAR_N/n4 ), .B1(
+        FIFO_D_out_W[2]), .B2(\XBAR_N/n1 ), .Q(\XBAR_N/n61 ) );
+  INVXL \XBAR_N/U23  ( .A(FIFO_D_out_S[2]), .Q(\XBAR_N/n119 ) );
+  OAI211X3 \XBAR_N/U22  ( .A1(\XBAR_N/n13 ), .A2(\XBAR_N/n119 ), .B1(
+        \XBAR_N/n61 ), .C1(\XBAR_N/n62 ), .Q(TX_N[2]) );
   CLKBUFX2 \XBAR_N/U21  ( .A(\XBAR_N/n38 ), .Q(\XBAR_N/n15 ) );
   CLKBUFX2 \XBAR_N/U20  ( .A(\XBAR_N/n43 ), .Q(\XBAR_N/n6 ) );
   CLKBUFX2 \XBAR_N/U19  ( .A(\XBAR_N/n44 ), .Q(\XBAR_N/n3 ) );
@@ -9868,6 +12125,8 @@ endmodule
   CLKBUFX2 \XBAR_N/U13  ( .A(\XBAR_N/n44 ), .Q(\XBAR_N/n2 ) );
   INVXL \XBAR_N/U12  ( .A(Grant_NW_out), .Q(\XBAR_N/n124 ) );
   INVXL \XBAR_N/U11  ( .A(Grant_NE_out), .Q(\XBAR_N/n122 ) );
+  NOR4X3 \XBAR_N/U10  ( .A(\XBAR_N/n124 ), .B(Grant_NL_out), .C(Grant_NS_out), 
+        .D(Grant_NE_out), .Q(\XBAR_N/n44 ) );
   NOR4X3 \XBAR_N/U9  ( .A(\XBAR_N/n122 ), .B(Grant_NL_out), .C(Grant_NS_out), 
         .D(Grant_NW_out), .Q(\XBAR_N/n43 ) );
   CLKBUFX2 \XBAR_N/U8  ( .A(\XBAR_N/n42 ), .Q(\XBAR_N/n9 ) );
@@ -9879,107 +12138,107 @@ endmodule
   CLKBUFX2 \XBAR_N/U4  ( .A(\XBAR_N/n9 ), .Q(\XBAR_N/n7 ) );
   INVXL \XBAR_N/U3  ( .A(Grant_NS_out), .Q(\XBAR_N/n125 ) );
   AND2X3 \XBAR_E/U153  ( .A(\XBAR_E/n130 ), .B(\XBAR_E/n18 ), .Q(\XBAR_E/n194 ) );
-  AOI22X3 \XBAR_E/U152  ( .A1(FIFO_D_out_L[25]), .A2(\XBAR_E/n11 ), .B1(
-        FIFO_D_out_N[25]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n166 ) );
-  INVXL \XBAR_E/U150  ( .A(FIFO_D_out_S[25]), .Q(\XBAR_E/n26 ) );
-  OAI211X3 \XBAR_E/U149  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n26 ), .B1(
-        \XBAR_E/n167 ), .C1(\XBAR_E/n166 ), .Q(TX_E[25]) );
-  AOI22X3 \XBAR_E/U148  ( .A1(FIFO_D_out_L[24]), .A2(\XBAR_E/n11 ), .B1(
-        FIFO_D_out_N[24]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n164 ) );
-  INVXL \XBAR_E/U146  ( .A(FIFO_D_out_S[24]), .Q(\XBAR_E/n27 ) );
-  OAI211X3 \XBAR_E/U145  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n27 ), .B1(
-        \XBAR_E/n165 ), .C1(\XBAR_E/n164 ), .Q(TX_E[24]) );
-  AOI22X3 \XBAR_E/U144  ( .A1(FIFO_D_out_L[23]), .A2(\XBAR_E/n11 ), .B1(
-        FIFO_D_out_N[23]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n162 ) );
-  INVXL \XBAR_E/U142  ( .A(FIFO_D_out_S[23]), .Q(\XBAR_E/n28 ) );
-  OAI211X3 \XBAR_E/U141  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n28 ), .B1(
-        \XBAR_E/n163 ), .C1(\XBAR_E/n162 ), .Q(TX_E[23]) );
-  AOI22X3 \XBAR_E/U140  ( .A1(FIFO_D_out_L[22]), .A2(\XBAR_E/n11 ), .B1(
-        FIFO_D_out_N[22]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n160 ) );
-  INVXL \XBAR_E/U138  ( .A(FIFO_D_out_S[22]), .Q(\XBAR_E/n29 ) );
-  OAI211X3 \XBAR_E/U137  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n29 ), .B1(
-        \XBAR_E/n161 ), .C1(\XBAR_E/n160 ), .Q(TX_E[22]) );
-  AOI22X3 \XBAR_E/U136  ( .A1(FIFO_D_out_L[21]), .A2(\XBAR_E/n11 ), .B1(
-        FIFO_D_out_N[21]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n158 ) );
-  INVXL \XBAR_E/U134  ( .A(FIFO_D_out_S[21]), .Q(\XBAR_E/n30 ) );
-  OAI211X3 \XBAR_E/U133  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n30 ), .B1(
-        \XBAR_E/n159 ), .C1(\XBAR_E/n158 ), .Q(TX_E[21]) );
-  AOI22X3 \XBAR_E/U132  ( .A1(FIFO_D_out_L[20]), .A2(\XBAR_E/n11 ), .B1(
-        FIFO_D_out_N[20]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n156 ) );
-  INVXL \XBAR_E/U130  ( .A(FIFO_D_out_S[20]), .Q(\XBAR_E/n31 ) );
-  OAI211X3 \XBAR_E/U129  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n31 ), .B1(
-        \XBAR_E/n157 ), .C1(\XBAR_E/n156 ), .Q(TX_E[20]) );
-  AOI22X3 \XBAR_E/U128  ( .A1(FIFO_D_out_L[19]), .A2(\XBAR_E/n11 ), .B1(
-        FIFO_D_out_N[19]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n152 ) );
-  INVXL \XBAR_E/U126  ( .A(FIFO_D_out_S[19]), .Q(\XBAR_E/n32 ) );
-  OAI211X3 \XBAR_E/U125  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n32 ), .B1(
-        \XBAR_E/n153 ), .C1(\XBAR_E/n152 ), .Q(TX_E[19]) );
-  AOI22X3 \XBAR_E/U124  ( .A1(FIFO_D_out_L[18]), .A2(\XBAR_E/n11 ), .B1(
-        FIFO_D_out_N[18]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n150 ) );
-  INVXL \XBAR_E/U122  ( .A(FIFO_D_out_S[18]), .Q(\XBAR_E/n33 ) );
-  OAI211X3 \XBAR_E/U121  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n33 ), .B1(
-        \XBAR_E/n151 ), .C1(\XBAR_E/n150 ), .Q(TX_E[18]) );
-  AOI22X3 \XBAR_E/U120  ( .A1(FIFO_D_out_L[17]), .A2(\XBAR_E/n11 ), .B1(
-        FIFO_D_out_N[17]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n148 ) );
-  INVXL \XBAR_E/U118  ( .A(FIFO_D_out_S[17]), .Q(\XBAR_E/n34 ) );
-  OAI211X3 \XBAR_E/U117  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n34 ), .B1(
-        \XBAR_E/n149 ), .C1(\XBAR_E/n148 ), .Q(TX_E[17]) );
-  AOI22X3 \XBAR_E/U116  ( .A1(FIFO_D_out_L[16]), .A2(\XBAR_E/n11 ), .B1(
-        FIFO_D_out_N[16]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n146 ) );
-  INVXL \XBAR_E/U114  ( .A(FIFO_D_out_S[16]), .Q(\XBAR_E/n35 ) );
-  OAI211X3 \XBAR_E/U113  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n35 ), .B1(
-        \XBAR_E/n147 ), .C1(\XBAR_E/n146 ), .Q(TX_E[16]) );
-  AOI22X3 \XBAR_E/U112  ( .A1(FIFO_D_out_L[15]), .A2(\XBAR_E/n11 ), .B1(
-        FIFO_D_out_N[15]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n144 ) );
-  INVXL \XBAR_E/U110  ( .A(FIFO_D_out_S[15]), .Q(\XBAR_E/n36 ) );
-  OAI211X3 \XBAR_E/U109  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n36 ), .B1(
-        \XBAR_E/n145 ), .C1(\XBAR_E/n144 ), .Q(TX_E[15]) );
-  AOI22X3 \XBAR_E/U108  ( .A1(FIFO_D_out_L[0]), .A2(\XBAR_E/n12 ), .B1(
-        FIFO_D_out_N[0]), .B2(\XBAR_E/n8 ), .Q(\XBAR_E/n132 ) );
-  INVXL \XBAR_E/U106  ( .A(FIFO_D_out_S[0]), .Q(\XBAR_E/n125 ) );
-  OAI211X3 \XBAR_E/U105  ( .A1(\XBAR_E/n15 ), .A2(\XBAR_E/n125 ), .B1(
-        \XBAR_E/n133 ), .C1(\XBAR_E/n132 ), .Q(TX_E[0]) );
-  AOI22X3 \XBAR_E/U104  ( .A1(\LBDR_L/n31 ), .A2(\XBAR_E/n11 ), .B1(
-        \LBDR_N/n31 ), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n140 ) );
-  INVXL \XBAR_E/U102  ( .A(\LBDR_S/n31 ), .Q(\XBAR_E/n112 ) );
-  OAI211X3 \XBAR_E/U101  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n112 ), .B1(
-        \XBAR_E/n141 ), .C1(\XBAR_E/n140 ), .Q(TX_E[13]) );
-  AOI22X3 \XBAR_E/U100  ( .A1(\LBDR_L/n4 ), .A2(\XBAR_E/n12 ), .B1(\LBDR_N/n4 ), .B2(\XBAR_E/n8 ), .Q(\XBAR_E/n138 ) );
-  INVXL \XBAR_E/U98  ( .A(\LBDR_S/n4 ), .Q(\XBAR_E/n113 ) );
-  OAI211X3 \XBAR_E/U97  ( .A1(\XBAR_E/n15 ), .A2(\XBAR_E/n113 ), .B1(
-        \XBAR_E/n139 ), .C1(\XBAR_E/n138 ), .Q(TX_E[12]) );
-  AOI22X3 \XBAR_E/U96  ( .A1(FIFO_D_out_L[10]), .A2(\XBAR_E/n12 ), .B1(
-        FIFO_D_out_N[10]), .B2(\XBAR_E/n8 ), .Q(\XBAR_E/n134 ) );
-  INVXL \XBAR_E/U94  ( .A(FIFO_D_out_S[10]), .Q(\XBAR_E/n115 ) );
-  OAI211X3 \XBAR_E/U93  ( .A1(\XBAR_E/n15 ), .A2(\XBAR_E/n115 ), .B1(
-        \XBAR_E/n135 ), .C1(\XBAR_E/n134 ), .Q(TX_E[10]) );
-  AOI22X3 \XBAR_E/U92  ( .A1(FIFO_D_out_L[11]), .A2(\XBAR_E/n12 ), .B1(
-        FIFO_D_out_N[11]), .B2(\XBAR_E/n8 ), .Q(\XBAR_E/n136 ) );
-  INVXL \XBAR_E/U90  ( .A(FIFO_D_out_S[11]), .Q(\XBAR_E/n114 ) );
-  OAI211X3 \XBAR_E/U89  ( .A1(\XBAR_E/n15 ), .A2(\XBAR_E/n114 ), .B1(
-        \XBAR_E/n137 ), .C1(\XBAR_E/n136 ), .Q(TX_E[11]) );
-  AOI22X3 \XBAR_E/U88  ( .A1(FIFO_D_out_L[1]), .A2(\XBAR_E/n11 ), .B1(
-        FIFO_D_out_N[1]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n154 ) );
-  INVXL \XBAR_E/U86  ( .A(FIFO_D_out_S[1]), .Q(\XBAR_E/n124 ) );
-  OAI211X3 \XBAR_E/U85  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n124 ), .B1(
-        \XBAR_E/n155 ), .C1(\XBAR_E/n154 ), .Q(TX_E[1]) );
-  AOI22X3 \XBAR_E/U84  ( .A1(\LBDR_L/n32 ), .A2(\XBAR_E/n11 ), .B1(
-        \LBDR_N/n32 ), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n142 ) );
-  INVXL \XBAR_E/U82  ( .A(\LBDR_S/n32 ), .Q(\XBAR_E/n37 ) );
-  OAI211X3 \XBAR_E/U81  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n37 ), .B1(
+  AOI22X3 \XBAR_E/U152  ( .A1(n2), .A2(\XBAR_E/n11 ), .B1(n19), .B2(
+        \XBAR_E/n7 ), .Q(\XBAR_E/n142 ) );
+  INVXL \XBAR_E/U150  ( .A(n6), .Q(\XBAR_E/n37 ) );
+  OAI211X3 \XBAR_E/U149  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n37 ), .B1(
         \XBAR_E/n143 ), .C1(\XBAR_E/n142 ), .Q(TX_E[14]) );
-  AOI22X3 \XBAR_E/U80  ( .A1(FIFO_D_out_L[31]), .A2(\XBAR_E/n10 ), .B1(
-        FIFO_D_out_N[31]), .B2(\XBAR_E/n196 ), .Q(\XBAR_E/n180 ) );
-  INVXL \XBAR_E/U78  ( .A(FIFO_D_out_S[31]), .Q(\XBAR_E/n20 ) );
+  AOI22X3 \XBAR_E/U148  ( .A1(FIFO_D_out_L[25]), .A2(\XBAR_E/n11 ), .B1(
+        FIFO_D_out_N[25]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n166 ) );
+  INVXL \XBAR_E/U146  ( .A(FIFO_D_out_S[25]), .Q(\XBAR_E/n26 ) );
+  OAI211X3 \XBAR_E/U145  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n26 ), .B1(
+        \XBAR_E/n167 ), .C1(\XBAR_E/n166 ), .Q(TX_E[25]) );
+  AOI22X3 \XBAR_E/U144  ( .A1(FIFO_D_out_L[24]), .A2(\XBAR_E/n11 ), .B1(
+        FIFO_D_out_N[24]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n164 ) );
+  INVXL \XBAR_E/U142  ( .A(FIFO_D_out_S[24]), .Q(\XBAR_E/n27 ) );
+  OAI211X3 \XBAR_E/U141  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n27 ), .B1(
+        \XBAR_E/n165 ), .C1(\XBAR_E/n164 ), .Q(TX_E[24]) );
+  AOI22X3 \XBAR_E/U140  ( .A1(FIFO_D_out_L[23]), .A2(\XBAR_E/n11 ), .B1(
+        FIFO_D_out_N[23]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n162 ) );
+  INVXL \XBAR_E/U138  ( .A(FIFO_D_out_S[23]), .Q(\XBAR_E/n28 ) );
+  OAI211X3 \XBAR_E/U137  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n28 ), .B1(
+        \XBAR_E/n163 ), .C1(\XBAR_E/n162 ), .Q(TX_E[23]) );
+  AOI22X3 \XBAR_E/U136  ( .A1(FIFO_D_out_L[22]), .A2(\XBAR_E/n11 ), .B1(
+        FIFO_D_out_N[22]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n160 ) );
+  INVXL \XBAR_E/U134  ( .A(FIFO_D_out_S[22]), .Q(\XBAR_E/n29 ) );
+  OAI211X3 \XBAR_E/U133  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n29 ), .B1(
+        \XBAR_E/n161 ), .C1(\XBAR_E/n160 ), .Q(TX_E[22]) );
+  AOI22X3 \XBAR_E/U132  ( .A1(FIFO_D_out_L[21]), .A2(\XBAR_E/n11 ), .B1(
+        FIFO_D_out_N[21]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n158 ) );
+  INVXL \XBAR_E/U130  ( .A(FIFO_D_out_S[21]), .Q(\XBAR_E/n30 ) );
+  OAI211X3 \XBAR_E/U129  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n30 ), .B1(
+        \XBAR_E/n159 ), .C1(\XBAR_E/n158 ), .Q(TX_E[21]) );
+  AOI22X3 \XBAR_E/U128  ( .A1(FIFO_D_out_L[20]), .A2(\XBAR_E/n11 ), .B1(
+        FIFO_D_out_N[20]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n156 ) );
+  INVXL \XBAR_E/U126  ( .A(FIFO_D_out_S[20]), .Q(\XBAR_E/n31 ) );
+  OAI211X3 \XBAR_E/U125  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n31 ), .B1(
+        \XBAR_E/n157 ), .C1(\XBAR_E/n156 ), .Q(TX_E[20]) );
+  AOI22X3 \XBAR_E/U124  ( .A1(FIFO_D_out_L[19]), .A2(\XBAR_E/n11 ), .B1(
+        FIFO_D_out_N[19]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n152 ) );
+  INVXL \XBAR_E/U122  ( .A(FIFO_D_out_S[19]), .Q(\XBAR_E/n32 ) );
+  OAI211X3 \XBAR_E/U121  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n32 ), .B1(
+        \XBAR_E/n153 ), .C1(\XBAR_E/n152 ), .Q(TX_E[19]) );
+  AOI22X3 \XBAR_E/U120  ( .A1(FIFO_D_out_L[18]), .A2(\XBAR_E/n11 ), .B1(
+        FIFO_D_out_N[18]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n150 ) );
+  INVXL \XBAR_E/U118  ( .A(FIFO_D_out_S[18]), .Q(\XBAR_E/n33 ) );
+  OAI211X3 \XBAR_E/U117  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n33 ), .B1(
+        \XBAR_E/n151 ), .C1(\XBAR_E/n150 ), .Q(TX_E[18]) );
+  AOI22X3 \XBAR_E/U116  ( .A1(FIFO_D_out_L[17]), .A2(\XBAR_E/n11 ), .B1(
+        FIFO_D_out_N[17]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n148 ) );
+  INVXL \XBAR_E/U114  ( .A(FIFO_D_out_S[17]), .Q(\XBAR_E/n34 ) );
+  OAI211X3 \XBAR_E/U113  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n34 ), .B1(
+        \XBAR_E/n149 ), .C1(\XBAR_E/n148 ), .Q(TX_E[17]) );
+  AOI22X3 \XBAR_E/U112  ( .A1(FIFO_D_out_L[16]), .A2(\XBAR_E/n11 ), .B1(
+        FIFO_D_out_N[16]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n146 ) );
+  INVXL \XBAR_E/U110  ( .A(FIFO_D_out_S[16]), .Q(\XBAR_E/n35 ) );
+  OAI211X3 \XBAR_E/U109  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n35 ), .B1(
+        \XBAR_E/n147 ), .C1(\XBAR_E/n146 ), .Q(TX_E[16]) );
+  AOI22X3 \XBAR_E/U108  ( .A1(FIFO_D_out_L[15]), .A2(\XBAR_E/n11 ), .B1(
+        FIFO_D_out_N[15]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n144 ) );
+  INVXL \XBAR_E/U106  ( .A(FIFO_D_out_S[15]), .Q(\XBAR_E/n36 ) );
+  OAI211X3 \XBAR_E/U105  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n36 ), .B1(
+        \XBAR_E/n145 ), .C1(\XBAR_E/n144 ), .Q(TX_E[15]) );
+  AOI22X3 \XBAR_E/U104  ( .A1(FIFO_D_out_L[0]), .A2(\XBAR_E/n12 ), .B1(
+        FIFO_D_out_N[0]), .B2(\XBAR_E/n8 ), .Q(\XBAR_E/n132 ) );
+  INVXL \XBAR_E/U102  ( .A(FIFO_D_out_S[0]), .Q(\XBAR_E/n125 ) );
+  OAI211X3 \XBAR_E/U101  ( .A1(\XBAR_E/n15 ), .A2(\XBAR_E/n125 ), .B1(
+        \XBAR_E/n133 ), .C1(\XBAR_E/n132 ), .Q(TX_E[0]) );
+  AOI22X3 \XBAR_E/U100  ( .A1(FIFO_D_out_L[13]), .A2(\XBAR_E/n11 ), .B1(
+        FIFO_D_out_N[13]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n140 ) );
+  INVXL \XBAR_E/U98  ( .A(FIFO_D_out_S[13]), .Q(\XBAR_E/n112 ) );
+  OAI211X3 \XBAR_E/U97  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n112 ), .B1(
+        \XBAR_E/n141 ), .C1(\XBAR_E/n140 ), .Q(TX_E[13]) );
+  AOI22X3 \XBAR_E/U96  ( .A1(FIFO_D_out_L[12]), .A2(\XBAR_E/n12 ), .B1(
+        FIFO_D_out_N[12]), .B2(\XBAR_E/n8 ), .Q(\XBAR_E/n138 ) );
+  INVXL \XBAR_E/U94  ( .A(FIFO_D_out_S[12]), .Q(\XBAR_E/n113 ) );
+  OAI211X3 \XBAR_E/U93  ( .A1(\XBAR_E/n15 ), .A2(\XBAR_E/n113 ), .B1(
+        \XBAR_E/n139 ), .C1(\XBAR_E/n138 ), .Q(TX_E[12]) );
+  AOI22X3 \XBAR_E/U92  ( .A1(FIFO_D_out_L[10]), .A2(\XBAR_E/n12 ), .B1(
+        FIFO_D_out_N[10]), .B2(\XBAR_E/n8 ), .Q(\XBAR_E/n134 ) );
+  INVXL \XBAR_E/U90  ( .A(FIFO_D_out_S[10]), .Q(\XBAR_E/n115 ) );
+  OAI211X3 \XBAR_E/U89  ( .A1(\XBAR_E/n15 ), .A2(\XBAR_E/n115 ), .B1(
+        \XBAR_E/n135 ), .C1(\XBAR_E/n134 ), .Q(TX_E[10]) );
+  AOI22X3 \XBAR_E/U88  ( .A1(FIFO_D_out_L[11]), .A2(\XBAR_E/n12 ), .B1(
+        FIFO_D_out_N[11]), .B2(\XBAR_E/n8 ), .Q(\XBAR_E/n136 ) );
+  INVXL \XBAR_E/U86  ( .A(FIFO_D_out_S[11]), .Q(\XBAR_E/n114 ) );
+  OAI211X3 \XBAR_E/U85  ( .A1(\XBAR_E/n15 ), .A2(\XBAR_E/n114 ), .B1(
+        \XBAR_E/n137 ), .C1(\XBAR_E/n136 ), .Q(TX_E[11]) );
+  AOI22X3 \XBAR_E/U84  ( .A1(FIFO_D_out_L[1]), .A2(\XBAR_E/n11 ), .B1(
+        FIFO_D_out_N[1]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n154 ) );
+  INVXL \XBAR_E/U82  ( .A(FIFO_D_out_S[1]), .Q(\XBAR_E/n124 ) );
+  OAI211X3 \XBAR_E/U81  ( .A1(\XBAR_E/n14 ), .A2(\XBAR_E/n124 ), .B1(
+        \XBAR_E/n155 ), .C1(\XBAR_E/n154 ), .Q(TX_E[1]) );
+  AOI22X3 \XBAR_E/U80  ( .A1(n4), .A2(\XBAR_E/n10 ), .B1(n22), .B2(
+        \XBAR_E/n196 ), .Q(\XBAR_E/n180 ) );
+  INVXL \XBAR_E/U78  ( .A(n8), .Q(\XBAR_E/n20 ) );
   OAI211X3 \XBAR_E/U77  ( .A1(\XBAR_E/n13 ), .A2(\XBAR_E/n20 ), .B1(
         \XBAR_E/n181 ), .C1(\XBAR_E/n180 ), .Q(TX_E[31]) );
-  AOI22X3 \XBAR_E/U76  ( .A1(FIFO_D_out_L[30]), .A2(\XBAR_E/n10 ), .B1(
-        FIFO_D_out_N[30]), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n178 ) );
-  INVXL \XBAR_E/U74  ( .A(FIFO_D_out_S[30]), .Q(\XBAR_E/n21 ) );
+  AOI22X3 \XBAR_E/U76  ( .A1(n3), .A2(\XBAR_E/n10 ), .B1(n21), .B2(\XBAR_E/n7 ), .Q(\XBAR_E/n178 ) );
+  INVXL \XBAR_E/U74  ( .A(n7), .Q(\XBAR_E/n21 ) );
   OAI211X3 \XBAR_E/U73  ( .A1(\XBAR_E/n13 ), .A2(\XBAR_E/n21 ), .B1(
         \XBAR_E/n179 ), .C1(\XBAR_E/n178 ), .Q(TX_E[30]) );
-  AOI22X3 \XBAR_E/U72  ( .A1(FIFO_D_out_L[29]), .A2(\XBAR_E/n10 ), .B1(
-        FIFO_D_out_N[29]), .B2(\XBAR_E/n9 ), .Q(\XBAR_E/n174 ) );
+  AOI22X3 \XBAR_E/U72  ( .A1(FIFO_D_out_L[29]), .A2(\XBAR_E/n10 ), .B1(n20), 
+        .B2(\XBAR_E/n9 ), .Q(\XBAR_E/n174 ) );
   INVXL \XBAR_E/U70  ( .A(FIFO_D_out_S[29]), .Q(\XBAR_E/n22 ) );
   OAI211X3 \XBAR_E/U69  ( .A1(\XBAR_E/n13 ), .A2(\XBAR_E/n22 ), .B1(
         \XBAR_E/n175 ), .C1(\XBAR_E/n174 ), .Q(TX_E[29]) );
@@ -10008,9 +12267,8 @@ endmodule
   INVXL \XBAR_E/U50  ( .A(FIFO_D_out_S[8]), .Q(\XBAR_E/n117 ) );
   OAI211X3 \XBAR_E/U49  ( .A1(\XBAR_E/n13 ), .A2(\XBAR_E/n117 ), .B1(
         \XBAR_E/n193 ), .C1(\XBAR_E/n192 ), .Q(TX_E[8]) );
-  AOI22X3 \XBAR_E/U48  ( .A1(\LBDR_L/n60 ), .A2(\XBAR_E/n10 ), .B1(
-        \LBDR_N/n60 ), .B2(\XBAR_E/n8 ), .Q(\XBAR_E/n190 ) );
-  INVXL \XBAR_E/U46  ( .A(\LBDR_S/n60 ), .Q(\XBAR_E/n118 ) );
+  AOI22X3 \XBAR_E/U48  ( .A1(n1), .A2(\XBAR_E/n10 ), .B1(n18), .B2(\XBAR_E/n8 ), .Q(\XBAR_E/n190 ) );
+  INVXL \XBAR_E/U46  ( .A(n5), .Q(\XBAR_E/n118 ) );
   OAI211X3 \XBAR_E/U45  ( .A1(\XBAR_E/n13 ), .A2(\XBAR_E/n118 ), .B1(
         \XBAR_E/n191 ), .C1(\XBAR_E/n190 ), .Q(TX_E[7]) );
   AOI22X3 \XBAR_E/U44  ( .A1(FIFO_D_out_L[6]), .A2(\XBAR_E/n10 ), .B1(
@@ -10060,166 +12318,166 @@ endmodule
   NOR2XL \XBAR_E/U1  ( .A(\XBAR_E/n128 ), .B(Grant_EN_out), .Q(\XBAR_E/n197 )
          );
   AND2X3 \XBAR_W/U153  ( .A(\XBAR_W/n129 ), .B(\XBAR_W/n19 ), .Q(\XBAR_W/n195 ) );
-  AOI22X3 \XBAR_W/U152  ( .A1(FIFO_D_out_L[28]), .A2(\XBAR_W/n10 ), .B1(
-        FIFO_D_out_N[28]), .B2(\XBAR_W/n9 ), .Q(\XBAR_W/n172 ) );
-  INVXL \XBAR_W/U150  ( .A(FIFO_D_out_S[28]), .Q(\XBAR_W/n23 ) );
-  OAI211X3 \XBAR_W/U149  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n23 ), .B1(
-        \XBAR_W/n173 ), .C1(\XBAR_W/n172 ), .Q(TX_W[28]) );
-  AOI22X3 \XBAR_W/U148  ( .A1(FIFO_D_out_L[27]), .A2(\XBAR_W/n10 ), .B1(
-        FIFO_D_out_N[27]), .B2(\XBAR_W/n9 ), .Q(\XBAR_W/n170 ) );
-  INVXL \XBAR_W/U146  ( .A(FIFO_D_out_S[27]), .Q(\XBAR_W/n24 ) );
-  OAI211X3 \XBAR_W/U145  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n24 ), .B1(
-        \XBAR_W/n171 ), .C1(\XBAR_W/n170 ), .Q(TX_W[27]) );
-  AOI22X3 \XBAR_W/U144  ( .A1(FIFO_D_out_L[26]), .A2(\XBAR_W/n10 ), .B1(
-        FIFO_D_out_N[26]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n168 ) );
-  INVXL \XBAR_W/U142  ( .A(FIFO_D_out_S[26]), .Q(\XBAR_W/n25 ) );
-  OAI211X3 \XBAR_W/U141  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n25 ), .B1(
-        \XBAR_W/n169 ), .C1(\XBAR_W/n168 ), .Q(TX_W[26]) );
-  AOI22X3 \XBAR_W/U140  ( .A1(FIFO_D_out_L[25]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[25]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n166 ) );
-  INVXL \XBAR_W/U138  ( .A(FIFO_D_out_S[25]), .Q(\XBAR_W/n26 ) );
-  OAI211X3 \XBAR_W/U137  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n26 ), .B1(
-        \XBAR_W/n167 ), .C1(\XBAR_W/n166 ), .Q(TX_W[25]) );
-  AOI22X3 \XBAR_W/U136  ( .A1(FIFO_D_out_L[24]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[24]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n164 ) );
-  INVXL \XBAR_W/U134  ( .A(FIFO_D_out_S[24]), .Q(\XBAR_W/n27 ) );
-  OAI211X3 \XBAR_W/U133  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n27 ), .B1(
-        \XBAR_W/n165 ), .C1(\XBAR_W/n164 ), .Q(TX_W[24]) );
-  AOI22X3 \XBAR_W/U132  ( .A1(FIFO_D_out_L[23]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[23]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n162 ) );
-  INVXL \XBAR_W/U130  ( .A(FIFO_D_out_S[23]), .Q(\XBAR_W/n28 ) );
-  OAI211X3 \XBAR_W/U129  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n28 ), .B1(
-        \XBAR_W/n163 ), .C1(\XBAR_W/n162 ), .Q(TX_W[23]) );
-  AOI22X3 \XBAR_W/U128  ( .A1(FIFO_D_out_L[22]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[22]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n160 ) );
-  INVXL \XBAR_W/U126  ( .A(FIFO_D_out_S[22]), .Q(\XBAR_W/n29 ) );
-  OAI211X3 \XBAR_W/U125  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n29 ), .B1(
-        \XBAR_W/n161 ), .C1(\XBAR_W/n160 ), .Q(TX_W[22]) );
-  AOI22X3 \XBAR_W/U124  ( .A1(FIFO_D_out_L[21]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[21]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n158 ) );
-  INVXL \XBAR_W/U122  ( .A(FIFO_D_out_S[21]), .Q(\XBAR_W/n30 ) );
-  OAI211X3 \XBAR_W/U121  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n30 ), .B1(
-        \XBAR_W/n159 ), .C1(\XBAR_W/n158 ), .Q(TX_W[21]) );
-  AOI22X3 \XBAR_W/U120  ( .A1(FIFO_D_out_L[20]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[20]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n156 ) );
-  INVXL \XBAR_W/U118  ( .A(FIFO_D_out_S[20]), .Q(\XBAR_W/n31 ) );
-  OAI211X3 \XBAR_W/U117  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n31 ), .B1(
-        \XBAR_W/n157 ), .C1(\XBAR_W/n156 ), .Q(TX_W[20]) );
-  AOI22X3 \XBAR_W/U116  ( .A1(FIFO_D_out_L[19]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[19]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n152 ) );
-  INVXL \XBAR_W/U114  ( .A(FIFO_D_out_S[19]), .Q(\XBAR_W/n32 ) );
-  OAI211X3 \XBAR_W/U113  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n32 ), .B1(
-        \XBAR_W/n153 ), .C1(\XBAR_W/n152 ), .Q(TX_W[19]) );
-  AOI22X3 \XBAR_W/U112  ( .A1(FIFO_D_out_L[18]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[18]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n150 ) );
-  INVXL \XBAR_W/U110  ( .A(FIFO_D_out_S[18]), .Q(\XBAR_W/n33 ) );
-  OAI211X3 \XBAR_W/U109  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n33 ), .B1(
-        \XBAR_W/n151 ), .C1(\XBAR_W/n150 ), .Q(TX_W[18]) );
-  AOI22X3 \XBAR_W/U108  ( .A1(FIFO_D_out_L[17]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[17]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n148 ) );
-  INVXL \XBAR_W/U106  ( .A(FIFO_D_out_S[17]), .Q(\XBAR_W/n34 ) );
-  OAI211X3 \XBAR_W/U105  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n34 ), .B1(
-        \XBAR_W/n149 ), .C1(\XBAR_W/n148 ), .Q(TX_W[17]) );
-  AOI22X3 \XBAR_W/U104  ( .A1(FIFO_D_out_L[16]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[16]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n146 ) );
-  INVXL \XBAR_W/U102  ( .A(FIFO_D_out_S[16]), .Q(\XBAR_W/n35 ) );
-  OAI211X3 \XBAR_W/U101  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n35 ), .B1(
-        \XBAR_W/n147 ), .C1(\XBAR_W/n146 ), .Q(TX_W[16]) );
-  AOI22X3 \XBAR_W/U100  ( .A1(FIFO_D_out_L[15]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[15]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n144 ) );
-  INVXL \XBAR_W/U98  ( .A(FIFO_D_out_S[15]), .Q(\XBAR_W/n36 ) );
-  OAI211X3 \XBAR_W/U97  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n36 ), .B1(
-        \XBAR_W/n145 ), .C1(\XBAR_W/n144 ), .Q(TX_W[15]) );
-  AOI22X3 \XBAR_W/U96  ( .A1(FIFO_D_out_L[0]), .A2(\XBAR_W/n12 ), .B1(
-        FIFO_D_out_N[0]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n132 ) );
-  INVXL \XBAR_W/U94  ( .A(FIFO_D_out_S[0]), .Q(\XBAR_W/n125 ) );
-  OAI211X3 \XBAR_W/U93  ( .A1(\XBAR_W/n15 ), .A2(\XBAR_W/n125 ), .B1(
-        \XBAR_W/n133 ), .C1(\XBAR_W/n132 ), .Q(TX_W[0]) );
-  AOI22X3 \XBAR_W/U92  ( .A1(FIFO_D_out_L[8]), .A2(\XBAR_W/n10 ), .B1(
-        FIFO_D_out_N[8]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n192 ) );
-  INVXL \XBAR_W/U90  ( .A(FIFO_D_out_S[8]), .Q(\XBAR_W/n117 ) );
-  OAI211X3 \XBAR_W/U89  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n117 ), .B1(
-        \XBAR_W/n193 ), .C1(\XBAR_W/n192 ), .Q(TX_W[8]) );
-  AOI22X3 \XBAR_W/U88  ( .A1(\LBDR_L/n31 ), .A2(\XBAR_W/n11 ), .B1(
-        \LBDR_N/n31 ), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n140 ) );
-  INVXL \XBAR_W/U86  ( .A(\LBDR_S/n31 ), .Q(\XBAR_W/n112 ) );
-  OAI211X3 \XBAR_W/U85  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n112 ), .B1(
-        \XBAR_W/n141 ), .C1(\XBAR_W/n140 ), .Q(TX_W[13]) );
-  AOI22X3 \XBAR_W/U84  ( .A1(\LBDR_L/n4 ), .A2(\XBAR_W/n12 ), .B1(\LBDR_N/n4 ), 
-        .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n138 ) );
-  INVXL \XBAR_W/U82  ( .A(\LBDR_S/n4 ), .Q(\XBAR_W/n113 ) );
-  OAI211X3 \XBAR_W/U81  ( .A1(\XBAR_W/n15 ), .A2(\XBAR_W/n113 ), .B1(
-        \XBAR_W/n139 ), .C1(\XBAR_W/n138 ), .Q(TX_W[12]) );
-  AOI22X3 \XBAR_W/U80  ( .A1(FIFO_D_out_L[10]), .A2(\XBAR_W/n12 ), .B1(
-        FIFO_D_out_N[10]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n134 ) );
-  INVXL \XBAR_W/U78  ( .A(FIFO_D_out_S[10]), .Q(\XBAR_W/n115 ) );
-  OAI211X3 \XBAR_W/U77  ( .A1(\XBAR_W/n15 ), .A2(\XBAR_W/n115 ), .B1(
-        \XBAR_W/n135 ), .C1(\XBAR_W/n134 ), .Q(TX_W[10]) );
-  AOI22X3 \XBAR_W/U76  ( .A1(FIFO_D_out_L[4]), .A2(\XBAR_W/n10 ), .B1(
-        FIFO_D_out_N[4]), .B2(\XBAR_W/n9 ), .Q(\XBAR_W/n184 ) );
-  INVXL \XBAR_W/U74  ( .A(FIFO_D_out_S[4]), .Q(\XBAR_W/n121 ) );
-  OAI211X3 \XBAR_W/U73  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n121 ), .B1(
-        \XBAR_W/n185 ), .C1(\XBAR_W/n184 ), .Q(TX_W[4]) );
-  AOI22X3 \XBAR_W/U72  ( .A1(FIFO_D_out_L[11]), .A2(\XBAR_W/n12 ), .B1(
-        FIFO_D_out_N[11]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n136 ) );
-  INVXL \XBAR_W/U70  ( .A(FIFO_D_out_S[11]), .Q(\XBAR_W/n114 ) );
-  OAI211X3 \XBAR_W/U69  ( .A1(\XBAR_W/n15 ), .A2(\XBAR_W/n114 ), .B1(
-        \XBAR_W/n137 ), .C1(\XBAR_W/n136 ), .Q(TX_W[11]) );
-  AOI22X3 \XBAR_W/U68  ( .A1(FIFO_D_out_L[9]), .A2(\XBAR_W/n10 ), .B1(
-        FIFO_D_out_N[9]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n198 ) );
-  INVXL \XBAR_W/U66  ( .A(FIFO_D_out_S[9]), .Q(\XBAR_W/n116 ) );
-  OAI211X3 \XBAR_W/U65  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n116 ), .B1(
-        \XBAR_W/n199 ), .C1(\XBAR_W/n198 ), .Q(TX_W[9]) );
-  AOI22X3 \XBAR_W/U64  ( .A1(FIFO_D_out_L[6]), .A2(\XBAR_W/n10 ), .B1(
-        FIFO_D_out_N[6]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n188 ) );
-  INVXL \XBAR_W/U62  ( .A(FIFO_D_out_S[6]), .Q(\XBAR_W/n119 ) );
-  OAI211X3 \XBAR_W/U61  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n119 ), .B1(
-        \XBAR_W/n189 ), .C1(\XBAR_W/n188 ), .Q(TX_W[6]) );
-  AOI22X3 \XBAR_W/U60  ( .A1(FIFO_D_out_L[5]), .A2(\XBAR_W/n10 ), .B1(
-        FIFO_D_out_N[5]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n186 ) );
-  INVXL \XBAR_W/U58  ( .A(FIFO_D_out_S[5]), .Q(\XBAR_W/n120 ) );
-  OAI211X3 \XBAR_W/U57  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n120 ), .B1(
-        \XBAR_W/n187 ), .C1(\XBAR_W/n186 ), .Q(TX_W[5]) );
-  AOI22X3 \XBAR_W/U56  ( .A1(FIFO_D_out_L[3]), .A2(\XBAR_W/n10 ), .B1(
-        FIFO_D_out_N[3]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n182 ) );
-  INVXL \XBAR_W/U54  ( .A(FIFO_D_out_S[3]), .Q(\XBAR_W/n122 ) );
-  OAI211X3 \XBAR_W/U53  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n122 ), .B1(
-        \XBAR_W/n183 ), .C1(\XBAR_W/n182 ), .Q(TX_W[3]) );
-  AOI22X3 \XBAR_W/U52  ( .A1(FIFO_D_out_L[1]), .A2(\XBAR_W/n11 ), .B1(
-        FIFO_D_out_N[1]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n154 ) );
-  INVXL \XBAR_W/U50  ( .A(FIFO_D_out_S[1]), .Q(\XBAR_W/n124 ) );
-  OAI211X3 \XBAR_W/U49  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n124 ), .B1(
-        \XBAR_W/n155 ), .C1(\XBAR_W/n154 ), .Q(TX_W[1]) );
-  AOI22X3 \XBAR_W/U48  ( .A1(FIFO_D_out_L[2]), .A2(\XBAR_W/n10 ), .B1(
-        FIFO_D_out_N[2]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n176 ) );
-  INVXL \XBAR_W/U46  ( .A(FIFO_D_out_S[2]), .Q(\XBAR_W/n123 ) );
-  OAI211X3 \XBAR_W/U45  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n123 ), .B1(
-        \XBAR_W/n177 ), .C1(\XBAR_W/n176 ), .Q(TX_W[2]) );
-  AOI22X3 \XBAR_W/U44  ( .A1(FIFO_D_out_L[29]), .A2(\XBAR_W/n10 ), .B1(
-        FIFO_D_out_N[29]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n174 ) );
-  INVXL \XBAR_W/U42  ( .A(FIFO_D_out_S[29]), .Q(\XBAR_W/n22 ) );
-  OAI211X3 \XBAR_W/U41  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n22 ), .B1(
-        \XBAR_W/n175 ), .C1(\XBAR_W/n174 ), .Q(TX_W[29]) );
-  AOI22X3 \XBAR_W/U40  ( .A1(FIFO_D_out_L[30]), .A2(\XBAR_W/n10 ), .B1(
-        FIFO_D_out_N[30]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n178 ) );
-  INVXL \XBAR_W/U38  ( .A(FIFO_D_out_S[30]), .Q(\XBAR_W/n21 ) );
-  OAI211X3 \XBAR_W/U37  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n21 ), .B1(
-        \XBAR_W/n179 ), .C1(\XBAR_W/n178 ), .Q(TX_W[30]) );
-  AOI22X3 \XBAR_W/U36  ( .A1(\LBDR_L/n60 ), .A2(\XBAR_W/n10 ), .B1(
-        \LBDR_N/n60 ), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n190 ) );
-  INVXL \XBAR_W/U34  ( .A(\LBDR_S/n60 ), .Q(\XBAR_W/n118 ) );
-  OAI211X3 \XBAR_W/U33  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n118 ), .B1(
-        \XBAR_W/n191 ), .C1(\XBAR_W/n190 ), .Q(TX_W[7]) );
-  AOI22X3 \XBAR_W/U32  ( .A1(\LBDR_L/n32 ), .A2(\XBAR_W/n11 ), .B1(
-        \LBDR_N/n32 ), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n142 ) );
-  INVXL \XBAR_W/U30  ( .A(\LBDR_S/n32 ), .Q(\XBAR_W/n37 ) );
-  OAI211X3 \XBAR_W/U29  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n37 ), .B1(
-        \XBAR_W/n143 ), .C1(\XBAR_W/n142 ), .Q(TX_W[14]) );
-  AOI22X3 \XBAR_W/U28  ( .A1(FIFO_D_out_L[31]), .A2(\XBAR_W/n10 ), .B1(
-        FIFO_D_out_N[31]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n180 ) );
-  INVXL \XBAR_W/U26  ( .A(FIFO_D_out_S[31]), .Q(\XBAR_W/n20 ) );
-  OAI211X3 \XBAR_W/U25  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n20 ), .B1(
+  AOI22X3 \XBAR_W/U152  ( .A1(n4), .A2(\XBAR_W/n10 ), .B1(n22), .B2(
+        \XBAR_W/n9 ), .Q(\XBAR_W/n180 ) );
+  INVXL \XBAR_W/U150  ( .A(n8), .Q(\XBAR_W/n20 ) );
+  OAI211X3 \XBAR_W/U149  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n20 ), .B1(
         \XBAR_W/n181 ), .C1(\XBAR_W/n180 ), .Q(TX_W[31]) );
+  AOI22X3 \XBAR_W/U148  ( .A1(n3), .A2(\XBAR_W/n10 ), .B1(n21), .B2(
+        \XBAR_W/n9 ), .Q(\XBAR_W/n178 ) );
+  INVXL \XBAR_W/U146  ( .A(n7), .Q(\XBAR_W/n21 ) );
+  OAI211X3 \XBAR_W/U145  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n21 ), .B1(
+        \XBAR_W/n179 ), .C1(\XBAR_W/n178 ), .Q(TX_W[30]) );
+  AOI22X3 \XBAR_W/U144  ( .A1(n2), .A2(\XBAR_W/n11 ), .B1(n19), .B2(
+        \XBAR_W/n7 ), .Q(\XBAR_W/n142 ) );
+  INVXL \XBAR_W/U142  ( .A(n6), .Q(\XBAR_W/n37 ) );
+  OAI211X3 \XBAR_W/U141  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n37 ), .B1(
+        \XBAR_W/n143 ), .C1(\XBAR_W/n142 ), .Q(TX_W[14]) );
+  AOI22X3 \XBAR_W/U140  ( .A1(n1), .A2(\XBAR_W/n10 ), .B1(n18), .B2(
+        \XBAR_W/n7 ), .Q(\XBAR_W/n190 ) );
+  INVXL \XBAR_W/U138  ( .A(n5), .Q(\XBAR_W/n118 ) );
+  OAI211X3 \XBAR_W/U137  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n118 ), .B1(
+        \XBAR_W/n191 ), .C1(\XBAR_W/n190 ), .Q(TX_W[7]) );
+  AOI22X3 \XBAR_W/U136  ( .A1(FIFO_D_out_L[29]), .A2(\XBAR_W/n10 ), .B1(n20), 
+        .B2(\XBAR_W/n9 ), .Q(\XBAR_W/n174 ) );
+  INVXL \XBAR_W/U134  ( .A(FIFO_D_out_S[29]), .Q(\XBAR_W/n22 ) );
+  OAI211X3 \XBAR_W/U133  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n22 ), .B1(
+        \XBAR_W/n175 ), .C1(\XBAR_W/n174 ), .Q(TX_W[29]) );
+  AOI22X3 \XBAR_W/U132  ( .A1(FIFO_D_out_L[28]), .A2(\XBAR_W/n10 ), .B1(
+        FIFO_D_out_N[28]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n172 ) );
+  INVXL \XBAR_W/U130  ( .A(FIFO_D_out_S[28]), .Q(\XBAR_W/n23 ) );
+  OAI211X3 \XBAR_W/U129  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n23 ), .B1(
+        \XBAR_W/n173 ), .C1(\XBAR_W/n172 ), .Q(TX_W[28]) );
+  AOI22X3 \XBAR_W/U128  ( .A1(FIFO_D_out_L[27]), .A2(\XBAR_W/n10 ), .B1(
+        FIFO_D_out_N[27]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n170 ) );
+  INVXL \XBAR_W/U126  ( .A(FIFO_D_out_S[27]), .Q(\XBAR_W/n24 ) );
+  OAI211X3 \XBAR_W/U125  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n24 ), .B1(
+        \XBAR_W/n171 ), .C1(\XBAR_W/n170 ), .Q(TX_W[27]) );
+  AOI22X3 \XBAR_W/U124  ( .A1(FIFO_D_out_L[26]), .A2(\XBAR_W/n10 ), .B1(
+        FIFO_D_out_N[26]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n168 ) );
+  INVXL \XBAR_W/U122  ( .A(FIFO_D_out_S[26]), .Q(\XBAR_W/n25 ) );
+  OAI211X3 \XBAR_W/U121  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n25 ), .B1(
+        \XBAR_W/n169 ), .C1(\XBAR_W/n168 ), .Q(TX_W[26]) );
+  AOI22X3 \XBAR_W/U120  ( .A1(FIFO_D_out_L[25]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[25]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n166 ) );
+  INVXL \XBAR_W/U118  ( .A(FIFO_D_out_S[25]), .Q(\XBAR_W/n26 ) );
+  OAI211X3 \XBAR_W/U117  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n26 ), .B1(
+        \XBAR_W/n167 ), .C1(\XBAR_W/n166 ), .Q(TX_W[25]) );
+  AOI22X3 \XBAR_W/U116  ( .A1(FIFO_D_out_L[24]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[24]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n164 ) );
+  INVXL \XBAR_W/U114  ( .A(FIFO_D_out_S[24]), .Q(\XBAR_W/n27 ) );
+  OAI211X3 \XBAR_W/U113  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n27 ), .B1(
+        \XBAR_W/n165 ), .C1(\XBAR_W/n164 ), .Q(TX_W[24]) );
+  AOI22X3 \XBAR_W/U112  ( .A1(FIFO_D_out_L[23]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[23]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n162 ) );
+  INVXL \XBAR_W/U110  ( .A(FIFO_D_out_S[23]), .Q(\XBAR_W/n28 ) );
+  OAI211X3 \XBAR_W/U109  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n28 ), .B1(
+        \XBAR_W/n163 ), .C1(\XBAR_W/n162 ), .Q(TX_W[23]) );
+  AOI22X3 \XBAR_W/U108  ( .A1(FIFO_D_out_L[22]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[22]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n160 ) );
+  INVXL \XBAR_W/U106  ( .A(FIFO_D_out_S[22]), .Q(\XBAR_W/n29 ) );
+  OAI211X3 \XBAR_W/U105  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n29 ), .B1(
+        \XBAR_W/n161 ), .C1(\XBAR_W/n160 ), .Q(TX_W[22]) );
+  AOI22X3 \XBAR_W/U104  ( .A1(FIFO_D_out_L[21]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[21]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n158 ) );
+  INVXL \XBAR_W/U102  ( .A(FIFO_D_out_S[21]), .Q(\XBAR_W/n30 ) );
+  OAI211X3 \XBAR_W/U101  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n30 ), .B1(
+        \XBAR_W/n159 ), .C1(\XBAR_W/n158 ), .Q(TX_W[21]) );
+  AOI22X3 \XBAR_W/U100  ( .A1(FIFO_D_out_L[20]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[20]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n156 ) );
+  INVXL \XBAR_W/U98  ( .A(FIFO_D_out_S[20]), .Q(\XBAR_W/n31 ) );
+  OAI211X3 \XBAR_W/U97  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n31 ), .B1(
+        \XBAR_W/n157 ), .C1(\XBAR_W/n156 ), .Q(TX_W[20]) );
+  AOI22X3 \XBAR_W/U96  ( .A1(FIFO_D_out_L[19]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[19]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n152 ) );
+  INVXL \XBAR_W/U94  ( .A(FIFO_D_out_S[19]), .Q(\XBAR_W/n32 ) );
+  OAI211X3 \XBAR_W/U93  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n32 ), .B1(
+        \XBAR_W/n153 ), .C1(\XBAR_W/n152 ), .Q(TX_W[19]) );
+  AOI22X3 \XBAR_W/U92  ( .A1(FIFO_D_out_L[18]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[18]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n150 ) );
+  INVXL \XBAR_W/U90  ( .A(FIFO_D_out_S[18]), .Q(\XBAR_W/n33 ) );
+  OAI211X3 \XBAR_W/U89  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n33 ), .B1(
+        \XBAR_W/n151 ), .C1(\XBAR_W/n150 ), .Q(TX_W[18]) );
+  AOI22X3 \XBAR_W/U88  ( .A1(FIFO_D_out_L[17]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[17]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n148 ) );
+  INVXL \XBAR_W/U86  ( .A(FIFO_D_out_S[17]), .Q(\XBAR_W/n34 ) );
+  OAI211X3 \XBAR_W/U85  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n34 ), .B1(
+        \XBAR_W/n149 ), .C1(\XBAR_W/n148 ), .Q(TX_W[17]) );
+  AOI22X3 \XBAR_W/U84  ( .A1(FIFO_D_out_L[16]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[16]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n146 ) );
+  INVXL \XBAR_W/U82  ( .A(FIFO_D_out_S[16]), .Q(\XBAR_W/n35 ) );
+  OAI211X3 \XBAR_W/U81  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n35 ), .B1(
+        \XBAR_W/n147 ), .C1(\XBAR_W/n146 ), .Q(TX_W[16]) );
+  AOI22X3 \XBAR_W/U80  ( .A1(FIFO_D_out_L[15]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[15]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n144 ) );
+  INVXL \XBAR_W/U78  ( .A(FIFO_D_out_S[15]), .Q(\XBAR_W/n36 ) );
+  OAI211X3 \XBAR_W/U77  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n36 ), .B1(
+        \XBAR_W/n145 ), .C1(\XBAR_W/n144 ), .Q(TX_W[15]) );
+  AOI22X3 \XBAR_W/U76  ( .A1(FIFO_D_out_L[0]), .A2(\XBAR_W/n12 ), .B1(
+        FIFO_D_out_N[0]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n132 ) );
+  INVXL \XBAR_W/U74  ( .A(FIFO_D_out_S[0]), .Q(\XBAR_W/n125 ) );
+  OAI211X3 \XBAR_W/U73  ( .A1(\XBAR_W/n15 ), .A2(\XBAR_W/n125 ), .B1(
+        \XBAR_W/n133 ), .C1(\XBAR_W/n132 ), .Q(TX_W[0]) );
+  AOI22X3 \XBAR_W/U72  ( .A1(FIFO_D_out_L[8]), .A2(\XBAR_W/n10 ), .B1(
+        FIFO_D_out_N[8]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n192 ) );
+  INVXL \XBAR_W/U70  ( .A(FIFO_D_out_S[8]), .Q(\XBAR_W/n117 ) );
+  OAI211X3 \XBAR_W/U69  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n117 ), .B1(
+        \XBAR_W/n193 ), .C1(\XBAR_W/n192 ), .Q(TX_W[8]) );
+  AOI22X3 \XBAR_W/U68  ( .A1(FIFO_D_out_L[13]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[13]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n140 ) );
+  INVXL \XBAR_W/U66  ( .A(FIFO_D_out_S[13]), .Q(\XBAR_W/n112 ) );
+  OAI211X3 \XBAR_W/U65  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n112 ), .B1(
+        \XBAR_W/n141 ), .C1(\XBAR_W/n140 ), .Q(TX_W[13]) );
+  AOI22X3 \XBAR_W/U64  ( .A1(FIFO_D_out_L[12]), .A2(\XBAR_W/n12 ), .B1(
+        FIFO_D_out_N[12]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n138 ) );
+  INVXL \XBAR_W/U62  ( .A(FIFO_D_out_S[12]), .Q(\XBAR_W/n113 ) );
+  OAI211X3 \XBAR_W/U61  ( .A1(\XBAR_W/n15 ), .A2(\XBAR_W/n113 ), .B1(
+        \XBAR_W/n139 ), .C1(\XBAR_W/n138 ), .Q(TX_W[12]) );
+  AOI22X3 \XBAR_W/U60  ( .A1(FIFO_D_out_L[10]), .A2(\XBAR_W/n12 ), .B1(
+        FIFO_D_out_N[10]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n134 ) );
+  INVXL \XBAR_W/U58  ( .A(FIFO_D_out_S[10]), .Q(\XBAR_W/n115 ) );
+  OAI211X3 \XBAR_W/U57  ( .A1(\XBAR_W/n15 ), .A2(\XBAR_W/n115 ), .B1(
+        \XBAR_W/n135 ), .C1(\XBAR_W/n134 ), .Q(TX_W[10]) );
+  AOI22X3 \XBAR_W/U56  ( .A1(FIFO_D_out_L[4]), .A2(\XBAR_W/n10 ), .B1(
+        FIFO_D_out_N[4]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n184 ) );
+  INVXL \XBAR_W/U54  ( .A(FIFO_D_out_S[4]), .Q(\XBAR_W/n121 ) );
+  OAI211X3 \XBAR_W/U53  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n121 ), .B1(
+        \XBAR_W/n185 ), .C1(\XBAR_W/n184 ), .Q(TX_W[4]) );
+  AOI22X3 \XBAR_W/U52  ( .A1(FIFO_D_out_L[11]), .A2(\XBAR_W/n12 ), .B1(
+        FIFO_D_out_N[11]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n136 ) );
+  INVXL \XBAR_W/U50  ( .A(FIFO_D_out_S[11]), .Q(\XBAR_W/n114 ) );
+  OAI211X3 \XBAR_W/U49  ( .A1(\XBAR_W/n15 ), .A2(\XBAR_W/n114 ), .B1(
+        \XBAR_W/n137 ), .C1(\XBAR_W/n136 ), .Q(TX_W[11]) );
+  AOI22X3 \XBAR_W/U48  ( .A1(FIFO_D_out_L[9]), .A2(\XBAR_W/n10 ), .B1(
+        FIFO_D_out_N[9]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n198 ) );
+  INVXL \XBAR_W/U46  ( .A(FIFO_D_out_S[9]), .Q(\XBAR_W/n116 ) );
+  OAI211X3 \XBAR_W/U45  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n116 ), .B1(
+        \XBAR_W/n199 ), .C1(\XBAR_W/n198 ), .Q(TX_W[9]) );
+  AOI22X3 \XBAR_W/U44  ( .A1(FIFO_D_out_L[6]), .A2(\XBAR_W/n10 ), .B1(
+        FIFO_D_out_N[6]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n188 ) );
+  INVXL \XBAR_W/U42  ( .A(FIFO_D_out_S[6]), .Q(\XBAR_W/n119 ) );
+  OAI211X3 \XBAR_W/U41  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n119 ), .B1(
+        \XBAR_W/n189 ), .C1(\XBAR_W/n188 ), .Q(TX_W[6]) );
+  AOI22X3 \XBAR_W/U40  ( .A1(FIFO_D_out_L[5]), .A2(\XBAR_W/n10 ), .B1(
+        FIFO_D_out_N[5]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n186 ) );
+  INVXL \XBAR_W/U38  ( .A(FIFO_D_out_S[5]), .Q(\XBAR_W/n120 ) );
+  OAI211X3 \XBAR_W/U37  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n120 ), .B1(
+        \XBAR_W/n187 ), .C1(\XBAR_W/n186 ), .Q(TX_W[5]) );
+  AOI22X3 \XBAR_W/U36  ( .A1(FIFO_D_out_L[3]), .A2(\XBAR_W/n10 ), .B1(
+        FIFO_D_out_N[3]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n182 ) );
+  INVXL \XBAR_W/U34  ( .A(FIFO_D_out_S[3]), .Q(\XBAR_W/n122 ) );
+  OAI211X3 \XBAR_W/U33  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n122 ), .B1(
+        \XBAR_W/n183 ), .C1(\XBAR_W/n182 ), .Q(TX_W[3]) );
+  AOI22X3 \XBAR_W/U32  ( .A1(FIFO_D_out_L[1]), .A2(\XBAR_W/n11 ), .B1(
+        FIFO_D_out_N[1]), .B2(\XBAR_W/n7 ), .Q(\XBAR_W/n154 ) );
+  INVXL \XBAR_W/U30  ( .A(FIFO_D_out_S[1]), .Q(\XBAR_W/n124 ) );
+  OAI211X3 \XBAR_W/U29  ( .A1(\XBAR_W/n14 ), .A2(\XBAR_W/n124 ), .B1(
+        \XBAR_W/n155 ), .C1(\XBAR_W/n154 ), .Q(TX_W[1]) );
+  AOI22X3 \XBAR_W/U28  ( .A1(FIFO_D_out_L[2]), .A2(\XBAR_W/n10 ), .B1(
+        FIFO_D_out_N[2]), .B2(\XBAR_W/n8 ), .Q(\XBAR_W/n176 ) );
+  INVXL \XBAR_W/U26  ( .A(FIFO_D_out_S[2]), .Q(\XBAR_W/n123 ) );
+  OAI211X3 \XBAR_W/U25  ( .A1(\XBAR_W/n13 ), .A2(\XBAR_W/n123 ), .B1(
+        \XBAR_W/n177 ), .C1(\XBAR_W/n176 ), .Q(TX_W[2]) );
   INVXL \XBAR_W/U24  ( .A(\XBAR_W/n127 ), .Q(\XBAR_W/n17 ) );
   NAND2XL \XBAR_W/U23  ( .A(\XBAR_W/n17 ), .B(\XBAR_W/n128 ), .Q(\XBAR_W/n131 ) );
   CLKBUFX2 \XBAR_W/U20  ( .A(\XBAR_W/n200 ), .Q(\XBAR_W/n15 ) );
@@ -10241,119 +12499,121 @@ endmodule
          );
   NOR2XL \XBAR_W/U1  ( .A(\XBAR_W/n128 ), .B(Grant_WN_out), .Q(\XBAR_W/n197 )
          );
-  AOI22X3 \XBAR_S/U154  ( .A1(FIFO_D_out_L[28]), .A2(\XBAR_S/n10 ), .B1(
-        FIFO_D_out_N[28]), .B2(\XBAR_S/n9 ), .Q(\XBAR_S/n172 ) );
-  AOI22X3 \XBAR_S/U153  ( .A1(FIFO_D_out_E[28]), .A2(\XBAR_S/n4 ), .B1(
+  AOI22X3 \XBAR_S/U154  ( .A1(n3), .A2(\XBAR_S/n10 ), .B1(n21), .B2(
+        \XBAR_S/n9 ), .Q(\XBAR_S/n178 ) );
+  AOI22X3 \XBAR_S/U153  ( .A1(n16), .A2(\XBAR_S/n4 ), .B1(n12), .B2(
+        \XBAR_S/n1 ), .Q(\XBAR_S/n179 ) );
+  AOI22X3 \XBAR_S/U150  ( .A1(n1), .A2(\XBAR_S/n10 ), .B1(n18), .B2(
+        \XBAR_S/n9 ), .Q(\XBAR_S/n190 ) );
+  AOI22X3 \XBAR_S/U149  ( .A1(n14), .A2(\XBAR_S/n4 ), .B1(n9), .B2(\XBAR_S/n1 ), .Q(\XBAR_S/n191 ) );
+  AOI22X3 \XBAR_S/U146  ( .A1(n2), .A2(\XBAR_S/n11 ), .B1(n19), .B2(
+        \XBAR_S/n7 ), .Q(\XBAR_S/n142 ) );
+  AOI22X3 \XBAR_S/U145  ( .A1(n15), .A2(\XBAR_S/n5 ), .B1(n10), .B2(
+        \XBAR_S/n2 ), .Q(\XBAR_S/n143 ) );
+  AOI22X3 \XBAR_S/U142  ( .A1(n4), .A2(\XBAR_S/n10 ), .B1(n22), .B2(
+        \XBAR_S/n7 ), .Q(\XBAR_S/n180 ) );
+  AOI22X3 \XBAR_S/U141  ( .A1(n17), .A2(\XBAR_S/n4 ), .B1(n13), .B2(
+        \XBAR_S/n1 ), .Q(\XBAR_S/n181 ) );
+  AOI22X3 \XBAR_S/U138  ( .A1(FIFO_D_out_L[29]), .A2(\XBAR_S/n10 ), .B1(n20), 
+        .B2(\XBAR_S/n9 ), .Q(\XBAR_S/n174 ) );
+  AOI22X3 \XBAR_S/U137  ( .A1(FIFO_D_out_E[29]), .A2(\XBAR_S/n4 ), .B1(n11), 
+        .B2(\XBAR_S/n1 ), .Q(\XBAR_S/n175 ) );
+  AOI22X3 \XBAR_S/U134  ( .A1(FIFO_D_out_L[28]), .A2(\XBAR_S/n10 ), .B1(
+        FIFO_D_out_N[28]), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n172 ) );
+  AOI22X3 \XBAR_S/U133  ( .A1(FIFO_D_out_E[28]), .A2(\XBAR_S/n4 ), .B1(
         FIFO_D_out_W[28]), .B2(\XBAR_S/n1 ), .Q(\XBAR_S/n173 ) );
-  AOI22X3 \XBAR_S/U150  ( .A1(FIFO_D_out_L[27]), .A2(\XBAR_S/n10 ), .B1(
-        FIFO_D_out_N[27]), .B2(\XBAR_S/n9 ), .Q(\XBAR_S/n170 ) );
-  AOI22X3 \XBAR_S/U149  ( .A1(FIFO_D_out_E[27]), .A2(\XBAR_S/n4 ), .B1(
+  AOI22X3 \XBAR_S/U130  ( .A1(FIFO_D_out_L[27]), .A2(\XBAR_S/n10 ), .B1(
+        FIFO_D_out_N[27]), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n170 ) );
+  AOI22X3 \XBAR_S/U129  ( .A1(FIFO_D_out_E[27]), .A2(\XBAR_S/n4 ), .B1(
         FIFO_D_out_W[27]), .B2(\XBAR_S/n1 ), .Q(\XBAR_S/n171 ) );
-  AOI22X3 \XBAR_S/U146  ( .A1(FIFO_D_out_L[26]), .A2(\XBAR_S/n10 ), .B1(
-        FIFO_D_out_N[26]), .B2(\XBAR_S/n7 ), .Q(\XBAR_S/n168 ) );
-  AOI22X3 \XBAR_S/U145  ( .A1(FIFO_D_out_E[26]), .A2(\XBAR_S/n4 ), .B1(
+  AOI22X3 \XBAR_S/U126  ( .A1(FIFO_D_out_L[26]), .A2(\XBAR_S/n10 ), .B1(
+        FIFO_D_out_N[26]), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n168 ) );
+  AOI22X3 \XBAR_S/U125  ( .A1(FIFO_D_out_E[26]), .A2(\XBAR_S/n4 ), .B1(
         FIFO_D_out_W[26]), .B2(\XBAR_S/n1 ), .Q(\XBAR_S/n169 ) );
-  AOI22X3 \XBAR_S/U142  ( .A1(FIFO_D_out_L[25]), .A2(\XBAR_S/n11 ), .B1(
+  AOI22X3 \XBAR_S/U122  ( .A1(FIFO_D_out_L[25]), .A2(\XBAR_S/n11 ), .B1(
         FIFO_D_out_N[25]), .B2(\XBAR_S/n7 ), .Q(\XBAR_S/n166 ) );
-  AOI22X3 \XBAR_S/U141  ( .A1(FIFO_D_out_E[25]), .A2(\XBAR_S/n5 ), .B1(
+  AOI22X3 \XBAR_S/U121  ( .A1(FIFO_D_out_E[25]), .A2(\XBAR_S/n5 ), .B1(
         FIFO_D_out_W[25]), .B2(\XBAR_S/n2 ), .Q(\XBAR_S/n167 ) );
-  AOI22X3 \XBAR_S/U138  ( .A1(FIFO_D_out_L[24]), .A2(\XBAR_S/n11 ), .B1(
+  AOI22X3 \XBAR_S/U118  ( .A1(FIFO_D_out_L[24]), .A2(\XBAR_S/n11 ), .B1(
         FIFO_D_out_N[24]), .B2(\XBAR_S/n7 ), .Q(\XBAR_S/n164 ) );
-  AOI22X3 \XBAR_S/U137  ( .A1(FIFO_D_out_E[24]), .A2(\XBAR_S/n5 ), .B1(
+  AOI22X3 \XBAR_S/U117  ( .A1(FIFO_D_out_E[24]), .A2(\XBAR_S/n5 ), .B1(
         FIFO_D_out_W[24]), .B2(\XBAR_S/n2 ), .Q(\XBAR_S/n165 ) );
-  AOI22X3 \XBAR_S/U134  ( .A1(FIFO_D_out_L[23]), .A2(\XBAR_S/n11 ), .B1(
+  AOI22X3 \XBAR_S/U114  ( .A1(FIFO_D_out_L[23]), .A2(\XBAR_S/n11 ), .B1(
         FIFO_D_out_N[23]), .B2(\XBAR_S/n7 ), .Q(\XBAR_S/n162 ) );
-  AOI22X3 \XBAR_S/U133  ( .A1(FIFO_D_out_E[23]), .A2(\XBAR_S/n5 ), .B1(
+  AOI22X3 \XBAR_S/U113  ( .A1(FIFO_D_out_E[23]), .A2(\XBAR_S/n5 ), .B1(
         FIFO_D_out_W[23]), .B2(\XBAR_S/n2 ), .Q(\XBAR_S/n163 ) );
-  AOI22X3 \XBAR_S/U130  ( .A1(FIFO_D_out_L[22]), .A2(\XBAR_S/n11 ), .B1(
+  AOI22X3 \XBAR_S/U110  ( .A1(FIFO_D_out_L[22]), .A2(\XBAR_S/n11 ), .B1(
         FIFO_D_out_N[22]), .B2(\XBAR_S/n7 ), .Q(\XBAR_S/n160 ) );
-  AOI22X3 \XBAR_S/U129  ( .A1(FIFO_D_out_E[22]), .A2(\XBAR_S/n5 ), .B1(
+  AOI22X3 \XBAR_S/U109  ( .A1(FIFO_D_out_E[22]), .A2(\XBAR_S/n5 ), .B1(
         FIFO_D_out_W[22]), .B2(\XBAR_S/n2 ), .Q(\XBAR_S/n161 ) );
-  AOI22X3 \XBAR_S/U126  ( .A1(FIFO_D_out_L[21]), .A2(\XBAR_S/n11 ), .B1(
+  AOI22X3 \XBAR_S/U106  ( .A1(FIFO_D_out_L[21]), .A2(\XBAR_S/n11 ), .B1(
         FIFO_D_out_N[21]), .B2(\XBAR_S/n7 ), .Q(\XBAR_S/n158 ) );
-  AOI22X3 \XBAR_S/U125  ( .A1(FIFO_D_out_E[21]), .A2(\XBAR_S/n5 ), .B1(
+  AOI22X3 \XBAR_S/U105  ( .A1(FIFO_D_out_E[21]), .A2(\XBAR_S/n5 ), .B1(
         FIFO_D_out_W[21]), .B2(\XBAR_S/n2 ), .Q(\XBAR_S/n159 ) );
-  AOI22X3 \XBAR_S/U122  ( .A1(FIFO_D_out_L[20]), .A2(\XBAR_S/n11 ), .B1(
+  AOI22X3 \XBAR_S/U102  ( .A1(FIFO_D_out_L[20]), .A2(\XBAR_S/n11 ), .B1(
         FIFO_D_out_N[20]), .B2(\XBAR_S/n7 ), .Q(\XBAR_S/n156 ) );
-  AOI22X3 \XBAR_S/U121  ( .A1(FIFO_D_out_E[20]), .A2(\XBAR_S/n5 ), .B1(
+  AOI22X3 \XBAR_S/U101  ( .A1(FIFO_D_out_E[20]), .A2(\XBAR_S/n5 ), .B1(
         FIFO_D_out_W[20]), .B2(\XBAR_S/n2 ), .Q(\XBAR_S/n157 ) );
-  AOI22X3 \XBAR_S/U118  ( .A1(FIFO_D_out_L[19]), .A2(\XBAR_S/n11 ), .B1(
+  AOI22X3 \XBAR_S/U98  ( .A1(FIFO_D_out_L[19]), .A2(\XBAR_S/n11 ), .B1(
         FIFO_D_out_N[19]), .B2(\XBAR_S/n7 ), .Q(\XBAR_S/n152 ) );
-  AOI22X3 \XBAR_S/U117  ( .A1(FIFO_D_out_E[19]), .A2(\XBAR_S/n5 ), .B1(
+  AOI22X3 \XBAR_S/U97  ( .A1(FIFO_D_out_E[19]), .A2(\XBAR_S/n5 ), .B1(
         FIFO_D_out_W[19]), .B2(\XBAR_S/n2 ), .Q(\XBAR_S/n153 ) );
-  AOI22X3 \XBAR_S/U114  ( .A1(FIFO_D_out_L[18]), .A2(\XBAR_S/n11 ), .B1(
+  AOI22X3 \XBAR_S/U94  ( .A1(FIFO_D_out_L[18]), .A2(\XBAR_S/n11 ), .B1(
         FIFO_D_out_N[18]), .B2(\XBAR_S/n7 ), .Q(\XBAR_S/n150 ) );
-  AOI22X3 \XBAR_S/U113  ( .A1(FIFO_D_out_E[18]), .A2(\XBAR_S/n5 ), .B1(
+  AOI22X3 \XBAR_S/U93  ( .A1(FIFO_D_out_E[18]), .A2(\XBAR_S/n5 ), .B1(
         FIFO_D_out_W[18]), .B2(\XBAR_S/n2 ), .Q(\XBAR_S/n151 ) );
-  AOI22X3 \XBAR_S/U110  ( .A1(FIFO_D_out_L[17]), .A2(\XBAR_S/n11 ), .B1(
+  AOI22X3 \XBAR_S/U90  ( .A1(FIFO_D_out_L[17]), .A2(\XBAR_S/n11 ), .B1(
         FIFO_D_out_N[17]), .B2(\XBAR_S/n7 ), .Q(\XBAR_S/n148 ) );
-  AOI22X3 \XBAR_S/U109  ( .A1(FIFO_D_out_E[17]), .A2(\XBAR_S/n5 ), .B1(
+  AOI22X3 \XBAR_S/U89  ( .A1(FIFO_D_out_E[17]), .A2(\XBAR_S/n5 ), .B1(
         FIFO_D_out_W[17]), .B2(\XBAR_S/n2 ), .Q(\XBAR_S/n149 ) );
-  AOI22X3 \XBAR_S/U106  ( .A1(FIFO_D_out_L[16]), .A2(\XBAR_S/n11 ), .B1(
+  AOI22X3 \XBAR_S/U86  ( .A1(FIFO_D_out_L[16]), .A2(\XBAR_S/n11 ), .B1(
         FIFO_D_out_N[16]), .B2(\XBAR_S/n7 ), .Q(\XBAR_S/n146 ) );
-  AOI22X3 \XBAR_S/U105  ( .A1(FIFO_D_out_E[16]), .A2(\XBAR_S/n5 ), .B1(
+  AOI22X3 \XBAR_S/U85  ( .A1(FIFO_D_out_E[16]), .A2(\XBAR_S/n5 ), .B1(
         FIFO_D_out_W[16]), .B2(\XBAR_S/n2 ), .Q(\XBAR_S/n147 ) );
-  AOI22X3 \XBAR_S/U102  ( .A1(FIFO_D_out_L[15]), .A2(\XBAR_S/n11 ), .B1(
+  AOI22X3 \XBAR_S/U82  ( .A1(FIFO_D_out_L[15]), .A2(\XBAR_S/n11 ), .B1(
         FIFO_D_out_N[15]), .B2(\XBAR_S/n7 ), .Q(\XBAR_S/n144 ) );
-  AOI22X3 \XBAR_S/U101  ( .A1(FIFO_D_out_E[15]), .A2(\XBAR_S/n5 ), .B1(
+  AOI22X3 \XBAR_S/U81  ( .A1(FIFO_D_out_E[15]), .A2(\XBAR_S/n5 ), .B1(
         FIFO_D_out_W[15]), .B2(\XBAR_S/n2 ), .Q(\XBAR_S/n145 ) );
-  AOI22X3 \XBAR_S/U98  ( .A1(FIFO_D_out_L[0]), .A2(\XBAR_S/n12 ), .B1(
+  AOI22X3 \XBAR_S/U78  ( .A1(FIFO_D_out_L[0]), .A2(\XBAR_S/n12 ), .B1(
         FIFO_D_out_N[0]), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n132 ) );
-  AOI22X3 \XBAR_S/U97  ( .A1(FIFO_D_out_E[0]), .A2(\XBAR_S/n6 ), .B1(
+  AOI22X3 \XBAR_S/U77  ( .A1(FIFO_D_out_E[0]), .A2(\XBAR_S/n6 ), .B1(
         FIFO_D_out_W[0]), .B2(\XBAR_S/n3 ), .Q(\XBAR_S/n133 ) );
-  AOI22X3 \XBAR_S/U94  ( .A1(FIFO_D_out_L[8]), .A2(\XBAR_S/n10 ), .B1(
-        FIFO_D_out_N[8]), .B2(\XBAR_S/n9 ), .Q(\XBAR_S/n192 ) );
-  AOI22X3 \XBAR_S/U93  ( .A1(FIFO_D_out_E[8]), .A2(\XBAR_S/n4 ), .B1(
+  AOI22X3 \XBAR_S/U74  ( .A1(FIFO_D_out_L[8]), .A2(\XBAR_S/n10 ), .B1(
+        FIFO_D_out_N[8]), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n192 ) );
+  AOI22X3 \XBAR_S/U73  ( .A1(FIFO_D_out_E[8]), .A2(\XBAR_S/n4 ), .B1(
         FIFO_D_out_W[8]), .B2(\XBAR_S/n1 ), .Q(\XBAR_S/n193 ) );
-  AOI22X3 \XBAR_S/U90  ( .A1(\LBDR_L/n31 ), .A2(\XBAR_S/n11 ), .B1(
-        \LBDR_N/n31 ), .B2(\XBAR_S/n7 ), .Q(\XBAR_S/n140 ) );
-  AOI22X3 \XBAR_S/U89  ( .A1(\LBDR_E/n31 ), .A2(\XBAR_S/n5 ), .B1(\LBDR_W/n31 ), .B2(\XBAR_S/n2 ), .Q(\XBAR_S/n141 ) );
-  AOI22X3 \XBAR_S/U86  ( .A1(\LBDR_L/n4 ), .A2(\XBAR_S/n12 ), .B1(\LBDR_N/n4 ), 
-        .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n138 ) );
-  AOI22X3 \XBAR_S/U85  ( .A1(\LBDR_E/n4 ), .A2(\XBAR_S/n6 ), .B1(\LBDR_W/n4 ), 
-        .B2(\XBAR_S/n3 ), .Q(\XBAR_S/n139 ) );
-  AOI22X3 \XBAR_S/U82  ( .A1(FIFO_D_out_L[10]), .A2(\XBAR_S/n12 ), .B1(
+  AOI22X3 \XBAR_S/U70  ( .A1(FIFO_D_out_L[13]), .A2(\XBAR_S/n11 ), .B1(
+        FIFO_D_out_N[13]), .B2(\XBAR_S/n7 ), .Q(\XBAR_S/n140 ) );
+  AOI22X3 \XBAR_S/U69  ( .A1(FIFO_D_out_E[13]), .A2(\XBAR_S/n5 ), .B1(
+        FIFO_D_out_W[13]), .B2(\XBAR_S/n2 ), .Q(\XBAR_S/n141 ) );
+  AOI22X3 \XBAR_S/U66  ( .A1(FIFO_D_out_L[12]), .A2(\XBAR_S/n12 ), .B1(
+        FIFO_D_out_N[12]), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n138 ) );
+  AOI22X3 \XBAR_S/U65  ( .A1(FIFO_D_out_E[12]), .A2(\XBAR_S/n6 ), .B1(
+        FIFO_D_out_W[12]), .B2(\XBAR_S/n3 ), .Q(\XBAR_S/n139 ) );
+  AOI22X3 \XBAR_S/U62  ( .A1(FIFO_D_out_L[10]), .A2(\XBAR_S/n12 ), .B1(
         FIFO_D_out_N[10]), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n134 ) );
-  AOI22X3 \XBAR_S/U81  ( .A1(FIFO_D_out_E[10]), .A2(\XBAR_S/n6 ), .B1(
+  AOI22X3 \XBAR_S/U61  ( .A1(FIFO_D_out_E[10]), .A2(\XBAR_S/n6 ), .B1(
         FIFO_D_out_W[10]), .B2(\XBAR_S/n3 ), .Q(\XBAR_S/n135 ) );
-  AOI22X3 \XBAR_S/U78  ( .A1(FIFO_D_out_L[4]), .A2(\XBAR_S/n10 ), .B1(
+  AOI22X3 \XBAR_S/U58  ( .A1(FIFO_D_out_L[4]), .A2(\XBAR_S/n10 ), .B1(
         FIFO_D_out_N[4]), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n184 ) );
-  AOI22X3 \XBAR_S/U77  ( .A1(FIFO_D_out_E[4]), .A2(\XBAR_S/n4 ), .B1(
+  AOI22X3 \XBAR_S/U57  ( .A1(FIFO_D_out_E[4]), .A2(\XBAR_S/n4 ), .B1(
         FIFO_D_out_W[4]), .B2(\XBAR_S/n1 ), .Q(\XBAR_S/n185 ) );
-  AOI22X3 \XBAR_S/U74  ( .A1(FIFO_D_out_L[9]), .A2(\XBAR_S/n10 ), .B1(
+  AOI22X3 \XBAR_S/U54  ( .A1(FIFO_D_out_L[9]), .A2(\XBAR_S/n10 ), .B1(
         FIFO_D_out_N[9]), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n198 ) );
-  AOI22X3 \XBAR_S/U73  ( .A1(FIFO_D_out_E[9]), .A2(\XBAR_S/n4 ), .B1(
+  AOI22X3 \XBAR_S/U53  ( .A1(FIFO_D_out_E[9]), .A2(\XBAR_S/n4 ), .B1(
         FIFO_D_out_W[9]), .B2(\XBAR_S/n1 ), .Q(\XBAR_S/n199 ) );
-  AOI22X3 \XBAR_S/U70  ( .A1(FIFO_D_out_L[6]), .A2(\XBAR_S/n10 ), .B1(
+  AOI22X3 \XBAR_S/U50  ( .A1(FIFO_D_out_L[6]), .A2(\XBAR_S/n10 ), .B1(
         FIFO_D_out_N[6]), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n188 ) );
-  AOI22X3 \XBAR_S/U69  ( .A1(FIFO_D_out_E[6]), .A2(\XBAR_S/n4 ), .B1(
+  AOI22X3 \XBAR_S/U49  ( .A1(FIFO_D_out_E[6]), .A2(\XBAR_S/n4 ), .B1(
         FIFO_D_out_W[6]), .B2(\XBAR_S/n1 ), .Q(\XBAR_S/n189 ) );
-  AOI22X3 \XBAR_S/U66  ( .A1(FIFO_D_out_L[2]), .A2(\XBAR_S/n10 ), .B1(
+  AOI22X3 \XBAR_S/U46  ( .A1(FIFO_D_out_L[2]), .A2(\XBAR_S/n10 ), .B1(
         FIFO_D_out_N[2]), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n176 ) );
-  AOI22X3 \XBAR_S/U65  ( .A1(FIFO_D_out_E[2]), .A2(\XBAR_S/n4 ), .B1(
+  AOI22X3 \XBAR_S/U45  ( .A1(FIFO_D_out_E[2]), .A2(\XBAR_S/n4 ), .B1(
         FIFO_D_out_W[2]), .B2(\XBAR_S/n1 ), .Q(\XBAR_S/n177 ) );
-  AOI22X3 \XBAR_S/U62  ( .A1(FIFO_D_out_L[29]), .A2(\XBAR_S/n10 ), .B1(
-        FIFO_D_out_N[29]), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n174 ) );
-  AOI22X3 \XBAR_S/U61  ( .A1(FIFO_D_out_E[29]), .A2(\XBAR_S/n4 ), .B1(
-        FIFO_D_out_W[29]), .B2(\XBAR_S/n1 ), .Q(\XBAR_S/n175 ) );
-  AOI22X3 \XBAR_S/U58  ( .A1(FIFO_D_out_L[30]), .A2(\XBAR_S/n10 ), .B1(
-        FIFO_D_out_N[30]), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n178 ) );
-  AOI22X3 \XBAR_S/U57  ( .A1(FIFO_D_out_E[30]), .A2(\XBAR_S/n4 ), .B1(
-        FIFO_D_out_W[30]), .B2(\XBAR_S/n1 ), .Q(\XBAR_S/n179 ) );
-  AOI22X3 \XBAR_S/U54  ( .A1(\LBDR_L/n60 ), .A2(\XBAR_S/n10 ), .B1(
-        \LBDR_N/n60 ), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n190 ) );
-  AOI22X3 \XBAR_S/U53  ( .A1(\LBDR_E/n60 ), .A2(\XBAR_S/n4 ), .B1(\LBDR_W/n60 ), .B2(\XBAR_S/n1 ), .Q(\XBAR_S/n191 ) );
-  AOI22X3 \XBAR_S/U50  ( .A1(FIFO_D_out_L[31]), .A2(\XBAR_S/n10 ), .B1(
-        FIFO_D_out_N[31]), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n180 ) );
-  AOI22X3 \XBAR_S/U49  ( .A1(FIFO_D_out_E[31]), .A2(\XBAR_S/n4 ), .B1(
-        FIFO_D_out_W[31]), .B2(\XBAR_S/n1 ), .Q(\XBAR_S/n181 ) );
-  AOI22X3 \XBAR_S/U45  ( .A1(FIFO_D_out_L[11]), .A2(\XBAR_S/n12 ), .B1(
+  AOI22X3 \XBAR_S/U41  ( .A1(FIFO_D_out_L[11]), .A2(\XBAR_S/n12 ), .B1(
         FIFO_D_out_N[11]), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n136 ) );
-  AOI22X3 \XBAR_S/U44  ( .A1(FIFO_D_out_E[11]), .A2(\XBAR_S/n6 ), .B1(
+  AOI22X3 \XBAR_S/U40  ( .A1(FIFO_D_out_E[11]), .A2(\XBAR_S/n6 ), .B1(
         FIFO_D_out_W[11]), .B2(\XBAR_S/n3 ), .Q(\XBAR_S/n137 ) );
-  AOI22X3 \XBAR_S/U41  ( .A1(\LBDR_L/n32 ), .A2(\XBAR_S/n11 ), .B1(
-        \LBDR_N/n32 ), .B2(\XBAR_S/n7 ), .Q(\XBAR_S/n142 ) );
-  AOI22X3 \XBAR_S/U40  ( .A1(\LBDR_E/n32 ), .A2(\XBAR_S/n5 ), .B1(\LBDR_W/n32 ), .B2(\XBAR_S/n2 ), .Q(\XBAR_S/n143 ) );
   AOI22X3 \XBAR_S/U37  ( .A1(FIFO_D_out_L[5]), .A2(\XBAR_S/n10 ), .B1(
         FIFO_D_out_N[5]), .B2(\XBAR_S/n8 ), .Q(\XBAR_S/n186 ) );
   AOI22X3 \XBAR_S/U36  ( .A1(FIFO_D_out_E[5]), .A2(\XBAR_S/n4 ), .B1(
@@ -10391,163 +12651,165 @@ endmodule
          );
   AND2X3 \XBAR_L/U154  ( .A(\XBAR_L/n130 ), .B(\XBAR_L/n19 ), .Q(\XBAR_L/n194 ) );
   AND2X3 \XBAR_L/U153  ( .A(\XBAR_L/n129 ), .B(\XBAR_L/n19 ), .Q(\XBAR_L/n195 ) );
-  AOI22X3 \XBAR_L/U151  ( .A1(FIFO_D_out_E[28]), .A2(\XBAR_L/n4 ), .B1(
-        FIFO_D_out_W[28]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n173 ) );
-  INVXL \XBAR_L/U150  ( .A(FIFO_D_out_S[28]), .Q(\XBAR_L/n24 ) );
-  OAI211X3 \XBAR_L/U149  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n24 ), .B1(
-        \XBAR_L/n173 ), .C1(\XBAR_L/n172 ), .Q(TX_L[28]) );
-  AOI22X3 \XBAR_L/U147  ( .A1(FIFO_D_out_E[27]), .A2(\XBAR_L/n4 ), .B1(
-        FIFO_D_out_W[27]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n171 ) );
-  INVXL \XBAR_L/U146  ( .A(FIFO_D_out_S[27]), .Q(\XBAR_L/n25 ) );
-  OAI211X3 \XBAR_L/U145  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n25 ), .B1(
-        \XBAR_L/n171 ), .C1(\XBAR_L/n170 ), .Q(TX_L[27]) );
-  AOI22X3 \XBAR_L/U143  ( .A1(FIFO_D_out_E[26]), .A2(\XBAR_L/n4 ), .B1(
-        FIFO_D_out_W[26]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n169 ) );
-  INVXL \XBAR_L/U142  ( .A(FIFO_D_out_S[26]), .Q(\XBAR_L/n26 ) );
-  OAI211X3 \XBAR_L/U141  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n26 ), .B1(
-        \XBAR_L/n169 ), .C1(\XBAR_L/n168 ), .Q(TX_L[26]) );
-  AOI22X3 \XBAR_L/U139  ( .A1(FIFO_D_out_E[25]), .A2(\XBAR_L/n5 ), .B1(
-        FIFO_D_out_W[25]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n167 ) );
-  INVXL \XBAR_L/U138  ( .A(FIFO_D_out_S[25]), .Q(\XBAR_L/n27 ) );
-  OAI211X3 \XBAR_L/U137  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n27 ), .B1(
-        \XBAR_L/n167 ), .C1(\XBAR_L/n166 ), .Q(TX_L[25]) );
-  AOI22X3 \XBAR_L/U135  ( .A1(FIFO_D_out_E[24]), .A2(\XBAR_L/n5 ), .B1(
-        FIFO_D_out_W[24]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n165 ) );
-  INVXL \XBAR_L/U134  ( .A(FIFO_D_out_S[24]), .Q(\XBAR_L/n28 ) );
-  OAI211X3 \XBAR_L/U133  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n28 ), .B1(
-        \XBAR_L/n165 ), .C1(\XBAR_L/n164 ), .Q(TX_L[24]) );
-  AOI22X3 \XBAR_L/U131  ( .A1(FIFO_D_out_E[23]), .A2(\XBAR_L/n5 ), .B1(
-        FIFO_D_out_W[23]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n163 ) );
-  INVXL \XBAR_L/U130  ( .A(FIFO_D_out_S[23]), .Q(\XBAR_L/n29 ) );
-  OAI211X3 \XBAR_L/U129  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n29 ), .B1(
-        \XBAR_L/n163 ), .C1(\XBAR_L/n162 ), .Q(TX_L[23]) );
-  AOI22X3 \XBAR_L/U127  ( .A1(FIFO_D_out_E[22]), .A2(\XBAR_L/n5 ), .B1(
-        FIFO_D_out_W[22]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n161 ) );
-  INVXL \XBAR_L/U126  ( .A(FIFO_D_out_S[22]), .Q(\XBAR_L/n30 ) );
-  OAI211X3 \XBAR_L/U125  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n30 ), .B1(
-        \XBAR_L/n161 ), .C1(\XBAR_L/n160 ), .Q(TX_L[22]) );
-  AOI22X3 \XBAR_L/U123  ( .A1(FIFO_D_out_E[21]), .A2(\XBAR_L/n5 ), .B1(
-        FIFO_D_out_W[21]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n159 ) );
-  INVXL \XBAR_L/U122  ( .A(FIFO_D_out_S[21]), .Q(\XBAR_L/n31 ) );
-  OAI211X3 \XBAR_L/U121  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n31 ), .B1(
-        \XBAR_L/n159 ), .C1(\XBAR_L/n158 ), .Q(TX_L[21]) );
-  AOI22X3 \XBAR_L/U119  ( .A1(FIFO_D_out_E[20]), .A2(\XBAR_L/n5 ), .B1(
-        FIFO_D_out_W[20]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n157 ) );
-  INVXL \XBAR_L/U118  ( .A(FIFO_D_out_S[20]), .Q(\XBAR_L/n32 ) );
-  OAI211X3 \XBAR_L/U117  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n32 ), .B1(
-        \XBAR_L/n157 ), .C1(\XBAR_L/n156 ), .Q(TX_L[20]) );
-  AOI22X3 \XBAR_L/U115  ( .A1(FIFO_D_out_E[19]), .A2(\XBAR_L/n5 ), .B1(
-        FIFO_D_out_W[19]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n153 ) );
-  INVXL \XBAR_L/U114  ( .A(FIFO_D_out_S[19]), .Q(\XBAR_L/n33 ) );
-  OAI211X3 \XBAR_L/U113  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n33 ), .B1(
-        \XBAR_L/n153 ), .C1(\XBAR_L/n152 ), .Q(TX_L[19]) );
-  AOI22X3 \XBAR_L/U111  ( .A1(FIFO_D_out_E[18]), .A2(\XBAR_L/n5 ), .B1(
-        FIFO_D_out_W[18]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n151 ) );
-  INVXL \XBAR_L/U110  ( .A(FIFO_D_out_S[18]), .Q(\XBAR_L/n34 ) );
-  OAI211X3 \XBAR_L/U109  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n34 ), .B1(
-        \XBAR_L/n151 ), .C1(\XBAR_L/n150 ), .Q(TX_L[18]) );
-  AOI22X3 \XBAR_L/U107  ( .A1(FIFO_D_out_E[17]), .A2(\XBAR_L/n5 ), .B1(
-        FIFO_D_out_W[17]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n149 ) );
-  INVXL \XBAR_L/U106  ( .A(FIFO_D_out_S[17]), .Q(\XBAR_L/n35 ) );
-  OAI211X3 \XBAR_L/U105  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n35 ), .B1(
-        \XBAR_L/n149 ), .C1(\XBAR_L/n148 ), .Q(TX_L[17]) );
-  AOI22X3 \XBAR_L/U103  ( .A1(FIFO_D_out_E[16]), .A2(\XBAR_L/n5 ), .B1(
-        FIFO_D_out_W[16]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n147 ) );
-  INVXL \XBAR_L/U102  ( .A(FIFO_D_out_S[16]), .Q(\XBAR_L/n36 ) );
-  OAI211X3 \XBAR_L/U101  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n36 ), .B1(
-        \XBAR_L/n147 ), .C1(\XBAR_L/n146 ), .Q(TX_L[16]) );
-  AOI22X3 \XBAR_L/U99  ( .A1(FIFO_D_out_E[15]), .A2(\XBAR_L/n5 ), .B1(
-        FIFO_D_out_W[15]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n145 ) );
-  INVXL \XBAR_L/U98  ( .A(FIFO_D_out_S[15]), .Q(\XBAR_L/n37 ) );
-  OAI211X3 \XBAR_L/U97  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n37 ), .B1(
-        \XBAR_L/n145 ), .C1(\XBAR_L/n144 ), .Q(TX_L[15]) );
-  AOI22X3 \XBAR_L/U95  ( .A1(FIFO_D_out_E[0]), .A2(\XBAR_L/n6 ), .B1(
-        FIFO_D_out_W[0]), .B2(\XBAR_L/n3 ), .Q(\XBAR_L/n133 ) );
-  INVXL \XBAR_L/U94  ( .A(FIFO_D_out_S[0]), .Q(\XBAR_L/n126 ) );
-  OAI211X3 \XBAR_L/U93  ( .A1(\XBAR_L/n15 ), .A2(\XBAR_L/n126 ), .B1(
-        \XBAR_L/n133 ), .C1(\XBAR_L/n132 ), .Q(TX_L[0]) );
-  AOI22X3 \XBAR_L/U91  ( .A1(FIFO_D_out_E[8]), .A2(\XBAR_L/n4 ), .B1(
-        FIFO_D_out_W[8]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n193 ) );
-  INVXL \XBAR_L/U90  ( .A(FIFO_D_out_S[8]), .Q(\XBAR_L/n118 ) );
-  OAI211X3 \XBAR_L/U89  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n118 ), .B1(
-        \XBAR_L/n193 ), .C1(\XBAR_L/n192 ), .Q(TX_L[8]) );
-  AOI22X3 \XBAR_L/U87  ( .A1(\LBDR_E/n31 ), .A2(\XBAR_L/n5 ), .B1(\LBDR_W/n31 ), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n141 ) );
-  INVXL \XBAR_L/U86  ( .A(\LBDR_S/n31 ), .Q(\XBAR_L/n113 ) );
-  OAI211X3 \XBAR_L/U85  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n113 ), .B1(
-        \XBAR_L/n141 ), .C1(\XBAR_L/n140 ), .Q(TX_L[13]) );
-  AOI22X3 \XBAR_L/U83  ( .A1(\LBDR_E/n4 ), .A2(\XBAR_L/n6 ), .B1(\LBDR_W/n4 ), 
-        .B2(\XBAR_L/n3 ), .Q(\XBAR_L/n139 ) );
-  INVXL \XBAR_L/U82  ( .A(\LBDR_S/n4 ), .Q(\XBAR_L/n114 ) );
-  OAI211X3 \XBAR_L/U81  ( .A1(\XBAR_L/n15 ), .A2(\XBAR_L/n114 ), .B1(
-        \XBAR_L/n139 ), .C1(\XBAR_L/n138 ), .Q(TX_L[12]) );
-  AOI22X3 \XBAR_L/U79  ( .A1(FIFO_D_out_E[10]), .A2(\XBAR_L/n6 ), .B1(
-        FIFO_D_out_W[10]), .B2(\XBAR_L/n3 ), .Q(\XBAR_L/n135 ) );
-  INVXL \XBAR_L/U78  ( .A(FIFO_D_out_S[10]), .Q(\XBAR_L/n116 ) );
-  OAI211X3 \XBAR_L/U77  ( .A1(\XBAR_L/n15 ), .A2(\XBAR_L/n116 ), .B1(
-        \XBAR_L/n135 ), .C1(\XBAR_L/n134 ), .Q(TX_L[10]) );
-  AOI22X3 \XBAR_L/U75  ( .A1(FIFO_D_out_E[4]), .A2(\XBAR_L/n4 ), .B1(
-        FIFO_D_out_W[4]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n185 ) );
-  INVXL \XBAR_L/U74  ( .A(FIFO_D_out_S[4]), .Q(\XBAR_L/n122 ) );
-  OAI211X3 \XBAR_L/U73  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n122 ), .B1(
-        \XBAR_L/n185 ), .C1(\XBAR_L/n184 ), .Q(TX_L[4]) );
-  AOI22X3 \XBAR_L/U71  ( .A1(FIFO_D_out_E[11]), .A2(\XBAR_L/n6 ), .B1(
-        FIFO_D_out_W[11]), .B2(\XBAR_L/n3 ), .Q(\XBAR_L/n137 ) );
-  INVXL \XBAR_L/U70  ( .A(FIFO_D_out_S[11]), .Q(\XBAR_L/n115 ) );
-  OAI211X3 \XBAR_L/U69  ( .A1(\XBAR_L/n15 ), .A2(\XBAR_L/n115 ), .B1(
-        \XBAR_L/n137 ), .C1(\XBAR_L/n136 ), .Q(TX_L[11]) );
-  AOI22X3 \XBAR_L/U67  ( .A1(FIFO_D_out_E[9]), .A2(\XBAR_L/n4 ), .B1(
-        FIFO_D_out_W[9]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n199 ) );
-  INVXL \XBAR_L/U66  ( .A(FIFO_D_out_S[9]), .Q(\XBAR_L/n117 ) );
-  OAI211X3 \XBAR_L/U65  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n117 ), .B1(
-        \XBAR_L/n199 ), .C1(\XBAR_L/n198 ), .Q(TX_L[9]) );
-  AOI22X3 \XBAR_L/U63  ( .A1(FIFO_D_out_E[6]), .A2(\XBAR_L/n4 ), .B1(
-        FIFO_D_out_W[6]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n189 ) );
-  INVXL \XBAR_L/U62  ( .A(FIFO_D_out_S[6]), .Q(\XBAR_L/n120 ) );
-  OAI211X3 \XBAR_L/U61  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n120 ), .B1(
-        \XBAR_L/n189 ), .C1(\XBAR_L/n188 ), .Q(TX_L[6]) );
-  AOI22X3 \XBAR_L/U59  ( .A1(FIFO_D_out_E[5]), .A2(\XBAR_L/n4 ), .B1(
-        FIFO_D_out_W[5]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n187 ) );
-  INVXL \XBAR_L/U58  ( .A(FIFO_D_out_S[5]), .Q(\XBAR_L/n121 ) );
-  OAI211X3 \XBAR_L/U57  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n121 ), .B1(
-        \XBAR_L/n187 ), .C1(\XBAR_L/n186 ), .Q(TX_L[5]) );
-  AOI22X3 \XBAR_L/U55  ( .A1(FIFO_D_out_E[3]), .A2(\XBAR_L/n4 ), .B1(
-        FIFO_D_out_W[3]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n183 ) );
-  INVXL \XBAR_L/U54  ( .A(FIFO_D_out_S[3]), .Q(\XBAR_L/n123 ) );
-  OAI211X3 \XBAR_L/U53  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n123 ), .B1(
-        \XBAR_L/n183 ), .C1(\XBAR_L/n182 ), .Q(TX_L[3]) );
-  AOI22X3 \XBAR_L/U51  ( .A1(FIFO_D_out_E[1]), .A2(\XBAR_L/n5 ), .B1(
-        FIFO_D_out_W[1]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n155 ) );
-  INVXL \XBAR_L/U50  ( .A(FIFO_D_out_S[1]), .Q(\XBAR_L/n125 ) );
-  OAI211X3 \XBAR_L/U49  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n125 ), .B1(
-        \XBAR_L/n155 ), .C1(\XBAR_L/n154 ), .Q(TX_L[1]) );
-  AOI22X3 \XBAR_L/U47  ( .A1(FIFO_D_out_E[2]), .A2(\XBAR_L/n4 ), .B1(
-        FIFO_D_out_W[2]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n177 ) );
-  INVXL \XBAR_L/U46  ( .A(FIFO_D_out_S[2]), .Q(\XBAR_L/n124 ) );
-  OAI211X3 \XBAR_L/U45  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n124 ), .B1(
-        \XBAR_L/n177 ), .C1(\XBAR_L/n176 ), .Q(TX_L[2]) );
-  AOI22X3 \XBAR_L/U43  ( .A1(FIFO_D_out_E[29]), .A2(\XBAR_L/n4 ), .B1(
-        FIFO_D_out_W[29]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n175 ) );
-  INVXL \XBAR_L/U42  ( .A(FIFO_D_out_S[29]), .Q(\XBAR_L/n23 ) );
-  OAI211X3 \XBAR_L/U41  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n23 ), .B1(
-        \XBAR_L/n175 ), .C1(\XBAR_L/n174 ), .Q(TX_L[29]) );
-  AOI22X3 \XBAR_L/U39  ( .A1(FIFO_D_out_E[30]), .A2(\XBAR_L/n4 ), .B1(
-        FIFO_D_out_W[30]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n179 ) );
-  INVXL \XBAR_L/U38  ( .A(FIFO_D_out_S[30]), .Q(\XBAR_L/n22 ) );
-  OAI211X3 \XBAR_L/U37  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n22 ), .B1(
-        \XBAR_L/n179 ), .C1(\XBAR_L/n178 ), .Q(TX_L[30]) );
-  AOI22X3 \XBAR_L/U35  ( .A1(\LBDR_E/n60 ), .A2(\XBAR_L/n4 ), .B1(\LBDR_W/n60 ), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n191 ) );
-  INVXL \XBAR_L/U34  ( .A(\LBDR_S/n60 ), .Q(\XBAR_L/n119 ) );
-  OAI211X3 \XBAR_L/U33  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n119 ), .B1(
-        \XBAR_L/n191 ), .C1(\XBAR_L/n190 ), .Q(TX_L[7]) );
-  AOI22X3 \XBAR_L/U31  ( .A1(\LBDR_E/n32 ), .A2(\XBAR_L/n5 ), .B1(\LBDR_W/n32 ), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n143 ) );
-  INVXL \XBAR_L/U30  ( .A(\LBDR_S/n32 ), .Q(\XBAR_L/n112 ) );
-  OAI211X3 \XBAR_L/U29  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n112 ), .B1(
-        \XBAR_L/n143 ), .C1(\XBAR_L/n142 ), .Q(TX_L[14]) );
-  AOI22X3 \XBAR_L/U27  ( .A1(FIFO_D_out_E[31]), .A2(\XBAR_L/n4 ), .B1(
-        FIFO_D_out_W[31]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n181 ) );
-  INVXL \XBAR_L/U26  ( .A(FIFO_D_out_S[31]), .Q(\XBAR_L/n21 ) );
-  OAI211X3 \XBAR_L/U25  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n21 ), .B1(
+  AOI22X3 \XBAR_L/U151  ( .A1(n17), .A2(\XBAR_L/n4 ), .B1(n13), .B2(
+        \XBAR_L/n1 ), .Q(\XBAR_L/n181 ) );
+  INVXL \XBAR_L/U150  ( .A(n8), .Q(\XBAR_L/n21 ) );
+  OAI211X3 \XBAR_L/U149  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n21 ), .B1(
         \XBAR_L/n181 ), .C1(\XBAR_L/n180 ), .Q(TX_L[31]) );
+  AOI22X3 \XBAR_L/U147  ( .A1(n16), .A2(\XBAR_L/n4 ), .B1(n12), .B2(
+        \XBAR_L/n1 ), .Q(\XBAR_L/n179 ) );
+  INVXL \XBAR_L/U146  ( .A(n7), .Q(\XBAR_L/n22 ) );
+  OAI211X3 \XBAR_L/U145  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n22 ), .B1(
+        \XBAR_L/n179 ), .C1(\XBAR_L/n178 ), .Q(TX_L[30]) );
+  AOI22X3 \XBAR_L/U143  ( .A1(n15), .A2(\XBAR_L/n5 ), .B1(n10), .B2(
+        \XBAR_L/n2 ), .Q(\XBAR_L/n143 ) );
+  INVXL \XBAR_L/U142  ( .A(n6), .Q(\XBAR_L/n112 ) );
+  OAI211X3 \XBAR_L/U141  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n112 ), .B1(
+        \XBAR_L/n143 ), .C1(\XBAR_L/n142 ), .Q(TX_L[14]) );
+  AOI22X3 \XBAR_L/U139  ( .A1(n14), .A2(\XBAR_L/n4 ), .B1(n9), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n191 ) );
+  INVXL \XBAR_L/U138  ( .A(n5), .Q(\XBAR_L/n119 ) );
+  OAI211X3 \XBAR_L/U137  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n119 ), .B1(
+        \XBAR_L/n191 ), .C1(\XBAR_L/n190 ), .Q(TX_L[7]) );
+  AOI22X3 \XBAR_L/U135  ( .A1(FIFO_D_out_E[29]), .A2(\XBAR_L/n4 ), .B1(n11), 
+        .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n175 ) );
+  INVXL \XBAR_L/U134  ( .A(FIFO_D_out_S[29]), .Q(\XBAR_L/n23 ) );
+  OAI211X3 \XBAR_L/U133  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n23 ), .B1(
+        \XBAR_L/n175 ), .C1(\XBAR_L/n174 ), .Q(TX_L[29]) );
+  AOI22X3 \XBAR_L/U131  ( .A1(FIFO_D_out_E[28]), .A2(\XBAR_L/n4 ), .B1(
+        FIFO_D_out_W[28]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n173 ) );
+  INVXL \XBAR_L/U130  ( .A(FIFO_D_out_S[28]), .Q(\XBAR_L/n24 ) );
+  OAI211X3 \XBAR_L/U129  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n24 ), .B1(
+        \XBAR_L/n173 ), .C1(\XBAR_L/n172 ), .Q(TX_L[28]) );
+  AOI22X3 \XBAR_L/U127  ( .A1(FIFO_D_out_E[27]), .A2(\XBAR_L/n4 ), .B1(
+        FIFO_D_out_W[27]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n171 ) );
+  INVXL \XBAR_L/U126  ( .A(FIFO_D_out_S[27]), .Q(\XBAR_L/n25 ) );
+  OAI211X3 \XBAR_L/U125  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n25 ), .B1(
+        \XBAR_L/n171 ), .C1(\XBAR_L/n170 ), .Q(TX_L[27]) );
+  AOI22X3 \XBAR_L/U123  ( .A1(FIFO_D_out_E[26]), .A2(\XBAR_L/n4 ), .B1(
+        FIFO_D_out_W[26]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n169 ) );
+  INVXL \XBAR_L/U122  ( .A(FIFO_D_out_S[26]), .Q(\XBAR_L/n26 ) );
+  OAI211X3 \XBAR_L/U121  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n26 ), .B1(
+        \XBAR_L/n169 ), .C1(\XBAR_L/n168 ), .Q(TX_L[26]) );
+  AOI22X3 \XBAR_L/U119  ( .A1(FIFO_D_out_E[25]), .A2(\XBAR_L/n5 ), .B1(
+        FIFO_D_out_W[25]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n167 ) );
+  INVXL \XBAR_L/U118  ( .A(FIFO_D_out_S[25]), .Q(\XBAR_L/n27 ) );
+  OAI211X3 \XBAR_L/U117  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n27 ), .B1(
+        \XBAR_L/n167 ), .C1(\XBAR_L/n166 ), .Q(TX_L[25]) );
+  AOI22X3 \XBAR_L/U115  ( .A1(FIFO_D_out_E[24]), .A2(\XBAR_L/n5 ), .B1(
+        FIFO_D_out_W[24]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n165 ) );
+  INVXL \XBAR_L/U114  ( .A(FIFO_D_out_S[24]), .Q(\XBAR_L/n28 ) );
+  OAI211X3 \XBAR_L/U113  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n28 ), .B1(
+        \XBAR_L/n165 ), .C1(\XBAR_L/n164 ), .Q(TX_L[24]) );
+  AOI22X3 \XBAR_L/U111  ( .A1(FIFO_D_out_E[23]), .A2(\XBAR_L/n5 ), .B1(
+        FIFO_D_out_W[23]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n163 ) );
+  INVXL \XBAR_L/U110  ( .A(FIFO_D_out_S[23]), .Q(\XBAR_L/n29 ) );
+  OAI211X3 \XBAR_L/U109  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n29 ), .B1(
+        \XBAR_L/n163 ), .C1(\XBAR_L/n162 ), .Q(TX_L[23]) );
+  AOI22X3 \XBAR_L/U107  ( .A1(FIFO_D_out_E[22]), .A2(\XBAR_L/n5 ), .B1(
+        FIFO_D_out_W[22]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n161 ) );
+  INVXL \XBAR_L/U106  ( .A(FIFO_D_out_S[22]), .Q(\XBAR_L/n30 ) );
+  OAI211X3 \XBAR_L/U105  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n30 ), .B1(
+        \XBAR_L/n161 ), .C1(\XBAR_L/n160 ), .Q(TX_L[22]) );
+  AOI22X3 \XBAR_L/U103  ( .A1(FIFO_D_out_E[21]), .A2(\XBAR_L/n5 ), .B1(
+        FIFO_D_out_W[21]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n159 ) );
+  INVXL \XBAR_L/U102  ( .A(FIFO_D_out_S[21]), .Q(\XBAR_L/n31 ) );
+  OAI211X3 \XBAR_L/U101  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n31 ), .B1(
+        \XBAR_L/n159 ), .C1(\XBAR_L/n158 ), .Q(TX_L[21]) );
+  AOI22X3 \XBAR_L/U99  ( .A1(FIFO_D_out_E[20]), .A2(\XBAR_L/n5 ), .B1(
+        FIFO_D_out_W[20]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n157 ) );
+  INVXL \XBAR_L/U98  ( .A(FIFO_D_out_S[20]), .Q(\XBAR_L/n32 ) );
+  OAI211X3 \XBAR_L/U97  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n32 ), .B1(
+        \XBAR_L/n157 ), .C1(\XBAR_L/n156 ), .Q(TX_L[20]) );
+  AOI22X3 \XBAR_L/U95  ( .A1(FIFO_D_out_E[19]), .A2(\XBAR_L/n5 ), .B1(
+        FIFO_D_out_W[19]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n153 ) );
+  INVXL \XBAR_L/U94  ( .A(FIFO_D_out_S[19]), .Q(\XBAR_L/n33 ) );
+  OAI211X3 \XBAR_L/U93  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n33 ), .B1(
+        \XBAR_L/n153 ), .C1(\XBAR_L/n152 ), .Q(TX_L[19]) );
+  AOI22X3 \XBAR_L/U91  ( .A1(FIFO_D_out_E[18]), .A2(\XBAR_L/n5 ), .B1(
+        FIFO_D_out_W[18]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n151 ) );
+  INVXL \XBAR_L/U90  ( .A(FIFO_D_out_S[18]), .Q(\XBAR_L/n34 ) );
+  OAI211X3 \XBAR_L/U89  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n34 ), .B1(
+        \XBAR_L/n151 ), .C1(\XBAR_L/n150 ), .Q(TX_L[18]) );
+  AOI22X3 \XBAR_L/U87  ( .A1(FIFO_D_out_E[17]), .A2(\XBAR_L/n5 ), .B1(
+        FIFO_D_out_W[17]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n149 ) );
+  INVXL \XBAR_L/U86  ( .A(FIFO_D_out_S[17]), .Q(\XBAR_L/n35 ) );
+  OAI211X3 \XBAR_L/U85  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n35 ), .B1(
+        \XBAR_L/n149 ), .C1(\XBAR_L/n148 ), .Q(TX_L[17]) );
+  AOI22X3 \XBAR_L/U83  ( .A1(FIFO_D_out_E[16]), .A2(\XBAR_L/n5 ), .B1(
+        FIFO_D_out_W[16]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n147 ) );
+  INVXL \XBAR_L/U82  ( .A(FIFO_D_out_S[16]), .Q(\XBAR_L/n36 ) );
+  OAI211X3 \XBAR_L/U81  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n36 ), .B1(
+        \XBAR_L/n147 ), .C1(\XBAR_L/n146 ), .Q(TX_L[16]) );
+  AOI22X3 \XBAR_L/U79  ( .A1(FIFO_D_out_E[15]), .A2(\XBAR_L/n5 ), .B1(
+        FIFO_D_out_W[15]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n145 ) );
+  INVXL \XBAR_L/U78  ( .A(FIFO_D_out_S[15]), .Q(\XBAR_L/n37 ) );
+  OAI211X3 \XBAR_L/U77  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n37 ), .B1(
+        \XBAR_L/n145 ), .C1(\XBAR_L/n144 ), .Q(TX_L[15]) );
+  AOI22X3 \XBAR_L/U75  ( .A1(FIFO_D_out_E[0]), .A2(\XBAR_L/n6 ), .B1(
+        FIFO_D_out_W[0]), .B2(\XBAR_L/n3 ), .Q(\XBAR_L/n133 ) );
+  INVXL \XBAR_L/U74  ( .A(FIFO_D_out_S[0]), .Q(\XBAR_L/n126 ) );
+  OAI211X3 \XBAR_L/U73  ( .A1(\XBAR_L/n15 ), .A2(\XBAR_L/n126 ), .B1(
+        \XBAR_L/n133 ), .C1(\XBAR_L/n132 ), .Q(TX_L[0]) );
+  AOI22X3 \XBAR_L/U71  ( .A1(FIFO_D_out_E[8]), .A2(\XBAR_L/n4 ), .B1(
+        FIFO_D_out_W[8]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n193 ) );
+  INVXL \XBAR_L/U70  ( .A(FIFO_D_out_S[8]), .Q(\XBAR_L/n118 ) );
+  OAI211X3 \XBAR_L/U69  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n118 ), .B1(
+        \XBAR_L/n193 ), .C1(\XBAR_L/n192 ), .Q(TX_L[8]) );
+  AOI22X3 \XBAR_L/U67  ( .A1(FIFO_D_out_E[13]), .A2(\XBAR_L/n5 ), .B1(
+        FIFO_D_out_W[13]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n141 ) );
+  INVXL \XBAR_L/U66  ( .A(FIFO_D_out_S[13]), .Q(\XBAR_L/n113 ) );
+  OAI211X3 \XBAR_L/U65  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n113 ), .B1(
+        \XBAR_L/n141 ), .C1(\XBAR_L/n140 ), .Q(TX_L[13]) );
+  AOI22X3 \XBAR_L/U63  ( .A1(FIFO_D_out_E[12]), .A2(\XBAR_L/n6 ), .B1(
+        FIFO_D_out_W[12]), .B2(\XBAR_L/n3 ), .Q(\XBAR_L/n139 ) );
+  INVXL \XBAR_L/U62  ( .A(FIFO_D_out_S[12]), .Q(\XBAR_L/n114 ) );
+  OAI211X3 \XBAR_L/U61  ( .A1(\XBAR_L/n15 ), .A2(\XBAR_L/n114 ), .B1(
+        \XBAR_L/n139 ), .C1(\XBAR_L/n138 ), .Q(TX_L[12]) );
+  AOI22X3 \XBAR_L/U59  ( .A1(FIFO_D_out_E[10]), .A2(\XBAR_L/n6 ), .B1(
+        FIFO_D_out_W[10]), .B2(\XBAR_L/n3 ), .Q(\XBAR_L/n135 ) );
+  INVXL \XBAR_L/U58  ( .A(FIFO_D_out_S[10]), .Q(\XBAR_L/n116 ) );
+  OAI211X3 \XBAR_L/U57  ( .A1(\XBAR_L/n15 ), .A2(\XBAR_L/n116 ), .B1(
+        \XBAR_L/n135 ), .C1(\XBAR_L/n134 ), .Q(TX_L[10]) );
+  AOI22X3 \XBAR_L/U55  ( .A1(FIFO_D_out_E[4]), .A2(\XBAR_L/n4 ), .B1(
+        FIFO_D_out_W[4]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n185 ) );
+  INVXL \XBAR_L/U54  ( .A(FIFO_D_out_S[4]), .Q(\XBAR_L/n122 ) );
+  OAI211X3 \XBAR_L/U53  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n122 ), .B1(
+        \XBAR_L/n185 ), .C1(\XBAR_L/n184 ), .Q(TX_L[4]) );
+  AOI22X3 \XBAR_L/U51  ( .A1(FIFO_D_out_E[11]), .A2(\XBAR_L/n6 ), .B1(
+        FIFO_D_out_W[11]), .B2(\XBAR_L/n3 ), .Q(\XBAR_L/n137 ) );
+  INVXL \XBAR_L/U50  ( .A(FIFO_D_out_S[11]), .Q(\XBAR_L/n115 ) );
+  OAI211X3 \XBAR_L/U49  ( .A1(\XBAR_L/n15 ), .A2(\XBAR_L/n115 ), .B1(
+        \XBAR_L/n137 ), .C1(\XBAR_L/n136 ), .Q(TX_L[11]) );
+  AOI22X3 \XBAR_L/U47  ( .A1(FIFO_D_out_E[9]), .A2(\XBAR_L/n4 ), .B1(
+        FIFO_D_out_W[9]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n199 ) );
+  INVXL \XBAR_L/U46  ( .A(FIFO_D_out_S[9]), .Q(\XBAR_L/n117 ) );
+  OAI211X3 \XBAR_L/U45  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n117 ), .B1(
+        \XBAR_L/n199 ), .C1(\XBAR_L/n198 ), .Q(TX_L[9]) );
+  AOI22X3 \XBAR_L/U43  ( .A1(FIFO_D_out_E[6]), .A2(\XBAR_L/n4 ), .B1(
+        FIFO_D_out_W[6]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n189 ) );
+  INVXL \XBAR_L/U42  ( .A(FIFO_D_out_S[6]), .Q(\XBAR_L/n120 ) );
+  OAI211X3 \XBAR_L/U41  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n120 ), .B1(
+        \XBAR_L/n189 ), .C1(\XBAR_L/n188 ), .Q(TX_L[6]) );
+  AOI22X3 \XBAR_L/U39  ( .A1(FIFO_D_out_E[5]), .A2(\XBAR_L/n4 ), .B1(
+        FIFO_D_out_W[5]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n187 ) );
+  INVXL \XBAR_L/U38  ( .A(FIFO_D_out_S[5]), .Q(\XBAR_L/n121 ) );
+  OAI211X3 \XBAR_L/U37  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n121 ), .B1(
+        \XBAR_L/n187 ), .C1(\XBAR_L/n186 ), .Q(TX_L[5]) );
+  AOI22X3 \XBAR_L/U35  ( .A1(FIFO_D_out_E[3]), .A2(\XBAR_L/n4 ), .B1(
+        FIFO_D_out_W[3]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n183 ) );
+  INVXL \XBAR_L/U34  ( .A(FIFO_D_out_S[3]), .Q(\XBAR_L/n123 ) );
+  OAI211X3 \XBAR_L/U33  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n123 ), .B1(
+        \XBAR_L/n183 ), .C1(\XBAR_L/n182 ), .Q(TX_L[3]) );
+  AOI22X3 \XBAR_L/U31  ( .A1(FIFO_D_out_E[1]), .A2(\XBAR_L/n5 ), .B1(
+        FIFO_D_out_W[1]), .B2(\XBAR_L/n2 ), .Q(\XBAR_L/n155 ) );
+  INVXL \XBAR_L/U30  ( .A(FIFO_D_out_S[1]), .Q(\XBAR_L/n125 ) );
+  OAI211X3 \XBAR_L/U29  ( .A1(\XBAR_L/n14 ), .A2(\XBAR_L/n125 ), .B1(
+        \XBAR_L/n155 ), .C1(\XBAR_L/n154 ), .Q(TX_L[1]) );
+  AOI22X3 \XBAR_L/U27  ( .A1(FIFO_D_out_E[2]), .A2(\XBAR_L/n4 ), .B1(
+        FIFO_D_out_W[2]), .B2(\XBAR_L/n1 ), .Q(\XBAR_L/n177 ) );
+  INVXL \XBAR_L/U26  ( .A(FIFO_D_out_S[2]), .Q(\XBAR_L/n124 ) );
+  OAI211X3 \XBAR_L/U25  ( .A1(\XBAR_L/n13 ), .A2(\XBAR_L/n124 ), .B1(
+        \XBAR_L/n177 ), .C1(\XBAR_L/n176 ), .Q(TX_L[2]) );
   INVXL \XBAR_L/U24  ( .A(\XBAR_L/n127 ), .Q(\XBAR_L/n17 ) );
   OAI31X2 \XBAR_L/U22  ( .A1(\XBAR_L/n131 ), .A2(\XBAR_L/n130 ), .A3(
         \XBAR_L/n129 ), .B1(\XBAR_L/n19 ), .Q(\XBAR_L/n196 ) );
@@ -10569,169 +12831,169 @@ endmodule
   INVXL \XBAR_L/U3  ( .A(Grant_LS_out), .Q(\XBAR_L/n18 ) );
   NAND2XL \XBAR_L/U1  ( .A(\XBAR_L/n127 ), .B(\XBAR_L/n19 ), .Q(\XBAR_L/n200 )
          );
-  OAI31X1 U186 ( .A1(\LBDR_W/n78 ), .A2(Grant_LW_out), .A3(Grant_EW_out), .B1(
-        FIFO_D_out_W[31]), .Q(\LBDR_W/n80 ) );
-  NOR3X3 U187 ( .A(Grant_LE_out), .B(\XBAR_L/n18 ), .C(Grant_LW_out), .Q(
+  OAI31X1 U70 ( .A1(\LBDR_W/n78 ), .A2(grant_LW_out_sig_LBDR), .A3(
+        grant_EW_out_sig_LBDR), .B1(n13), .Q(\LBDR_W/n80 ) );
+  NOR3X3 U71 ( .A(Grant_LE_out), .B(\XBAR_L/n18 ), .C(Grant_LW_out), .Q(
         \XBAR_L/n127 ) );
-  NOR3X1 U188 ( .A(Grant_LW_out), .B(\XBAR_L/n16 ), .C(Grant_LS_out), .Q(
-        \XBAR_L/n129 ) );
-  NOR3X3 U189 ( .A(Grant_LE_out), .B(\XBAR_L/n20 ), .C(Grant_LS_out), .Q(
+  NOR3X1 U72 ( .A(Grant_LE_out), .B(\XBAR_L/n20 ), .C(Grant_LS_out), .Q(
         \XBAR_L/n130 ) );
-  NAND2X6 U190 ( .A(\XBAR_S/n167 ), .B(\XBAR_S/n166 ), .Q(TX_S[25]) );
-  NAND2X6 U191 ( .A(\XBAR_S/n165 ), .B(\XBAR_S/n164 ), .Q(TX_S[24]) );
-  NAND2X6 U192 ( .A(\XBAR_S/n163 ), .B(\XBAR_S/n162 ), .Q(TX_S[23]) );
-  NAND2X6 U193 ( .A(\XBAR_S/n161 ), .B(\XBAR_S/n160 ), .Q(TX_S[22]) );
-  NAND2X6 U194 ( .A(\XBAR_S/n159 ), .B(\XBAR_S/n158 ), .Q(TX_S[21]) );
-  NAND2X6 U195 ( .A(\XBAR_S/n157 ), .B(\XBAR_S/n156 ), .Q(TX_S[20]) );
-  NAND2X6 U196 ( .A(\XBAR_S/n153 ), .B(\XBAR_S/n152 ), .Q(TX_S[19]) );
-  NAND2X6 U197 ( .A(\XBAR_S/n151 ), .B(\XBAR_S/n150 ), .Q(TX_S[18]) );
-  NAND2X6 U198 ( .A(\XBAR_S/n149 ), .B(\XBAR_S/n148 ), .Q(TX_S[17]) );
-  NAND2X6 U199 ( .A(\XBAR_S/n147 ), .B(\XBAR_S/n146 ), .Q(TX_S[16]) );
-  NAND2X6 U200 ( .A(\XBAR_S/n145 ), .B(\XBAR_S/n144 ), .Q(TX_S[15]) );
-  NAND2X6 U201 ( .A(\XBAR_S/n141 ), .B(\XBAR_S/n140 ), .Q(TX_S[13]) );
-  NAND2X6 U202 ( .A(\XBAR_S/n143 ), .B(\XBAR_S/n142 ), .Q(TX_S[14]) );
-  NAND2X6 U203 ( .A(\XBAR_S/n155 ), .B(\XBAR_S/n154 ), .Q(TX_S[1]) );
-  NAND2X6 U204 ( .A(\XBAR_S/n173 ), .B(\XBAR_S/n172 ), .Q(TX_S[28]) );
-  NAND2X6 U205 ( .A(\XBAR_S/n171 ), .B(\XBAR_S/n170 ), .Q(TX_S[27]) );
-  NAND2X6 U206 ( .A(\XBAR_S/n169 ), .B(\XBAR_S/n168 ), .Q(TX_S[26]) );
-  NAND2X6 U207 ( .A(\XBAR_S/n193 ), .B(\XBAR_S/n192 ), .Q(TX_S[8]) );
-  NAND2X6 U208 ( .A(\XBAR_S/n185 ), .B(\XBAR_S/n184 ), .Q(TX_S[4]) );
-  NAND2X6 U209 ( .A(\XBAR_S/n199 ), .B(\XBAR_S/n198 ), .Q(TX_S[9]) );
-  NAND2X6 U210 ( .A(\XBAR_S/n189 ), .B(\XBAR_S/n188 ), .Q(TX_S[6]) );
-  NAND2X6 U211 ( .A(\XBAR_S/n177 ), .B(\XBAR_S/n176 ), .Q(TX_S[2]) );
-  NAND2X6 U212 ( .A(\XBAR_S/n175 ), .B(\XBAR_S/n174 ), .Q(TX_S[29]) );
-  NAND2X6 U213 ( .A(\XBAR_S/n179 ), .B(\XBAR_S/n178 ), .Q(TX_S[30]) );
-  NAND2X6 U214 ( .A(\XBAR_S/n191 ), .B(\XBAR_S/n190 ), .Q(TX_S[7]) );
-  NAND2X6 U215 ( .A(\XBAR_S/n181 ), .B(\XBAR_S/n180 ), .Q(TX_S[31]) );
-  NAND2X6 U216 ( .A(\XBAR_S/n187 ), .B(\XBAR_S/n186 ), .Q(TX_S[5]) );
-  NAND2X6 U217 ( .A(\XBAR_S/n183 ), .B(\XBAR_S/n182 ), .Q(TX_S[3]) );
-  NAND2X6 U218 ( .A(\XBAR_S/n133 ), .B(\XBAR_S/n132 ), .Q(TX_S[0]) );
-  NAND2X6 U219 ( .A(\XBAR_S/n139 ), .B(\XBAR_S/n138 ), .Q(TX_S[12]) );
-  NAND2X6 U220 ( .A(\XBAR_S/n135 ), .B(\XBAR_S/n134 ), .Q(TX_S[10]) );
-  NAND2X6 U221 ( .A(\XBAR_S/n137 ), .B(\XBAR_S/n136 ), .Q(TX_S[11]) );
-  CLKINVX4 U222 ( .A(\XBAR_L/n17 ), .Q(\XBAR_L/n131 ) );
-  CLKINVX4 U223 ( .A(\XBAR_S/n128 ), .Q(\XBAR_S/n131 ) );
-  NAND3X6 U224 ( .A(\XBAR_S/n19 ), .B(\XBAR_S/n16 ), .C(Grant_SL_out), .Q(
+  NOR3X1 U73 ( .A(Grant_LW_out), .B(\XBAR_L/n16 ), .C(Grant_LS_out), .Q(
+        \XBAR_L/n129 ) );
+  CLKINVX4 U74 ( .A(\XBAR_L/n17 ), .Q(\XBAR_L/n131 ) );
+  NAND2X6 U75 ( .A(\XBAR_S/n143 ), .B(\XBAR_S/n142 ), .Q(TX_S[14]) );
+  NAND2X6 U76 ( .A(\XBAR_S/n167 ), .B(\XBAR_S/n166 ), .Q(TX_S[25]) );
+  NAND2X6 U77 ( .A(\XBAR_S/n165 ), .B(\XBAR_S/n164 ), .Q(TX_S[24]) );
+  NAND2X6 U78 ( .A(\XBAR_S/n163 ), .B(\XBAR_S/n162 ), .Q(TX_S[23]) );
+  NAND2X6 U79 ( .A(\XBAR_S/n161 ), .B(\XBAR_S/n160 ), .Q(TX_S[22]) );
+  NAND2X6 U80 ( .A(\XBAR_S/n159 ), .B(\XBAR_S/n158 ), .Q(TX_S[21]) );
+  NAND2X6 U81 ( .A(\XBAR_S/n157 ), .B(\XBAR_S/n156 ), .Q(TX_S[20]) );
+  NAND2X6 U82 ( .A(\XBAR_S/n153 ), .B(\XBAR_S/n152 ), .Q(TX_S[19]) );
+  NAND2X6 U83 ( .A(\XBAR_S/n151 ), .B(\XBAR_S/n150 ), .Q(TX_S[18]) );
+  NAND2X6 U84 ( .A(\XBAR_S/n149 ), .B(\XBAR_S/n148 ), .Q(TX_S[17]) );
+  NAND2X6 U85 ( .A(\XBAR_S/n147 ), .B(\XBAR_S/n146 ), .Q(TX_S[16]) );
+  NAND2X6 U86 ( .A(\XBAR_S/n145 ), .B(\XBAR_S/n144 ), .Q(TX_S[15]) );
+  NAND2X6 U87 ( .A(\XBAR_S/n141 ), .B(\XBAR_S/n140 ), .Q(TX_S[13]) );
+  NAND2X6 U88 ( .A(\XBAR_S/n155 ), .B(\XBAR_S/n154 ), .Q(TX_S[1]) );
+  NAND2X6 U89 ( .A(\XBAR_S/n179 ), .B(\XBAR_S/n178 ), .Q(TX_S[30]) );
+  NAND2X6 U90 ( .A(\XBAR_S/n191 ), .B(\XBAR_S/n190 ), .Q(TX_S[7]) );
+  NAND2X6 U91 ( .A(\XBAR_S/n181 ), .B(\XBAR_S/n180 ), .Q(TX_S[31]) );
+  NAND2X6 U92 ( .A(\XBAR_S/n175 ), .B(\XBAR_S/n174 ), .Q(TX_S[29]) );
+  NAND2X6 U93 ( .A(\XBAR_S/n173 ), .B(\XBAR_S/n172 ), .Q(TX_S[28]) );
+  NAND2X6 U94 ( .A(\XBAR_S/n171 ), .B(\XBAR_S/n170 ), .Q(TX_S[27]) );
+  NAND2X6 U95 ( .A(\XBAR_S/n169 ), .B(\XBAR_S/n168 ), .Q(TX_S[26]) );
+  NAND2X6 U96 ( .A(\XBAR_S/n193 ), .B(\XBAR_S/n192 ), .Q(TX_S[8]) );
+  NAND2X6 U97 ( .A(\XBAR_S/n185 ), .B(\XBAR_S/n184 ), .Q(TX_S[4]) );
+  NAND2X6 U98 ( .A(\XBAR_S/n199 ), .B(\XBAR_S/n198 ), .Q(TX_S[9]) );
+  NAND2X6 U99 ( .A(\XBAR_S/n189 ), .B(\XBAR_S/n188 ), .Q(TX_S[6]) );
+  NAND2X6 U100 ( .A(\XBAR_S/n177 ), .B(\XBAR_S/n176 ), .Q(TX_S[2]) );
+  NAND2X6 U101 ( .A(\XBAR_S/n187 ), .B(\XBAR_S/n186 ), .Q(TX_S[5]) );
+  NAND2X6 U102 ( .A(\XBAR_S/n183 ), .B(\XBAR_S/n182 ), .Q(TX_S[3]) );
+  NAND2X6 U103 ( .A(\XBAR_S/n133 ), .B(\XBAR_S/n132 ), .Q(TX_S[0]) );
+  NAND2X6 U104 ( .A(\XBAR_S/n139 ), .B(\XBAR_S/n138 ), .Q(TX_S[12]) );
+  NAND2X6 U105 ( .A(\XBAR_S/n135 ), .B(\XBAR_S/n134 ), .Q(TX_S[10]) );
+  NAND2X6 U106 ( .A(\XBAR_S/n137 ), .B(\XBAR_S/n136 ), .Q(TX_S[11]) );
+  CLKINVX4 U107 ( .A(\XBAR_S/n128 ), .Q(\XBAR_S/n131 ) );
+  NAND3X6 U108 ( .A(\XBAR_S/n19 ), .B(\XBAR_S/n16 ), .C(Grant_SL_out), .Q(
         \XBAR_S/n128 ) );
-  NAND3X6 U225 ( .A(\XBAR_W/n18 ), .B(\XBAR_W/n16 ), .C(Grant_WL_out), .Q(
+  NAND3X6 U109 ( .A(\XBAR_W/n18 ), .B(\XBAR_W/n16 ), .C(Grant_WL_out), .Q(
         \XBAR_W/n128 ) );
-  NAND3X6 U226 ( .A(\XBAR_E/n17 ), .B(\XBAR_E/n19 ), .C(Grant_EL_out), .Q(
+  NAND3X6 U110 ( .A(\XBAR_E/n17 ), .B(\XBAR_E/n19 ), .C(Grant_EL_out), .Q(
         \XBAR_E/n128 ) );
-  NOR3X12 U227 ( .A(\XBAR_N/n43 ), .B(\XBAR_N/n107 ), .C(\XBAR_N/n44 ), .Q(
+  NOR3X12 U111 ( .A(\XBAR_N/n43 ), .B(\XBAR_N/n107 ), .C(\XBAR_N/n44 ), .Q(
         \XBAR_N/n42 ) );
-  CLKINVX4 U228 ( .A(\XBAR_N/n111 ), .Q(\XBAR_N/n38 ) );
-  NAND2X6 U229 ( .A(FIFO_D_out_W[25]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n167 ) );
-  NAND2X6 U230 ( .A(FIFO_D_out_W[24]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n165 ) );
-  NAND2X6 U231 ( .A(FIFO_D_out_W[23]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n163 ) );
-  NAND2X6 U232 ( .A(FIFO_D_out_W[22]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n161 ) );
-  NAND2X6 U233 ( .A(FIFO_D_out_W[21]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n159 ) );
-  NAND2X6 U234 ( .A(FIFO_D_out_W[20]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n157 ) );
-  NAND2X6 U235 ( .A(FIFO_D_out_W[19]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n153 ) );
-  NAND2X6 U236 ( .A(FIFO_D_out_W[18]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n151 ) );
-  NAND2X6 U237 ( .A(FIFO_D_out_W[17]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n149 ) );
-  NAND2X6 U238 ( .A(FIFO_D_out_W[16]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n147 ) );
-  NAND2X6 U239 ( .A(FIFO_D_out_W[15]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n145 ) );
-  NAND2X6 U240 ( .A(\LBDR_W/n31 ), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n141 ) );
-  NAND2X6 U241 ( .A(FIFO_D_out_W[1]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n155 ) );
-  NAND2X6 U242 ( .A(\LBDR_W/n32 ), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n143 ) );
-  NAND2X6 U243 ( .A(FIFO_D_out_W[31]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n181 ) );
-  NAND2X6 U244 ( .A(FIFO_D_out_W[30]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n179 ) );
-  NAND2X6 U245 ( .A(FIFO_D_out_W[29]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n175 ) );
-  NAND2X6 U246 ( .A(FIFO_D_out_W[28]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n173 ) );
-  NAND2X6 U247 ( .A(FIFO_D_out_W[27]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n171 ) );
-  NAND2X6 U248 ( .A(FIFO_D_out_W[26]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n169 ) );
-  NAND2X6 U249 ( .A(FIFO_D_out_W[9]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n199 ) );
-  NAND2X6 U250 ( .A(FIFO_D_out_W[8]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n193 ) );
-  NAND2X6 U251 ( .A(\LBDR_W/n60 ), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n191 ) );
-  NAND2X6 U252 ( .A(FIFO_D_out_W[6]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n189 ) );
-  NAND2X6 U253 ( .A(FIFO_D_out_W[5]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n187 ) );
-  NAND2X6 U254 ( .A(FIFO_D_out_W[4]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n185 ) );
-  NAND2X6 U255 ( .A(FIFO_D_out_W[3]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n183 ) );
-  NAND2X6 U256 ( .A(FIFO_D_out_W[2]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n177 ) );
-  NAND2X6 U257 ( .A(FIFO_D_out_W[0]), .B(\XBAR_E/n3 ), .Q(\XBAR_E/n133 ) );
-  NAND2X6 U258 ( .A(\LBDR_W/n4 ), .B(\XBAR_E/n3 ), .Q(\XBAR_E/n139 ) );
-  NAND2X6 U259 ( .A(FIFO_D_out_W[10]), .B(\XBAR_E/n3 ), .Q(\XBAR_E/n135 ) );
-  NAND2X6 U260 ( .A(FIFO_D_out_W[11]), .B(\XBAR_E/n3 ), .Q(\XBAR_E/n137 ) );
-  NAND2X6 U261 ( .A(FIFO_D_out_N[25]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n166 ) );
-  NAND2X6 U262 ( .A(FIFO_D_out_N[24]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n164 ) );
-  NAND2X6 U263 ( .A(FIFO_D_out_N[23]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n162 ) );
-  NAND2X6 U264 ( .A(FIFO_D_out_N[22]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n160 ) );
-  NAND2X6 U265 ( .A(FIFO_D_out_N[21]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n158 ) );
-  NAND2X6 U266 ( .A(FIFO_D_out_N[20]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n156 ) );
-  NAND2X6 U267 ( .A(FIFO_D_out_N[19]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n152 ) );
-  NAND2X6 U268 ( .A(FIFO_D_out_N[18]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n150 ) );
-  NAND2X6 U269 ( .A(FIFO_D_out_N[17]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n148 ) );
-  NAND2X6 U270 ( .A(FIFO_D_out_N[16]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n146 ) );
-  NAND2X6 U271 ( .A(FIFO_D_out_N[15]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n144 ) );
-  NAND2X6 U272 ( .A(\LBDR_N/n31 ), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n140 ) );
-  NAND2X6 U273 ( .A(FIFO_D_out_N[1]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n154 ) );
-  NAND2X6 U274 ( .A(\LBDR_N/n32 ), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n142 ) );
-  NAND2X6 U275 ( .A(FIFO_D_out_N[28]), .B(\XBAR_L/n196 ), .Q(\XBAR_L/n172 ) );
-  NAND2X6 U276 ( .A(FIFO_D_out_N[27]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n170 ) );
-  NAND2X6 U277 ( .A(FIFO_D_out_N[26]), .B(\XBAR_L/n9 ), .Q(\XBAR_L/n168 ) );
-  NAND2X6 U278 ( .A(FIFO_D_out_N[8]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n192 ) );
-  NAND2X6 U279 ( .A(FIFO_D_out_N[4]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n184 ) );
-  NAND2X6 U280 ( .A(FIFO_D_out_N[9]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n198 ) );
-  NAND2X6 U281 ( .A(FIFO_D_out_N[6]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n188 ) );
-  NAND2X6 U282 ( .A(FIFO_D_out_N[5]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n186 ) );
-  NAND2X6 U283 ( .A(FIFO_D_out_N[3]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n182 ) );
-  NAND2X6 U284 ( .A(FIFO_D_out_N[2]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n176 ) );
-  NAND2X6 U285 ( .A(FIFO_D_out_N[29]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n174 ) );
-  NAND2X6 U286 ( .A(FIFO_D_out_N[30]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n178 ) );
-  NAND2X6 U287 ( .A(\LBDR_N/n60 ), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n190 ) );
-  NAND2X6 U288 ( .A(FIFO_D_out_N[31]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n180 ) );
-  NAND2X6 U289 ( .A(FIFO_D_out_N[0]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n132 ) );
-  NAND2X6 U290 ( .A(\LBDR_N/n4 ), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n138 ) );
-  NAND2X6 U291 ( .A(FIFO_D_out_N[10]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n134 ) );
-  NAND2X6 U292 ( .A(FIFO_D_out_N[11]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n136 ) );
-  NAND2X6 U293 ( .A(FIFO_D_out_E[25]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n167 ) );
-  NAND2X6 U294 ( .A(FIFO_D_out_E[24]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n165 ) );
-  NAND2X6 U295 ( .A(FIFO_D_out_E[23]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n163 ) );
-  NAND2X6 U296 ( .A(FIFO_D_out_E[22]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n161 ) );
-  NAND2X6 U297 ( .A(FIFO_D_out_E[21]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n159 ) );
-  NAND2X6 U298 ( .A(FIFO_D_out_E[20]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n157 ) );
-  NAND2X6 U299 ( .A(FIFO_D_out_E[19]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n153 ) );
-  NAND2X6 U300 ( .A(FIFO_D_out_E[18]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n151 ) );
-  NAND2X6 U301 ( .A(FIFO_D_out_E[17]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n149 ) );
-  NAND2X6 U302 ( .A(FIFO_D_out_E[16]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n147 ) );
-  NAND2X6 U303 ( .A(FIFO_D_out_E[15]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n145 ) );
-  NAND2X6 U304 ( .A(\LBDR_E/n31 ), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n141 ) );
-  NAND2X6 U305 ( .A(FIFO_D_out_E[1]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n155 ) );
-  NAND2X6 U306 ( .A(\LBDR_E/n32 ), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n143 ) );
-  NAND2X6 U307 ( .A(FIFO_D_out_E[28]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n173 ) );
-  NAND2X6 U308 ( .A(FIFO_D_out_E[27]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n171 ) );
-  NAND2X6 U309 ( .A(FIFO_D_out_E[26]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n169 ) );
-  NAND2X6 U310 ( .A(FIFO_D_out_E[8]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n193 ) );
-  NAND2X6 U311 ( .A(FIFO_D_out_E[4]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n185 ) );
-  NAND2X6 U312 ( .A(FIFO_D_out_E[9]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n199 ) );
-  NAND2X6 U313 ( .A(FIFO_D_out_E[6]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n189 ) );
-  NAND2X6 U314 ( .A(FIFO_D_out_E[5]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n187 ) );
-  NAND2X6 U315 ( .A(FIFO_D_out_E[3]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n183 ) );
-  NAND2X6 U316 ( .A(FIFO_D_out_E[2]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n177 ) );
-  NAND2X6 U317 ( .A(FIFO_D_out_E[29]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n175 ) );
-  NAND2X6 U318 ( .A(FIFO_D_out_E[30]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n179 ) );
-  NAND2X6 U319 ( .A(\LBDR_E/n60 ), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n191 ) );
-  NAND2X6 U320 ( .A(FIFO_D_out_E[31]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n181 ) );
-  NAND2X6 U321 ( .A(FIFO_D_out_E[0]), .B(\XBAR_W/n6 ), .Q(\XBAR_W/n133 ) );
-  NAND2X6 U322 ( .A(\LBDR_E/n4 ), .B(\XBAR_W/n6 ), .Q(\XBAR_W/n139 ) );
-  NAND2X6 U323 ( .A(FIFO_D_out_E[10]), .B(\XBAR_W/n6 ), .Q(\XBAR_W/n135 ) );
-  NAND2X6 U324 ( .A(FIFO_D_out_E[11]), .B(\XBAR_W/n6 ), .Q(\XBAR_W/n137 ) );
-  OAI21X8 U325 ( .A1(\XBAR_W/n131 ), .A2(\XBAR_W/n129 ), .B1(\XBAR_W/n19 ), 
+  CLKINVX4 U112 ( .A(\XBAR_N/n111 ), .Q(\XBAR_N/n38 ) );
+  NAND2X6 U113 ( .A(n19), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n142 ) );
+  NAND2X6 U114 ( .A(FIFO_D_out_N[25]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n166 ) );
+  NAND2X6 U115 ( .A(FIFO_D_out_N[24]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n164 ) );
+  NAND2X6 U116 ( .A(FIFO_D_out_N[23]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n162 ) );
+  NAND2X6 U117 ( .A(FIFO_D_out_N[22]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n160 ) );
+  NAND2X6 U118 ( .A(FIFO_D_out_N[21]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n158 ) );
+  NAND2X6 U119 ( .A(FIFO_D_out_N[20]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n156 ) );
+  NAND2X6 U120 ( .A(FIFO_D_out_N[19]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n152 ) );
+  NAND2X6 U121 ( .A(FIFO_D_out_N[18]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n150 ) );
+  NAND2X6 U122 ( .A(FIFO_D_out_N[17]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n148 ) );
+  NAND2X6 U123 ( .A(FIFO_D_out_N[16]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n146 ) );
+  NAND2X6 U124 ( .A(FIFO_D_out_N[15]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n144 ) );
+  NAND2X6 U125 ( .A(FIFO_D_out_N[13]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n140 ) );
+  NAND2X6 U126 ( .A(FIFO_D_out_N[1]), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n154 ) );
+  NAND2X6 U127 ( .A(n22), .B(\XBAR_L/n196 ), .Q(\XBAR_L/n180 ) );
+  NAND2X6 U128 ( .A(n21), .B(\XBAR_L/n7 ), .Q(\XBAR_L/n178 ) );
+  NAND2X6 U129 ( .A(n18), .B(\XBAR_L/n9 ), .Q(\XBAR_L/n190 ) );
+  NAND2X6 U130 ( .A(n20), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n174 ) );
+  NAND2X6 U131 ( .A(FIFO_D_out_N[28]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n172 ) );
+  NAND2X6 U132 ( .A(FIFO_D_out_N[27]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n170 ) );
+  NAND2X6 U133 ( .A(FIFO_D_out_N[26]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n168 ) );
+  NAND2X6 U134 ( .A(FIFO_D_out_N[8]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n192 ) );
+  NAND2X6 U135 ( .A(FIFO_D_out_N[4]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n184 ) );
+  NAND2X6 U136 ( .A(FIFO_D_out_N[9]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n198 ) );
+  NAND2X6 U137 ( .A(FIFO_D_out_N[6]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n188 ) );
+  NAND2X6 U138 ( .A(FIFO_D_out_N[5]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n186 ) );
+  NAND2X6 U139 ( .A(FIFO_D_out_N[3]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n182 ) );
+  NAND2X6 U140 ( .A(FIFO_D_out_N[2]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n176 ) );
+  NAND2X6 U141 ( .A(FIFO_D_out_N[0]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n132 ) );
+  NAND2X6 U142 ( .A(FIFO_D_out_N[12]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n138 ) );
+  NAND2X6 U143 ( .A(FIFO_D_out_N[10]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n134 ) );
+  NAND2X6 U144 ( .A(FIFO_D_out_N[11]), .B(\XBAR_L/n8 ), .Q(\XBAR_L/n136 ) );
+  NAND2X6 U145 ( .A(n15), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n143 ) );
+  NAND2X6 U146 ( .A(FIFO_D_out_E[25]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n167 ) );
+  NAND2X6 U147 ( .A(FIFO_D_out_E[24]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n165 ) );
+  NAND2X6 U148 ( .A(FIFO_D_out_E[23]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n163 ) );
+  NAND2X6 U149 ( .A(FIFO_D_out_E[22]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n161 ) );
+  NAND2X6 U150 ( .A(FIFO_D_out_E[21]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n159 ) );
+  NAND2X6 U151 ( .A(FIFO_D_out_E[20]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n157 ) );
+  NAND2X6 U152 ( .A(FIFO_D_out_E[19]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n153 ) );
+  NAND2X6 U153 ( .A(FIFO_D_out_E[18]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n151 ) );
+  NAND2X6 U154 ( .A(FIFO_D_out_E[17]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n149 ) );
+  NAND2X6 U155 ( .A(FIFO_D_out_E[16]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n147 ) );
+  NAND2X6 U156 ( .A(FIFO_D_out_E[15]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n145 ) );
+  NAND2X6 U157 ( .A(FIFO_D_out_E[13]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n141 ) );
+  NAND2X6 U158 ( .A(FIFO_D_out_E[1]), .B(\XBAR_W/n5 ), .Q(\XBAR_W/n155 ) );
+  NAND2X6 U159 ( .A(n17), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n181 ) );
+  NAND2X6 U160 ( .A(n16), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n179 ) );
+  NAND2X6 U161 ( .A(n14), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n191 ) );
+  NAND2X6 U162 ( .A(FIFO_D_out_E[29]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n175 ) );
+  NAND2X6 U163 ( .A(FIFO_D_out_E[28]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n173 ) );
+  NAND2X6 U164 ( .A(FIFO_D_out_E[27]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n171 ) );
+  NAND2X6 U165 ( .A(FIFO_D_out_E[26]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n169 ) );
+  NAND2X6 U166 ( .A(FIFO_D_out_E[8]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n193 ) );
+  NAND2X6 U167 ( .A(FIFO_D_out_E[4]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n185 ) );
+  NAND2X6 U168 ( .A(FIFO_D_out_E[9]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n199 ) );
+  NAND2X6 U169 ( .A(FIFO_D_out_E[6]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n189 ) );
+  NAND2X6 U170 ( .A(FIFO_D_out_E[5]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n187 ) );
+  NAND2X6 U171 ( .A(FIFO_D_out_E[3]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n183 ) );
+  NAND2X6 U172 ( .A(FIFO_D_out_E[2]), .B(\XBAR_W/n4 ), .Q(\XBAR_W/n177 ) );
+  NAND2X6 U173 ( .A(FIFO_D_out_E[0]), .B(\XBAR_W/n6 ), .Q(\XBAR_W/n133 ) );
+  NAND2X6 U174 ( .A(FIFO_D_out_E[12]), .B(\XBAR_W/n6 ), .Q(\XBAR_W/n139 ) );
+  NAND2X6 U175 ( .A(FIFO_D_out_E[10]), .B(\XBAR_W/n6 ), .Q(\XBAR_W/n135 ) );
+  NAND2X6 U176 ( .A(FIFO_D_out_E[11]), .B(\XBAR_W/n6 ), .Q(\XBAR_W/n137 ) );
+  OAI21X8 U177 ( .A1(\XBAR_W/n131 ), .A2(\XBAR_W/n129 ), .B1(\XBAR_W/n19 ), 
         .Q(\XBAR_W/n196 ) );
-  OAI21X8 U326 ( .A1(\XBAR_E/n131 ), .A2(\XBAR_E/n130 ), .B1(\XBAR_E/n18 ), 
+  NAND2X6 U178 ( .A(n10), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n143 ) );
+  NAND2X6 U179 ( .A(FIFO_D_out_W[25]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n167 ) );
+  NAND2X6 U180 ( .A(FIFO_D_out_W[24]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n165 ) );
+  NAND2X6 U181 ( .A(FIFO_D_out_W[23]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n163 ) );
+  NAND2X6 U182 ( .A(FIFO_D_out_W[22]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n161 ) );
+  NAND2X6 U183 ( .A(FIFO_D_out_W[21]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n159 ) );
+  NAND2X6 U184 ( .A(FIFO_D_out_W[20]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n157 ) );
+  NAND2X6 U185 ( .A(FIFO_D_out_W[19]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n153 ) );
+  NAND2X6 U186 ( .A(FIFO_D_out_W[18]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n151 ) );
+  NAND2X6 U187 ( .A(FIFO_D_out_W[17]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n149 ) );
+  NAND2X6 U188 ( .A(FIFO_D_out_W[16]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n147 ) );
+  NAND2X6 U189 ( .A(FIFO_D_out_W[15]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n145 ) );
+  NAND2X6 U190 ( .A(FIFO_D_out_W[13]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n141 ) );
+  NAND2X6 U191 ( .A(FIFO_D_out_W[1]), .B(\XBAR_E/n2 ), .Q(\XBAR_E/n155 ) );
+  NAND2X6 U192 ( .A(n13), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n181 ) );
+  NAND2X6 U193 ( .A(n12), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n179 ) );
+  NAND2X6 U194 ( .A(n11), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n175 ) );
+  NAND2X6 U195 ( .A(FIFO_D_out_W[28]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n173 ) );
+  NAND2X6 U196 ( .A(FIFO_D_out_W[27]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n171 ) );
+  NAND2X6 U197 ( .A(FIFO_D_out_W[26]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n169 ) );
+  NAND2X6 U198 ( .A(FIFO_D_out_W[9]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n199 ) );
+  NAND2X6 U199 ( .A(FIFO_D_out_W[8]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n193 ) );
+  NAND2X6 U200 ( .A(n9), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n191 ) );
+  NAND2X6 U201 ( .A(FIFO_D_out_W[6]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n189 ) );
+  NAND2X6 U202 ( .A(FIFO_D_out_W[5]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n187 ) );
+  NAND2X6 U203 ( .A(FIFO_D_out_W[4]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n185 ) );
+  NAND2X6 U204 ( .A(FIFO_D_out_W[3]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n183 ) );
+  NAND2X6 U205 ( .A(FIFO_D_out_W[2]), .B(\XBAR_E/n1 ), .Q(\XBAR_E/n177 ) );
+  NAND2X6 U206 ( .A(FIFO_D_out_W[0]), .B(\XBAR_E/n3 ), .Q(\XBAR_E/n133 ) );
+  NAND2X6 U207 ( .A(FIFO_D_out_W[12]), .B(\XBAR_E/n3 ), .Q(\XBAR_E/n139 ) );
+  NAND2X6 U208 ( .A(FIFO_D_out_W[10]), .B(\XBAR_E/n3 ), .Q(\XBAR_E/n135 ) );
+  NAND2X6 U209 ( .A(FIFO_D_out_W[11]), .B(\XBAR_E/n3 ), .Q(\XBAR_E/n137 ) );
+  OAI21X8 U210 ( .A1(\XBAR_E/n131 ), .A2(\XBAR_E/n130 ), .B1(\XBAR_E/n18 ), 
         .Q(\XBAR_E/n196 ) );
-  CLKINVX4 U327 ( .A(\XBAR_N/n110 ), .Q(\XBAR_N/n41 ) );
-  NOR3X12 U328 ( .A(Grant_EW_out), .B(\XBAR_E/n17 ), .C(Grant_EL_out), .Q(
+  CLKINVX4 U211 ( .A(\XBAR_N/n110 ), .Q(\XBAR_N/n41 ) );
+  NOR3X12 U212 ( .A(Grant_EW_out), .B(\XBAR_E/n17 ), .C(Grant_EL_out), .Q(
         \XBAR_E/n127 ) );
-  NOR3X12 U329 ( .A(Grant_ES_out), .B(\XBAR_E/n19 ), .C(Grant_EL_out), .Q(
+  NOR3X12 U213 ( .A(Grant_ES_out), .B(\XBAR_E/n19 ), .C(Grant_EL_out), .Q(
         \XBAR_E/n130 ) );
-  NOR3X12 U330 ( .A(Grant_WE_out), .B(\XBAR_W/n18 ), .C(Grant_WL_out), .Q(
+  NOR3X12 U214 ( .A(Grant_WE_out), .B(\XBAR_W/n18 ), .C(Grant_WL_out), .Q(
         \XBAR_W/n127 ) );
-  NOR3X12 U331 ( .A(Grant_WS_out), .B(\XBAR_W/n16 ), .C(Grant_WL_out), .Q(
+  NOR3X12 U215 ( .A(Grant_WS_out), .B(\XBAR_W/n16 ), .C(Grant_WL_out), .Q(
         \XBAR_W/n129 ) );
-  NOR3X12 U332 ( .A(Grant_SW_out), .B(\XBAR_S/n16 ), .C(Grant_SL_out), .Q(
+  NOR3X12 U216 ( .A(Grant_SW_out), .B(\XBAR_S/n16 ), .C(Grant_SL_out), .Q(
         \XBAR_S/n129 ) );
-  NOR3X12 U333 ( .A(Grant_SE_out), .B(\XBAR_S/n19 ), .C(Grant_SL_out), .Q(
+  NOR3X12 U217 ( .A(Grant_SE_out), .B(\XBAR_S/n19 ), .C(Grant_SL_out), .Q(
         \XBAR_S/n130 ) );
 endmodule
 

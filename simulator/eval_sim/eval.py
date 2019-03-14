@@ -104,63 +104,105 @@ def main(args):
         # Type: Failure; Observed: toplevel output; Fault injected: anywhere in the design
         'top_level_failure_count' : 0,
 
-        # Type: Error; Observed: module output; Fault injected: anywhere in the design
+        # Type: Error; Observed: module output; Fault injected: into the module 
         'module_total_error_count': {module:0 for module in injection_data['modules']},
         
-        # Type: Error; Observed: module output; Fault injected: anywhere in the design    
+        # Type: Error; Observed: module output; Fault injected: into the module    
         'fault_in_module_caused_error_at_module' : {module:0 for module in injection_data['modules']},
 
-        # Type: Error; Observed: toplevel output; Fault injected: anywhere in the design
+        # Type: Error; Observed: toplevel output; Fault injected: into the module 
         'module_caused_error_at_top_level' : {module:0 for module in injection_data['modules']},
         
-        # Type: Failure; Observed: toplevel output; Fault injected: anywhere in the design
-        'module_caused_failure_at_top_level' : {module:0 for module in injection_data['modules']}
+        # Type: Failure; Observed: toplevel output; Fault injected: into the module 
+        'module_caused_failure_at_top_level' : {module:0 for module in injection_data['modules']},
+
+        # Type: Error; Observed: module output; Fault injected: input of the module
+        'module_error_propagation_count' : {module:0 for module in injection_data['modules']},
+
+        # Type: All exp; Observed: module output; Fault injected: input of the module
+        'module_input_exp_count' : {module:0 for module in injection_data['modules']}
     }
 
     #####################
     # Result evaluation #
     #####################
 
+    # Read the list of input signals
+    try:
+
+        with open(args.inputs_file, 'r') as inputs:
+
+            input_mapping = eval(inputs.read())
+
+    except err:
+        print("E R R O R: Error while opening the inputs map:", err)
+
+
     # Count different effects of the faults over all experiments
     for exp in experiments:
 
-        top_level_failure_detected = False
         top_level_error_detected = False
+        top_level_failure_detected = False
 
         # Find out into which module a fault was injected during the processed experiment
         faulty_module = exp.getFaultModuleFromParam()
 
         if faulty_module != 'nofault':
-            results['module_exp_count'][exp.getFaultModuleFromParam()] += 1
+            results['module_exp_count'][faulty_module] += 1
 
-        # Failure at toplevel
-        if not exp.is_valid():
-            results['top_level_failure_count'] += 1
-            top_level_failure_detected = True
 
-        # Error at toplevel
-        if not exp.vcd_of_module_equal['top_level']:
-            results['top_level_error_count'] += 1
-            top_level_error_detected = True
+            # Error at toplevel
+            if exp.vcd_of_module_equal['top_level']:
+                results['top_level_error_count'] += 1
+                top_level_error_detected = True
 
-        # Per-module statistics
-        for module_name, correct in exp.vcd_of_module_equal.items():
-            if not correct and module_name != 'top_level':
+            # else:
+            # FIXME: Moved under error if for debugging. Move it back one level in the end of the debug session
+            # Failure at toplevel
+            if not exp.is_valid():
+                results['top_level_failure_count'] += 1
+                top_level_failure_detected = True
 
-                results['module_total_error_count'][module_name] += 1
+            module_error_detected = False
 
-                # Statistics for the case where the fault was also injected into the current module
-                if exp.getFaultModuleFromParam() == module_name:
-                    results['fault_in_module_caused_error_at_module'][module_name] += 1
+            # Per-module statistics
+            for module_name, faulty in exp.vcd_of_module_equal.items():
 
-                    # print(exp.params, file=sys.stderr)
-                    exp.loc_is_input(module_name)
+                if module_name != 'top_level':
+                    if exp.loc_is_input(input_mapping, module_name):
+                        results['module_input_exp_count'][module_name] += 1
+                        
+                    if faulty:
 
-                    if top_level_error_detected:
-                        results['module_caused_error_at_top_level'][module_name] += 1
-                    
-                    if top_level_failure_detected:
-                        results['module_caused_failure_at_top_level'][module_name] += 1
+                        # All errors in module. Does not take into account the injection location
+                        results['module_total_error_count'][module_name] += 1
+
+                        # Statistics for the case where the fault was also injected into the current module
+                        if faulty_module == module_name:
+                            results['fault_in_module_caused_error_at_module'][module_name] += 1
+
+                            # Count input signals which lead to error at module output
+                            if exp.loc_is_input(input_mapping, module_name):
+                                results['module_error_propagation_count'][module_name] += 1
+
+                            if top_level_error_detected:
+                                results['module_caused_error_at_top_level'][module_name] += 1
+
+                                if module_error_detected:
+                                    raise ValueError("Module error detected more than once! Current module: ", module_name, 
+                                                    " Faulty module: ", faulty_module, 
+                                                    " Params: ", exp.params)
+
+                                module_error_detected = True
+                            
+                            if top_level_failure_detected:
+                                results['module_caused_failure_at_top_level'][module_name] += 1
+
+            if not module_error_detected and top_level_error_detected:
+                print(exp.vcd_of_module_equal, file=sys.stderr)
+                raise ValueError("Detected error et TL, but not in module!", 
+                                " Faulty module: ", faulty_module, 
+                                " Params: ", exp.params)
 
     if args.verbose:
         # Check if there is any experiments which does not have exp data in it.
@@ -206,6 +248,10 @@ if __name__ == '__main__':
     parser.add_argument('infile', type=str,
                         help='The inputfile to read, either a `.experiments` '
                                 'file or gzipped `experiments.gz`.')
+
+    parser.add_argument('--inputs_file', type=str,
+                        help='The file which contains the dictionary of the component input cell names',
+                        default=None)
 
     parser.add_argument('--verbose', action='store_true',
                         help='Prints progress and additional information.')
