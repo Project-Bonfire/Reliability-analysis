@@ -77,7 +77,7 @@ python3 -u $SIM_ROOT_DIR/simulator/eval_sim/eval.py $folder/all.results.gz \
         --packetlength $minpacketsize \
         --verbose \
         --inputs_file $designfolder/inputs_to_modules.py \
-        --output-file $folder/eval.json > $folder/eval.log
+        --output-file $folder/eval.json #> $folder/eval.log
 
 error_count=`cat $folder/eval.log | grep "E R R O R:" | wc -l`
 warn_count=`cat $folder/eval.log | grep "W A R N I N G:" | wc -l`

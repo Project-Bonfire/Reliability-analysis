@@ -57,11 +57,11 @@ entity router_credit_based is
     write_en_out_E_out: out std_logic;
     write_en_out_W_out: out std_logic;
     write_en_out_S_out: out std_logic;
-    write_en_out_L_out: out std_logic
+    write_en_out_L_out: out std_logic;
+
+    FIFO_Data_out_N, FIFO_Data_out_E, FIFO_Data_out_W, FIFO_Data_out_S, FIFO_Data_out_L: out std_logic_vector(DATA_WIDTH-1 downto 0)
     );
 end router_credit_based;
-
-
 
 architecture behavior of router_credit_based is
 
@@ -659,5 +659,12 @@ begin
     empty_W_out <= empty_W;
     empty_S_out <= empty_S;
     empty_L_out <= empty_L;
+
+    FIFO_Data_out_N <= FIFO_D_out_N;
+    FIFO_Data_out_E <= FIFO_D_out_E;
+    FIFO_Data_out_W <= FIFO_D_out_W;
+    FIFO_Data_out_S <= FIFO_D_out_S;
+    FIFO_Data_out_L <= FIFO_D_out_L;
+
 
 end;

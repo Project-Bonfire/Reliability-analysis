@@ -12,6 +12,7 @@ set INPUT_FILE      $env(INPUT_FILE)
 set OUTPUT_FILE     $env(OUTPUT_FILE)
 set SCENARIO_FILE   $env(SCENARIO_FILE)
 set RESULTS_FILE    $env(RESULTS_FILE)
+set DUMPS_FOLDER    $env(RESULTS_FOLDER)
 
 set START_ID $env(START_ID)
 
@@ -113,8 +114,6 @@ while {$properties != ""} {
 
     run $time_after ns
 
-    # Reset simulation
-    restart
 
     # Handle the results
     puts $concat_result_file "-----"
@@ -123,9 +122,9 @@ while {$properties != ""} {
     puts $concat_result_file "!modules:"
 
     # Exclude date of the file, only keep the hash.
-    foreach file [glob -nocomplain "$RESULTS_FOLDER/*.vcd"] {
+    foreach file [glob -nocomplain "$RESULTS_FOLDER/*.dump"] {
         set filename [file tail [file rootname $file]]
-        puts $concat_result_file "$filename:[exec tail --lines=+3 $file | sha1sum | cut -d " " -f1]"
+        puts $concat_result_file "$filename:[exec sha1sum $file | cut -d " " -f1]"
     }
 
     puts $concat_result_file "!input:"
@@ -151,6 +150,9 @@ while {$properties != ""} {
     # Increment line
     gets $property_fp properties
     incr exp_num
+    
+    # Reset simulation
+    restart
 }
 close $concat_result_file
 

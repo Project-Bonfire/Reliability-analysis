@@ -152,13 +152,10 @@ def main(args):
 
 
             # Error at toplevel
-            if exp.vcd_of_module_equal['top_level']:
+            if not exp.vcd_of_module_equal['top_level']:
                 results['top_level_error_count'] += 1
                 top_level_error_detected = True
 
-            # else:
-            # FIXME: Moved under error if for debugging. Move it back one level in the end of the debug session
-            # Failure at toplevel
             if not exp.is_valid():
                 results['top_level_failure_count'] += 1
                 top_level_failure_detected = True
@@ -166,13 +163,13 @@ def main(args):
             module_error_detected = False
 
             # Per-module statistics
-            for module_name, faulty in exp.vcd_of_module_equal.items():
+            for module_name, correct in exp.vcd_of_module_equal.items():
 
                 if module_name != 'top_level':
                     if exp.loc_is_input(input_mapping, module_name):
                         results['module_input_exp_count'][module_name] += 1
                         
-                    if faulty:
+                    if not correct:
 
                         # All errors in module. Does not take into account the injection location
                         results['module_total_error_count'][module_name] += 1

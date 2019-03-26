@@ -56,7 +56,7 @@ fi
 fi_file=$gen_dir/fault_injection_info.txt
 echo "Fault injection information will be stored in the following file: $fi_file"
 echo "Parsing cellexport..."
-python3 $SIM_ROOT_DIR/simulator/prepare_sim/cell_export_parser/convert_to_pins.py $design_dir $2 $3 --fault-info-file $fi_file
+python3 $SIM_ROOT_DIR/simulator/prepare_sim/cell_export_parser/convert_to_pins.py $design_dir $2 $3 --fault-info-file $fi_file $PARAMS
 return_value=$?
 
 echo ""
@@ -68,18 +68,11 @@ if [ $return_value = 1 ]; then
     echo "Errors detected during the run, exiting"
     exit
 fi
-
-if [ $return_value = 2 ]; then
-    echo ""
-    echo "D E B U G : 'None'-s were found during the run... rerunning with debugging enabled:"
-    python3 $SIM_ROOT_DIR/simulator/prepare_sim/cell_export_parser/convert_to_pins.py $design_dir $2 $3 --fault-info-file $fi_file --debug-nones
-    return_value=$?
-fi
-
+W
 if [ $return_value = 3 ]; then
     echo ""
     echo "N O T E : Simulation will be disabled when debugging! Not running simulation!"
-    echo ""
+    echo ""S
     exit
 fi
 

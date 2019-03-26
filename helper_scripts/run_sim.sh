@@ -50,7 +50,10 @@ for sim_config in `cat $sim_config_file`; do
     generator_file=$scenario_folder/scenario_gen/scn_generator.py
 
     if [ -f $generator_file ]; then
-        python3 $generator_file $sim_config $desing_folder $scenario
+
+        if [ ! -f $scenario ]; then
+            python3 $generator_file $sim_config $desing_folder $scenario
+        fi
 
     else
         echo "N O T E : No scenario generator found!, not running it!"

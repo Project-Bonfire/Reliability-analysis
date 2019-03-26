@@ -6,7 +6,6 @@ puts "Scenario file: $SCENARIO_FILE"
 # Compile the netlist
 vlog "$DESIGN_FOLDER/gatelevel/gate_level_netlist.v"
 # vcom "$DESIGN_FOLDER/HDL/Packages/router_pack.vhd"
-# vcom "$DESIGN_FOLDER/HDL/RTL/flit_tracker.vhd"
 
 # vcom "$DESIGN_FOLDER/HDL/RTL/LBDR_input_wire.vhd"
 # vcom "$DESIGN_FOLDER/HDL/RTL/allocator_input_wire.vhd"
@@ -23,8 +22,9 @@ vlog "$DESIGN_FOLDER/gatelevel/gate_level_netlist.v"
 # vcom "$DESIGN_FOLDER/HDL/RTL/Router_32_bit_credit_based.vhd"
 
 # Compile testbench
-vcom -O5 "$DESIGN_FOLDER/gatelevel/TB_Package_32_bit_credit_based.vhd"
-vcom -O5 "$DESIGN_FOLDER/gatelevel/Router_credit_based_tb.vhd"
+vcom "$DESIGN_FOLDER/gatelevel/stephens_package.vhd"
+vcom "$DESIGN_FOLDER/gatelevel/TB_Package_32_bit_credit_based.vhd"
+vcom "$DESIGN_FOLDER/gatelevel/Router_credit_based_tb.vhd"
  
 # Start the simulation
-vsim -novopt -t 1ns -Gsent_file=$INPUT_FILE -Grecv_file=$OUTPUT_FILE -Gscenario_file=$SCENARIO_FILE work.tb_router
+vsim -novopt -t 1ns -Gsent_file=$INPUT_FILE -Grecv_file=$OUTPUT_FILE -Gscenario_file=$SCENARIO_FILE -Gdumps_folder=$DUMPS_FOLDER work.tb_router

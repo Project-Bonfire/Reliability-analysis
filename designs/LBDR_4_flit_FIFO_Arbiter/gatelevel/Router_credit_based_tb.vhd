@@ -10,7 +10,11 @@ library ieee;
 use ieee.std_logic_1164.all;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.numeric_std.all;
+use std.textio.all;
+
 use work.TB_Package.all;
+use work.stephens_package.all;
 
 USE ieee.numeric_std.ALL; 
 use IEEE.math_real."ceil";
@@ -18,7 +22,7 @@ use IEEE.math_real."log2";
 
 entity tb_router is
     --Pass the filenames to write to for the sent and received file.
-	generic (sent_file,recv_file,scenario_file : string);
+	generic (sent_file, recv_file, scenario_file, dumps_folder: string);
 end tb_router; 
 
 
@@ -74,7 +78,9 @@ component router_credit_based is
     write_en_out_E_out: out std_logic;
     write_en_out_W_out: out std_logic;
     write_en_out_S_out: out std_logic;
-    write_en_out_L_out: out std_logic
+    write_en_out_L_out: out std_logic;
+
+    FIFO_Data_out_N, FIFO_Data_out_E, FIFO_Data_out_W, FIFO_Data_out_S, FIFO_Data_out_L: out std_logic_vector(31 downto 0)    
     );
 end component;
 
@@ -88,44 +94,46 @@ end component;
 		valid_out_N_5, valid_out_E_5, valid_out_W_5, valid_out_S_5, valid_out_L_5,
 		credit_out_N_5, credit_out_E_5, credit_out_W_5, credit_out_S_5, credit_out_L_5: std_logic;
 
-  signal Grant_NN_out, Grant_NE_out, Grant_NW_out, Grant_NS_out, Grant_NL_out: std_logic;
-  signal Grant_EN_out, Grant_EE_out, Grant_EW_out, Grant_ES_out, Grant_EL_out: std_logic;
-  signal Grant_WN_out, Grant_WE_out, Grant_WW_out, Grant_WS_out, Grant_WL_out: std_logic;
-  signal Grant_SN_out, Grant_SE_out, Grant_SW_out, Grant_SS_out, Grant_SL_out: std_logic;
-  signal Grant_LN_out, Grant_LE_out, Grant_LW_out, Grant_LS_out, Grant_LL_out: std_logic;
-  signal Xbar_sel_N_out, Xbar_sel_E_out, Xbar_sel_W_out, Xbar_sel_S_out, Xbar_sel_L_out: std_logic_vector(4 downto 0);
+    signal Grant_NN_out, Grant_NE_out, Grant_NW_out, Grant_NS_out, Grant_NL_out: std_logic;
+    signal Grant_EN_out, Grant_EE_out, Grant_EW_out, Grant_ES_out, Grant_EL_out: std_logic;
+    signal Grant_WN_out, Grant_WE_out, Grant_WW_out, Grant_WS_out, Grant_WL_out: std_logic;
+    signal Grant_SN_out, Grant_SE_out, Grant_SW_out, Grant_SS_out, Grant_SL_out: std_logic;
+    signal Grant_LN_out, Grant_LE_out, Grant_LW_out, Grant_LS_out, Grant_LL_out: std_logic;
+    signal Xbar_sel_N_out, Xbar_sel_E_out, Xbar_sel_W_out, Xbar_sel_S_out, Xbar_sel_L_out: std_logic_vector(4 downto 0);
 
-      -- LBDR outputs
-  signal Req_NN_out, Req_EN_out, Req_WN_out, Req_SN_out, Req_LN_out: std_logic;
-  signal Req_NE_out, Req_EE_out, Req_WE_out, Req_SE_out, Req_LE_out: std_logic;
-  signal Req_NW_out, Req_EW_out, Req_WW_out, Req_SW_out, Req_LW_out: std_logic;
-  signal Req_NS_out, Req_ES_out, Req_WS_out, Req_SS_out, Req_LS_out: std_logic;
-  signal Req_NL_out, Req_EL_out, Req_WL_out, Req_SL_out, Req_LL_out: std_logic;
+        -- LBDR outputs
+    signal Req_NN_out, Req_EN_out, Req_WN_out, Req_SN_out, Req_LN_out: std_logic;
+    signal Req_NE_out, Req_EE_out, Req_WE_out, Req_SE_out, Req_LE_out: std_logic;
+    signal Req_NW_out, Req_EW_out, Req_WW_out, Req_SW_out, Req_LW_out: std_logic;
+    signal Req_NS_out, Req_ES_out, Req_WS_out, Req_SS_out, Req_LS_out: std_logic;
+    signal Req_NL_out, Req_EL_out, Req_WL_out, Req_SL_out, Req_LL_out: std_logic;
 
-      -- FIFO outputs
-  signal empty_N_out, empty_E_out, empty_W_out, empty_S_out, empty_L_out: std_logic;
+        -- FIFO outputs
+    signal empty_N_out, empty_E_out, empty_W_out, empty_S_out, empty_L_out: std_logic;
 
-  signal read_pointer_out_N_out, write_pointer_out_N_out: std_logic_vector(3 downto 0);
-  signal read_pointer_out_E_out, write_pointer_out_E_out: std_logic_vector(3 downto 0);
-  signal read_pointer_out_W_out, write_pointer_out_W_out: std_logic_vector(3 downto 0);
-  signal read_pointer_out_S_out, write_pointer_out_S_out: std_logic_vector(3 downto 0);
-  signal read_pointer_out_L_out, write_pointer_out_L_out: std_logic_vector(3 downto 0);
+    signal read_pointer_out_N_out, write_pointer_out_N_out: std_logic_vector(3 downto 0);
+    signal read_pointer_out_E_out, write_pointer_out_E_out: std_logic_vector(3 downto 0);
+    signal read_pointer_out_W_out, write_pointer_out_W_out: std_logic_vector(3 downto 0);
+    signal read_pointer_out_S_out, write_pointer_out_S_out: std_logic_vector(3 downto 0);
+    signal read_pointer_out_L_out, write_pointer_out_L_out: std_logic_vector(3 downto 0);
 
-  signal write_en_out_N_out: std_logic;
-  signal write_en_out_E_out: std_logic;
-  signal write_en_out_W_out: std_logic;
-  signal write_en_out_S_out: std_logic;
-  signal write_en_out_L_out: std_logic;
-    
-	signal credit_counter_out_5:  std_logic_vector (1 downto 0);
-	signal credit_counter_out_1:  std_logic_vector (1 downto 0);
-	signal credit_counter_out_4:  std_logic_vector (1 downto 0);
-	signal credit_counter_out_6:  std_logic_vector (1 downto 0);
-	signal credit_counter_out_9:  std_logic_vector (1 downto 0);
+    signal write_en_out_N_out: std_logic;
+    signal write_en_out_E_out: std_logic;
+    signal write_en_out_W_out: std_logic;
+    signal write_en_out_S_out: std_logic;
+    signal write_en_out_L_out: std_logic;
+        
+    signal FIFO_Data_out_N, FIFO_Data_out_E, FIFO_Data_out_W, FIFO_Data_out_S, FIFO_Data_out_L: std_logic_vector (31 downto 0);
+
+    signal credit_counter_out_5:  std_logic_vector (1 downto 0);
+    signal credit_counter_out_1:  std_logic_vector (1 downto 0);
+    signal credit_counter_out_4:  std_logic_vector (1 downto 0);
+    signal credit_counter_out_6:  std_logic_vector (1 downto 0);
+    signal credit_counter_out_9:  std_logic_vector (1 downto 0);
 
 	--------------
 	constant clk_period : time := 10 ns;
-	signal reset, not_reset, clk: std_logic :='0';
+    signal reset, not_reset, clk: std_logic :='0';
 
 begin
 
@@ -178,7 +186,9 @@ PORT MAP (  reset, clk,
             write_en_out_E_out,
             write_en_out_W_out,
             write_en_out_S_out,
-            write_en_out_L_out
+            write_en_out_L_out,
+
+            FIFO_Data_out_N, FIFO_Data_out_E, FIFO_Data_out_W, FIFO_Data_out_S, FIFO_Data_out_L
             );
 
 
@@ -210,5 +220,94 @@ get_packet(recv_file,32, 5, 6, clk, credit_in_E_5, valid_out_E_5, TX_E_5);
 get_packet(recv_file,32, 5, 9, clk, credit_in_S_5, valid_out_S_5, TX_S_5);
 get_packet(recv_file,32, 5, 4, clk, credit_in_W_5, valid_out_W_5, TX_W_5);
 get_packet(recv_file,32, 5, 5, clk, credit_in_L_5, valid_out_L_5, TX_L_5);
+
+
+-- Save every falling edge outputs component outputs into a file.
+save_module_outputs: process (clk)
+    file top_level_dump : text open write_mode is dumps_folder & "/top_level.dump";
+    variable top_level_line_v : line;
+
+    file arbiter_dump : text open write_mode is dumps_folder & "/arbiter.dump";
+    variable arbiter_line_v : line;
+
+    file xbar_dump : text open write_mode is dumps_folder & "/xbar.dump";
+    variable xbar_line_v : line;
+
+    file lbdr_dump : text open write_mode is dumps_folder & "/lbdr.dump";
+    variable lbdr_line_v : line;
+
+    file fifoc_dump : text open write_mode is dumps_folder & "/fifoc.dump";
+    variable fifoc_line_v : line;
+
+    file fifod_dump : text open write_mode is dumps_folder & "/fifod.dump";
+    variable fifod_line_v : line;
+
+begin
+    if clk'event and clk = '0' then
+
+        ---------------
+        -- Top level --
+        ---------------
+        write(top_level_line_v,  
+              to_bstring(credit_out_L_5) & " " & to_bstring(credit_out_N_5) & " " & to_bstring(credit_out_E_5) & " " & to_bstring(credit_out_W_5) & " " & to_bstring(credit_out_S_5) & " " &   -- credit_out
+              to_bstring(valid_out_L_5)  & " " & to_bstring(valid_out_N_5)  & " " & to_bstring(valid_out_E_5)  & " " & to_bstring(valid_out_W_5)  & " " & to_bstring(valid_out_S_5)  & " " &   -- valid_out
+              to_bstring(TX_L_5)         & " " & to_bstring(TX_N_5)         & " " & to_bstring(TX_E_5)         & " " & to_bstring(TX_W_5)         & " " & to_bstring(TX_S_5));                 -- TX
+
+        writeline(top_level_dump, top_level_line_v);
+
+        -------------
+        -- Arbiter --
+        -------------
+        write(arbiter_line_v,  
+              to_bstring(Xbar_sel_L_out) & " " & to_bstring(Xbar_sel_N_out) & " " & to_bstring(Xbar_sel_E_out) & " " & to_bstring(Xbar_sel_W_out) & " " & to_bstring(Xbar_sel_S_out) & " " &   -- xbar_sel
+              to_bstring(valid_out_L_5)  & " " & to_bstring(valid_out_N_5)  & " " & to_bstring(valid_out_E_5)  & " " & to_bstring(valid_out_W_5)  & " " & to_bstring(valid_out_S_5)  & " " &   -- valid_out
+              to_bstring(Grant_EN_out)   & " " & to_bstring(Grant_EE_out)   & " " & to_bstring(Grant_EW_out)   & " " & to_bstring(Grant_ES_out)   & " " & to_bstring(Grant_EL_out) & " " &     -- Grants
+              to_bstring(Grant_WN_out)   & " " & to_bstring(Grant_WE_out)   & " " & to_bstring(Grant_WW_out)   & " " & to_bstring(Grant_WS_out)   & " " & to_bstring(Grant_WL_out) & " " &
+              to_bstring(Grant_SN_out)   & " " & to_bstring(Grant_SE_out)   & " " & to_bstring(Grant_SW_out)   & " " & to_bstring(Grant_SS_out)   & " " & to_bstring(Grant_SL_out) & " " &
+              to_bstring(Grant_LN_out)   & " " & to_bstring(Grant_LE_out)   & " " & to_bstring(Grant_LW_out)   & " " & to_bstring(Grant_LS_out)   & " " & to_bstring(Grant_LL_out));
+
+        writeline(arbiter_dump, arbiter_line_v);
+
+        ----------
+        -- Xbar --
+        ----------
+        write(xbar_line_v, to_bstring(TX_L_5) & " " & to_bstring(TX_N_5) & " " & to_bstring(TX_E_5) & " " & to_bstring(TX_W_5) & " " & to_bstring(TX_S_5));  -- TX
+
+        writeline(xbar_dump, xbar_line_v);
+
+        ----------
+        -- LBRR --
+        ----------
+        write(lbdr_line_v,
+              to_bstring(Req_NN_out) & " " & to_bstring(Req_EN_out) & " " & to_bstring(Req_WN_out) & " " & to_bstring(Req_SN_out) & " " & to_bstring(Req_LN_out) & " " &  -- Requests
+              to_bstring(Req_NE_out) & " " & to_bstring(Req_EE_out) & " " & to_bstring(Req_WE_out) & " " & to_bstring(Req_SE_out) & " " & to_bstring(Req_LE_out) & " " &
+              to_bstring(Req_NW_out) & " " & to_bstring(Req_EW_out) & " " & to_bstring(Req_WW_out) & " " & to_bstring(Req_SW_out) & " " & to_bstring(Req_LW_out) & " " &
+              to_bstring(Req_NS_out) & " " & to_bstring(Req_ES_out) & " " & to_bstring(Req_WS_out) & " " & to_bstring(Req_SS_out) & " " & to_bstring(Req_LS_out) & " " &
+              to_bstring(Req_NL_out) & " " & to_bstring(Req_EL_out) & " " & to_bstring(Req_WL_out) & " " & to_bstring(Req_SL_out) & " " & to_bstring(Req_LL_out));
+
+        writeline(lbdr_dump, lbdr_line_v);
+
+        -----------------------
+        -- FIFO Control Part --
+        -----------------------
+        write(fifoc_line_v,
+              to_bstring(credit_out_L_5)            & " " & to_bstring(credit_out_N_5)          & " " & to_bstring(credit_out_E_5)          & " " & to_bstring(credit_out_W_5)          & " " & to_bstring(credit_out_S_5)          & " " &   -- credit_out
+              to_bstring(empty_N_out)               & " " & to_bstring(empty_E_out)             & " " & to_bstring(empty_W_out)             & " " & to_bstring(empty_S_out)             & " " & to_bstring(empty_L_out)             & " " &   -- empty
+              to_bstring(read_pointer_out_N_out)    & " " & to_bstring(read_pointer_out_E_out)  & " " & to_bstring(read_pointer_out_W_out)  & " " & to_bstring(read_pointer_out_S_out)  & " " & to_bstring(read_pointer_out_L_out)  & " " &   -- read_ptr
+              to_bstring(write_pointer_out_N_out)   & " " & to_bstring(write_pointer_out_E_out) & " " & to_bstring(write_pointer_out_W_out) & " " & to_bstring(write_pointer_out_S_out) & " " & to_bstring(write_pointer_out_L_out) & " " &   -- write_ptr
+              to_bstring(write_en_out_N_out)        & " " & to_bstring(write_en_out_E_out)      & " " & to_bstring(write_en_out_W_out)      & " " & to_bstring(write_en_out_S_out)      & " " & to_bstring(write_en_out_L_out));              -- write_en
+
+        writeline(fifoc_dump, fifoc_line_v);
+
+        -------------------
+        -- FIFO Datapath --
+        -------------------
+        write(fifod_line_v, to_bstring(FIFO_Data_out_L) & " " & to_bstring(FIFO_Data_out_N) & " " & to_bstring(FIFO_Data_out_E) & " " & to_bstring(FIFO_Data_out_W) & " " & to_bstring(FIFO_Data_out_S));  -- FIFO data out
+
+
+        writeline(fifod_dump, fifod_line_v);
+    end if;
+
+end process save_module_outputs;
 
 end;
