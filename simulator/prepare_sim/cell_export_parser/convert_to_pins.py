@@ -87,19 +87,22 @@ class CellParser(CellsListener):
         # Iterate over pins connected to the cell and log them
         for io_pin in io_pins:
 
-            self.total_pin_count += 1
             pin_name = str(io_pin.children[0].children[0])
-           
-            # Add pins to the module
-            if cell_module in self.fault_locs_per_module:
-                self.fault_locs_per_module[cell_module] += 1
+            
+            if not pin_name in ('CP', 'RN'):
+                self.total_pin_count += 1
+            
+                # Add pins to the module
+                if cell_module in self.fault_locs_per_module:
+                    self.fault_locs_per_module[cell_module] += 1
 
-            else:
-                self.fault_locs_per_module[cell_module] = 1
+                else:
+                    self.fault_locs_per_module[cell_module] = 1
 
-            # Save the fault injection location to the output file
-            injection_location = "\\" + cell_name + " :" + pin_name + ' ' + '!' + cell_module + '\n'
-            self.outstream.writelines(injection_location)
+                # Save the fault injection location to the output file
+                print(pin_name)
+                injection_location = "\\" + cell_name + " :" + pin_name + ' ' + '!' + cell_module + '\n'
+                self.outstream.writelines(injection_location)
 
 def main(cell_export_file, signal_module_map, outfile, debug_unknown, fault_info_file):
     """

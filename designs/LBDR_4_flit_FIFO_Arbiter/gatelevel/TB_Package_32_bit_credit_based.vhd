@@ -112,7 +112,7 @@ package body TB_Package is
                       signal credit_counter_in: in std_logic_vector(1 downto 0); signal valid_out: out std_logic; 
                       signal port_in: out std_logic_vector) is
     variable LINEVARIABLE : line; 
-    file VEC_FILE : text is out filename;
+    file VEC_FILE : text open write_mode is filename;
     variable destination_id: integer;
     variable id_counter, Packet_length, linetmp: integer:= 0;
     variable starting_time : time;
@@ -240,7 +240,8 @@ package body TB_Package is
     variable parity_failed : boolean;
     variable LINEVARIABLE : line; 
     variable body_src,body_dest,body_packet_length, body_packetid, body_checksum:integer;
-     file VEC_FILE : text is out filename;
+     file VEC_FILE : text open write_mode is filename;
+     
      begin
      credit_out <= '1';
      counter := 0;

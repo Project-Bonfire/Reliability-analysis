@@ -68,7 +68,7 @@ if [ $return_value = 1 ]; then
     echo "Errors detected during the run, exiting"
     exit
 fi
-W
+
 if [ $return_value = 3 ]; then
     echo ""
     echo "N O T E : Simulation will be disabled when debugging! Not running simulation!"

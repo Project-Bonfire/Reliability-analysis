@@ -138,8 +138,15 @@ def main(args):
         print("E R R O R: Error while opening the inputs map:", err)
 
 
+    ingore_list = []
+
     # Count different effects of the faults over all experiments
     for exp in experiments:
+        fault_loc = exp.params.split()[4] + ' ' + exp.params.split()[5]
+
+        ignore = fault_loc in ingore_list
+
+        fault_in_input = False
 
         top_level_error_detected = False
         top_level_failure_detected = False
@@ -161,10 +168,8 @@ def main(args):
                 top_level_failure_detected = True
 
             module_error_detected = False
-
             # Per-module statistics
             for module_name, correct in exp.vcd_of_module_equal.items():
-
                 if module_name != 'top_level':
                     if exp.loc_is_input(input_mapping, module_name):
                         results['module_input_exp_count'][module_name] += 1
@@ -181,6 +186,7 @@ def main(args):
                             # Count input signals which lead to error at module output
                             if exp.loc_is_input(input_mapping, module_name):
                                 results['module_error_propagation_count'][module_name] += 1
+                                fault_in_input = True
 
                             if top_level_error_detected:
                                 results['module_caused_error_at_top_level'][module_name] += 1
@@ -195,9 +201,11 @@ def main(args):
                             if top_level_failure_detected:
                                 results['module_caused_failure_at_top_level'][module_name] += 1
 
-            if not module_error_detected and top_level_error_detected:
+            
+            if not module_error_detected and top_level_error_detected and not exp.loc_is_input(input_mapping, faulty_module) and not ignore:
+
                 print(exp.vcd_of_module_equal, file=sys.stderr)
-                raise ValueError("Detected error et TL, but not in module!", 
+                raise ValueError("Detected error at TL, but not in module!", 
                                 " Faulty module: ", faulty_module, 
                                 " Params: ", exp.params)
 

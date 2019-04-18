@@ -223,7 +223,8 @@ get_packet(recv_file,32, 5, 5, clk, credit_in_L_5, valid_out_L_5, TX_L_5);
 
 
 -- Save every falling edge outputs component outputs into a file.
-save_module_outputs: process (clk)
+save_module_outputs: process
+
     file top_level_dump : text open write_mode is dumps_folder & "/top_level.dump";
     variable top_level_line_v : line;
 
@@ -243,8 +244,6 @@ save_module_outputs: process (clk)
     variable fifod_line_v : line;
 
 begin
-    if clk'event and clk = '0' then
-
         ---------------
         -- Top level --
         ---------------
@@ -306,7 +305,9 @@ begin
 
 
         writeline(fifod_dump, fifod_line_v);
-    end if;
+
+
+    wait for 1 ns;
 
 end process save_module_outputs;
 

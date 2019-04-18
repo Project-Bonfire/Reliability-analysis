@@ -404,7 +404,7 @@ begin
 
     LBDR_E: LBDR generic map (Rxy_rst => Rxy_rst, Cx_rst => Cx_rst)
        PORT MAP (reset =>  reset, clk => clk, empty => empty_E_out_sig_LBDR,
-                 flit_type => FIFO_D_out_E(DATA_WIDTH-1 downto DATA_WIDTH-3),
+                 flit_type => flit_type_E_out_sig_LBDR,
                  cur_addr_y => cur_addr_y_E_out_sig_LBDR, 
                  cur_addr_x => cur_addr_x_E_out_sig_LBDR, 
                  dst_addr_y => dst_addr_y_E_out_sig_LBDR, 
@@ -414,7 +414,7 @@ begin
 
     LBDR_W: LBDR generic map (Rxy_rst => Rxy_rst, Cx_rst => Cx_rst)
        PORT MAP (reset =>  reset, clk => clk, empty => empty_W_out_sig_LBDR,
-                 flit_type => FIFO_D_out_W(DATA_WIDTH-1 downto DATA_WIDTH-3),
+                 flit_type => flit_type_W_out_sig_LBDR,
                  cur_addr_y => cur_addr_y_W_out_sig_LBDR, 
                  cur_addr_x => cur_addr_x_W_out_sig_LBDR, 
                  dst_addr_y => dst_addr_y_W_out_sig_LBDR, 
@@ -424,7 +424,7 @@ begin
 
     LBDR_S: LBDR generic map (Rxy_rst => Rxy_rst, Cx_rst => Cx_rst)
        PORT MAP (reset =>  reset, clk => clk, empty => empty_S_out_sig_LBDR,
-                 flit_type => FIFO_D_out_S(DATA_WIDTH-1 downto DATA_WIDTH-3),
+                 flit_type => flit_type_S_out_sig_LBDR,
                  cur_addr_y => cur_addr_y_S_out_sig_LBDR, 
                  cur_addr_x => cur_addr_x_S_out_sig_LBDR, 
                  dst_addr_y => dst_addr_y_S_out_sig_LBDR, 
@@ -434,7 +434,7 @@ begin
 
     LBDR_L: LBDR generic map (Rxy_rst => Rxy_rst, Cx_rst => Cx_rst)
        PORT MAP (reset =>  reset, clk => clk, empty => empty_L_out_sig_LBDR,
-                 flit_type => FIFO_D_out_L(DATA_WIDTH-1 downto DATA_WIDTH-3),
+                 flit_type => flit_type_L_out_sig_LBDR,
                  cur_addr_y => cur_addr_y_L_out_sig_LBDR, 
                  cur_addr_x => cur_addr_x_L_out_sig_LBDR, 
                  dst_addr_y => dst_addr_y_L_out_sig_LBDR, 
@@ -569,20 +569,20 @@ begin
                 );                                          
     -- all the Xbars
     XBAR_N: XBAR generic map (DATA_WIDTH  => DATA_WIDTH)
-       PORT MAP (North_in => FIFO_D_out_N, East_in => FIFO_D_out_E, West_in => FIFO_D_out_W, South_in => FIFO_D_out_S, Local_in => FIFO_D_out_L,
-            sel => Xbar_sel_N,  Data_out=> TX_N);
+       PORT MAP (North_in => North_in_out_N_XBAR_sig, East_in => East_in_out_N_XBAR_sig, West_in => West_in_out_N_XBAR_sig, South_in => South_in_out_N_XBAR_sig, Local_in => Local_in_out_N_XBAR_sig,
+            sel => sel_out_N_XBAR_sig,  Data_out=> TX_N);
     XBAR_E: XBAR generic map (DATA_WIDTH  => DATA_WIDTH)
-       PORT MAP (North_in => FIFO_D_out_N, East_in => FIFO_D_out_E, West_in => FIFO_D_out_W, South_in => FIFO_D_out_S, Local_in => FIFO_D_out_L,
-            sel => Xbar_sel_E,  Data_out=> TX_E);
+       PORT MAP (North_in => North_in_out_E_XBAR_sig, East_in => East_in_out_E_XBAR_sig, West_in => West_in_out_E_XBAR_sig, South_in => South_in_out_E_XBAR_sig, Local_in => Local_in_out_E_XBAR_sig,
+            sel => sel_out_E_XBAR_sig,  Data_out=> TX_E);
     XBAR_W: XBAR generic map (DATA_WIDTH  => DATA_WIDTH)
-       PORT MAP (North_in => FIFO_D_out_N, East_in => FIFO_D_out_E, West_in => FIFO_D_out_W, South_in => FIFO_D_out_S, Local_in => FIFO_D_out_L,
-            sel => Xbar_sel_W,  Data_out=> TX_W);
+       PORT MAP (North_in => North_in_out_W_XBAR_sig, East_in => East_in_out_W_XBAR_sig, West_in => West_in_out_W_XBAR_sig, South_in => South_in_out_W_XBAR_sig, Local_in => Local_in_out_W_XBAR_sig,
+            sel => sel_out_W_XBAR_sig,  Data_out=> TX_W);
     XBAR_S: XBAR generic map (DATA_WIDTH  => DATA_WIDTH)
-       PORT MAP (North_in => FIFO_D_out_N, East_in => FIFO_D_out_E, West_in => FIFO_D_out_W, South_in => FIFO_D_out_S, Local_in => FIFO_D_out_L,
-            sel => Xbar_sel_S,  Data_out=> TX_S);
+       PORT MAP (North_in => North_in_out_S_XBAR_sig, East_in => East_in_out_S_XBAR_sig, West_in => West_in_out_S_XBAR_sig, South_in => South_in_out_S_XBAR_sig, Local_in => Local_in_out_S_XBAR_sig,
+            sel => sel_out_S_XBAR_sig,  Data_out=> TX_S);
     XBAR_L: XBAR generic map (DATA_WIDTH  => DATA_WIDTH)
-       PORT MAP (North_in => FIFO_D_out_N, East_in => FIFO_D_out_E, West_in => FIFO_D_out_W, South_in => FIFO_D_out_S, Local_in => FIFO_D_out_L,
-            sel => Xbar_sel_L,  Data_out=> TX_L);
+       PORT MAP (North_in => North_in_out_L_XBAR_sig, East_in => East_in_out_L_XBAR_sig, West_in => West_in_out_L_XBAR_sig, South_in => South_in_out_L_XBAR_sig, Local_in => Local_in_out_L_XBAR_sig,
+            sel => sel_out_L_XBAR_sig,  Data_out=> TX_L);
 
 
     --------------------------------------------
