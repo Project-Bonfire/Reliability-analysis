@@ -25,4 +25,4 @@ if [ ! -f "$resultsfile" ]; then
   exit
 fi
 
-python3 $SIM_ROOT_DIR/simulator/eval_sim/analyzer.py --resultsFolder $results_folder --resultsFile $resultsfile 
+python3 $SIM_ROOT_DIR/simulator/analysis/analyze.py --resultsFolder $results_folder --resultsFile $resultsfile 
