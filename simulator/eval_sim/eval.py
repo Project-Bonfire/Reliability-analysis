@@ -170,6 +170,7 @@ def main(args):
             module_error_detected = False
             # Per-module statistics
             for module_name, correct in exp.vcd_of_module_equal.items():
+
                 if module_name != 'top_level':
                     if exp.loc_is_input(input_mapping, module_name):
                         results['module_input_exp_count'][module_name] += 1
@@ -191,18 +192,18 @@ def main(args):
                             if top_level_error_detected:
                                 results['module_caused_error_at_top_level'][module_name] += 1
 
-                                if module_error_detected:
-                                    raise ValueError("Module error detected more than once! Current module: ", module_name, 
-                                                    " Faulty module: ", faulty_module, 
-                                                    " Params: ", exp.params)
+                            if module_error_detected:
+                                raise ValueError("Module error detected more than once! Current module: ", module_name, 
+                                                " Faulty module: ", faulty_module, 
+                                                " Params: ", exp.params)
 
-                                module_error_detected = True
+                            module_error_detected = True
                             
                             if top_level_failure_detected:
                                 results['module_caused_failure_at_top_level'][module_name] += 1
 
             
-            if not module_error_detected and top_level_error_detected and not exp.loc_is_input(input_mapping, faulty_module) and not ignore:
+            if not module_error_detected and top_level_error_detected and not ignore:
 
                 print(exp.vcd_of_module_equal, file=sys.stderr)
                 raise ValueError("Detected error at TL, but not in module!", 

@@ -1,8 +1,7 @@
 sim_runs
-*/.directory
 .directory
-*/.idea
+.idea
 results/
-*/__pycache__/*
-*/.synopsis*
+__pycache__
+.synopsis
 .vscode

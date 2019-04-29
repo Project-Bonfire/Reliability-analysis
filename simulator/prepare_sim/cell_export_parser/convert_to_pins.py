@@ -20,15 +20,17 @@ class CellParser(CellsListener):
     they belong to into the output file.
     """
 
-    def __init__(self, debug_unknown):
+    def __init__(self, input_map, debug_ins, debug_unknown):
         """
         :param
+            input_map     - Map which maps the cell names of input wires into cell names
             debug_unknown - If True, the tool will print out the list of 
                             cells which cannot be assigned to any module
         """
         CellsListener.__init__(self)
 
         self.debug_unknown = debug_unknown
+        self.debug_ins = debug_ins
 
         self.total_cell_count = 0
         self.total_pin_count = 0
@@ -37,7 +39,7 @@ class CellParser(CellsListener):
         self.outstream = None
         self.signal_module_map = None
         self.fault_locs_per_module: Dict[str, int] = {}
-
+        self.input_map = input_map
 
     def exitCell(self, ctx: CellsParser.CellContext):
         """
@@ -51,10 +53,17 @@ class CellParser(CellsListener):
         self.total_cell_count += 1
 
         cell_module = None
-
+        cell_is_input = False
         # Get the name of the current cell
         # r.cell.header.nameline.<name>
         cell_name = ctx.children[0].children[0].children[1].symbol.text
+
+
+
+        for input_pattern in self.input_map:
+            if re.match(input_pattern, cell_name):
+                cell_is_input = True
+                break
 
         # Ignore cells without module in their name (the likes of 'U37)
         if re.match('^U[0-9]+', cell_name):
@@ -89,6 +98,13 @@ class CellParser(CellsListener):
 
             pin_name = str(io_pin.children[0].children[0])
             
+            # Only inject faults into the output pin of the input wire module
+            if cell_is_input and not '_out' in pin_name:
+                if self.debug_ins:
+                    print(pin_name)
+                continue
+
+            # Do not inject faults into clock and reset
             if not pin_name in ('CP', 'RN'):
                 self.total_pin_count += 1
             
@@ -100,19 +116,21 @@ class CellParser(CellsListener):
                     self.fault_locs_per_module[cell_module] = 1
 
                 # Save the fault injection location to the output file
-                print(pin_name)
+                
                 injection_location = "\\" + cell_name + " :" + pin_name + ' ' + '!' + cell_module + '\n'
                 self.outstream.writelines(injection_location)
 
-def main(cell_export_file, signal_module_map, outfile, debug_unknown, fault_info_file):
+def main(cell_export_file, input_map, signal_module_map, outfile, debug_ins, debug_unknown, fault_info_file):
     """
     Parses the cell export file and prints results
 
     :param
-        cell_export_file - path to the cell export file
+        cell_export_file  - path to the cell export file
+        input_map         - Map which maps the cell names of input wires into cell names
         signal_module_map - map which maps different name patters to module names
-        outfile - file where to write the output
-        debug_unknown - If enabled, the tool will print out all cells which cannot be added into any module
+        outfile           - file where to write the output
+        debug_ins         - If enabled, the tool will print out all pin names of the input modules where no injection is done
+        debug_unknown     - If enabled, the tool will print out all cells which cannot be added into any module
     """
     # Setting up ANTLR environment for parsing the cell export
     print('Creating parse tree...')
@@ -124,7 +142,7 @@ def main(cell_export_file, signal_module_map, outfile, debug_unknown, fault_info
 
     # Actually parse the cell export
     print('Parsing the cell export...')
-    cell_parser = CellParser(debug_unknown)
+    cell_parser = CellParser(input_map, debug_ins, debug_unknown)
     cell_parser.signal_module_map = signal_module_map
     cell_parser.outstream = outfile
     walker = ParseTreeWalker()
@@ -210,6 +228,8 @@ if __name__ == '__main__':
     debug_args = args.add_mutually_exclusive_group()
     debug_args.add_argument('--debug-unknown', action='store_true',
                             help='Prints cells which cannot be assigned to a module')
+    debug_args.add_argument('--debug-ins', action='store_true',
+                            help='Prints pin names of the input modules where no injection is done')
 
     args = args.parse_args()
 
@@ -223,5 +243,6 @@ if __name__ == '__main__':
 
         signal_module_map = {**input_map, **module_map}
 
-        main(cellexport.name, signal_module_map, outfile, args.debug_unknown, args.fault_info_file)
+        main(cellexport.name, input_map, signal_module_map, outfile, 
+             args.debug_ins, args.debug_unknown, args.fault_info_file)
 
