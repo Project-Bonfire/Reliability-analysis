@@ -6,7 +6,7 @@ Evaluates the results of a simulation. Detects faults in the experiments and cal
 
 ## Setup
  To install the dependencies, install the requirements in `requirements.txt` and install the python3 version 
- of SocDep2. You may install the version from this repository by:
+ of .. You may install the version from this repository by:
  ```
  python3 SocDep2_egged/setup.py install
  ```

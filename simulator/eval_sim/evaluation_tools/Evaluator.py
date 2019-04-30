@@ -7,13 +7,13 @@ import sys
 from enum import Enum, auto
 from typing import Dict, List
 
-from socdep2.ArchGraphUtilities.AG_Functions import *
-from socdep2.ConfigAndPackages import Config, PackageFile
-from socdep2.RoutingAlgorithms import Routing
-from socdep2.RoutingAlgorithms.Calculate_Reachability import (is_destination_reachable_from_source,
+from .socdep2.ArchGraphUtilities.AG_Functions import *
+from .socdep2.ConfigAndPackages import Config, PackageFile
+from .socdep2.RoutingAlgorithms import Routing
+from .socdep2.RoutingAlgorithms.Calculate_Reachability import (is_destination_reachable_from_source,
                                                               is_destination_reachable_via_port)
-from socdep2.SystemHealthMonitoring import SystemHealthMonitoringUnit
-from socdep2.Utilities import misc
+from .socdep2.SystemHealthMonitoring import SystemHealthMonitoringUnit
+from .socdep2.Utilities import misc
 
 class FaultType(Enum):
     MISROUTED = auto()
