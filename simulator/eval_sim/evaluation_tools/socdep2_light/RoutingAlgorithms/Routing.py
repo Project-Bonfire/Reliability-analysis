@@ -1,7 +1,9 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
 #
 # Modifications by Karl Janson in 2019:
-#   - Removed functions not needed by the tool
+#   - Removed functions not needed by the current toolchain
+#   - Converted to Python3
+#   - Converted to work with Networkx 2.x
 #
 
 
@@ -102,8 +104,8 @@ def generate_noc_route_graph(ag, shmu, turn_model, report, detailed_report):
         if detailed_report:
             print ("------------------------")
 
-    for link in ag.edges():     # here we should connect connections between routers
-        port = ag.edge[link[0]][link[1]]['Port']
+    for link in list(ag.edges()):     # here we should connect connections between routers
+        port = ag.adj[link[0]][link[1]]['Port']
         if shmu.SHM[link[0]][link[1]]['LinkHealth']:
             if detailed_report:
                 print(("CONNECTING LINK:", link, "BY CONNECTING:", str(link[0])+str(port[0])+str('-Out'),

@@ -1,7 +1,9 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
 #
 # Modifications by Karl Janson in 2019:
-#   - Removed functions not needed by the tool
+#   - Removed functions not needed by the current toolchain
+#   - Converted to Python3
+#   - Converted to work with Networkx 2.x
 #
 
 import random
@@ -53,7 +55,7 @@ class SystemHealthMonitoringUnit:
                 if node not in self.SHM.nodes():
                     self.SHM.add_node(node, TurnsHealth=deepcopy(turns_health), NodeHealth=True,
                                       NodeSpeed=100, RouterTemp=0, NodeTemp=0)
-        for link in ag.edges():
+        for link in list(ag.edges()):
             self.SHM.add_edge(link[0], link[1], LinkHealth=True)
 
         # self.system_degradation = self.calculate_system_degradation()

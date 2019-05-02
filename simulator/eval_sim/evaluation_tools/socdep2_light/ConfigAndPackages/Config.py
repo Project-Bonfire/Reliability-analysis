@@ -1,6 +1,14 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
-from . import PackageFile
+#
+# Modifications by Karl Janson in 2019:
+#   - Removed functions not needed by the current toolchain
+#   - Converted to Python3
+#
+
 import copy
+
+from . import PackageFile
+
 ################################################
 #          Program  Config
 ################################################

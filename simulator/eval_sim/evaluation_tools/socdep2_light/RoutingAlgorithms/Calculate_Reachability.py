@@ -4,7 +4,9 @@
 # how ever, at the moment we only implemented a 2D version of it.
 #
 # Modifications by Karl Janson in 2019:
-#   - Removed functions not needed by the tool
+#   - Removed functions not needed by the current toolchain
+#   - Converted to Python3
+#   - Converted to work with Networkx 2.x
 #
 
 from networkx import has_path, shortest_path_length

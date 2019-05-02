@@ -1,7 +1,8 @@
 # Copyright (C) 2015 Siavoosh Payandeh Azad
 #
 # Modifications by Karl Janson in 2019:
-#   - Removed functions not needed by the tool
+#   - Removed functions not needed by the current toolchain
+#   - Converted to Python3
 #
 
 ################################################
