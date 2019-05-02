@@ -7,13 +7,12 @@ import sys
 from enum import Enum, auto
 from typing import Dict, List
 
-from .socdep2.ArchGraphUtilities.AG_Functions import *
-from .socdep2.ConfigAndPackages import Config, PackageFile
-from .socdep2.RoutingAlgorithms import Routing
-from .socdep2.RoutingAlgorithms.Calculate_Reachability import (is_destination_reachable_from_source,
-                                                              is_destination_reachable_via_port)
-from .socdep2.SystemHealthMonitoring import SystemHealthMonitoringUnit
-from .socdep2.Utilities import misc
+from .socdep2_light.ArchGraphUtilities.AG_Functions import *
+from .socdep2_light.ConfigAndPackages import Config, PackageFile
+from .socdep2_light.RoutingAlgorithms import Routing
+from .socdep2_light.RoutingAlgorithms.Calculate_Reachability import *
+from .socdep2_light.SystemHealthMonitoring import SystemHealthMonitoringUnit
+# from .socdep2.Utilities import misc
 
 class FaultType(Enum):
     MISROUTED = auto()
@@ -321,7 +320,7 @@ def init():
     Returns:
         Routing graph
     """
-    misc.generate_file_directories()
+    # misc.generate_file_directories()
     turns_health_2d_network = {"N2W": True, "N2E": True, "S2W": True, "S2E": True,
                                "W2N": True, "W2S": True, "E2N": True, "E2S": True}
 
