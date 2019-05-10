@@ -150,20 +150,23 @@ def build_tree(reltree, current_node, relaph, path, path_counter):
         node_name = current_path_node + '-' + str(path_counter)
 
         is_end_node = (len(path) == 1)
+
+        node_color = 'red' if is_end_node else 'black'
         reltree.add_node(node_name, attr=Attr(IFPP=new_node_IFPP, 
                                             LFPP=new_node_LFPP,
-                                            end_node=is_end_node))
+                                            end_node=is_end_node),
+                                            color=node_color)
 
         edge_weight = relaph_weights[(current_node.split('-')[0], current_path_node)]
 
         # Randomize the edge color for better reading
         seed = list(reltree.nodes()).index(current_node)
         random.seed(seed)
-        color = '#%02x%02x%02x' % (random.randint(0, 200), 
-                                    random.randint(0, 200), 
-                                    random.randint(0, 200))
+        edge_color = '#%02x%02x%02x' % (random.randint(0, 200), 
+                                        random.randint(0, 200), 
+                                        random.randint(0, 200))
 
-        reltree.add_edge(current_node, node_name, weight=edge_weight, color=color)
+        reltree.add_edge(current_node, node_name, weight=edge_weight, color=edge_color)
 
      
     if len(path) > 1:
@@ -179,19 +182,11 @@ def process_graph(relaph, starting_node, reltree):
     reltree.add_node(starting_node, attr=Attr(IFPP=1, LFPP=1))
     counter = 0
 
-    paths = [
-        ['OUT', 'ALLOC', 'LBDR_N', 'FIFOD_N'],
-        ['OUT', 'FIFOC_L', 'ALLOC', 'LBDR_N', 'FIFOD_N'],
-        ['OUT', 'ALLOC', 'FIFOC_N'],
-        ['OUT', 'ALLOC', 'LBDR_N', 'FIFOC_N'],
-        ['OUT', 'ALLOC', 'LBDR_N', 'FIFOD_N', 'FIFOC_N']
-
-    ]
     # Goes through all simple paths from all modules to the output
     for component in list(relaph.nodes):
         paths = sorted(list(nx.all_simple_paths(relaph, starting_node, component)))
 
-        for i, path in enumerate(paths):
+        for path in paths:
             counter += 1
             print(str(counter) + ':\tPATH', path)
 
@@ -270,7 +265,8 @@ def draw_graph(relaph, args):
 
     A = nx.nx_agraph.to_agraph(relaph)
 
-    A.layout('dot', args='-Nfontsize=10 -Nwidth=".2" -Nheight=".2" -Nmargin=0 -Gfontsize=8 -Granksep=7')
+    A.layout('dot', args='-Nfontsize=10 -Nwidth=".2" -Nheight=".2" -Nmargin=0 '
+                         '-Gfontsize=8 -Granksep=10 -Epenwidth=2 -Npenwidth=2')
     A.draw(args.results_folder + '/relaph.pdf')
 
 def node_to_module_name(node_name):
