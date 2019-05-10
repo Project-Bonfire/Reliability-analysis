@@ -25,4 +25,8 @@ if [ ! -f "$resultsfile" ]; then
   exit
 fi
 
+rm -f $results_folder/results_*.json
+
 python3 $SIM_ROOT_DIR/simulator/analysis/analyze.py --resultsFolder $results_folder --resultsFile $resultsfile 
+
+python3 $SIM_ROOT_DIR/simulator/analysis/graph.py --results-file $resultsfile --analyzed-results $results_folder/results_average.json --results-folder $results_folder #--no-drawing

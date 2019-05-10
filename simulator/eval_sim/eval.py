@@ -174,7 +174,7 @@ def main(args):
                 if module_name != 'top_level':
                     if exp.loc_is_input(input_mapping, module_name):
                         results['module_input_exp_count'][module_name] += 1
-                        
+                
                     if not correct:
 
                         # All errors in module. Does not take into account the injection location
